@@ -1,0 +1,38 @@
+{
+    "name": "llmo",
+    "version": "1.0.0",
+    "description": "LLM optimization system",
+    "dependencies": {
+        "@langchain/core": "^0.3.15",
+        "@langchain/openai": "^0.3.11",
+        "common": "workspace:../../../atipica/packages/common",
+        "dotenv": "^16.4.5",
+        "dotenv-expand": "^11.0.6",
+        "jose": "^5.9.2",
+        "openai": "^4.68.4",
+        "pino": "^8.16.0",
+        "pino-pretty": "11.3.0",
+        "ts-results": "^3.3.0",
+        "tslib": "^2.8.0",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@flydotio/dockerfile": "^0.5.9",
+        "@flydotio/node-demo": "^0.2.1",
+        "@types/node": "^22.7.5",
+        "chalk": "^5.3.0",
+        "tsx": "^3.12.3",
+        "typescript": "^5.6.3",
+        "vitest": "^2.1.1"
+    },
+    "scripts": {
+        "dev": "tsx watch src/index.ts",
+        "start": "tsx src/index.ts",
+        "generate-token": "tsx script/generate-token.ts",
+        "deploy": "fly deploy",
+        "test": "vitest run",
+        "test:ci": "pnpm run test"
+    },
+    "author": "Miguel Fernández <miguel@mff.io>",
+    "license": "ISC"
+}

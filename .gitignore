@@ -1,0 +1,8 @@
+.turbo
+.envrc
+.dev.vars
+.env
+squid.conf
+
+node_modules/
+dist/
