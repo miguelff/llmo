@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "start": "pnpm run start:llmo",
+        "start:llmo": "pnpm run --filter llmo start"
+    }
+}

@@ -1,19 +1,38 @@
 import { Input, QuestionSynthesis } from './steps/questionSynthesis'
 import { QuestionExpansion } from './steps/questionExpansion'
-import createContext, { Context } from './context'
+import createContext from './context'
+import { Command } from 'commander'
 
 async function main() {
-    const context = createContext()
+    const program = new Command()
 
-    const input: Input = { query: 'coche seguro', count: 10 }
-    const result = await run(input, context)
-    context.logger.info(result)
+    program
+        .command('report')
+        .description('Generate and analyze questions')
+        .requiredOption('-q, --query <query>', 'Search query to analyze')
+        .option(
+            '-n, --count <count>',
+            'Number of seed questions to generate',
+            '10'
+        )
+        .action(async (options) => {
+            await report(options)
+        })
+
+    await program.parseAsync()
 }
 
-function run(input: Input, context: Context) {
-    return new QuestionSynthesis(context)
+export async function report(options: { query: string; count: string }) {
+    const query = options.query
+    const count = parseInt(options.count)
+
+    const context = createContext()
+    const input: Input = { query, count }
+    const result = await new QuestionSynthesis(context)
         .then(new QuestionExpansion(context))
         .execute(input)
+
+    context.logger.info(result)
 }
 
 main().catch((error) => {

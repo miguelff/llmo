@@ -5,6 +5,7 @@
     "dependencies": {
         "@langchain/core": "^0.3.15",
         "@langchain/openai": "^0.3.11",
+        "commander": "^12.1.0",
         "common": "workspace:../../../atipica/packages/common",
         "dotenv": "^16.4.5",
         "dotenv-expand": "^11.0.6",
