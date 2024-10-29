@@ -1,9 +1,9 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
 import { Context } from '../context'
-import { OpenAILLMStep } from '../llmStep'
+import { OpenAIExtractionStep } from '../llmStep'
 
-export class QuestionSynthesis extends OpenAILLMStep<Input, Output> {
+export class QuestionSynthesis extends OpenAIExtractionStep<Input, Output> {
     static STEP_NAME = 'Question Synthesis'
 
     static SYSTEM_MESSAGE: ChatCompletionMessageParam = {
@@ -20,7 +20,7 @@ Preguntas: "Qué seguros de salud baratos tienen mejores coberturas?", "Los mejo
     }
 
     public constructor(context: Context) {
-        super(context, QuestionSynthesis.STEP_NAME, Output, 'gpt-4o', 0)
+        super(context, QuestionSynthesis.STEP_NAME, Output, 'gpt-4o', 1)
     }
 
     createPrompt(input: Input): ChatCompletionMessageParam[] {

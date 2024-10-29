@@ -3,8 +3,11 @@ import pino from 'pino'
 import PinoPretty from 'pino-pretty'
 import e, { type env } from './env'
 
+export type DataBag = Record<string, any>
+
 export type Context = OriginalContext & {
     env: env
+    bag: DataBag
 }
 
 export default function (): Context {
@@ -15,5 +18,6 @@ export default function (): Context {
         ),
         mustHalt: () => false,
         env: e,
+        bag: {},
     }
 }

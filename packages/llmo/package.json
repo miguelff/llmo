@@ -30,6 +30,8 @@
         "dev": "tsx watch src/index.ts",
         "start": "tsx src/index.ts",
         "generate-token": "tsx script/generate-token.ts",
+        "generate-step": "tsx bin/generateStep.ts",
+        "step:answer-analysis": "tsx bin/callAnswerAnalysis.ts",
         "deploy": "fly deploy",
         "test": "vitest run",
         "test:ci": "pnpm run test"

@@ -14,7 +14,7 @@ export class QuestionExpansion extends Step<Input, Output, Context> {
         const output = input.questions.map((question) => {
             return (
                 question +
-                ' ' +
+                '. ' +
                 suffixes[Math.floor(Math.random() * suffixes.length)]
             )
         })
@@ -36,5 +36,5 @@ const Output = Input
 export type Output = z.infer<typeof Output>
 
 const suffixes = [
-    'Proporciona enlaces y citas de internet para respaldar la respuesta',
+    'Incluye URLs de las fuentes de información mencionadas, a ser posible actuales y a ser posible a articulos concretos dentro de esas webs.',
 ]

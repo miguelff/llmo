@@ -6,13 +6,26 @@ import { zodResponseFormat } from 'openai/helpers/zod.mjs'
 import { Logger } from 'pino'
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { Result, Ok, Err } from 'ts-results'
+import { env } from './env'
 
-class OpenAIModel<T> {
+export class OpenAIModel<T> {
+    public static fromEnv<T>(
+        env: env,
+        model: string = 'gpt-4o',
+        temperature: number = 1,
+        schema: z.AnyZodObject | undefined = undefined
+    ) {
+        const openai = new OpenAI({
+            apiKey: env.OPENAI_API_KEY,
+        })
+        return new OpenAIModel<T>(openai, model, temperature, schema)
+    }
+
     constructor(
         protected openai: OpenAI,
-        protected schema: z.AnyZodObject,
         protected model: string,
-        protected temperature: number
+        protected temperature: number,
+        protected schema: z.AnyZodObject | undefined
     ) {}
 
     async invoke(
@@ -32,32 +45,37 @@ class OpenAIModel<T> {
         const completion = await this.openai.beta.chat.completions.parse({
             model: this.model,
             messages: messages,
-            response_format: zodResponseFormat(
-                this.schema,
-                'extractionResponse'
-            ),
+            response_format: this.schema
+                ? zodResponseFormat(this.schema, 'extractionResponse')
+                : undefined,
             temperature: this.temperature,
         })
 
         const message = completion.choices[0]?.message
 
-        if (message.parsed) {
-            logger?.debug(
-                { parsed: message.parsed },
-                'parsed extraction result'
-            )
-            return Ok(message.parsed as T)
+        if (this.schema) {
+            if (message.parsed) {
+                logger?.debug(
+                    { parsed: message.parsed },
+                    'parsed extraction result'
+                )
+                return Ok(message.parsed as T)
+            } else {
+                logger?.debug(
+                    { unparsed: message },
+                    'failed to parse result with json schema, returning raw'
+                )
+                return Err(
+                    'failed to parse result with json schema: ' + message
+                )
+            }
         } else {
-            logger?.debug(
-                { unparsed: message },
-                'failed to parse result with json schema, returning raw'
-            )
-            return Err('failed to parse result with json schema: ' + message)
+            return Ok(message.content as T)
         }
     }
 }
 
-export abstract class OpenAILLMStep<I, O> extends Step<I, O, Context> {
+export abstract class OpenAIExtractionStep<I, O> extends Step<I, O, Context> {
     protected model: OpenAIModel<O>
 
     public constructor(
@@ -68,25 +86,19 @@ export abstract class OpenAILLMStep<I, O> extends Step<I, O, Context> {
         protected temperature = 1
     ) {
         super(context, descriptor)
-        const openai = new OpenAI({
-            apiKey: context.env.OPENAI_API_KEY,
-        })
-
-        this.model = new OpenAIModel(
-            openai,
-            outputSchema,
+        this.model = OpenAIModel.fromEnv(
+            context.env,
             modelName,
-            temperature
+            temperature,
+            outputSchema
         )
     }
 
     async execute(input: I): Promise<StepResult<O>> {
         const logger = this.context.logger
-        logger.debug(input, 'generating prompt')
         const prompt = this.createPrompt(input)
-        logger.debug('asking model')
         const res = await this.model.invoke(prompt, logger)
-        logger.debug(res, 'result')
+        logger.debug(res, 'LLM result')
         if (res.ok) {
             const parsed = this.outputSchema.safeParse(res.val)
             if (parsed.error) {
@@ -106,4 +118,35 @@ export abstract class OpenAILLMStep<I, O> extends Step<I, O, Context> {
     }
 
     abstract createPrompt(input: I): ChatCompletionMessageParam[]
+}
+
+export abstract class MapperStep<I, O, C> extends Step<I, O[], Context> {
+    protected innerStep: Step<C, O, Context>
+
+    constructor(
+        context: Context,
+        descriptor: string,
+        innerStep: Step<C, O, Context>
+    ) {
+        super(context, descriptor)
+        this.innerStep = innerStep
+    }
+
+    abstract getCollection(input: I): C[]
+
+    async execute(input: I): Promise<StepResult<O[]>> {
+        const collection = this.getCollection(input)
+        const results: O[] = []
+
+        for (const item of collection) {
+            console.log(item, 'item')
+            const result = await this.innerStep.execute(item)
+            if (!result.ok) {
+                return result
+            }
+            results.push(result.val)
+        }
+
+        return Ok(results)
+    }
 }

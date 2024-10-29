@@ -1,5 +1,7 @@
 import { Input, QuestionSynthesis } from './steps/questionSynthesis'
 import { QuestionExpansion } from './steps/questionExpansion'
+import { QuestionFormulation } from './steps/questionFormulation'
+import { AnswerAnalysis } from './steps/answerAnalysis'
 import createContext from './context'
 import { Command } from 'commander'
 
@@ -27,9 +29,13 @@ export async function report(options: { query: string; count: string }) {
     const count = parseInt(options.count)
 
     const context = createContext()
+    context.bag['query'] = query
+
     const input: Input = { query, count }
     const result = await new QuestionSynthesis(context)
         .then(new QuestionExpansion(context))
+        .then(new QuestionFormulation(context))
+        .then(new AnswerAnalysis(context))
         .execute(input)
 
     context.logger.info(result)
