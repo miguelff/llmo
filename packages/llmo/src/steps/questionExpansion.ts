@@ -35,5 +35,5 @@ const Output = Input
 export type Output = z.infer<typeof Output>
 
 const suffixes = [
-    'Incluye URLs de las fuentes de información mencionadas, a ser posible actuales y a ser posible a articulos concretos dentro de esas webs.',
+    'Incluye URLs para respaldar la información proporcionada. A ser posible reviews en blogs o webs especializadas, no incluyas fuentes que sean las oficiales de la propia marca, producto, servicio citado.',
 ]

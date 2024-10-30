@@ -30,7 +30,7 @@ export class Cleaner extends ExtractionStep<Input, Output, Context> {
         const conceptPrompt = [
             {
                 role: 'user',
-                content: `Extrae el concepto principal de la consulta del usuario. Una sola palabra.  Consulta original: ${this.context.bag['query']}`,
+                content: `Extrae el concepto principal de la consulta del usuario. Una sola palabra. Consulta original: ${this.context.bag['query']}`,
             },
         ]
 

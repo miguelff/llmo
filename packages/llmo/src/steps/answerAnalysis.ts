@@ -161,7 +161,7 @@ export class SingleAnswerAnalysis extends OpenAIExtractionStep<
         2. No incluyas topics que no estén relacionados con la Consulta original del usuario. Para ello:
             * Si el topic no hace referencia a una marca/producto/servicio, descártalo del output.
             * Si el topic hace referencia a una marca/producto/servicio, pero no está relacionado con la Consulta original, descártalo del output.
-        3. Para cada uno, proporciona analiza el sentimiento del texto respecto a ese topic.
+        3. Para cada uno, analiza el sentimiento del texto respecto a ese topic.
         4. Busca enlaces en el texto que estén asociados al topic.
         5. Si no hay un enlace específico para el topic, usa nulo.
         6. Si el enlace no hace referencia a un topic concreto si no a todos en general, añade esa URL a la lista de enlaces generales.`,
