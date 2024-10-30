@@ -10,6 +10,7 @@
         "dotenv": "^16.4.5",
         "dotenv-expand": "^11.0.6",
         "jose": "^5.9.2",
+        "open": "^10.1.0",
         "openai": "^4.68.4",
         "pino": "^8.16.0",
         "pino-pretty": "11.3.0",
@@ -33,6 +34,7 @@
         "generate-step": "tsx bin/generateStep.ts",
         "step:answer-analysis": "tsx bin/callAnswerAnalysis.ts",
         "step:cleaner": "tsx bin/callCleaner.ts",
+        "step:report": "tsx bin/callReport.ts",
         "deploy": "fly deploy",
         "test": "vitest run",
         "test:ci": "pnpm run test"

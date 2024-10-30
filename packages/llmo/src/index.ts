@@ -4,6 +4,7 @@ import { QuestionFormulation } from './steps/questionFormulation'
 import { AnswerAnalysis } from './steps/answerAnalysis'
 import createContext from './context'
 import { Command } from 'commander'
+import { Cleaner } from './steps/cleaner'
 
 async function main() {
     const program = new Command()
@@ -36,6 +37,7 @@ export async function report(options: { query: string; count: string }) {
         .then(new QuestionExpansion(context))
         .then(new QuestionFormulation(context))
         .then(new AnswerAnalysis(context))
+        .then(new Cleaner(context))
         .execute(input)
 
     context.logger.info(result)

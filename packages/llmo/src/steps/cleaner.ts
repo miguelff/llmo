@@ -5,7 +5,7 @@ import { type Output as Input } from './answerAnalysis'
 import { Err, ExtractionStep, Ok, StepResult, models } from './abstract'
 import { OpenAIModel } from '../llm'
 
-type Output = Input & { discards: IrrelevantTopicsOutput }
+export type Output = Input & { discards: IrrelevantTopicsOutput }
 
 export class Cleaner extends ExtractionStep<Input, Output, Context> {
     static STEP_NAME = 'Cleaner'
@@ -30,7 +30,7 @@ export class Cleaner extends ExtractionStep<Input, Output, Context> {
         const conceptPrompt = [
             {
                 role: 'user',
-                content: `Extrae el concepto principal de la consulta del usuario. Un sólo término. Generalmente es un nombre de marca/producto/servicio/categoría ampliada a un concepto más amplio (hiperónimo).  Consulta original: ${this.context.bag['query']}`,
+                content: `Extrae el concepto principal de la consulta del usuario. Una sola palabra.  Consulta original: ${this.context.bag['query']}`,
             },
         ]
 
@@ -80,7 +80,7 @@ Responde SOLO con la lista de temas irrelevantes, sin explicaciones adicionales.
             const output = input as Output
             output.topics = output.topics.filter(
                 (topic) =>
-                    !res.val.list.some((t) => t.theme.includes(topic.name))
+                    !res.val.list.some((t) => t.topic.includes(topic.name))
             )
             output.discards = res.val
             return Ok(output)
@@ -103,7 +103,7 @@ const IrrelevantTopicsOutput = z
         list: z
             .array(
                 z.object({
-                    theme: z
+                    topic: z
                         .string()
                         .describe('El nombre del tema que no es relevante'),
                     explanation: z
