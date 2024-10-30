@@ -14,7 +14,7 @@ const Output = z.object({
             sentiments: z.array(z.number()),
         })
     ),
-    urls: z.array(z.object({ url: z.string(), count: z.number().default(1) })),
+    urls: z.record(z.string(), z.array(z.string())),
 })
 export type Output = z.infer<typeof Output>
 
@@ -56,29 +56,34 @@ export class AnswerAnalysis extends Step<
         }, {} as Record<string, { name: string; urls: string[]; sentiments: number[] }>)
 
         const urls = result.val.reduce((acc, r) => {
-            // Handle orphan URLs
-            r.orphanUrls.forEach((url) => {
-                if (!acc[url]) {
-                    acc[url] = { url, count: 1 }
-                } else {
-                    acc[url].count++
+            // Helper function to add URL to accumulator
+            const addUrl = (url: string) => {
+                try {
+                    const domain = new URL(url).hostname
+                    if (!acc[domain]) {
+                        acc[domain] = []
+                    }
+                    if (!acc[domain].includes(url)) {
+                        acc[domain].push(url)
+                    }
+                } catch (e) {
+                    // Skip invalid URLs
                 }
-            })
+            }
+
+            // Handle orphan URLs
+            r.orphanUrls.forEach(addUrl)
 
             // Handle topic URLs
             r.topics.forEach((topic) => {
                 if (topic.url) {
-                    if (!acc[topic.url]) {
-                        acc[topic.url] = { url: topic.url, count: 1 }
-                    } else {
-                        acc[topic.url].count++
-                    }
+                    addUrl(topic.url)
                 }
             })
             return acc
-        }, {} as Record<string, { url: string; count: number }>)
+        }, {} as Record<string, string[]>)
 
-        return Ok({ topics: Object.values(topics), urls: Object.values(urls) })
+        return Ok({ topics: Object.values(topics), urls })
     }
 }
 
