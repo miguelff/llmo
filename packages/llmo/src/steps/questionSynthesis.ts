@@ -1,7 +1,7 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
 import { Context } from '../context'
-import { OpenAIExtractionStep } from '../llmStep'
+import { OpenAIExtractionStep } from './abstract'
 
 export class QuestionSynthesis extends OpenAIExtractionStep<Input, Output> {
     static STEP_NAME = 'Question Synthesis'

@@ -1,14 +1,16 @@
-import { Step, StepResult } from 'common/src/pipeline'
-import { Ok } from 'ts-results'
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
 import { Context } from '../context'
 import { type Output as Input } from './questionExpansion'
-import { OpenAIModel } from '../llmStep'
+import { ExtractionStep, Ok, StepResult, models } from './abstract'
 
-export class QuestionFormulation extends Step<Input, Output, Context> {
+export class QuestionFormulation extends ExtractionStep<
+    Input,
+    Output,
+    Context
+> {
     static STEP_NAME = 'Question Formulation'
-    private model: OpenAIModel<string>
+    private model
 
     static SYSTEM_MESSAGE: ChatCompletionMessageParam = {
         role: 'system',
@@ -18,7 +20,7 @@ export class QuestionFormulation extends Step<Input, Output, Context> {
 
     public constructor(context: Context) {
         super(context, QuestionFormulation.STEP_NAME)
-        this.model = OpenAIModel.fromEnv(context.env)
+        this.model = models.openai.fromEnv(context.env)
     }
 
     async execute(input: Input): Promise<StepResult<Output>> {

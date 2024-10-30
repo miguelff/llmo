@@ -11,9 +11,9 @@ import { env } from './env'
 export class OpenAIModel<T> {
     public static fromEnv<T>(
         env: env,
+        schema: z.AnyZodObject | undefined = undefined,
         model: string = 'gpt-4o',
-        temperature: number = 1,
-        schema: z.AnyZodObject | undefined = undefined
+        temperature: number = 1
     ) {
         const openai = new OpenAI({
             apiKey: env.OPENAI_API_KEY,
@@ -72,81 +72,5 @@ export class OpenAIModel<T> {
         } else {
             return Ok(message.content as T)
         }
-    }
-}
-
-export abstract class OpenAIExtractionStep<I, O> extends Step<I, O, Context> {
-    protected model: OpenAIModel<O>
-
-    public constructor(
-        context: Context,
-        descriptor: string,
-        protected outputSchema: z.AnyZodObject,
-        protected modelName = 'gpt-4o',
-        protected temperature = 1
-    ) {
-        super(context, descriptor)
-        this.model = OpenAIModel.fromEnv(
-            context.env,
-            modelName,
-            temperature,
-            outputSchema
-        )
-    }
-
-    async execute(input: I): Promise<StepResult<O>> {
-        const logger = this.context.logger
-        const prompt = this.createPrompt(input)
-        const res = await this.model.invoke(prompt, logger)
-        logger.debug(res, 'LLM result')
-        if (res.ok) {
-            const parsed = this.outputSchema.safeParse(res.val)
-            if (parsed.error) {
-                return Err({
-                    cause: parsed.error.message,
-                    step: this.descriptor,
-                })
-            } else {
-                return Ok(parsed.data as O)
-            }
-        } else {
-            return Err({
-                cause: 'There was an error invoking the model',
-                step: this.descriptor,
-            })
-        }
-    }
-
-    abstract createPrompt(input: I): ChatCompletionMessageParam[]
-}
-
-export abstract class MapperStep<I, O, C> extends Step<I, O[], Context> {
-    protected innerStep: Step<C, O, Context>
-
-    constructor(
-        context: Context,
-        descriptor: string,
-        innerStep: Step<C, O, Context>
-    ) {
-        super(context, descriptor)
-        this.innerStep = innerStep
-    }
-
-    abstract getCollection(input: I): C[]
-
-    async execute(input: I): Promise<StepResult<O[]>> {
-        const collection = this.getCollection(input)
-        const results: O[] = []
-
-        for (const item of collection) {
-            console.log(item, 'item')
-            const result = await this.innerStep.execute(item)
-            if (!result.ok) {
-                return result
-            }
-            results.push(result.val)
-        }
-
-        return Ok(results)
     }
 }

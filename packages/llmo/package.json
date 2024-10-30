@@ -32,6 +32,7 @@
         "generate-token": "tsx script/generate-token.ts",
         "generate-step": "tsx bin/generateStep.ts",
         "step:answer-analysis": "tsx bin/callAnswerAnalysis.ts",
+        "step:cleaner": "tsx bin/callCleaner.ts",
         "deploy": "fly deploy",
         "test": "vitest run",
         "test:ci": "pnpm run test"

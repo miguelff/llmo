@@ -1,9 +1,13 @@
-import { Step, StepResult } from 'common/src/pipeline'
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
-import { Ok } from 'ts-results'
 import { z } from 'zod'
 import { Context } from '../context'
-import { MapperStep, OpenAIExtractionStep } from '../llmStep'
+import {
+    MapperStep,
+    OpenAIExtractionStep,
+    Ok,
+    StepResult,
+    ExtractionStep,
+} from './abstract'
 import { type Output as QuestionFormulationOutput } from './questionFormulation'
 
 const Output = z.object({
@@ -18,7 +22,7 @@ const Output = z.object({
 })
 export type Output = z.infer<typeof Output>
 
-export class AnswerAnalysis extends Step<
+export class AnswerAnalysis extends ExtractionStep<
     QuestionFormulationOutput,
     Output,
     Context
@@ -131,10 +135,6 @@ export class AnswerAnalysisMapper extends MapperStep<
     getCollection(input: QuestionFormulationOutput): string[] {
         return Object.values(input)
     }
-
-    createInnerStep(): Step<string, IntermediateOutput, Context> {
-        return new SingleAnswerAnalysis(this.context)
-    }
 }
 
 export class SingleAnswerAnalysis extends OpenAIExtractionStep<
@@ -158,9 +158,9 @@ export class SingleAnswerAnalysis extends OpenAIExtractionStep<
 
         Pasos:
         1. Identifica los topics mencionados en el texto.
-        2. No incluyas topics que no estén relacionados con la CONSULTA_ORIGNAL del usuario. Para ello:
+        2. No incluyas topics que no estén relacionados con la Consulta original del usuario. Para ello:
             * Si el topic no hace referencia a una marca/producto/servicio, descártalo del output.
-            * Si el topic hace referencia a una marca/producto/servicio, pero no está relacionado con la CONSULTA_ORIGINAL, descártalo del output.
+            * Si el topic hace referencia a una marca/producto/servicio, pero no está relacionado con la Consulta original, descártalo del output.
         3. Para cada uno, proporciona analiza el sentimiento del texto respecto a ese topic.
         4. Busca enlaces en el texto que estén asociados al topic.
         5. Si no hay un enlace específico para el topic, usa nulo.
@@ -181,9 +181,9 @@ export class SingleAnswerAnalysis extends OpenAIExtractionStep<
             SingleAnswerAnalysis.SYSTEM_MESSAGE,
             {
                 role: 'user',
-                content: `CONSULTA_ORIGINAL: ${this.context.bag['query']}
-
-                TEXTO: "${input}"`,
+                content: `Consulta original: ${this.context.bag['query']}
+--                
+TEXTO: "${input}"`,
             },
         ]
     }

@@ -1,9 +1,8 @@
 import { z } from 'zod'
 import { Context } from '../context'
-import { Step, StepResult } from 'common/src/pipeline'
-import { Ok } from 'ts-results'
+import { ExtractionStep, Ok, StepResult } from './abstract'
 
-export class QuestionExpansion extends Step<Input, Output, Context> {
+export class QuestionExpansion extends ExtractionStep<Input, Output, Context> {
     static STEP_NAME = 'Question Expansion'
 
     constructor(context: Context) {
