@@ -1,0 +1,38 @@
+<div class="flex flex-col items-center justify-center min-h-screen p-4 lg:p-0">
+  <div class="w-full max-w-md">
+    <h1 class="text-center text-4xl font-bold mb-8">Search</h1>
+    <form action="/search" method="get" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label for="q" class="block text-gray-700 text-sm font-bold mb-2">Query</label>
+        <input type="text" id="q" name="q" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your query">
+      </div>
+      <div id="advanced-options" class="hidden mb-4">
+        <label for="cohort" class="block text-gray-700 text-sm font-bold mb-2">Describe a cohort that matters to you</label>
+        <textarea id="cohort" name="cohort" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter cohort information"></textarea>
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Start</button>
+        <a href="#" id="advanced-link" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">Advanced</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<button data-tooltip-target="tooltip-default" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Default tooltip</button>
+<div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+    Tooltip content
+    <div class="tooltip-arrow" data-popper-arrow></div>
+</div>
+
+
+<script>
+  document.getElementById('advanced-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    var advancedOptions = document.getElementById('advanced-options');
+    if (advancedOptions.classList.contains('hidden')) {
+      advancedOptions.classList.remove('hidden');
+    } else {
+      advancedOptions.classList.add('hidden');
+    }
+  });
+</script>

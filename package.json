@@ -2,5 +2,8 @@
     "scripts": {
         "start": "pnpm run start:llmo",
         "start:llmo": "pnpm run --filter llmo start"
+    },
+    "dependencies": {
+        "flowbite": "^2.5.2"
     }
 }
