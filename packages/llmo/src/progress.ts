@@ -5,7 +5,7 @@ export async function submitProgress(
     message: string | undefined = undefined
 ) {
     const webhook = context.bag['callback']
-    const result = context.bag['result']
+    const result = JSON.stringify(context.bag['result'])
 
     if (webhook) {
         const payload = {

@@ -59,7 +59,7 @@ export async function report(options: {
 
     context.bag['result'] = result
     context.processed_work_units = context.total_work_units
-    submitProgress(context, 'Report completed')
+    await submitProgress(context, 'Report completed')
 
     context.logger.info(result)
 }
