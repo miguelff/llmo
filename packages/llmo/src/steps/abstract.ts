@@ -6,6 +6,7 @@ import { Err, Ok, Result } from 'ts-results-es'
 import { z } from 'zod'
 import { Context } from '../context.js'
 import { OpenAIModel } from '../llm.js'
+import { submitProgress } from '../progress.js'
 
 export type Error = { cause: Error | string; step: string }
 export type StepResult<T> = Result<T, Error>
@@ -26,6 +27,14 @@ export abstract class ExtractionStep<I, O, C extends Context> {
 
     abstract execute(input: I): Promise<StepResult<O>>
 
+    description(): string | undefined {
+        return undefined
+    }
+
+    workUnits(): number {
+        return 0
+    }
+
     then<Next>(next: ExtractionStep<O, Next, C>): ExtractionStep<I, Next, C> {
         return new Sequence(this.context, this, next)
     }
@@ -41,6 +50,21 @@ export abstract class ExtractionStep<I, O, C extends Context> {
             fileGenerator,
             contentGenerator
         )
+    }
+
+    /**
+     * Hooks
+     */
+
+    beforeStart() {
+        submitProgress(this.context, this.description())
+    }
+
+    beforeInvoke(prompt: ChatCompletionMessageParam[]) {}
+
+    afterInvoke(result: Result<O, string>) {
+        this.context.processed_work_units++
+        submitProgress(this.context)
     }
 }
 
@@ -68,6 +92,10 @@ export class Sequence<I, X, O, C extends Context> extends ExtractionStep<
         } else {
             return Err(headResult.error)
         }
+    }
+
+    workUnits(): number {
+        return this.head.workUnits() + this.tail.workUnits()
     }
 }
 
@@ -138,10 +166,12 @@ export abstract class OpenAIExtractionStep<I, O> extends ExtractionStep<
     }
 
     async execute(input: I): Promise<StepResult<O>> {
+        this.beforeStart()
         const logger = this.context.logger
         const prompt = this.createPrompt(input)
+        this.beforeInvoke(prompt)
         const res = await this.model.invoke(prompt, logger)
-        logger.debug(res, 'LLM result')
+        this.afterInvoke(res)
         if (res.isOk()) {
             const parsed = this.outputSchema.safeParse(res.value)
             if (parsed.error) {

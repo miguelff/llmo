@@ -7,6 +7,8 @@ export type DataBag = Record<string, any>
 export type Context = {
     logger: Logger
     env: env
+    total_work_units: number
+    processed_work_units: number
     bag: DataBag
 }
 
@@ -18,5 +20,7 @@ export default function (): Context {
         ),
         env: e,
         bag: {},
+        total_work_units: 0,
+        processed_work_units: 0,
     }
 }

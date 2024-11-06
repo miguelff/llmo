@@ -2,6 +2,7 @@ import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
 import { Context } from '../context.js'
 import { OpenAIExtractionStep } from './abstract.js'
+import { Result } from 'ts-results-es'
 
 export class QuestionSynthesis extends OpenAIExtractionStep<Input, Output> {
     static STEP_NAME = 'Question Synthesis'
@@ -31,6 +32,14 @@ Preguntas: "Qué seguros de salud baratos tienen mejores coberturas?", "Los mejo
                 content: `Consulta: "${input.query}", dame ${input.count} preguntas. \nPreguntas:`,
             },
         ]
+    }
+
+    workUnits(): number {
+        return 1
+    }
+
+    description(): string {
+        return `Sampling queries from cohort`
     }
 }
 

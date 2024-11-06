@@ -92,6 +92,14 @@ Responde SOLO con la lista de temas irrelevantes, sin explicaciones adicionales.
             })
         }
     }
+
+    workUnits(): number {
+        return 2
+    }
+
+    description(): string {
+        return `Performing grounding and filtering outlier information`
+    }
 }
 
 const ConceptAbstractionOutput = z.object({

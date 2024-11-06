@@ -4,13 +4,15 @@ import { Context } from '../context.js'
 import { type Output as Input } from './questionExpansion.js'
 import { ExtractionStep, StepResult, models } from './abstract.js'
 import { Ok } from 'ts-results-es'
+import { OpenAIModel } from '../llm.js'
+import { submitProgress } from '../progress.js'
 export class QuestionFormulation extends ExtractionStep<
     Input,
     Output,
     Context
 > {
     static STEP_NAME = 'Question Formulation'
-    private model
+    private model: OpenAIModel<string>
 
     static SYSTEM_MESSAGE: ChatCompletionMessageParam = {
         role: 'system',
@@ -24,23 +26,25 @@ export class QuestionFormulation extends ExtractionStep<
     }
 
     async execute(input: Input): Promise<StepResult<Output>> {
+        this.beforeStart()
         const output: Record<string, string> = {}
         for (const question of input.questions) {
             const prompt = this.createPrompt(question)
             try {
                 const res = await this.model.invoke(prompt, this.logger)
-                if (res.ok) {
-                    output[question] = res.val
+                if (res.isOk()) {
+                    output[question] = res.value
                     this.logger.info(
-                        { question, answer: res.val },
+                        { question, answer: res.value },
                         'question answered'
                     )
                 } else {
                     this.logger.error(
-                        res.val,
+                        res.error,
                         `error asking model for question ${question}, skipping.`
                     )
                 }
+                this.afterInvoke(res as any)
             } catch (e) {
                 this.logger.error(
                     e,
@@ -59,6 +63,14 @@ export class QuestionFormulation extends ExtractionStep<
                 content,
             },
         ]
+    }
+
+    workUnits(): number {
+        return this.context.bag['count']
+    }
+
+    description(): string {
+        return `Formulating queries against ChatGPT gpt-4o`
     }
 }
 

@@ -4,6 +4,9 @@ class CreateReports < ActiveRecord::Migration[8.0]
       t.string :query, null: false
       t.json :advanced_settings
       t.integer :status, default: 0
+      t.integer :progress_percent, default: 0
+      t.json :progress_details, default: []
+      t.json :result, default: nil
 
       t.timestamps
     end

@@ -89,6 +89,14 @@ export class AnswerAnalysis extends ExtractionStep<
 
         return Ok({ topics: Object.values(topics), urls })
     }
+
+    workUnits(): number {
+        return this.context.bag['count']
+    }
+
+    description(): string {
+        return `Analyzing LLM answers`
+    }
 }
 
 const Url = z.string()

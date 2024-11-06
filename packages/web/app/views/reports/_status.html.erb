@@ -1,14 +1,11 @@
-<% feedback ||= nil %>
-<% progress ||= nil %>
-
 <div id="report-status">
     <% case report.status %>
     <% when "pending" %>
     <%= render "reports/status/pending", report: report %>
     <% when "processing" %>
-    <%= render "reports/status/processing", report: report, feedback: feedback, progress: progress %>
+    <%= render "reports/status/processing", report: report %>
     <% when "completed" %>
-    <%= render "reports/status/completed", report: report, feedback: feedback %>
+    <%= render "reports/status/completed", report: report %>
     <% when "failed" %>
     <%= render "reports/status/failed", report: report %>
     <% end %>
