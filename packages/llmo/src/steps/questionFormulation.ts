@@ -1,9 +1,9 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
-import { Context } from '../context'
-import { type Output as Input } from './questionExpansion'
-import { ExtractionStep, Ok, StepResult, models } from './abstract'
-
+import { Context } from '../context.js'
+import { type Output as Input } from './questionExpansion.js'
+import { ExtractionStep, StepResult, models } from './abstract.js'
+import { Ok } from 'ts-results-es'
 export class QuestionFormulation extends ExtractionStep<
     Input,
     Output,

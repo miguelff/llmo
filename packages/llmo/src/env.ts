@@ -2,7 +2,7 @@
 import { config } from 'dotenv'
 import { expand } from 'dotenv-expand'
 import path from 'node:path'
-import pino from 'pino'
+import { pino } from 'pino'
 import pretty from 'pino-pretty'
 import { z } from 'zod'
 

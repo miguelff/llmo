@@ -1,14 +1,14 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
-import { Context } from '../context'
+import { Context } from '../context.js'
+import { Ok } from 'ts-results-es'
 import {
     MapperStep,
     OpenAIExtractionStep,
-    Ok,
     StepResult,
     ExtractionStep,
-} from './abstract'
-import { type Output as QuestionFormulationOutput } from './questionFormulation'
+} from './abstract.js'
+import { type Output as QuestionFormulationOutput } from './questionFormulation.js'
 
 const Output = z.object({
     topics: z.array(
@@ -39,10 +39,10 @@ export class AnswerAnalysis extends ExtractionStep<
         input: QuestionFormulationOutput
     ): Promise<StepResult<Output>> {
         const result = await this.mapper.execute(input)
-        if (!result.ok) {
+        if (result.isErr()) {
             return result
         }
-        const topics = result.val.reduce((acc, r) => {
+        const topics = result.value.reduce((acc, r) => {
             r.topics.forEach((topic) => {
                 if (!acc[topic.name]) {
                     acc[topic.name] = {
@@ -59,7 +59,7 @@ export class AnswerAnalysis extends ExtractionStep<
             return acc
         }, {} as Record<string, { name: string; urls: string[]; sentiments: number[] }>)
 
-        const urls = result.val.reduce((acc, r) => {
+        const urls = result.value.reduce((acc, r) => {
             // Helper function to add URL to accumulator
             const addUrl = (url: string) => {
                 try {

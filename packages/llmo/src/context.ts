@@ -1,11 +1,11 @@
-import { Context as OriginalContext } from 'common/src/pipeline'
-import pino from 'pino'
+import { Logger, pino } from 'pino'
 import PinoPretty from 'pino-pretty'
-import e, { type env } from './env'
+import e, { type env } from './env.js'
 
 export type DataBag = Record<string, any>
 
-export type Context = OriginalContext & {
+export type Context = {
+    logger: Logger
     env: env
     bag: DataBag
 }
@@ -16,7 +16,6 @@ export default function (): Context {
             { level: e.LOG_LEVEL },
             e.NODE_ENV === 'production' ? undefined : PinoPretty()
         ),
-        mustHalt: () => false,
         env: e,
         bag: {},
     }

@@ -1,12 +1,10 @@
-import { Step, StepResult } from 'common/src/pipeline'
 import { z } from 'zod'
-import { Context } from './context'
 import { OpenAI } from 'openai'
 import { zodResponseFormat } from 'openai/helpers/zod.mjs'
 import { Logger } from 'pino'
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
-import { Result, Ok, Err } from 'ts-results'
-import { env } from './env'
+import { Result, Ok, Err } from 'ts-results-es'
+import { env } from './env.js'
 
 export class OpenAIModel<T> {
     public static fromEnv<T>(

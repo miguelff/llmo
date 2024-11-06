@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { Context } from '../context'
-import { ExtractionStep, Ok, StepResult } from './abstract'
-
+import { Context } from '../context.js'
+import { ExtractionStep, StepResult } from './abstract.js'
+import { Ok } from 'ts-results-es'
 export class QuestionExpansion extends ExtractionStep<Input, Output, Context> {
     static STEP_NAME = 'Question Expansion'
 

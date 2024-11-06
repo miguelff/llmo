@@ -1,9 +1,10 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
-import { Context } from '../context'
-import { type Output as Input } from './answerAnalysis'
-import { Err, ExtractionStep, Ok, StepResult, models } from './abstract'
-import { OpenAIModel } from '../llm'
+import { Context } from '../context.js'
+import { type Output as Input } from './answerAnalysis.js'
+import { ExtractionStep, StepResult, models } from './abstract.js'
+import { Ok, Err } from 'ts-results-es'
+import { OpenAIModel } from '../llm.js'
 
 export type Output = Input & { discards: IrrelevantTopicsOutput }
 
@@ -41,10 +42,10 @@ export class Cleaner extends ExtractionStep<Input, Output, Context> {
             this.context.logger
         )
 
-        if (!concept.ok) {
+        if (concept.isErr()) {
             return Err({
                 step: Cleaner.STEP_NAME,
-                cause: concept.val,
+                cause: concept.error,
             })
         }
 
@@ -57,7 +58,7 @@ Identifica los temas que son "cisnes negros" - es decir, temas que no encajan co
 
 Para ello identifica los temas que no encajan con ese concepto:
 
-Concepto principal: "${concept.val.concept}"
+Concepto principal: "${concept.value.concept}"
 
 Temas:
 ${input.topics.map((t) => `- ${t.name}`).join('\n')}
@@ -76,18 +77,18 @@ Responde SOLO con la lista de temas irrelevantes, sin explicaciones adicionales.
             this.context.logger
         )
 
-        if (res.ok) {
+        if (res.isOk()) {
             const output = input as Output
             output.topics = output.topics.filter(
                 (topic) =>
-                    !res.val.list.some((t) => t.topic.includes(topic.name))
+                    !res.value.list.some((t) => t.topic.includes(topic.name))
             )
-            output.discards = res.val
+            output.discards = res.value
             return Ok(output)
         } else {
             return Err({
                 step: Cleaner.STEP_NAME,
-                cause: res.val,
+                cause: res.error,
             })
         }
     }
