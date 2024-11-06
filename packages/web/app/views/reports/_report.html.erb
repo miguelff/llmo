@@ -1,0 +1,13 @@
+
+<div id="<%= dom_id report %>" class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+<h5 class="status flex flex-row space-x-2 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">    
+    <%= report.query %>    
+</h5>
+
+<p class="font-normal text-gray-700 dark:text-gray-400"><%= report.advanced_settings %></p>
+<!-- <%= render "reports/status", report: report %> -->
+
+<%= turbo_stream_from(["heavy_task_channel"]) %>
+<div id="heavy_task">
+  <%= render "reports/progress", progress: 0 %>
+</div>
