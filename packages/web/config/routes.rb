@@ -1,5 +1,18 @@
+host = ENV["WEB_HOST"] || begin
+  if Rails.env.development?
+    "localhost:3000"
+  else
+    raise("WEB_HOST is not set for environment #{Rails.env}")
+  end
+end
+
 Rails.application.routes.draw do
-  resources :reports, except: [:index, :edit]
+  default_url_options host: host
+
+  resources :reports, except: [ :index, :edit ] do
+    get "result", to: "reports#result", on: :member
+  end
+
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

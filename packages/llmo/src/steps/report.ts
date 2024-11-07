@@ -2,12 +2,8 @@ import { Context } from '../context.js'
 import { ExtractionStep, StepResult } from './abstract.js'
 import { Output as Input } from './cleaner.js'
 import { Ok } from 'ts-results-es'
-import * as fs from 'fs'
-import * as path from 'path'
-import * as os from 'os'
-import open from 'open'
 
-export type Output = void
+export type Output = string
 
 export class Report extends ExtractionStep<Input, Output, Context> {
     static STEP_NAME = 'Report'
@@ -19,24 +15,12 @@ export class Report extends ExtractionStep<Input, Output, Context> {
     async execute(input: Input): Promise<StepResult<Output>> {
         const html = generateReport(input, this.context.bag['query'])
         this.logger.info({ html }, 'Generated report')
-        // Save HTML to temporary file and open in browser
-        const tmpFile = path.join(os.tmpdir(), 'report.html')
-        fs.writeFileSync(tmpFile, html)
-        await open(tmpFile)
-        return Ok(void 0)
+        return Ok(html)
     }
 }
 
 function generateReport(data: Input, query: string) {
     let html = `
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Informe de Rendimiento de Marcas Asociadas a la Consulta: "${query}"</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 p-8">
     <div class="max-w-6xl mx-auto">
         <h1 class="text-3xl font-bold text-gray-900 mb-8">Informe de Rendimiento de Marcas Asociadas a la Consulta: "${query}"</h1>
 
@@ -149,23 +133,7 @@ function generateReport(data: Input, query: string) {
             </div>
         </section>
     </div>
-</body>
-</html>
 `
 
     return html
 }
-
-/*
-// Ejemplo de uso:
-const reportHTML = generateReport(data)
-
-// Si estás ejecutando en Node.js, puedes escribir el HTML en un archivo
-const fs = require('fs')
-fs.writeFileSync('informe.html', reportHTML)
-
-// Si estás ejecutando en un navegador, puedes mostrar el HTML en una nueva ventana
-// Ejemplo:
-// const newWindow = window.open();
-// newWindow.document.write(reportHTML);
-*/

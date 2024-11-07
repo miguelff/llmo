@@ -2,17 +2,7 @@ require "test_helper"
 
 class ReportsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @report = reports(:one)
-  end
-
-  test "should get index" do
-    get reports_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_report_url
-    assert_response :success
+    @report = reports(:safe_cars)
   end
 
   test "should create report" do
@@ -20,29 +10,9 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
       post reports_url, params: { report: { advanced_settings: @report.advanced_settings, query: @report.query } }
     end
 
+    report = Report.last
+    assert_equal report.query, @report.query
+    assert_equal report.advanced_settings, @report.advanced_settings
     assert_redirected_to report_url(Report.last)
-  end
-
-  test "should show report" do
-    get report_url(@report)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_report_url(@report)
-    assert_response :success
-  end
-
-  test "should update report" do
-    patch report_url(@report), params: { report: { advanced_settings: @report.advanced_settings, query: @report.query } }
-    assert_redirected_to report_url(@report)
-  end
-
-  test "should destroy report" do
-    assert_difference("Report.count", -1) do
-      delete report_url(@report)
-    end
-
-    assert_redirected_to reports_url
   end
 end

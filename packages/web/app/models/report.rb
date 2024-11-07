@@ -1,5 +1,6 @@
 class Report < ApplicationRecord
-    VALID_ADVANCED_SETTINGS = %w[cohort advanced]
+    VALID_ADVANCED_SETTINGS = %w[cohort exhaustiveness advanced]
+    EXHAUSTIVENESS_OPTIONS = [ :brief, :standard, :thorough ]
 
     validates :query, presence: true
     validate :validate_advanced_settings_keys
@@ -8,6 +9,7 @@ class Report < ApplicationRecord
     before_create :maybe_assign_id
     after_create_commit :process_report
     after_update_commit :refresh_report_status
+    has_one :result, dependent: :destroy
 
     def update_progress(params)
       attrs = { progress_percent: params[:percentage] }
@@ -19,8 +21,8 @@ class Report < ApplicationRecord
       end
 
       unless params[:result].nil?
-        binding.pry
         attrs[:status] = :completed
+        attrs[:result] = Result.new(json: params[:result])
       end
 
       update(attrs)
@@ -31,8 +33,13 @@ class Report < ApplicationRecord
     def validate_advanced_settings_keys
         return if advanced_settings.blank?
         invalid_keys = advanced_settings.keys - VALID_ADVANCED_SETTINGS
+
         if invalid_keys.any?
             errors.add(:advanced_settings, "can only contain the following keys: #{allowed_keys.join(', ')}")
+        end
+
+        if advanced_settings[:exhaustiveness].present? && !EXHAUSTIVENESS_OPTIONS.include?(advanced_settings[:exhaustiveness])
+            errors.add(:advanced_settings, "exhaustiveness must be one of: #{EXHAUSTIVENESS_OPTIONS.join(', ')}")
         end
     end
 

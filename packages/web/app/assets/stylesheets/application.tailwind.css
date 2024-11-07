@@ -69,6 +69,21 @@
             @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
         }
     }
+    /* 
+    .report {
+        @apply prose w-auto mx-auto pb-4;
+
+        strong {
+            @apply text-gray-900 dark:text-white;
+        }
+
+        .table,
+        tr, 
+        th,
+        td {
+            @apply p-2 w-auto;
+        }
+    } */
 
     .centered-container {
         @apply max-w-xl px-2 mx-auto xl:mx-0 space-y-4;

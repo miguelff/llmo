@@ -1,6 +1,6 @@
 class CreateReports < ActiveRecord::Migration[8.0]
   def change
-    create_table :reports, id: :uuid do |t|
+    create_table :reports, id: "blob(16)" do |t|
       t.string :query, null: false
       t.json :advanced_settings
       t.integer :status, default: 0

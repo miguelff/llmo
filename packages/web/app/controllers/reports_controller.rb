@@ -1,9 +1,19 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[ show update destroy ]
+  before_action :set_report, only: %i[ show result update destroy ]
   skip_before_action :verify_authenticity_token, only: :update
 
   # GET /reports/1 or /reports/1.json
   def show
+    if @report.result.present?
+      redirect_to result_report_path(@report)
+    end
+  end
+
+  # GET /reports/1/result
+  def result
+    if @report.result.nil?
+      redirect_to @report, status: :see_other, notice: "Report result is not ready yet"
+    end
   end
 
   # GET /reports/new
@@ -28,14 +38,10 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    respond_to do |format|
-      if @report.update_progress(progress_params)
-        format.html { redirect_to @report, notice: "Report was successfully updated." }
-        format.json { render :show, status: :ok, location: @report }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
-      end
+    if @report.update_progress(progress_params)
+      render :show, status: :ok, location: @report
+    else
+      render json: @report.errors, status: :unprocessable_entity
     end
   end
 
@@ -52,12 +58,12 @@ class ReportsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_report
-      @report = Report.find(params.expect(:id))
+      @report = Report.includes(:result).find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.expect(report: [ :query, :advanced_settings ])
+      params.expect(report: [ :query, advanced_settings: Report::VALID_ADVANCED_SETTINGS ])
     end
 
     def progress_params

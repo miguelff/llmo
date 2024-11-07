@@ -22,8 +22,8 @@
     </div>
 
     <div>
-      <%= label_tag "advanced_settings[query_count]", "Choose the exhaustiveness of the report. The more exhaustive, the more user queries will be sampled during the analysis." %>
-      <%= form.select "advanced_settings[query_count]", options_for_select([:brief, :standard, :thorough]), {} %>    
+      <%= label_tag "advanced_settings[exhaustiveness]", "Choose the exhaustiveness of the report. The more exhaustive, the more user queries will be sampled during the analysis." %>
+      <%= form.select "advanced_settings[exhaustiveness]", options_for_select(Report::EXHAUSTIVENESS_OPTIONS), {} %>    
     </div>
   </div>
 
