@@ -5,7 +5,7 @@ class ProcessReportJob < ApplicationJob
     report.processing!
     report_url = Rails.application.routes.url_helpers.report_url(report, format: :json)
 
-    node_script = Rails.root.join("../llmo/dist/index.js").to_s
+    node_script = Rails.root.join("vendor/llmo/dist/index.js").to_s
     query = report.query
     count = case report.advanced_settings&.dig("exhaustiveness")&.to_sym || :brief
     when :brief then 5
