@@ -1,5 +1,4 @@
-<div class="p-4 text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-300">      
-    <p class="mb-2">Report is being generated</p>    
+<div class="py-4 text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-300">
     <div class="flex justify-between mb-1">
         <span class="text-base font-medium text-blue-700 dark:text-white"><%= report.progress_details.respond_to?(:last) ? report.progress_details.last : "Started" %></span>
         <span class="text-sm font-medium text-blue-700 dark:text-white"><%= report.progress_percent %>%</span>

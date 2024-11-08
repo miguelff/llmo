@@ -25,7 +25,7 @@
     }
 
     select {
-        @apply w-auto bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+        @apply w-auto bg-gray-50 border-x-0 border-gray-300 rounded-lg text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
     }
 
     p {
@@ -69,7 +69,7 @@
             @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
         }
     }
-    /* 
+
     .report {
         @apply prose w-auto mx-auto pb-4;
 
@@ -78,15 +78,15 @@
         }
 
         .table,
-        tr, 
+        tr,
         th,
         td {
             @apply p-2 w-auto;
         }
-    } */
+    }
 
     .centered-container {
-        @apply max-w-xl px-2 mx-auto xl:mx-0 space-y-4;
+        @apply max-w-xl px-2 mx-auto space-y-4;
     }
 
     #error_explanation {
