@@ -30,6 +30,7 @@
     },
     "scripts": {
         "dev": "tsx watch src/index.ts",
+        "build:watch": "tsc -p tsconfig.json --watch",
         "build": "tsc -p tsconfig.json",
         "start": "node dist/index.js",
         "generate-token": "tsx script/generate-token.ts",

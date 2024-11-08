@@ -1,14 +1,4 @@
-host = ENV["WEB_HOST"] || begin
-  if Rails.env.development?
-    "localhost:3000"
-  else
-    raise("WEB_HOST is not set for environment #{Rails.env}")
-  end
-end
-
 Rails.application.routes.draw do
-  default_url_options host: host
-
   resources :reports, except: [ :index, :edit ] do
     get "result", to: "reports#result", on: :member
   end
