@@ -1,3 +1,5 @@
+require "open3"
+
 class ProcessReportJob < ApplicationJob
   queue_as :default
 
@@ -14,15 +16,23 @@ class ProcessReportJob < ApplicationJob
     end
 
     command = [ "node", node_script, "report", "--query", query, "--callback", report_url, "--count", count.to_s ]
-    Rails.logger.info "Running command: #{command.join(' ')}"
+    Rails.logger.info "[Report #{report.id}] Running command: #{command.join(' ')}"
 
-    if system(Rails.application.credentials.processor.stringify_keys, *command)
+    stdout, stderr, status = Open3.capture3(Rails.application.credentials.processor.stringify_keys, *command)
+
+    Rails.logger.info "[Report #{report.id}] Standard Output:\n#{stdout}" unless stdout.empty?
+    Rails.logger.info "[Report #{report.id}] Standard Error:\n#{stderr}" unless stderr.empty?
+    Rails.logger.info "[Report #{report.id}] Exit Status: #{status.exitstatus}"
+
+    if status.success?
+      Rails.logger.info "[Report #{report.id}] Command executed successfully!"
       report.completed!
     else
+      Rails.logger.error "[Report #{report.id}] Command failed with status: #{status.exitstatus}"
       report.failed!
     end
   rescue => e
-    Rails.logger.error "Error processing report: #{e.message}"
+    Rails.logger.error "[Report #{report.id}] Error processing report: #{e.message}"
     report.failed!
   end
 end
