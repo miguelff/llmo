@@ -5,7 +5,7 @@ class ProcessReportJob < ApplicationJob
 
   def perform(report)
     report.processing!
-    report_url = Rails.application.routes.url_helpers.report_url(report, host: "127.0.0.1:3000", format: :json)
+    report_url = Rails.application.routes.url_helpers.report_url(report, protocol: "http", host: "127.0.0.1:3000", format: :json)
 
     node_script = Rails.root.join("vendor/llmo/dist/index.js").to_s
     query = report.query

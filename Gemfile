@@ -68,3 +68,7 @@ group :test do
   gem "selenium-webdriver"
   gem "rspec-rails", "~> 7.0.0"
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "redis", "~> 5.3"
