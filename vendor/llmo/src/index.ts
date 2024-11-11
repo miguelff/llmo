@@ -1,12 +1,13 @@
 import { Input, QuestionSynthesis } from './steps/questionSynthesis.js'
 import { QuestionExpansion } from './steps/questionExpansion.js'
-import { QuestionFormulation } from './steps/questionFormulation.js'
 import { AnswerAnalysis } from './steps/answerAnalysis.js'
 import createContext from './context.js'
 import { Command } from 'commander'
 import { Cleaner } from './steps/cleaner.js'
 import { Report } from './steps/report.js'
 import { submitProgress } from './progress.js'
+import { QuestionFormulation } from './steps/questionFormulation.js'
+
 async function main() {
     const program = new Command()
 
