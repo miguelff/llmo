@@ -18,6 +18,7 @@ expand(
 const EnvSchema = z
     .object({
         OPENAI_API_KEY: z.string(),
+        BingApiKey: z.string(),
         NODE_ENV: z.string().default('development'),
         LOG_LEVEL: z
             .enum([

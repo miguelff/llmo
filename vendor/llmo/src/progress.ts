@@ -18,12 +18,16 @@ export async function submitProgress(
                 result,
             },
         }
-        await fetch(webhook, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
-        })
+        try {
+            await fetch(webhook, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+        } catch (error) {
+            context.logger.error('Failed to submit progress:', error)
+        }
     }
 }

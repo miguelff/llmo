@@ -5,7 +5,53 @@ import { type Output as Input } from './questionExpansion.js'
 import { ExtractionStep, StepResult, models } from './abstract.js'
 import { Ok } from 'ts-results-es'
 import { OpenAIModel } from '../llm.js'
-export class QuestionFormulation extends ExtractionStep<
+
+import { ChatPromptTemplate } from '@langchain/core/prompts'
+import { createToolCallingAgent } from 'langchain/agents'
+import { AgentExecutor } from 'langchain/agents'
+import { tool } from '@langchain/core/tools'
+import { ChatOpenAI } from '@langchain/openai'
+
+const llm = new ChatOpenAI({
+    model: 'gpt-4o-mini',
+})
+
+const magicTool = tool(
+    async ({ input }: { input: number }) => {
+        return `${input + 2}`
+    },
+    {
+        name: 'magic_function',
+        description: 'Applies a magic function to an input.',
+        schema: z.object({
+            input: z.number(),
+        }),
+    }
+)
+
+const tools = [magicTool]
+
+const prompt = ChatPromptTemplate.fromMessages([
+    [
+        'system',
+        'Eres un agente especializado en comparación de empresas/marcas y productos/servicios y en ayudar a los usuarios a tomar decisiones',
+    ],
+    ['placeholder', '{chat_history}'],
+    ['human', '{input}'],
+    ['placeholder', '{agent_scratchpad}'],
+])
+
+const agent = createToolCallingAgent({
+    llm,
+    tools,
+    prompt,
+})
+const agentExecutor = new AgentExecutor({
+    agent,
+    tools,
+})
+
+export class QuestionFormulationWithSearch extends ExtractionStep<
     Input,
     Output,
     Context
@@ -20,7 +66,7 @@ export class QuestionFormulation extends ExtractionStep<
     }
 
     public constructor(context: Context) {
-        super(context, QuestionFormulation.STEP_NAME)
+        super(context, QuestionFormulationWithSearch.STEP_NAME)
         this.model = models.openai.fromEnv(context.env, undefined, 'gpt-4o', 0)
     }
 

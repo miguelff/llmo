@@ -162,10 +162,10 @@ async function main() {
     const cleaner = new Cleaner(context)
     const result = await cleaner.execute(input)
 
-    if (result.ok) {
-        console.log('Cleaned results:', JSON.stringify(result.val, null, 2))
+    if (result.isOk()) {
+        console.log('Cleaned results:', JSON.stringify(result.value, null, 2))
     } else {
-        console.error('Error:', result.val)
+        console.error('Error:', result.error)
     }
 }
 
