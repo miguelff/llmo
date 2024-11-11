@@ -52,6 +52,14 @@ class Report < ApplicationRecord
     end
 
     def refresh_report_status
+        if self.completed?
+            Turbo::StreamsChannel.broadcast_replace_to(
+                self,
+                target: "report-status",
+                partial: "turbo/refresh",
+                locals: { report: self }
+            )
+        else
         Turbo::StreamsChannel.broadcast_replace_to(
             self,
             target: "report-status",
@@ -59,5 +67,6 @@ class Report < ApplicationRecord
             locals: {
             report: self
             })
+        end
     end
 end
