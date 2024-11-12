@@ -94,7 +94,7 @@ export class BrandsAndLinks extends ExtractionStep<
     }
 
     workUnits(): number {
-        return this.context.input_arguments.count
+        return this.context.inputArguments.count
     }
 
     description(): string {
@@ -194,7 +194,7 @@ export class SingleAnswerBrandsAndLinks extends OpenAIExtractionStep<
             SingleAnswerBrandsAndLinks.SYSTEM_MESSAGE,
             {
                 role: 'user',
-                content: `Original Query: ${this.context.input_arguments.query}
+                content: `Original Query: ${this.context.inputArguments.query}
 ---                
 TEXT: "${input}"`,
             },

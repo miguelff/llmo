@@ -4,15 +4,14 @@ export async function submitProgress(
     context: Context,
     message: string | undefined = undefined
 ) {
-    const webhook = context.input_arguments.callback
+    const webhook = context.inputArguments.callback
     const result = JSON.stringify(context.bag['result'])
 
     if (webhook) {
         const payload = {
             report: {
                 percentage: Math.round(
-                    (context.processed_work_units / context.total_work_units) *
-                        100
+                    (context.processedWorkUnits / context.totalWorkUnits) * 100
                 ),
                 message,
                 result,

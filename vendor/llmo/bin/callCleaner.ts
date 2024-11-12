@@ -158,7 +158,7 @@ const input = {
 
 async function main() {
     const context = create()
-    context.input_arguments.query = 'coches baratos'
+    context.inputArguments.query = 'coches baratos'
     const cleaner = new Cleaner(context)
     const result = await cleaner.execute(input)
 

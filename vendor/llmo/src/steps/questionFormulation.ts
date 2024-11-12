@@ -60,7 +60,7 @@ export class QuestionFormulation extends ExtractionStep<
     }
 
     workUnits(): number {
-        return this.context.input_arguments.count
+        return this.context.inputArguments.count
     }
 
     description(): string {

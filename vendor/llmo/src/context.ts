@@ -15,11 +15,11 @@ export const InputArguments = z.object({
 export type Context = {
     logger: Logger
     env: env
-    total_work_units: number
-    processed_work_units: number
+    totalWorkUnits: number
+    processedWorkUnits: number
     bag: DataBag
-    previous_answers: DataBag
-    input_arguments: z.infer<typeof InputArguments>
+    previousAnswers: DataBag
+    inputArguments: z.infer<typeof InputArguments>
 }
 
 export default function (): Context {
@@ -30,13 +30,13 @@ export default function (): Context {
         ),
         env: e,
         bag: {},
-        input_arguments: {
+        inputArguments: {
             query: '',
             count: 10,
             callback: undefined,
         },
-        previous_answers: {},
-        total_work_units: 0,
-        processed_work_units: 0,
+        previousAnswers: {},
+        totalWorkUnits: 0,
+        processedWorkUnits: 0,
     }
 }

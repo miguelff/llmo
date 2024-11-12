@@ -13,7 +13,7 @@ export class Report extends ExtractionStep<Input, Output, Context> {
     }
 
     async execute(input: Input): Promise<StepResult<Output>> {
-        const html = generateReport(input, this.context.input_arguments.query)
+        const html = generateReport(input, this.context.inputArguments.query)
         this.logger.info({ html }, 'Generated report')
         return Ok(html)
     }

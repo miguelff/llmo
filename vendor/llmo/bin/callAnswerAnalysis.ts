@@ -19,7 +19,7 @@ const answers: Output = {
 
 async function main() {
     const context = create()
-    context.input_arguments.query = 'coches baratos'
+    context.inputArguments.query = 'coches baratos'
     const answerAnalysis = new AnswerAnalysis(context)
 
     const result = await answerAnalysis.execute(answers)

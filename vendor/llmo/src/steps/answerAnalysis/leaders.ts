@@ -1,7 +1,6 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
 import { Context } from '../../context.js'
-import { Ok } from 'ts-results-es'
 import { OpenAIExtractionStep } from '../abstract.js'
 import { type Output as BrandsAndLinksOutput } from './brandsAndLinks.js'
 import {
@@ -36,7 +35,7 @@ export class Leaders extends OpenAIExtractionStep<
     }
 
     createPrompt(input: BrandsAndLinksOutput): ChatCompletionMessageParam[] {
-        const previousAnswers = this.context.previous_answers[
+        const previousAnswers = this.context.previousAnswers[
             QuestionFormulation.STEP_NAME
         ] as QuestionFormulationOutput
 
@@ -52,7 +51,7 @@ export class Leaders extends OpenAIExtractionStep<
                 role: 'user',
                 content: `
 If I asked you about ${
-                    this.context.input_arguments.query
+                    this.context.inputArguments.query
                 }, which brands/products/services would you say are the best from the following list?
 
 ${input.topics.map((topic) => `- ${topic.name}`).join('\n')}

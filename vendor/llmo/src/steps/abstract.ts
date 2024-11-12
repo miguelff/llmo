@@ -63,12 +63,12 @@ export abstract class ExtractionStep<I, O, C extends Context> {
     beforeInvoke(prompt: ChatCompletionMessageParam[]) {}
 
     afterInvoke(result: Result<O, string>) {
-        this.context.processed_work_units++
+        this.context.processedWorkUnits++
         submitProgress(this.context)
     }
 
     afterEnd(result: StepResult<O>) {
-        this.context.previous_answers[this.descriptor] = result
+        this.context.previousAnswers[this.descriptor] = result
     }
 }
 

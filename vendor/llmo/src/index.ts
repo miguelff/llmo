@@ -39,7 +39,7 @@ export async function report(options: {
     const count = 1 // parseInt(options.count)
 
     const context = createContext()
-    context.input_arguments = {
+    context.inputArguments = {
         query,
         count,
         callback,
@@ -50,14 +50,14 @@ export async function report(options: {
         .then(new QuestionFormulation(context))
         .then(new AnswerAnalysis(context))
 
-    context.total_work_units = pipeline.workUnits()
-    context.logger.info(`Total work units: ${context.total_work_units}`)
+    context.totalWorkUnits = pipeline.workUnits()
+    context.logger.info(`Total work units: ${context.totalWorkUnits}`)
 
     const input: Input = { query, count }
     const result = await pipeline.execute(input)
 
     context.bag['result'] = result
-    context.processed_work_units = context.total_work_units
+    context.processedWorkUnits = context.totalWorkUnits
     await submitProgress(context, 'Report completed')
 
     context.logger.info(result)
