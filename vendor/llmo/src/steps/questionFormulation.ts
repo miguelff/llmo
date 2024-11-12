@@ -54,11 +54,13 @@ export class QuestionFormulation extends ExtractionStep<
                 })()
             )
         )
-        return Ok(output)
+        const result = Ok(output)
+        this.afterEnd(result)
+        return result
     }
 
     workUnits(): number {
-        return this.context.bag['count']
+        return this.context.input_arguments.count
     }
 
     description(): string {
@@ -70,13 +72,13 @@ export class QuestionFormulation extends ExtractionStep<
     }
 }
 
-const Output = z.record(z.string()).describe('Preguntas y Respuestas')
+export const Output = z.record(z.string()).describe('Preguntas y Respuestas')
 export type Output = z.infer<typeof Output>
 
 class QuestionAnswerer {
     private client: OpenAI
 
-    constructor(private context: Context, private temperature: number = 1) {
+    constructor(private context: Context, private temperature: number = 0) {
         this.context = context
         this.temperature = temperature
         this.client = new OpenAI()

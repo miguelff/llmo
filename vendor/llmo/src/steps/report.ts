@@ -13,7 +13,7 @@ export class Report extends ExtractionStep<Input, Output, Context> {
     }
 
     async execute(input: Input): Promise<StepResult<Output>> {
-        const html = generateReport(input, this.context.bag['query'])
+        const html = generateReport(input, this.context.input_arguments.query)
         this.logger.info({ html }, 'Generated report')
         return Ok(html)
     }
@@ -44,7 +44,7 @@ function generateReport(data: Input, query: string) {
 `
 
     // Sort topics by sentiment average (descending)
-    const sortedTopics = [...data.topics].sort((a, b) => {
+    const sortedTopics = [...data.brandsAndLinks.topics].sort((a, b) => {
         const avgA =
             a.sentiments.reduce((sum, val) => sum + val, 0) /
             a.sentiments.length
@@ -96,7 +96,7 @@ function generateReport(data: Input, query: string) {
 `
 
     // Procesar los dominios de URLs
-    for (let domain in data.urls) {
+    for (let domain in data.brandsAndLinks.urls) {
         html += `<li><a href="https://${domain}" class="text-blue-600 hover:text-blue-800 hover:underline">${domain}</a></li>`
     }
 

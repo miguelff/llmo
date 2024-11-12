@@ -66,6 +66,10 @@ export abstract class ExtractionStep<I, O, C extends Context> {
         this.context.processed_work_units++
         submitProgress(this.context)
     }
+
+    afterEnd(result: StepResult<O>) {
+        this.context.previous_answers[this.descriptor] = result
+    }
 }
 
 /**
@@ -81,7 +85,7 @@ export class Sequence<I, X, O, C extends Context> extends ExtractionStep<
         private head: ExtractionStep<I, X, C>,
         private tail: ExtractionStep<X, O, C>
     ) {
-        super(context, `${head.descriptor}/${tail.descriptor}`)
+        super(context, head.descriptor)
     }
 
     async execute(input: I): Promise<StepResult<O>> {
@@ -172,22 +176,33 @@ export abstract class OpenAIExtractionStep<I, O> extends ExtractionStep<
         this.beforeInvoke(prompt)
         const res = await this.model.invoke(prompt, logger)
         this.afterInvoke(res)
+
+        var result: StepResult<O>
+
         if (res.isOk()) {
             const parsed = this.outputSchema.safeParse(res.value)
             if (parsed.error) {
-                return Err({
+                result = Err({
                     cause: parsed.error.message,
                     step: this.descriptor,
                 })
             } else {
-                return Ok(parsed.data as O)
+                result = Ok(parsed.data as O)
             }
         } else {
-            return Err({
+            result = Err({
                 cause: 'There was an error invoking the model',
                 step: this.descriptor,
             })
         }
+
+        try {
+            this.afterEnd(result)
+        } catch (err) {
+            this.logger.error(err, 'Error after end')
+        }
+
+        return result
     }
 
     abstract createPrompt(input: I): ChatCompletionMessageParam[]

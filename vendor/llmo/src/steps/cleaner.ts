@@ -31,7 +31,7 @@ export class Cleaner extends ExtractionStep<Input, Output, Context> {
         const conceptPrompt = [
             {
                 role: 'user',
-                content: `Extrae el concepto principal de la consulta del usuario. Una sola palabra. Consulta original: ${this.context.bag['query']}`,
+                content: `Extrae el concepto principal de la consulta del usuario. Una sola palabra. Consulta original: ${this.context.input_arguments.query}`,
             },
         ]
 
@@ -61,7 +61,7 @@ Para ello identifica los temas que no encajan con ese concepto:
 Concepto principal: "${concept.value.concept}"
 
 Temas:
-${input.topics.map((t) => `- ${t.name}`).join('\n')}
+${input.brandsAndLinks.topics.map((t) => `- ${t.name}`).join('\n')}
 
 Devuelve solo los temas que NO son relevantes para la consulta. Por ejemplo, si la consulta es sobre ropa y hay un tema "Good on you", ese tema debería incluirse en la lista de irrelevantes ya que a diferencia del resto, no es una marca o modelo de ropa, si no una organización que evalúa la sostenibilidad de las marcas.
 
@@ -79,7 +79,7 @@ Responde SOLO con la lista de temas irrelevantes, sin explicaciones adicionales.
 
         if (res.isOk()) {
             const output = input as Output
-            output.topics = output.topics.filter(
+            output.brandsAndLinks.topics = output.brandsAndLinks.topics.filter(
                 (topic) =>
                     !res.value.list.some((t) => t.topic.includes(topic.name))
             )

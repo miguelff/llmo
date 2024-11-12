@@ -3,8 +3,6 @@ import { QuestionExpansion } from './steps/questionExpansion.js'
 import { AnswerAnalysis } from './steps/answerAnalysis.js'
 import createContext from './context.js'
 import { Command } from 'commander'
-import { Cleaner } from './steps/cleaner.js'
-import { Report } from './steps/report.js'
 import { submitProgress } from './progress.js'
 import { QuestionFormulation } from './steps/questionFormulation.js'
 
@@ -14,8 +12,8 @@ async function main() {
     program
         .command('report')
         .description('Generate and analyze questions')
-        .requiredOption('-q, --query <query>', 'Search query to analyze')
-        .requiredOption(
+        .option('-q, --query <query>', 'Search query to analyze')
+        .option(
             '-c, --callback <url>',
             'Callback URL to send progress updates to'
         )
@@ -38,19 +36,19 @@ export async function report(options: {
 }) {
     const callback = options.callback
     const query = options.query
-    const count = parseInt(options.count)
+    const count = 1 // parseInt(options.count)
 
     const context = createContext()
-    context.bag['count'] = count
-    context.bag['query'] = query
-    context.bag['callback'] = callback
+    context.input_arguments = {
+        query,
+        count,
+        callback,
+    }
 
     const pipeline = new QuestionSynthesis(context)
         .then(new QuestionExpansion(context))
         .then(new QuestionFormulation(context))
         .then(new AnswerAnalysis(context))
-        .then(new Cleaner(context))
-        .then(new Report(context))
 
     context.total_work_units = pipeline.workUnits()
     context.logger.info(`Total work units: ${context.total_work_units}`)
