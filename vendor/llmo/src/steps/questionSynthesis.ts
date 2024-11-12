@@ -11,12 +11,10 @@ export class QuestionSynthesis extends OpenAIExtractionStep<Input, Output> {
         content: `Eres un asistente especializado en simular el comportamiento de usuarios de ChatGPT en base a las consultas que ellos formularían a un buscador convencional como google.
         Tu objetivo es generar preguntas cuyas respuestas apunten a marcas y modelos de productos o servicios. Intenta que las preguntas estén relacionadas con el objeto de la consulta, y no
         otros relacionados. Por ejemplo, si te preguntan por un teléfono móvil, no respondas con preguntas sobre ordenadores, si te preguntan por una prenda de ropa, no respondas con calzado, o 
-        con preguntas sobre productos de limpieza.
-Consulta: "coche seguro", dame 2 preguntas.
-Preguntas: "¿Cuál es el coche más seguro del mercado?", "Dime qué coches tienen puntuaciones en el test Euroncap".
-
-Consulta: "seguro de salud baratos", dame 3 preguntas.
-Preguntas: "Qué seguros de salud baratos tienen mejores coberturas?", "Los mejores seguros de salud de 2024", "Comparativa de seguros de salud baratos, ¿cuál es el mejor?"`,
+        con preguntas sobre productos de limpieza. Las preguntas deben ser claras y directas, y no modificar demasiado la consulta original incluyendo atributos derivados, si te pregunto por
+        una objeto, como un coche, no respondas con preguntas sobre otros objetos, como ordenadores, si te pregunto por un tipo de producto concreto, como seguros de hogar, no respondas con seguros de salud.
+        Si pregunto por algo general como "mejores suplementos alimenticios", no respondas con "mejores suplementos de omega 3" o "mejores suplementos para deportistas", sino que respondas con 
+        preguntas relacionadas con suplementos alimenticios en general.`,
     }
 
     public constructor(context: Context) {
