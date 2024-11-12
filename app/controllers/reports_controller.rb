@@ -50,7 +50,7 @@ class ReportsController < ApplicationController
     @report.destroy!
 
     respond_to do |format|
-      format.html { redirect_to reports_path, status: :see_other, notice: "Report was successfully destroyed." }
+      format.html { render partial: "reports/recent", status: :ok }
       format.json { head :no_content }
     end
   end
@@ -58,7 +58,11 @@ class ReportsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_report
-      @report = Report.includes(:result).find(params.expect(:id))
+      begin
+        @report = Report.includes(:result).find(params.expect(:id))
+      rescue ActiveRecord::RecordNotFound
+        redirect_to root_path, status: :see_other, notice: "Report not found"
+      end
     end
 
     # Only allow a list of trusted parameters through.

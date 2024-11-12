@@ -36,7 +36,7 @@ export async function report(options: {
 }) {
     const callback = options.callback
     const query = options.query
-    const count = 1 // parseInt(options.count)
+    const count = parseInt(options.count)
 
     const context = createContext()
     context.inputArguments = {

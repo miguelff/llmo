@@ -1,3 +1,11 @@
-<article class="report">
-    <%= @report.result.html_safe %>
+<% presenter = @report.result.presenter %>
+<article class="grid grid-cols-1 md:grid-cols-1 gap-4">
+  <div class="flex flex-col gap-4">
+    <h3 class="text-lg font-bold text-center">Leaders</h3>
+    <%= presenter.leaders %>
+  </div>
+  <div class="flex flex-col gap-4">
+    <%# <h3>Areas for Growth</h3>
+    <%= presenter.followers %> %>
+  </div>
 </article>

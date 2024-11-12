@@ -1,9 +1,9 @@
-import { Application } from "@hotwired/stimulus"
-
+import { Application } from '@hotwired/stimulus'
+// Attach ApexCharts to the window object
 const application = Application.start()
 
 // Configure Stimulus development experience
-application.debug = false
-window.Stimulus   = application
+application.debug = true
+window.Stimulus = application
 
 export { application }
