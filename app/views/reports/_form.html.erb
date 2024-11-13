@@ -11,43 +11,28 @@
   <% end %>
 
   <div>
-    <%= form.label :query, "Type a sample user query you want to benchmark" %>
-    <%= form.text_area :query, rows: 4, placeholder: "Safest cars to carry kids" %>
+    <%= form.label :query, "What topic or search query do you want to analyze? *" %>
+    <%= form.text_area :query, rows: 4, placeholder: "Example: 'safest cars for families'", required: true %>
   </div>
 
-  <div class="flex flex-col space-y-4 transition-all duration-300 ease-in-out max-h-0 overflow-hidden opacity-0" id="advanced-options">
-    <div>
-      <%= form.label "advanced_settings[cohort]", "Enter a cohort description" %>
-      <%= form.text_area "advanced_settings[cohort]", rows: 4, placeholder: "Single mom, 30-40, lives in SF, makes $80K+" %>
-    </div>
-
-    <div>
-      <%= label_tag "advanced_settings[exhaustiveness]", "Choose the exhaustiveness of the report. The more exhaustive, the more user queries will be sampled during the analysis." %>
-      <%= form.select "advanced_settings[exhaustiveness]", options_for_select(Report::EXHAUSTIVENESS_OPTIONS), {} %>    
-    </div>
+  <div>
+    <%= form.label "advanced_settings[brand_info]", "What's your brand or product? *" %>
+    <%= form.text_field "advanced_settings[brand_info]", placeholder: "Volvo XC40", required: true %>
   </div>
 
+  <div>
+    <%= form.label "advanced_settings[cohort]", "Describe your buyer persona" %>
+    <%= form.text_area "advanced_settings[cohort]", rows: 4, placeholder: "Age range, location, income level, job title, interests, pain points, goals", required: false %>
+  </div>
 
-  <div class="flex flex-row justify-between">
-    <label class="flex justify-end cursor-pointer">
-      <%= check_box_tag "advanced_settings[advanced]", "", false, class: "sr-only peer" %>
-      <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-      <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Advanced</span>
-    </label>
+  <div>
+    <%= form.label "advanced_settings[region]", "Choose a region to narrow the analysis" %>
+      <%= form.select "advanced_settings[region]", 
+                  grouped_options_for_select(region_options),
+                  { class: "form-select", required: false } %>
+  </div>
 
+  <div class="flex flex-row justify-end lg:pt-10">
     <%= form.submit "Generate report", class: "btn primary" %>
   </div>
 <% end %>
-
-<script>
-document.getElementById('advanced_settings_advanced').addEventListener('change', function() {
-  const advancedOptions = document.getElementById('advanced-options');
-  if (this.checked) {
-    advancedOptions.classList.remove('max-h-0', 'opacity-0');
-    advancedOptions.classList.add('max-h-96', 'opacity-100');
-  } else {
-    advancedOptions.classList.remove('max-h-96', 'opacity-100');
-    advancedOptions.classList.add('max-h-0', 'opacity-0');
-  }
-});
-</script>
