@@ -10,6 +10,7 @@ class Report < ApplicationRecord
     after_create_commit :process_report
     after_update_commit :refresh_report_status
     has_one :result, dependent: :destroy
+    scope :recent, -> { order(created_at: :desc).limit(10) }
 
     def update_progress(params)
       attrs = { progress_percent: params[:percentage] }
