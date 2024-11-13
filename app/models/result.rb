@@ -45,6 +45,15 @@ class Result < ApplicationRecord
       chart(options)
     end
 
+    def key_phrases
+      series = data["keyPhrases"]
+      options = {
+        chart: {
+          type: "table"
+        }...
+      }
+    end
+
     private
 
     def data

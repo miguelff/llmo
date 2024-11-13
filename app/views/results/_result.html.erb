@@ -1,7 +1,7 @@
 <% presenter = @report.result.presenter %>
 <article class="grid grid-cols-1 md:grid-cols-1 gap-4">
     <header class="flex flex-col lg:flex-row justify-between px-8 border-b border-gray-600 pb-4">
-        <h1 class="text-3xl font-bold"><%= @report.query %></h1>
+        <h1 class="text-3xl font-bold" title="<%= @report.query %>"><%= @report.query.truncate_words(6) %></h1>
         <div class="text-sm flex flex-col text-gray-500 dark:text-gray-400">
         <% if @report.region.present? %>
             <div>Region: <strong><%= @report.region.titleize %></strong></div>

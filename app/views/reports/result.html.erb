@@ -1,3 +1,5 @@
+<% content_for :title, "#{@report.query.titleize.truncate_words(4)}" %>
+
 <div class="flex-1 min-h-screen">    
     <%= render @report.result %>   
 </div>

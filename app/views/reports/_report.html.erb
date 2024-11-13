@@ -4,12 +4,13 @@
       <%= report.query %>    
   </h5>
 
-
-  <ul class="font-normal text-gray-700 dark:text-gray-400">
-    <li><%= report.cohort %></li>
-    <li><%= report.brand_info %></li>
-    <li><%= report.region %></li>
-  </ul>
+  <% if report.cohort.present? || report.brand_info.present? || report.region.present? %>
+    <ul class="font-normal text-gray-700 dark:text-gray-400 mb-4">
+      <li><%= report.cohort %></li>
+      <li><%= report.brand_info %></li>
+      <li><%= report.region %></li>
+    </ul>
+  <% end %>
 
   <%= turbo_stream_from(report) %>
   <%= render "reports/status", report: report %>

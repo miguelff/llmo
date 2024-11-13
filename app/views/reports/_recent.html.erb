@@ -4,28 +4,37 @@
     <% recent_reports.each do |report| %>
       <li class="flex items-start justify-between">
         <%= link_to report_path(report), class: "flex-1 block p-2 text-base font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700", data: { turbo_frame: "_top" } do %>
-          <div class="flex items-center">
+          <div class="flex items-stretch">
             <% case report.status %>
             <% when 'failed' %>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <div class="w-4 pt-1 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
             <% when 'completed' %>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <div class="w-4 pt-1 flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
             <% when 'processing' %>
-              <svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
+              <div class="w-4 pt-1 flex-shrink-0">
+                <svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
             <% end %>
-            <div class="text-ellipsis ml-3">
-              <%= report.query %>
-            </div>
-          </div>
-          <div class="text-xs text-gray-500">
+            
+            <div class="text-ellipsis ml-3 flex flex-col" title="<%= report.query %>">
+              <div>
+                <%= report.query.truncate_words(4) %>
+              </div>
+              <div class="text-xs text-gray-500">
             <%= time_ago_in_words(report.created_at) %> ago
           </div>
+            </div>
+          </div>          
         <% end %>
         
         <%= button_to report_path(report), 
