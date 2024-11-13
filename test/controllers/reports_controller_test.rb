@@ -7,7 +7,7 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create report" do
     assert_difference("Report.count") do
-      post reports_url, params: { report: { advanced_settings: @report.advanced_settings, query: @report.query } }
+      post reports_url, params: { report: { query: @report.query, cohort: @report.cohort, brand_info: @report.brand_info, region: @report.region } }
     end
 
     report = Report.last

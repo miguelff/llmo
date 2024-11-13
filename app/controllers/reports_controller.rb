@@ -72,7 +72,7 @@ class ReportsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def report_params
-      params.expect(report: [ :query, advanced_settings: Report::VALID_ADVANCED_SETTINGS ])
+      params.expect(report: [ :query, :brand_info, :cohort, :region ])
     end
 
     def progress_params

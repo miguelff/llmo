@@ -1,12 +1,26 @@
 class Report < ApplicationRecord
     VALID_ADVANCED_SETTINGS = %w[cohort brand_info region]
+
+    VALID_ADVANCED_SETTINGS.each do |key|
+        attribute key.to_sym
+
+        define_method(key) do
+            advanced_settings&.dig(key)
+        end
+
+        define_method("#{key}=") do |value|
+            self.advanced_settings ||= {}
+            self.advanced_settings[key] = value
+        end
+    end
+
     EXHAUSTIVENESS_OPTIONS = [ :brief, :standard, :thorough ]
 
     validates :query, presence: true
     validate :validate_advanced_settings_keys
     enum :status, %i[pending processing completed failed]
 
-    before_create :maybe_assign_id, lambda { binding.pry }
+    before_create :maybe_assign_id
     after_create_commit :process_report
     after_update_commit :refresh_report_status
     has_one :result, dependent: :destroy
@@ -30,12 +44,6 @@ class Report < ApplicationRecord
       end
 
       update(attrs)
-    end
-
-    VALID_ADVANCED_SETTINGS.each do |key|
-        define_method(key) do
-            advanced_settings&.dig(key)
-        end
     end
 
     private

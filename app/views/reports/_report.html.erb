@@ -4,7 +4,12 @@
       <%= report.query %>    
   </h5>
 
-  <p class="font-normal text-gray-700 dark:text-gray-400"><%= report.advanced_settings %></p>
+
+  <ul class="font-normal text-gray-700 dark:text-gray-400">
+    <li><%= report.cohort %></li>
+    <li><%= report.brand_info %></li>
+    <li><%= report.region %></li>
+  </ul>
 
   <%= turbo_stream_from(report) %>
   <%= render "reports/status", report: report %>
