@@ -23,7 +23,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_13_125857) do
     t.string "owner_type", null: false
     t.integer "owner_id", null: false
     t.index ["created_at"], name: "index_reports_on_created_at"
-    t.index ["owner_type", "owner_id"], name: "index_reports_on_owner"
+    t.index ["owner_type", "owner_id", "created_at"], name: "index_reports_on_owner_and_created_at"
     t.index ["status"], name: "index_reports_on_status"
   end
 
@@ -41,6 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_13_125857) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "results", "reports"

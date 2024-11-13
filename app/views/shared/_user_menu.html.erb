@@ -4,40 +4,41 @@
             id="user-menu-button"
             aria-expanded="false"
             data-dropdown-toggle="dropdown"
+            title="<%= current_user.anonymous? ? "You are not signed in" : current_user.name %>"
           >
             <span class="sr-only">Open user menu</span>            
-            <%= image_tag current_user.avatar, class: "w-8 h-8 rounded-full" %>
+            <%= image_tag current_user.avatar, class: "w-8 h-8 rounded-full", alt: current_user.anonymous? ? "You are not signed in" : current_user.name %>
           </button>
           <!-- Dropdown menu -->
-          <div
-            class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
-            id="dropdown"
-          >
-            <div class="py-3 px-4">
-              <span
-                class="block text-sm font-semibold text-gray-900 dark:text-white"
-                >
-                <%= current_user.name %>
-                </span
-              >
-              <span
-                class="block text-sm text-gray-900 truncate dark:text-white"
-                >
-                <%= current_user.email %>
-                </span
-              >
-            </div>
-
-            <ul
-              class="py-1 text-gray-700 dark:text-gray-300"
-              aria-labelledby="dropdown"
+          <% if current_user.name != "Anonymous" %>
+            <div
+              class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+              id="dropdown"
             >
-              <li>
-                <a
-                  href="#"
-                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Sign out</a
+              <div class="py-3 px-4">
+                <span
+                  class="block text-sm font-semibold text-gray-900 dark:text-white"
+                  >
+                  <%= current_user.name %>
+                  </span
                 >
-              </li>
-            </ul>
-          </div>
+                <span
+                  class="block text-sm text-gray-900 truncate dark:text-white"
+                  >
+                  <%= current_user.email %>
+                  </span
+                >
+              </div>
+
+              <ul
+                class="py-1 text-gray-700 dark:text-gray-300"
+                aria-labelledby="dropdown"
+              >
+                <li>                
+                  <%= link_to logout_path, class: "block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" do %>
+                    Sign out
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% end %>

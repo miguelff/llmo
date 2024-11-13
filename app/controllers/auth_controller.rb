@@ -5,7 +5,6 @@ class AuthController < ApplicationController
     end
 
     def daniel
-        binding.pry
         session[:user_id] = User.daniel.id
         redirect_to root_path
     end

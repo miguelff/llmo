@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   has_many :reports
 
+  def anonymous?
+    self.email == "anonymous@llmo.fly.dev"
+  end
+
   def self.anonymous
     User.find_or_create_by(name: "Anonymous", email: "anonymous@llmo.fly.dev", avatar: "users/anonymous.png")
   end
