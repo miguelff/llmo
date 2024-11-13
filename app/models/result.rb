@@ -45,6 +45,14 @@ class Result < ApplicationRecord
       chart(options)
     end
 
+    def brand_health?
+      data["brandHealth"].present?
+    end
+
+    def brand_health
+      data["brandHealth"]
+    end
+
     def key_phrases
       series = data["keyPhrases"]
       options = {

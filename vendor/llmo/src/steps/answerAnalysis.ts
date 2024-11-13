@@ -9,11 +9,16 @@ import {
     BrandsAndLinks,
 } from './answerAnalysis/brandsAndLinks.js'
 import { Leaders, Output as LeadersOutput } from './answerAnalysis/leaders.js'
-
+import {
+    BrandHealth,
+    Output as BrandHealthOutput,
+} from './answerAnalysis/brandHealth.js'
 const Output = z.object({
     brandsAndLinks: BrandsAndLinksOutput,
     leaders: LeadersOutput,
+    brandHealth: BrandHealthOutput.optional(),
 })
+
 export type Output = z.infer<typeof Output>
 
 export class AnswerAnalysis extends ExtractionStep<
@@ -26,11 +31,13 @@ export class AnswerAnalysis extends ExtractionStep<
 
     private brandsAndLinks: BrandsAndLinks
     private leaders: Leaders
+    private brandHealth: BrandHealth
 
     public constructor(context: Context) {
         super(context, AnswerAnalysis.STEP_NAME)
         this.brandsAndLinks = new BrandsAndLinks(context, AnswerAnalysis.MODEL)
         this.leaders = new Leaders(context, AnswerAnalysis.MODEL)
+        this.brandHealth = new BrandHealth(context, AnswerAnalysis.MODEL)
     }
 
     async execute(
@@ -53,11 +60,33 @@ export class AnswerAnalysis extends ExtractionStep<
             result.leaders = leaders.value.leaders
         }
 
+        if (
+            this.context.inputArguments.brand_info &&
+            this.context.inputArguments.brand_info.length > 0
+        ) {
+            const brandHealth = await this.brandHealth.execute({
+                leaders: leaders.value,
+                brandInfo: this.context.inputArguments.brand_info,
+            })
+            if (brandHealth.isOk()) {
+                result.brandHealth = brandHealth.value
+            }
+        }
+
         return Ok(result)
     }
 
     workUnits(): number {
-        return this.brandsAndLinks.workUnits()
+        let units = this.brandsAndLinks.workUnits() + this.leaders.workUnits()
+
+        if (
+            this.context.inputArguments.brand_info &&
+            this.context.inputArguments.brand_info.length > 0
+        ) {
+            units += this.brandHealth.workUnits()
+        }
+
+        return units
     }
 
     description(): string {

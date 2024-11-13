@@ -158,7 +158,7 @@ export abstract class OpenAIExtractionStep<I, O> extends ExtractionStep<
         descriptor: string,
         protected outputSchema: z.AnyZodObject,
         protected modelName = 'gpt-4o',
-        protected temperature = 1
+        protected temperature = 0
     ) {
         super(context, descriptor)
         this.model = OpenAIModel.fromEnv(

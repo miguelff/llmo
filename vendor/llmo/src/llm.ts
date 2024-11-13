@@ -11,7 +11,7 @@ export class OpenAIModel<T> {
         env: env,
         schema: z.AnyZodObject | undefined = undefined,
         model: string = 'gpt-4o',
-        temperature: number = 1
+        temperature: number = 0
     ) {
         const openai = new OpenAI({
             apiKey: env.OPENAI_API_KEY,

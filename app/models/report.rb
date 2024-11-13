@@ -46,12 +46,33 @@ class Report < ApplicationRecord
       update(attrs)
     end
 
+    def clone!
+        report = self.dup
+        report.id = nil
+        report.reset_progress
+        report.save!
+        report
+    end
+
     def regenerate!
         result.destroy if result.present?
-        self.status = :pending
-        self.progress_percent = 0
+        reset_progress
         save!
         process_report
+    end
+
+    def reset_progress
+        self.status = :pending
+        self.progress_percent = 0
+        self.progress_details = []
+    end
+
+    def method_missing(method, *args, &block)
+        if result.present? && result.respond_to?(method)
+            result.send(method, *args, &block)
+        else
+            super
+        end
     end
 
     private
