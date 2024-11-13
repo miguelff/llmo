@@ -12,7 +12,7 @@
 
   <div>
     <%= form.label :query, "What topic or search query do you want to analyze? *" %>
-    <%= form.text_area :query, rows: 4, placeholder: "Example: 'safest cars for families'", required: true %>
+    <%= form.text_area :query, rows: 2, placeholder: "Example: 'safest cars for families'", required: true %>
   </div>
 
   <div>
@@ -22,17 +22,17 @@
 
   <div>
     <%= form.label "advanced_settings[cohort]", "Describe your buyer persona" %>
-    <%= form.text_area "advanced_settings[cohort]", rows: 4, placeholder: "Age range, location, income level, job title, interests, pain points, goals", required: false %>
+    <%= form.text_area "advanced_settings[cohort]", rows: 1, placeholder: "Age range, location, income level, job title, interests, pain points, goals", required: false %>
   </div>
 
   <div>
     <%= form.label "advanced_settings[region]", "Choose a region to narrow the analysis" %>
       <%= form.select "advanced_settings[region]", 
                   grouped_options_for_select(region_options),
-                  { class: "form-select", required: false } %>
+                  { required: false }, class: "form-select w-full lg:w-auto text-sm rounded-md" %>                  
   </div>
 
-  <div class="flex flex-row justify-end lg:pt-10">
+  <div class="flex flex-col lg:flex-row justify-end lg:pt-10">
     <%= form.submit "Generate report", class: "btn primary" %>
   </div>
 <% end %>

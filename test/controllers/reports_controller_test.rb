@@ -13,6 +13,11 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     report = Report.last
     assert_equal report.query, @report.query
     assert_equal report.advanced_settings, @report.advanced_settings
+    assert_equal "Women 45+", report.cohort
+    assert_equal "Volvo XC40", report.brand_info
+    assert_equal "any", report.region
+    assert_equal "pending", report.status
+
     assert_redirected_to report_url(Report.last)
   end
 end

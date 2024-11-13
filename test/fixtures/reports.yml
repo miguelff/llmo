@@ -4,4 +4,5 @@ safe_cars:
     query: Safe cars
     advanced_settings:
         cohort: 'Women 45+'
-        exhaustiveness: brief
+        region: any
+        brand_info: Volvo XC40

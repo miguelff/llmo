@@ -1,6 +1,10 @@
 class ReportsController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_report, only: %i[ show result update destroy ]
+
   skip_before_action :verify_authenticity_token, only: :update
+  skip_before_action :authenticate_user!, only: :update
 
   # GET /reports/1 or /reports/1.json
   def show
@@ -24,6 +28,7 @@ class ReportsController < ApplicationController
   # POST /reports or /reports.json
   def create
     @report = Report.new(report_params)
+    @report.owner = current_user
 
     respond_to do |format|
       if @report.save

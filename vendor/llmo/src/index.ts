@@ -12,7 +12,13 @@ async function main() {
     program
         .command('report')
         .description('Generate and analyze questions')
-        .option('-q, --query <query>', 'Search query to analyze')
+        .requiredOption('-q, --query <query>', 'Search query to analyze')
+        .option('-C, --cohort <cohort>', 'Cohort to analyze')
+        .option('-b, --brand_info <brand_info>', 'Brand or product to analyze')
+        .option(
+            '-r, --region <region>',
+            'Perform analysis for a specific region'
+        )
         .option(
             '-c, --callback <url>',
             'Callback URL to send progress updates to'

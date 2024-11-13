@@ -1,16 +1,19 @@
 class Report < ApplicationRecord
-    VALID_ADVANCED_SETTINGS = %w[cohort exhaustiveness advanced]
+    VALID_ADVANCED_SETTINGS = %w[cohort brand_info region]
     EXHAUSTIVENESS_OPTIONS = [ :brief, :standard, :thorough ]
 
     validates :query, presence: true
     validate :validate_advanced_settings_keys
     enum :status, %i[pending processing completed failed]
 
-    before_create :maybe_assign_id
+    before_create :maybe_assign_id, lambda { binding.pry }
     after_create_commit :process_report
     after_update_commit :refresh_report_status
     has_one :result, dependent: :destroy
+    belongs_to :owner, polymorphic: true
+
     scope :recent, -> { order(created_at: :desc).limit(10) }
+    scope :owned_by, ->(user) { where(owner: user) }
 
     def update_progress(params)
       attrs = { progress_percent: params[:percentage] }
@@ -27,6 +30,12 @@ class Report < ApplicationRecord
       end
 
       update(attrs)
+    end
+
+    VALID_ADVANCED_SETTINGS.each do |key|
+        define_method(key) do
+            advanced_settings&.dig(key)
+        end
     end
 
     private

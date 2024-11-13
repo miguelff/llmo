@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     get "result", to: "reports#result", on: :member
   end
 
+  get "daniel", to: "auth#daniel", as: :daniel
+  get "miguel", to: "auth#miguel", as: :miguel
+  get "logout", to: "auth#logout", as: :logout
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

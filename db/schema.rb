@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_07_200855) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_13_125857) do
   create_table "reports", id: { type: :binary, limit: 16 }, force: :cascade do |t|
     t.string "query", null: false
     t.json "advanced_settings"
@@ -20,7 +20,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_07_200855) do
     t.json "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "owner_type", null: false
+    t.integer "owner_id", null: false
     t.index ["created_at"], name: "index_reports_on_created_at"
+    t.index ["owner_type", "owner_id"], name: "index_reports_on_owner"
     t.index ["status"], name: "index_reports_on_status"
   end
 
@@ -30,6 +33,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_07_200855) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_results_on_report_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "results", "reports"

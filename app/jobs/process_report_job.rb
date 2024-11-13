@@ -9,13 +9,14 @@ class ProcessReportJob < ApplicationJob
 
     node_script = Rails.root.join("vendor/llmo/dist/index.js").to_s
     query = report.query
-    count = case report.advanced_settings&.dig("exhaustiveness")&.to_sym || :brief
-    when :brief then 5
-    when :standard then 10
-    when :thorough then 30
-    end
+    count = 10
+
 
     command = [ "node", node_script, "report", "--query", query, "--callback", report_url, "--count", count.to_s ]
+    command += [ "--cohort", report.cohort ] if report.cohort.present?
+    command += [ "--brand_info", report.brand_info ] if report.brand_info.present?
+    command += [ "--region", report.region ] if report.region.present?
+
     Rails.logger.info "[Report #{report.id}] Running command: #{command.join(' ')}"
 
     stdout, stderr, status = Open3.capture3(Rails.application.credentials.processor.stringify_keys, *command)
