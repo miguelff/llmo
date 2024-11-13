@@ -17,6 +17,17 @@ module ReportsHelper
             ]
         ],
         [
+            "Continents",
+            [
+                [ "🌎 North America", "north america" ],
+                [ "🌎 South America", "south america" ],
+                [ "🌍 Europe", "europe" ],
+                [ "🌍 Africa", "africa" ],
+                [ "🌏 Asia", "asia" ],
+                [ "🌏 Oceania", "oceania" ]
+            ]
+        ],
+        [
                 "Countries",
                 ISO3166::Country.all.map { |c| [ "#{c.emoji_flag} #{c.iso_short_name}", c.iso_short_name ] }
         ]

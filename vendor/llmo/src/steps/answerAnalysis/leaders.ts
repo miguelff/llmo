@@ -13,6 +13,7 @@ export const Output = z.object({
         z.object({
             name: z.string(),
             score: z.number(),
+            reason: z.string(),
         })
     ),
 })
@@ -57,8 +58,9 @@ If I asked you about ${
 ${input.topics.map((topic) => `- ${topic.name}`).join('\n')}
 
 * Take into account a previous context of similar queries and your responses to them. This information is between [CONTEXT] tags.
-* Calculate a score from 0-100 for each brand/product/service
-* Return the top 5 brands/products/services with the highest score and their scores.
+* Calculate a score from 0-100 for each brand/product/service, based on the relative positive opinion you have on that brand/product/service in relation to others.
+* Elaborate a reason for your score for each brand/product/service using the context provided.
+* If you have a negative opinion of a brand/product/service, your score should be below 30.
 
 [CONTEXT]
 ${Object.entries(previousAnswers)
@@ -78,6 +80,6 @@ ${Object.entries(previousAnswers)
     }
 
     description(): string {
-        return 'Ranking brands by relevance and sentiment'
+        return 'Ranking brands by relevance'
     }
 }

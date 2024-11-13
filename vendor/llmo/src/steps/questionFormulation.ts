@@ -105,13 +105,13 @@ class QuestionAnswerer {
                 ],
             })
             .on('message', (msg) =>
-                this.context.logger.debug(msg, 'message received')
+                this.context.logger.trace(msg, 'message received')
             )
             .on('functionCall', (functionCall) =>
-                this.context.logger.debug(functionCall, 'functionCall received')
+                this.context.logger.trace(functionCall, 'functionCall received')
             )
             .on('functionCallResult', (functionCallResult) =>
-                this.context.logger.debug(
+                this.context.logger.trace(
                     functionCallResult,
                     'functionCallResult received'
                 )

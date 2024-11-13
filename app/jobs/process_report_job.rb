@@ -11,7 +11,6 @@ class ProcessReportJob < ApplicationJob
     query = report.query
     count = 10
 
-
     command = [ "node", node_script, "report", "--query", query, "--callback", report_url, "--count", count.to_s ]
     command += [ "--cohort", report.cohort ] if report.cohort.present?
     command += [ "--brand_info", report.brand_info ] if report.brand_info.present?
@@ -19,7 +18,27 @@ class ProcessReportJob < ApplicationJob
 
     Rails.logger.info "[Report #{report.id}] Running command: #{command.join(' ')}"
 
-    stdout, stderr, status = Open3.capture3(Rails.application.credentials.processor.stringify_keys, *command)
+    env = Rails.application.credentials.processor.stringify_keys
+    env["LOG_LEVEL"] ||= "info"
+
+    Open3.popen3(env, *command) do |stdin, stdout, stderr, wait_thr|
+      # Read stdout and stderr in real-time
+      stdout_thread = Thread.new do
+        while line = stdout.gets
+          Rails.logger.info "[Report #{report.id}] [stdout] #{line.chomp}"
+        end
+      end
+
+      stderr_thread = Thread.new do
+        while line = stderr.gets
+          Rails.logger.info "[Report #{report.id}] [stderr] #{line.chomp}"
+        end
+      end
+
+      stdout_thread.join
+      stderr_thread.join
+      status = wait_thr.value
+    end
 
     Rails.logger.info "[Report #{report.id}] Standard Output:\n#{stdout}" unless stdout.empty?
     Rails.logger.info "[Report #{report.id}] Standard Error:\n#{stderr}" unless stderr.empty?

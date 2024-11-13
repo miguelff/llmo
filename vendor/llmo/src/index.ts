@@ -39,15 +39,24 @@ export async function report(options: {
     callback: string
     query: string
     count: string
+    region: string
+    brand_info: string
+    cohort: string
 }) {
     const callback = options.callback
     const query = options.query
     const count = parseInt(options.count)
+    const region = options.region
+    const brand_info = options.brand_info
+    const cohort = options.cohort
 
     const context = createContext()
     context.inputArguments = {
         query,
         count,
+        region,
+        brand_info,
+        cohort,
         callback,
     }
 
@@ -59,7 +68,8 @@ export async function report(options: {
     context.totalWorkUnits = pipeline.workUnits()
     context.logger.info(`Total work units: ${context.totalWorkUnits}`)
 
-    const input: Input = { query, count }
+    const input: Input = { query, count, region, cohort }
+    context.logger.info(input, 'Pipeline input')
     const result = await pipeline.execute(input)
 
     context.bag['result'] = result

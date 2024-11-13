@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_report, only: %i[ show result update destroy ]
+  before_action :set_report, only: %i[ show result update destroy regenerate ]
 
   skip_before_action :verify_authenticity_token, only: :update
   skip_before_action :authenticate_user!, only: :update
@@ -18,6 +18,12 @@ class ReportsController < ApplicationController
     if @report.result.nil?
       redirect_to @report, status: :see_other, notice: "Report result is not ready yet"
     end
+  end
+
+  # GET /reports/1/regenerate
+  def regenerate
+    @report.regenerate!
+    redirect_to @report, status: :see_other, notice: "Report was successfully regenerated."
   end
 
   # GET /reports/new

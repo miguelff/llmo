@@ -8,9 +8,11 @@ import {
     Output as BrandsAndLinksOutput,
     BrandsAndLinks,
 } from './answerAnalysis/brandsAndLinks.js'
-import { Leaders } from './answerAnalysis/leaders.js'
+import { Leaders, Output as LeadersOutput } from './answerAnalysis/leaders.js'
+
 const Output = z.object({
     brandsAndLinks: BrandsAndLinksOutput,
+    leaders: LeadersOutput,
 })
 export type Output = z.infer<typeof Output>
 

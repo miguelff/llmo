@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :reports, except: [ :index, :edit ] do
     get "result", to: "reports#result", on: :member
+    get "regenerate", to: "reports#regenerate", on: :member
   end
 
   get "daniel", to: "auth#daniel", as: :daniel

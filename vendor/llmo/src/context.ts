@@ -9,6 +9,9 @@ export const InputArguments = z.object({
     query: z.string(),
     count: z.number(),
     callback: z.string().optional(),
+    region: z.string().optional(),
+    brand_info: z.string().optional(),
+    cohort: z.string().optional(),
 })
 
 // TODO: rename to camelCase

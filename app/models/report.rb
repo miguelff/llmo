@@ -46,6 +46,14 @@ class Report < ApplicationRecord
       update(attrs)
     end
 
+    def regenerate!
+        result.destroy if result.present?
+        self.status = :pending
+        self.progress_percent = 0
+        save!
+        process_report
+    end
+
     private
 
     def validate_advanced_settings_keys
