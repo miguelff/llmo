@@ -5,6 +5,7 @@ import createContext from './context.js'
 import { Command } from 'commander'
 import { submitProgress } from './progress.js'
 import { QuestionFormulation } from './steps/questionFormulation.js'
+import { LanguageDetection } from './steps/languageDetection.js'
 
 async function main() {
     const program = new Command()
@@ -59,8 +60,10 @@ export async function report(options: {
         cohort,
         callback,
     }
+    context.logger.info(context.inputArguments, 'Input arguments')
 
-    const pipeline = new QuestionSynthesis(context)
+    const pipeline = new LanguageDetection(context)
+        .then(new QuestionSynthesis(context))
         .then(new QuestionExpansion(context))
         .then(new QuestionFormulation(context))
         .then(new AnswerAnalysis(context))
@@ -69,7 +72,6 @@ export async function report(options: {
     context.logger.info(`Total work units: ${context.totalWorkUnits}`)
 
     const input: Input = { query, count, region, cohort }
-    context.logger.info(input, 'Pipeline input')
     const result = await pipeline.execute(input)
 
     context.bag['result'] = result

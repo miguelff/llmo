@@ -1,82 +1,62 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
 import { Context } from '../../context.js'
-import { OpenAIExtractionStep } from '../abstract.js'
 import { type Output as BrandsAndLinksOutput } from './brandsAndLinks.js'
-import {
-    QuestionFormulation,
-    type Output as QuestionFormulationOutput,
-} from '../questionFormulation.js'
+import { Ok } from 'ts-results-es'
+import { ExtractionStep, StepResult } from '../abstract.js'
 
 export const Output = z.object({
     leaders: z.array(
         z.object({
             name: z.string(),
             score: z.number(),
-            reason: z.string(),
         })
     ),
 })
 
 export type Output = z.infer<typeof Output>
 
-export class Leaders extends OpenAIExtractionStep<
+export class Leaders extends ExtractionStep<
     BrandsAndLinksOutput,
-    Output
+    Output,
+    Context
 > {
     static STEP_NAME = 'AnswerAnalysis::Leaders'
 
-    static SYSTEM_MESSAGE: ChatCompletionMessageParam = {
-        role: 'system',
-        content: `You are an assistant that ranks brands/products/services.`,
+    public constructor(context: Context) {
+        super(context, Leaders.STEP_NAME)
     }
 
-    public constructor(context: Context, model: string) {
-        super(context, Leaders.STEP_NAME, Output, model)
-    }
+    async execute(input: BrandsAndLinksOutput): Promise<StepResult<Output>> {
+        // Create a map to count brand occurrences
+        const brandCounts = input.topics.reduce((acc, topic) => {
+            acc[topic.name] = (acc[topic.name] || 0) + 1
+            return acc
+        }, {} as Record<string, number>)
 
-    createPrompt(input: BrandsAndLinksOutput): ChatCompletionMessageParam[] {
-        const previousAnswers = this.context.previousAnswers[
-            QuestionFormulation.STEP_NAME
-        ] as QuestionFormulationOutput
+        // Convert to array and find min/max counts
+        const entries = Object.entries(brandCounts)
+        const maxCount = Math.max(...entries.map(([_, count]) => count))
+        const minCount = Math.min(...entries.map(([_, count]) => count))
 
-        if (!previousAnswers) {
-            throw new Error(
-                'Previous answers for question formulation not found'
-            )
-        }
+        // Convert to array of {name, score} objects with normalized scores
+        const leaders = entries
+            .map(([name, count]) => ({
+                name,
+                // Normalize score between 50 and 100
+                score:
+                    maxCount === minCount
+                        ? 75 // If all counts are equal, use middle value
+                        : 50 +
+                          (50 * (count - minCount)) / (maxCount - minCount),
+            }))
+            .sort((a, b) => b.score - a.score) // Sort by score descending
 
-        return [
-            Leaders.SYSTEM_MESSAGE,
-            {
-                role: 'user',
-                content: `
-If I asked you about ${
-                    this.context.inputArguments.query
-                }, which brands/products/services would you say are the best from the following list?
-
-${input.topics.map((topic) => `- ${topic.name}`).join('\n')}
-
-* Take into account a previous context of similar queries and your responses to them. This information is between [CONTEXT] tags.
-* Calculate a score from 0-100 for each brand/product/service, based on the relative positive opinion you have on that brand/product/service in relation to others.
-* Elaborate a reason for your score for each brand/product/service using the context provided.
-* If you have a negative opinion of a brand/product/service, your score should be below 30.
-
-[CONTEXT]
-${Object.entries(previousAnswers)
-    .map(
-        ([question, answer]) =>
-            `Query -> Your previous Answer: ${question} -> \n${answer}`
-    )
-    .join('\n')}
-[END_CONTEXT]
-`,
-            },
-        ]
+        return Ok({ leaders })
     }
 
     workUnits(): number {
-        return 1
+        return 0
     }
 
     description(): string {

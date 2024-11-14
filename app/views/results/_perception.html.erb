@@ -1,0 +1,29 @@
+<div class="card p-6 shadow-lg rounded-lg dark:bg-gray-800">
+    <h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Brand Perception</h2>
+    <p class="mb-6 text-gray-500 dark:text-gray-400 text-lg group">
+        What <span class="font-bold text-blue-600 dark:text-blue-400">ChatGPT</span> is saying about     
+        <% if @report.brand_info.present? %>
+        <span class="relative underline cursor-pointer">
+            your brand            
+            <span class="absolute left-0 mt-1 hidden group-hover:block bg-gray-900 text-white text-xs rounded-lg px-2 py-1 shadow-lg z-10 dark:bg-gray-700">
+                <%= @report.brand_info %>
+            </span>
+        </span>                
+        <% else %>     
+            <%= @report.query %>
+        <% end %>   
+        when asked about <span class="font-bold text-blue-600 dark:text-blue-400"><%= @report.query %></span>
+    </p>
+    
+    <ul>
+        <% presenter.perception.each do |citation| %>
+            <li class="flex items-start text-gray-700 dark:text-gray-300 text-lg mb-3 group">
+                <!-- Icon -->
+                <span class="mr-3 text-blue-600 dark:text-blue-400">•</span>                
+                <span class="relative">
+                    <%= citation %>                    
+                </span>
+            </li>
+        <% end %>
+    </ul>
+</div>

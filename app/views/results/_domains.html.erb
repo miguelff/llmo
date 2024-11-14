@@ -1,0 +1,11 @@
+
+<div class="bg-white shadow-lg rounded-lg p-6 border-l-8">  
+    <ul>
+      <% presenter.domains.each do |domain, count| %>
+        <li class="flex items-start text-gray-700 text-sm">
+          <span class="mr-2 text-blue-600">•</span>
+          <%= link_to domain, domain, target: :blank %> (<%= count %>)
+        </li>
+      <% end %>
+    </ul>  
+</div>

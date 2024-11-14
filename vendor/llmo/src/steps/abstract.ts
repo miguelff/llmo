@@ -146,6 +146,23 @@ export const models = {
     openai: OpenAIModel,
 }
 
+export abstract class OpenAIPrompt<T> {
+    constructor(protected context: Context | undefined = undefined) {}
+
+    for(input: T): ChatCompletionMessageParam[] {
+        return [
+            {
+                role: 'system',
+                content: this.systemPrompt(),
+            },
+            { role: 'user', content: this.userPrompt(input) },
+        ]
+    }
+
+    abstract systemPrompt(): string
+    abstract userPrompt(input: T): string
+}
+
 export abstract class OpenAIExtractionStep<I, O> extends ExtractionStep<
     I,
     O,
@@ -157,6 +174,7 @@ export abstract class OpenAIExtractionStep<I, O> extends ExtractionStep<
         context: Context,
         descriptor: string,
         protected outputSchema: z.AnyZodObject,
+        protected prompt: OpenAIPrompt<I>,
         protected modelName = 'gpt-4o',
         protected temperature = 0
     ) {
@@ -172,7 +190,7 @@ export abstract class OpenAIExtractionStep<I, O> extends ExtractionStep<
     async execute(input: I): Promise<StepResult<O>> {
         this.beforeStart()
         const logger = this.context.logger
-        const prompt = this.createPrompt(input)
+        const prompt = this.prompt.for(input)
         this.beforeInvoke(prompt)
         const res = await this.model.invoke(prompt, logger)
         this.afterInvoke(res)
@@ -204,8 +222,6 @@ export abstract class OpenAIExtractionStep<I, O> extends ExtractionStep<
 
         return result
     }
-
-    abstract createPrompt(input: I): ChatCompletionMessageParam[]
 }
 
 export abstract class MapperStep<I, O, C> extends ExtractionStep<

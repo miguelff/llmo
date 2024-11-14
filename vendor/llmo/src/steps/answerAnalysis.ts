@@ -36,8 +36,8 @@ export class AnswerAnalysis extends ExtractionStep<
     public constructor(context: Context) {
         super(context, AnswerAnalysis.STEP_NAME)
         this.brandsAndLinks = new BrandsAndLinks(context, AnswerAnalysis.MODEL)
-        this.leaders = new Leaders(context, AnswerAnalysis.MODEL)
-        this.brandHealth = new BrandHealth(context, AnswerAnalysis.MODEL)
+        this.leaders = new Leaders(context)
+        this.brandHealth = new BrandHealth(context)
     }
 
     async execute(
@@ -57,7 +57,7 @@ export class AnswerAnalysis extends ExtractionStep<
         if (leaders.isErr()) {
             return Err(leaders.error)
         } else {
-            result.leaders = leaders.value.leaders
+            result.leaders = leaders.value
         }
 
         if (
@@ -65,6 +65,7 @@ export class AnswerAnalysis extends ExtractionStep<
             this.context.inputArguments.brand_info.length > 0
         ) {
             const brandHealth = await this.brandHealth.execute({
+                brandsAndLinks: brandsAndLinks.value,
                 leaders: leaders.value,
                 brandInfo: this.context.inputArguments.brand_info,
             })

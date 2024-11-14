@@ -31,6 +31,7 @@
         "vitest": "^2.1.1"
     },
     "scripts": {
+        "demo:cars": "tsx src/index.ts report -n ${QUERY_COUNT:-10} -c \"${CALLBACK_URL}\" -q \"coches seguros\" -C \"Mujeres, 45+, con hijos y nietos\" -r \"europe\" -b \"Volvo XC90\" | tee /tmp/demo_cars_$(date +%Y%m%d_%H%M%S).log",
         "dev": "tsx watch src/index.ts",
         "build:watch": "tsc -p tsconfig.json --watch",
         "build": "tsc -p tsconfig.json",

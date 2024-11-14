@@ -1,5 +1,5 @@
-import { Controller } from '@hotwired/stimulus'
 import ApexCharts from 'apexcharts'
+import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
     static values = {
@@ -17,3 +17,7 @@ export default class extends Controller {
         }
     }
 }
+
+// const formatter = function (val, opt) {
+//     return opt.w.globals.labels[opt.dataPointIndex] + ':  ' + val
+// }

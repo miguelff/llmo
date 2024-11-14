@@ -9,7 +9,7 @@ class ProcessReportJob < ApplicationJob
 
     node_script = Rails.root.join("vendor/llmo/dist/index.js").to_s
     query = report.query
-    count = 10
+    count = 30
 
     command = [ "node", node_script, "report", "--query", query, "--callback", report_url, "--count", count.to_s ]
     command += [ "--cohort", report.cohort ] if report.cohort.present?
@@ -21,28 +21,11 @@ class ProcessReportJob < ApplicationJob
     env = Rails.application.credentials.processor.stringify_keys
     env["LOG_LEVEL"] ||= "info"
 
-    Open3.popen3(env, *command) do |stdin, stdout, stderr, wait_thr|
-      # Read stdout and stderr in real-time
-      stdout_thread = Thread.new do
-        while line = stdout.gets
-          Rails.logger.info "[Report #{report.id}] [stdout] #{line.chomp}"
-        end
-      end
+    log, status = Open3.capture2e(env, *command)
 
-      stderr_thread = Thread.new do
-        while line = stderr.gets
-          Rails.logger.info "[Report #{report.id}] [stderr] #{line.chomp}"
-        end
-      end
+    Rails.logger.info "[Report #{report.id}] Execution log:\n#{log}"
 
-      stdout_thread.join
-      stderr_thread.join
-      status = wait_thr.value
-    end
-
-    Rails.logger.info "[Report #{report.id}] Standard Output:\n#{stdout}" unless stdout.empty?
-    Rails.logger.info "[Report #{report.id}] Standard Error:\n#{stderr}" unless stderr.empty?
-    Rails.logger.info "[Report #{report.id}] Exit Status: #{status.exitstatus}"
+    # TODO store logs with active storage
 
     if status.success?
       Rails.logger.info "[Report #{report.id}] Command executed successfully!"

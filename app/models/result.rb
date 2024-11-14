@@ -6,6 +6,116 @@ class Result < ApplicationRecord
   end
 
   class Presenter
+    class BrandHealth
+      def initialize(health)
+        @health = health
+      end
+
+      def indicator
+        @health["health"].to_sym
+      end
+
+      def remarks
+        @health["remarks"]
+      end
+
+      def citations
+        @health["citations"]
+      end
+
+      def rank?
+        rank.present?
+      end
+
+      def rank
+        @health["rank"]
+      end
+
+      def score?
+        score.present?
+      end
+
+      def score
+        @health["score"] || 50
+      end
+    end
+
+    class BrandsAndLinks
+      def initialize(brands_and_links)
+        @brands_and_links = brands_and_links
+      end
+
+      def domain_breakdown?
+        domain_breakdown.present?
+      end
+
+
+      def domain_breakdown
+        @domain_breakdown ||= begin
+          res = {}
+          urls.each do |root, urls|
+            domain = root.split(".").last(2).join(".")
+            res[domain] ||= 0
+            res[domain] += urls.size
+          end
+          res.sort_by { |domain, count| -count }
+        end
+      end
+
+      def relevant_content?
+        relevant_content.present?
+      end
+
+      def relevant_content
+        @relevant_content ||= begin
+          url_data
+        end
+      end
+
+      # {
+      #   "www.autobild.es" => [
+      #     "https://www.autobild.es/noticias/diez-mejores-coches-familiares-comprar-2023-1233944"
+      #   ],
+      #   "www.20minutos.es" => [
+      #     "https://www.20minutos.es/motor/coches/byd-unica-marca-3-coches-top-10-familiares-mas-seguros-2023-euro-ncap-electrico-5197859/"
+      #   ]
+      # }
+      def urls
+        @brands_and_links["urls"]
+      end
+
+
+      def url_data
+        # Initialize a hash to store occurrences and associated names
+        url_data = {}
+
+        # Process each topic to extract URL information
+        @brands_and_links["topics"].each do |topic|
+          name = topic["name"]
+          urls = topic["urls"]
+
+          urls.each do |url|
+            # Parse the URL to extract domain and path
+            uri = URI.parse(url)
+            domain = uri.host
+            path = uri.path
+
+            # Create a unique key for each URL using its domain and path
+            key = "#{domain}#{path}"
+
+            # Initialize hash entry if it doesn't exist
+            url_data[key] ||= { domain: domain, path: path, count: 0, names: [] }
+
+            # Increment the count and add the topic name if not already included
+            url_data[key][:count] += 1
+            url_data[key][:names] << name unless url_data[key][:names].include?(name)
+          end
+        end
+
+        url_data.sort { |x, y| y.last[:count] - x.last[:count] }.slice(0, 10)
+      end
+    end
+
     include ChartsHelper
     attr_reader :result
 
@@ -13,8 +123,8 @@ class Result < ApplicationRecord
       @result = result
     end
 
-    def leaders
-      series = data["leaders"]
+    def leaders_chart
+      series = data["leaders"]["leaders"].slice(0, 10)
       options = {
               chart: {
                 type: "bar",
@@ -36,13 +146,41 @@ class Result < ApplicationRecord
                 }
               ],
               xaxis: {
-                categories: series.map { |leader| leader["name"] },
-                title: {
-                  text: "Leaders"
-                }
+                 categories: series.map { |leader| leader["name"] }
               }
             }
       chart(options)
+    end
+
+    def domain_breakdown_chart
+      options = {
+        chart: {
+          type: "treemap",
+          height: 400,
+          toolbar: {
+            show: false
+          }
+        },
+        dataLabels: {
+          style: {
+            fontSize: "16px"
+          }
+        },
+        series: [
+          {
+            data: domains.map { |domain, count| { x: domain, y: count } }
+          }
+        ]
+      }
+      chart(options)
+    end
+
+    def relevant_content?
+      brands_and_links.present? && brands_and_links.relevant_content?
+    end
+
+    def relevant_content
+      @relevant_content ||= (brands_and_links.relevant_content if relevant_content?)
     end
 
     def brand_health?
@@ -50,7 +188,31 @@ class Result < ApplicationRecord
     end
 
     def brand_health
-      data["brandHealth"]
+      @brand_health ||= (BrandHealth.new(data["brandHealth"]["brands"].first) if brand_health?)
+    end
+
+    def perception?
+      perception.present?
+    end
+
+    def perception
+      @perception ||= (brand_health.citations if brand_health.present? && brand_health.citations.present?)
+    end
+
+    def domains?
+      domains.present?
+    end
+
+    def domains
+      @domains ||= (brands_and_links.domain_breakdown if brands_and_links? && brands_and_links.domain_breakdown?)
+    end
+
+    def brands_and_links?
+      brands_and_links.present?
+    end
+
+    def brands_and_links
+      @brands_and_links ||= BrandsAndLinks.new(data["brandsAndLinks"])
     end
 
     def key_phrases

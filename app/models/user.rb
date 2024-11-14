@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :reports
+  has_many :reports, inverse_of: :owner
 
   def anonymous?
     self.email == "anonymous@llmo.fly.dev"

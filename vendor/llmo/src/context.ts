@@ -2,6 +2,7 @@ import { Logger, pino } from 'pino'
 import PinoPretty from 'pino-pretty'
 import e, { type env } from './env.js'
 import { z } from 'zod'
+import { SupportedLanguage } from './lang.js'
 
 export type DataBag = Record<string, any>
 
@@ -20,6 +21,7 @@ export type Context = {
     env: env
     totalWorkUnits: number
     processedWorkUnits: number
+    detectedLanguage: SupportedLanguage
     bag: DataBag
     previousAnswers: DataBag
     inputArguments: z.infer<typeof InputArguments>
@@ -38,6 +40,7 @@ export default function (): Context {
             count: 10,
             callback: undefined,
         },
+        detectedLanguage: 'eng',
         previousAnswers: {},
         totalWorkUnits: 0,
         processedWorkUnits: 0,

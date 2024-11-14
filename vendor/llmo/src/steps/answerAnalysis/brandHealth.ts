@@ -1,14 +1,13 @@
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs'
 import { z } from 'zod'
 import { Context } from '../../context.js'
-import { OpenAIExtractionStep } from '../abstract.js'
-import {
-    QuestionFormulation,
-    Output as QuestionFormulationOutput,
-} from '../questionFormulation.js'
+import { ExtractionStep, StepResult } from '../abstract.js'
 import { Output as LeadersOutput } from './leaders.js'
+import { Output as BrandsAndLinksOutput } from './brandsAndLinks.js'
+import { Err, Ok } from 'ts-results-es'
 
 export const Input = z.object({
+    brandsAndLinks: BrandsAndLinksOutput,
     leaders: LeadersOutput,
     brandInfo: z.string(),
 })
@@ -30,7 +29,8 @@ export const Output = z.object({
                 .number()
                 .describe(
                     'The score of the brand between 1 and 100, equal to that of the ranking'
-                ),
+                )
+                .optional(),
             remarks: z
                 .string()
                 .describe(
@@ -46,102 +46,213 @@ export const Output = z.object({
 })
 export type Output = z.infer<typeof Output>
 
-export class BrandHealth extends OpenAIExtractionStep<Input, Output> {
+export class BrandHealth extends ExtractionStep<Input, Output, Context> {
     static STEP_NAME = 'AnswerAnalysis::BrandHealth'
 
-    static SYSTEM_MESSAGE: ChatCompletionMessageParam = {
-        role: 'system',
-        content: `You are an assistant specialized in analyzing brand health and ranking from text data. Your task is to analyze the brand health and rank the brands based on the context provided.
-        The context is comprised by:
-
-        * A user question, that is aimed at finding information about the best brands, products or services, between [QUESTION][/QUESTION] tags
-        * A series of answers, that aim at provide information about the best brands, products or services for the user question, between [ANSWERS][/ANSWERS] tags
-        * A ranking of the brands that are relevant to the query, that was elaborated by another agent, between [RANKING][/RANKING] tags
-        * A brand for which you need to analyze the health, between [BRAND][/BRAND] tags
-        
-        Given this context, take the brand and follow the following heuristic:
-
-        * See whether it's in the ranking and in which position. If it's in the ranking, pick the position and the score. 
-        * If it's not in the ranking, see whether it's mentioned in the answers. If it's mentioned, see whether it's mentioned in a positive or negative way. 
-
-        The result will be:
-
-        * Health: best/excellent/good/neutral/bad: 
-            - Best -> ranking 1
-            - Excellent -> ranking 2-5
-            - Good -> ranking 6-10
-            - Neutral -> lower in the ranking, or not in the ranking, but mentioned positively in the answers in any case
-            - Bad -> not even mentioned in the answers, or mentioned negatively
-
-        * Rank: the position of the brand in the ranking, if it's in the ranking.
-        * Score: the score of the brand in the ranking, if it's in the ranking, a lower score than those in the ranking if it's not in the ranking, below the latest in ranking, but closer to it if the exact product is not mentioned but the brand is, 0 if it's not even mentioned in the answers.
-        * Remarks: Why it was given the health score, if it's not in the ranking. Examples: "It's mentioned in the answers as a good brand", "It's not mentioned in the answers, but a different product of the brand is mentioned positively", "It's not mentioned in the answers"
-        * Citations: excerpts from the answers where the brand is mentioned, if they exist.
-        
-        Provide the result in a structured format that can be parsed.
-        `,
+    public constructor(context: Context) {
+        super(context, BrandHealth.STEP_NAME)
     }
 
-    public constructor(context: Context, model: string) {
-        super(context, BrandHealth.STEP_NAME, Output, model, 0.3)
-    }
+    /**
+     *  If the brand is mentioned in the ranking, then we need to find the index of the brand in the ranking
+     *      * If the brand is the first in the ranking, then health is "best"
+     *      * If it's in the top quarter, then health is "excellent"
+     *      * else health is "good", because it's still a top performer
+     *  If the brand is not mentioned in the ranking, if a n-gram of the brand is mentioned in the ranking, then we need to find the index of the n-gram in the ranking
+     *      * If the n-gram is in the ranking in top half, then health is "good"
+     *      * If the n-gram is the bottom half, then health is "neutral"
+     *      * else, if it's not in the mentioned, then health is "bad"
+     */
+    async execute(input: Input): Promise<StepResult<Output>> {
+        const brand = normalize(input.brandInfo)
 
-    createPrompt(input: Input): ChatCompletionMessageParam[] {
-        const previousAnswers = this.context.previousAnswers[
-            QuestionFormulation.STEP_NAME
-        ] as QuestionFormulationOutput
+        const topicRank = normalizedTopicRank(input)
+        const brands = normalizedBrands(input)
+        const unigramRank = brandRank(brand, topicRank)
 
-        if (!previousAnswers) {
-            throw new Error(
-                'Previous answers for question formulation not found'
+        if (unigramRank.rank == 100) {
+            return Ok({
+                brands: [
+                    {
+                        health: 'best',
+                        rank: unigramRank.rank,
+                        score: 100,
+                        remarks: 'Your brand is the best in ranking',
+                        citations: brandCitations(brand, brands),
+                    },
+                ],
+            })
+        } else if (unigramRank.rank >= 75) {
+            return Ok({
+                brands: [
+                    {
+                        health: 'excellent',
+                        rank: unigramRank.rank,
+                        score: unigramRank.data?.score ?? 0,
+                        remarks: 'Your brand is in the top 25% of the ranking',
+                        citations: brandCitations(brand, brands),
+                    },
+                ],
+            })
+        } else if (unigramRank.rank > 0) {
+            return Ok({
+                brands: [
+                    {
+                        health: 'good',
+                        rank: unigramRank.rank,
+                        score: unigramRank.data?.score ?? 0,
+                        remarks:
+                            'Your brand was cited in answers to user questions',
+                        citations: brandCitations(brand, brands),
+                    },
+                ],
+            })
+        } else {
+            const ngramsIndex = brandNgrams(input)
+            const brandNGrams = wordNgrams(brand)
+
+            const ngramsIndexMatches = ngramsIndex.find((ngram) =>
+                brandNGrams.some((ngramBrand) => ngramBrand === ngram.name)
             )
+
+            if (ngramsIndexMatches) {
+                return Ok({
+                    brands: [
+                        {
+                            health: 'neutral',
+                            rank: undefined,
+                            score: undefined,
+                            remarks:
+                                'Other products relative to your brand were mentioned in answers to user questions',
+                            citations: ngramsIndexMatches.keyPhrases,
+                        },
+                    ],
+                })
+            } else {
+                return Ok({
+                    brands: [
+                        {
+                            health: 'bad',
+                            rank: undefined,
+                            score: undefined,
+                            remarks: 'Your brand was not mentioned',
+                            citations: [],
+                        },
+                    ],
+                })
+            }
         }
-
-        return [
-            BrandHealth.SYSTEM_MESSAGE,
-            {
-                role: 'user',
-                content: `Please analyze the [BRAND] health for the following brands based on your own previous [ANSWERS] relative to a user [QUERY] and the [RANKING] of different brands another agent elaborated:
-
-[BRAND]
-${input.brandInfo}
-[/BRAND]
-
-[QUESTION]
-${this.context.inputArguments.query}
-[/QUESTION]
-
-[ANSWERS]
-${Object.entries(previousAnswers)
-    .map(
-        ([_, answer]) => `
-Answer: ${answer}
-`
-    )
-    .join('\n\n')}
-[/ANSWERS]
-
-[RANKING]
-${input.leaders.leaders
-    .map(
-        (leader, index) => `
-Brand: ${leader.name}
-Rank: ${index + 1}
-Score: ${leader.score}
-Context: ${leader.reason}
-`
-    )
-    .join('\n\n')}
-[/RANKING]`,
-            },
-        ]
     }
 
     workUnits(): number {
-        return 1
+        return 0
     }
 
     description(): string {
         return 'Analyzing brand health and sentiment'
     }
+}
+
+type BrandRank = {
+    rank: number
+    data?: { name: string; score: number }
+}
+
+function brandRank(brand: string, topicRank: TopicRank): BrandRank {
+    const index = topicRank.index.findIndex((t) => t.name === brand)
+
+    var rank = 0
+
+    if (index !== -1) {
+        // Calculate percentage of items with lower rank
+        const lowerRankCount = topicRank.index.filter(
+            (t) => t.rank > topicRank.index[index].rank
+        ).length
+        rank = Math.ceil((lowerRankCount / topicRank.count) * 100)
+    }
+
+    var data: { name: string; score: number } | undefined = undefined
+    if (index !== -1) {
+        data = topicRank.index[index]
+    }
+
+    return {
+        rank,
+        data,
+    }
+}
+
+function brandCitations(brand: string, brands: Brands): string[] {
+    return brands.find((b) => b.name === brand)?.keyPhrases ?? []
+}
+
+type TopicRank = {
+    index: { name: string; score: number; rank: number }[]
+    count: number
+}
+
+function normalizedTopicRank(input: Input): TopicRank {
+    var rank = 0
+    const leaders = input.leaders.leaders.map((leader) => ({
+        name: normalize(leader.name),
+        score: leader.score,
+        rank: ++rank,
+    }))
+
+    return {
+        index: leaders,
+        count: rank,
+    }
+}
+
+type Brands = {
+    name: string
+    urls: string[]
+    keyPhrases: string[]
+}[]
+
+function normalizedBrands(input: Input): Brands {
+    return input.brandsAndLinks.topics.map((brand) => ({
+        name: normalize(brand.name),
+        urls: brand.urls,
+        keyPhrases: brand.keyPhrases,
+    }))
+}
+
+function brandNgrams(input: Input): Brands {
+    const brands = normalizedBrands(input)
+    const result: Brands = []
+
+    for (const brand of brands) {
+        const ngrams = wordNgrams(brand.name)
+        result.push(
+            ...ngrams.map((ngram) => ({
+                name: ngram,
+                urls: brand.urls,
+                keyPhrases: brand.keyPhrases,
+            }))
+        )
+    }
+
+    return result
+}
+
+function normalize(name: string) {
+    return name
+        .toLowerCase()
+        .replace(/[^a-z0-9 ]/g, '')
+        .trim()
+}
+
+function wordNgrams(sentence: string): string[] {
+    const ngrams: string[] = []
+
+    const words = sentence.split(' ')
+    for (let length = 1; length <= words.length; length++) {
+        for (let start = 0; start <= words.length - length; start++) {
+            ngrams.push(words.slice(start, start + length).join(' '))
+        }
+    }
+
+    return ngrams
 }

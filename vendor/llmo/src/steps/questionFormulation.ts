@@ -9,6 +9,7 @@ import { OpenAI } from 'openai'
 import { RunnableToolFunctionWithParse } from 'openai/lib/RunnableFunction'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 import { JSONSchema } from 'openai/lib/jsonschema'
+import { englishLanguageName } from '../lang.js'
 
 export class QuestionFormulation extends ExtractionStep<
     Input,
@@ -72,7 +73,7 @@ export class QuestionFormulation extends ExtractionStep<
     }
 }
 
-export const Output = z.record(z.string()).describe('Preguntas y Respuestas')
+export const Output = z.record(z.string())
 export type Output = z.infer<typeof Output>
 
 class QuestionAnswerer {
@@ -100,7 +101,7 @@ class QuestionAnswerer {
                         }),
                         name: 'search',
                         description:
-                            'Busca en Bing resultados relevantes para proporcionar información fiable para la pregunta',
+                            'Search in Bing for relevant results to provide reliable information for the question',
                     }),
                 ],
             })
@@ -116,7 +117,7 @@ class QuestionAnswerer {
                     'functionCallResult received'
                 )
             )
-            .on('content', (diff) => this.context.logger.debug(diff, 'content'))
+            .on('content', (diff) => this.context.logger.trace(diff, 'content'))
 
         const result = await runner.finalChatCompletion()
 
@@ -138,8 +139,9 @@ class QuestionAnswerer {
         return [
             {
                 role: 'system',
-                content:
-                    'Eres un asistente que ayuda a elegir los mejores productos y servicios',
+                content: `You are an assistant specialized in finding the best products and services, the questions are formulated in ${englishLanguageName(
+                    this.context.detectedLanguage
+                )}. It's extremely important that you answer in the same language as the question.`,
             },
             {
                 role: 'user',

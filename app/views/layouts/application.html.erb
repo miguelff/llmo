@@ -21,6 +21,41 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script>
+        window.Apex = {
+            chart: {
+              foreColor: "#fff",
+              toolbar: {
+                show: false
+              }
+            },
+            <%# plotOptions: {
+              bar: {
+                horizontal: true,
+                barHeight: '100%', // Removes the separation between bars
+              }
+            }, %>
+            colors: ["#1c64f2"], // Solid fuchsia color            
+            grid: {
+              borderColor: "#40475D"
+            }
+            <%# ,
+             dataLabels: {
+                formatter: function(value, { seriesIndex, dataPointIndex, w }) {                  
+                  return w.globals.labels[dataPointIndex] + ":  " + value
+                }
+            },            
+            fill: {
+              type: "solid", // Changed from gradient to solid
+              color: "#FF00FF" // Fuchsia color
+            },           
+            yaxis: {
+              decimalsInFloat: 2,
+              opposite: false,
+              show: false
+            }, %>
+          };
+    </script>
   </head>
   <body class="dark">    
   <!-- Sidebar -->
