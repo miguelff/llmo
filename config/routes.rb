@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get "daniel", to: "auth#daniel", as: :daniel
   get "miguel", to: "auth#miguel", as: :miguel
   get "logout", to: "auth#logout", as: :logout
-  get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

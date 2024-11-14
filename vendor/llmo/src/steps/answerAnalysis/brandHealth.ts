@@ -4,7 +4,7 @@ import { Context } from '../../context.js'
 import { ExtractionStep, StepResult } from '../abstract.js'
 import { Output as LeadersOutput } from './leaders.js'
 import { Output as BrandsAndLinksOutput } from './brandsAndLinks.js'
-import { Err, Ok } from 'ts-results-es'
+import { Ok } from 'ts-results-es'
 
 export const Input = z.object({
     brandsAndLinks: BrandsAndLinksOutput,
@@ -65,10 +65,20 @@ export class BrandHealth extends ExtractionStep<Input, Output, Context> {
      */
     async execute(input: Input): Promise<StepResult<Output>> {
         const brand = normalize(input.brandInfo)
+        this.context.logger.info(
+            { leaders: JSON.stringify(input.leaders, null, 2) },
+            'Leaders'
+        )
+        this.context.logger.info(JSON.stringify(brand, null, 2), 'brand')
 
-        const topicRank = normalizedTopicRank(input)
-        const brands = normalizedBrands(input)
-        const unigramRank = brandRank(brand, topicRank)
+        const leaderIdx = indexLeaders(input)
+        this.context.logger.info(
+            { index: JSON.stringify(leaderIdx, null, 2) },
+            'Leader index'
+        )
+
+        const brandIdx = indexBrands(input)
+        const unigramRank = rankBrand(brand, leaderIdx)
 
         if (unigramRank.rank == 100) {
             return Ok({
@@ -78,7 +88,7 @@ export class BrandHealth extends ExtractionStep<Input, Output, Context> {
                         rank: unigramRank.rank,
                         score: 100,
                         remarks: 'Your brand is the best in ranking',
-                        citations: brandCitations(brand, brands),
+                        citations: brandCitations(brand, brandIdx),
                     },
                 ],
             })
@@ -90,7 +100,7 @@ export class BrandHealth extends ExtractionStep<Input, Output, Context> {
                         rank: unigramRank.rank,
                         score: unigramRank.data?.score ?? 0,
                         remarks: 'Your brand is in the top 25% of the ranking',
-                        citations: brandCitations(brand, brands),
+                        citations: brandCitations(brand, brandIdx),
                     },
                 ],
             })
@@ -103,7 +113,7 @@ export class BrandHealth extends ExtractionStep<Input, Output, Context> {
                         score: unigramRank.data?.score ?? 0,
                         remarks:
                             'Your brand was cited in answers to user questions',
-                        citations: brandCitations(brand, brands),
+                        citations: brandCitations(brand, brandIdx),
                     },
                 ],
             })
@@ -158,7 +168,7 @@ type BrandRank = {
     data?: { name: string; score: number }
 }
 
-function brandRank(brand: string, topicRank: TopicRank): BrandRank {
+function rankBrand(brand: string, topicRank: TopicRank): BrandRank {
     const index = topicRank.index.findIndex((t) => t.name === brand)
 
     var rank = 0
@@ -191,7 +201,7 @@ type TopicRank = {
     count: number
 }
 
-function normalizedTopicRank(input: Input): TopicRank {
+function indexLeaders(input: Input): TopicRank {
     var rank = 0
     const leaders = input.leaders.leaders.map((leader) => ({
         name: normalize(leader.name),
@@ -211,7 +221,7 @@ type Brands = {
     keyPhrases: string[]
 }[]
 
-function normalizedBrands(input: Input): Brands {
+function indexBrands(input: Input): Brands {
     return input.brandsAndLinks.topics.map((brand) => ({
         name: normalize(brand.name),
         urls: brand.urls,
@@ -220,7 +230,7 @@ function normalizedBrands(input: Input): Brands {
 }
 
 function brandNgrams(input: Input): Brands {
-    const brands = normalizedBrands(input)
+    const brands = indexBrands(input)
     const result: Brands = []
 
     for (const brand of brands) {

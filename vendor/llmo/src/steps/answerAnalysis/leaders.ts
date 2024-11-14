@@ -30,7 +30,7 @@ export class Leaders extends ExtractionStep<
     async execute(input: BrandsAndLinksOutput): Promise<StepResult<Output>> {
         // Create a map to count brand occurrences
         const brandCounts = input.topics.reduce((acc, topic) => {
-            acc[topic.name] = (acc[topic.name] || 0) + 1
+            acc[topic.name] = (acc[topic.name] || 0) + topic.urls.length
             return acc
         }, {} as Record<string, number>)
 
@@ -48,7 +48,9 @@ export class Leaders extends ExtractionStep<
                     maxCount === minCount
                         ? 75 // If all counts are equal, use middle value
                         : 50 +
-                          (50 * (count - minCount)) / (maxCount - minCount),
+                          Math.round(
+                              (50 * (count - minCount)) / (maxCount - minCount)
+                          ),
             }))
             .sort((a, b) => b.score - a.score) // Sort by score descending
 

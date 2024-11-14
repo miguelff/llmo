@@ -36,7 +36,7 @@ class Result < ApplicationRecord
       end
 
       def score
-        @health["score"] || 50
+        @health["score"]
       end
     end
 
