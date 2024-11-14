@@ -1,0 +1,36 @@
+ <div class="leaders p-6">        
+    <h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Leaders</h2>
+    
+    <p class="mb-6 text-gray-500 dark:text-gray-400 text-lg">
+        <% if presenter.brand_health&.indicator&.in?(%i(best)) %>
+            <span>🚀 Your brand is the leader for <%= @report.query %></span>
+        <% end %>
+
+
+        <% if presenter.brand_health&.indicator&.in?(%i(excellent)) %>
+            <span>👏 Your brand in the in top quartile of the leaders 
+            <% if presenter.brand_health&.rank&.present? %>
+                and it's ranked #<%= presenter.brand_health.rank %>
+            <% end %>
+            </span>
+        <% end %>
+
+        <% if presenter.brand_health&.indicator&.in?(%i(good)) %>
+            <span>💪 Your brand is among the leaders
+            <% if presenter.brand_health&.rank&.present? %>
+                and it's ranked #<%= presenter.brand_health.rank %>
+            <% end %>                 
+            </span>
+        <% end %>
+
+        <% if presenter.brand_health&.indicator&.in?(%i(neutral)) %>
+            <span>😐 Your brand is not among the leaders, but is recommended sometimes</span>
+        <% end %>
+
+        <% if presenter.brand_health&.indicator&.in?(%i(bad)) %>
+            <span>😔 Your brand is not among the leaders and it's not recommended often</span>
+        <% end %>
+
+        <%= presenter.leaders_chart %>
+    </p>        
+</div>

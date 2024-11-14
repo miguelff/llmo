@@ -20,49 +20,12 @@
         <%= render partial: "results/health", locals: { presenter: presenter }   %>        
     <% end %>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">    
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-8">    
     <% if presenter.perception? %>
         <%= render partial: "results/perception", locals: { presenter: presenter }   %>        
     <% end %>
 
-    <div class="leaders p-6">        
-        <h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Leaders</h2>
-        
-        <p class="mb-6 text-gray-500 dark:text-gray-400 text-lg">
-
-
-            <% if presenter.brand_health&.indicator&.in?(%i(best)) %>
-                <span>🚀 Your brand is the leader for <%= @report.query %></span>
-            <% end %>
-
-
-            <% if presenter.brand_health&.indicator&.in?(%i(excellent)) %>
-                <span>👏 Your brand in the in top quartile of the leaders 
-                <% if presenter.brand_health&.rank&.present? %>
-                    and it's ranked #<%= presenter.brand_health.rank %>
-                <% end %>
-                </span>
-            <% end %>
-
-            <% if presenter.brand_health&.indicator&.in?(%i(good)) %>
-                <span>💪 Your brand is among the leaders
-                <% if presenter.brand_health&.rank&.present? %>
-                    and it's ranked #<%= presenter.brand_health.rank %>
-                <% end %>                 
-                </span>
-            <% end %>
-
-            <% if presenter.brand_health&.indicator&.in?(%i(neutral)) %>
-                <span>😐 Your brand is not among the leaders, but is recommended sometimes</span>
-            <% end %>
-
-            <% if presenter.brand_health&.indicator&.in?(%i(bad)) %>
-                <span>😔 Your brand is not among the leaders and it's not recommended often</span>
-            <% end %>
-
-            <%= presenter.leaders_chart %>
-        </p>        
-    </div>
+    <%= render partial: "results/leaders", locals: { presenter: presenter }   %>
   </div>
 
 
@@ -92,10 +55,10 @@
                 </tr>
             </thead>
             <tbody>
-                <% presenter.relevant_content.each do |url, data| %>
+                <% presenter.relevant_content.each do |url, data| %>                    
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4">
-                            <%= link_to data[:domain] + data[:path], "https://" + url, class: "hover:underline", target: "_blank" %>
+                            <a href="https://<%= url %>" class="hover:underline" target="_blank"><%= url %></a>                            
                         </td>
                         <td class="px-6 py-4">
                             <%= data[:count] %>
@@ -103,7 +66,7 @@
                         <td class="px-6 py-4">
                             <%= data[:names].join(", ") %>
                         </td>
-                    </tr>
+                    </tr>                    
                 <% end %>
             </tbody>
         </table>
