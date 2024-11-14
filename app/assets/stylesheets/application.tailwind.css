@@ -109,12 +109,20 @@
 
     form {
         .field_with_errors {
-            @apply animate-[shake_0.5s_ease-in-out];
+            @apply animate-[shake_0.5s_ease-in-out] text-[1.2rem];
 
             input,
             textarea {
-                @apply border-red-500;
+                @apply border-red-500 text-[1.2rem];
             }
+        }
+
+        * {
+            @apply text-lg;
+        }
+
+        .btn {
+            @apply text-lg;
         }
     }
 

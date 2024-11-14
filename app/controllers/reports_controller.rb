@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_report, only: %i[ show result update destroy retry]
+  before_action :set_report, only: %i[ show result update destroy retry clone]
 
   skip_before_action :verify_authenticity_token, only: :update
   skip_before_action :authenticate_user!, only: :update
@@ -23,6 +23,11 @@ class ReportsController < ApplicationController
   def retry
     @report = @report.retry!
     redirect_to @report, status: :see_other, notice: "Retrying report"
+  end
+
+  def clone
+    @report = @report.dup
+    render :new
   end
 
   # GET /reports/new

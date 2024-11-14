@@ -16,19 +16,19 @@
   </div>
 
   <div>
-    <%= form.label "brand_info", "What's your brand or product? *" %>
-    <%= form.text_field "brand_info", placeholder: "Volvo XC40", required: true %>
+    <%= form.label :brand_info, "What's your brand or product? *" %>
+    <%= form.text_field :brand_info, value: report.brand_info, placeholder: "Volvo XC40", required: true %>
   </div>
 
   <div>
-    <%= form.label "cohort", "Describe your buyer persona" %>
-    <%= form.text_area "cohort", rows: 1, placeholder: "Age range, location, income level, job title, interests, pain points, goals", required: false %>
+    <%= form.label :cohort, "Describe your buyer persona" %>
+    <%= form.text_area :cohort, rows: 2, value: report.cohort, placeholder: "Age range, location, income level, job title, interests, goals", required: false %>
   </div>
 
   <div>
-    <%= form.label "region", "Choose a region to narrow the analysis" %>
-      <%= form.select "region", 
-                  grouped_options_for_select(region_options),
+    <%= form.label :region, "Choose a region to narrow the analysis" %>
+      <%= form.select :region, 
+                  grouped_options_for_select(region_options),                  
                   { required: false }, class: "form-select w-full lg:w-auto text-sm rounded-md" %>                  
   </div>
 
