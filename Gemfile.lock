@@ -376,6 +376,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  addressable
   bootsnap
   brakeman
   capybara

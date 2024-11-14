@@ -96,19 +96,16 @@ class Result < ApplicationRecord
 
           urls.each do |url|
             # Parse the URL to extract domain and path
-            uri = URI.parse(url)
+            uri = Addressable::URI.parse(url)
             domain = uri.host
             path = uri.path
 
-            # Create a unique key for each URL using its domain and path
-            key = "#{domain}#{path}"
-
             # Initialize hash entry if it doesn't exist
-            url_data[key] ||= { domain: domain, path: path, count: 0, names: [] }
+            url_data[url] ||= { domain: domain, path: path, count: 0, names: [] }
 
             # Increment the count and add the topic name if not already included
-            url_data[key][:count] += 1
-            url_data[key][:names] << name unless url_data[key][:names].include?(name)
+            url_data[url][:count] += 1
+            url_data[url][:names] << name unless url_data[url][:names].include?(name)
           end
         end
 
