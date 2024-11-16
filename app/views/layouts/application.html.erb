@@ -38,19 +38,18 @@
     <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
   <body class="dark bg-gray-50 dark:bg-gray-900">
-    <%= render "shared/notices" %>
+    <%= render "shared/notices" %>    
     
-    <%= render 'shared/navbar' %>
-    
-    <% if current_user %>
-      <%= render 'shared/sidebar' %>
+    <% if content_for?(:center) %>
+      <%= content_for(:center) %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+      <main class="antialiased bg-gray-50 dark:bg-gray-900 pt-20">        
+        <div class="flex-1 min-h-screen">
+          <%= yield %>
+        </div>
+      </main>
     <% end %>
-
-    <main class="antialiased bg-gray-50 dark:bg-gray-900 <%= current_user ? "md:ml-64" : "" %> pt-20">        
-      <div class="flex-1 min-h-screen">
-        <%= yield %>
-      </div>
-    </main>
 
     <% if content_for?(:footer) %>
       <footer class="bg-gray-800 mt-8 py-4">

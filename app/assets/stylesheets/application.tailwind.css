@@ -100,10 +100,10 @@
     }
 
     #error_explanation {
-        @apply p-4;
+        @apply p-4 bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg;
 
-        h2 {
-            @apply mt-0 pl-0 text-lg font-semibold bg-red-50 text-red-500 px-3 py-2 rounded-lg;
+        ul {
+            @apply mt-2 space-y-1 list-disc list-inside;
         }
     }
 

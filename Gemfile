@@ -67,8 +67,10 @@ group :development, :test do
 
   gem "bullet"
   gem "rack-mini-profiler"
-  gem 'memory_profiler'
-  gem 'stackprof'
+  gem "memory_profiler"
+  gem "stackprof"
+
+  gem "letter_opener", "~> 1.10"
 
   gem "pry"
   gem "pry-rails"
@@ -86,5 +88,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "rspec-rails", "~> 7.0.0"
-  gem "letter_opener", "~> 1.10"
 end
