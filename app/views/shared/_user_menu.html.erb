@@ -4,24 +4,22 @@
             id="user-menu-button"
             aria-expanded="false"
             data-dropdown-toggle="dropdown"
-            title="<%= current_user.anonymous? ? "You are not signed in" : current_user.name %>"
+            title="<%= current_user ? current_user.email : "You are not signed in" %>"
           >
-            <span class="sr-only">Open user menu</span>            
-            <%= image_tag current_user.avatar, class: "w-8 h-8 rounded-full", alt: current_user.anonymous? ? "You are not signed in" : current_user.name %>
+            <span class="sr-only">Open user menu</span>
+            <% if current_user.respond_to?(:avatar_url) %>
+              <%= image_tag current_user.avatar_url, class: "w-8 h-8 rounded-full", alt: current_user.email %>
+            <% else %>
+              <%= image_tag "users/anonymous.png", class: "w-8 h-8 rounded-full", alt: "Anonymous user avatar" %>
+            <% end %>
           </button>
           <!-- Dropdown menu -->
-          <% if current_user.name != "Anonymous" %>
+          <% if current_user %>
             <div
               class="hidden z-50 my-4 w-56 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
               id="dropdown"
             >
-              <div class="py-3 px-4">
-                <span
-                  class="block text-sm font-semibold text-gray-900 dark:text-white"
-                  >
-                  <%= current_user.name %>
-                  </span
-                >
+              <div class="py-3 px-4">                
                 <span
                   class="block text-sm text-gray-900 truncate dark:text-white"
                   >

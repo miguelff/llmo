@@ -28,42 +28,34 @@
               toolbar: {
                 show: false
               }
-            },
-            <%# plotOptions: {
-              bar: {
-                horizontal: true,
-                barHeight: '100%', // Removes the separation between bars
-              }
-            }, %>
+            },         
             colors: ["#1c64f2"], // Solid fuchsia color            
             grid: {
               borderColor: "#40475D"
-            }
-            <%# ,
-             dataLabels: {
-                formatter: function(value, { seriesIndex, dataPointIndex, w }) {                  
-                  return w.globals.labels[dataPointIndex] + ":  " + value
-                }
-            },            
-            fill: {
-              type: "solid", // Changed from gradient to solid
-              color: "#FF00FF" // Fuchsia color
-            },           
-            yaxis: {
-              decimalsInFloat: 2,
-              opposite: false,
-              show: false
-            }, %>
+            }         
           };
     </script>
     <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
-  <body class="dark">    
-  <!-- Sidebar -->
+  <body class="dark bg-gray-50 dark:bg-gray-900">
+    <%= render "shared/notices" %>
+    
     <%= render 'shared/navbar' %>
-    <%= render 'shared/sidebar' %>
-    <main class="antialiased bg-gray-50 dark:bg-gray-900 md:ml-64 pt-20">        
-      <%= yield %>
+    
+    <% if current_user %>
+      <%= render 'shared/sidebar' %>
+    <% end %>
+
+    <main class="antialiased bg-gray-50 dark:bg-gray-900 <%= current_user ? "md:ml-64" : "" %> pt-20">        
+      <div class="flex-1 min-h-screen">
+        <%= yield %>
+      </div>
     </main>
+
+    <% if content_for?(:footer) %>
+      <footer class="bg-gray-800 mt-8 py-4">
+        <%= yield :footer %>
+      </footer>
+    <% end %>
   </body>
 </html>

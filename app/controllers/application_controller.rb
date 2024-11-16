@@ -3,8 +3,4 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   before_action :authenticate_user!
-
-  def authenticate_user!
-    session[:user_id] ||= User.anonymous.id
-  end
 end

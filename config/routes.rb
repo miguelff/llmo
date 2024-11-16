@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get "home/index"
   resources :reports, except: [ :index, :edit ] do
     get "result", to: "reports#result", on: :member
     get "retry", to: "reports#retry", on: :member

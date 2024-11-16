@@ -49,6 +49,9 @@ gem "addressable"
 gem "sentry-ruby"
 gem "sentry-rails"
 
+gem "redis", "~> 5.3"
+gem "devise", "~> 4.9"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -62,6 +65,11 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
+  gem "bullet"
+  gem "rack-mini-profiler"
+  gem 'memory_profiler'
+  gem 'stackprof'
+
   gem "pry"
   gem "pry-rails"
   gem "pry-byebug"
@@ -70,6 +78,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "dockerfile-rails", ">= 1.6"
 end
 
 group :test do
@@ -77,8 +86,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "rspec-rails", "~> 7.0.0"
+  gem "letter_opener", "~> 1.10"
 end
-
-gem "dockerfile-rails", ">= 1.6", group: :development
-
-gem "redis", "~> 5.3"
