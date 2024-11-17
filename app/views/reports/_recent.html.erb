@@ -1,4 +1,4 @@
-<% recent_reports = Report.owned_by(current_user).recent rescue [] %>
+<% recent_reports = Report.owned_by(current_user).recent %>
 
 <%= turbo_frame_tag "recent_reports_owned_by_#{current_user.id}" do %>    
     <% recent_reports.each do |report| %>

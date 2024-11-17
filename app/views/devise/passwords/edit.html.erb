@@ -14,18 +14,18 @@
       <% if @minimum_password_length %>
         <em class="text-xs text-gray-500 dark:text-gray-400 block mt-1">(<%= @minimum_password_length %> characters minimum)</em>
       <% end %>
-      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
     </div>
 
     <!-- Confirm New Password Field -->
     <div>
       <%= f.label :password_confirmation, "Confirm new password", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
     </div>
 
     <!-- Submit Button -->
     <div class="flex justify-end">
-      <%= f.submit "Change my password", class: "btn primary w-full lg:w-auto px-6 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+      <%= f.submit "Change my password", class: "btn primary w-full lg:w-auto px-6 py-2 rounded-md bg-accent-600 text-white hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500" %>
     </div>
   <% end %>
 

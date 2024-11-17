@@ -5,7 +5,7 @@
     <div class="mr-auto place-self-center lg:col-span-7 xl:col-span-8">
         <!-- Main Heading -->
         <h1 class="max-w-2xl mb-4 text-4xl tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-            Your health is <span class="font-extrabold drop-shadow-lg text-blue-600"><%= health.indicator %></span>
+            Your health is <span class="font-extrabold drop-shadow-lg text-accent-600"><%= health.indicator %></span>
         </h1>
         
         <!-- Health Remarks -->
@@ -17,11 +17,11 @@
         <% if health.score? %>
         <div class="mb-6">           
             <p class="font-light text-gray-500 dark:text-gray-400 mb-4">
-                Your score is <span class="font-bold text-blue-600 dark:text-blue-400"><%= health.score %></span> out of 100.
+                Your score is <span class="font-bold text-accent-600 dark:text-accent-400"><%= health.score %></span> out of 100.
             </p>
             <!-- Progress Bar to visualize score -->
             <div class="w-full bg-gray-200 rounded-full h-3 dark:bg-gray-700">
-                <div class="bg-blue-600 h-3 rounded-full" style="width: <%= health.score %>%;"></div>
+                <div class="bg-accent-600 h-3 rounded-full" style="width: <%= health.score %>%;"></div>
             </div>
             </div>
         <% end %>

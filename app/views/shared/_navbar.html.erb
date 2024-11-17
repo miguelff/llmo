@@ -36,7 +36,10 @@
             <span class="sr-only">Toggle sidebar</span>
           </button>
           <%= link_to root_path, class: "flex items-center justify-between mr-4" do %>
-            <%= image_tag "logo.svg", class: "mr-3 h-8", alt: "LLMon" %>
+            <%= image_tag "logo.svg", class: "mr-3 h-8", alt: Rails.configuration.application_name %>
+            <span class="font-bold text-transparent text-xl bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
+              <%= Rails.configuration.application_name %>
+            </span>
           <% end %>          
         </div>              
         <%= render 'shared/user_menu' %>

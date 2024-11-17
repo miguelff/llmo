@@ -5,7 +5,7 @@
 /*
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply py-2 px-4 bg-accent-200;
   }
 }
 */
@@ -23,7 +23,7 @@
     input[type='tel'],
     input[type='url'],
     textarea {
-        @apply rounded-md text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+        @apply rounded-md text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-accent-500 focus:border-accent-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent-500 dark:focus:border-accent-500;
     }
 
     textarea {
@@ -31,7 +31,7 @@
     }
 
     select {
-        @apply w-auto bg-gray-50 border-x-0 border-gray-300 rounded-lg text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+        @apply w-auto bg-gray-50 border-x-0 border-gray-300 rounded-lg text-center text-gray-900 text-sm focus:ring-accent-500 focus:border-accent-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent-500 dark:focus:border-accent-500;
     }
 
     p {
@@ -63,7 +63,7 @@
     }
 
     a {
-        @apply text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300;
+        @apply text-accent-600 hover:text-accent-800 dark:text-accent-400 dark:hover:text-accent-300;
     }
 }
 
@@ -72,7 +72,7 @@
         @apply font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none;
 
         &.primary {
-            @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+            @apply text-white bg-accent-700 hover:bg-accent-800 focus:ring-accent-300 dark:bg-accent-600 dark:hover:bg-accent-700 dark:focus:ring-accent-800;
         }
     }
 
