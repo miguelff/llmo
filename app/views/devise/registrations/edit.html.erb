@@ -1,5 +1,5 @@
-<div class="centered-container bg-white shadow-lg rounded-lg p-8 w-full max-w-lg mx-auto mt-10 border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-  <h2 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-6">Edit <%= resource_name.to_s.humanize %></h2>
+<div class="centered-container bg-white shadow-lg rounded-lg p-8 w-full max-w-lg mx-auto mt-10 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800">
+  <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-300 mb-6">Edit <%= resource_name.to_s.humanize %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-5" }) do |f| %>
     <!-- Error Messages -->
@@ -7,8 +7,8 @@
 
     <!-- Email Field -->
     <div>
-      <%= f.label :email, "Email", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
+      <%= f.label :email, "Email", class: "block text-sm font-medium text-zinc-800 dark:text-zinc-300" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 block w-full px-3 py-2 border border-zinc-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-zinc-950 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-zinc-300" %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -20,35 +20,35 @@
 
     <!-- Password Field -->
     <div>
-      <%= f.label :password, "New Password", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-      <em class="text-xs text-gray-500 dark:text-gray-400">(leave blank if you don't want to change it)</em>
-      <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
+      <%= f.label :password, "New Password", class: "block text-sm font-medium text-zinc-800 dark:text-zinc-300" %>
+      <em class="text-xs text-zinc-500 dark:text-zinc-400">(leave blank if you don't want to change it)</em>
+      <%= f.password_field :password, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-zinc-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-zinc-950 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-zinc-300" %>
       <% if @minimum_password_length %>
-        <em class="text-xs text-gray-500 dark:text-gray-400 block mt-1"><%= @minimum_password_length %> characters minimum</em>
+        <em class="text-xs text-zinc-500 dark:text-zinc-400 block mt-1"><%= @minimum_password_length %> characters minimum</em>
       <% end %>
     </div>
 
     <!-- Password Confirmation Field -->
     <div>
-      <%= f.label :password_confirmation, "Confirm New Password", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
+      <%= f.label :password_confirmation, "Confirm New Password", class: "block text-sm font-medium text-zinc-800 dark:text-zinc-300" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-1 block w-full px-3 py-2 border border-zinc-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-zinc-950 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-zinc-300" %>
     </div>
 
     <!-- Current Password Field -->
     <div>
-      <%= f.label :current_password, "Current Password", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-      <em class="text-xs text-gray-500 dark:text-gray-400">(we need your current password to confirm your changes)</em>
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-300" %>
+      <%= f.label :current_password, "Current Password", class: "block text-sm font-medium text-zinc-800 dark:text-zinc-300" %>
+      <em class="text-xs text-zinc-500 dark:text-zinc-400">(we need your current password to confirm your changes)</em>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "mt-1 block w-full px-3 py-2 border border-zinc-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-zinc-950 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-zinc-300" %>
     </div>
 
     <!-- Submit Button -->
     <div class="flex justify-end">
-      <%= f.submit "Update", class: "btn primary w-full lg:w-auto px-6 py-2 rounded-md bg-accent-600 text-white hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500" %>
+      <%= f.submit "Update", class: "btn primary w-full lg:w-auto px-6 py-2 rounded-md bg-primary-600 text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500" %>
     </div>
   <% end %>
 
   <!-- Cancel Account Section -->
-  <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mt-10">Cancel my account</h3>
+  <h3 class="text-xl font-semibold text-zinc-800 dark:text-zinc-300 mt-10">Cancel my account</h3>
   <div class="bg-red-50 text-red-700 border-l-4 border-red-500 p-4 rounded mt-4 dark:bg-red-900 dark:text-red-300">
     Unhappy? 
     <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" %>
@@ -56,6 +56,6 @@
 
   <!-- Back Link -->
   <div class="mt-4">
-    <%= link_to "Back", :back, class: "text-accent-600 hover:underline dark:text-accent-400" %>
+    <%= link_to "Back", :back, class: "text-primary-600 hover:underline dark:text-primary-400" %>
   </div>
 </div>

@@ -1,25 +1,25 @@
-<div class="card p-6 shadow-lg rounded-lg dark:bg-gray-800">
-    <h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Brand Perception</h2>
-    <p class="mb-6 text-gray-500 dark:text-gray-400 text-lg group">
-        What <span class="font-bold text-accent-600 dark:text-accent-400">ChatGPT</span> is saying about     
+<div class="card p-6 shadow-lg rounded-lg dark:bg-zinc-900">
+    <h2 class="text-3xl font-semibold text-zinc-950 dark:text-white mb-4">Brand Perception</h2>
+    <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg group">
+        What <span class="font-bold text-primary-600 dark:text-primary-400">ChatGPT</span> is saying about     
         <% if @report.brand_info.present? %>
         <span class="relative underline cursor-pointer">
             your brand            
-            <span class="absolute left-0 mt-1 hidden group-hover:block bg-gray-900 text-white text-xs rounded-lg px-2 py-1 shadow-lg z-10 dark:bg-gray-700">
+            <span class="absolute left-0 mt-1 hidden group-hover:block bg-zinc-950 text-white text-xs rounded-lg px-2 py-1 shadow-lg z-10 dark:bg-zinc-800">
                 <%= @report.brand_info %>
             </span>
         </span>                
         <% else %>     
             <%= @report.query %>
         <% end %>   
-        when asked about <span class="font-bold text-accent-600 dark:text-accent-400"><%= @report.query %></span>
+        when asked about <span class="font-bold text-primary-600 dark:text-primary-400"><%= @report.query %></span>
     </p>
     
     <ul>
         <% presenter.perception.each do |citation| %>
-            <li class="flex items-start text-gray-700 dark:text-gray-300 text-lg mb-3 group">
+            <li class="flex items-start text-zinc-800 dark:text-zinc-300 text-lg mb-3 group">
                 <!-- Icon -->
-                <span class="mr-3 text-accent-600 dark:text-accent-400">•</span>                
+                <span class="mr-3 text-primary-600 dark:text-primary-400">•</span>                
                 <span class="relative">
                     <%= citation %>                    
                 </span>

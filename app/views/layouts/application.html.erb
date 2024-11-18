@@ -29,7 +29,7 @@
                 show: false
               }
             },         
-            colors: ["#3b82f6"],
+            colors: ["#a855f7"],
             grid: {
               borderColor: "#40475D"
             }         
@@ -37,14 +37,13 @@
     </script>
     <%= Sentry.get_trace_propagation_meta.html_safe %>
   </head>
-  <body class="dark bg-gray-50 dark:bg-gray-900">
+  <body class="dark bg-zinc-50 dark:bg-zinc-950">
     <%= render "shared/notices" %>    
     
     <% if content_for?(:center) %>
       <%= content_for(:center) %>
     <% else %>
-      <%= render 'shared/navbar' %>
-      <main class="antialiased bg-gray-50 dark:bg-gray-900 pt-20">        
+      <main class="antialiased bg-zinc-50 dark:bg-zinc-950 pt-20">        
         <div class="flex-1 min-h-screen">
           <%= yield %>
         </div>
@@ -52,7 +51,7 @@
     <% end %>
 
     <% if content_for?(:footer) %>
-      <footer class="bg-gray-800 py-4">
+      <footer class="light:bg-zinc-300 dark:bg-zinc-900 py-4">
         <%= yield :footer %>
       </footer>
     <% end %>

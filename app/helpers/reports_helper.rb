@@ -29,7 +29,7 @@ module ReportsHelper
         ],
         [
                 "Countries",
-                ISO3166::Country.all.map { |c| [ "#{c.emoji_flag} #{c.iso_short_name}", c.iso_short_name ] }
+                ISO3166::Country.all.sort_by { |c| c.iso_short_name }.map { |c| [ "#{c.emoji_flag} #{c.iso_short_name}", c.iso_short_name ] }
         ]
     ]
   end

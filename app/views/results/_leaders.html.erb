@@ -1,7 +1,7 @@
  <div class="leaders p-6">        
-    <h2 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Leaders</h2>
+    <h2 class="text-3xl font-semibold text-zinc-950 dark:text-white mb-4">Leaders</h2>
     
-    <p class="mb-6 text-gray-500 dark:text-gray-400 text-lg">
+    <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg">
         <% if presenter.brand_health&.indicator&.in?(%i(best)) %>
             <span>🚀 Your brand is the leader for <%= @report.query %></span>
         <% end %>

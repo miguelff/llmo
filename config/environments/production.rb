@@ -58,16 +58,22 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  # config.action_mailer.default_url_options = { host: ENV.fetch("WEB_HOST") }
+  config.action_mailer.default_url_options = { host: "llmo.fly.dev" }
 
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
+# Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:         "smtp.gmail.com",
+  port:            587,
+  domain:          "llmo.fly.dev",
+  user_name:       "#{Rails.application.credentials.dig(:smtp, :user_name)}@gmail.com",
+  password:        Rails.application.credentials.dig(:smtp, :password),
+  authentication:  "plain",
+  enable_starttls: true,
+  open_timeout:    5,
+  read_timeout:    5
+}
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

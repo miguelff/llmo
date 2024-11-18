@@ -2,38 +2,38 @@
     
 <div class="grid max-w-screen-xl px-12 py-8 mx-auto lg:gap-12 xl:gap-0 lg:py-16 lg:grid-cols-12">
     <!-- Left Section (Text Content) -->
-    <div class="mr-auto place-self-center lg:col-span-7 xl:col-span-8">
+    <div class="mr-auto place-self-center lg:col-span-7">
         <!-- Main Heading -->
         <h1 class="max-w-2xl mb-4 text-4xl tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-            Your health is <span class="font-extrabold drop-shadow-lg text-accent-600"><%= health.indicator %></span>
+            Your health is <span class="font-extrabold drop-shadow-lg text-primary-600"><%= health.indicator %></span>
         </h1>
         
         <!-- Health Remarks -->
-        <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+        <p class="max-w-2xl mb-6 font-light text-zinc-500 lg:mb-8 md:text-lg lg:text-xl dark:text-zinc-400">
             <%= health.remarks %>
         </p>
 
         <!-- New Section: Competitor Comparison -->
         <% if health.score? %>
         <div class="mb-6">           
-            <p class="font-light text-gray-500 dark:text-gray-400 mb-4">
-                Your score is <span class="font-bold text-accent-600 dark:text-accent-400"><%= health.score %></span> out of 100.
+            <p class="font-light text-zinc-500 dark:text-zinc-400 mb-4">
+                Your score is <span class="font-bold text-primary-600 dark:text-primary-400"><%= health.score %></span> out of 100.
             </p>
             <!-- Progress Bar to visualize score -->
-            <div class="w-full bg-gray-200 rounded-full h-3 dark:bg-gray-700">
-                <div class="bg-accent-600 h-3 rounded-full" style="width: <%= health.score %>%;"></div>
+            <div class="w-full bg-zinc-200 rounded-full h-3 dark:bg-zinc-800">
+                <div class="bg-primary-600 h-3 rounded-full" style="width: <%= health.score %>%;"></div>
             </div>
             </div>
         <% end %>
         
         <!-- Call to Action / Next Steps -->
-        <div class="text-sm text-left text-gray-500 dark:text-gray-300 mt-4">
+        <div class="text-sm text-left text-zinc-500 dark:text-zinc-300 mt-4">
             Follow along to understand <span class="font-bold">what you can do about it.</span>
         </div>
     </div>
 
     <!-- Right Section (Image) -->
-    <div class="hidden lg:mt-0 lg:col-span-5 xl:col-span-4 lg:flex">
-        <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mobile-app.svg" alt="phone illustration" class="max-w-full h-auto">
+    <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+        <%= image_tag "brand-health/bad.svg", class: "max-w-full h-auto" %>
     </div>
 </div>

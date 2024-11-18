@@ -17,7 +17,7 @@ module Web
     config.autoload_lib(ignore: %w[assets tasks])
 
     # Application name
-    config.application_name = "Brandai"
+    config.application_name = "brand.ai"
 
     # Configuration for the application, engines, and railties goes here.
     #
