@@ -15,7 +15,7 @@ export default class extends Controller {
             // Create and show toast notification
             const toast = document.createElement('div')
             toast.className =
-                'fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg'
+                'fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900go  px-6 py-3 rounded-lg shadow-lg'
             toast.textContent = this.successMessageValue
             document.body.appendChild(toast)
 
