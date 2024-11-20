@@ -143,7 +143,7 @@ module OpenAI
             }
           }
         )
-                
+
         content = JSON.parse(response["choices"][0]["message"]["content"])
 
         if response["choices"][0]["message"]["refusal"]
