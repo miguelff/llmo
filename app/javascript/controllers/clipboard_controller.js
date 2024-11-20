@@ -7,7 +7,6 @@ export default class extends Controller {
     }
 
     async copy(event) {
-        debugger
         event.preventDefault()
 
         try {

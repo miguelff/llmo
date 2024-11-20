@@ -14,11 +14,11 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/result
-  def result    
+  def result
     if @report.result.nil?
       redirect_to @report, status: :see_other, notice: "Report result is not ready yet"
     elsif current_user.nil?
-      render layout: "application" 
+      render layout: "application"
     else
       render
     end
