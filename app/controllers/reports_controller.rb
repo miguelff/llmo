@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[ show result update destroy retry clone]
 
   skip_before_action :verify_authenticity_token, only: :update
-  skip_before_action :authenticate_user!, only: :update
+  skip_before_action :authenticate_user!, only: [ :update, :result ]
 
   # GET /reports/1 or /reports/1.json
   def show
@@ -14,9 +14,13 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/result
-  def result
+  def result    
     if @report.result.nil?
       redirect_to @report, status: :see_other, notice: "Report result is not ready yet"
+    elsif current_user.nil?
+      render layout: "application" 
+    else
+      render
     end
   end
 
