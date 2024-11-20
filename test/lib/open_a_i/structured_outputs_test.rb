@@ -15,7 +15,6 @@ class OpenAI::StructuredOutputsTest < ActiveSupport::TestCase
 
     client = OpenAI::StructuredOutputs::OpenAIClient.new
 
-    binding.pry
     response = client.parse(
       model: "gpt-4o",
       messages: [

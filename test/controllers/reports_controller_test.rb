@@ -13,12 +13,12 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
       post reports_url, params: { report: { query: @report.query, cohort: @report.cohort, brand_info: @report.brand_info, region: @report.region } }
     end
 
-    report = Report.last
+    report = Report.order(created_at: :desc).first
     assert_equal "Women 45+", report.cohort
     assert_equal "Volvo XC40", report.brand_info
     assert_equal "any", report.region
     assert_equal "pending", report.status
 
-    assert_redirected_to report_url(Report.last.reload)
+    assert_redirected_to report_url(report)
   end
 end
