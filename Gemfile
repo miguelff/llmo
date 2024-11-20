@@ -89,3 +89,9 @@ group :test do
   gem "selenium-webdriver"
   gem "rspec-rails", "~> 7.0.0"
 end
+
+gem "ruby-openai", "~> 7.3"
+
+gem "dry-schema", "~> 1.13"
+
+gem "hashie", "~> 5.0"

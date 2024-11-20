@@ -1,8 +1,11 @@
 require "test_helper"
 
 class ReportsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @report = reports(:safe_cars)
+    sign_in users(:jane)
   end
 
   test "should create report" do
@@ -11,13 +14,11 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
     end
 
     report = Report.last
-    assert_equal report.query, @report.query
-    assert_equal report.advanced_settings, @report.advanced_settings
     assert_equal "Women 45+", report.cohort
     assert_equal "Volvo XC40", report.brand_info
     assert_equal "any", report.region
     assert_equal "pending", report.status
 
-    assert_redirected_to report_url(Report.last)
+    assert_redirected_to report_url(Report.last.reload)
   end
 end

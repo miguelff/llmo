@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 safe_cars:
+    id: 550e8400-e29b-41d4-a716-446655440000
     owner_type: 'User'
     owner_id: 1
     query: Safe cars
