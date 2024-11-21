@@ -130,6 +130,9 @@ module OpenAI
 
     # Client class for interacting with OpenAI API
     class OpenAIClient
+      attr_reader :client
+      delegate :chat, to: :client
+
       def initialize
         OpenAI.configure do |config|
           config.access_token = Rails.application.credentials.processor[:OPENAI_API_KEY]

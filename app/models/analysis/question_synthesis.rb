@@ -5,7 +5,7 @@ class Analysis::QuestionSynthesis < ApplicationRecord
     validates_presence_of :questions_count, message: "Questions count is required"
 
     schema do
-        define :question do
+        define :answer do
             string :question
         end
         array :questions, items: ref(:question)

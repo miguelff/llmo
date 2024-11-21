@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o","temperature":0.0,"messages":[{"role":"user","content":"Welche
+        Automarken bieten die sichersten Fahrzeuge für Frauen über 45 Jahren an?.
+        Return brands and models of products and/or services and explain why you chose
+        those and not others. Use the search tool to obtain information and support
+        results. Include URLs of the consulted sites or specialized websites, do not
+        include sources that are the official sites of the mentioned brand, product,
+        or service."}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 21 Nov 2024 17:37:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '10963'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '800000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '799881'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 8ms
+      X-Request-Id:
+      - req_63c7ab981e4078be6d77965a48ae57be
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=2nxzXRUBw5v198tIX1QgGffyAsCh58Ot2HpMSHOPwYQ-1732210620-1.0.1.1-Tut9sedx3jRX40eMlKAhxH31WNSpFHFzWw9gMYplPA0CpTCjR0W1pEGJZwwnKSWvT2WPGa.NN56vkpxx_xMuHA;
+        path=/; expires=Thu, 21-Nov-24 18:07:00 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=OCYeMIEVnDH9HIC_IdBXIlaHKSSkJBy3CabxRNd7QUg-1732210620600-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e6271b54d06cbea-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BVzVPanZQVWllVlJwalphOHJRM0ZhTWRGaUhxaSIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjIxMDYwOSwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogIlVtIGRpZSBzaWNoZXJzdGVuIEZhaHJ6ZXVnZSBmw7xyIEZyYXVlbiDDvGJlciA0NSBKYWhyZW4genUgaWRlbnRpZml6aWVyZW4sIGlzdCBlcyB3aWNodGlnLCBhdWYgQXV0b21hcmtlbiB1bmQgTW9kZWxsZSB6dSBhY2h0ZW4sIGRpZSBpbiBTaWNoZXJoZWl0c2Jld2VydHVuZ2VuIHVuZCBUZXN0cyBndXQgYWJzY2huZWlkZW4uIEhpZXIgc2luZCBlaW5pZ2UgTWFya2VuIHVuZCBNb2RlbGxlLCBkaWUgZsO8ciBpaHJlIFNpY2hlcmhlaXRzbWVya21hbGUgYmVrYW5udCBzaW5kOlxuXG4xLiAqKlZvbHZvKio6IFxuICAgLSBNb2RlbGxlIHdpZSBkZXIgVm9sdm8gWEM2MCB1bmQgZGVyIFZvbHZvIFM2MCBzaW5kIGJla2FubnQgZsO8ciBpaHJlIGZvcnRzY2hyaXR0bGljaGVuIFNpY2hlcmhlaXRzbWVya21hbGUuIFZvbHZvIGhhdCBlaW5lbiBoZXJ2b3JyYWdlbmRlbiBSdWYgZsO8ciBTaWNoZXJoZWl0IHVuZCBpc3Qgb2Z0IFZvcnJlaXRlciBiZWkgZGVyIEVpbmbDvGhydW5nIG5ldWVyIFNpY2hlcmhlaXRzaW5ub3ZhdGlvbmVuLlxuICAgLSBRdWVsbGU6IFtJSUhTIC0gVm9sdm8gU2FmZXR5IFJhdGluZ3NdKGh0dHBzOi8vd3d3LmlpaHMub3JnL3JhdGluZ3Mvdm9sdm8pXG5cbjIuICoqU3ViYXJ1Kio6XG4gICAtIERlciBTdWJhcnUgT3V0YmFjayB1bmQgZGVyIFN1YmFydSBGb3Jlc3RlciBzaW5kIGJla2FubnQgZsO8ciBpaHJlIFNpY2hlcmhlaXRzbWVya21hbGUsIGVpbnNjaGxpZcOfbGljaCBkZXMgRXllU2lnaHQtU3lzdGVtcywgZGFzIEZhaHJlcmFzc2lzdGVuemZ1bmt0aW9uZW4gYmlldGV0LlxuICAgLSBRdWVsbGU6IFtJSUhTIC0gU3ViYXJ1IFNhZmV0eSBSYXRpbmdzXShodHRwczovL3d3dy5paWhzLm9yZy9yYXRpbmdzL3N1YmFydSlcblxuMy4gKipUb3lvdGEqKjpcbiAgIC0gTW9kZWxsZSB3aWUgZGVyIFRveW90YSBDYW1yeSB1bmQgZGVyIFRveW90YSBSQVY0IGJpZXRlbiB1bWZhc3NlbmRlIFNpY2hlcmhlaXRzbWVya21hbGUgdW5kIGhhYmVuIGluIENyYXNodGVzdHMgZ3V0IGFiZ2VzY2huaXR0ZW4uXG4gICAtIFF1ZWxsZTogW0lJSFMgLSBUb3lvdGEgU2FmZXR5IFJhdGluZ3NdKGh0dHBzOi8vd3d3LmlpaHMub3JnL3JhdGluZ3MvdG95b3RhKVxuXG40LiAqKkhvbmRhKio6XG4gICAtIERlciBIb25kYSBDUi1WIHVuZCBkZXIgSG9uZGEgQWNjb3JkIHNpbmQgZsO8ciBpaHJlIFNpY2hlcmhlaXRzbWVya21hbGUgdW5kIFp1dmVybMOkc3NpZ2tlaXQgYmVrYW5udC4gU2llIGJpZXRlbiBmb3J0c2Nocml0dGxpY2hlIEZhaHJlcmFzc2lzdGVuenN5c3RlbWUuXG4gICAtIFF1ZWxsZTogW0lJSFMgLSBIb25kYSBTYWZldHkgUmF0aW5nc10oaHR0cHM6Ly93d3cuaWlocy5vcmcvcmF0aW5ncy9ob25kYSlcblxuNS4gKipNYXpkYSoqOlxuICAgLSBEZXIgTWF6ZGEgQ1gtNSBpc3QgZWluIHdlaXRlcmVzIE1vZGVsbCwgZGFzIGbDvHIgc2VpbmUgU2ljaGVyaGVpdHNtZXJrbWFsZSB1bmQgc2VpbmUgZ3V0ZSBMZWlzdHVuZyBpbiBDcmFzaHRlc3RzIGJla2FubnQgaXN0LlxuICAgLSBRdWVsbGU6IFtJSUhTIC0gTWF6ZGEgU2FmZXR5IFJhdGluZ3NdKGh0dHBzOi8vd3d3LmlpaHMub3JnL3JhdGluZ3MvbWF6ZGEpXG5cbkRpZXNlIE1hcmtlbiB1bmQgTW9kZWxsZSB3dXJkZW4gYXVmZ3J1bmQgaWhyZXIgaG9oZW4gQmV3ZXJ0dW5nZW4gaW4gU2ljaGVyaGVpdHNiZXdlcnR1bmdlbiB1bmQgaWhyZXIgQXVzc3RhdHR1bmcgbWl0IGZvcnRzY2hyaXR0bGljaGVuIFNpY2hlcmhlaXRzbWVya21hbGVuIGF1c2dld8OkaGx0LiBEaWUgSW5zdXJhbmNlIEluc3RpdHV0ZSBmb3IgSGlnaHdheSBTYWZldHkgKElJSFMpIHVuZCBkaWUgTmF0aW9uYWwgSGlnaHdheSBUcmFmZmljIFNhZmV0eSBBZG1pbmlzdHJhdGlvbiAoTkhUU0EpIHNpbmQgenV2ZXJsw6Rzc2lnZSBRdWVsbGVuIGbDvHIgU2ljaGVyaGVpdHNiZXdlcnR1bmdlbiwgZGllIGJlaSBkZXIgQXVzd2FobCBiZXLDvGNrc2ljaHRpZ3Qgd3VyZGVuLiBcblxuRGllIGdlbmFubnRlbiBNb2RlbGxlIGJpZXRlbiBlaW5lIEtvbWJpbmF0aW9uIGF1cyBha3RpdmVuIHVuZCBwYXNzaXZlbiBTaWNoZXJoZWl0c21lcmttYWxlbiwgZGllIGJlc29uZGVycyBmw7xyIEZhaHJlcmlubmVuIMO8YmVyIDQ1IEphaHJlbiB2b24gVm9ydGVpbCBzZWluIGvDtm5uZW4sIGRhIHNpZSBvZnQgV2VydCBhdWYgWnV2ZXJsw6Rzc2lna2VpdCB1bmQgdW1mYXNzZW5kZSBTaWNoZXJoZWl0c2F1c3N0YXR0dW5nIGxlZ2VuLiIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDgyLAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogNDk4LAogICAgInRvdGFsX3Rva2VucyI6IDU4MCwKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF84MzFlMDY3ZDgyIgp9Cg==
+  recorded_at: Thu, 21 Nov 2024 17:37:00 GMT
+recorded_with: VCR 6.3.1
