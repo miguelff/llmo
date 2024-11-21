@@ -19,6 +19,8 @@ module Web
     # Application name
     config.application_name = "brand.ai"
 
+    config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info").to_sym
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

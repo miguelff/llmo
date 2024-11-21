@@ -4,11 +4,16 @@ module Analysis::InferenceStep
     included do
         class_attribute :output_schema, :system_prompt
         after_initialize :set_default_values
+        attribute :language, :string, default: Analysis::DEFAULT_LANGUAGE
     end
 
     module ClassMethods
-        def schema(schema, &block)
-            self.output_schema = schema
+        def schema(schema)
+            if schema.is_a?(String)
+                self.output_schema = { language: Analysis::DEFAULT_LANGUAGE, schema: schema }
+            else
+                self.output_schema = schema
+            end
         end
 
         def system(prompt)
@@ -22,16 +27,22 @@ module Analysis::InferenceStep
 
     def structured_inference(message)
         messages = [ { role: :user, content: message } ]
+
         if self.class.system_prompt.present?
-            messages.unshift({ role: :system, content: self.class.system_prompt })
+            language_specific_prompt = self.class.system_prompt[self.language]
+            raise "No system prompt defined for language #{self.language}" if language_specific_prompt.blank?
+            messages.unshift({ role: :system, content: language_specific_prompt })
         end
 
-        client.parse(
+        Rails.logger.debug("Sending message to #{self.provider} (#{self.model}): #{messages.inspect}")
+        result = client.parse(
             model: self.model,
             temperature: self.temperature,
-            messages: [ { role: "user", content: "Give me a random output that matches the schema" } ],
+            messages: messages,
             response_format: self.output_schema
         )
+        Rails.logger.debug("Received response from #{self.provider} (#{self.model}): #{result.inspect}")
+        result
     end
 
     def perform_and_save

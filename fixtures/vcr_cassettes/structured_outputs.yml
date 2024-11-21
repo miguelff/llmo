@@ -8,7 +8,7 @@ http_interactions:
       string: '{"model":"gpt-4o","messages":[{"role":"user","content":"Give me a random
         output that matches the schema"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"simple","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"greeting":{"type":"string"},"age":{"type":"number"},"friends":{"type":"array","items":{"name":"friends","description":"Schema
-        for the structured response","schema":{"type":"object","properties":{"name":{"type":"string"}},"required":["name"],"additionalProperties":false,"strict":true,"$defs":{}}}}},"required":["greeting","age","friends"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
+        for the structured response","schema":{"type":"object","properties":{"name":{"type":"string"}},"required":["name"],"additionalProperties":false,"strict":true,"$defs":{}}},"description":null}},"required":["greeting","age","friends"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
     headers:
       Content-Type:
       - application/json
@@ -22,15 +22,15 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Date:
-      - Wed, 20 Nov 2024 20:06:41 GMT
+      - Thu, 21 Nov 2024 12:21:25 GMT
       Content-Type:
       - application/json
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '199'
       Connection:
       - keep-alive
       Access-Control-Expose-Headers:
@@ -38,7 +38,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '873'
+      - '15'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -54,61 +54,35 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 2ms
       X-Request-Id:
-      - req_d018018b309746d2dd107e04fd9da20a
+      - req_5cd7ccd8f9e96f8d20a035e55ae2fe9c
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=9nc4NFyoVFPgk_H7DpK5iTrFyPWlw28aCVj4DwvU258-1732133201-1.0.1.1-g7BkqPKS.Gx.QABflTdpEpj7ra2059WLUIFoP.tLj0ScMt9KnE3RtJcySSW5E7n5wEKpFqRq8f8tS8Xn.5KS_Q;
-        path=/; expires=Wed, 20-Nov-24 20:36:41 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=6WliHwWkNrem7BgZnsFW3_tCTCsihrIOMrKRfAzeCDI-1732191685-1.0.1.1-Qra.tQm6Hrvs6Rl9yaJpFtW9cKMhIKNQluDU7iNAOz6uMpvYI.XMcuL2_swjAbdHjc1rC4St6OWDJXaf9uhTbA;
+        path=/; expires=Thu, 21-Nov-24 12:51:25 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=teOudfbBXtphAKwOe9YSFukOYRZEM1GOzAYwClnjiog-1732133201565-0.0.1.1-604800000;
+      - _cfuvid=UYNlCHUZsb_RZuP_ssliaXSSCuZvrQHTir7Xd5yl1ng-1732191685218-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e5b0fd65a58eca5-MAD
+      - 8e60a3af98393144-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
-      encoding: ASCII-8BIT
-      string: |
+      encoding: UTF-8
+      string: |-
         {
-          "id": "chatcmpl-AVlGCac1d9XGYMlFK8ox2IDx5xAt7",
-          "object": "chat.completion",
-          "created": 1732133200,
-          "model": "gpt-4o-2024-08-06",
-          "choices": [
-            {
-              "index": 0,
-              "message": {
-                "role": "assistant",
-                "content": "{\"greeting\":\"Hello, world!\",\"age\":25,\"friends\":[{\"name\":\"Alice\"},{\"name\":\"Bob\"},{\"name\":\"Charlie\"}]}",
-                "refusal": null
-              },
-              "logprobs": null,
-              "finish_reason": "stop"
-            }
-          ],
-          "usage": {
-            "prompt_tokens": 114,
-            "completion_tokens": 29,
-            "total_tokens": 143,
-            "prompt_tokens_details": {
-              "cached_tokens": 0,
-              "audio_tokens": 0
-            },
-            "completion_tokens_details": {
-              "reasoning_tokens": 0,
-              "audio_tokens": 0,
-              "accepted_prediction_tokens": 0,
-              "rejected_prediction_tokens": 0
-            }
-          },
-          "system_fingerprint": "fp_7f6be3efb0"
+          "error": {
+            "message": "Invalid schema for response_format 'simple': None is not of type 'string'.",
+            "type": "invalid_request_error",
+            "param": "response_format",
+            "code": null
+          }
         }
-  recorded_at: Wed, 20 Nov 2024 20:06:41 GMT
+  recorded_at: Thu, 21 Nov 2024 12:21:25 GMT
 recorded_with: VCR 6.3.1

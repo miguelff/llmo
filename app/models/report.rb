@@ -23,7 +23,10 @@ class Report < ApplicationRecord
     before_create :maybe_assign_id
     after_create_commit :process_report
     after_update_commit :refresh_report_status
+
     has_one :result, dependent: :destroy
+    has_one :language_detection, dependent: :destroy, class_name: "Analysis::LanguageDetection"
+    has_one :question_synthesis, dependent: :destroy, class_name: "Analysis::QuestionSynthesis"
     belongs_to :owner, polymorphic: true
 
     scope :recent, -> { order(created_at: :desc).limit(10) }

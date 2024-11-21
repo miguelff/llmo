@@ -3,9 +3,11 @@ class Analysis::LanguageDetection < ApplicationRecord
 
     belongs_to :report
 
-    schema(OpenAI::StructuredOutputs::Schema.new("language_detection") do
-        string :language, enum: Analysis::SUPPORTED_LANGUAGES, description: "The detected language of the input text"
-    end)
+    schema begin
+        OpenAI::StructuredOutputs::Schema.new("language_detection") do
+            string :language, enum: Analysis::SUPPORTED_LANGUAGES, description: "The detected language of the input text"
+        end
+    end
 
     system <<-EOF.squish
         You are an assistant specialized in language detection.
@@ -15,7 +17,7 @@ class Analysis::LanguageDetection < ApplicationRecord
     EOF
 
     def perform
-        language = structured_inference(user: "Input: #{self.report.query} #{self.report.cohort.presence}")
+        language = structured_inference("Input: #{self.report.query} #{self.report.cohort.presence}")
         unless language.refusal.present?
             self.language = language.parsed.language
         else

@@ -4,4 +4,5 @@ module Analysis
   end
 
   SUPPORTED_LANGUAGES = %i[spa eng]
+  DEFAULT_LANGUAGE = :eng
 end

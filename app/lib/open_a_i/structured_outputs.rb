@@ -66,8 +66,8 @@ module OpenAI
       end
 
       # Define an array property
-      def array(name, items:)
-        add_property(name, { type: "array", items: items })
+      def array(name, items:, description: nil)
+        add_property(name, { type: "array", items: items, description: description })
       end
 
       # Define an anyOf property
