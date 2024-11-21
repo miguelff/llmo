@@ -1,0 +1,119 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Generate
+        5 questions about \"Safe cars\"\nRegion context: The questions should be tailored
+        for any, considering local preferences, pricing, and availability.\nUser context:
+        The questions should be relevant for Women 45+.\nFollow these guidelines:\n-
+        Keep questions focused specifically on Safe cars\n- Tailor questions to the
+        provided context\n- Vary the phrasing while maintaining relevance\n- Focus
+        on gathering information that will help recommend specific products/brands\n\nQuestions:"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"$ref":"#/$defs/question"},"description":"A
+        collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{"question":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true}}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 21 Nov 2024 15:56:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '1259'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999863'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 2ms
+      X-Request-Id:
+      - req_7c66ff85595d4024fc5a4e4edce5f671
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=KPGd5CvOW9AKGpwdyTQcTZJBe8WNSTm5T62mFUWj53U-1732204578-1.0.1.1-17ICychq085rvXMmJI1quahnxDqOD7t7qcLm5Xgxe0F9sV6SoCOk5gbmCaUL872qC122dVh4bIGhG111WLKz_w;
+        path=/; expires=Thu, 21-Nov-24 16:26:18 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=NTrvIvBN0Urz5wxovD6_OFc1P36gh9JHZ1Pg7XmPiVY-1732204578114-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e61de6bddd2cfe7-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AW3pQiIblLIueml5YEyG1anFUrxOV",
+          "object": "chat.completion",
+          "created": 1732204576,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"questions\":[{\"question\":\"What safety features do you prioritize when considering a car, such as advanced driver assistance systems or crash test ratings?\"},{\"question\":\"Are there specific brands or models of cars that you feel are particularly reliable and safe for women over 45?\"},{\"question\":\"How important is the availability of safety technology, like lane-keeping assist or automatic emergency braking, in your car buying decision?\"},{\"question\":\"What is your budget range for purchasing a safe car, and do you prefer new or certified pre-owned vehicles?\"},{\"question\":\"Have you had any experiences with car safety recalls or issues that have influenced your perception of certain car brands?\"}]}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 178,
+            "completion_tokens": 132,
+            "total_tokens": 310,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Thu, 21 Nov 2024 15:56:18 GMT
+recorded_with: VCR 6.3.1

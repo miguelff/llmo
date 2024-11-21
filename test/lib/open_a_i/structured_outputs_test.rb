@@ -2,15 +2,17 @@ require "test_helper"
 
 class OpenAI::StructuredOutputsTest < ActiveSupport::TestCase
   test "client returns JSON matching simple schema" do
-    friend = OpenAI::StructuredOutputs::Schema.new("friends") do
-      string :name
-    end
-
-    # Define a simple schema with one field
-    schema = OpenAI::StructuredOutputs::Schema.new("simple") do
-      string :greeting
-      number :age
-      array :friends, items: friend
+    class Response < OpenAI::StructuredOutputs::Schema
+      def initialize
+        super("foo") do
+          define :friend do
+            string :name
+          end
+          array :friends, items: ref(:friend)
+          string :greeting
+          number :age
+        end
+      end
     end
 
     client = OpenAI::StructuredOutputs::OpenAIClient.new
@@ -18,10 +20,10 @@ class OpenAI::StructuredOutputsTest < ActiveSupport::TestCase
     VCR.use_cassette("structured_outputs") do
         response = client.parse(
           model: "gpt-4o",
-        messages: [
-          { role: "user", content: "Give me a random output that matches the schema" }
-        ],
-        response_format: schema
+          messages: [
+            { role: "user", content: "Give me a random output that matches the schema" }
+          ],
+          response_format: Response.new
       )
 
       assert_nil response.refusal

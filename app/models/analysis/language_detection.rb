@@ -3,10 +3,8 @@ class Analysis::LanguageDetection < ApplicationRecord
 
     belongs_to :report
 
-    schema begin
-        OpenAI::StructuredOutputs::Schema.new("language_detection") do
-            string :language, enum: Analysis::SUPPORTED_LANGUAGES, description: "The detected language of the input text"
-        end
+    schema do
+        string :language, enum: Analysis::SUPPORTED_LANGUAGES, description: "The detected language of the input text"
     end
 
     system <<-EOF.squish

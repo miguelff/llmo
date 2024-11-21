@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Genera
+        5 preguntas sobre \"Safe cars\"\nContexto regional: Las preguntas deben estar
+        adaptadas para any, considerando la existencia de productos, marcas y servicios
+        en esta región\nContexto del usuario: Las preguntas deben ser relevantes para
+        Women 45+.\nSigue estas pautas:\n- Mantén las preguntas enfocadas específicamente
+        en Safe cars\n- Adapta las preguntas al contexto regional proporcionado\n-
+        Varía la formulación manteniendo la relevancia\n- Enfócate en recopilar información
+        que ayude a recomendar productos/marcas específicos\n\nPreguntas:"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"question_synthesis","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"name":"question","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true,"$defs":{}}},"description":"A
+        collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 21 Nov 2024 15:34:40 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2611'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999845'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 2ms
+      X-Request-Id:
+      - req_2bb9aba0e0f1cddbc474ea0f224e14e5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=zieuIw9d7w_ZPo98Vf4wivffj4Re9qWQjSNJBzwhHJY-1732203280-1.0.1.1-nIC.ylNsVFWYMqjuM3w1hAb_asZ6BvORI_j_xhacee0X594rOrd1vSv4DHeqFXVOEVOqBFHkbV6r8DsKNoe8eA;
+        path=/; expires=Thu, 21-Nov-24 16:04:40 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=hLfpuGjy6G2YcOcHTzmTyr5LbrHiMucDIFJrXuyozqM-1732203280023-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e61beb2fd84cc50-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BVzNVVDVScUlSSjRTMTc2WmRrNXNGUkJWcVVubiIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjIwMzI3NywKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxhcyBjYXJhY3RlcsOtc3RpY2FzIGRlIHNlZ3VyaWRhZCBtw6FzIGltcG9ydGFudGVzIHF1ZSBsYXMgbXVqZXJlcyBkZSA0NSBhw7FvcyBvIG3DoXMgZGViZW4gY29uc2lkZXJhciBhbCBlbGVnaXIgdW4gY29jaGUgc2VndXJvP1wifSx7XCJxdWVzdGlvblwiOlwiwr9RdcOpIG1hcmNhcyBkZSBhdXRvbcOzdmlsZXMgc29uIHJlY29ub2NpZGFzIHBvciBzdXMgYWx0b3MgZXN0w6FuZGFyZXMgZGUgc2VndXJpZGFkIHkgc29uIHBvcHVsYXJlcyBlbnRyZSBsYXMgbXVqZXJlcyBtYXlvcmVzIGRlIDQ1IGHDsW9zIGVuIG51ZXN0cmEgcmVnacOzbj9cIn0se1wicXVlc3Rpb25cIjpcIsK/RXhpc3RlbiBtb2RlbG9zIGRlIGNvY2hlcyBlc3BlY8OtZmljb3MgcXVlIG9mcmV6Y2FuIHRlY25vbG9nw61hIGF2YW56YWRhIGRlIHNlZ3VyaWRhZCwgY29tbyBhc2lzdGVuY2lhIGFsIGNvbmR1Y3RvciwgcXVlIHNlYW4gcmVjb21lbmRhZG9zIHBhcmEgbXVqZXJlcyBkZSBlc3RhIGVkYWQ/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv0PDs21vIGluZmx1eWVuIGxhcyBjYWxpZmljYWNpb25lcyBkZSBzZWd1cmlkYWQgZGUgbG9zIHZlaMOtY3Vsb3MgZW4gbGEgZGVjaXNpw7NuIGRlIGNvbXByYSBkZSBtdWplcmVzIGRlIDQ1IGHDsW9zIG8gbcOhcyBlbiBudWVzdHJhIMOhcmVhP1wifSx7XCJxdWVzdGlvblwiOlwiwr9RdcOpIHJlY3Vyc29zIG8gcGxhdGFmb3JtYXMgc29uIMO6dGlsZXMgcGFyYSBjb21wYXJhciBsYSBzZWd1cmlkYWQgZGUgZGlmZXJlbnRlcyBtb2RlbG9zIGRlIGNvY2hlcywgZXNwZWNpYWxtZW50ZSBwYXJhIG11amVyZXMgbWF5b3JlcyBkZSA0NSBhw7Fvcz9cIn1dfSIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDIxOCwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDE2MywKICAgICJ0b3RhbF90b2tlbnMiOiAzODEsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfMDcwNWJmODdjMCIKfQo=
+  recorded_at: Thu, 21 Nov 2024 15:34:39 GMT
+recorded_with: VCR 6.3.1

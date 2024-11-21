@@ -40,21 +40,27 @@ module OpenAI
 
       # Define a string property
       def string(name, enum: nil, description: nil)
-          add_property(name, { type: "string", enum: enum, description: description }.compact)
+          properties = { type: "string", enum: enum }
+          properties[:description] = description if description.present?
+          add_property(name, properties.compact)
       end
 
       # Define a number property
-      def number(name)
-        add_property(name, { type: "number" })
+      def number(name, description: nil)
+          properties = { type: "number" }
+          properties[:description] = description if description.present?
+          add_property(name, properties.compact)
       end
 
       # Define a boolean property
-      def boolean(name)
-        add_property(name, { type: "boolean" })
+      def boolean(name, description: nil)
+          properties = { type: "boolean" }
+          properties[:description] = description if description.present?
+          add_property(name, properties.compact)
       end
 
       # Define an object property
-      def object(name, &block)
+      def object(name, description: nil, &block)
         properties = {}
         required = []
         Schema.new.tap do |s|
@@ -62,11 +68,13 @@ module OpenAI
           properties = s.instance_variable_get(:@schema)[:properties]
           required = s.instance_variable_get(:@schema)[:required]
         end
-        add_property(name, { type: "object", properties: properties, required: required, additionalProperties: false })
+        property_definition = { type: "object", properties: properties, required: required, additionalProperties: false }
+        property_definition[:description] = description if description.present?
+        add_property(name, property_definition.compact)
       end
 
       # Define an array property
-      def array(name, items:, description: nil)
+      def array(name, items:, description: "A collection of #{name}")
         add_property(name, { type: "array", items: items, description: description })
       end
 
@@ -132,6 +140,8 @@ module OpenAI
 
       # Send a request to OpenAI API and parse the response
       def parse(model:, temperature: 0.0, messages:, response_format:)
+        response_format.to_hash.to_json
+
         response = @client.chat(
           parameters: {
             model: model,

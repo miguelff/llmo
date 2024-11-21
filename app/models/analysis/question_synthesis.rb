@@ -4,14 +4,11 @@ class Analysis::QuestionSynthesis < ApplicationRecord
     belongs_to :report, optional: false
     validates_presence_of :questions_count, message: "Questions count is required"
 
-    QUESTION = OpenAI::StructuredOutputs::Schema.new("question") do
-        string :question
-    end
-
-    schema begin
-        OpenAI::StructuredOutputs::Schema.new("question_synthesis") do
-            array :questions, items: QUESTION
+    schema do
+        define :question do
+            string :question
         end
+        array :questions, items: ref(:question)
     end
 
     system Hash.new({
@@ -122,7 +119,6 @@ class Analysis::QuestionSynthesis < ApplicationRecord
                 •	"¿Cuáles son las cafeteras compactas mejor valoradas para apartamentos pequeños en Europa?"
 
             Tu objetivo es generar preguntas que reflejen la intención y el contexto del usuario, llevando a recomendaciones específicas de productos o marcas basadas en los inputs proporcionados.`
-
         EOF
     })
 
