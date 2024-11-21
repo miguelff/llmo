@@ -3,6 +3,6 @@ module Analysis
     "analysis_"
   end
 
-  SUPPORTED_LANGUAGES = %i[spa eng]
+  SUPPORTED_LANGUAGES = %i[spa eng deu fra]
   DEFAULT_LANGUAGE = :eng
 end

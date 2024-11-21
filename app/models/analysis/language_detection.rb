@@ -12,6 +12,12 @@ class Analysis::LanguageDetection < ApplicationRecord
         Your task is to analyze text and determine its language. Return only the ISO-639-2
         three-letter language code (e.g. 'eng' for English, 'spa' for Spanish, etc.).
         If the language cannot be determined, return 'und' for undefined.
+
+        We only support a set of languages:
+
+        #{Analysis::SUPPORTED_LANGUAGES.join(", ")}
+
+        if the code is for a different language, return 'und' for undefined.
     EOF
 
     def perform

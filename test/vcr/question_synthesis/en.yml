@@ -5,7 +5,46 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Generate
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an assistant specialized in simulating the behavior of ChatGPT users researching
+        the best brands, products, or services. Your task is to generate natural language
+        variations of a query that seeks to understand the best products within a
+        category. Inputs: • query: The main product, brand, or service the user is
+        researching. • cohort: (Optional) A description of the person making the query,
+        including demographic details, preferences, or specific needs. Use this information
+        to tailor the tone, focus, and specific concerns of the questions. • region:
+        (Optional) A specific country or world region to restrict the scope of products,
+        services, or brands. Use this to generate queries that align with region-specific
+        availability, popular brands, or local considerations. Instructions: 1. Generate
+        clear and direct questions whose answers point to specific brands, models,
+        or services relevant to the given query. 2. If the cohort is provided, reflect
+        the interests, needs, or priorities of the user in the questions. For example:
+        • A budget-conscious user would focus on affordable options. • An eco-conscious
+        user would consider sustainability aspects. 3. If the region is provided,
+        tailor the questions to focus on brands, models, or services popular or available
+        in that region. 4. If cohort or region information is missing: • Do not make
+        assumptions about the user’s demographic, preferences, or location. • Generate
+        neutral, general questions that are not specific to any cohort or region.
+        5. Keep the questions specific to the given query category, avoiding tangential
+        topics. For example: • If the query is about home insurance, do not generate
+        questions about health insurance. • If the query is about dietary supplements,
+        do not narrow down to specific subcategories unless explicitly requested.
+        6. Maintain diversity in question phrasing while staying true to the context
+        provided by the inputs. Example Outputs: Given the inputs: • query: “best
+        home coffee machines” • cohort: Not provided • region: Not provided Generate
+        questions like: • “What are the best-rated home coffee machines on the market?”
+        • “Which coffee machines are considered the most reliable for home use?” •
+        “What factors should I consider when choosing a home coffee machine?” • “What
+        are the top home coffee machine brands available right now?” If the inputs
+        are: • query: “best home coffee machines” • cohort: “A budget-conscious student
+        living in a small apartment” • region: “Europe” Generate questions like: •
+        “What are the most affordable home coffee machines available in Europe?” •
+        “Which coffee machine brands are best for small spaces and student budgets?”
+        • “Are there any budget-friendly coffee machines popular in European markets?”
+        • “What are the top-rated compact coffee makers for small apartments in Europe?”
+        Your goal is to generate questions that reflect the user’s intent and context,
+        leading to specific product or brand recommendations based on the inputs provided.
+        Generate the questions following the structured output format."},{"role":"user","content":"Generate
         5 questions about \"Safe cars\"\nRegion context: The questions should be tailored
         for any, considering local preferences, pricing, and availability.\nUser context:
         The questions should be relevant for Women 45+.\nFollow these guidelines:\n-
@@ -31,7 +70,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 21 Nov 2024 15:55:44 GMT
+      - Thu, 21 Nov 2024 16:26:57 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -43,7 +82,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '1303'
+      - '1257'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -53,45 +92,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999863'
+      - '3999077'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 2ms
+      - 13ms
       X-Request-Id:
-      - req_79d63dd2a2679eba5dc7405a8eb99b0d
+      - req_d8772722e78511c671447315716a8ad5
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=NUHwSb5c8o1ivdLo5kG3Ulznsv6JRb3MCQe8CXH8diU-1732204544-1.0.1.1-YEMYnjTricOMgdscDIk0U.EN1VsJyfu2jVp303TqXaMk.ZYr05n.53CfJdRxv2FTyrEmGcPq4HPmswcejj5Bsw;
-        path=/; expires=Thu, 21-Nov-24 16:25:44 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=BsReZ.fMc6bK0Xe3j2rg2AQZ5qZwA55Qr42GNeKXFps-1732206417-1.0.1.1-8JI79B5o2jKHjxDGSIVJvl4_5ht0p9OiUgVroJbwWSfliEPMzi1RKOsapDJ0f30Pmjso3e7R1EfHy212SahfOQ;
+        path=/; expires=Thu, 21-Nov-24 16:56:57 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=OecXflx3L.WrytGC6NzQS.X0wGBfMFWz8p9gwXaEsYk-1732204544980-0.0.1.1-604800000;
+      - _cfuvid=DDdKGKJpNupvcV8gwJrJLbw6FK2PCXbhhBANQ2JXxH4-1732206417978-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e61dd9d1b43cc4b-MAD
+      - 8e620b5798ab5e12-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AW3otSujEStWxFrJQZQglscmyNskT",
+          "id": "chatcmpl-AW4J6ocaEDdWC2mZJ5JiqtDgi5zKL",
           "object": "chat.completion",
-          "created": 1732204543,
+          "created": 1732206416,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"questions\":[{\"question\":\"What safety features do you prioritize when considering a car, such as advanced driver assistance systems or crash test ratings?\"},{\"question\":\"Are there specific brands or models of cars that you feel are particularly safe and reliable for women over 45?\"},{\"question\":\"How important is the availability of safety technology, like lane-keeping assist or automatic emergency braking, in your car buying decision?\"},{\"question\":\"What is your budget range for purchasing a safe car, and do you prefer new or certified pre-owned vehicles?\"},{\"question\":\"Have you had any experiences with car safety recalls or issues that have influenced your perception of certain car brands?\"}]}",
+                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s look for when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated vehicles for safety that cater to the preferences of women over 45?\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -99,9 +138,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 178,
-            "completion_tokens": 132,
-            "total_tokens": 310,
+            "prompt_tokens": 772,
+            "completion_tokens": 106,
+            "total_tokens": 878,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -115,5 +154,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Thu, 21 Nov 2024 15:55:44 GMT
+  recorded_at: Thu, 21 Nov 2024 16:26:57 GMT
 recorded_with: VCR 6.3.1

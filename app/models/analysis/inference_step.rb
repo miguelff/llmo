@@ -29,7 +29,7 @@ module Analysis::InferenceStep
         messages = [ { role: :user, content: message } ]
 
         if self.class.system_prompt.present?
-            language_specific_prompt = self.class.system_prompt[self.language.to_sym]
+            language_specific_prompt = self.class.system_prompt[self.language.to_sym] || self.class.system_prompt[Analysis::DEFAULT_LANGUAGE]
             raise "No system prompt defined for language #{self.language}" if language_specific_prompt.blank?
             messages.unshift({ role: :system, content: language_specific_prompt })
         end
