@@ -49,7 +49,8 @@ class Analysis::QuestionAnswering < ApplicationRecord
     end
 
     def search(query:, count: 10)
-       "Searching for #{query} with count #{count}"
+       Rails.logger.info({ message: "Searching for #{query} with count #{count}" })
+       results = Bing::Search.web_results(query: query, count: count).download
     end
 
     def expand(question)

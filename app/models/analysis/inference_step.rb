@@ -74,14 +74,15 @@ module Analysis::InferenceStep
                 }  # Extend the conversation with the results of the functions
             end
 
-            return send_messages(messages)
+            result = send_messages(messages, omit_tool_calls: true)
+            return result
         end
 
         response
     end
 
-    def send_messages(messages)
-        parameters = self.parameters(messages)
+    def send_messages(messages, omit_tool_calls: false)
+        parameters = self.parameters(messages, omit_tool_calls: omit_tool_calls)
         parameters[:response_format] = self.output_schema
 
         Rails.logger.debug("Sending message to #{self.provider} (#{self.model}): #{parameters.inspect}")
@@ -101,15 +102,17 @@ module Analysis::InferenceStep
 
     private
 
-    def parameters(messages)
+    def parameters(messages, omit_tool_calls: false)
         parameters = {
             model: self.model,
             temperature: self.temperature,
             messages: messages
         }
 
-        parameters[:tools] = available_tools unless available_tools.blank?
-        parameters[:tool_choice] = tool_choice unless tool_choice.blank?
+        unless omit_tool_calls
+            parameters[:tools] = available_tools unless available_tools.blank?
+            parameters[:tool_choice] = tool_choice unless tool_choice.blank?
+        end
 
         parameters
     end

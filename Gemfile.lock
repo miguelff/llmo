@@ -475,12 +475,14 @@ DEPENDENCIES
   devise (~> 4.9)
   dockerfile-rails (>= 1.6)
   dry-schema (~> 1.13)
+  faraday (~> 2.12)
   hashie (~> 5.0)
   importmap-rails
   jbuilder
   kamal
   letter_opener (~> 1.10)
   memory_profiler
+  nokogiri (~> 1.16)
   propshaft
   pry
   pry-byebug

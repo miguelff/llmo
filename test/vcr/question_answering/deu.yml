@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 11:32:33 GMT
+      - Fri, 22 Nov 2024 12:25:38 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,7 +44,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '526'
+      - '685'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -60,32 +60,32 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 8ms
       X-Request-Id:
-      - req_883aeed5b86f2e3d9ce43fc7f45de7f9
+      - req_d5b02bd46d25cf61bda257cf9be05470
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=DWt584A3BakFe_tzuuFKgXrN.zzMBGprqN1oI3ime8E-1732275153-1.0.1.1-MojNBf1WEJdc88iWQ2jb0LfXW3_DvcJCH4ZwpVv87ds.BDem2uF9VW9jff10QREy4oJzhALun7Lqmis.hBS34A;
-        path=/; expires=Fri, 22-Nov-24 12:02:33 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=vWvzFWPBIuEZH84IcM1ulypGXryu813lph8qdCc5ZPo-1732278338-1.0.1.1-cVTkB3wy4mr3WesFGmIcMu02D72QdCOY_WUlDwnkDg3Ns3a1OXCaVk8dzqURT4tu2JprRvYuSmu3bARoRxzldQ;
+        path=/; expires=Fri, 22-Nov-24 12:55:38 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=dPOgKsadWZ..dOINaB7N1jSzqDcIc1pyxGFtNA9lvVw-1732275153097-0.0.1.1-604800000;
+      - _cfuvid=zDRoQ9k5SoIsOC6sQ.4TcgEtRxhV_7wKT3uzJFFiH7o-1732278338094-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e689976bf96cbca-MAD
+      - 8e68e737eebf218c-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AWMBkbuSdFM8k70Wj1Z31d2lBVvDG",
+          "id": "chatcmpl-AWN1735psy6u92jtcEXHdzFeBfP2y",
           "object": "chat.completion",
-          "created": 1732275152,
+          "created": 1732278337,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -95,7 +95,7 @@ http_interactions:
                 "content": null,
                 "tool_calls": [
                   {
-                    "id": "call_cLR1O1xtZeZV5ofkDcEde3Cj",
+                    "id": "call_h2qDODDoji5aq8cMR5SHyDQR",
                     "type": "function",
                     "function": {
                       "name": "search",
@@ -126,7 +126,149 @@ http_interactions:
           },
           "system_fingerprint": "fp_7f6be3efb0"
         }
-  recorded_at: Fri, 22 Nov 2024 11:32:33 GMT
+  recorded_at: Fri, 22 Nov 2024 12:25:38 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=safest%20car%20brands%20for%20women%20over%2045
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.1
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 22 Nov 2024 12:24:38 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 67407842131c418b8e99966d3099a2eb
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-cDvt3LNs+Z4hAlwlL9TOY4KMSevpT+BsnerCQvEzn94=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 67407842131c418b8e99966d3099a2eb
+      Bingapis-Sessionid:
+      - 831F8DFA45904F8EB54AE9AE93570FE6
+      X-Msedge-Clientid:
+      - 109EE357C9076FEB1B0EF668C8EA6E1B
+      X-Msapi-Userstate:
+      - '8086'
+      Bingapis-Market:
+      - es-ES
+      Bingapis-Rguid:
+      - 2534c586930348f0841ecb7ceee5b6b3
+      X-Search-Responseinfo:
+      - InternalResponseTime=353,MSDatacenter=DUBE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 3F881ADBAC434C3580B27C0A81AFB662 Ref B: AMS04EDGE3610 Ref C: 2024-11-22T12:25:38Z'
+      Apim-Request-Id:
+      - bf21175a-f201-45b6-bbfe-6d2152490112
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Fri, 22 Nov 2024 12:25:38 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "safest
+        car brands for women over 45"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=safest+car+brands+for+women+over+45",
+        "totalEstimatedMatches": 1090000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Best Cars for Older Drivers in 2024 | U.S. News - U.S. News & World
+        Report", "url": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8&w=80&h=80&c=1&pid=5.1",
+        "datePublished": "2024-06-03T00:00:00.0000000", "datePublishedDisplayText":
+        "3 de jun. de 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
+        "snippet": "With those thoughts in mind, we''ve compiled a list of the 12
+        best vehicles for older drivers. Each pick on our list offers features that
+        make it a suitable choice for a mature demographic. Our list caters to different
+        types of older drivers and includes cars, luxury models, SUVs and even a truck.",
+        "dateLastCrawled": "2024-11-21T18:04:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 316, "imageId":
+        "OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safest+car+brands+for+women+over+45&d=4680346604470550&mkt=es-ES&setlang=es-ES&w=iwj6VKZ8dJJQYAcX_axRiTtur7R3C5yi",
+        "language": "en", "isNavigational": true, "noCache": false, "siteName": "U.S.
+        News & World Report"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Best cars for older drivers - Age Co", "url": "https:\/\/www.ageco.co.uk\/useful-articles\/car\/best-cars-for-older-drivers\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ageco.co.uk\/useful-articles\/car\/best-cars-for-older-drivers",
+        "snippet": "Our complete guide to the best cars for older drivers highlights
+        some of the most popular models and key features which you may wish to consider,
+        to help you identify some of the best cars on the market based on safety,
+        comfort, visibility and assistance technology.", "dateLastCrawled": "2024-11-21T19:18:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 266, "imageId":
+        "OIP.CZGECtr8p6ZTC35rhEspEQHaEK"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safest+car+brands+for+women+over+45&d=4952647526395925&mkt=es-ES&setlang=es-ES&w=1Umt59UDrEDMNF8SjGAL6sHWSm-1fAox",
+        "language": "en", "isNavigational": false, "noCache": false, "siteName": "Age
+        Co"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Safest Car Brands for 2024 | U.S. News - U.S. News & World Report", "url":
+        "https:\/\/cars.usnews.com\/cars-trucks\/advice\/safest-car-brands", "thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.8vZw5xFKrHEsWrOOS9NwAwHaE8&w=80&h=80&c=1&pid=5.1",
+        "datePublished": "2024-07-11T00:00:00.0000000", "datePublishedDisplayText":
+        "11 de jul. de 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/safest-car-brands",
+        "snippet": "The brands on our list make everything from elite luxury models
+        to affordable mainstream choices. We''ve listed our selections in ascending
+        order based on each marque''s average safety score. Note that we frequently
+        update scores in our reviews as new insights and information come in.", "dateLastCrawled":
+        "2024-11-20T07:12:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.8vZw5xFKrHEsWrOOS9NwAwHaE8&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 316, "imageId":
+        "OIP.8vZw5xFKrHEsWrOOS9NwAwHaE8"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safest+car+brands+for+women+over+45&d=4571907269132665&mkt=es-ES&setlang=es-ES&w=rx3MPOhHVk8fEA6P8EBAZ2k2_8lD09c0",
+        "language": "en", "isNavigational": false, "noCache": false, "siteName": "U.S.
+        News & World Report"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Safest New Cars of 2024, According to the IIHS", "url": "https:\/\/www.consumerreports.org\/cars\/car-safety\/safest-new-cars-of-2024-according-to-iihs-a6646928467\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.TbrENewT16zmJazopivsnwHaEK&w=80&h=80&c=1&pid=5.1",
+        "datePublished": "2024-09-12T00:00:00.0000000", "datePublishedDisplayText":
+        "12 de sept. de 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.consumerreports.org\/cars\/car-safety\/safest-new-cars-of-2024-according-to...",
+        "snippet": "Safest New Cars of 2024, According to the IIHS. Vehicles must
+        now meet more stringent requirements to earn the safety group''s Top Safety
+        Pick and Top Safety Pick+ designations", "dateLastCrawled": "2024-11-21T05:18:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.TbrENewT16zmJazopivsnwHaEK&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 266, "imageId":
+        "OIP.TbrENewT16zmJazopivsnwHaEK"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safest+car+brands+for+women+over+45&d=4771545935406425&mkt=es-ES&setlang=es-ES&w=WAb3K-8mDKZ52XggkjfZy3ImIY2-sAUC",
+        "language": "en", "isNavigational": false, "noCache": false, "siteName": "Consumer
+        Reports"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "2024 Top Safety Pick s - IIHS-HLDI", "url": "https:\/\/www.iihs.org\/ratings\/top-safety-picks",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.iihs.org\/ratings\/top-safety-picks",
+        "snippet": "Vehicles that perform best in our evaluations qualify for Top
+        Safety Pick, which has been awarded since the 2006 model year, or Top Safety
+        Pick +, which was inaugurated in 2013. These awards identify the best vehicle
+        choices for safety within size categories during a given year.", "dateLastCrawled":
+        "2024-11-22T02:05:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safest+car+brands+for+women+over+45&d=4780247538943352&mkt=es-ES&setlang=es-ES&w=XlaJ8sYGjk59zj-S61rFsHXOEibDR7jj",
+        "language": "en", "isNavigational": false, "noCache": false, "siteName": "IIHS-HLDI"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Fri, 22 Nov 2024 12:25:38 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -138,12 +280,39 @@ http_interactions:
         those and not others. Use the search tool to obtain information and support
         results. Include URLs of the consulted sites or specialized websites, do not
         include sources that are the official sites of the mentioned brand, product,
-        or service."},{"role":"assistant","content":null,"tool_calls":[{"id":"call_cLR1O1xtZeZV5ofkDcEde3Cj","type":"function","function":{"name":"search","arguments":"{\"query\":\"safest
-        car brands for women over 45\",\"count\":5}"}}],"refusal":null},{"tool_call_id":"call_cLR1O1xtZeZV5ofkDcEde3Cj","role":"tool","name":"search","content":"Searching
-        for safest car brands for women over 45 with count 5"}],"tools":[{"type":"function","function":{"name":"search","description":"Search
-        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
-        search query"},"count":{"type":"integer","description":"The number of results
-        to return"}},"required":["query","count"]}}}],"tool_choice":"required","response_format":null}'
+        or service."},{"role":"assistant","content":null,"tool_calls":[{"id":"call_h2qDODDoji5aq8cMR5SHyDQR","type":"function","function":{"name":"search","arguments":"{\"query\":\"safest
+        car brands for women over 45\",\"count\":5}"}}],"refusal":null},{"tool_call_id":"call_h2qDODDoji5aq8cMR5SHyDQR","role":"tool","name":"search","content":[{"id":"https://api.bing.microsoft.com/api/v7/#WebPages.0","name":"Best
+        Cars for Older Drivers in 2024 | U.S. News - U.S. News \u0026 World Report","url":"https://cars.usnews.com/cars-trucks/advice/best-cars-for-older-drivers","thumbnailUrl":"https://www.bing.com/th?id=OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","datePublished":"2024-06-03T00:00:00.0000000","datePublishedDisplayText":"3
+        de jun. de 2024","isFamilyFriendly":true,"displayUrl":"https://cars.usnews.com/cars-trucks/advice/best-cars-for-older-drivers","snippet":"With
+        those thoughts in mind, we''ve compiled a list of the 12 best vehicles for
+        older drivers. Each pick on our list offers features that make it a suitable
+        choice for a mature demographic. Our list caters to different types of older
+        drivers and includes cars, luxury models, SUVs and even a truck.","dateLastCrawled":"2024-11-21T18:04:00.0000000Z","primaryImageOfPage":{"thumbnailUrl":"https://www.bing.com/th?id=OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","width":80,"height":80,"sourceWidth":474,"sourceHeight":316,"imageId":"OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8"},"cachedPageUrl":"http://cc.bingj.com/cache.aspx?q=safest+car+brands+for+women+over+45\u0026d=4680346604470550\u0026mkt=es-ES\u0026setlang=es-ES\u0026w=iwj6VKZ8dJJQYAcX_axRiTtur7R3C5yi","language":"en","isNavigational":true,"noCache":false,"siteName":"U.S.
+        News \u0026 World Report","type":"text"},{"id":"https://api.bing.microsoft.com/api/v7/#WebPages.1","name":"Best
+        cars for older drivers - Age Co","url":"https://www.ageco.co.uk/useful-articles/car/best-cars-for-older-drivers/","thumbnailUrl":"https://www.bing.com/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","isFamilyFriendly":true,"displayUrl":"https://www.ageco.co.uk/useful-articles/car/best-cars-for-older-drivers","snippet":"Our
+        complete guide to the best cars for older drivers highlights some of the most
+        popular models and key features which you may wish to consider, to help you
+        identify some of the best cars on the market based on safety, comfort, visibility
+        and assistance technology.","dateLastCrawled":"2024-11-21T19:18:00.0000000Z","primaryImageOfPage":{"thumbnailUrl":"https://www.bing.com/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","width":80,"height":80,"sourceWidth":474,"sourceHeight":266,"imageId":"OIP.CZGECtr8p6ZTC35rhEspEQHaEK"},"cachedPageUrl":"http://cc.bingj.com/cache.aspx?q=safest+car+brands+for+women+over+45\u0026d=4952647526395925\u0026mkt=es-ES\u0026setlang=es-ES\u0026w=1Umt59UDrEDMNF8SjGAL6sHWSm-1fAox","language":"en","isNavigational":false,"noCache":false,"siteName":"Age
+        Co","type":"text"},{"id":"https://api.bing.microsoft.com/api/v7/#WebPages.2","name":"Safest
+        Car Brands for 2024 | U.S. News - U.S. News \u0026 World Report","url":"https://cars.usnews.com/cars-trucks/advice/safest-car-brands","thumbnailUrl":"https://www.bing.com/th?id=OIP.8vZw5xFKrHEsWrOOS9NwAwHaE8\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","datePublished":"2024-07-11T00:00:00.0000000","datePublishedDisplayText":"11
+        de jul. de 2024","isFamilyFriendly":true,"displayUrl":"https://cars.usnews.com/cars-trucks/advice/safest-car-brands","snippet":"The
+        brands on our list make everything from elite luxury models to affordable
+        mainstream choices. We''ve listed our selections in ascending order based
+        on each marque''s average safety score. Note that we frequently update scores
+        in our reviews as new insights and information come in.","dateLastCrawled":"2024-11-20T07:12:00.0000000Z","primaryImageOfPage":{"thumbnailUrl":"https://www.bing.com/th?id=OIP.8vZw5xFKrHEsWrOOS9NwAwHaE8\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","width":80,"height":80,"sourceWidth":474,"sourceHeight":316,"imageId":"OIP.8vZw5xFKrHEsWrOOS9NwAwHaE8"},"cachedPageUrl":"http://cc.bingj.com/cache.aspx?q=safest+car+brands+for+women+over+45\u0026d=4571907269132665\u0026mkt=es-ES\u0026setlang=es-ES\u0026w=rx3MPOhHVk8fEA6P8EBAZ2k2_8lD09c0","language":"en","isNavigational":false,"noCache":false,"siteName":"U.S.
+        News \u0026 World Report","type":"text"},{"id":"https://api.bing.microsoft.com/api/v7/#WebPages.3","name":"Safest
+        New Cars of 2024, According to the IIHS","url":"https://www.consumerreports.org/cars/car-safety/safest-new-cars-of-2024-according-to-iihs-a6646928467/","thumbnailUrl":"https://www.bing.com/th?id=OIP.TbrENewT16zmJazopivsnwHaEK\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","datePublished":"2024-09-12T00:00:00.0000000","datePublishedDisplayText":"12
+        de sept. de 2024","isFamilyFriendly":true,"displayUrl":"https://www.consumerreports.org/cars/car-safety/safest-new-cars-of-2024-according-to...","snippet":"Safest
+        New Cars of 2024, According to the IIHS. Vehicles must now meet more stringent
+        requirements to earn the safety group''s Top Safety Pick and Top Safety Pick+
+        designations","dateLastCrawled":"2024-11-21T05:18:00.0000000Z","primaryImageOfPage":{"thumbnailUrl":"https://www.bing.com/th?id=OIP.TbrENewT16zmJazopivsnwHaEK\u0026w=80\u0026h=80\u0026c=1\u0026pid=5.1","width":80,"height":80,"sourceWidth":474,"sourceHeight":266,"imageId":"OIP.TbrENewT16zmJazopivsnwHaEK"},"cachedPageUrl":"http://cc.bingj.com/cache.aspx?q=safest+car+brands+for+women+over+45\u0026d=4771545935406425\u0026mkt=es-ES\u0026setlang=es-ES\u0026w=WAb3K-8mDKZ52XggkjfZy3ImIY2-sAUC","language":"en","isNavigational":false,"noCache":false,"siteName":"Consumer
+        Reports","type":"text"},{"id":"https://api.bing.microsoft.com/api/v7/#WebPages.4","name":"2024
+        Top Safety Pick s - IIHS-HLDI","url":"https://www.iihs.org/ratings/top-safety-picks","isFamilyFriendly":true,"displayUrl":"https://www.iihs.org/ratings/top-safety-picks","snippet":"Vehicles
+        that perform best in our evaluations qualify for Top Safety Pick, which has
+        been awarded since the 2006 model year, or Top Safety Pick +, which was inaugurated
+        in 2013. These awards identify the best vehicle choices for safety within
+        size categories during a given year.","dateLastCrawled":"2024-11-22T02:05:00.0000000Z","cachedPageUrl":"http://cc.bingj.com/cache.aspx?q=safest+car+brands+for+women+over+45\u0026d=4780247538943352\u0026mkt=es-ES\u0026setlang=es-ES\u0026w=XlaJ8sYGjk59zj-S61rFsHXOEibDR7jj","language":"en","isNavigational":false,"noCache":false,"siteName":"IIHS-HLDI","type":"text"}]}],"response_format":null}'
     headers:
       Content-Type:
       - application/json
@@ -161,7 +330,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 11:32:36 GMT
+      - Fri, 22 Nov 2024 12:25:46 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -173,7 +342,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '709'
+      - '7688'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -183,77 +352,34 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '799864'
+      - '799880'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 10ms
+      - 9ms
       X-Request-Id:
-      - req_25efdb6c1058d18a568fa670b918b332
+      - req_8cf0bee7efec1c4d62364b3ed9c85374
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=E8PNQsOpGG1sEFLxNBQLvuh6BeZihzBwP2Q2z8MvyZQ-1732275156-1.0.1.1-adlo346wBR08PuRjq6UfjhZvmG3SewVc.7yTwbJpCDSgp9t.7eLCyMXrYHECmiuexSCeil4yUcV_laqglWsE8w;
-        path=/; expires=Fri, 22-Nov-24 12:02:36 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=dPH.D.GCjR3KqkuEqj9ymaOdFYf_3jqnQcTAKJmr7nc-1732278346-1.0.1.1-tcyo57dcmkI7pduusKQfiX3Wwh19jQm6tWtjGB9bx2fSDedHnQOso9ekm39DP6eifxHKWAFPODbi8qGPYUXfJg;
+        path=/; expires=Fri, 22-Nov-24 12:55:46 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=FD44Hb.kbVqy87Ir3JRba_I4zk2WFfNBv.tInfzcpb0-1732275156478-0.0.1.1-604800000;
+      - _cfuvid=sB0PbS4cf2JQqNeTMiIJpa683Ho6pp2Fb_PxXyY4tJY-1732278346884-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e68998a6de72fa6-MAD
+      - 8e68e7431cbf1ba9-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: |
-        {
-          "id": "chatcmpl-AWMBnjv4AtGjUHgTu1iTL2uTXhVUz",
-          "object": "chat.completion",
-          "created": 1732275155,
-          "model": "gpt-4o-2024-08-06",
-          "choices": [
-            {
-              "index": 0,
-              "message": {
-                "role": "assistant",
-                "content": null,
-                "tool_calls": [
-                  {
-                    "id": "call_RilzHVe0DX20LMaev70zBnNN",
-                    "type": "function",
-                    "function": {
-                      "name": "search",
-                      "arguments": "{\"query\":\"safest cars for women 2023\",\"count\":5}"
-                    }
-                  }
-                ],
-                "refusal": null
-              },
-              "logprobs": null,
-              "finish_reason": "tool_calls"
-            }
-          ],
-          "usage": {
-            "prompt_tokens": 188,
-            "completion_tokens": 25,
-            "total_tokens": 213,
-            "prompt_tokens_details": {
-              "cached_tokens": 0,
-              "audio_tokens": 0
-            },
-            "completion_tokens_details": {
-              "reasoning_tokens": 0,
-              "audio_tokens": 0,
-              "accepted_prediction_tokens": 0,
-              "rejected_prediction_tokens": 0
-            }
-          },
-          "system_fingerprint": "fp_7f6be3efb0"
-        }
-  recorded_at: Fri, 22 Nov 2024 11:32:36 GMT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BV04xOUw2aW1PclFOZnFlVjhyemxKcTg1cDQ2biIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjI3ODMzOSwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogIlVtIGRpZSBzaWNoZXJzdGVuIEF1dG9tYXJrZW4gdW5kIE1vZGVsbGUgZsO8ciBGcmF1ZW4gw7xiZXIgNDUgSmFocmVuIHp1IGlkZW50aWZpemllcmVuLCBpc3QgZXMgd2ljaHRpZywgYXVmIGFsbGdlbWVpbmUgU2ljaGVyaGVpdHNiZXdlcnR1bmdlbiwgWnV2ZXJsw6Rzc2lna2VpdCwgQmVudXR6ZXJmcmV1bmRsaWNoa2VpdCB1bmQgS29tZm9ydCB6dSBhY2h0ZW4uIEhpZXIgc2luZCBlaW5pZ2UgQXV0b21hcmtlbiB1bmQgTW9kZWxsZSwgZGllIG9mdCBmw7xyIGlocmUgU2ljaGVyaGVpdHNtZXJrbWFsZSBnZWxvYnQgd2VyZGVuOlxuXG4xLiAqKlZvbHZvKio6IFxuICAgLSBNb2RlbGxlIHdpZSBkZXIgVm9sdm8gWEM2MCB1bmQgZGVyIFZvbHZvIFM2MCBzaW5kIGJla2FubnQgZsO8ciBpaHJlIGZvcnRzY2hyaXR0bGljaGVuIFNpY2hlcmhlaXRzbWVya21hbGUsIGRhcnVudGVyIENpdHkgU2FmZXR5LCBkYXMgS29sbGlzaW9uZW4gYmVpIG5pZWRyaWdlbiBHZXNjaHdpbmRpZ2tlaXRlbiB2ZXJoaW5kZXJuIGthbm4sIHVuZCBQaWxvdCBBc3Npc3QsIGVpbiB0ZWlsYXV0b25vbWVzIEZhaHJzeXN0ZW0uXG4gICAtIFZvbHZvIGhhdCBlaW5lbiBzdGFya2VuIFJ1ZiBmw7xyIFNpY2hlcmhlaXQgdW5kIGlzdCBvZnQgZsO8aHJlbmQgYmVpIGRlciBFaW5mw7xocnVuZyBuZXVlciBTaWNoZXJoZWl0c2lubm92YXRpb25lbi5cblxuMi4gKipTdWJhcnUqKjpcbiAgIC0gRGVyIFN1YmFydSBPdXRiYWNrIHVuZCBkZXIgU3ViYXJ1IEZvcmVzdGVyIHNpbmQgbWl0IGRlbSBFeWVTaWdodC1GYWhyZXJhc3Npc3RlbnpzeXN0ZW0gYXVzZ2VzdGF0dGV0LCBkYXMgRnVua3Rpb25lbiB3aWUgYWRhcHRpdmVuIFRlbXBvbWF0IHVuZCBTcHVyaGFsdGVhc3Npc3RlbnQgYmlldGV0LlxuICAgLSBTdWJhcnUtRmFocnpldWdlIHNpbmQgYmVrYW5udCBmw7xyIGlocmUgWnV2ZXJsw6Rzc2lna2VpdCB1bmQgQWxscmFkYW50cmllYiwgd2FzIHNpZSBiZXNvbmRlcnMgc2ljaGVyIGJlaSBzY2hsZWNodGVuIFdldHRlcmJlZGluZ3VuZ2VuIG1hY2h0LlxuXG4zLiAqKlRveW90YSoqOlxuICAgLSBNb2RlbGxlIHdpZSBkZXIgVG95b3RhIENhbXJ5IHVuZCBkZXIgVG95b3RhIFJBVjQgYmlldGVuIGRhcyBUb3lvdGEgU2FmZXR5IFNlbnNlLVBha2V0LCBkYXMgUHJlLUNvbGxpc2lvbi1TeXN0ZW0sIFNwdXJoYWx0ZWFzc2lzdGVudCB1bmQgZHluYW1pc2NoZW4gUmFkYXItVGVtcG9tYXQgdW1mYXNzdC5cbiAgIC0gVG95b3RhIGlzdCBiZWthbm50IGbDvHIgc2VpbmUgWnV2ZXJsw6Rzc2lna2VpdCB1bmQgZGVuIGhvaGVuIFdpZWRlcnZlcmthdWZzd2VydCwgd2FzIGVzIHp1IGVpbmVyIGJlbGllYnRlbiBXYWhsIGbDvHIgdmllbGUgS8OkdWZlciBtYWNodC5cblxuNC4gKipIb25kYSoqOlxuICAgLSBEZXIgSG9uZGEgQ1ItViB1bmQgZGVyIEhvbmRhIEFjY29yZCBzaW5kIG1pdCBkZW0gSG9uZGEgU2Vuc2luZy1TaWNoZXJoZWl0c3Bha2V0IGF1c2dlc3RhdHRldCwgZGFzIEZ1bmt0aW9uZW4gd2llIEtvbGxpc2lvbnN3YXJudW5nIHVuZCBTcHVyaGFsdGVhc3Npc3RlbnQgYmlldGV0LlxuICAgLSBIb25kYS1GYWhyemV1Z2Ugc2luZCBiZWthbm50IGbDvHIgaWhyZSBMYW5nbGViaWdrZWl0IHVuZCBCZW51dHplcmZyZXVuZGxpY2hrZWl0LlxuXG41LiAqKk1hemRhKio6XG4gICAtIERlciBNYXpkYSBDWC01IHVuZCBkZXIgTWF6ZGEgNiBiaWV0ZW4gaS1BY3RpdnNlbnNlLCBlaW4gUGFrZXQgdm9uIFNpY2hlcmhlaXRzZnVua3Rpb25lbiwgZGFzIHVudGVyIGFuZGVyZW0gYWRhcHRpdmUgU2NoZWlud2VyZmVyIHVuZCBUb3Rlci1XaW5rZWwtw5xiZXJ3YWNodW5nIHVtZmFzc3QuXG4gICAtIE1hemRhIGtvbWJpbmllcnQgb2Z0IHNwb3J0bGljaGVzIERlc2lnbiBtaXQgaG9oZXIgU2ljaGVyaGVpdCB1bmQgWnV2ZXJsw6Rzc2lna2VpdC5cblxuRGllc2UgTWFya2VuIHVuZCBNb2RlbGxlIHd1cmRlbiBhdWZncnVuZCBpaHJlciB1bWZhc3NlbmRlbiBTaWNoZXJoZWl0c21lcmttYWxlLCBpaHJlciBadXZlcmzDpHNzaWdrZWl0IHVuZCBpaHJlciBwb3NpdGl2ZW4gQmV3ZXJ0dW5nZW4gaW4gU2ljaGVyaGVpdHMtIHVuZCBWZXJicmF1Y2hlcnRlc3RzIGF1c2dld8OkaGx0LiBTaWUgYmlldGVuIGVpbmUgZ3V0ZSBCYWxhbmNlIHp3aXNjaGVuIFNpY2hlcmhlaXQsIEtvbWZvcnQgdW5kIEJlbnV0emVyZnJldW5kbGljaGtlaXQsIHdhcyBzaWUgenUgZWluZXIgYXVzZ2V6ZWljaG5ldGVuIFdhaGwgZsO8ciBGcmF1ZW4gw7xiZXIgNDUgSmFocmVuIG1hY2h0LiBcblxuTGVpZGVyIGtvbm50ZSBpY2gga2VpbmUgc3BlemlmaXNjaGVuIFVSTHMgdm9uIHNwZXppYWxpc2llcnRlbiBXZWJzaXRlcyBiZXJlaXRzdGVsbGVuLCBkYSBkaWUgU3VjaGZ1bmt0aW9uIGtlaW5lIEVyZ2Vibmlzc2UgbGllZmVydGUuIEljaCBlbXBmZWhsZSBqZWRvY2gsIFdlYnNpdGVzIHdpZSBFdXJvIE5DQVAgb2RlciBJSUhTIHp1IGJlc3VjaGVuLCB1bSBkZXRhaWxsaWVydGUgU2ljaGVyaGVpdHNiZXdlcnR1bmdlbiB1bmQgVGVzdGJlcmljaHRlIHp1IGRlbiBnZW5hbm50ZW4gRmFocnpldWdlbiB6dSBlcmhhbHRlbi4iLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiAxMTUsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiA1MzcsCiAgICAidG90YWxfdG9rZW5zIjogNjUyLAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzQ1Y2Y1NGRlYWUiCn0K
+  recorded_at: Fri, 22 Nov 2024 12:25:46 GMT
 recorded_with: VCR 6.3.1

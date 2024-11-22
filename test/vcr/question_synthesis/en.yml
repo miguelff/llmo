@@ -70,7 +70,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 11:32:38 GMT
+      - Fri, 22 Nov 2024 12:11:02 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -82,7 +82,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '1519'
+      - '1235'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -98,39 +98,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 13ms
       X-Request-Id:
-      - req_fcb4a0cac47cce1b421636db976de6d7
+      - req_a20dd1635f5012a93ae2553f7c566c1f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=RpIkeA6A88ynUf3UuWi.KTvKYFNvwCl0oy6JkNvbLns-1732275158-1.0.1.1-Iy0fMtpNcI1PJOTsK7XmtVGs._OQzxkoJbRR_d7UNwYPE0WMYIaZOucU5RchvfvmWVjfjLq4AQjF6ioxpZ.0vQ;
-        path=/; expires=Fri, 22-Nov-24 12:02:38 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=S3N3upPaaDjaPaKw123qjWYdAm.S9zfsDczRArhbBtw-1732277462-1.0.1.1-GjaEk7dnCakg5Dt8i0hofbEkUjGoI970v0yjo3SN.CGCh.P2rsUjYO._NcOgcNCQwqYRjTdwfSH2bHG5.sVotA;
+        path=/; expires=Fri, 22-Nov-24 12:41:02 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=eN0d7_06QMPD0I1024ORUttJFPdzw3jcv8NWu76Fruo-1732275158321-0.0.1.1-604800000;
+      - _cfuvid=qjc37pUy0fRaG9TnTf5Zvf2zFEEiUBFNuqX5tWiMx60-1732277462089-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e68999129fccfb1-MAD
+      - 8e68d1d17eb9384d-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AWMBobILnOJ9DhXDQ6UFL7ugdXf5R",
+          "id": "chatcmpl-AWMmzS2yhSSHXkYw2VlCVziT3w6HK",
           "object": "chat.completion",
-          "created": 1732275156,
+          "created": 1732277461,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s look for when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and older?\"},{\"question\":\"What are the top-rated family cars with the best safety records for women in this age group?\"}]}",
+                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s prioritize when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and older?\"},{\"question\":\"What are the top-rated vehicles for safety that also offer comfort and ease of use for women in this age group?\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -139,8 +139,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 772,
-            "completion_tokens": 106,
-            "total_tokens": 878,
+            "completion_tokens": 109,
+            "total_tokens": 881,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -154,5 +154,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Fri, 22 Nov 2024 11:32:38 GMT
+  recorded_at: Fri, 22 Nov 2024 12:11:02 GMT
 recorded_with: VCR 6.3.1
