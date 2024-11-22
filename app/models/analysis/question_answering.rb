@@ -51,6 +51,30 @@ class Analysis::QuestionAnswering < ApplicationRecord
     def search(query:, count: 10)
        Rails.logger.info({ message: "Searching for #{query} with count #{count}" })
        results = Bing::Search.web_results(query: query, count: count).download
+       results.map do |result|
+         summary = <<~SUMMARY.squish
+            Search result:
+                url: #{result["url"]}
+                snippet: #{result[:html].present? ? summarize(result[:html]) : result["snippet"]}
+         SUMMARY
+       end.join("\n\n")
+    end
+
+    def summarize(text)
+        Rails.logger.info({ message: "Summarizing text", metadata: { text: text.truncate_words(10) } })
+        res = OpenAI::Client.new.chat(parameters: {
+            model: "gpt-4o-mini",
+            messages: [
+                { role: "user", content: <<-CONTENT.squish }
+                     summarize the following web page text written in #{Analysis::LANGUAGE_NAMES_IN_ENGLISH[self.language.to_sym]} while focusing on capturing information relevant to make recommendations about "#{self.report.query}":
+                    #{' '}
+                    #{text}
+                CONTENT
+            ]
+        })
+        summary = res.dig("choices", 0, "message", "content")
+        Rails.logger.info({ message: "Summarized text", metadata: { summary: summary } })
+        summary
     end
 
     def expand(question)
