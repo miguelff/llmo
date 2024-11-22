@@ -9,9 +9,11 @@ http_interactions:
         are an assistant specialized in language detection. Your task is to analyze
         text and determine its language. Return only the ISO-639-2 three-letter language
         code (e.g. ''eng'' for English, ''spa'' for Spanish, etc.). If the language
-        cannot be determined, return ''und'' for undefined."},{"role":"user","content":"Input:
-        Safe cars Women 45+"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
-        for the structured response","schema":{"type":"object","properties":{"language":{"type":"string","enum":["spa","eng"],"description":"The
+        cannot be determined, return ''und'' for undefined. We only support a set
+        of languages: spa, eng, deu, fra if the code is for a different language,
+        return ''und'' for undefined."},{"role":"user","content":"Input: Safe cars
+        Women 45+"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"language":{"type":"string","enum":["spa","eng","deu","fra"],"description":"The
         detected language of the input text"}},"required":["language"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
     headers:
       Content-Type:
@@ -30,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 21 Nov 2024 15:48:32 GMT
+      - Fri, 22 Nov 2024 11:32:31 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -42,7 +44,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '303'
+      - '180'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -52,38 +54,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999904'
+      - '3999873'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 1ms
       X-Request-Id:
-      - req_8918fee83704e095a801ac6a7b0a3328
+      - req_35a95f7c82048b7d02432200d051ac88
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=qaeAIYWOajrM0fnA89eozhmq5STzxMEBuQZbfganafE-1732204112-1.0.1.1-PCA9N37fXTbV1QJ4.xFbcFl5OUwEcsJUVE8GoGFC2ybKaxsw_x08AJNOmloBZ4i_cxLa7ZY9vpbXOqSH6IYEUQ;
-        path=/; expires=Thu, 21-Nov-24 16:18:32 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=2ZwSB2CIxAQvBXDWWjP1lRLn_CwBC0xiYk_z19v1X6c-1732275151-1.0.1.1-YCWU7FRGxgXQFBKvyVNKKyybF9uYe2vRq8ezKt38tGF7Ogr7BcasDyuCS3zVym1JADzku6XgWQXFZFJnxeRXeA;
+        path=/; expires=Fri, 22-Nov-24 12:02:31 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=MrDkX8f.5ju_yPNUBoMgBjqvHLgzWoISaWc_m7dVcP4-1732204112762-0.0.1.1-604800000;
+      - _cfuvid=MTQvrhXE5dUjOw9KXAUVZfr9TsQjQqpiewKS4rCtRxQ-1732275151164-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e61d314caf0cfc7-MAD
+      - 8e68996cbcb42150-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AW3hwM0c2vbJO7OqY2ucFkZa1RDMS",
+          "id": "chatcmpl-AWMBjXaqGLtfMiol2k6g0nTUKUDBu",
           "object": "chat.completion",
-          "created": 1732204112,
+          "created": 1732275151,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -98,9 +100,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 140,
+            "prompt_tokens": 176,
             "completion_tokens": 5,
-            "total_tokens": 145,
+            "total_tokens": 181,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -114,5 +116,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Thu, 21 Nov 2024 15:48:32 GMT
+  recorded_at: Fri, 22 Nov 2024 11:32:31 GMT
 recorded_with: VCR 6.3.1

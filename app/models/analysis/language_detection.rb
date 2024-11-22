@@ -21,7 +21,7 @@ class Analysis::LanguageDetection < ApplicationRecord
     EOF
 
     def perform
-        language = structured_inference("Input: #{self.report.query} #{self.report.cohort.presence}")
+        language = chat("Input: #{self.report.query} #{self.report.cohort.presence}")
         unless language.refusal.present?
             self.language = language.parsed.language
         else

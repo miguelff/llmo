@@ -5,7 +5,7 @@ class Analysis::QuestionSynthesis < ApplicationRecord
     validates_presence_of :questions_count, message: "Questions count is required"
 
     schema do
-        define :answer do
+        define :question do
             string :question
         end
         array :questions, items: ref(:question)
@@ -231,7 +231,7 @@ class Analysis::QuestionSynthesis < ApplicationRecord
     })
 
     def perform
-        language = structured_inference(user_message)
+        language = chat(user_message)
         unless language.refusal.present?
             self.questions = language.parsed.questions
         else

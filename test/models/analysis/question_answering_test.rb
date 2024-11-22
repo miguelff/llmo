@@ -10,7 +10,7 @@ class Analysis::QuestionAnsweringTest < ActiveSupport::TestCase
       assert_equal 1, analysis.reload.answers.count
 
       assert_equal question, analysis.answers.first["question"]
-      assert_equal <<-EOF.squish, analysis.answers.first["answer"].squish
+      assert_equal <<-EOF.squish, analysis&.answers&.first&.[]("answer")&.squish
         Um die sichersten Fahrzeuge für Frauen über 45 Jahren zu identifizieren, ist es wichtig, auf Automarken und Modelle zu achten, die in Sicherheitsbewertungen und Tests gut abschneiden. Hier sind einige Marken und Modelle, die für ihre Sicherheitsmerkmale bekannt sind:
 
         1. **Volvo**:

@@ -5,10 +5,36 @@ class Analysis::QuestionAnswering < ApplicationRecord
     belongs_to :report, optional: false
     validates :questions, length: { minimum: 1 }
 
+    tools do
+       [
+        {
+          type: "function",
+          function: {
+            name: "search",
+            description: "Search in Bing for relevant results to provide reliable information for the question",
+            parameters: {  # Format: https://json-schema.org/understanding-json-schema
+              type: :object,
+              properties: {
+                query: {
+                  type: :string,
+                  description: "The search query"
+                },
+                count: {
+                  type: "integer",
+                  description: "The number of results to return"
+                }
+              },
+              required: [ "query", "count" ]
+            }
+          }
+        }
+      ]
+    end
+
     def perform
         self.answers = self.questions.map do |question|
             question = question.with_indifferent_access[:question]
-            res = unstructured_inference(expand question)
+            res = chat(expand(question))
             answer = res.dig("choices", 0, "message", "content")
 
             if answer.blank?
@@ -20,6 +46,10 @@ class Analysis::QuestionAnswering < ApplicationRecord
         end
 
         true
+    end
+
+    def search(query:, count: 10)
+       "Searching for #{query} with count #{count}"
     end
 
     def expand(question)

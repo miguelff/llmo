@@ -2,12 +2,16 @@ module Analysis::InferenceStep
     extend ActiveSupport::Concern
 
     included do
-        class_attribute :output_schema, :system_prompt
+        class_attribute :output_schema, :system_prompt, :available_tools
         after_initialize :set_default_values
         attribute :language, :string, default: Analysis::DEFAULT_LANGUAGE
     end
 
     module ClassMethods
+        def tools(&block)
+            self.available_tools = block.call
+        end
+
         def schema(&block)
             self.output_schema = OpenAI::StructuredOutputs::Schema.new(&block)
         end
@@ -25,22 +29,68 @@ module Analysis::InferenceStep
         OpenAI::StructuredOutputs::OpenAIClient.new
     end
 
-    def structured_inference(message)
-        parameters = self.chat_parameters(message)
+    def tool_choice
+        "required" if available_tools.present?
+    end
+
+    def valid_tool_names
+        @valid_tool_names ||= self.available_tools.select { |tool| tool[:function].present? }.map { |tool| tool[:function][:name] }
+    end
+
+    def chat(user_message)
+        messages = [ { role: :user, content: user_message } ]
+
+        if system_prompt.present?
+            language_specific_prompt = system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE]
+            raise "No system prompt defined for language #{self.language}" if language_specific_prompt.blank?
+            messages.unshift({ role: :system, content: language_specific_prompt })
+        end
+
+        response = send_messages(messages)
+
+        message = response.dig("choices", 0, "message")
+        if message.present? && message["role"] == "assistant" && message["tool_calls"]
+            valid_tools = self.available_tools.select { |tool| tool[:function].present? }.map { |tool| tool[:function][:name] }
+            message["tool_calls"].each do |tool_call|
+                tool_call_id = tool_call.dig("id")
+                function_name = tool_call.dig("function", "name")
+                if !valid_tools.include?(function_name)
+                    raise "Invalid tool call: #{function_name}, valid tools: #{valid_tools.inspect}"
+                end
+
+                function_args = JSON.parse(
+                tool_call.dig("function", "arguments"),
+                    { symbolize_names: true },
+                )
+                function_response = send(function_name, **function_args)
+                # For a subsequent message with the role "tool", OpenAI requires the preceding message to have a tool_calls argument.
+                messages << message
+
+                messages << {
+                    tool_call_id: tool_call_id,
+                    role: "tool",
+                    name: function_name,
+                    content: function_response
+                }  # Extend the conversation with the results of the functions
+            end
+
+            return send_messages(messages)
+        end
+
+        response
+    end
+
+    def send_messages(messages)
+        parameters = self.parameters(messages)
         parameters[:response_format] = self.output_schema
 
         Rails.logger.debug("Sending message to #{self.provider} (#{self.model}): #{parameters.inspect}")
-        result = client.parse(**parameters)
-        Rails.logger.debug("Received response from #{self.provider} (#{self.model}): #{result.inspect}")
-        result
-    end
-
-    def unstructured_inference(message, tools: [], tool_choice: nil)
-        parameters = self.chat_parameters(message, tools: tools, tool_choice: tool_choice)
-        Rails.logger.debug("Sending message to #{self.provider} (#{self.model}): #{parameters.inspect}")
-        result = client.chat(
-            parameters: parameters
-        )
+        result = if self.output_schema.present?
+            parameters[:response_format] = self.output_schema
+            client.parse(**parameters)
+        else
+            client.chat(parameters: parameters)
+        end
         Rails.logger.debug("Received response from #{self.provider} (#{self.model}): #{result.inspect}")
         result
     end
@@ -51,27 +101,15 @@ module Analysis::InferenceStep
 
     private
 
-    def chat_parameters(message, tools: [], tool_choice: nil)
-        messages = [ { role: :user, content: message } ]
-
-        if self.class.system_prompt.present?
-            language_specific_prompt = self.class.system_prompt[self.language.to_sym] || self.class.system_prompt[Analysis::DEFAULT_LANGUAGE]
-            raise "No system prompt defined for language #{self.language}" if language_specific_prompt.blank?
-            messages.unshift({ role: :system, content: language_specific_prompt })
-        end
-
+    def parameters(messages)
         parameters = {
             model: self.model,
             temperature: self.temperature,
             messages: messages
         }
 
-        if tools.any? && tool_choice.blank?
-            tool_choice = "required"
-        end
-
-        parameters[:tools] = tools if tools.any?
-        parameters[:tool_choice] = tool_choice if tool_choice.present?
+        parameters[:tools] = available_tools unless available_tools.blank?
+        parameters[:tool_choice] = tool_choice unless tool_choice.blank?
 
         parameters
     end
