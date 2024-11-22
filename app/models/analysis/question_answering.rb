@@ -1,41 +1,59 @@
 class Analysis::QuestionAnswering < ApplicationRecord
+    class BingSearch
+        extend Langchain::ToolDefinition
+
+        define_function :search, description: "Executes Bing Search and returns the result" do
+            property :query, type: "string", description: "Search query", required: true
+            property :count, type: "integer", description: "The number of results to return", required: true
+        end
+
+        def initialize(analysis)
+            @analysis = analysis
+        end
+
+        def search(query:, count: 10)
+            Rails.logger.info({ message: "Searching for #{query} with count #{count}" })
+
+            market = @analysis.report.country_code || Analysis::TWO_LETTER_CODE[@analysis.language.to_sym]
+            results = Bing::Search.web_results(query: query, count: count, mkt: market).download
+            results.map do |result|
+                summary = <<~SUMMARY.squish
+                    Search result:
+                        url: #{result["url"]}
+                        snippet: #{result[:html].present? ? summarize(result[:html]) : result["snippet"]}
+                SUMMARY
+            end.join("\n\n")
+        end
+
+        def summarize(text)
+            Rails.logger.info({ message: "Summarizing text", metadata: { text: text.truncate_words(10) } })
+            res = OpenAI::Client.new.chat(parameters: {
+                model: "gpt-4o-mini",
+                messages: [
+                    { role: "user", content: <<-CONTENT.squish }
+                        summarize the following web page text written in #{Analysis::LANGUAGE_NAMES_IN_ENGLISH[@analysis.language.to_sym]} while focusing on capturing information relevant to make recommendations about "#{@analysis.report.query}":
+                        #{' '}
+                        #{text}
+                    CONTENT
+                ]
+            })
+            summary = res.dig("choices", 0, "message", "content")
+            Rails.logger.info({ message: "Summarized text", metadata: { summary: summary } })
+            summary
+        end
+    end
+
     include Analysis::InferenceStep
 
     attribute :questions, :json, default: []
     belongs_to :report, optional: false
     validates :questions, length: { minimum: 1 }
 
-    tools do
-       [
-        {
-          type: "function",
-          function: {
-            name: "search",
-            description: "Search in Bing for relevant results to provide reliable information for the question",
-            parameters: {  # Format: https://json-schema.org/understanding-json-schema
-              type: :object,
-              properties: {
-                query: {
-                  type: :string,
-                  description: "The search query"
-                },
-                count: {
-                  type: "integer",
-                  description: "The number of results to return"
-                }
-              },
-              required: [ "query", "count" ]
-            }
-          }
-        }
-      ]
-    end
-
     def perform
         self.answers = self.questions.map do |question|
             question = question.with_indifferent_access[:question]
-            res = chat(expand(question))
-            answer = res.dig("choices", 0, "message", "content")
+            res = assist(expand(question), tools: [ BingSearch.new(self) ])
+            answer = res.last.content
 
             if answer.blank?
                 Rails.logger.warn({ message: "No answer for question", metadata: { question: question, response: res } })
@@ -46,35 +64,6 @@ class Analysis::QuestionAnswering < ApplicationRecord
         end
 
         true
-    end
-
-    def search(query:, count: 10)
-       Rails.logger.info({ message: "Searching for #{query} with count #{count}" })
-       results = Bing::Search.web_results(query: query, count: count).download
-       results.map do |result|
-         summary = <<~SUMMARY.squish
-            Search result:
-                url: #{result["url"]}
-                snippet: #{result[:html].present? ? summarize(result[:html]) : result["snippet"]}
-         SUMMARY
-       end.join("\n\n")
-    end
-
-    def summarize(text)
-        Rails.logger.info({ message: "Summarizing text", metadata: { text: text.truncate_words(10) } })
-        res = OpenAI::Client.new.chat(parameters: {
-            model: "gpt-4o-mini",
-            messages: [
-                { role: "user", content: <<-CONTENT.squish }
-                     summarize the following web page text written in #{Analysis::LANGUAGE_NAMES_IN_ENGLISH[self.language.to_sym]} while focusing on capturing information relevant to make recommendations about "#{self.report.query}":
-                    #{' '}
-                    #{text}
-                CONTENT
-            ]
-        })
-        summary = res.dig("choices", 0, "message", "content")
-        Rails.logger.info({ message: "Summarized text", metadata: { summary: summary } })
-        summary
     end
 
     def expand(question)

@@ -10,7 +10,7 @@ class Analysis::QuestionAnsweringTest < ActiveSupport::TestCase
       assert_equal 1, analysis.reload.answers.count
 
       assert_equal question, analysis.answers.first["question"]
-      assert analysis.answers.first["answer"].present?, "Answer should be present"
+      assert analysis.answers.first["answer"].include?("ideal für Familien"), "Answer should be present"
     end
   end
 end

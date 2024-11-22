@@ -70,7 +70,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 12:11:00 GMT
+      - Fri, 22 Nov 2024 15:18:01 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -82,7 +82,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '1279'
+      - '918'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -98,39 +98,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 13ms
       X-Request-Id:
-      - req_edc997c0533911060fc55e6492fc08ed
+      - req_47fbecd3d51430c13ff402bb2046182f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Snqyuxy3FrelpnnSJ7eJaseTeOU0bhUmcla9zTvxO7I-1732277460-1.0.1.1-MxduVlFgl8ziVPmPPCWj_0cYsRXqYxi_qKLXyffR9.mtToqzHrifDBHq12OhpIrniBFUR5yZphrwvhAbN.c.Ng;
-        path=/; expires=Fri, 22-Nov-24 12:41:00 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=hx4vYyJHQ1dHgHuWD6sjAwG7.3tkypN3xaN4qnjo3RY-1732288681-1.0.1.1-jihi0wc7fqYPEirSJDdnX1SJYVhlEiv5fKszMdXG2SyfCy6.lhSqa04gyaRY6xPGM2ySkJgTvRhKUIJiKIvPCA;
+        path=/; expires=Fri, 22-Nov-24 15:48:01 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=D9sm9rw47hePQmgkFfUo8NH_2ReO7EnsUKq5fJpGMfk-1732277460584-0.0.1.1-604800000;
+      - _cfuvid=M1C6FuveOKeT6ZNzAaL2rKRZX77AkebOdcABukr6Vq8-1732288681813-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e68d1c7dc788675-MAD
+      - 8e69e3be9aefe089-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AWMmxM8IzCNgiV154D14F2T4DYobP",
+          "id": "chatcmpl-AWPhwgeUwpaFDn0iMY3Lp86DoEzSt",
           "object": "chat.completion",
-          "created": 1732277459,
+          "created": 1732288680,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s look for when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated family cars with the best safety records for women in this age group?\"}]}",
+                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s look for when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated family cars with excellent safety records for women in this age group?\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -139,8 +139,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 772,
-            "completion_tokens": 106,
-            "total_tokens": 878,
+            "completion_tokens": 105,
+            "total_tokens": 877,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -154,5 +154,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Fri, 22 Nov 2024 12:11:00 GMT
+  recorded_at: Fri, 22 Nov 2024 15:18:01 GMT
 recorded_with: VCR 6.3.1

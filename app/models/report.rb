@@ -66,6 +66,12 @@ class Report < ApplicationRecord
         end
     end
 
+    def country_code
+        if country = ISO3166::Country.find_country_by_unofficial_names(region.strip)
+            "#{country.languages_official.first.downcase}-#{country.alpha2}"
+        end
+    end
+
     private
 
     def validate_advanced_settings_keys

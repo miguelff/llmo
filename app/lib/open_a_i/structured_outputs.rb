@@ -131,7 +131,7 @@ module OpenAI
     # Client class for interacting with OpenAI API
     class OpenAIClient
       attr_reader :client
-      delegate :chat, to: :client
+      delegate :chat, :assistants, :runs, :threads, :messages, to: :client
 
       def initialize
         OpenAI.configure do |config|

@@ -3,6 +3,13 @@ module Analysis
     "analysis_"
   end
 
+  TWO_LETTER_CODE = {
+    eng: "en",
+    spa: "es",
+    deu: "de",
+    fra: "fr"
+  }
+
   DEFAULT_LANGUAGE = :eng
 
   SUPPORTED_LANGUAGES = %i[spa eng deu fra]

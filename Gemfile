@@ -83,3 +83,5 @@ gem "vcr", "~> 6.3", group: :test
 gem "faraday", "~> 2.12"
 
 gem "nokogiri", "~> 1.16"
+
+gem "langchainrb", "~> 0.19.1"

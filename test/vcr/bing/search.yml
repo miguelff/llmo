@@ -148,4 +148,123 @@ http_interactions:
       string: !binary |-
         eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7Im9yaWdpbmFsUXVlcnkiOiAic2FmZSBjYXJzIGZvciB3b21lbiBvdmVyIDQ1In0sICJ3ZWJQYWdlcyI6IHsid2ViU2VhcmNoVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3NlYXJjaD9xPXNhZmUrY2Fycytmb3Ird29tZW4rb3Zlcis0NSIsICJ0b3RhbEVzdGltYXRlZE1hdGNoZXMiOiAxMzMwMDAwLCAidmFsdWUiOiBbeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjAiLCAibmFtZSI6ICJCZXN0IENhcnMgZm9yIE9sZGVyIERyaXZlcnMgaW4gMjAyNCB8IFUuUy4gTmV3cyAtIFUuUy4gTmV3cyAmIFdvcmxkIFJlcG9ydCIsICJ1cmwiOiAiaHR0cHM6XC9cL2NhcnMudXNuZXdzLmNvbVwvY2Fycy10cnVja3NcL2FkdmljZVwvYmVzdC1jYXJzLWZvci1vbGRlci1kcml2ZXJzIiwgImRhdGVQdWJsaXNoZWQiOiAiMjAyNC0wNi0wM1QwMDowMDowMC4wMDAwMDAwIiwgImRhdGVQdWJsaXNoZWREaXNwbGF5VGV4dCI6ICIzIGRlIGp1bi4gZGUgMjAyNCIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL2NhcnMudXNuZXdzLmNvbVwvY2Fycy10cnVja3NcL2FkdmljZVwvYmVzdC1jYXJzLWZvci1vbGRlci1kcml2ZXJzIiwgInNuaXBwZXQiOiAiVG9kYXkncyBjYXJzIGFyZSBzYWZlciB0aGFuIGV2ZXIsIGFuZCBzb21lIG1vZGVscyBlYXJuIHNhZmV0eSBzY29yZXMgdGhhdCBhcmUgd2VsbCBhYm92ZSBhdmVyYWdlLiBUaGVzZSBhcmUgdGhlIHNhZmVzdCBuZXcgY2FycyB5b3UgY2FuIGJ1eSBvciBsZWFzZSB0b2RheS4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTEtMjFUMTg6MDQ6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1zYWZlK2NhcnMrZm9yK3dvbWVuK292ZXIrNDUmZD00NjgwMzQ2NjA0NDcwNTUwJm1rdD1lcy1FUyZzZXRsYW5nPWVzLUVTJnc9aXdqNlZLWjhkSkpRWUFjWF9heFJpVHR1cjdSM0M1eWkiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiB0cnVlLCAibm9DYWNoZSI6IGZhbHNlLCAic2l0ZU5hbWUiOiAiVS5TLiBOZXdzICYgV29ybGQgUmVwb3J0In0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xIiwgIm5hbWUiOiAiQmVzdCBDYXJzIGZvciBTZW5pb3JzIGluIDIwMjI6IFRlcnJpZmljIE9wdGlvbnMgZm9yIE9sZGVyIERyaXZlcnMiLCAidXJsIjogImh0dHBzOlwvXC93d3cuZ3JlYXRzZW5pb3JsaXZpbmcuY29tXC9hcnRpY2xlc1wvYmVzdC1jYXJzLWZvci1zZW5pb3JzIiwgImRhdGVQdWJsaXNoZWQiOiAiMjAyMi0xMC0yNVQwMDowMDowMC4wMDAwMDAwIiwgImRhdGVQdWJsaXNoZWREaXNwbGF5VGV4dCI6ICIyNSBkZSBvY3QuIGRlIDIwMjIiLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC93d3cuZ3JlYXRzZW5pb3JsaXZpbmcuY29tXC9hcnRpY2xlc1wvYmVzdC1jYXJzLWZvci1zZW5pb3JzIiwgInNuaXBwZXQiOiAiRGlzY292ZXIgdGhlIGJlc3QgY2FycyBmb3Igc2VuaW9ycyB0aGF0IGFyZSBhdmFpbGFibGUgdG9kYXkuIExlYXJuIGFib3V0IHRoZSBkaWZmZXJlbmNlcyBiZXR3ZWVuIHNlZGFucyBhbmQgU1VWcyBhbmQgd2h5IHlvdSBtaWdodCBwcmVmZXIgb25lIG92ZXIgdGhlIG90aGVyLiBFeHBsb3JlIHNlbmlvci1mcmllbmRseSBmZWF0dXJlcyB5b3UgbWF5IHdhbnQgeW91ciBuZXh0IHZlaGljbGUgdG8gaGF2ZS4gQW5kIGNoZWNrIG91dCBtb3JlIHRoYW4gdHdvIGRvemVuIG9mIHRoZSBiZXN0IG1vZGVscyBmb3IgMjAyMiEiLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTEtMjBUMTI6MjQ6MDAuMDAwMDAwMFoiLCAiY2FjaGVkUGFnZVVybCI6ICJodHRwOlwvXC9jYy5iaW5nai5jb21cL2NhY2hlLmFzcHg/cT1zYWZlK2NhcnMrZm9yK3dvbWVuK292ZXIrNDUmZD00OTY1MDQ3MTAyODExMzE5Jm1rdD1lcy1FUyZzZXRsYW5nPWVzLUVTJnc9b0RqNmx6OFVEeWZSMTdoSGpadExGam0zbHBsNkN4MWwiLCAibGFuZ3VhZ2UiOiAiZW4iLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgIm5vQ2FjaGUiOiBmYWxzZSwgInNpdGVOYW1lIjogIkdyZWF0IFNlbmlvciBMaXZpbmcifSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjIiLCAibmFtZSI6ICJCZXN0IGNhcnMgZm9yIG9sZGVyIGRyaXZlcnMgLSBBZ2UgQ28iLCAidXJsIjogImh0dHBzOlwvXC93d3cuYWdlY28uY28udWtcL3VzZWZ1bC1hcnRpY2xlc1wvY2FyXC9iZXN0LWNhcnMtZm9yLW9sZGVyLWRyaXZlcnNcLyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5hZ2Vjby5jby51a1wvdXNlZnVsLWFydGljbGVzXC9jYXJcL2Jlc3QtY2Fycy1mb3Itb2xkZXItZHJpdmVycyIsICJzbmlwcGV0IjogIlNvbWUgb2YgdGhlIHNhZmVzdCBjYXJzIHRlc3RlZCBpbiAyMDIxIGluY2x1ZGU6IE1lcmNlZGVzLUVRRVFTOyBTa29kYSBFTllBUSBpVjsgU2tvZGEgRmFiaWE7IE5pc3NhbiBRYXNocWFpIEFzc2lzdGFuY2UgZmVhdHVyZXMuIEFzc2lzdGFuY2UgdGVjaG5vbG9neSBvbiBtb2Rlcm4gdmVoaWNsZXMgY2FuIG1ha2UgeW91ciBjYXIgbXVjaCBtb3JlIHVzZXItZnJpZW5kbHksIGhlbHBpbmcgd2l0aCBldmVyeXRoaW5nIGZyb20gcGFya2luZyB0byBuYXZpZ2F0aW9uIHRvIGRyaXZpbmcgaW4gdGhlIGRhcmsuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTExLTIxVDE5OjE4OjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9c2FmZStjYXJzK2Zvcit3b21lbitvdmVyKzQ1JmQ9NDk1MjY0NzUyNjM5NTkyNSZta3Q9ZXMtRVMmc2V0bGFuZz1lcy1FUyZ3PTFVbXQ1OVVEckVETU5GOFNqR0FMNnNIV1NtLTFmQW94IiwgImxhbmd1YWdlIjogImVuIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2UsICJzaXRlTmFtZSI6ICJBZ2UgQ28ifSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjMiLCAibmFtZSI6ICJBdXRvbWFrZXJzIEFkZGluZyBGZWF0dXJlcyBmb3IgT2xkZXIgRHJpdmVycyAtIEFBUlAiLCAidXJsIjogImh0dHBzOlwvXC93d3cuYWFycC5vcmdcL2F1dG9cL2Nhci1idXlpbmdcL25ldy12ZWhpY2xlLWZlYXR1cmVzLWZvci1vbGRlci1kcml2ZXJzXC8iLCAiZGF0ZVB1Ymxpc2hlZCI6ICIyMDIzLTEwLTEyVDAwOjAwOjAwLjAwMDAwMDAiLCAiZGF0ZVB1Ymxpc2hlZERpc3BsYXlUZXh0IjogIjEyIGRlIG9jdC4gZGUgMjAyMyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5hYXJwLm9yZ1wvYXV0b1wvY2FyLWJ1eWluZ1wvbmV3LXZlaGljbGUtZmVhdHVyZXMtZm9yLW9sZGVyLWRyaXZlcnMiLCAic25pcHBldCI6ICJBQVJQ4oCZcyBTbWFydCBEcml2ZXJUZWsgcHJvZ3JhbSBjYW4gYWxzbyBoZWxwIG9sZGVyIGRyaXZlcnMgZ2V0IHRoZSBtb3N0IG91dCBvZiBuZXcgY2FyIHNhZmV0eSB0ZWNobm9sb2dpZXMgaW5jbHVkaW5nIGJsaW5kIHNwb3Qgd2FybmluZyBzeXN0ZW1zIGFuZCBkcm93c3kgZHJpdmluZyBhbGVydHMuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTExLTE5VDEzOjAzOjAwLjAwMDAwMDBaIiwgImNhY2hlZFBhZ2VVcmwiOiAiaHR0cDpcL1wvY2MuYmluZ2ouY29tXC9jYWNoZS5hc3B4P3E9c2FmZStjYXJzK2Zvcit3b21lbitvdmVyKzQ1JmQ9NDkxMjU0OTcxNjI5NTkyMSZta3Q9ZXMtRVMmc2V0bGFuZz1lcy1FUyZ3PVlqRmRIb002TFVtNS1IcmV6Yk81OVZMRW56YjBKX1Z2IiwgImxhbmd1YWdlIjogImVuIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2UsICJzaXRlTmFtZSI6ICJBQVJQIn1dfSwgInJhbmtpbmdSZXNwb25zZSI6IHsibWFpbmxpbmUiOiB7Iml0ZW1zIjogW3siYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDAsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4wIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAxLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMiwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjIifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDMsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4zIn19XX19fQ==
   recorded_at: Fri, 22 Nov 2024 12:11:05 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=4&mkt=de&q=safe%20cars%20for%20women%20over%2045
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.1
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Fri, 22 Nov 2024 16:41:44 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6740b4843868408aa9101b7b3befb5f2
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-urKjeHp5hPy2mnSGGHIs64rLhNEBELE8JnwAxvxYM4Y=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 6740b4843868408aa9101b7b3befb5f2
+      Bingapis-Sessionid:
+      - 35D88461883F4CE086253FF6088BAE9A
+      X-Msedge-Clientid:
+      - 1FBB3E7E4F8A6CA92FCA2B414E676DC1
+      X-Msapi-Userstate:
+      - 5b88
+      Bingapis-Market:
+      - es-ES
+      Bingapis-Rguid:
+      - 9b328227387f417990592b3a254f4c05
+      X-Search-Responseinfo:
+      - InternalResponseTime=313,MSDatacenter=DUBE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: FBAA29DF76104FCB92F5537CC423F37B Ref B: AMS04EDGE3416 Ref C: 2024-11-22T16:42:44Z'
+      Apim-Request-Id:
+      - '0591c290-567a-4678-aac2-45b719fb1a9b'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Fri, 22 Nov 2024 16:42:44 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "safe
+        cars for women over 45"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=safe+cars+for+women+over+45",
+        "totalEstimatedMatches": 1270000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Best Cars for Older Drivers in 2024 | U.S. News - U.S. News & World
+        Report", "url": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
+        "datePublished": "2024-06-03T00:00:00.0000000", "datePublishedDisplayText":
+        "3 de jun. de 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
+        "snippet": "Today''s cars are safer than ever, and some models earn safety
+        scores that are well above average. These are the safest new cars you can
+        buy or lease today.", "dateLastCrawled": "2024-11-21T18:04:00.0000000Z", "cachedPageUrl":
+        "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4680346604470550&mkt=es-ES&setlang=es-ES&w=iwj6VKZ8dJJQYAcX_axRiTtur7R3C5yi",
+        "language": "en", "isNavigational": true, "noCache": false, "siteName": "U.S.
+        News & World Report"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Best cars for older drivers - Age Co", "url": "https:\/\/www.ageco.co.uk\/useful-articles\/car\/best-cars-for-older-drivers\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ageco.co.uk\/useful-articles\/car\/best-cars-for-older-drivers",
+        "snippet": "Some of the safest cars tested in 2021 include: Mercedes-EQEQS;
+        Skoda ENYAQ iV; Skoda Fabia; Nissan Qashqai Assistance features. Assistance
+        technology on modern vehicles can make your car much more user-friendly, helping
+        with everything from parking to navigation to driving in the dark.", "dateLastCrawled":
+        "2024-11-21T19:18:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4952647526395925&mkt=es-ES&setlang=es-ES&w=1Umt59UDrEDMNF8SjGAL6sHWSm-1fAox",
+        "language": "en", "isNavigational": false, "noCache": false, "siteName": "Age
+        Co"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
+        "Best Cars for Seniors in 2022: Terrific Options for Older Drivers", "url":
+        "https:\/\/www.greatseniorliving.com\/articles\/best-cars-for-seniors", "datePublished":
+        "2022-10-25T00:00:00.0000000", "datePublishedDisplayText": "25 de oct. de
+        2022", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.greatseniorliving.com\/articles\/best-cars-for-seniors",
+        "snippet": "Discover the best cars for seniors that are available today. Learn
+        about the differences between sedans and SUVs and why you might prefer one
+        over the other. Explore senior-friendly features you may want your next vehicle
+        to have. And check out more than two dozen of the best models for 2022!",
+        "dateLastCrawled": "2024-11-20T12:24:00.0000000Z", "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4965047102811319&mkt=es-ES&setlang=es-ES&w=oDj6lz8UDyfR17hHjZtLFjm3lpl6Cx1l",
+        "language": "en", "isNavigational": false, "noCache": false, "siteName": "Great
+        Senior Living"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "The Best Cars for Older Drivers - MOTORS", "url": "https:\/\/news.motors.co.uk\/the-best-cars-for-older-drivers\/",
+        "datePublished": "2021-05-24T00:00:00.0000000", "datePublishedDisplayText":
+        "24 de may. de 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/news.motors.co.uk\/the-best-cars-for-older-drivers",
+        "snippet": "To give you extra peace of mind and security when driving about
+        town, all the cars on this list scored an impressive five stars in rigorous
+        Euro NCAP safety tests. Please read on to find out our top 10 cars for older
+        drivers. 1. AUDI A3.", "dateLastCrawled": "2024-11-19T16:14:00.0000000Z",
+        "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4717248966704191&mkt=es-ES&setlang=es-ES&w=NlB_JjlyKNNhKDkewhF580jEr0_L6B4h",
+        "language": "en", "isNavigational": false, "noCache": false, "siteName": "Motors.co.uk"}]},
+        "rankingResponse": {"mainline": {"items": [{"answerType": "WebPages", "resultIndex":
+        0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}}]}}}'
+  recorded_at: Fri, 22 Nov 2024 16:42:45 GMT
 recorded_with: VCR 6.3.1
