@@ -47,7 +47,7 @@ class Analysis::EntityExtraction < Analysis::Step
     }
 
     def perform
-        entities = self.answers.map do |question, answer|
+        entities = Concurrent::Promises.zip_futures_over(self.answers) do |question, answer|
             step1_system_prompt = STEP_1_SYSTEM[self.language.to_sym] || STEP_1_SYSTEM[Analysis::DEFAULT_LANGUAGE]
             messages = [ { role: :system, content: step1_system_prompt }, { role: :user, content: user_prompt(answer) } ]
 
@@ -61,7 +61,7 @@ class Analysis::EntityExtraction < Analysis::Step
             else
                 { ok: res.parsed }
             end
-        end
+        end.value!
 
         self.result = self.class.aggregate(entities)
 
