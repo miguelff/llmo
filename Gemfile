@@ -37,9 +37,16 @@ gem "dry-schema", "~> 1.13"
 
 # AI/ML Integration
 gem "ruby-openai", "~> 7.3"
+gem "langchainrb", "~> 0.19.1"
 
 # Cross-platform compatibility
 gem "tzinfo-data", platforms: %i[ windows jruby ]
+
+# Concurrency
+gem "concurrent-ruby", require: "concurrent"
+gem "concurrent-ruby-edge", "~> 0.7.1", require: "concurrent/edge/promises"
+
+gem "faraday"
 
 # Optional features
 # gem "bcrypt", "~> 3.1.7"
@@ -76,12 +83,5 @@ group :test do
   gem "selenium-webdriver"
   gem "rspec-rails", "~> 7.0.0"
   gem "webmock", "~> 3.24"
+  gem "vcr", "~> 6.3"
 end
-
-gem "vcr", "~> 6.3", group: :test
-
-gem "faraday", "~> 2.12"
-
-gem "nokogiri", "~> 1.16"
-
-gem "langchainrb", "~> 0.19.1"

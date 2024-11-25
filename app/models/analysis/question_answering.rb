@@ -16,13 +16,14 @@ class Analysis::QuestionAnswering < ApplicationRecord
 
             market = @analysis.report.country_code || Analysis::TWO_LETTER_CODE[@analysis.language.to_sym]
             results = Bing::Search.web_results(query: query, count: count, mkt: market).download
-            results.map do |result|
+
+            Concurrent::Promises.zip_futures_over(results) do |result|
                 summary = <<~SUMMARY.squish
                     Search result:
                         url: #{result["url"]}
                         snippet: #{result[:html].present? ? summarize(result[:html]) : result["snippet"]}
                 SUMMARY
-            end.join("\n\n")
+            end.value!.join("\n\n")
         end
 
         def summarize(text)
@@ -50,17 +51,31 @@ class Analysis::QuestionAnswering < ApplicationRecord
     validates :questions, length: { minimum: 1 }
 
     def perform
-        self.answers = self.questions.map do |question|
-            question = question.with_indifferent_access[:question]
-            res = assist(expand(question), tools: [ BingSearch.new(self) ])
-            answer = res.last.content
+        # Create a future for each question
 
-            if answer.blank?
-                Rails.logger.warn({ message: "No answer for question", metadata: { question: question, response: res } })
-                { question: question, answer: nil }
-            else
-                { question: question, answer: answer }
+        future = Concurrent::Promises.zip_futures_over(self.questions) do |question|
+            begin
+                question = question.with_indifferent_access[:question]
+                res = assist(expand(question), tools: [ BingSearch.new(self) ])
+                answer = res.last.content
+
+                if answer.blank?
+                    Rails.logger.warn({ message: "No answer for question", metadata: { question: question, response: res } })
+                    { question: question, answer: nil }
+                else
+                    { question: question, answer: answer }
+                end
+            rescue => e
+                { question: question, answer: nil, error: e.message }
             end
+        end
+
+        # Collect results, handling any execution errors
+        self.answers = future.value!.map do |result|
+            if result.is_a?(Hash) && result[:error]
+                Rails.logger.error({ message: "Error in result", metadata: { error: result[:error] } })
+            end
+            result
         end
 
         true
