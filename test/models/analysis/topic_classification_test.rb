@@ -32,11 +32,11 @@ class Analysis::TopicClassificationTest < ActiveSupport::TestCase
       }
 
       expectations.each do |brand_info, expected_output|
-        report = Report.new(query: "best for consumers", brand_info: brand_info)
+        report = Report.create!(query: "best for consumers", brand_info: brand_info, owner: users(:jane))
         topic_classification = Analysis::TopicClassification.new(report: report)
         VCR.use_cassette("analysis/topic_classification/#{brand_info.dasherize}") do
-          topic_classification.perform
-          assert_equal expected_output, topic_classification.topic
+          topic_classification.perform_and_save
+          assert_equal expected_output, topic_classification.reload.topic
         end
       end
     end
