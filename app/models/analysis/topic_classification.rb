@@ -46,8 +46,8 @@ class Analysis::TopicClassification < ApplicationRecord
     end
 
     def normalize(res)
-        res.stringify_keys.reject { |_, value| value.blank? }
-        case res[:entity_type]
+        _type = res[:entity_type]
+        res = case _type
         when "brand"
             { brand: res[:brand] }
         when "product"
@@ -57,7 +57,9 @@ class Analysis::TopicClassification < ApplicationRecord
                 h[:product] = res[:product] if res[:product].present?
             end
         else
-            { other: res[:other] }
+            { brand: res[:other] }
         end
+        res["type"] = _type
+        res
     end
 end
