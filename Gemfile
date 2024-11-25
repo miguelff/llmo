@@ -81,7 +81,6 @@ group :test do
   # Testing frameworks and tools
   gem "capybara"
   gem "selenium-webdriver"
-  gem "rspec-rails", "~> 7.0.0"
   gem "webmock", "~> 3.24"
   gem "vcr", "~> 6.3"
 end
