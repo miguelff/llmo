@@ -1,4 +1,4 @@
-class Analysis::QuestionAnswering < ApplicationRecord
+class Analysis::QuestionAnswering < Analysis::Step
     class BingSearch
         extend Langchain::ToolDefinition
 
@@ -18,12 +18,11 @@ class Analysis::QuestionAnswering < ApplicationRecord
             results = Bing::Search.web_results(query: query, count: count, mkt: market).download
 
             Concurrent::Promises.zip_futures_over(results) do |result|
-                summary = <<~SUMMARY.squish
-                    Search result:
-                        url: #{result["url"]}
-                        snippet: #{result[:html].present? ? summarize(result[:html]) : result["snippet"]}
-                SUMMARY
-            end.value!.join("\n\n")
+                {
+                    "URL": result["url"],
+                    "Snippet": (result[:html].present? ? summarize(result[:html]) : result["snippet"])
+                }
+            end.value!.to_json
         end
 
         def summarize(text)
@@ -44,16 +43,13 @@ class Analysis::QuestionAnswering < ApplicationRecord
         end
     end
 
-    include Analysis::InferenceStep
+    include Analysis::Inference
 
     attribute :questions, :json, default: []
-    belongs_to :report, optional: false
     validates :questions, length: { minimum: 1 }
 
     def perform
-        # Create a future for each question
-
-        future = Concurrent::Promises.zip_futures_over(self.questions) do |question|
+        answers = Concurrent::Promises.zip_futures_over(self.questions) do |question|
             begin
                 question = question.with_indifferent_access[:question]
                 res = assist(expand(question), tools: [ BingSearch.new(self) ])
@@ -68,10 +64,9 @@ class Analysis::QuestionAnswering < ApplicationRecord
             rescue => e
                 { question: question, answer: nil, error: e.message }
             end
-        end
+        end.value!
 
-        # Collect results, handling any execution errors
-        self.answers = future.value!.map do |result|
+        self.result = answers.map do |result|
             if result.is_a?(Hash) && result[:error]
                 Rails.logger.error({ message: "Error in result", metadata: { error: result[:error] } })
             end

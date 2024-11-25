@@ -36,7 +36,7 @@ class Analysis::TopicClassificationTest < ActiveSupport::TestCase
         topic_classification = Analysis::TopicClassification.new(report: report)
         VCR.use_cassette("analysis/topic_classification/#{brand_info.dasherize}") do
           topic_classification.perform_and_save
-          assert_equal expected_output, topic_classification.reload.topic
+          assert_equal expected_output, topic_classification.reload.result
         end
       end
     end

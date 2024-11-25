@@ -1,7 +1,5 @@
-class Analysis::LanguageDetection < ApplicationRecord
-    include Analysis::InferenceStep
-
-    belongs_to :report
+class Analysis::LanguageDetection < Analysis::Step
+    include Analysis::Inference
 
     schema do
         string :language, enum: Analysis::SUPPORTED_LANGUAGES, description: "The detected language of the input text"
@@ -21,13 +19,13 @@ class Analysis::LanguageDetection < ApplicationRecord
     EOF
 
     def perform
-        language = chat("Input: #{self.report.query} #{self.report.cohort.presence}")
-        unless language.refusal.present?
-            self.language = language.parsed.language
+        res = chat("Input: #{self.report.query} #{self.report.cohort.presence}")
+        unless res.refusal.present?
+            self.result = res.parsed.language
         else
-            self.error = "Language detection refused: #{language.refusal}, defaulting to 'eng' language"
+            self.error = "Language detection refused: #{res.refusal}, defaulting to 'eng' language"
             Rails.logger.error(self.error)
-            self.language = "eng"
+            self.result = "eng"
         end
 
         true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_25_142152) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_20_200858) do
   create_table "analysis_language_detections", force: :cascade do |t|
     t.string "language"
     t.string "provider", default: "openai", null: false
@@ -23,21 +23,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_25_142152) do
     t.index ["report_id"], name: "index_analysis_language_detections_on_report_id"
   end
 
-  create_table "analysis_question_answerings", force: :cascade do |t|
-    t.json "answers", null: false
-    t.string "provider", default: "openai", null: false
-    t.string "model", default: "gpt-4o", null: false
-    t.float "temperature", default: 0.0, null: false
-    t.string "error"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.binary "report_id", limit: 16, null: false
-    t.index ["report_id"], name: "index_analysis_question_answerings_on_report_id"
-  end
-
-  create_table "analysis_question_syntheses", force: :cascade do |t|
-    t.json "questions"
-    t.integer "questions_count", null: false
+  create_table "analysis_steps", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.json "result"
     t.string "provider", default: "openai", null: false
     t.string "model", default: "gpt-4o-mini", null: false
     t.float "temperature", default: 0.0, null: false
@@ -45,19 +34,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_25_142152) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.binary "report_id", limit: 16, null: false
-    t.index ["report_id"], name: "index_analysis_question_syntheses_on_report_id"
-  end
-
-  create_table "analysis_topic_classifications", force: :cascade do |t|
-    t.json "topic", null: false
-    t.string "provider", default: "openai", null: false
-    t.string "model", default: "gpt-4o", null: false
-    t.float "temperature", default: 0.0, null: false
-    t.string "error"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.binary "report_id", limit: 16, null: false
-    t.index ["report_id"], name: "index_analysis_topic_classifications_on_report_id"
+    t.index ["report_id"], name: "index_analysis_steps_on_report_id"
+    t.index ["type", "name", "report_id"], name: "index_analysis_steps_on_type_and_name_and_report_id"
   end
 
   create_table "reports", id: { type: :binary, limit: 16 }, force: :cascade do |t|
@@ -100,8 +78,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_25_142152) do
   end
 
   add_foreign_key "analysis_language_detections", "reports"
-  add_foreign_key "analysis_question_answerings", "reports"
-  add_foreign_key "analysis_question_syntheses", "reports"
-  add_foreign_key "analysis_topic_classifications", "reports"
+  add_foreign_key "analysis_steps", "reports"
   add_foreign_key "results", "reports"
 end

@@ -1,7 +1,7 @@
-class Analysis::QuestionSynthesis < ApplicationRecord
-    include Analysis::InferenceStep
+class Analysis::QuestionSynthesis < Analysis::Step
+    include Analysis::Inference
 
-    belongs_to :report, optional: false
+    attribute :questions_count, :integer, default: 10
     validates_presence_of :questions_count, message: "Questions count is required"
 
     schema do
@@ -231,11 +231,11 @@ class Analysis::QuestionSynthesis < ApplicationRecord
     })
 
     def perform
-        language = chat(user_message)
-        unless language.refusal.present?
-            self.questions = language.parsed.questions
+        res = chat(user_message)
+        unless res.refusal.present?
+            self.result = res.parsed.questions
         else
-            self.error = "Question synthesis refused: #{language.refusal}"
+            self.error = "Question synthesis refused: #{res.refusal}"
             Rails.logger.error(self.error)
         end
 

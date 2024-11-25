@@ -1,4 +1,6 @@
-class Analysis::TopicClassification < ApplicationRecord
+class Analysis::TopicClassification < Analysis::Step
+    include Analysis::Inference
+
     SYSTEM_PROMPT = <<-EOF.squish
         You are an assistant specialized in entity recognition.
         Your task is to analyze text and determine the category of the entity in the text.
@@ -21,10 +23,6 @@ class Analysis::TopicClassification < ApplicationRecord
         Be sure to identify the entity type correctly, as it will be used to determine the next step in the analysis.
     EOF
 
-    include Analysis::InferenceStep
-
-    belongs_to :report
-
     schema do
         string :entity_type, enum: %w[brand product service other], description: "The detected category for the input text"
         string :brand, required: false, description: "If it's a brand, the detected brand for the input text, if it's a product, the brand of or maker of the product"
@@ -37,11 +35,11 @@ class Analysis::TopicClassification < ApplicationRecord
     def perform
         res = chat("Input: #{self.report.brand_info}")
         unless res.refusal.present?
-            self.topic = self.class.normalize(res.parsed)
+            self.result = self.class.normalize(res.parsed)
         else
             self.error = "Topic classification refused: #{res.refusal}, defaulting to entity_type=other"
             Rails.logger.error(self.error)
-            self.topic = { entity_type: "other", other: self.report.brand_info }
+            self.result = { entity_type: "other", other: self.report.brand_info }
         end
 
         true
