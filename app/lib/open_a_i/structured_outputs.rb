@@ -39,28 +39,31 @@ module OpenAI
       private
 
       # Define a string property
-      def string(name, enum: nil, description: nil)
+      def string(name, enum: nil, description: nil, required: true)
           properties = { type: "string", enum: enum }
           properties[:description] = description if description.present?
+          properties[:required] = required
           add_property(name, properties.compact)
       end
 
       # Define a number property
-      def number(name, description: nil)
+      def number(name, description: nil, required: true)
           properties = { type: "number" }
           properties[:description] = description if description.present?
+          properties[:required] = required
           add_property(name, properties.compact)
       end
 
       # Define a boolean property
-      def boolean(name, description: nil)
+      def boolean(name, description: nil, required: true)
           properties = { type: "boolean" }
           properties[:description] = description if description.present?
+          properties[:required] = required
           add_property(name, properties.compact)
       end
 
       # Define an object property
-      def object(name, description: nil, &block)
+      def object(name, description: nil, required: true, &block)
         properties = {}
         required = []
         Schema.new.tap do |s|
@@ -70,17 +73,18 @@ module OpenAI
         end
         property_definition = { type: "object", properties: properties, required: required, additionalProperties: false }
         property_definition[:description] = description if description.present?
+        property_definition[:required] = required unless required == true
         add_property(name, property_definition.compact)
       end
 
       # Define an array property
-      def array(name, items:, description: "A collection of #{name}")
-        add_property(name, { type: "array", items: items, description: description })
+      def array(name, items:, description: "A collection of #{name}", required: true)
+        add_property(name, { type: "array", items: items, description: description, required: required })
       end
 
       # Define an anyOf property
-      def any_of(name, schemas)
-        add_property(name, { anyOf: schemas })
+      def any_of(name, schemas, required: true)
+        add_property(name, { anyOf: schemas, required: required })
       end
 
       # Define a reusable schema component
@@ -95,8 +99,9 @@ module OpenAI
 
       # Add a property to the schema
       def add_property(name, definition)
+        required = definition.delete(:required)
         @schema[:properties][name] = definition
-        @schema[:required] << name
+        @schema[:required] << name unless required == false
       end
 
       # Validate the schema against defined limits
