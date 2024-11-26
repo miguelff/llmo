@@ -1,39 +1,39 @@
 require "test_helper"
 
-class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
+class Analysis::CompetitorsTest < ActiveSupport::TestCase
   test "OverarchingTerm: when topic is a product" do
-    VCR.use_cassette("analysis/topic_features/overarching_term/product") do
+    VCR.use_cassette("analysis/competitors/overarching_term/product") do
       query = "What are the best electric cars in the market?"
       topic = { "type" => "product", "brand" => "Tesla", "product" => "Model 3" }
-      features = Analysis::TopicFeatures.new(**params(topic, query))
+      features = Analysis::Competitors.new(**params(topic, query))
       assert_equal "electric cars", features.overarching_term
     end
   end
 
   test "OverarchingTerm: when topic is a brand" do
-    VCR.use_cassette("analysis/topic_features/overarching_term/brand") do
+    VCR.use_cassette("analysis/competitors/overarching_term/brand") do
       query = "What are the best electric cars in the market?"
       topic = { "type" => "brand", "brand" => "Volkswagen" }
-      features = Analysis::TopicFeatures.new(**params(topic, query))
+      features = Analysis::Competitors.new(**params(topic, query))
       assert_equal "electric cars", features.overarching_term
     end
   end
 
   test "OverarchingTerm: when topic is a brand, but the query doesn't seem to be about brands" do
-    VCR.use_cassette("analysis/topic_features/overarching_term/brand_and_query") do
+    VCR.use_cassette("analysis/competitors/overarching_term/brand_and_query") do
       query = "What is the most affordable car you can buy if you are a retired woman with grand children?"
       topic = { "type" => "brand", "brand" => "Volkswagen" }
-      features = Analysis::TopicFeatures.new(**params(topic, query))
+      features = Analysis::Competitors.new(**params(topic, query))
       assert_equal "affordable family cars", features.overarching_term
     end
   end
 
   test "TermAttributes" do
-    VCR.use_cassette("analysis/topic_features/term_attributes") do
+    VCR.use_cassette("analysis/competitors/term_attributes") do
       query = "What are the most affordable cars in the market?"
       # Inferred by a previous step of the pipeline (from "Volkswagen Polo" entered into the brand_info input field)
       topic = { "type" => "product", "brand" => "Volkswagen", "product" => "Polo" }
-      features = Analysis::TopicFeatures.new(**params(topic, query))
+      features = Analysis::Competitors.new(**params(topic, query))
       expected_attributes = [
         {
           "name" => "Price",
@@ -66,10 +66,10 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
   end
 
   test "CompetitionScores" do
-      VCR.use_cassette("analysis/topic_features/competition_scores") do
+      VCR.use_cassette("analysis/competitors/competition_scores") do
         query = "What are the most affordable cars in the market?"
         topic = { "type" => "product", "brand" => "Volkswagen", "product" => "Polo" }
-        features = Analysis::TopicFeatures.new(**params(topic, query))
+        features = Analysis::Competitors.new(**params(topic, query))
         assert_equal [
           {
             "name" => "Volkswagen VW ID.7",
@@ -256,10 +256,10 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
   end
 
   test "End to End" do
-    VCR.use_cassette("analysis/topic_features/end_to_end") do
+    VCR.use_cassette("analysis/competitors/end_to_end") do
       query = "What are the safest cars for women over 45 years old?"
       topic = { "type" => "product", "brand" => "Volkswagen", "product" => "Polo" }
-      features = Analysis::TopicFeatures.new(**params(topic, query))
+      features = Analysis::Competitors.new(**params(topic, query))
       features.perform_and_save
       assert_equal({
         "overarching_term" => "safest cars for women over 45",

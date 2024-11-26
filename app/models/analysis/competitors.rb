@@ -1,4 +1,4 @@
-class Analysis::TopicFeatures < Analysis::Step
+class Analysis::Competitors < Analysis::Step
     # The result of entity extraction
     attribute :entities, :json, default: {}
     validates :entities, presence: true
@@ -57,7 +57,7 @@ class Analysis::TopicFeatures < Analysis::Step
     end
 
     def competition_scores
-        CompetitionScores.new.tap do |builder|
+        @competition_scores ||=CompetitionScores.new.tap do |builder|
             builder.overarching_term = overarching_term
             builder.term_attributes = term_attributes
             builder.entities = entities
