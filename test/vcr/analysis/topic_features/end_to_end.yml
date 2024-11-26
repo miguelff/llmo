@@ -1,0 +1,498 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an AI agent specializing in identifying appropriate overarching terms
+        for a set of products or brands based on a user’s query. Your task is to analyze
+        the provided data and user intent, then derive the most relevant overarching
+        term that contextualizes the input.\n\nExamples of Overarching Terms (Brands-Based)\n\n\t1.\tNetflix,
+        Amazon Prime Video, Disney+, Hulu, Apple TV+: “streaming services”\n\t2.\tGath,
+        Decathlon Olaian, Pukas: “surfing hardware”\n\t3.\tCoca-Cola, Pepsi, Dr Pepper,
+        Sprite, Fanta: “soft drinks”\n\t4.\tNike, Adidas, Puma, Reebok, Under Armour:
+        “sportswear brands”\n\t5.\tToyota, Ford, Tesla, BMW, Mercedes-Benz: “cars”\n\t6.\tMicrosoft,
+        Google, Amazon, IBM, Oracle: “cloud service providers”\n\nExamples of Overarching
+        Terms (Products-Based)\n\n\t1.\tiPhone 15, Galaxy S23, Pixel 8, OnePlus 11,
+        Huawei P60: “smartphones”\n\t2.\tMacBook Pro, Dell XPS 15, HP Spectre, Lenovo
+        ThinkPad X1, ASUS ZenBook: “laptops”\n\t3.\tPlayStation 5, Xbox Series X,
+        Nintendo Switch OLED, Steam Deck, Meta Quest 3: “gaming consoles”\n\t4.\tPatagonia
+        Nano Puff, North Face ThermoBall, Arc’teryx Atom LT, Columbia Omni-Heat, Marmot
+        Featherless: “insulated jackets”\n\t5.\tBeats Studio Buds, Jabra Elite 7 Active,
+        JBL Tune 230NC, Anker Soundcore Liberty 4, Sennheiser CX Plus True Wireless:
+        “earbuds”\n\t6.\tCamelBak Eddy+, Nalgene Wide Mouth, Hydro Flask Standard
+        Mouth, Contigo Autoseal Chill, S’well Stainless Steel: “water bottles”\n\nHow
+        User Queries Influence Overarching Terms\n\nThe user query provides context
+        for the brands or products, narrowing the focus to a specific subset or characteristic.
+        Below are examples of how this context shifts the overarching term:\n\t1.\tBrands-Based
+        Example\n\t•\tInput Brands: Nike, Adidas, Puma, Reebok, Under Armour\n\t•\tDefault
+        Term: “sportswear brands”\n\t•\tUser Query: “Which brands make the best running
+        shoes?”\n\t•\tResulting Term: “running shoe brands”\n\t2.\tProducts-Based
+        Example\n\t•\tInput Products: iPhone 15, Galaxy S23, Pixel 8, OnePlus 11,
+        Huawei P60\n\t•\tDefault Term: “smartphones”\n\t•\tUser Query: “What are the
+        most affordable flagship smartphones?”\n\t•\tResulting Term: “affordable flagship
+        smartphones”\n\t3.\tQuery-Specific Refinement\n\t•\tInput Brands: Spotify,
+        Apple Music, Tidal, YouTube Music, Deezer\n\t•\tDefault Term: “music streaming
+        services”\n\t•\tUser Query: “Which platforms are best for audiophiles?”\n\t•\tResulting
+        Term: “high-fidelity music platforms”\n\t4.\tFrom General to Specific\n\t•\tInput
+        Brands: Tesla, Rivian, Lucid Motors, Fisker, Polestar\n\t•\tDefault Term:
+        “electric vehicles”\n\t•\tUser Query: “What are the leading luxury electric
+        SUVs?”\n\t•\tResulting Term: “luxury electric SUVs”\n\nInstructions\n\n\t•\tStep
+        1: Identify the initial overarching term based on the input brands or products.\n\t•\tStep
+        2: Analyze the user query to determine its focus, specificity, or intent.\n\t•\tStep
+        3: Refine the overarching term to align with the query’s context.\n\t•\tStep
+        4: Provide the final term with clarity and relevance to the user’s request.\n"},{"role":"user","content":"*
+        products: Volkswagen VW ID.7, NIO ET5, Smart #3, Tesla Model 3, Tesla Model
+        Y, Volvo XC60, Volvo XC90\n* User query: What are the safest cars for women
+        over 45 years old?\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"name":{"type":"string","description":"The
+        name of the overarching term"}},"required":["name"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 26 Nov 2024 16:17:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '229'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999168'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 12ms
+      X-Request-Id:
+      - req_9dd8b90936aedcf2b14e007d0b521ba5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=ZAMcU1dVvOKS7DRhschIaibjDMPxNO.qlfcD_8TLy2U-1732637858-1.0.1.1-ZmpTpxfVfYtcsC17la8rN8rUvdxM86aMPeozNZf.IofmL_EwdBExDUjOMM4.yQixAGCXbFougemoIRK08eYZ4w;
+        path=/; expires=Tue, 26-Nov-24 16:47:38 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=2vAS3.ilVheqAopkNzMLp7do5zaZlSlQ_3a2VSByKB0-1732637858493-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e8b30952e6a214d-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AXsXqrCKFztmC4kPcO9f43U4ufVB7",
+          "object": "chat.completion",
+          "created": 1732637858,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"name\":\"safest cars for women over 45\"}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 894,
+            "completion_tokens": 13,
+            "total_tokens": 907,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Tue, 26 Nov 2024 16:17:38 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an AI agent specializing in identifying the most important attributes
+        to perform competitive analysis on a set of products or brands\n"},{"role":"user","content":"What
+        are the five most important attributes to evaluate competitors in the \"safest
+        cars for women over 45\" category?\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"attributes":{"type":"array","items":{"$ref":"#/$defs/attribute"},"description":"The
+        five most important attributes to evaluate competitors in the same category"}},"required":["attributes"],"additionalProperties":false,"strict":true,"$defs":{"attribute":{"type":"object","properties":{"name":{"type":"string","description":"The
+        name of the attribute"},"definition":{"type":"string","description":"A definition
+        for the attribute"},"why":{"type":"string","description":"Why this attribute
+        is important to evaluate competitors in the same category"}},"required":["name","definition","why"],"additionalProperties":false,"strict":true}}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 26 Nov 2024 16:17:41 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2901'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999917'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 1ms
+      X-Request-Id:
+      - req_53af26a8ba46b6d8f8eaad8ab4953c15
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=RbSjLyPuYl5CHbqdwjL2FsUhfQ9Ye3yZ1xJg6dzaTsU-1732637861-1.0.1.1-wZeNgn9Mqto9PKXTXWWrA.Qwt7HuI2SqVSDx_jToMMm1q8CRoL1l8IrAW0Elklst2hvVx1MumVTcFbx.aCqZbg;
+        path=/; expires=Tue, 26-Nov-24 16:47:41 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=m5GjVGvOcSXtLBtkg0PqKKBWm8iZOJjDaerEee_vwd8-1732637861680-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e8b30983949214b-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AXsXq8bD5TK4tub7qHXOGNiSSLYvi",
+          "object": "chat.completion",
+          "created": 1732637858,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"attributes\":[{\"name\":\"Safety Ratings\",\"definition\":\"A measure of how well a vehicle performs in crash tests and safety assessments conducted by organizations such as the National Highway Traffic Safety Administration (NHTSA) and the Insurance Institute for Highway Safety (IIHS).\",\"why\":\"Safety ratings are crucial as they provide a standardized assessment of a vehicle's crashworthiness and safety features, which is particularly important for women over 45 who may prioritize safety in their vehicle choice.\"},{\"name\":\"Comfort and Ergonomics\",\"definition\":\"The design and layout of the vehicle's interior, including seat comfort, driving position, and ease of access, tailored to the needs of the driver and passengers.\",\"why\":\"Comfort and ergonomics are essential for older drivers, as they can affect driving posture, fatigue levels, and overall driving experience, making it a key attribute for this demographic.\"},{\"name\":\"Advanced Safety Features\",\"definition\":\"Technological enhancements in vehicles that assist in preventing accidents, such as automatic emergency braking, lane departure warning, and blind-spot monitoring.\",\"why\":\"Advanced safety features are increasingly important for enhancing driver awareness and reducing the risk of accidents, which is particularly relevant for women over 45 who may seek additional support while driving.\"},{\"name\":\"Reliability and Maintenance Costs\",\"definition\":\"The likelihood of a vehicle to perform well over time without frequent repairs, along with the associated costs of maintenance and repairs.\",\"why\":\"Reliability and low maintenance costs are significant for older drivers who may prefer vehicles that require less frequent servicing and are dependable over the long term.\"},{\"name\":\"Insurance Costs\",\"definition\":\"The average cost of insuring a vehicle, which can vary based on the car's safety features, repair costs, and theft rates.\",\"why\":\"Insurance costs are an important consideration for women over 45, as they can impact the overall affordability of owning a vehicle, making it a critical factor in their purchasing decision.\"}]}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 190,
+            "completion_tokens": 382,
+            "total_tokens": 572,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Tue, 26 Nov 2024 16:17:41 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an AI agent specialized in evaluating and scoring competitors based on
+        specific criteria.\nYou will be provided with:\n1.\tA list of brands or products
+        to evaluate, between \u003coverarching_term\u003e and \u003c/overarching_term\u003e.\n2.\tA
+        set of attributes or criteria to assess these competitors, between \u003cterm_attributes\u003e
+        and \u003c/term_attributes\u003e.\n3.\tRelevant knowledge about the competitors,
+        along with information on other products or brands that may not directly compete,
+        between \u003canswers\u003e and \u003c/answers\u003e.\nYour goal is to accurately
+        evaluate and score the competitors against the provided attributes, ensuring
+        that your assessments are clear, fair, and well-reasoned. Distinguish competitors
+        from non-competitors where necessary.            \n"},{"role":"user","content":"\u003coverarching_term\u003e\nsafest
+        cars for women over 45\n\u003c/overarching_term\u003e\n\u003cterm_attributes\u003e\n[#\u003cHashie::Mash
+        definition=\"A measure of how well a vehicle performs in crash tests and safety
+        assessments conducted by organizations such as the National Highway Traffic
+        Safety Administration (NHTSA) and the Insurance Institute for Highway Safety
+        (IIHS).\" name=\"Safety Ratings\" why=\"Safety ratings are crucial as they
+        provide a standardized assessment of a vehicle''s crashworthiness and safety
+        features, which is particularly important for women over 45 who may prioritize
+        safety in their vehicle choice.\"\u003e, #\u003cHashie::Mash definition=\"The
+        design and layout of the vehicle''s interior, including seat comfort, driving
+        position, and ease of access, tailored to the needs of the driver and passengers.\"
+        name=\"Comfort and Ergonomics\" why=\"Comfort and ergonomics are essential
+        for older drivers, as they can affect driving posture, fatigue levels, and
+        overall driving experience, making it a key attribute for this demographic.\"\u003e,
+        #\u003cHashie::Mash definition=\"Technological enhancements in vehicles that
+        assist in preventing accidents, such as automatic emergency braking, lane
+        departure warning, and blind-spot monitoring.\" name=\"Advanced Safety Features\"
+        why=\"Advanced safety features are increasingly important for enhancing driver
+        awareness and reducing the risk of accidents, which is particularly relevant
+        for women over 45 who may seek additional support while driving.\"\u003e,
+        #\u003cHashie::Mash definition=\"The likelihood of a vehicle to perform well
+        over time without frequent repairs, along with the associated costs of maintenance
+        and repairs.\" name=\"Reliability and Maintenance Costs\" why=\"Reliability
+        and low maintenance costs are significant for older drivers who may prefer
+        vehicles that require less frequent servicing and are dependable over the
+        long term.\"\u003e, #\u003cHashie::Mash definition=\"The average cost of insuring
+        a vehicle, which can vary based on the car''s safety features, repair costs,
+        and theft rates.\" name=\"Insurance Costs\" why=\"Insurance costs are an important
+        consideration for women over 45, as they can impact the overall affordability
+        of owning a vehicle, making it a critical factor in their purchasing decision.\"\u003e]\n\u003c/term_attributes\u003e\n\u003ccompetitors\u003e\nVolkswagen
+        VW ID.7, NIO ET5, Smart #3, Tesla Model 3, Tesla Model Y,  Volkswagen Polo\n\u003c/competitors\u003e\n\u003canswers\u003e\n[{\"question\"=\u003e\"Which
+        car brands offer the safest vehicles for women over 45 years old?\", \"answer\"=\u003e\"Here
+        are some car brands and models that are considered particularly safe for women
+        over 45 years old, based on the latest Euro NCAP crash tests and safety ratings:\\n\\n###
+        1. **Volkswagen ID.7**\\n- **Safety features**: Excellent occupant protection,
+        advanced safety systems like lane-keeping assist and emergency braking.\\n-
+        **Reasoning**: The ID.7 has received high ratings in Euro NCAP tests and offers
+        comprehensive safety features that are important for drivers in this age group.\\n-
+        **Source**: [ADAC](https://www.adac.de/rund-ums-fahrzeug/autokatalog/crashtest/sichere-autos-euroncap/)\\n\\n###
+        2. **NIO ET5**\\n- **Safety features**: Excellent occupant protection, good
+        emergency braking system.\\n- **Reasoning**: This model offers a high safety
+        rating and is particularly suitable for tech-savvy drivers who value modern
+        assistance systems.\\n- **Source**: [AutoScout24](https://www.autoscout24.de/informieren/ratgeber/auto-sicherheit/ncap-sicherste-autos/)\\n\\n###
+        3. **Mercedes EQE**\\n- **Safety features**: High safety standards, particularly
+        in child protection, with automatic systems to prevent secondary collisions.\\n-
+        **Reasoning**: The safety features and general reliability of Mercedes make
+        this model an excellent choice for women seeking safety and comfort.\\n- **Source**:
+        [Finn](https://www.finn.com/de-DE/auto/bestenliste/sicherstes-auto)\\n\\n###
+        4. **BMW 3 Series**\\n- **Safety features**: High occupant protection (97%)
+        and comprehensive safety features.\\n- **Reasoning**: The BMW 3 Series is
+        known for its safety standards and offers ample space, making it an ideal
+        choice for families.\\n- **Source**: [Carwow](https://www.carwow.de/beste-autos/euro-ncap-crashtest-llste-der-sichersten-autos)\\n\\n###
+        5. **Toyota Yaris**\\n- **Safety features**: Solid safety standards, ideal
+        for beginner drivers.\\n- **Reasoning**: The Yaris is a compact and safe vehicle,
+        making it a good choice for women looking for a reliable and easy-to-drive
+        car.\\n- **Source**: [Finn](https://www.finn.com/de-DE/auto/bestenliste/sicherstes-auto)\\n\\n###
+        Conclusion\\nThe listed models are characterized by high safety ratings and
+        modern assistance systems that are important for women over 45 years old.
+        These vehicles not only offer protection but also comfort and user-friendliness,
+        making them an excellent choice for this target group. When purchasing, it
+        is important to pay attention to Euro NCAP ratings and the available safety
+        features to make the best decision.\"}, {\"question\"=\u003e\"Which car brands
+        offer the safest vehicles for women over 45 years old?\", \"answer\"=\u003e\"Here
+        are some car brands and models that are considered particularly safe for women
+        over 45 years old, based on the latest Euro NCAP test results and other safety
+        ratings:\\n\\n### 1. **Volkswagen**\\n   - **Model:** VW ID.7\\n   - **Safety
+        Rating:** 5 Stars (Euro NCAP)\\n   - **Reasoning:** The VW ID.7 offers excellent
+        occupant protection and is equipped with modern safety features, such as an
+        integrated side airbag between the front seats. This makes it an excellent
+        choice for safety and comfort.\\n\\n### 2. **Tesla**\\n   - **Model:** Tesla
+        Model 3\\n   - **Safety Rating:** 5 Stars (Euro NCAP)\\n   - **Reasoning:**
+        The Model 3 scores highly in adult protection (96%) and child protection (86%).
+        It is equipped with a variety of safety features that enhance driving safety.\\n\\n###
+        3. **Volvo**\\n   - **Models:** Volvo XC60, Volvo S90/V90\\n   - **Safety
+        Rating:** 5 Stars (Euro NCAP)\\n   - **Reasoning:** Volvo is known for its
+        safety standards. The XC60 offers 98% occupant protection and strong safety
+        assistance systems, while the S90/V90 models have excellent safety features.\\n\\n###
+        4. **Mercedes-Benz**\\n   - **Model:** Mercedes-Benz CLA Plug-in Hybrid\\n   -
+        **Safety Rating:** 5 Stars (Euro NCAP)\\n   - **Reasoning:** This model performed
+        well in all safety categories, including very good child protection (91%).
+        The extensive range of assistance systems increases safety.\\n\\n### 5. **Kia**\\n   -
+        **Model:** Kia Sorento\\n   - **Safety Rating:** 5 Stars (Euro NCAP)\\n   -
+        **Reasoning:** The Sorento offers 82% adult protection and 85% child protection.
+        It is spacious and offers a high seating position, improving visibility and
+        comfort.\\n\\n### 6. **BMW**\\n   - **Model:** BMW 3 Series\\n   - **Safety
+        Rating:** 5 Stars (Euro NCAP)\\n   - **Reasoning:** The BMW 3 Series has outstanding
+        safety ratings (97% for occupant protection) and is equipped with modern safety
+        assistance systems that enhance driving safety.\\n\\n### 7. **Nissan**\\n   -
+        **Model:** Nissan Qashqai\\n   - **Safety Rating:** 5 Stars (Euro NCAP)\\n   -
+        **Reasoning:** The Qashqai has solid safety ratings and is particularly suitable
+        for families, as it also has good child seat ratings.\\n\\n### 8. **Audi**\\n   -
+        **Model:** Audi A1\\n   - **Safety Rating:** 5 Stars (Euro NCAP)\\n   - **Reasoning:**
+        The Audi A1 scores highly for adult protection (95%) and child protection
+        (85%) and offers a variety of safety features.\\n\\n### Conclusion\\nThe selection
+        of these models is based on their high safety ratings in Euro NCAP tests,
+        which evaluate various aspects such as occupant protection, child safety,
+        and the availability of safety assistance systems. These vehicles not only
+        offer safety but also comfort and user-friendliness, making them particularly
+        suitable for women over 45 years old.\\n\\n### Sources\\n- [ADAC - Safe Cars
+        According to Euro NCAP](https://www.adac.de/rund-ums-fahrzeug/autokatalog/crashtest/sichere-autos-euroncap/)\\n-
+        [Carwow - Safest Cars](https://www.carwow.de/beste-autos/euro-ncap-crashtest-llste-der-sichersten-autos)\\n-
+        [AutoScout24 - NCAP Safest Cars](https://www.autoscout24.de/informieren/ratgeber/auto-sicherheit/ncap-sicherste-autos/)\\n-
+        [DadsLife - Safest Family Cars](https://dadslife.at/mobilitaet/sicherste-familienautos/)\"}]\n\u003c/answers\u003e\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"competitors":{"type":"array","items":{"$ref":"#/$defs/competitor"},"description":"The
+        competitors and their scores"}},"required":["competitors"],"additionalProperties":false,"strict":true,"$defs":{"score":{"type":"object","properties":{"attribute":{"type":"string","description":"The
+        name of the attribute"},"score":{"type":"string","description":"The score
+        of the competitor for the attribute, n/10, where n is an integer between 0
+        and 10"},"reason":{"type":"string","description":"The reason for the score"}},"required":["attribute","score","reason"],"additionalProperties":false,"strict":true},"competitor":{"type":"object","properties":{"name":{"type":"string","description":"The
+        name of the competitor"},"scores":{"type":"array","items":{"$ref":"#/$defs/score"},"description":"The
+        scores of the competitor"}},"required":["name","scores"],"additionalProperties":false,"strict":true}}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 26 Nov 2024 16:17:48 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '6549'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3997731'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 34ms
+      X-Request-Id:
+      - req_5fb7ce6245297f0988b7c66d70064ba5
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=KL3Yy5_3Pjg6uS8Fbw1ba1p6kx84t8FQ.CNzQEmwGv8-1732637868-1.0.1.1-tHbMbUlLT3JHrt95Mov7kuVOjz_QhrJxHz6GnJFwXUvK47_Gdqw4m1yuOUWxK6piuQfyKl_RmDfOu.EnH9msKA;
+        path=/; expires=Tue, 26-Nov-24 16:47:48 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=X8IshZEM7wukgGQAVx_xCdQOliXoKY6BzZaWJlhr0zs-1732637868493-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e8b30ac4f5ec8f5-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AXsXtvGBfIUQuBU2PhTrqsdp5RJTa",
+          "object": "chat.completion",
+          "created": 1732637861,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"competitors\":[{\"name\":\"Volkswagen VW ID.7\",\"scores\":[{\"attribute\":\"Safety Ratings\",\"score\":\"10/10\",\"reason\":\"The VW ID.7 has received high ratings in Euro NCAP tests, indicating excellent occupant protection and advanced safety systems.\"},{\"attribute\":\"Comfort and Ergonomics\",\"score\":\"9/10\",\"reason\":\"The ID.7 features a spacious interior with comfortable seating and an intuitive layout, enhancing the driving experience.\"},{\"attribute\":\"Advanced Safety Features\",\"score\":\"10/10\",\"reason\":\"Equipped with modern safety features like lane-keeping assist and emergency braking, it provides comprehensive support for drivers.\"},{\"attribute\":\"Reliability and Maintenance Costs\",\"score\":\"8/10\",\"reason\":\"Volkswagen vehicles are generally reliable, though maintenance costs can vary depending on the model.\"},{\"attribute\":\"Insurance Costs\",\"score\":\"7/10\",\"reason\":\"Insurance costs are moderate, influenced by the vehicle's safety features and repair costs.\"}]},{\"name\":\"NIO ET5\",\"scores\":[{\"attribute\":\"Safety Ratings\",\"score\":\"9/10\",\"reason\":\"The NIO ET5 has received high safety ratings, particularly for occupant protection.\"},{\"attribute\":\"Comfort and Ergonomics\",\"score\":\"8/10\",\"reason\":\"The interior is designed for comfort, though it may not be as spacious as some competitors.\"},{\"attribute\":\"Advanced Safety Features\",\"score\":\"9/10\",\"reason\":\"It includes a good range of modern safety features, appealing to tech-savvy drivers.\"},{\"attribute\":\"Reliability and Maintenance Costs\",\"score\":\"7/10\",\"reason\":\"As a newer brand, long-term reliability is still being established, but initial reports are positive.\"},{\"attribute\":\"Insurance Costs\",\"score\":\"6/10\",\"reason\":\"Insurance costs may be higher due to the vehicle's advanced technology and repair costs.\"}]},{\"name\":\"Smart #3\",\"scores\":[{\"attribute\":\"Safety Ratings\",\"score\":\"7/10\",\"reason\":\"The Smart #3 has decent safety ratings but lacks the comprehensive features of larger vehicles.\"},{\"attribute\":\"Comfort and Ergonomics\",\"score\":\"6/10\",\"reason\":\"The compact design may limit comfort for taller drivers or passengers.\"},{\"attribute\":\"Advanced Safety Features\",\"score\":\"6/10\",\"reason\":\"It offers basic safety features but lacks some advanced systems found in larger models.\"},{\"attribute\":\"Reliability and Maintenance Costs\",\"score\":\"8/10\",\"reason\":\"Smart vehicles are generally reliable with low maintenance costs.\"},{\"attribute\":\"Insurance Costs\",\"score\":\"8/10\",\"reason\":\"Insurance costs are typically lower for smaller vehicles like the Smart #3.\"}]},{\"name\":\"Tesla Model 3\",\"scores\":[{\"attribute\":\"Safety Ratings\",\"score\":\"10/10\",\"reason\":\"The Tesla Model 3 has received top ratings in safety tests, particularly for adult and child protection.\"},{\"attribute\":\"Comfort and Ergonomics\",\"score\":\"8/10\",\"reason\":\"The interior is modern and comfortable, though some may find the seating position less traditional.\"},{\"attribute\":\"Advanced Safety Features\",\"score\":\"10/10\",\"reason\":\"It is equipped with a comprehensive suite of advanced safety features, enhancing overall safety.\"},{\"attribute\":\"Reliability and Maintenance Costs\",\"score\":\"7/10\",\"reason\":\"Tesla vehicles have variable reliability, but maintenance costs are generally lower due to fewer moving parts.\"},{\"attribute\":\"Insurance Costs\",\"score\":\"7/10\",\"reason\":\"Insurance costs can be higher due to the vehicle's value and repair costs.\"}]},{\"name\":\"Tesla Model Y\",\"scores\":[{\"attribute\":\"Safety Ratings\",\"score\":\"10/10\",\"reason\":\"The Model Y has excellent safety ratings, similar to the Model 3, with strong occupant protection.\"},{\"attribute\":\"Comfort and Ergonomics\",\"score\":\"9/10\",\"reason\":\"The spacious interior and high seating position enhance comfort for all passengers.\"},{\"attribute\":\"Advanced Safety Features\",\"score\":\"10/10\",\"reason\":\"It includes a full range of advanced safety features, making it very safe to drive.\"},{\"attribute\":\"Reliability and Maintenance Costs\",\"score\":\"7/10\",\"reason\":\"Similar to the Model 3, it has variable reliability but lower maintenance costs.\"},{\"attribute\":\"Insurance Costs\",\"score\":\"7/10\",\"reason\":\"Insurance costs are generally higher due to the vehicle's value.\"}]},{\"name\":\"Volkswagen Polo\",\"scores\":[{\"attribute\":\"Safety Ratings\",\"score\":\"8/10\",\"reason\":\"The Polo has good safety ratings but is not as high as larger models.\"},{\"attribute\":\"Comfort and Ergonomics\",\"score\":\"7/10\",\"reason\":\"The interior is comfortable for a compact car, but space is limited.\"},{\"attribute\":\"Advanced Safety Features\",\"score\":\"7/10\",\"reason\":\"It offers a decent range of safety features but lacks some advanced options.\"},{\"attribute\":\"Reliability and Maintenance Costs\",\"score\":\"8/10\",\"reason\":\"Volkswagen vehicles are generally reliable with reasonable maintenance costs.\"},{\"attribute\":\"Insurance Costs\",\"score\":\"8/10\",\"reason\":\"Insurance costs are typically lower for compact vehicles like the Polo.\"}]}]}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 2327,
+            "completion_tokens": 1017,
+            "total_tokens": 3344,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Tue, 26 Nov 2024 16:17:48 GMT
+recorded_with: VCR 6.3.1

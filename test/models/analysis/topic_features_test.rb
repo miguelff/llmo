@@ -255,6 +255,227 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
       end
   end
 
+  test "End to End" do
+    VCR.use_cassette("analysis/topic_features/end_to_end") do
+      query = "What are the safest cars for women over 45 years old?"
+      topic = { "type" => "product", "brand" => "Volkswagen", "product" => "Polo" }
+      features = Analysis::TopicFeatures.new(**params(topic, query))
+      features.perform_and_save
+      assert_equal({
+        "overarching_term" => "safest cars for women over 45",
+        "term_attributes" => [
+          {
+            "name" => "Safety Ratings",
+            "definition" => "A measure of how well a vehicle performs in crash tests and safety assessments conducted by organizations such as the National Highway Traffic Safety Administration (NHTSA) and the Insurance Institute for Highway Safety (IIHS).",
+            "why" => "Safety ratings are crucial as they provide a standardized assessment of a vehicle's crashworthiness and safety features, which is particularly important for women over 45 who may prioritize safety in their vehicle choice."
+          },
+          {
+            "name" => "Comfort and Ergonomics",
+            "definition" => "The design and layout of the vehicle's interior, including seat comfort, driving position, and ease of access, tailored to the needs of the driver and passengers.",
+            "why" => "Comfort and ergonomics are essential for older drivers, as they can affect driving posture, fatigue levels, and overall driving experience, making it a key attribute for this demographic."
+          },
+          {
+            "name" => "Advanced Safety Features",
+            "definition" => "Technological enhancements in vehicles that assist in preventing accidents, such as automatic emergency braking, lane departure warning, and blind-spot monitoring.",
+            "why" => "Advanced safety features are increasingly important for enhancing driver awareness and reducing the risk of accidents, which is particularly relevant for women over 45 who may seek additional support while driving."
+          },
+          {
+            "name" => "Reliability and Maintenance Costs",
+            "definition" => "The likelihood of a vehicle to perform well over time without frequent repairs, along with the associated costs of maintenance and repairs.",
+            "why" => "Reliability and low maintenance costs are significant for older drivers who may prefer vehicles that require less frequent servicing and are dependable over the long term."
+          },
+          {
+            "name" => "Insurance Costs",
+            "definition" => "The average cost of insuring a vehicle, which can vary based on the car's safety features, repair costs, and theft rates.",
+            "why" => "Insurance costs are an important consideration for women over 45, as they can impact the overall affordability of owning a vehicle, making it a critical factor in their purchasing decision."
+          }
+        ],
+        "competition_scores" => [
+          {
+            "name" => "Volkswagen VW ID.7",
+            "scores" => [
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "10/10",
+                "reason" => "The VW ID.7 has received high ratings in Euro NCAP tests, indicating excellent occupant protection and advanced safety systems."
+              },
+              {
+                "attribute" => "Comfort and Ergonomics",
+                "score" => "9/10",
+                "reason" => "The ID.7 features a spacious interior with comfortable seating and an intuitive layout, enhancing the driving experience."
+              },
+              {
+                "attribute" => "Advanced Safety Features",
+                "score" => "10/10",
+                "reason" => "Equipped with modern safety features like lane-keeping assist and emergency braking, it provides comprehensive support for drivers."
+              },
+              {
+                "attribute" => "Reliability and Maintenance Costs",
+                "score" => "8/10",
+                "reason" => "Volkswagen vehicles are generally reliable, though maintenance costs can vary depending on the model."
+              },
+              {
+                "attribute" => "Insurance Costs",
+                "score" => "7/10",
+                "reason" => "Insurance costs are moderate, influenced by the vehicle's safety features and repair costs."
+              }
+            ]
+          },
+          {
+            "name" => "NIO ET5",
+            "scores" => [
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "9/10",
+                "reason" => "The NIO ET5 has received high safety ratings, particularly for occupant protection."
+              },
+              {
+                "attribute" => "Comfort and Ergonomics",
+                "score" => "8/10",
+                "reason" => "The interior is designed for comfort, though it may not be as spacious as some competitors."
+              },
+              {
+                "attribute" => "Advanced Safety Features",
+                "score" => "9/10",
+                "reason" => "It includes a good range of modern safety features, appealing to tech-savvy drivers."
+              },
+              {
+                "attribute" => "Reliability and Maintenance Costs",
+                "score" => "7/10",
+                "reason" => "As a newer brand, long-term reliability is still being established, but initial reports are positive."
+              },
+              {
+                "attribute" => "Insurance Costs",
+                "score" => "6/10",
+                "reason" => "Insurance costs may be higher due to the vehicle's advanced technology and repair costs."
+              }
+            ]
+          },
+          {
+            "name" => "Smart #3",
+            "scores" => [
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "7/10",
+                "reason" => "The Smart #3 has decent safety ratings but lacks the comprehensive features of larger vehicles."
+              },
+              {
+                "attribute" => "Comfort and Ergonomics",
+                "score" => "6/10",
+                "reason" => "The compact design may limit comfort for taller drivers or passengers."
+              },
+              {
+                "attribute" => "Advanced Safety Features",
+                "score" => "6/10",
+                "reason" => "It offers basic safety features but lacks some advanced systems found in larger models."
+              },
+              {
+                "attribute" => "Reliability and Maintenance Costs",
+                "score" => "8/10",
+                "reason" => "Smart vehicles are generally reliable with low maintenance costs."
+              },
+              {
+                "attribute" => "Insurance Costs",
+                "score" => "8/10",
+                "reason" => "Insurance costs are typically lower for smaller vehicles like the Smart #3."
+              }
+            ]
+          },
+          {
+            "name" => "Tesla Model 3",
+            "scores" => [
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "10/10",
+                "reason" => "The Tesla Model 3 has received top ratings in safety tests, particularly for adult and child protection."
+              },
+              {
+                "attribute" => "Comfort and Ergonomics",
+                "score" => "8/10",
+                "reason" => "The interior is modern and comfortable, though some may find the seating position less traditional."
+              },
+              {
+                "attribute" => "Advanced Safety Features",
+                "score" => "10/10",
+                "reason" => "It is equipped with a comprehensive suite of advanced safety features, enhancing overall safety."
+              },
+              {
+                "attribute" => "Reliability and Maintenance Costs",
+                "score" => "7/10",
+                "reason" => "Tesla vehicles have variable reliability, but maintenance costs are generally lower due to fewer moving parts."
+              },
+              {
+                "attribute" => "Insurance Costs",
+                "score" => "7/10",
+                "reason" => "Insurance costs can be higher due to the vehicle's value and repair costs."
+              }
+            ]
+          },
+          {
+            "name" => "Tesla Model Y",
+            "scores" => [
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "10/10",
+                "reason" => "The Model Y has excellent safety ratings, similar to the Model 3, with strong occupant protection."
+              },
+              {
+                "attribute" => "Comfort and Ergonomics",
+                "score" => "9/10",
+                "reason" => "The spacious interior and high seating position enhance comfort for all passengers."
+              },
+              {
+                "attribute" => "Advanced Safety Features",
+                "score" => "10/10",
+                "reason" => "It includes a full range of advanced safety features, making it very safe to drive."
+              },
+              {
+                "attribute" => "Reliability and Maintenance Costs",
+                "score" => "7/10",
+                "reason" => "Similar to the Model 3, it has variable reliability but lower maintenance costs."
+              },
+              {
+                "attribute" => "Insurance Costs",
+                "score" => "7/10",
+                "reason" => "Insurance costs are generally higher due to the vehicle's value."
+              }
+            ]
+          },
+          {
+            "name" => "Volkswagen Polo",
+            "scores" => [
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "8/10",
+                "reason" => "The Polo has good safety ratings but is not as high as larger models."
+              },
+              {
+                "attribute" => "Comfort and Ergonomics",
+                "score" => "7/10",
+                "reason" => "The interior is comfortable for a compact car, but space is limited."
+              },
+              {
+                "attribute" => "Advanced Safety Features",
+                "score" => "7/10",
+                "reason" => "It offers a decent range of safety features but lacks some advanced options."
+              },
+              {
+                "attribute" => "Reliability and Maintenance Costs",
+                "score" => "8/10",
+                "reason" => "Volkswagen vehicles are generally reliable with reasonable maintenance costs."
+              },
+              {
+                "attribute" => "Insurance Costs",
+                "score" => "8/10",
+                "reason" => "Insurance costs are typically lower for compact vehicles like the Polo."
+              }
+            ]
+          }
+        ]
+      }, features.reload.result)
+    end
+  end
+
   def params(topic, query)
     begin
       report = Report.create!(query: query, owner: users(:jane))

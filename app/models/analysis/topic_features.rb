@@ -14,7 +14,22 @@ class Analysis::TopicFeatures < Analysis::Step
     attribute :language, :string, default: Analysis::DEFAULT_LANGUAGE
 
     def perform
-      # overarching_term
+        begin
+            self.result = {}.tap do |result|
+                result[:overarching_term] = overarching_term
+                result[:term_attributes] = term_attributes
+                result[:competition_scores] = competition_scores
+            end
+        rescue => e
+            Rails.logger.error("Error performing topic features: #{e.message}")
+            self.error = e
+        end
+
+        true
+    end
+
+    def perform_and_save
+        self.perform && self.save
     end
 
     def overarching_term
@@ -174,8 +189,9 @@ Instructions
 	•	Step 1: Identify the initial overarching term based on the input brands or products.
 	•	Step 2: Analyze the user query to determine its focus, specificity, or intent.
 	•	Step 3: Refine the overarching term to align with the query’s context.
-	•	Step 4: Provide the final term with clarity and relevance to the user’s request.
-        EOF
+	•	Step 4: Provide the final term with clarity and relevance to the user’s request.#{' '}
+    •	Step 5: Term should be 1 - 3 words, not longer, if it is, summarize it or abstract it.
+EOF
 
         schema do
             string :name, required: true, description: "The name of the overarching term"
