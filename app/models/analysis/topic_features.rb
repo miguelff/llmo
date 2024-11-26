@@ -7,6 +7,9 @@ class Analysis::TopicFeatures < Analysis::Step
     attribute :topic, :json, default: {}
     validates :topic, presence: true
 
+    attribute :answers, :json, default: []
+    validates :answers, presence: true
+
     # The result of language detection
     attribute :language, :string, default: Analysis::DEFAULT_LANGUAGE
 
@@ -15,7 +18,7 @@ class Analysis::TopicFeatures < Analysis::Step
     end
 
     def overarching_term
-        OverarchingTerm.new.tap do |builder|
+        @overarching_term ||= OverarchingTerm.new.tap do |builder|
             builder.report = report
             builder.entities = entities
             builder.topic = topic
@@ -27,8 +30,8 @@ class Analysis::TopicFeatures < Analysis::Step
         end.perform
     end
 
-    def attributes
-        Attributes.new.tap do |builder|
+    def term_attributes
+        @term_attributes ||= TermAttributes.new.tap do |builder|
             builder.overarching_term = overarching_term
             builder.language = language
 
@@ -36,6 +39,83 @@ class Analysis::TopicFeatures < Analysis::Step
             builder.model = model
             builder.temperature = temperature
         end.perform
+    end
+
+    def competition_scores
+        CompetitionScores.new.tap do |builder|
+            builder.overarching_term = overarching_term
+            builder.term_attributes = term_attributes
+            builder.entities = entities
+
+            builder.topic = topic
+            builder.answers = answers
+            builder.language = language
+
+            builder.provider = provider
+            builder.model = model
+            builder.temperature = temperature
+        end.perform
+    end
+
+    class CompetitionScores
+        include Analysis::Inference
+
+        attr_accessor :overarching_term, :term_attributes, :entities, :topic, :answers, :language, :provider, :model, :temperature
+
+        self.model = "gpt-4o-mini"
+
+        system <<-EOF.promptize
+            You are an AI agent specialized in evaluating and scoring competitors based on specific criteria.
+            You will be provided with:
+                1.	A list of brands or products to evaluate.
+                2.	A set of attributes or criteria to assess these competitors.
+                3.	Relevant knowledge about the competitors, along with information on other products or brands that may not directly compete.
+
+            Your goal is to accurately evaluate and score the competitors against the provided attributes, ensuring that your assessments are clear, fair, and well-reasoned. Distinguish competitors from non-competitors where necessary.#{'            '}
+        EOF
+
+        schema do
+            define :score do
+                string :attribute, required: true, description: "The name of the attribute"
+                string :score, required: true, description: "The score of the competitor for the attribute"
+            end
+
+            define :competitor do
+                string :name, required: true, description: "The name of the competitor"
+                array :scores, items: ref(:score), description: "The scores of the competitor"
+            end
+
+            array :competitors, items: ref(:competitor), description: "The competitors and their scores"
+        end
+
+        def perform
+            res =chat(<<-PROMPT.promptize)
+                <overarching_term>
+                #{overarching_term}
+                </overarching_term>
+
+                <term_attributes>
+                #{term_attributes}
+                </term_attributes>
+
+                <competitors>
+                #{competitors(topic, entities)}
+                </competitors>
+
+                <answers>
+                #{answers}
+                </answers>
+            PROMPT
+
+            res.parsed.competitors
+        end
+
+        def competitors(topic, entities)
+            # TODO: score competitors take the top 5
+            competitors = entities[(topic["type"] || "brand").pluralize].map { |entity| entity["name"] }.slice(0, 5)
+            competitors << (topic["type"] == "product" ? " #{topic["brand"]} #{topic["product"]}" : " #{topic["brand"]}")
+            competitors.join(", ")
+        end
     end
 
     class OverarchingTerm
@@ -122,7 +202,7 @@ Instructions
     end
 
 
-    class Attributes
+    class TermAttributes
         include Analysis::Inference
 
         attr_accessor :overarching_term, :language, :provider, :model, :temperature

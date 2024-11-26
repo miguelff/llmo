@@ -28,8 +28,8 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
     end
   end
 
-  test "Attributes" do
-    VCR.use_cassette("analysis/topic_features/attributes") do
+  test "TermAttributes" do
+    VCR.use_cassette("analysis/topic_features/term_attributes") do
       query = "What are the most affordable cars in the market?"
       # Inferred by a previous step of the pipeline (from "Volkswagen Polo" entered into the brand_info input field)
       topic = { "type" => "product", "brand" => "Volkswagen", "product" => "Polo" }
@@ -38,31 +38,101 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
         {
           "name" => "Price",
           "definition" => "The cost of the vehicle, including base price and any additional fees.",
-          "why" => "Price is a critical factor for consumers in the affordable cars category, as it directly influences purchasing decisions and market competitiveness."
+          "why" => "Price is a critical factor for consumers in the affordable cars category, as it directly impacts their purchasing decision and overall value perception."
         },
         {
           "name" => "Fuel Efficiency",
           "definition" => "The distance a vehicle can travel per unit of fuel, typically measured in miles per gallon (MPG).",
-          "why" => "Fuel efficiency is important for budget-conscious consumers, as it affects long-term ownership costs and overall value."
+          "why" => "Fuel efficiency is important for budget-conscious consumers, as it affects long-term ownership costs and environmental impact."
         },
         {
           "name" => "Safety Ratings",
-          "definition" => "Evaluations of a vehicle's safety features and performance in crash tests, often provided by organizations like the NHTSA or IIHS.",
-          "why" => "Safety ratings are crucial for consumers looking for reliable and secure vehicles, especially in the affordable segment where families may prioritize safety."
+          "definition" => "Evaluations of a vehicle's safety performance, often provided by organizations like the National Highway Traffic Safety Administration (NHTSA) or the Insurance Institute for Highway Safety (IIHS).",
+          "why" => "Safety ratings are crucial for consumers looking for reliable and secure vehicles, especially for families and first-time buyers."
         },
         {
-          "name" => "Warranty and Service Plans",
-          "definition" => "The coverage provided for repairs and maintenance, including the duration and extent of the warranty.",
-          "why" => "A strong warranty can enhance consumer confidence and perceived value, making it a key differentiator among affordable car options."
+          "name" => "Warranty and Maintenance Costs",
+          "definition" => "The coverage provided by the manufacturer for repairs and the expected costs associated with regular maintenance over time.",
+          "why" => "A strong warranty and low maintenance costs can enhance the value proposition of affordable cars, making them more appealing to budget-conscious buyers."
         },
         {
           "name" => "Resale Value",
           "definition" => "The estimated value of a vehicle when it is sold after a certain period of ownership.",
-          "why" => "Resale value impacts the total cost of ownership and is a significant consideration for buyers in the affordable market, as it affects long-term financial planning."
+          "why" => "Resale value is important for consumers to consider the long-term financial implications of their purchase, as higher resale values can offset initial costs."
         }
       ]
-      assert_equal expected_attributes, JSON.parse(features.attributes.to_json)
+      assert_equal expected_attributes, JSON.parse(features.term_attributes.to_json)
     end
+  end
+
+  test "CompetitionScores" do
+      VCR.use_cassette("analysis/topic_features/competition_scores") do
+        query = "What are the most affordable cars in the market?"
+        topic = { "type" => "product", "brand" => "Volkswagen", "product" => "Polo" }
+        features = Analysis::TopicFeatures.new(**params(topic, query))
+        assert_equal [
+          {
+            "name" => "Volkswagen VW ID.7",
+            "scores" => [
+              { "attribute" => "Price", "score" => "7/10" },
+              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
+              { "attribute" => "Safety Ratings", "score" => "9/10" },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
+              { "attribute" => "Technology and Features", "score" => "8/10" }
+            ]
+          },
+          {
+            "name" => "NIO ET5",
+            "scores" => [
+              { "attribute" => "Price", "score" => "6/10" },
+              { "attribute" => "Fuel Efficiency", "score" => "7/10" },
+              { "attribute" => "Safety Ratings", "score" => "8/10" },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
+              { "attribute" => "Technology and Features", "score" => "9/10" }
+            ]
+          },
+          {
+            "name" => "Smart #3",
+            "scores" => [
+              { "attribute" => "Price", "score" => "8/10" },
+              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
+              { "attribute" => "Safety Ratings", "score" => "7/10" },
+              { "attribute" => "Warranty and Service Plans", "score" => "6/10" },
+              { "attribute" => "Technology and Features", "score" => "7/10" }
+            ]
+          },
+          {
+            "name" => "Tesla Model 3",
+            "scores" => [
+              { "attribute" => "Price", "score" => "6/10" },
+              { "attribute" => "Fuel Efficiency", "score" => "9/10" },
+              { "attribute" => "Safety Ratings", "score" => "9/10" },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
+              { "attribute" => "Technology and Features", "score" => "9/10" }
+            ]
+          },
+          {
+            "name" => "Tesla Model Y",
+            "scores" => [
+              { "attribute" => "Price", "score" => "5/10" },
+              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
+              { "attribute" => "Safety Ratings", "score" => "9/10" },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
+              { "attribute" => "Technology and Features", "score" => "9/10" }
+            ]
+          },
+          {
+            "name" => "Volkswagen Polo",
+            "scores" => [
+              { "attribute" => "Price", "score" => "8/10" },
+              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
+              { "attribute" => "Safety Ratings", "score" => "8/10" },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
+              { "attribute" => "Technology and Features", "score" => "7/10" }
+            ]
+          }
+        ], JSON.parse(features.competition_scores.to_json)
+      end
   end
 
   def params(topic, query)
@@ -71,11 +141,25 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
 
       {
         entities: entities,
+        answers: answers,
         report: report,
         topic: topic,
         language: "en"
       }
     end
+  end
+
+  def answers
+    [
+      {
+        "question": "Which car brands offer the safest vehicles for women over 45 years old?",
+        "answer": "Here are some car brands and models that are considered particularly safe for women over 45 years old, based on the latest Euro NCAP crash tests and safety ratings:\n\n### 1. **Volkswagen ID.7**\n- **Safety features**: Excellent occupant protection, advanced safety systems like lane-keeping assist and emergency braking.\n- **Reasoning**: The ID.7 has received high ratings in Euro NCAP tests and offers comprehensive safety features that are important for drivers in this age group.\n- **Source**: [ADAC](https://www.adac.de/rund-ums-fahrzeug/autokatalog/crashtest/sichere-autos-euroncap/)\n\n### 2. **NIO ET5**\n- **Safety features**: Excellent occupant protection, good emergency braking system.\n- **Reasoning**: This model offers a high safety rating and is particularly suitable for tech-savvy drivers who value modern assistance systems.\n- **Source**: [AutoScout24](https://www.autoscout24.de/informieren/ratgeber/auto-sicherheit/ncap-sicherste-autos/)\n\n### 3. **Mercedes EQE**\n- **Safety features**: High safety standards, particularly in child protection, with automatic systems to prevent secondary collisions.\n- **Reasoning**: The safety features and general reliability of Mercedes make this model an excellent choice for women seeking safety and comfort.\n- **Source**: [Finn](https://www.finn.com/de-DE/auto/bestenliste/sicherstes-auto)\n\n### 4. **BMW 3 Series**\n- **Safety features**: High occupant protection (97%) and comprehensive safety features.\n- **Reasoning**: The BMW 3 Series is known for its safety standards and offers ample space, making it an ideal choice for families.\n- **Source**: [Carwow](https://www.carwow.de/beste-autos/euro-ncap-crashtest-llste-der-sichersten-autos)\n\n### 5. **Toyota Yaris**\n- **Safety features**: Solid safety standards, ideal for beginner drivers.\n- **Reasoning**: The Yaris is a compact and safe vehicle, making it a good choice for women looking for a reliable and easy-to-drive car.\n- **Source**: [Finn](https://www.finn.com/de-DE/auto/bestenliste/sicherstes-auto)\n\n### Conclusion\nThe listed models are characterized by high safety ratings and modern assistance systems that are important for women over 45 years old. These vehicles not only offer protection but also comfort and user-friendliness, making them an excellent choice for this target group. When purchasing, it is important to pay attention to Euro NCAP ratings and the available safety features to make the best decision."
+      },
+      {
+        "question": "Which car brands offer the safest vehicles for women over 45 years old?",
+        "answer": "Here are some car brands and models that are considered particularly safe for women over 45 years old, based on the latest Euro NCAP test results and other safety ratings:\n\n### 1. **Volkswagen**\n   - **Model:** VW ID.7\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** The VW ID.7 offers excellent occupant protection and is equipped with modern safety features, such as an integrated side airbag between the front seats. This makes it an excellent choice for safety and comfort.\n\n### 2. **Tesla**\n   - **Model:** Tesla Model 3\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** The Model 3 scores highly in adult protection (96%) and child protection (86%). It is equipped with a variety of safety features that enhance driving safety.\n\n### 3. **Volvo**\n   - **Models:** Volvo XC60, Volvo S90/V90\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** Volvo is known for its safety standards. The XC60 offers 98% occupant protection and strong safety assistance systems, while the S90/V90 models have excellent safety features.\n\n### 4. **Mercedes-Benz**\n   - **Model:** Mercedes-Benz CLA Plug-in Hybrid\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** This model performed well in all safety categories, including very good child protection (91%). The extensive range of assistance systems increases safety.\n\n### 5. **Kia**\n   - **Model:** Kia Sorento\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** The Sorento offers 82% adult protection and 85% child protection. It is spacious and offers a high seating position, improving visibility and comfort.\n\n### 6. **BMW**\n   - **Model:** BMW 3 Series\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** The BMW 3 Series has outstanding safety ratings (97% for occupant protection) and is equipped with modern safety assistance systems that enhance driving safety.\n\n### 7. **Nissan**\n   - **Model:** Nissan Qashqai\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** The Qashqai has solid safety ratings and is particularly suitable for families, as it also has good child seat ratings.\n\n### 8. **Audi**\n   - **Model:** Audi A1\n   - **Safety Rating:** 5 Stars (Euro NCAP)\n   - **Reasoning:** The Audi A1 scores highly for adult protection (95%) and child protection (85%) and offers a variety of safety features.\n\n### Conclusion\nThe selection of these models is based on their high safety ratings in Euro NCAP tests, which evaluate various aspects such as occupant protection, child safety, and the availability of safety assistance systems. These vehicles not only offer safety but also comfort and user-friendliness, making them particularly suitable for women over 45 years old.\n\n### Sources\n- [ADAC - Safe Cars According to Euro NCAP](https://www.adac.de/rund-ums-fahrzeug/autokatalog/crashtest/sichere-autos-euroncap/)\n- [Carwow - Safest Cars](https://www.carwow.de/beste-autos/euro-ncap-crashtest-llste-der-sichersten-autos)\n- [AutoScout24 - NCAP Safest Cars](https://www.autoscout24.de/informieren/ratgeber/auto-sicherheit/ncap-sicherste-autos/)\n- [DadsLife - Safest Family Cars](https://dadslife.at/mobilitaet/sicherste-familienautos/)"
+      }
+    ]
   end
 
 

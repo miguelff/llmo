@@ -3,7 +3,7 @@ module Analysis::Inference
 
     included do
         class_attribute :output_schema, :system_prompt, :model, :temperature
-        attr_accessor :language
+        attr_writer :language
     end
 
     module ClassMethods
