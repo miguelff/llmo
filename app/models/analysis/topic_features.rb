@@ -67,9 +67,9 @@ class Analysis::TopicFeatures < Analysis::Step
         system <<-EOF.promptize
             You are an AI agent specialized in evaluating and scoring competitors based on specific criteria.
             You will be provided with:
-                1.	A list of brands or products to evaluate.
-                2.	A set of attributes or criteria to assess these competitors.
-                3.	Relevant knowledge about the competitors, along with information on other products or brands that may not directly compete.
+                1.	A list of brands or products to evaluate, between <overarching_term> and </overarching_term>.
+                2.	A set of attributes or criteria to assess these competitors, between <term_attributes> and </term_attributes>.
+                3.	Relevant knowledge about the competitors, along with information on other products or brands that may not directly compete, between <answers> and </answers>.
 
             Your goal is to accurately evaluate and score the competitors against the provided attributes, ensuring that your assessments are clear, fair, and well-reasoned. Distinguish competitors from non-competitors where necessary.#{'            '}
         EOF
@@ -78,6 +78,7 @@ class Analysis::TopicFeatures < Analysis::Step
             define :score do
                 string :attribute, required: true, description: "The name of the attribute"
                 string :score, required: true, description: "The score of the competitor for the attribute"
+                string :reason, required: true, description: "The reason for the score"
             end
 
             define :competitor do

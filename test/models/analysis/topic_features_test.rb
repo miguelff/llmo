@@ -74,61 +74,61 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
           {
             "name" => "Volkswagen VW ID.7",
             "scores" => [
-              { "attribute" => "Price", "score" => "7/10" },
-              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
-              { "attribute" => "Safety Ratings", "score" => "9/10" },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
-              { "attribute" => "Technology and Features", "score" => "8/10" }
+              { "attribute" => "Price", "score" => "7/10", "reason" => "The ID.7 is competitively priced within the electric vehicle segment, making it accessible for many buyers." },
+              { "attribute" => "Fuel Efficiency", "score" => "8/10", "reason" => "As an electric vehicle, the ID.7 offers excellent efficiency, translating to lower running costs." },
+              { "attribute" => "Safety Ratings", "score" => "9/10", "reason" => "The ID.7 has received high safety ratings, including 5 stars from Euro NCAP, indicating strong occupant protection." },
+              { "attribute" => "Warranty and Service Plans", "score" => "8/10", "reason" => "Volkswagen offers a solid warranty and service plan, enhancing consumer confidence." },
+              { "attribute" => "Resale Value", "score" => "7/10", "reason" => "The resale value is expected to be good due to the brand's reputation and demand for electric vehicles." }
             ]
           },
           {
             "name" => "NIO ET5",
             "scores" => [
-              { "attribute" => "Price", "score" => "6/10" },
-              { "attribute" => "Fuel Efficiency", "score" => "7/10" },
-              { "attribute" => "Safety Ratings", "score" => "8/10" },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
-              { "attribute" => "Technology and Features", "score" => "9/10" }
+              { "attribute" => "Price", "score" => "6/10", "reason" => "The ET5 is priced higher than many competitors in the affordable segment, which may limit its appeal." },
+              { "attribute" => "Fuel Efficiency", "score" => "7/10", "reason" => "As an electric vehicle, it offers decent efficiency, but charging infrastructure may affect usability." },
+              { "attribute" => "Safety Ratings", "score" => "8/10", "reason" => "The ET5 has good safety features and ratings, making it a reliable choice." },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "NIO provides a competitive warranty, but service availability may vary by region." },
+              { "attribute" => "Resale Value", "score" => "6/10", "reason" => "As a newer brand, resale value is uncertain compared to established brands." }
             ]
           },
           {
             "name" => "Smart #3",
             "scores" => [
-              { "attribute" => "Price", "score" => "8/10" },
-              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
-              { "attribute" => "Safety Ratings", "score" => "7/10" },
-              { "attribute" => "Warranty and Service Plans", "score" => "6/10" },
-              { "attribute" => "Technology and Features", "score" => "7/10" }
+              { "attribute" => "Price", "score" => "8/10", "reason" => "The Smart #3 is priced affordably, appealing to budget-conscious consumers." },
+              { "attribute" => "Fuel Efficiency", "score" => "7/10", "reason" => "As a compact electric vehicle, it offers reasonable efficiency for city driving." },
+              { "attribute" => "Safety Ratings", "score" => "7/10", "reason" => "Safety ratings are decent, but may not be as high as larger vehicles." },
+              { "attribute" => "Warranty and Service Plans", "score" => "6/10", "reason" => "Warranty offerings are standard, but service network may be limited." },
+              { "attribute" => "Resale Value", "score" => "5/10", "reason" => "Resale value may be lower due to the niche market of small electric vehicles." }
             ]
           },
           {
             "name" => "Tesla Model 3",
             "scores" => [
-              { "attribute" => "Price", "score" => "6/10" },
-              { "attribute" => "Fuel Efficiency", "score" => "9/10" },
-              { "attribute" => "Safety Ratings", "score" => "9/10" },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
-              { "attribute" => "Technology and Features", "score" => "9/10" }
+              { "attribute" => "Price", "score" => "5/10", "reason" => "The Model 3 is priced higher than many affordable cars, which may deter some buyers." },
+              { "attribute" => "Fuel Efficiency", "score" => "9/10", "reason" => "Exceptional efficiency as an electric vehicle, leading to low running costs." },
+              { "attribute" => "Safety Ratings", "score" => "9/10", "reason" => "The Model 3 has received top safety ratings, including 5 stars from Euro NCAP." },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "Tesla offers a standard warranty, but service can be inconsistent depending on location." },
+              { "attribute" => "Resale Value", "score" => "8/10", "reason" => "Strong demand for Tesla vehicles helps maintain high resale values." }
             ]
           },
           {
             "name" => "Tesla Model Y",
             "scores" => [
-              { "attribute" => "Price", "score" => "5/10" },
-              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
-              { "attribute" => "Safety Ratings", "score" => "9/10" },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
-              { "attribute" => "Technology and Features", "score" => "9/10" }
+              { "attribute" => "Price", "score" => "5/10", "reason" => "Similar to the Model 3, the Model Y is priced at a premium compared to other affordable cars." },
+              { "attribute" => "Fuel Efficiency", "score" => "9/10", "reason" => "Excellent efficiency as an electric SUV, providing low operating costs." },
+              { "attribute" => "Safety Ratings", "score" => "9/10", "reason" => "High safety ratings, with advanced safety features and strong crash test results." },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "Standard warranty is offered, but service availability can vary." },
+              { "attribute" => "Resale Value", "score" => "8/10", "reason" => "High demand for Tesla vehicles contributes to strong resale values." }
             ]
           },
           {
             "name" => "Volkswagen Polo",
             "scores" => [
-              { "attribute" => "Price", "score" => "8/10" },
-              { "attribute" => "Fuel Efficiency", "score" => "8/10" },
-              { "attribute" => "Safety Ratings", "score" => "8/10" },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10" },
-              { "attribute" => "Technology and Features", "score" => "7/10" }
+              { "attribute" => "Price", "score" => "8/10", "reason" => "The Polo is affordably priced, making it accessible for many consumers." },
+              { "attribute" => "Fuel Efficiency", "score" => "7/10", "reason" => "Offers good fuel efficiency for a gasoline vehicle, appealing to budget-conscious buyers." },
+              { "attribute" => "Safety Ratings", "score" => "8/10", "reason" => "The Polo has solid safety ratings, making it a reliable choice for families." },
+              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "Volkswagen provides a competitive warranty and service plan." },
+              { "attribute" => "Resale Value", "score" => "7/10", "reason" => "The Polo maintains a good resale value due to its popularity and brand reputation." }
             ]
           }
         ], JSON.parse(features.competition_scores.to_json)
