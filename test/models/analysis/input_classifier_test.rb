@@ -1,8 +1,8 @@
 require "test_helper"
 
-class Analysis::TopicClassificationTest < ActiveSupport::TestCase
+class Analysis::InputClassifierTest < ActiveSupport::TestCase
     test "topic classification" do
-      VCR.use_cassette("analysis/topic_classification") do
+      VCR.use_cassette("analysis/input_classifier") do
         expectations = {
           "Samsung"                         => { "type" => "brand",   "brand" => "Samsung" },
           "Nike"                            => { "type" => "brand",   "brand" => "Nike" },
@@ -33,8 +33,8 @@ class Analysis::TopicClassificationTest < ActiveSupport::TestCase
 
       expectations.each do |brand_info, expected_output|
         report = Report.create!(query: "best for consumers", brand_info: brand_info, owner: users(:jane))
-        topic_classification = Analysis::TopicClassification.new(report: report)
-        VCR.use_cassette("analysis/topic_classification/#{brand_info.dasherize}") do
+        topic_classification = Analysis::InputClassifier.new(report: report)
+        VCR.use_cassette("analysis/input_classifier/#{brand_info.dasherize}") do
           topic_classification.perform_and_save
           assert_equal expected_output, topic_classification.reload.result
         end

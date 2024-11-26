@@ -1,4 +1,4 @@
-class Analysis::TopicClassification < Analysis::Step
+class Analysis::InputClassifier < Analysis::Step
     include Analysis::Inference
 
     SYSTEM_PROMPT = <<-EOF.promptize
