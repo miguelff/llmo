@@ -25,7 +25,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_20_200858) do
 
   create_table "analysis_steps", force: :cascade do |t|
     t.string "type"
-    t.string "name"
     t.json "result"
     t.string "provider", default: "openai", null: false
     t.string "model", default: "gpt-4o-mini", null: false
@@ -35,7 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_20_200858) do
     t.datetime "updated_at", null: false
     t.binary "report_id", limit: 16, null: false
     t.index ["report_id"], name: "index_analysis_steps_on_report_id"
-    t.index ["type", "name", "report_id"], name: "index_analysis_steps_on_type_and_name_and_report_id"
+    t.index ["type", "report_id"], name: "index_analysis_steps_on_type_and_report_id"
   end
 
   create_table "reports", id: { type: :binary, limit: 16 }, force: :cascade do |t|

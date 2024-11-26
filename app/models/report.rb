@@ -26,9 +26,14 @@ class Report < ApplicationRecord
 
     has_one :result, dependent: :destroy
 
-    has_one :language_detection, dependent: :destroy, class_name: "Analysis::LanguageDetection"
-    has_one :question_synthesis, dependent: :destroy, class_name: "Analysis::QuestionSynthesis"
-    has_one :question_answering, dependent: :destroy, class_name: "Analysis::QuestionAnswering"
+    has_one :language_detector_analysis, dependent: :destroy, class_name: "Analysis::LanguageDetector"
+    has_one :question_synthesis_analysis, dependent: :destroy, class_name: "Analysis::QuestionSynthesis"
+    has_one :question_answering_analysis, dependent: :destroy, class_name: "Analysis::QuestionAnswering"
+    has_one :input_classifier_analysis, dependent: :destroy, class_name: "Analysis::InputClassifier"
+    has_one :entity_extractor_analysis, dependent: :destroy, class_name: "Analysis::EntityExtractor"
+    has_one :competitors_analysis, dependent: :destroy, class_name: "Analysis::Competitors"
+
+    has_many :analyses, dependent: :destroy, class_name: "Analysis::Step"
 
     belongs_to :owner, polymorphic: true
 
