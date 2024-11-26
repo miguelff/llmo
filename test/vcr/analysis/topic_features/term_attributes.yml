@@ -66,7 +66,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 26 Nov 2024 11:21:04 GMT
+      - Tue, 26 Nov 2024 16:03:49 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -78,7 +78,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '188'
+      - '158'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -94,32 +94,32 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 12ms
       X-Request-Id:
-      - req_6e349d5eb459ac7f04604b00c0dc6921
+      - req_7d1e886b9f2b8d97b068ccff3fbcb426
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=.IrPCWzZ1mUZSUM0gSF4MMW3HVcxP25QHATlBXeEUyM-1732620064-1.0.1.1-qcFraUwWcwdgphzahvULF9g9ziSGU1XQI0OuiiBauWpRCpUt7vbgIaUDcs0DY92Nj9CGz0M8AeUd1W8fwWXtSw;
-        path=/; expires=Tue, 26-Nov-24 11:51:04 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=A2N16ANandKFsvpagKdmICTqycnapRsm5QEY4IvxvEg-1732637029-1.0.1.1-ZMECuQYx0kVJpgrYWPqaGQaS_EsWe0WLbFWWbYAAukava5mPXM1kXJRv9Wyn_mEdF7miP7BVjKjg7.zGFiUCow;
+        path=/; expires=Tue, 26-Nov-24 16:33:49 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=uW7DGrmGL289YxweIVwyikX4yD8Dxfa5V1xWH6PZCjw-1732620064760-0.0.1.1-604800000;
+      - _cfuvid=EA5Ab4c546folxOiHuaCDedQc2O8xATpp3U1Hm1ARMY-1732637029714-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e897e2a78eacc69-MAD
+      - 8e8b1c576bdecfe8-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AXnuqNf9jEJfz5nxHvYbMLh6a4zEf",
+          "id": "chatcmpl-AXsKT3EbxbTO7bQJMeP1mQR2Hcsuo",
           "object": "chat.completion",
-          "created": 1732620064,
+          "created": 1732637029,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -150,7 +150,7 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Tue, 26 Nov 2024 11:21:04 GMT
+  recorded_at: Tue, 26 Nov 2024 16:03:49 GMT
 - request:
     method: post
     uri: https://api.openai.com/v1/chat/completions
@@ -183,7 +183,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 26 Nov 2024 11:21:07 GMT
+      - Tue, 26 Nov 2024 16:03:55 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -195,7 +195,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '2217'
+      - '3265'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -211,39 +211,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 1ms
       X-Request-Id:
-      - req_3250e7de643f8fdbec551dfa3f7f9d28
+      - req_9cc3951627690a45eb66926fe83bdcd0
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=edltXT98gahoGFmDRLC4iSO4Hd0j.8Y_YALA1GtLD6I-1732620067-1.0.1.1-M7B0clxfWR_UPz0otxaWvO4eWz7FrCQcBS18VTWdJOiQ49e4M.XgTboN576nfzjA1TqE74Lo_JB5VuzFkCAUAA;
-        path=/; expires=Tue, 26-Nov-24 11:51:07 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=5AiiExfq7FDf.70ukE8DTREqTaKJS4sJLUxdUCUbLsU-1732637035-1.0.1.1-O5flBjQEzakaiPcm8r59Dy5VAVuM1s_WZ_cxWb4rPREmfkIJgtEKmxfiDfhLgKmpwSAOfEUKmgaz2RtI7qY8ag;
+        path=/; expires=Tue, 26-Nov-24 16:33:55 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=.jqKeChaC0r7nEZ.OEuzAxm53e1Vnw8EoyCe17CMFmE-1732620067284-0.0.1.1-604800000;
+      - _cfuvid=30gIi_Zz8J9A9WU3U9vvloDMDH_9BRDPG15_3sA2FDQ-1732637035901-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e897e2dda42eca2-MAD
+      - 8e8b1c5c4c72cc4d-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AXnurFpHD2sKMImH8jhf8bDAhWpY5",
+          "id": "chatcmpl-AXsKW1TAQReL9xSDqJqEJk5wR1ojw",
           "object": "chat.completion",
-          "created": 1732620065,
+          "created": 1732637032,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"attributes\":[{\"name\":\"Price\",\"definition\":\"The cost of the vehicle, including base price and any additional fees.\",\"why\":\"Price is a critical factor for consumers in the affordable cars category, as it directly influences purchasing decisions and market competitiveness.\"},{\"name\":\"Fuel Efficiency\",\"definition\":\"The distance a vehicle can travel per unit of fuel, typically measured in miles per gallon (MPG).\",\"why\":\"Fuel efficiency is important for budget-conscious consumers, as it affects long-term ownership costs and overall value.\"},{\"name\":\"Safety Ratings\",\"definition\":\"Evaluations of a vehicle's safety features and performance in crash tests, often provided by organizations like the NHTSA or IIHS.\",\"why\":\"Safety ratings are crucial for consumers looking for reliable and secure vehicles, especially in the affordable segment where families may prioritize safety.\"},{\"name\":\"Warranty and Service Plans\",\"definition\":\"The coverage provided for repairs and maintenance, including the duration and extent of the warranty.\",\"why\":\"A strong warranty can enhance consumer confidence and perceived value, making it a key differentiator among affordable car options.\"},{\"name\":\"Resale Value\",\"definition\":\"The estimated value of a vehicle when it is sold after a certain period of ownership.\",\"why\":\"Resale value impacts the total cost of ownership and is a significant consideration for buyers in the affordable market, as it affects long-term financial planning.\"}]}",
+                "content": "{\"attributes\":[{\"name\":\"Price\",\"definition\":\"The cost of the vehicle, including base price and any additional fees.\",\"why\":\"Price is a critical factor for consumers in the affordable cars category, as it directly influences purchasing decisions and market competitiveness.\"},{\"name\":\"Fuel Efficiency\",\"definition\":\"The distance a vehicle can travel per unit of fuel, typically measured in miles per gallon (MPG).\",\"why\":\"Fuel efficiency is important for budget-conscious consumers, as it affects long-term ownership costs and overall value.\"},{\"name\":\"Safety Ratings\",\"definition\":\"Evaluations of a vehicle's safety performance, often provided by organizations like the National Highway Traffic Safety Administration (NHTSA) or the Insurance Institute for Highway Safety (IIHS).\",\"why\":\"Safety ratings are crucial for consumers looking for reliable and secure vehicles, especially in the affordable segment where families may prioritize safety.\"},{\"name\":\"Warranty and Service Plans\",\"definition\":\"The coverage provided for repairs and maintenance, including the duration and mileage limits of the warranty.\",\"why\":\"A strong warranty can enhance consumer confidence and perceived value, making it an important attribute in the competitive landscape of affordable cars.\"},{\"name\":\"Technology Features\",\"definition\":\"The inclusion of modern technology in the vehicle, such as infotainment systems, connectivity options, and driver-assistance features.\",\"why\":\"Technology features can differentiate products in the affordable car market, appealing to tech-savvy consumers and enhancing the overall driving experience.\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -252,8 +252,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 184,
-            "completion_tokens": 272,
-            "total_tokens": 456,
+            "completion_tokens": 286,
+            "total_tokens": 470,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -267,5 +267,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Tue, 26 Nov 2024 11:21:07 GMT
+  recorded_at: Tue, 26 Nov 2024 16:03:55 GMT
 recorded_with: VCR 6.3.1

@@ -38,27 +38,27 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
         {
           "name" => "Price",
           "definition" => "The cost of the vehicle, including base price and any additional fees.",
-          "why" => "Price is a critical factor for consumers in the affordable cars category, as it directly impacts their purchasing decision and overall value perception."
+          "why" => "Price is a critical factor for consumers in the affordable cars category, as it directly influences purchasing decisions and market competitiveness."
         },
         {
           "name" => "Fuel Efficiency",
           "definition" => "The distance a vehicle can travel per unit of fuel, typically measured in miles per gallon (MPG).",
-          "why" => "Fuel efficiency is important for budget-conscious consumers, as it affects long-term ownership costs and environmental impact."
+          "why" => "Fuel efficiency is important for budget-conscious consumers, as it affects long-term ownership costs and overall value."
         },
         {
           "name" => "Safety Ratings",
           "definition" => "Evaluations of a vehicle's safety performance, often provided by organizations like the National Highway Traffic Safety Administration (NHTSA) or the Insurance Institute for Highway Safety (IIHS).",
-          "why" => "Safety ratings are crucial for consumers looking for reliable and secure vehicles, especially for families and first-time buyers."
+          "why" => "Safety ratings are crucial for consumers looking for reliable and secure vehicles, especially in the affordable segment where families may prioritize safety."
         },
         {
-          "name" => "Warranty and Maintenance Costs",
-          "definition" => "The coverage provided by the manufacturer for repairs and the expected costs associated with regular maintenance over time.",
-          "why" => "A strong warranty and low maintenance costs can enhance the value proposition of affordable cars, making them more appealing to budget-conscious buyers."
+          "name" => "Warranty and Service Plans",
+          "definition" => "The coverage provided for repairs and maintenance, including the duration and mileage limits of the warranty.",
+          "why" => "A strong warranty can enhance consumer confidence and perceived value, making it an important attribute in the competitive landscape of affordable cars."
         },
         {
-          "name" => "Resale Value",
-          "definition" => "The estimated value of a vehicle when it is sold after a certain period of ownership.",
-          "why" => "Resale value is important for consumers to consider the long-term financial implications of their purchase, as higher resale values can offset initial costs."
+          "name" => "Technology Features",
+          "definition" => "The inclusion of modern technology in the vehicle, such as infotainment systems, connectivity options, and driver-assistance features.",
+          "why" => "Technology features can differentiate products in the affordable car market, appealing to tech-savvy consumers and enhancing the overall driving experience."
         }
       ]
       assert_equal expected_attributes, JSON.parse(features.term_attributes.to_json)
@@ -74,61 +74,181 @@ class Analysis::TopicFeaturesTest < ActiveSupport::TestCase
           {
             "name" => "Volkswagen VW ID.7",
             "scores" => [
-              { "attribute" => "Price", "score" => "7/10", "reason" => "The ID.7 is competitively priced within the electric vehicle segment, making it accessible for many buyers." },
-              { "attribute" => "Fuel Efficiency", "score" => "8/10", "reason" => "As an electric vehicle, the ID.7 offers excellent efficiency, translating to lower running costs." },
-              { "attribute" => "Safety Ratings", "score" => "9/10", "reason" => "The ID.7 has received high safety ratings, including 5 stars from Euro NCAP, indicating strong occupant protection." },
-              { "attribute" => "Warranty and Service Plans", "score" => "8/10", "reason" => "Volkswagen offers a solid warranty and service plan, enhancing consumer confidence." },
-              { "attribute" => "Resale Value", "score" => "7/10", "reason" => "The resale value is expected to be good due to the brand's reputation and demand for electric vehicles." }
+              {
+                "attribute" => "Price",
+                "score" => "7/10",
+                "reason" => "The ID.7 is competitively priced within the electric vehicle segment, making it accessible for many consumers."
+              },
+              {
+                "attribute" => "Fuel Efficiency",
+                "score" => "8/10",
+                "reason" => "As an electric vehicle, the ID.7 offers excellent efficiency, translating to lower running costs."
+              },
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "9/10",
+                "reason" => "The ID.7 has received high safety ratings, including 5 stars from Euro NCAP, making it a safe choice."
+              },
+              {
+                "attribute" => "Warranty and Service Plans",
+                "score" => "8/10",
+                "reason" => "Volkswagen offers a solid warranty and service plan, enhancing consumer confidence."
+              },
+              {
+                "attribute" => "Resale Value",
+                "score" => "7/10",
+                "reason" => "Electric vehicles like the ID.7 tend to have good resale value, although it can vary by market."
+              }
             ]
           },
           {
             "name" => "NIO ET5",
             "scores" => [
-              { "attribute" => "Price", "score" => "6/10", "reason" => "The ET5 is priced higher than many competitors in the affordable segment, which may limit its appeal." },
-              { "attribute" => "Fuel Efficiency", "score" => "7/10", "reason" => "As an electric vehicle, it offers decent efficiency, but charging infrastructure may affect usability." },
-              { "attribute" => "Safety Ratings", "score" => "8/10", "reason" => "The ET5 has good safety features and ratings, making it a reliable choice." },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "NIO provides a competitive warranty, but service availability may vary by region." },
-              { "attribute" => "Resale Value", "score" => "6/10", "reason" => "As a newer brand, resale value is uncertain compared to established brands." }
+              {
+                "attribute" => "Price",
+                "score" => "6/10",
+                "reason" => "The ET5 is priced higher than many competitors in the affordable segment, which may limit its appeal."
+              },
+              {
+                "attribute" => "Fuel Efficiency",
+                "score" => "8/10",
+                "reason" => "As an electric vehicle, it offers good efficiency, contributing to lower long-term costs."
+              },
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "8/10",
+                "reason" => "The ET5 has strong safety features and ratings, making it a reliable option."
+              },
+              {
+                "attribute" => "Warranty and Service Plans",
+                "score" => "7/10",
+                "reason" => "NIO provides a competitive warranty, but service availability may vary by region."
+              },
+              {
+                "attribute" => "Resale Value",
+                "score" => "6/10",
+                "reason" => "NIO's resale value is still developing, and it may not hold value as well as more established brands."
+              }
             ]
           },
           {
             "name" => "Smart #3",
             "scores" => [
-              { "attribute" => "Price", "score" => "8/10", "reason" => "The Smart #3 is priced affordably, appealing to budget-conscious consumers." },
-              { "attribute" => "Fuel Efficiency", "score" => "7/10", "reason" => "As a compact electric vehicle, it offers reasonable efficiency for city driving." },
-              { "attribute" => "Safety Ratings", "score" => "7/10", "reason" => "Safety ratings are decent, but may not be as high as larger vehicles." },
-              { "attribute" => "Warranty and Service Plans", "score" => "6/10", "reason" => "Warranty offerings are standard, but service network may be limited." },
-              { "attribute" => "Resale Value", "score" => "5/10", "reason" => "Resale value may be lower due to the niche market of small electric vehicles." }
+              {
+                "attribute" => "Price",
+                "score" => "8/10",
+                "reason" => "The Smart #3 is priced affordably, appealing to budget-conscious consumers."
+              },
+              {
+                "attribute" => "Fuel Efficiency",
+                "score" => "7/10",
+                "reason" => "As a compact electric vehicle, it offers decent efficiency, though not as high as larger EVs."
+              },
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "7/10",
+                "reason" => "Safety ratings are decent, but the vehicle lacks some advanced safety features found in competitors."
+              },
+              {
+                "attribute" => "Warranty and Service Plans",
+                "score" => "6/10",
+                "reason" => "Smart offers a standard warranty, but service options may be limited in some areas."
+              },
+              {
+                "attribute" => "Resale Value",
+                "score" => "5/10",
+                "reason" => "Smart vehicles generally have lower resale values compared to other brands."
+              }
             ]
           },
           {
             "name" => "Tesla Model 3",
             "scores" => [
-              { "attribute" => "Price", "score" => "5/10", "reason" => "The Model 3 is priced higher than many affordable cars, which may deter some buyers." },
-              { "attribute" => "Fuel Efficiency", "score" => "9/10", "reason" => "Exceptional efficiency as an electric vehicle, leading to low running costs." },
-              { "attribute" => "Safety Ratings", "score" => "9/10", "reason" => "The Model 3 has received top safety ratings, including 5 stars from Euro NCAP." },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "Tesla offers a standard warranty, but service can be inconsistent depending on location." },
-              { "attribute" => "Resale Value", "score" => "8/10", "reason" => "Strong demand for Tesla vehicles helps maintain high resale values." }
+              {
+                "attribute" => "Price",
+                "score" => "5/10",
+                "reason" => "The Model 3 is priced higher than many affordable cars, which may deter some buyers."
+              },
+              {
+                "attribute" => "Fuel Efficiency",
+                "score" => "9/10",
+                "reason" => "As a leading electric vehicle, it offers exceptional efficiency and low running costs."
+              },
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "9/10",
+                "reason" => "The Model 3 has received top safety ratings, including 5 stars from Euro NCAP."
+              },
+              {
+                "attribute" => "Warranty and Service Plans",
+                "score" => "7/10",
+                "reason" => "Tesla's warranty is competitive, but service can be inconsistent depending on location."
+              },
+              {
+                "attribute" => "Resale Value",
+                "score" => "8/10",
+                "reason" => "The Model 3 tends to hold its value well, making it a good long-term investment."
+              }
             ]
           },
           {
             "name" => "Tesla Model Y",
             "scores" => [
-              { "attribute" => "Price", "score" => "5/10", "reason" => "Similar to the Model 3, the Model Y is priced at a premium compared to other affordable cars." },
-              { "attribute" => "Fuel Efficiency", "score" => "9/10", "reason" => "Excellent efficiency as an electric SUV, providing low operating costs." },
-              { "attribute" => "Safety Ratings", "score" => "9/10", "reason" => "High safety ratings, with advanced safety features and strong crash test results." },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "Standard warranty is offered, but service availability can vary." },
-              { "attribute" => "Resale Value", "score" => "8/10", "reason" => "High demand for Tesla vehicles contributes to strong resale values." }
+              {
+                "attribute" => "Price",
+                "score" => "5/10",
+                "reason" => "Similar to the Model 3, the Model Y is priced higher than many affordable options."
+              },
+              {
+                "attribute" => "Fuel Efficiency",
+                "score" => "9/10",
+                "reason" => "It offers excellent efficiency as an electric SUV, appealing to eco-conscious consumers."
+              },
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "9/10",
+                "reason" => "The Model Y has also received high safety ratings, ensuring peace of mind for buyers."
+              },
+              {
+                "attribute" => "Warranty and Service Plans",
+                "score" => "7/10",
+                "reason" => "Tesla provides a solid warranty, but service availability can vary."
+              },
+              {
+                "attribute" => "Resale Value",
+                "score" => "8/10",
+                "reason" => "The Model Y is expected to maintain strong resale value due to its popularity."
+              }
             ]
           },
           {
             "name" => "Volkswagen Polo",
             "scores" => [
-              { "attribute" => "Price", "score" => "8/10", "reason" => "The Polo is affordably priced, making it accessible for many consumers." },
-              { "attribute" => "Fuel Efficiency", "score" => "7/10", "reason" => "Offers good fuel efficiency for a gasoline vehicle, appealing to budget-conscious buyers." },
-              { "attribute" => "Safety Ratings", "score" => "8/10", "reason" => "The Polo has solid safety ratings, making it a reliable choice for families." },
-              { "attribute" => "Warranty and Service Plans", "score" => "7/10", "reason" => "Volkswagen provides a competitive warranty and service plan." },
-              { "attribute" => "Resale Value", "score" => "7/10", "reason" => "The Polo maintains a good resale value due to its popularity and brand reputation." }
+              {
+                "attribute" => "Price",
+                "score" => "8/10",
+                "reason" => "The Polo is competitively priced, making it an attractive option for budget buyers."
+              },
+              {
+                "attribute" => "Fuel Efficiency",
+                "score" => "7/10",
+                "reason" => "It offers good fuel efficiency for a gasoline vehicle, appealing to cost-conscious consumers."
+              },
+              {
+                "attribute" => "Safety Ratings",
+                "score" => "8/10",
+                "reason" => "The Polo has solid safety ratings, making it a reliable choice for families."
+              },
+              {
+                "attribute" => "Warranty and Service Plans",
+                "score" => "7/10",
+                "reason" => "Volkswagen offers a decent warranty and service plan, enhancing consumer confidence."
+              },
+              {
+                "attribute" => "Resale Value",
+                "score" => "7/10",
+                "reason" => "The Polo generally holds its value well in the used car market."
+              }
             ]
           }
         ], JSON.parse(features.competition_scores.to_json)

@@ -77,7 +77,7 @@ class Analysis::TopicFeatures < Analysis::Step
         schema do
             define :score do
                 string :attribute, required: true, description: "The name of the attribute"
-                string :score, required: true, description: "The score of the competitor for the attribute"
+                string :score, required: true, description: "The score of the competitor for the attribute, n/10, where n is an integer between 0 and 10"
                 string :reason, required: true, description: "The reason for the score"
             end
 
