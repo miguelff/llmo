@@ -1,4 +1,4 @@
-class Analysis::LanguageDetection < Analysis::Step
+class Analysis::LanguageDetector < Analysis::Step
     include Analysis::Inference
 
     schema do
