@@ -2,9 +2,8 @@ module Analysis::Inference
     extend ActiveSupport::Concern
 
     included do
-        class_attribute :output_schema, :system_prompt
-        after_initialize :set_default_values
-        attribute :language, :string, default: Analysis::DEFAULT_LANGUAGE
+        class_attribute :output_schema, :system_prompt, :model, :temperature
+        attr_accessor :language
     end
 
     module ClassMethods
@@ -23,6 +22,10 @@ module Analysis::Inference
                 self.system_prompt = { Analysis::DEFAULT_LANGUAGE => prompt }
             end
         end
+    end
+
+    def language
+        @language ||= Analysis::DEFAULT_LANGUAGE
     end
 
     def client
@@ -84,11 +87,5 @@ module Analysis::Inference
         }
 
         parameters
-    end
-
-    def set_default_values
-        self.provider ||= "openai"
-        self.model ||= "gpt-4o-mini"
-        self.temperature ||= 0.0
     end
 end

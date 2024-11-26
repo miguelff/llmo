@@ -4,7 +4,7 @@ class Analysis::EntityExtraction < Analysis::Step
     attribute :answers, :json, default: []
     validates :answers, length: { minimum: 1 }
 
-    STEP_1_SCHEMA = OpenAI::StructuredOutputs::Schema.new do
+    schema do
         define :link do
             string :url
         end
@@ -20,7 +20,7 @@ class Analysis::EntityExtraction < Analysis::Step
         array :orphan_links, items: ref(:link), description: "Links that were not related to any particular entity"
     end
 
-    STEP_1_SYSTEM = {
+    system({
         eng: <<-EOF.promptize
             You are an assistant specialized in entity extraction.
 
@@ -42,15 +42,17 @@ class Analysis::EntityExtraction < Analysis::Step
 
             Return as many entities and links as you can find in the given text.
         EOF
-    }
+    })
 
     def perform
         entities = Concurrent::Promises.zip_futures_over(self.answers) do |question, answer|
-            step1_system_prompt = STEP_1_SYSTEM[self.language.to_sym] || STEP_1_SYSTEM[Analysis::DEFAULT_LANGUAGE]
-            messages = [ { role: :system, content: step1_system_prompt }, { role: :user, content: user_prompt(answer) } ]
+            messages = [
+                { role: :system, content: system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE] },
+                { role: :user, content: user_prompt(answer) }
+            ]
 
             parameters = self.parameters(messages)
-            parameters[:response_format] = STEP_1_SCHEMA
+            parameters[:response_format] = self.output_schema
 
 
             res = client.parse(**parameters)
@@ -68,6 +70,12 @@ class Analysis::EntityExtraction < Analysis::Step
 
     def self.aggregate(entities)
         ok, errors = entities.partition { |entity| entity[:ok].present? }
+
+        if errors.length > ok.length
+            raise errors.map { |e| e[:error] }.join("\n")
+        elsif errors.any?
+            Rails.logger.warn("Entity extraction failed for some #{errors.length} answers: #{errors.map { |e| e[:error] }.join("\n")}")
+        end
 
         entities = ok.map { |entity| entity[:ok]["entities"] }.flatten
 
