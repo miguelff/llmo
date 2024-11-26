@@ -1,7 +1,7 @@
 class Analysis::TopicClassification < Analysis::Step
     include Analysis::Inference
 
-    SYSTEM_PROMPT = <<-EOF.squish
+    SYSTEM_PROMPT = <<-EOF.promptize
         You are an assistant specialized in entity recognition.
         Your task is to analyze text and determine the category of the entity in the text.
         This is a list of entities we support:

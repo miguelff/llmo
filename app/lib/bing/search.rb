@@ -86,7 +86,7 @@ module Bing
                 if response&.status == 200
                     doc = Nokogiri::HTML(response.body)
                     doc.css("script, link, style").each { |node| node.remove }
-                    doc.css("body").text.squish
+                    doc.css("body").text.promptize
                 else
                     nil
                 end

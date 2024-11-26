@@ -9,59 +9,59 @@ http_interactions:
         êtes un assistant spécialisé dans la simulation du comportement des utilisateurs
         de ChatGPT recherchant les meilleures marques, produits ou services. Votre
         tâche est de générer des variations en langage naturel d''une requête qui
-        cherche à comprendre les meilleurs produits dans une catégorie. Entrées :
-        • query: Le produit principal, la marque ou le service que l''utilisateur
-        recherche. • cohort: (Optionnel) Une description de la personne faisant la
-        requête, y compris des détails démographiques, des préférences ou des besoins
-        spécifiques. Utilisez ces informations pour adapter le ton, l''accent et les
-        préoccupations spécifiques des questions. • region: (Optionnel) Un pays ou
-        une région du monde spécifique pour restreindre la portée des produits, services
-        ou marques. Utilisez cela pour générer des requêtes qui correspondent à la
-        disponibilité régionale, aux marques populaires ou aux considérations locales.
-        Instructions : 1. Générez des questions claires et directes dont les réponses
-        pointent vers des marques, modèles ou services spécifiques pertinents pour
-        la requête donnée. 2. Si le cohort est fourni, reflétez les intérêts, besoins
-        ou priorités de l''utilisateur dans les questions. Par exemple : • Un utilisateur
-        soucieux de son budget se concentrerait sur des options abordables. • Un utilisateur
-        soucieux de l''environnement prendrait en compte les aspects de durabilité.
-        3. Si la region est fournie, adaptez les questions pour vous concentrer sur
-        les marques, modèles ou services populaires ou disponibles dans cette région.
-        4. Si les informations sur le cohort ou la region manquent : • Ne faites pas
-        d''hypothèses sur la démographie, les préférences ou la localisation de l''utilisateur.
-        • Générez des questions neutres et générales qui ne sont pas spécifiques à
-        un cohort ou une region. 5. Maintenez les questions spécifiques à la catégorie
-        de requête donnée, en évitant les sujets tangents. Par exemple : • Si la requête
+        cherche à comprendre les meilleurs produits dans une catégorie.\nEntrées :\n•\tquery:
+        Le produit principal, la marque ou le service que l''utilisateur recherche.\n•\tcohort:
+        (Optionnel) Une description de la personne faisant la requête, y compris des
+        détails démographiques, des préférences ou des besoins spécifiques. Utilisez
+        ces informations pour adapter le ton, l''accent et les préoccupations spécifiques
+        des questions.\n•\tregion: (Optionnel) Un pays ou une région du monde spécifique
+        pour restreindre la portée des produits, services ou marques. Utilisez cela
+        pour générer des requêtes qui correspondent à la disponibilité régionale,
+        aux marques populaires ou aux considérations locales.\nInstructions :\n1.\tGénérez
+        des questions claires et directes dont les réponses pointent vers des marques,
+        modèles ou services spécifiques pertinents pour la requête donnée.\n2.\tSi
+        le cohort est fourni, reflétez les intérêts, besoins ou priorités de l''utilisateur
+        dans les questions. Par exemple :\n•\tUn utilisateur soucieux de son budget
+        se concentrerait sur des options abordables.\n•\tUn utilisateur soucieux de
+        l''environnement prendrait en compte les aspects de durabilité.\n3.\tSi la
+        region est fournie, adaptez les questions pour vous concentrer sur les marques,
+        modèles ou services populaires ou disponibles dans cette région.\n4.\tSi les
+        informations sur le cohort ou la region manquent :\n•\tNe faites pas d''hypothèses
+        sur la démographie, les préférences ou la localisation de l''utilisateur.\n•\tGénérez
+        des questions neutres et générales qui ne sont pas spécifiques à un cohort
+        ou une region.\n5.\tMaintenez les questions spécifiques à la catégorie de
+        requête donnée, en évitant les sujets tangents. Par exemple :\n•\tSi la requête
         concerne les assurances habitation, ne générez pas de questions sur les assurances
-        santé. • Si la requête concerne les compléments alimentaires, ne vous limitez
-        pas à des sous-catégories spécifiques sauf si cela est explicitement demandé.
-        6. Maintenez la diversité dans la formulation des questions tout en restant
-        fidèle au contexte fourni. Exemples de sorties : Données d''entrée : • query:
-        \"meilleures machines à café pour la maison\" • cohort: Non fourni • region:
-        Non fourni Générez des questions comme : • \"Quelles sont les machines à café
-        pour la maison les mieux notées sur le marché ?\" • \"Quelles machines à café
-        sont considérées comme les plus fiables pour un usage domestique ?\" • \"Quels
-        facteurs dois-je prendre en compte lors du choix d''une machine à café pour
-        la maison ?\" • \"Quelles sont les meilleures marques de machines à café pour
-        la maison disponibles actuellement ?\" Si les données d''entrée sont : • query:
-        \"meilleures machines à café pour la maison\" • cohort: \"Un étudiant soucieux
-        de son budget vivant dans un petit appartement\" • region: \"Europe\" Générez
-        des questions comme : • \"Quelles sont les machines à café pour la maison
-        les plus abordables disponibles en Europe ?\" • \"Quelles marques de machines
+        santé.\n•\tSi la requête concerne les compléments alimentaires, ne vous limitez
+        pas à des sous-catégories spécifiques sauf si cela est explicitement demandé.\n6.\tMaintenez
+        la diversité dans la formulation des questions tout en restant fidèle au contexte
+        fourni.\nExemples de sorties :\nDonnées d''entrée :\n•\tquery: \"meilleures
+        machines à café pour la maison\"\n•\tcohort: Non fourni\n•\tregion: Non fourni\nGénérez
+        des questions comme :\n•\t\"Quelles sont les machines à café pour la maison
+        les mieux notées sur le marché ?\"\n•\t\"Quelles machines à café sont considérées
+        comme les plus fiables pour un usage domestique ?\"\n•\t\"Quels facteurs dois-je
+        prendre en compte lors du choix d''une machine à café pour la maison ?\"\n•\t\"Quelles
+        sont les meilleures marques de machines à café pour la maison disponibles
+        actuellement ?\"\nSi les données d''entrée sont :\n•\tquery: \"meilleures
+        machines à café pour la maison\"\n•\tcohort: \"Un étudiant soucieux de son
+        budget vivant dans un petit appartement\"\n•\tregion: \"Europe\"\nGénérez
+        des questions comme :\n•\t\"Quelles sont les machines à café pour la maison
+        les plus abordables disponibles en Europe ?\"\n•\t\"Quelles marques de machines
         à café sont les meilleures pour les petits espaces et les budgets étudiants
-        ?\" • \"Y a-t-il des machines à café économiques populaires sur les marchés
-        européens ?\" • \"Quelles sont les machines à café compactes les mieux notées
-        pour les petits appartements en Europe ?\" Votre objectif est de générer des
-        questions qui reflètent l''intention et le contexte de l''utilisateur, conduisant
-        à des recommandations de produits ou de marques spécifiques basées sur les
-        données d''entrée fournies."},{"role":"user","content":"Générez 5 questions
-        sur \"Safe cars\"\nContexte régional : Les questions doivent être adaptées
-        pour any, en considérant l''existence de produits, marques et services dans
-        cette région\nContexte de l''utilisateur : Les questions doivent être pertinentes
-        pour Women 45+.\nSuivez ces directives :\n- Gardez les questions spécifiquement
-        centrées sur Safe cars\n- Adaptez les questions au contexte régional fourni\n-
-        Variez la formulation tout en maintenant la pertinence\n- Concentrez-vous
-        sur la collecte d''informations qui aideront à recommander des produits/marques
-        spécifiques\n\nQuestions :"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        ?\"\n•\t\"Y a-t-il des machines à café économiques populaires sur les marchés
+        européens ?\"\n•\t\"Quelles sont les machines à café compactes les mieux notées
+        pour les petits appartements en Europe ?\"\nVotre objectif est de générer
+        des questions qui reflètent l''intention et le contexte de l''utilisateur,
+        conduisant à des recommandations de produits ou de marques spécifiques basées
+        sur les données d''entrée fournies.\n"},{"role":"user","content":"Générez
+        5 questions sur \"Safe cars\"\nContexte régional : Les questions doivent être
+        adaptées pour any, en considérant l''existence de produits, marques et services
+        dans cette région\nContexte de l''utilisateur : Les questions doivent être
+        pertinentes pour Women 45+.\nSuivez ces directives :\n- Gardez les questions
+        spécifiquement centrées sur Safe cars\n- Adaptez les questions au contexte
+        régional fourni\n- Variez la formulation tout en maintenant la pertinence\n-
+        Concentrez-vous sur la collecte d''informations qui aideront à recommander
+        des produits/marques spécifiques\n\nQuestions :"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"$ref":"#/$defs/question"},"description":"A
         collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{"question":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true}}}}}}'
     headers:
@@ -81,7 +81,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 15:18:00 GMT
+      - Tue, 26 Nov 2024 09:26:41 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -93,7 +93,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '1107'
+      - '1050'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -109,28 +109,28 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 16ms
       X-Request-Id:
-      - req_60b863eb8033880c0c91c2b41acc5ab1
+      - req_879ca79ade9a2b0f2d474c5e438d7cbd
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=VfHe28Tm7dF.gh.S2DIstDoOtHaUL_74tMK.LT7rudg-1732288680-1.0.1.1-5eRz6PSsIrptgr33alNZG1q4MU.IRijbAQRTbORaDnsFD8.SQESE5AyGIXMALGomFXp398zStFzVu167gV4Vww;
-        path=/; expires=Fri, 22-Nov-24 15:48:00 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=69feszjuTwNMHguXYF4BeKx6Ar2QbM0R.W8ri9Zeulo-1732613201-1.0.1.1-yWXd2I8LrN79OEwJSmphEl_VnqRWDywkGccVEVy2Y_YnLUSz6H2r0k145gxk2ZE8NI3fgJ3lp5OXnF_RWmU66A;
+        path=/; expires=Tue, 26-Nov-24 09:56:41 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=YW704E_YMN_H9RTCeIRO4atiLJDuY4UebvWSy.TeTtY-1732288680620-0.0.1.1-604800000;
+      - _cfuvid=gayLxBsC4OXRJxGLeVNCiRBLr1QjS9RINgdKA4Bo9PE-1732613201086-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e69e3b60e13cc03-MAD
+      - 8e88d69369291bab-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1BV1BodjZIMnhzZEtDZ3NaR2U3U2xQdTZLY1AzdiIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjI4ODY3OSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJRdWVsbGVzIHNvbnQgbGVzIHZvaXR1cmVzIGxlcyBwbHVzIHPDu3JlcyByZWNvbW1hbmTDqWVzIHBvdXIgbGVzIGZlbW1lcyBkZSBwbHVzIGRlIDQ1IGFucyA/XCJ9LHtcInF1ZXN0aW9uXCI6XCJRdWVscyBtb2TDqGxlcyBkZSB2b2l0dXJlcyBvZmZyZW50IGxlcyBtZWlsbGV1cmVzIGNhcmFjdMOpcmlzdGlxdWVzIGRlIHPDqWN1cml0w6kgcG91ciBsZXMgY29uZHVjdHJpY2VzIG1hdHVyZXMgP1wifSx7XCJxdWVzdGlvblwiOlwiUXVlbGxlcyBtYXJxdWVzIGRlIHZvaXR1cmVzIHNvbnQgcsOpcHV0w6llcyBwb3VyIGxldXIgc8OpY3VyaXTDqSBldCBsZXVyIGNvbmZvcnQgcG91ciBsZXMgZmVtbWVzIGRlIDQ1IGFucyBldCBwbHVzID9cIn0se1wicXVlc3Rpb25cIjpcIlF1ZWxzIGNyaXTDqHJlcyBkZSBzw6ljdXJpdMOpIGRldnJhaXMtamUgY29uc2lkw6lyZXIgbG9ycyBkZSBsJ2FjaGF0IGQndW5lIHZvaXR1cmUgcG91ciB1bmUgZmVtbWUgZGUgcGx1cyBkZSA0NSBhbnMgP1wifSx7XCJxdWVzdGlvblwiOlwiWSBhLXQtaWwgZGVzIMOpdmFsdWF0aW9ucyBkZSBzw6ljdXJpdMOpIHNww6ljaWZpcXVlcyBwb3VyIGxlcyB2b2l0dXJlcyBxdWkgY29udmllbm5lbnQgYXV4IGZlbW1lcyBkZSBjZXR0ZSB0cmFuY2hlIGQnw6JnZSA/XCJ9XX0iLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiA5NzYsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxMzEsCiAgICAidG90YWxfdG9rZW5zIjogMTEwNywKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF8wNzA1YmY4N2MwIgp9Cg==
-  recorded_at: Fri, 22 Nov 2024 15:18:00 GMT
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWG04OEdqV0FyV25VZzY3NENnUTZiSFFyMGpTaCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjYxMzIwMCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJRdWVsbGVzIHNvbnQgbGVzIHZvaXR1cmVzIGxlcyBwbHVzIHPDu3JlcyByZWNvbW1hbmTDqWVzIHBvdXIgbGVzIGZlbW1lcyBkZSBwbHVzIGRlIDQ1IGFucyA/XCJ9LHtcInF1ZXN0aW9uXCI6XCJRdWVscyBtb2TDqGxlcyBkZSB2b2l0dXJlcyBvZmZyZW50IGxlcyBtZWlsbGV1cmVzIGNhcmFjdMOpcmlzdGlxdWVzIGRlIHPDqWN1cml0w6kgcG91ciBsZXMgY29uZHVjdHJpY2VzIG1hdHVyZXMgP1wifSx7XCJxdWVzdGlvblwiOlwiUXVlbGxlcyBtYXJxdWVzIGRlIHZvaXR1cmVzIHNvbnQgcsOpcHV0w6llcyBwb3VyIGxldXIgc8OpY3VyaXTDqSBldCBsZXVyIGNvbmZvcnQgcG91ciBsZXMgZmVtbWVzIGRlIDQ1IGFucyBldCBwbHVzID9cIn0se1wicXVlc3Rpb25cIjpcIlF1ZWxzIGNyaXTDqHJlcyBkZSBzw6ljdXJpdMOpIGRldnJhaXMtamUgY29uc2lkw6lyZXIgbG9ycyBkZSBsJ2FjaGF0IGQndW5lIHZvaXR1cmUgZW4gdGFudCBxdWUgZmVtbWUgZGUgcGx1cyBkZSA0NSBhbnMgP1wifSx7XCJxdWVzdGlvblwiOlwiWSBhLXQtaWwgZGVzIHJhcHBvcnRzIG91IGRlcyBjbGFzc2VtZW50cyByw6ljZW50cyBzdXIgbGVzIHZvaXR1cmVzIGxlcyBwbHVzIHPDu3JlcyBxdWkgcG91cnJhaWVudCBpbnTDqXJlc3NlciBsZXMgZmVtbWVzIGRlIGNldHRlIHRyYW5jaGUgZCfDomdlID9cIn1dfSIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDEwMDcsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxMzksCiAgICAidG90YWxfdG9rZW5zIjogMTE0NiwKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF8wNzA1YmY4N2MwIgp9Cg==
+  recorded_at: Tue, 26 Nov 2024 09:26:41 GMT
 recorded_with: VCR 6.3.1

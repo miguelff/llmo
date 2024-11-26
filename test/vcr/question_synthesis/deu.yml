@@ -10,49 +10,49 @@ http_interactions:
         spezialisiert hat, die nach den besten Marken, Produkten oder Dienstleistungen
         suchen. Deine Aufgabe ist es, natürliche Sprachvariationen einer Anfrage zu
         generieren, die darauf abzielt, die besten Produkte innerhalb einer Kategorie
-        zu verstehen. Eingaben: • query: Das Hauptprodukt, die Marke oder der Service,
-        den der Benutzer recherchiert. • cohort: (Optional) Eine Beschreibung der
+        zu verstehen.\nEingaben:\n•\tquery: Das Hauptprodukt, die Marke oder der Service,
+        den der Benutzer recherchiert.\n•\tcohort: (Optional) Eine Beschreibung der
         Person, die die Anfrage stellt, einschließlich demografischer Details, Vorlieben
         oder spezifischer Bedürfnisse. Verwende diese Informationen, um den Ton, den
-        Fokus und die spezifischen Anliegen der Fragen anzupassen. • region: (Optional)
+        Fokus und die spezifischen Anliegen der Fragen anzupassen.\n•\tregion: (Optional)
         Ein bestimmtes Land oder eine bestimmte Weltregion, um den Umfang der Produkte,
         Dienstleistungen oder Marken einzuschränken. Verwende dies, um Anfragen zu
         generieren, die mit der regionsspezifischen Verfügbarkeit, beliebten Marken
-        oder lokalen Überlegungen übereinstimmen. Anweisungen: 1. Generiere klare
+        oder lokalen Überlegungen übereinstimmen.\nAnweisungen:\n1.\tGeneriere klare
         und direkte Fragen, deren Antworten auf spezifische Marken, Modelle oder Dienstleistungen
-        hinweisen, die für die gegebene Anfrage relevant sind. 2. Wenn der cohort
+        hinweisen, die für die gegebene Anfrage relevant sind.\n2.\tWenn der cohort
         angegeben ist, spiegele die Interessen, Bedürfnisse oder Prioritäten des Benutzers
-        in den Fragen wider. Zum Beispiel: • Ein budgetbewusster Benutzer würde sich
-        auf erschwingliche Optionen konzentrieren. • Ein umweltbewusster Benutzer
-        würde Nachhaltigkeitsaspekte berücksichtigen. 3. Wenn die region angegeben
+        in den Fragen wider. Zum Beispiel:\n•\tEin budgetbewusster Benutzer würde
+        sich auf erschwingliche Optionen konzentrieren.\n•\tEin umweltbewusster Benutzer
+        würde Nachhaltigkeitsaspekte berücksichtigen.\n3.\tWenn die region angegeben
         ist, passe die Fragen an, um sich auf Marken, Modelle oder Dienstleistungen
-        zu konzentrieren, die in dieser Region beliebt oder verfügbar sind. 4. Wenn
-        Informationen zu cohort oder region fehlen: • Mache keine Annahmen über die
-        Demografie, Vorlieben oder den Standort des Benutzers. • Generiere neutrale,
+        zu konzentrieren, die in dieser Region beliebt oder verfügbar sind.\n4.\tWenn
+        Informationen zu cohort oder region fehlen:\n•\tMache keine Annahmen über
+        die Demografie, Vorlieben oder den Standort des Benutzers.\n•\tGeneriere neutrale,
         allgemeine Fragen, die nicht spezifisch für einen cohort oder eine region
-        sind. 5. Halte die Fragen spezifisch für die gegebene Anfragekategorie und
-        vermeide tangentiale Themen. Zum Beispiel: • Wenn die Anfrage über Hausversicherungen
-        ist, generiere keine Fragen über Krankenversicherungen. • Wenn die Anfrage
+        sind.\n5.\tHalte die Fragen spezifisch für die gegebene Anfragekategorie und
+        vermeide tangentiale Themen. Zum Beispiel:\n•\tWenn die Anfrage über Hausversicherungen
+        ist, generiere keine Fragen über Krankenversicherungen.\n•\tWenn die Anfrage
         über Nahrungsergänzungsmittel ist, beschränke dich nicht auf spezifische Unterkategorien,
-        es sei denn, dies wird ausdrücklich verlangt. 6. Halte die Vielfalt in der
+        es sei denn, dies wird ausdrücklich verlangt.\n6.\tHalte die Vielfalt in der
         Formulierung der Fragen aufrecht, während du dem bereitgestellten Kontext
-        treu bleibst. Beispielausgaben: Gegebene Eingaben: • query: \"beste Kaffeemaschinen
-        für zu Hause\" • cohort: Nicht angegeben • region: Nicht angegeben Generiere
-        Fragen wie: • \"Was sind die bestbewerteten Kaffeemaschinen für zu Hause auf
-        dem Markt?\" • \"Welche Kaffeemaschinen gelten als die zuverlässigsten für
-        den Hausgebrauch?\" • \"Welche Faktoren sollte ich bei der Auswahl einer Kaffeemaschine
-        für zu Hause berücksichtigen?\" • \"Was sind die besten Kaffeemaschinenmarken
-        für zu Hause, die derzeit verfügbar sind?\" Wenn die Eingaben sind: • query:
-        \"beste Kaffeemaschinen für zu Hause\" • cohort: \"Ein budgetbewusster Student,
-        der in einer kleinen Wohnung lebt\" • region: \"Europa\" Generiere Fragen
-        wie: • \"Was sind die erschwinglichsten Kaffeemaschinen für zu Hause, die
-        in Europa verfügbar sind?\" • \"Welche Kaffeemaschinenmarken sind am besten
-        für kleine Räume und studentische Budgets geeignet?\" • \"Gibt es budgetfreundliche
-        Kaffeemaschinen, die auf den europäischen Märkten beliebt sind?\" • \"Was
+        treu bleibst.\nBeispielausgaben:\nGegebene Eingaben:\n•\tquery: \"beste Kaffeemaschinen
+        für zu Hause\"\n•\tcohort: Nicht angegeben\n•\tregion: Nicht angegeben\nGeneriere
+        Fragen wie:\n•\t\"Was sind die bestbewerteten Kaffeemaschinen für zu Hause
+        auf dem Markt?\"\n•\t\"Welche Kaffeemaschinen gelten als die zuverlässigsten
+        für den Hausgebrauch?\"\n•\t\"Welche Faktoren sollte ich bei der Auswahl einer
+        Kaffeemaschine für zu Hause berücksichtigen?\"\n•\t\"Was sind die besten Kaffeemaschinenmarken
+        für zu Hause, die derzeit verfügbar sind?\"\nWenn die Eingaben sind:\n•\tquery:
+        \"beste Kaffeemaschinen für zu Hause\"\n•\tcohort: \"Ein budgetbewusster Student,
+        der in einer kleinen Wohnung lebt\"\n•\tregion: \"Europa\"\nGeneriere Fragen
+        wie:\n•\t\"Was sind die erschwinglichsten Kaffeemaschinen für zu Hause, die
+        in Europa verfügbar sind?\"\n•\t\"Welche Kaffeemaschinenmarken sind am besten
+        für kleine Räume und studentische Budgets geeignet?\"\n•\t\"Gibt es budgetfreundliche
+        Kaffeemaschinen, die auf den europäischen Märkten beliebt sind?\"\n•\t\"Was
         sind die bestbewerteten kompakten Kaffeemaschinen für kleine Wohnungen in
-        Europa?\" Dein Ziel ist es, Fragen zu generieren, die die Absicht und den
+        Europa?\"\nDein Ziel ist es, Fragen zu generieren, die die Absicht und den
         Kontext des Benutzers widerspiegeln und zu spezifischen Produkt- oder Markenempfehlungen
-        basierend auf den bereitgestellten Eingaben führen."},{"role":"user","content":"Erzeuge
+        basierend auf den bereitgestellten Eingaben führen.        \n"},{"role":"user","content":"Erzeuge
         5 Fragen über \"Safe cars\"\nRegionalkontext: Die Fragen sollten für any angepasst
         werden, unter Berücksichtigung der Verfügbarkeit von Produkten, Marken und
         Dienstleistungen in dieser Region\nNutzerkontext: Die Fragen sollten für Women
@@ -80,7 +80,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 15:18:05 GMT
+      - Tue, 26 Nov 2024 09:26:42 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -92,7 +92,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '827'
+      - '996'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -102,34 +102,34 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3998906'
+      - '3998904'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 16ms
       X-Request-Id:
-      - req_1597dc1399f115b7974834bd94b9bd42
+      - req_fd874b836125936e90aca089ec49b167
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=Evn3eCj1aEyiK4aERHGZfTGR9ZzAMmvtU0k38qmLUnA-1732288685-1.0.1.1-OASHV0o6ompMrbg2izkzRqQMug_wcVhCXSf5eE5lvW.kWYufnK.53mldUS_lqBHTzX2Lr0WELJyBtFeHG2ZYpQ;
-        path=/; expires=Fri, 22-Nov-24 15:48:05 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=HnXfgK0XPUZaT8Epid8.LwSzeFs5AGwYQw7GBLaTenc-1732613202-1.0.1.1-YnZe0e4ClJlwYsqEAb.ZOFXpBn4p2m3SStylfnp.xy.NjP40NR47HRP_r.rx3VJw.epZYqaWHhywKIcxNT3oPQ;
+        path=/; expires=Tue, 26-Nov-24 09:56:42 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=U6EMBVCJRJamI3JBZAQompXdIuJzbB_GNx8ygpOr5FA-1732288685579-0.0.1.1-604800000;
+      - _cfuvid=PwlMI3bOq5SXYj7HAqYbOYRoVugjl1Im3cflPQjNanI-1732613202373-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e69e3d6da8486c3-MAD
+      - 8e88d69bbf2ccfb5-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1BV1BpMGg1aEl5cGV5bXBLanpqNG56cUFEbWlPUCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjI4ODY4NCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJXZWxjaGUgQXV0b21hcmtlbiBiaWV0ZW4gZGllIHNpY2hlcnN0ZW4gRmFocnpldWdlIGbDvHIgRnJhdWVuIMO8YmVyIDQ1IEphaHJlbiBhbj9cIn0se1wicXVlc3Rpb25cIjpcIldhcyBzaW5kIGRpZSBiZXN0ZW4gTW9kZWxsZSB2b24gc2ljaGVyZW4gQXV0b3MsIGRpZSBmw7xyIEZyYXVlbiBpbiBkZXIgQWx0ZXJzZ3J1cHBlIDQ1KyBlbXBmb2hsZW4gd2VyZGVuP1wifSx7XCJxdWVzdGlvblwiOlwiV2VsY2hlIFNpY2hlcmhlaXRzbWVya21hbGUgc29sbHRlIGljaCBiZWkgZGVyIEF1c3dhaGwgZWluZXMgQXV0b3MgZsO8ciBGcmF1ZW4gw7xiZXIgNDUgSmFocmVuIGJlc29uZGVycyBiZWFjaHRlbj9cIn0se1wicXVlc3Rpb25cIjpcIkdpYnQgZXMgc3BlemllbGxlIEJld2VydHVuZ2VuIG9kZXIgQXVzemVpY2hudW5nZW4gZsO8ciBzaWNoZXJlIEF1dG9zLCBkaWUgZsO8ciBGcmF1ZW4gYWIgNDUgSmFocmVuIHJlbGV2YW50IHNpbmQ/XCJ9LHtcInF1ZXN0aW9uXCI6XCJXZWxjaGUgRXJmYWhydW5nZW4gaGFiZW4gYW5kZXJlIEZyYXVlbiDDvGJlciA0NSBtaXQgZGVuIHNpY2hlcnN0ZW4gQXV0b3MgYXVmIGRlbSBNYXJrdCBnZW1hY2h0P1wifV19IiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogMTAyOCwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDExOCwKICAgICJ0b3RhbF90b2tlbnMiOiAxMTQ2LAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzA3MDViZjg3YzAiCn0K
-  recorded_at: Fri, 22 Nov 2024 15:18:05 GMT
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWG04OVBteFFnb25yQm9NQk1leENQSDVqcEVrUSIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjYxMzIwMSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJXZWxjaGUgQXV0b21hcmtlbiBiaWV0ZW4gZGllIHNpY2hlcnN0ZW4gRmFocnpldWdlIGbDvHIgRnJhdWVuIMO8YmVyIDQ1IEphaHJlbiBhbj9cIn0se1wicXVlc3Rpb25cIjpcIldhcyBzaW5kIGRpZSBiZXN0ZW4gU2ljaGVyaGVpdHNtZXJrbWFsZSwgZGllIGljaCBiZWkgZWluZW0gQXV0byBmw7xyIG1laW5lIEFsdGVyc2dydXBwZSBiZXLDvGNrc2ljaHRpZ2VuIHNvbGx0ZT9cIn0se1wicXVlc3Rpb25cIjpcIkdpYnQgZXMgc3BlemllbGxlIE1vZGVsbGUgdm9uIHNpY2hlcmVuIEF1dG9zLCBkaWUgYmVzb25kZXJzIGbDvHIgRnJhdWVuIGFiIDQ1IEphaHJlbiBlbXBmb2hsZW4gd2VyZGVuP1wifSx7XCJxdWVzdGlvblwiOlwiV2llIHNjaG5laWRlbiB2ZXJzY2hpZWRlbmUgQXV0b21vZGVsbGUgaW4gQmV6dWcgYXVmIFNpY2hlcmhlaXRzdGVzdHMgYWIsIGRpZSBmw7xyIEZyYXVlbiDDvGJlciA0NSByZWxldmFudCBzaW5kP1wifSx7XCJxdWVzdGlvblwiOlwiV2VsY2hlIEVyZmFocnVuZ2VuIGhhYmVuIGFuZGVyZSBGcmF1ZW4gw7xiZXIgNDUgbWl0IHNpY2hlcmVuIEF1dG9zIGdlbWFjaHQsIHVuZCB3ZWxjaGUgTW9kZWxsZSB3w7xyZGVuIHNpZSBlbXBmZWhsZW4/XCJ9XX0iLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiAxMDU1LAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogMTIwLAogICAgInRvdGFsX3Rva2VucyI6IDExNzUsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfMDcwNWJmODdjMCIKfQo=
+  recorded_at: Tue, 26 Nov 2024 09:26:42 GMT
 recorded_with: VCR 6.3.1

@@ -12,7 +12,7 @@ class Analysis::QuestionSynthesis < Analysis::Step
     end
 
     system({
-        eng: <<-EOF.squish.freeze,
+        eng: <<-EOF.promptize.freeze,
             You are an assistant specialized in simulating the behavior of ChatGPT users researching the best brands, products, or services. Your task is to generate natural language variations of a query that seeks to understand the best products within a category.
             Inputs:
 
@@ -67,7 +67,7 @@ class Analysis::QuestionSynthesis < Analysis::Step
             Generate the questions following the structured output format.
         EOF
 
-        spa: <<-EOF.squish.freeze,
+        spa: <<-EOF.promptize.freeze,
             Eres un asistente especializado en simular el comportamiento de usuarios de ChatGPT que investigan las mejores marcas, productos o servicios. Tu tarea es generar variaciones en lenguaje natural de una consulta que busca entender los mejores productos dentro de una categoría.
             Entradas:
 
@@ -121,7 +121,7 @@ class Analysis::QuestionSynthesis < Analysis::Step
             Tu objetivo es generar preguntas que reflejen la intención y el contexto del usuario, llevando a recomendaciones específicas de productos o marcas basadas en los inputs proporcionados.`
         EOF
 
-        deu: <<-EOF.squish.freeze,
+        deu: <<-EOF.promptize.freeze,
             Du bist ein Assistent, der sich auf die Simulation des Verhaltens von ChatGPT-Benutzern spezialisiert hat, die nach den besten Marken, Produkten oder Dienstleistungen suchen. Deine Aufgabe ist es, natürliche Sprachvariationen einer Anfrage zu generieren, die darauf abzielt, die besten Produkte innerhalb einer Kategorie zu verstehen.
             Eingaben:
 
@@ -175,7 +175,7 @@ class Analysis::QuestionSynthesis < Analysis::Step
             Dein Ziel ist es, Fragen zu generieren, die die Absicht und den Kontext des Benutzers widerspiegeln und zu spezifischen Produkt- oder Markenempfehlungen basierend auf den bereitgestellten Eingaben führen.#{'        '}
         EOF
 
-        fra: <<-EOF.squish.freeze
+        fra: <<-EOF.promptize.freeze
         Vous êtes un assistant spécialisé dans la simulation du comportement des utilisateurs de ChatGPT recherchant les meilleures marques, produits ou services. Votre tâche est de générer des variations en langage naturel d'une requête qui cherche à comprendre les meilleurs produits dans une catégorie.
         Entrées :
 

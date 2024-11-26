@@ -6,12 +6,12 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
-        are an assistant specialized in language detection. Your task is to analyze
-        text and determine its language. Return only the ISO-639-2 three-letter language
-        code (e.g. ''eng'' for English, ''spa'' for Spanish, etc.). If the language
-        cannot be determined, return ''und'' for undefined. We only support a set
-        of languages: spa, eng, deu, fra if the code is for a different language,
-        return ''und'' for undefined."},{"role":"user","content":"Input: Safe cars
+        are an assistant specialized in language detection.\nYour task is to analyze
+        text and determine its language. Return only the ISO-639-2\nthree-letter language
+        code (e.g. ''eng'' for English, ''spa'' for Spanish, etc.).\nIf the language
+        cannot be determined, return ''und'' for undefined.\nWe only support a set
+        of languages:\nspa, eng, deu, fra\nif the code is for a different language,
+        return ''und'' for undefined.\n"},{"role":"user","content":"Input: Safe cars
         Women 45+"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"language":{"type":"string","enum":["spa","eng","deu","fra"],"description":"The
         detected language of the input text"}},"required":["language"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 12:10:56 GMT
+      - Tue, 26 Nov 2024 09:25:33 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,7 +44,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '144'
+      - '276'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -54,38 +54,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999873'
+      - '3999872'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 1ms
       X-Request-Id:
-      - req_294c9e7b711195743538566a6dd11575
+      - req_b8dc1d90ead83f4e3b3cc46edff5ffb0
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=YTtk1mduB0xw9qluIQCLTK6v.N5rBn1bFzvfnaXE4FE-1732277456-1.0.1.1-AJojjFlIJF1w_35X9s7tHi9TxkGBVgtIAu_dLqpwYeRyKhZ5lQWwAVrYjjWgAm3VwAeF65G.UlTY.N5rojMoOg;
-        path=/; expires=Fri, 22-Nov-24 12:40:56 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=VS6UskjeLyxAFHj4iC7vx_F4cdZfEwi4SNZstQPgkck-1732613133-1.0.1.1-rlY2r33dIzhzKNgXblI8IXmx2dWayrVplBKEE4uePdWugrAewE54EE0UXQIljZfmrrhwkHLzAo8hz5lk0vRp0g;
+        path=/; expires=Tue, 26-Nov-24 09:55:33 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=tHyE_igX6uELJpEh0tAOrIfDe3xFNT1eojhOyu1_1ms-1732277456178-0.0.1.1-604800000;
+      - _cfuvid=u8.VfqdWOsIDFwjok9shcWQA6RgXRehrcRBxG5yoCWo-1732613133532-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e68d1b36eadecaa-MAD
+      - 8e88d4ef7907cbd4-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AWMmuLIncdB66yNxgwmXFLmqfmRWd",
+          "id": "chatcmpl-AXm73KjQnJwZG7MtCgMahYSJqLLlk",
           "object": "chat.completion",
-          "created": 1732277456,
+          "created": 1732613133,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -100,9 +100,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 176,
+            "prompt_tokens": 178,
             "completion_tokens": 5,
-            "total_tokens": 181,
+            "total_tokens": 183,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -116,5 +116,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Fri, 22 Nov 2024 12:10:56 GMT
+  recorded_at: Tue, 26 Nov 2024 09:25:33 GMT
 recorded_with: VCR 6.3.1

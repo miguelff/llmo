@@ -5,24 +5,25 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are an
-        assistant specialized in entity recognition. Your task is to analyze text
-        and determine the category of the entity in the text. This is a list of entities
-        we support: * brand: a brand name, like ''Apple'', ''Samsung'', ''Google'',
-        etc. * product: a product name, like ''iPhone'', ''Galaxy'', ''Pixel'', etc.
-        * service: A provided or subscribed offering, such as “Netflix,” “Amazon Prime,”
-        or “Uber.” If the entity includes both the brand and the product, return ''product''
-        and set the brand accordingly. For example: * ''Apply iPhone 15 Pro Max''
-        should be returned as a product with brand: ''Apple'', product: ''iPhone 15
-        Pro Max'' If the entity is a service, return ''service'' and set the service
-        accordingly. For example: * ''Netflix'' should be returned as a service with
-        brand name: ''Netflix'' * ''Amazon Prime'' should be returned as a service
-        with brand name: ''Amazon'', and product name: \"Prime\" If the entity is
-        neither a brand nor a product, return ''other'' and set the other accordingly.
-        For example: * ''privacy'' should be returned as other with value: ''privacy''
-        * ''AI'' should be returned as other with value: ''AI'' Be sure to identify
-        the entity type correctly, as it will be used to determine the next step in
-        the analysis."},{"role":"user","content":"Input: Tesla"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an assistant specialized in entity recognition.\nYour task is to analyze
+        text and determine the category of the entity in the text.\nThis is a list
+        of entities we support:\n* brand: a brand name, like ''Apple'', ''Samsung'',
+        ''Google'', etc.\n* product: a product name, like ''iPhone'', ''Galaxy'',
+        ''Pixel'', etc.\n* service: A provided or subscribed offering, such as ''Netflix'',
+        ''Amazon Prime'' or ''Uber''.\nIf the entity includes both the brand and the
+        product, return ''product'' and set the brand accordingly. For example:\n*
+        ''Apply iPhone 15 Pro Max'' should be returned as a product with brand: ''Apple'',
+        product: ''iPhone 15 Pro Max''\nIf the entity is a service, return ''service''
+        and set the service accordingly. For example:\n* ''Netflix'' should be returned
+        as a service with brand name: ''Netflix''\n* ''Amazon Prime'' should be returned
+        as a service with brand name: ''Amazon'', and product name: \"Prime\"\nIf
+        the entity is neither a brand nor a product, return ''other'' and set the
+        other accordingly. For example:\n* ''privacy'' should be returned as other
+        with value: ''privacy''\n* ''AI'' should be returned as other with value:
+        ''AI''\nBe sure to identify the entity type correctly, as it will be used
+        to determine the next step in the analysis.\n"},{"role":"user","content":"Input:
+        Tesla"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"entity_type":{"type":"string","enum":["brand","product","service","other"],"description":"The
         detected category for the input text"},"brand":{"type":"string","description":"If
         it''s a brand, the detected brand for the input text, if it''s a product,
@@ -47,7 +48,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Nov 2024 15:17:28 GMT
+      - Tue, 26 Nov 2024 09:25:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -59,49 +60,49 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '512'
+      - '987'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
       - '5000'
       X-Ratelimit-Limit-Tokens:
-      - '800000'
+      - '4000000'
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '799670'
+      - '3999673'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 24ms
+      - 4ms
       X-Request-Id:
-      - req_b377107046420ff50cf9607c214578cf
+      - req_8413f9059ab5f2d171559e2ddc30eed4
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=I6jzpAnjIdniLkzivm906qLBwiq7b39rb9WNLpGHOPw-1732547848-1.0.1.1-9xdJ8VkJyTNk9qZliEZwHdQNS8Wfl_TCkDuTe8Lx4aSrbcAwzUjJYQhY0Sg3tO.X3fsfOJWmRE8AxTptQRbwMg;
-        path=/; expires=Mon, 25-Nov-24 15:47:28 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=LhAAqgP2DxEfgpADhk2EPciV1x40vOoTHtCFaalD87E-1732613137-1.0.1.1-XiWbajReuMMH3MxJCBA67w5MltjtF_i0b85iBb4X8PJLoX95sHIcGf0K_H4tM2Tz4Jvddbu.rqPRirRkY5J1gw;
+        path=/; expires=Tue, 26-Nov-24 09:55:37 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=U2vquek5u8eJ.EO9ghVLye2Jsv99krVw8cMeoQ9x3j0-1732547848090-0.0.1.1-604800000;
+      - _cfuvid=17GzGRswHdC2bazSStiD8aFY6IGv9uJDmrw6V8Qy8hA-1732613137494-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e829b0de9762177-MAD
+      - 8e88d5065f1466a7-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AXV83OpT7XOynB5Sm5U3aVlwfghVP",
+          "id": "chatcmpl-AXm76YUfKgCsxQv7SlSu5M99D90Lq",
           "object": "chat.completion",
-          "created": 1732547847,
-          "model": "gpt-4o-2024-08-06",
+          "created": 1732613136,
+          "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
@@ -129,7 +130,7 @@ http_interactions:
               "rejected_prediction_tokens": 0
             }
           },
-          "system_fingerprint": "fp_7f6be3efb0"
+          "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Mon, 25 Nov 2024 15:17:28 GMT
+  recorded_at: Tue, 26 Nov 2024 09:25:37 GMT
 recorded_with: VCR 6.3.1

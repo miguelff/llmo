@@ -5,7 +5,7 @@ class Analysis::LanguageDetection < Analysis::Step
         string :language, enum: Analysis::SUPPORTED_LANGUAGES, description: "The detected language of the input text"
     end
 
-    system <<-EOF.squish
+    system <<-EOF.promptize
         You are an assistant specialized in language detection.
         Your task is to analyze text and determine its language. Return only the ISO-639-2
         three-letter language code (e.g. 'eng' for English, 'spa' for Spanish, etc.).

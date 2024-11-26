@@ -4,8 +4,6 @@ class Analysis::EntityExtraction < Analysis::Step
     attribute :answers, :json, default: []
     validates :answers, length: { minimum: 1 }
 
-    attribute :topic, :json, default: -> { { type: "brand", brand: self.report.brand_info } }
-
     STEP_1_SCHEMA = OpenAI::StructuredOutputs::Schema.new do
         define :link do
             string :url
@@ -23,7 +21,7 @@ class Analysis::EntityExtraction < Analysis::Step
     end
 
     STEP_1_SYSTEM = {
-        eng: <<-EOF.squish
+        eng: <<-EOF.promptize
             You are an assistant specialized in entity extraction.
 
             You are given a user query, and a response from an AI assistant about the user query comparing several brands or products related to the query.
@@ -128,7 +126,7 @@ class Analysis::EntityExtraction < Analysis::Step
 
 
     def user_prompt(answer)
-        <<-EOF.squish
+        <<-EOF.promptize
             query: #{self.report.query}
             AI assistant response: #{answer}
         EOF

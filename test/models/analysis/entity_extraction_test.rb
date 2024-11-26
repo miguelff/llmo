@@ -161,40 +161,41 @@ class Analysis::EntityExtractionTest < ActiveSupport::TestCase
           "https://www.adac.de/rund-ums-fahrzeug/autokatalog/crashtest/sichere-autos-euroncap/" => {
             "product_hits" => 1,
             "brand_hits" => 1,
-            "orphan_hits" => 0,
+            "orphan_hits" => 1,
             "brands" => [ "Volkswagen" ],
             "products" => [ "Volkswagen VW ID.7" ]
           },
           "https://www.autoscout24.de/informieren/ratgeber/auto-sicherheit/ncap-sicherste-autos/" => {
             "product_hits" => 1,
             "brand_hits" => 1,
-            "orphan_hits" => 0,
+            "orphan_hits" => 1,
             "brands" => [ "NIO" ],
             "products" => [ "NIO ET5" ]
           },
           "https://www.finn.com/de-DE/auto/bestenliste/sicherstes-auto" => {
             "product_hits" => 1,
             "brand_hits" => 1,
-            "orphan_hits" => 0,
+            "orphan_hits" => 1,
             "brands" => [ "Smart" ],
             "products" => [ "Smart #3" ]
           },
           "https://www.carwow.de/beste-autos/euro-ncap-crashtest-llste-der-sichersten-autos" => {
             "product_hits" => 2,
             "brand_hits" => 1,
-            "orphan_hits" => 0,
+            "orphan_hits" => 1,
             "brands" => [ "Tesla" ],
             "products" => [ "Tesla Model 3", "Tesla Model Y" ]
           },
           "https://www.adac.de/rund-ums-fahrzeug/autokatalog/crashtest/sichere-autos-euroncap-2022/" => {
             "product_hits" => 2,
             "brand_hits" => 1,
-            "orphan_hits" => 0,
+            "orphan_hits" => 1,
             "brands" => [ "Volvo" ],
             "products" => [ "Volvo XC60", "Volvo XC90" ]
           }
         }
-      }, extraction.result)
+      },
+      extraction.result)
     end
   end
 

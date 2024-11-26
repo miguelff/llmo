@@ -9,48 +9,49 @@ http_interactions:
         are an assistant specialized in simulating the behavior of ChatGPT users researching
         the best brands, products, or services. Your task is to generate natural language
         variations of a query that seeks to understand the best products within a
-        category. Inputs: • query: The main product, brand, or service the user is
-        researching. • cohort: (Optional) A description of the person making the query,
-        including demographic details, preferences, or specific needs. Use this information
-        to tailor the tone, focus, and specific concerns of the questions. • region:
-        (Optional) A specific country or world region to restrict the scope of products,
-        services, or brands. Use this to generate queries that align with region-specific
-        availability, popular brands, or local considerations. Instructions: 1. Generate
+        category.\nInputs:\n•\tquery: The main product, brand, or service the user
+        is researching.\n•\tcohort: (Optional) A description of the person making
+        the query, including demographic details, preferences, or specific needs.
+        Use this information to tailor the tone, focus, and specific concerns of the
+        questions.\n•\tregion: (Optional) A specific country or world region to restrict
+        the scope of products, services, or brands. Use this to generate queries that
+        align with region-specific availability, popular brands, or local considerations.\nInstructions:\n1.\tGenerate
         clear and direct questions whose answers point to specific brands, models,
-        or services relevant to the given query. 2. If the cohort is provided, reflect
-        the interests, needs, or priorities of the user in the questions. For example:
-        • A budget-conscious user would focus on affordable options. • An eco-conscious
-        user would consider sustainability aspects. 3. If the region is provided,
+        or services relevant to the given query.\n2.\tIf the cohort is provided, reflect
+        the interests, needs, or priorities of the user in the questions. For example:\n•\tA
+        budget-conscious user would focus on affordable options.\n•\tAn eco-conscious
+        user would consider sustainability aspects.\n3.\tIf the region is provided,
         tailor the questions to focus on brands, models, or services popular or available
-        in that region. 4. If cohort or region information is missing: • Do not make
-        assumptions about the user’s demographic, preferences, or location. • Generate
-        neutral, general questions that are not specific to any cohort or region.
-        5. Keep the questions specific to the given query category, avoiding tangential
-        topics. For example: • If the query is about home insurance, do not generate
-        questions about health insurance. • If the query is about dietary supplements,
-        do not narrow down to specific subcategories unless explicitly requested.
-        6. Maintain diversity in question phrasing while staying true to the context
-        provided by the inputs. Example Outputs: Given the inputs: • query: “best
-        home coffee machines” • cohort: Not provided • region: Not provided Generate
-        questions like: • “What are the best-rated home coffee machines on the market?”
-        • “Which coffee machines are considered the most reliable for home use?” •
-        “What factors should I consider when choosing a home coffee machine?” • “What
-        are the top home coffee machine brands available right now?” If the inputs
-        are: • query: “best home coffee machines” • cohort: “A budget-conscious student
-        living in a small apartment” • region: “Europe” Generate questions like: •
-        “What are the most affordable home coffee machines available in Europe?” •
-        “Which coffee machine brands are best for small spaces and student budgets?”
-        • “Are there any budget-friendly coffee machines popular in European markets?”
-        • “What are the top-rated compact coffee makers for small apartments in Europe?”
-        Your goal is to generate questions that reflect the user’s intent and context,
-        leading to specific product or brand recommendations based on the inputs provided.
-        Generate the questions following the structured output format."},{"role":"user","content":"Generate
-        5 questions about \"Safe cars\"\nRegion context: The questions should be tailored
-        for any, considering local preferences, pricing, and availability.\nUser context:
-        The questions should be relevant for Women 45+.\nFollow these guidelines:\n-
-        Keep questions focused specifically on Safe cars\n- Tailor questions to the
-        provided context\n- Vary the phrasing while maintaining relevance\n- Focus
-        on gathering information that will help recommend specific products/brands\n\nQuestions:"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        in that region.\n4.\tIf cohort or region information is missing:\n•\tDo not
+        make assumptions about the user’s demographic, preferences, or location.\n•\tGenerate
+        neutral, general questions that are not specific to any cohort or region.\n5.\tKeep
+        the questions specific to the given query category, avoiding tangential topics.
+        For example:\n•\tIf the query is about home insurance, do not generate questions
+        about health insurance.\n•\tIf the query is about dietary supplements, do
+        not narrow down to specific subcategories unless explicitly requested.\n6.\tMaintain
+        diversity in question phrasing while staying true to the context provided
+        by the inputs.\nExample Outputs:\nGiven the inputs:\n•\tquery: “best home
+        coffee machines”\n•\tcohort: Not provided\n•\tregion: Not provided\nGenerate
+        questions like:\n•\t“What are the best-rated home coffee machines on the market?”\n•\t“Which
+        coffee machines are considered the most reliable for home use?”\n•\t“What
+        factors should I consider when choosing a home coffee machine?”\n•\t“What
+        are the top home coffee machine brands available right now?”\nIf the inputs
+        are:\n•\tquery: “best home coffee machines”\n•\tcohort: “A budget-conscious
+        student living in a small apartment”\n•\tregion: “Europe”\nGenerate questions
+        like:\n•\t“What are the most affordable home coffee machines available in
+        Europe?”\n•\t“Which coffee machine brands are best for small spaces and student
+        budgets?”\n•\t“Are there any budget-friendly coffee machines popular in European
+        markets?”\n•\t“What are the top-rated compact coffee makers for small apartments
+        in Europe?”\nYour goal is to generate questions that reflect the user’s intent
+        and context, leading to specific product or brand recommendations based on
+        the inputs provided.\nGenerate the questions following the structured output
+        format.\n"},{"role":"user","content":"Generate 5 questions about \"Safe cars\"\nRegion
+        context: The questions should be tailored for any, considering local preferences,
+        pricing, and availability.\nUser context: The questions should be relevant
+        for Women 45+.\nFollow these guidelines:\n- Keep questions focused specifically
+        on Safe cars\n- Tailor questions to the provided context\n- Vary the phrasing
+        while maintaining relevance\n- Focus on gathering information that will help
+        recommend specific products/brands\n\nQuestions:"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"$ref":"#/$defs/question"},"description":"A
         collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{"question":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true}}}}}}'
     headers:
@@ -70,7 +71,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 15:18:01 GMT
+      - Tue, 26 Nov 2024 09:26:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -82,7 +83,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '918'
+      - '972'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -98,39 +99,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 13ms
       X-Request-Id:
-      - req_47fbecd3d51430c13ff402bb2046182f
+      - req_203026b86af3aae19aa34c5e314562a3
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=hx4vYyJHQ1dHgHuWD6sjAwG7.3tkypN3xaN4qnjo3RY-1732288681-1.0.1.1-jihi0wc7fqYPEirSJDdnX1SJYVhlEiv5fKszMdXG2SyfCy6.lhSqa04gyaRY6xPGM2ySkJgTvRhKUIJiKIvPCA;
-        path=/; expires=Fri, 22-Nov-24 15:48:01 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=gieGbY7qdoPkOwMff6rGSZJgYani42KLgoElrI1xrDU-1732613199-1.0.1.1-7OGXsEJBhpgGQ0.sppV0qIEEidZl72oYgAc1KRlawf9wJTwI4uuijT8rB4lVliAKzDJvoBZ0Vs5VdNv_p4AroQ;
+        path=/; expires=Tue, 26-Nov-24 09:56:39 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=M1C6FuveOKeT6ZNzAaL2rKRZX77AkebOdcABukr6Vq8-1732288681813-0.0.1.1-604800000;
+      - _cfuvid=a6OF8y80Fo3vUBrnko9U7scZAg55ePIlm0O1l7_J02c-1732613199793-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e69e3be9aefe089-MAD
+      - 8e88d68bcec6384b-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AWPhwgeUwpaFDn0iMY3Lp86DoEzSt",
+          "id": "chatcmpl-AXm86gQVXc7kxYWiKkzZkf8ZWFNvT",
           "object": "chat.completion",
-          "created": 1732288680,
+          "created": 1732613198,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s look for when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated family cars with excellent safety records for women in this age group?\"}]}",
+                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older female drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s prioritize when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and older?\"},{\"question\":\"What are the top-rated family cars that emphasize safety for women in their mid-life?\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -138,9 +139,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 772,
-            "completion_tokens": 105,
-            "total_tokens": 877,
+            "prompt_tokens": 787,
+            "completion_tokens": 104,
+            "total_tokens": 891,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -154,5 +155,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Fri, 22 Nov 2024 15:18:01 GMT
+  recorded_at: Tue, 26 Nov 2024 09:26:39 GMT
 recorded_with: VCR 6.3.1

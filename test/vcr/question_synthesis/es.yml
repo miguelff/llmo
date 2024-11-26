@@ -9,46 +9,46 @@ http_interactions:
         un asistente especializado en simular el comportamiento de usuarios de ChatGPT
         que investigan las mejores marcas, productos o servicios. Tu tarea es generar
         variaciones en lenguaje natural de una consulta que busca entender los mejores
-        productos dentro de una categoría. Entradas: • query: El principal producto,
-        marca o servicio que el usuario está investigando. • cohort: (Opcional) Una
-        descripción de la persona que realiza la consulta, incluyendo detalles demográficos,
-        preferencias o necesidades específicas. Usa esta información para adaptar
-        el tono, enfoque y preocupaciones específicas de las preguntas. • region:
+        productos dentro de una categoría.\nEntradas:\n•\tquery: El principal producto,
+        marca o servicio que el usuario está investigando.\n•\tcohort: (Opcional)
+        Una descripción de la persona que realiza la consulta, incluyendo detalles
+        demográficos, preferencias o necesidades específicas. Usa esta información
+        para adaptar el tono, enfoque y preocupaciones específicas de las preguntas.\n•\tregion:
         (Opcional) Un país o región mundial específica para restringir el alcance
         de productos, servicios o marcas. Úsalo para generar consultas que se alineen
         con la disponibilidad específica de la región, marcas populares o consideraciones
-        locales. Instrucciones: 1. Genera preguntas claras y directas cuyas respuestas
+        locales.\nInstrucciones:\n1.\tGenera preguntas claras y directas cuyas respuestas
         apunten a marcas, modelos o servicios específicos relevantes para la consulta
-        dada. 2. Si se proporciona el cohort, refleja los intereses, necesidades o
-        prioridades del usuario en las preguntas. Por ejemplo: • Un usuario consciente
-        del presupuesto se centraría en opciones asequibles. • Un usuario consciente
-        del medio ambiente consideraría aspectos de sostenibilidad. 3. Si se proporciona
+        dada.\n2.\tSi se proporciona el cohort, refleja los intereses, necesidades
+        o prioridades del usuario en las preguntas. Por ejemplo:\n•\tUn usuario consciente
+        del presupuesto se centraría en opciones asequibles.\n•\tUn usuario consciente
+        del medio ambiente consideraría aspectos de sostenibilidad.\n3.\tSi se proporciona
         la región, adapta las preguntas para centrarte en marcas, modelos o servicios
         populares o disponibles en esa región, incluyendo preferencias locales o consideraciones
-        de precios. 4. Si falta información de cohort o región: • No hagas suposiciones
-        sobre la demografía, preferencias o ubicación del usuario. • Genera preguntas
-        neutrales y generales que no sean específicas de ningún cohort o región. 5.
-        Mantén las preguntas específicas a la categoría de consulta dada, evitando
-        temas tangenciales. Por ejemplo: • Si la consulta es sobre seguros de hogar,
-        no generes preguntas sobre seguros de salud. • Si la consulta es sobre suplementos
+        de precios.\n4.\tSi falta información de cohort o región:\n•\tNo hagas suposiciones
+        sobre la demografía, preferencias o ubicación del usuario.\n•\tGenera preguntas
+        neutrales y generales que no sean específicas de ningún cohort o región.\n5.\tMantén
+        las preguntas específicas a la categoría de consulta dada, evitando temas
+        tangenciales. Por ejemplo:\n•\tSi la consulta es sobre seguros de hogar, no
+        generes preguntas sobre seguros de salud.\n•\tSi la consulta es sobre suplementos
         dietéticos, no te limites a subcategorías específicas a menos que se solicite
-        explícitamente. 6. Mantén la diversidad en la formulación de preguntas mientras
-        te mantienes fiel al contexto proporcionado por las entradas. Ejemplos de
-        Salidas: Dados los inputs: • query: \"mejores cafeteras para casa\" • cohort:
-        No proporcionado • region: No proporcionado Genera preguntas como: • \"¿Cuáles
-        son las cafeteras para casa mejor valoradas en el mercado?\" • \"¿Qué cafeteras
-        se consideran las más fiables para uso doméstico?\" • \"¿Qué factores debo
-        considerar al elegir una cafetera para casa?\" • \"¿Cuáles son las mejores
-        marcas de cafeteras para casa disponibles ahora mismo?\" Si los inputs son:
-        • query: \"mejores cafeteras para casa\" • cohort: \"Un estudiante consciente
-        del presupuesto que vive en un apartamento pequeño\" • region: \"Europa\"
-        Genera preguntas como: • \"¿Cuáles son las cafeteras para casa más asequibles
-        disponibles en Europa?\" • \"¿Qué marcas de cafeteras son mejores para espacios
-        pequeños y presupuestos de estudiantes?\" • \"¿Hay cafeteras económicas que
-        sean populares en los mercados europeos?\" • \"¿Cuáles son las cafeteras compactas
-        mejor valoradas para apartamentos pequeños en Europa?\" Tu objetivo es generar
+        explícitamente.\n6.\tMantén la diversidad en la formulación de preguntas mientras
+        te mantienes fiel al contexto proporcionado por las entradas.\nEjemplos de
+        Salidas:\nDados los inputs:\n•\tquery: \"mejores cafeteras para casa\"\n•\tcohort:
+        No proporcionado\n•\tregion: No proporcionado\nGenera preguntas como:\n•\t\"¿Cuáles
+        son las cafeteras para casa mejor valoradas en el mercado?\"\n•\t\"¿Qué cafeteras
+        se consideran las más fiables para uso doméstico?\"\n•\t\"¿Qué factores debo
+        considerar al elegir una cafetera para casa?\"\n•\t\"¿Cuáles son las mejores
+        marcas de cafeteras para casa disponibles ahora mismo?\"\nSi los inputs son:\n•\tquery:
+        \"mejores cafeteras para casa\"\n•\tcohort: \"Un estudiante consciente del
+        presupuesto que vive en un apartamento pequeño\"\n•\tregion: \"Europa\"\nGenera
+        preguntas como:\n•\t\"¿Cuáles son las cafeteras para casa más asequibles disponibles
+        en Europa?\"\n•\t\"¿Qué marcas de cafeteras son mejores para espacios pequeños
+        y presupuestos de estudiantes?\"\n•\t\"¿Hay cafeteras económicas que sean
+        populares en los mercados europeos?\"\n•\t\"¿Cuáles son las cafeteras compactas
+        mejor valoradas para apartamentos pequeños en Europa?\"\nTu objetivo es generar
         preguntas que reflejen la intención y el contexto del usuario, llevando a
-        recomendaciones específicas de productos o marcas basadas en los inputs proporcionados.`"},{"role":"user","content":"Genera
+        recomendaciones específicas de productos o marcas basadas en los inputs proporcionados.`\n"},{"role":"user","content":"Genera
         5 preguntas sobre \"Safe cars\"\nContexto regional: Las preguntas deben estar
         adaptadas para any, considerando la existencia de productos, marcas y servicios
         en esta región\nContexto del usuario: Las preguntas deben ser relevantes para
@@ -75,7 +75,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Nov 2024 15:17:59 GMT
+      - Tue, 26 Nov 2024 09:26:45 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -87,7 +87,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '3820'
+      - '925'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -103,28 +103,28 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 15ms
       X-Request-Id:
-      - req_cc12272aab6b0057c64d4ebedeac8495
+      - req_1022ca47f602d39fc149b9fd94057aa5
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=NtpQd6VbB_0T4ixaB7O6_cCNb0a6qaholACE4ukeyko-1732288679-1.0.1.1-G9VVQUlTlyxPcD3PKlunrFXtEpWkV7iZI3TAhogGJBbr2O4IO8AQCc04iECAH8HyNEAPn2xehz8ia26e9_WX6A;
-        path=/; expires=Fri, 22-Nov-24 15:47:59 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=8gB8667ODWI7EOqGp2Ia7xoevxBBZU08h9UO.9QsNRk-1732613205-1.0.1.1-48fUy5tAjxFwBgUfHbQn4tE1_5z1tSV6e66OkEVR_Cllq.SygBHsiyowJuARms.Eqt15kWVV1cNNhnEW_eDomw;
+        path=/; expires=Tue, 26-Nov-24 09:56:45 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=DtJ.fjfdqTnc_SvYcrnOt_5QADHmsrj17K4DNXtwT_c-1732288679206-0.0.1.1-604800000;
+      - _cfuvid=arkAhmnYfqaI6QOt0NxBU0yuC_7MEVmkoBvtnjhTd38-1732613205047-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e69e39aeb522f8d-MAD
+      - 8e88d6a36dfb2165-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1BV1Bocld3OFVkcFo1VzJvNTRLbFFERTZLdHRaWiIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjI4ODY3NSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxvcyBjb2NoZXMgbcOhcyBzZWd1cm9zIHJlY29tZW5kYWRvcyBwYXJhIG11amVyZXMgbWF5b3JlcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBtYXJjYXMgZGUgYXV0b23Ds3ZpbGVzIG9mcmVjZW4gbG9zIG1lam9yZXMgc2lzdGVtYXMgZGUgc2VndXJpZGFkIHBhcmEgY29uZHVjdG9yZXMgZGUgbcOhcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBjYXJhY3RlcsOtc3RpY2FzIGRlIHNlZ3VyaWRhZCBzb24gbcOhcyBpbXBvcnRhbnRlcyBhIGNvbnNpZGVyYXIgYWwgZWxlZ2lyIHVuIGNvY2hlIHNlZ3VybyBwYXJhIG11amVyZXMgZGUgZXN0YSBlZGFkP1wifSx7XCJxdWVzdGlvblwiOlwiwr9FeGlzdGVuIG1vZGVsb3MgZGUgY29jaGVzIHF1ZSBzZSBkZXN0YXF1ZW4gcG9yIHN1IHNlZ3VyaWRhZCB5IHF1ZSBzZWFuIHBvcHVsYXJlcyBlbnRyZSBtdWplcmVzIGRlIDQ1IGHDsW9zIG8gbcOhcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/Q3XDoWxlcyBzb24gbGFzIGNhbGlmaWNhY2lvbmVzIGRlIHNlZ3VyaWRhZCBtw6FzIHJlY2llbnRlcyBwYXJhIGNvY2hlcyBxdWUgcG9kcsOtYW4gaW50ZXJlc2FyIGEgbXVqZXJlcyBtYXlvcmVzIGRlIDQ1IGHDsW9zP1wifV19IiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogODkyLAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogMTMyLAogICAgInRvdGFsX3Rva2VucyI6IDEwMjQsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfMDcwNWJmODdjMCIKfQo=
-  recorded_at: Fri, 22 Nov 2024 15:17:59 GMT
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWG04QzExQ3AyanBhS3JzQzMyWTZidDB3M21xUyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjYxMzIwNCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxvcyBjb2NoZXMgbcOhcyBzZWd1cm9zIHJlY29tZW5kYWRvcyBwYXJhIG11amVyZXMgbWF5b3JlcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBtYXJjYXMgZGUgYXV0b23Ds3ZpbGVzIG9mcmVjZW4gbG9zIG1lam9yZXMgc2lzdGVtYXMgZGUgc2VndXJpZGFkIHBhcmEgY29uZHVjdG9yZXMgZGUgbcOhcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBjYXJhY3RlcsOtc3RpY2FzIGRlIHNlZ3VyaWRhZCBkZWJvIGJ1c2NhciBhbCBlbGVnaXIgdW4gY29jaGUgc2VndXJvIHBhcmEgbXVqZXJlcyBkZSBtaSBlZGFkP1wifSx7XCJxdWVzdGlvblwiOlwiwr9DdcOhbGVzIHNvbiBsb3MgbW9kZWxvcyBkZSBjb2NoZXMgY29uIGxhcyBtZWpvcmVzIGNhbGlmaWNhY2lvbmVzIGRlIHNlZ3VyaWRhZCBlbiBlbCBtZXJjYWRvIGFjdHVhbD9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBvcGluYW4gbGFzIG11amVyZXMgZGUgNDUgYcOxb3MgbyBtw6FzIHNvYnJlIGxhIHNlZ3VyaWRhZCBkZSBsb3MgY29jaGVzIGRlIGRpZmVyZW50ZXMgbWFyY2FzP1wifV19IiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogOTE3LAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogMTIwLAogICAgInRvdGFsX3Rva2VucyI6IDEwMzcsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfMDcwNWJmODdjMCIKfQo=
+  recorded_at: Tue, 26 Nov 2024 09:26:44 GMT
 recorded_with: VCR 6.3.1

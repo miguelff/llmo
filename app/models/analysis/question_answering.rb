@@ -30,7 +30,7 @@ class Analysis::QuestionAnswering < Analysis::Step
             res = OpenAI::Client.new.chat(parameters: {
                 model: "gpt-4o-mini",
                 messages: [
-                    { role: "user", content: <<-CONTENT.squish }
+                    { role: "user", content: <<-CONTENT.promptize }
                         summarize the following web page text written in #{Analysis::LANGUAGE_NAMES_IN_ENGLISH[@analysis.language.to_sym]} while focusing on capturing information relevant to make recommendations about "#{@analysis.report.query}":
                         #{' '}
                         #{text}
