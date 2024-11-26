@@ -1,4 +1,4 @@
-class Analysis::EntityExtraction < Analysis::Step
+class Analysis::EntityExtractor < Analysis::Step
     include Analysis::Inference
 
     attribute :answers, :json, default: []

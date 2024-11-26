@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Analysis::EntityExtractionTest < ActiveSupport::TestCase
+class Analysis::EntityExtractorTest < ActiveSupport::TestCase
   test "de" do
     answers = {
       "Welche Automarken bieten die sichersten Fahrzeuge für Frauen über 45 Jahren an?" =>  <<-TEXT.squish
@@ -49,9 +49,9 @@ class Analysis::EntityExtractionTest < ActiveSupport::TestCase
     TEXT
     }
 
-    VCR.use_cassette("analysis/entity_extraction") do
+    VCR.use_cassette("analysis/entity_extractor") do
       report = Report.create!(query: "beste Autos für Frauen über 45 Jahren", brand_info: "Volkswagen Tiguan", owner: users(:jane))
-      extraction = Analysis::EntityExtraction.new(answers: answers, language: "deu", report: report)
+      extraction = Analysis::EntityExtractor.new(answers: answers, language: "deu", report: report)
       assert extraction.valid?, extraction.errors.full_messages
 
       assert extraction.perform
@@ -457,7 +457,7 @@ class Analysis::EntityExtractionTest < ActiveSupport::TestCase
       }
     ]
 
-    aggregated = Analysis::EntityExtraction.aggregate(entities)
+    aggregated = Analysis::EntityExtractor.aggregate(entities)
 
     assert_equal [
         {
