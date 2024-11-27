@@ -1,4 +1,8 @@
 class Analysis::Competitors < Analysis::Step
+    def self.cost(queries_count)
+        3 * Analysis::Step::COSTS[:inference]
+    end
+
     # The result of entity extraction
     attribute :entities, :json, default: {}
     validates :entities, presence: true
@@ -76,8 +80,6 @@ class Analysis::Competitors < Analysis::Step
         include Analysis::Inference
 
         attr_accessor :overarching_term, :term_attributes, :entities, :topic, :answers, :language, :provider, :model, :temperature
-
-        self.model = "gpt-4o-mini"
 
         system <<-EOF.promptize
             You are an AI agent specialized in evaluating and scoring competitors based on specific criteria.

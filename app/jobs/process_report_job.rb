@@ -3,13 +3,23 @@ require "open3"
 class ProcessReportJob < ApplicationJob
   queue_as :default
 
-  QUESTIONS_COUNT = 30
+  DEFAULT_QUESTIONS_COUNT = 30
+  MIN_UPDATE_INTERVAL = 2.seconds
 
-  def perform(report, questions_count: QUESTIONS_COUNT)
-    events = []
 
-    ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do |name, start, finish, id, payload|
-      events << payload
+  def perform(report, questions_count: DEFAULT_QUESTIONS_COUNT)
+    total_cost = Analysis::Step.descendants.map { |step| step.cost(questions_count) }.sum
+    remaining_cost = total_cost
+    last_updated_at = Time.now
+
+    ActiveSupport::Notifications.subscribe("expensive_operation") do |event|
+      remaining_cost -= event.payload[:cost]
+      now = Time.now
+      if Rails.env.test? || (now - last_updated_at > MIN_UPDATE_INTERVAL)
+        percentage = ((total_cost - remaining_cost) * 100 / total_cost).clamp(0, 100).to_i
+        report.update_progress(percentage: percentage) unless report.completed?
+        last_updated_at = Time.now
+      end
     end
 
     report.processing!
@@ -66,12 +76,13 @@ class ProcessReportJob < ApplicationJob
       return
     end
     Rails.logger.info "[Report #{report.id}] Competitors: #{competitors_analysis.result.inspect}"
-    report.completed!
+    competitors = competitors_analysis.result
+    binding.pry
+
+    report.complete_analysis
   rescue => e
-    Rails.logger.error "[Report #{report.id}] Error processing report: #{e.message}"
-    e.backtrace.each { |line| Rails.logger.error "[Report #{report.id}] #{line}" }
-    report.failed!
-  ensure
-    Rails.logger.info "[Report #{report.id}] Events received: #{events.inspect}"
+    Rails.logger.error "[Report #{report.id}] Error processing report: #{e.message}. #{e.backtrace}"
+    report.update!(latest_error: e.message, status: :failed)
+    raise e
   end
 end

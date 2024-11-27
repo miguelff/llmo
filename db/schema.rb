@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_20_200858) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_27_164018) do
   create_table "analysis_language_detections", force: :cascade do |t|
     t.string "language"
     t.string "provider", default: "openai", null: false
@@ -49,17 +49,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_20_200858) do
     t.string "owner_type", null: false
     t.integer "owner_id", null: false
     t.datetime "deleted_at"
+    t.text "latest_error"
     t.index ["created_at"], name: "index_reports_on_created_at"
     t.index ["owner_type", "owner_id", "created_at"], name: "index_reports_on_owner_and_created_at"
     t.index ["status"], name: "index_reports_on_status"
-  end
-
-  create_table "results", force: :cascade do |t|
-    t.json "json"
-    t.binary "report_id", limit: 16, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["report_id"], name: "index_results_on_report_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,5 +71,4 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_20_200858) do
 
   add_foreign_key "analysis_language_detections", "reports"
   add_foreign_key "analysis_steps", "reports"
-  add_foreign_key "results", "reports"
 end

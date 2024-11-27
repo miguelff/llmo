@@ -15,7 +15,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/result
   def result
-    if @report.result.nil?
+    if @report.completed?
       redirect_to @report, status: :see_other, notice: "Report result is not ready yet"
     elsif current_user.nil?
       render layout: "application"
@@ -51,15 +51,6 @@ class ReportsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /reports/1 or /reports/1.json
-  def update
-    if @report.update_progress(progress_params)
-      render :show, status: :ok, location: @report
-    else
-      render json: @report.errors, status: :unprocessable_entity
     end
   end
 

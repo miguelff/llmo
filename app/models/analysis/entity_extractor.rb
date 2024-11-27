@@ -1,4 +1,8 @@
 class Analysis::EntityExtractor < Analysis::Step
+    def self.cost(queries_count)
+        queries_count * Analysis::Step::COSTS[:inference]
+    end
+
     include Analysis::Inference
 
     attribute :answers, :json, default: []
@@ -46,22 +50,20 @@ class Analysis::EntityExtractor < Analysis::Step
 
     def perform
         entities = Concurrent::Promises.zip_futures_over(self.answers) do |question, answer|
-            ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do
-                messages = [
-                    { role: :system, content: system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE] },
-                    { role: :user, content: user_prompt(answer) }
-                ]
+            messages = [
+                { role: :system, content: system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE] },
+                { role: :user, content: user_prompt(answer) }
+            ]
 
-                parameters = self.parameters(messages)
-                parameters[:response_format] = self.output_schema
+            parameters = self.parameters(messages)
+            parameters[:response_format] = self.output_schema
 
 
-                res = client.parse(**parameters)
-                if res.refusal.present?
-                    { error: res.refusal, messages: messages }
-                else
-                    { ok: res.parsed }
-                end
+            res = client.parse(**parameters)
+            if res.refusal.present?
+                { error: res.refusal, messages: messages }
+            else
+                { ok: res.parsed }
             end
         end.value!
 

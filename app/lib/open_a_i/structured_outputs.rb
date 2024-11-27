@@ -162,11 +162,10 @@ module OpenAI
           }
         )
 
-        content = JSON.parse(response["choices"][0]["message"]["content"])
-
         if response["choices"][0]["message"]["refusal"]
           OpenStruct.new(refusal: response["choices"][0]["message"]["refusal"], parsed: nil)
         else
+          content = JSON.parse(response["choices"][0]["message"]["content"])
           OpenStruct.new(refusal: nil, parsed: Hashie::Mash.new(content))
         end
       end

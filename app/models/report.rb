@@ -24,8 +24,6 @@ class Report < ApplicationRecord
     after_create_commit :process_report
     after_update_commit :refresh_report_status
 
-    has_one :result, dependent: :destroy
-
     has_one :language_detector_analysis, dependent: :destroy, class_name: "Analysis::LanguageDetector"
     has_one :question_synthesis_analysis, dependent: :destroy, class_name: "Analysis::QuestionSynthesis"
     has_one :question_answering_analysis, dependent: :destroy, class_name: "Analysis::QuestionAnswering"
@@ -40,21 +38,31 @@ class Report < ApplicationRecord
     scope :recent, -> { order(created_at: :desc).limit(10) }
     scope :owned_by, ->(user) { where(owner: user) }
 
+    def complete_analysis
+        update_progress(percentage: 100, message: "Analysis completed")
+    end
+
     def update_progress(params)
-      attrs = { progress_percent: params[:percentage] }
+      percentage = params[:percentage]
+      message = params[:message]
+
+      attrs = { progress_percent:  percentage }
 
       if params[:message].present?
         details = self.progress_details || []
-        details << params[:message]
+        details << message
         attrs[:progress_details] = details
       end
 
-      unless params[:result].nil?
+      if percentage == 100
         attrs[:status] = :completed
-        attrs[:result] = Result.new(json: params[:result])
       end
 
       update(attrs)
+    end
+
+    def result
+        Result.new(self)
     end
 
     def retry!

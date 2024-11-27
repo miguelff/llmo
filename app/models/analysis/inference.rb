@@ -33,48 +33,44 @@ module Analysis::Inference
     end
 
     def chat(user_message)
-        ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do
-            messages = [ { role: :user, content: user_message } ]
+        messages = [ { role: :user, content: user_message } ]
 
-            if system_prompt.present?
-                language_specific_prompt = system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE]
-                raise "No system prompt defined for language #{self.language}" if language_specific_prompt.blank?
-                messages.unshift({ role: :system, content: language_specific_prompt })
-            end
-
-            parameters = self.parameters(messages)
-            Rails.logger.debug("Sending message to #{self.provider} (#{self.model}): #{parameters.inspect}")
-            result = if self.output_schema.present?
-                parameters[:response_format] = self.output_schema
-                client.parse(**parameters)
-            else
-                client.chat(parameters: parameters)
-            end
-            Rails.logger.debug("Received response from #{self.provider} (#{self.model}): #{result.inspect}")
-            result
+        if system_prompt.present?
+            language_specific_prompt = system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE]
+            raise "No system prompt defined for language #{self.language}" if language_specific_prompt.blank?
+            messages.unshift({ role: :system, content: language_specific_prompt })
         end
+
+        parameters = self.parameters(messages)
+        Rails.logger.debug("Sending message to #{self.provider} (#{self.model}): #{parameters.inspect}")
+        result = if self.output_schema.present?
+            parameters[:response_format] = self.output_schema
+            client.parse(**parameters)
+        else
+            client.chat(parameters: parameters)
+        end
+        Rails.logger.debug("Received response from #{self.provider} (#{self.model}): #{result.inspect}")
+        result
     end
 
     def assist(user_message, tools: [], model: nil, temperature: nil)
-        ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do
-            instructions = system_prompt && (system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE]) || "You are a helpful assistant"
+        instructions = system_prompt && (system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE]) || "You are a helpful assistant"
 
-            Rails.logger.debug("Creating assistant with model #{model}, and instructions #{instructions.truncate_words(10)}")
-            llm = Langchain::LLM::OpenAI.new(
-                api_key: Rails.application.credentials.processor[:OPENAI_API_KEY],
-                default_options: {
-                    chat_model: model || self.model,
-                    temperature: temperature || self.temperature
-                }
-            )
-            assistant = Langchain::Assistant.new(
-                llm: llm,
-                instructions: instructions,
-                tools: tools
-            )
-            assistant.add_message(content: user_message)
-            assistant.run(auto_tool_execution: true)
-        end
+        Rails.logger.debug("Creating assistant with model #{model}, and instructions #{instructions.truncate_words(10)}")
+        llm = Langchain::LLM::OpenAI.new(
+            api_key: Rails.application.credentials.processor[:OPENAI_API_KEY],
+            default_options: {
+                chat_model: model || self.model,
+                temperature: temperature || self.temperature
+            }
+        )
+        assistant = Langchain::Assistant.new(
+            llm: llm,
+            instructions: instructions,
+            tools: tools
+        )
+        assistant.add_message(content: user_message)
+        assistant.run(auto_tool_execution: true)
     end
 
     def perform_and_save

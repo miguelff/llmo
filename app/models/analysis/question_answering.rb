@@ -1,4 +1,15 @@
 class Analysis::QuestionAnswering < Analysis::Step
+    def self.cost(queries_count)
+        per_answer_cost =
+            Analysis::Step::COSTS[:inference] + # gpt-4o for the answer
+            Analysis::Step::COSTS[:search] + # bing for the search
+            (5 * (Analysis::Step::COSTS[:download] + Analysis::Step::COSTS[:inference])) # download and summarize each of the 5 search results
+            Analysis::Step::COSTS[:inference] + # for providing search results back to the model and getting the final answer
+
+        queries_count * per_answer_cost
+    end
+
+
     class BingSearch
         extend Langchain::ToolDefinition
 
@@ -12,38 +23,34 @@ class Analysis::QuestionAnswering < Analysis::Step
         end
 
         def search(query:, count: 5)
-            ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do
-                Rails.logger.info({ message: "Searching for #{query} with count #{count}" })
+            Rails.logger.info({ message: "Searching for #{query} with count #{count}" })
 
-                market = @analysis.report.country_code || Analysis::TWO_LETTER_CODE[@analysis.language.to_sym]
-                results = Bing::Search.web_results(query: query, count: count, mkt: market).download
+            market = @analysis.report.country_code || Analysis::TWO_LETTER_CODE[@analysis.language.to_sym]
+            results = Bing::Search.web_results(query: query, count: count, mkt: market).download
 
-                Concurrent::Promises.zip_futures_over(results) do |result|
-                    {
-                        "URL": result["url"],
-                        "Snippet": (result[:html].present? ? summarize(result[:html]) : result["snippet"])
-                    }
-                end.value!.to_json
-            end
+            Concurrent::Promises.zip_futures_over(results) do |result|
+                {
+                    "URL": result["url"],
+                    "Snippet": (result[:html].present? ? summarize(result[:html]) : result["snippet"])
+                }
+            end.value!.to_json
         end
 
         def summarize(text)
-            ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do
-                Rails.logger.info({ message: "Summarizing text", metadata: { text: text.truncate_words(10) } })
-                res = OpenAI::Client.new.chat(parameters: {
-                    model: "gpt-4o-mini",
-                    messages: [
-                        { role: "user", content: <<-CONTENT.promptize }
-                            summarize the following web page text written in #{Analysis::LANGUAGE_NAMES_IN_ENGLISH[@analysis.language.to_sym]} while focusing on capturing information relevant to make recommendations about "#{@analysis.report.query}":
-                            #{' '}
-                            #{text}
-                        CONTENT
-                    ]
-                })
-                summary = res.dig("choices", 0, "message", "content")
-                Rails.logger.info({ message: "Summarized text", metadata: { summary: summary } })
-                summary
-            end
+            Rails.logger.info({ message: "Summarizing text", metadata: { text: text.truncate_words(10) } })
+            res = OpenAI::Client.new.chat(parameters: {
+                model: "gpt-4o-mini",
+                messages: [
+                    { role: "user", content: <<-CONTENT.promptize }
+                        summarize the following web page text written in #{Analysis::LANGUAGE_NAMES_IN_ENGLISH[@analysis.language.to_sym]} while focusing on capturing information relevant to make recommendations about "#{@analysis.report.query}":
+                        #{' '}
+                        #{text}
+                    CONTENT
+                ]
+            })
+            summary = res.dig("choices", 0, "message", "content")
+            Rails.logger.info({ message: "Summarized text", metadata: { summary: summary } })
+            summary
         end
     end
 
