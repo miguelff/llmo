@@ -77,7 +77,6 @@ class ProcessReportJob < ApplicationJob
     end
     Rails.logger.info "[Report #{report.id}] Competitors: #{competitors_analysis.result.inspect}"
     competitors = competitors_analysis.result
-    binding.pry
 
     report.complete_analysis
   rescue => e
