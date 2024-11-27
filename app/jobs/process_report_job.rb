@@ -24,6 +24,7 @@ class ProcessReportJob < ApplicationJob
 
     report.processing!
 
+    report.update_progress(message: "Detecting language")
     language_detector = Analysis::LanguageDetector.new(report: report)
     unless language_detector.perform_and_save
       Rails.logger.error "[Report #{report.id}] Error detecting language: #{language_detector.error}"
@@ -33,6 +34,7 @@ class ProcessReportJob < ApplicationJob
     language = language_detector.result
     Rails.logger.info "[Report #{report.id}] Language: #{language}"
 
+    report.update_progress(message: "Sampling user questions")
     question_synthesis = Analysis::QuestionSynthesis.new(report: report, language: language, questions_count: questions_count)
     unless question_synthesis.perform_and_save
       Rails.logger.error "[Report #{report.id}] Error synthesizing questions: #{question_synthesis.error}"
@@ -42,6 +44,7 @@ class ProcessReportJob < ApplicationJob
     questions = question_synthesis.result
     Rails.logger.info "[Report #{report.id}] Questions: #{questions.inspect}"
 
+    report.update_progress(message: "Answering questions")
     question_analysis = Analysis::QuestionAnswering.new(report: report, language: language, questions: questions)
     unless question_analysis.perform_and_save
       Rails.logger.error "[Report #{report.id}] Error answering questions: #{question_analysis.error}"
@@ -60,6 +63,17 @@ class ProcessReportJob < ApplicationJob
     topic = input_classifier.result
     Rails.logger.info "[Report #{report.id}] Topic: #{topic.inspect}"
 
+    case topic["entity_type"]
+    when "brand"
+      report.update_progress(message: "Extracting brands")
+    when "product"
+      report.update_progress(message: "Extracting products")
+    when "service"
+      report.update_progress(message: "Extracting service offerings")
+    else
+      report.update_progress(message: "Extracting entities")
+    end
+
     entity_extractor = Analysis::EntityExtractor.new(report: report, language: language, answers: answers)
     unless entity_extractor.perform_and_save
       Rails.logger.error "[Report #{report.id}] Error extracting entities: #{entity_extractor.error}"
@@ -69,6 +83,7 @@ class ProcessReportJob < ApplicationJob
     entities = entity_extractor.result
     Rails.logger.info "[Report #{report.id}] Entities: #{entities.inspect}"
 
+    report.update_progress(message: "Analyzing competitors")
     competitors_analysis = Analysis::Competitors.new(report: report, language: language, entities: entities, topic: topic, answers: answers)
     unless competitors_analysis.perform_and_save
       Rails.logger.error "[Report #{report.id}] Error analyzing competitors: #{competitors_analysis.error}"
