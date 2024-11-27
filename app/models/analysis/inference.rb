@@ -55,20 +55,20 @@ module Analysis::Inference
         end
     end
 
-    def assist(user_message, tools: [])
+    def assist(user_message, tools: [], model: nil, temperature: nil)
         ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do
             instructions = system_prompt && (system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE]) || "You are a helpful assistant"
 
             Rails.logger.debug("Creating assistant with model #{model}, and instructions #{instructions.truncate_words(10)}")
-            model = Langchain::LLM::OpenAI.new(
+            llm = Langchain::LLM::OpenAI.new(
                 api_key: Rails.application.credentials.processor[:OPENAI_API_KEY],
                 default_options: {
-                    model: self.model,
-                    temperature: self.temperature
+                    chat_model: model || self.model,
+                    temperature: temperature || self.temperature
                 }
             )
             assistant = Langchain::Assistant.new(
-                llm: model,
+                llm: llm,
                 instructions: instructions,
                 tools: tools
             )

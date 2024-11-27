@@ -72,6 +72,7 @@ class Report < ApplicationRecord
     end
 
     def country_code
+        return nil if region.blank?
         if country = ISO3166::Country.find_country_by_unofficial_names(region.strip)
             "#{country.languages_official.first.downcase}-#{country.alpha2}"
         end

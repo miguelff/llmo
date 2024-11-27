@@ -55,8 +55,7 @@ class Analysis::QuestionAnswering < Analysis::Step
     def perform
         answers = Concurrent::Promises.zip_futures_over(self.questions) do |question|
             begin
-                question = question.with_indifferent_access[:question]
-                res = assist(expand(question), tools: [ BingSearch.new(self) ])
+                res = assist(expand(question), tools: [ BingSearch.new(self) ], model: "gpt-4o", temperature: 0.5)
                 answer = res.last.content
 
                 if answer.blank?

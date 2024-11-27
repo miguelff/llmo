@@ -8,7 +8,7 @@ class Analysis::QuestionAnsweringTest < ActiveSupport::TestCase
 
       questions = []
       2.times do
-        questions << { question: question }
+        questions << question
       end
       analysis = Analysis::QuestionAnswering.new(report: report, language: "deu", questions: questions)
 

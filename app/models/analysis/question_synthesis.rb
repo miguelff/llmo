@@ -233,7 +233,7 @@ class Analysis::QuestionSynthesis < Analysis::Step
     def perform
         res = chat(user_message)
         unless res.refusal.present?
-            self.result = res.parsed.questions
+            self.result = res.parsed.questions.slice(0, self.questions_count).map { |question| question.with_indifferent_access[:question] }
         else
             self.error = "Question synthesis refused: #{res.refusal}"
             Rails.logger.error(self.error)

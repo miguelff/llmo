@@ -3,41 +3,75 @@ require "open3"
 class ProcessReportJob < ApplicationJob
   queue_as :default
 
-  def perform(report)
-    report.processing!
-    # report_url = Rails.application.routes.url_helpers.report_url(report, protocol: "http", host: "127.0.0.1:3000", format: :json)
+  QUESTIONS_COUNT = 30
 
+  def perform(report, questions_count: QUESTIONS_COUNT)
+    events = []
 
-
-    # node_script = Rails.root.join("vendor/llmo/dist/index.js").to_s
-    # query = report.query
-    # count = 30
-
-    # command = [ "node", node_script, "report", "--query", query, "--callback", report_url, "--count", count.to_s ]
-    # command += [ "--cohort", report.cohort ] if report.cohort.present?
-    # command += [ "--brand_info", report.brand_info ] if report.brand_info.present?
-    # command += [ "--region", report.region ] if report.region.present?
-
-    # Rails.logger.info "[Report #{report.id}] Running command: #{command.join(' ')}"
-
-    # env = Rails.application.credentials.processor.stringify_keys
-    # env["LOG_LEVEL"] ||= "info"
-
-    # log, status = Open3.capture2e(env, *command)
-
-    # Rails.logger.info "[Report #{report.id}] Execution log:\n#{log}"
-
-    # TODO store logs with active storage
-
-    if status.success?
-      Rails.logger.info "[Report #{report.id}] Command executed successfully!"
-      report.completed!
-    else
-      Rails.logger.error "[Report #{report.id}] Command failed with status: #{status.exitstatus}"
-      report.failed!
+    ActiveSupport::Notifications.instrument("analysis.operation", { step: self.class.name, units: 1 }) do |name, start, finish, id, payload|
+      events << payload
     end
+
+    report.processing!
+
+    language_detector = Analysis::LanguageDetector.new(report: report)
+    unless language_detector.perform_and_save
+      Rails.logger.error "[Report #{report.id}] Error detecting language: #{language_detector.error}"
+      report.failed!
+      return
+    end
+    language = language_detector.result
+    Rails.logger.info "[Report #{report.id}] Language: #{language}"
+
+    question_synthesis = Analysis::QuestionSynthesis.new(report: report, language: language, questions_count: questions_count)
+    unless question_synthesis.perform_and_save
+      Rails.logger.error "[Report #{report.id}] Error synthesizing questions: #{question_synthesis.error}"
+      report.failed!
+      return
+    end
+    questions = question_synthesis.result
+    Rails.logger.info "[Report #{report.id}] Questions: #{questions.inspect}"
+
+    question_analysis = Analysis::QuestionAnswering.new(report: report, language: language, questions: questions)
+    unless question_analysis.perform_and_save
+      Rails.logger.error "[Report #{report.id}] Error answering questions: #{question_analysis.error}"
+      report.failed!
+      return
+    end
+    answers = question_analysis.result
+    Rails.logger.info "[Report #{report.id}] Answers: #{answers.inspect}"
+
+    input_classifier = Analysis::InputClassifier.new(report: report, language: language)
+    unless input_classifier.perform_and_save
+      Rails.logger.error "[Report #{report.id}] Error classifying input: #{input_classifier.error}"
+      report.failed!
+      return
+    end
+    topic = input_classifier.result
+    Rails.logger.info "[Report #{report.id}] Topic: #{topic.inspect}"
+
+    entity_extractor = Analysis::EntityExtractor.new(report: report, language: language, answers: answers)
+    unless entity_extractor.perform_and_save
+      Rails.logger.error "[Report #{report.id}] Error extracting entities: #{entity_extractor.error}"
+      report.failed!
+      return
+    end
+    entities = entity_extractor.result
+    Rails.logger.info "[Report #{report.id}] Entities: #{entities.inspect}"
+
+    competitors_analysis = Analysis::Competitors.new(report: report, language: language, entities: entities, topic: topic, answers: answers)
+    unless competitors_analysis.perform_and_save
+      Rails.logger.error "[Report #{report.id}] Error analyzing competitors: #{competitors_analysis.error}"
+      report.failed!
+      return
+    end
+    Rails.logger.info "[Report #{report.id}] Competitors: #{competitors_analysis.result.inspect}"
+    report.completed!
   rescue => e
     Rails.logger.error "[Report #{report.id}] Error processing report: #{e.message}"
+    e.backtrace.each { |line| Rails.logger.error "[Report #{report.id}] #{line}" }
     report.failed!
+  ensure
+    Rails.logger.info "[Report #{report.id}] Events received: #{events.inspect}"
   end
 end

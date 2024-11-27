@@ -2,6 +2,10 @@ class Analysis::Step < ApplicationRecord
     belongs_to :report
     after_initialize :set_default_values
 
+    def succeeded?
+        self.error.nil? && self.result.present?
+    end
+
     private
 
     def set_default_values
