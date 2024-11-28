@@ -1,5 +1,6 @@
 class Result
   attr_reader :report
+  include ChartsHelper
 
   def initialize(report)
     @report = report
@@ -11,7 +12,7 @@ class Result
     end
 
     def indicator
-      @health["health"].to_sym
+      binding.pry
     end
 
     def remarks
@@ -106,13 +107,6 @@ class Result
     end
   end
 
-  include ChartsHelper
-  attr_reader :result
-
-  def initialize(result)
-    @result = result
-  end
-
   def leaders_chart
     series = data["leaders"]["leaders"].slice(0, 10)
     options = {
@@ -174,7 +168,7 @@ class Result
   end
 
   def brand_health?
-    data["brandHealth"].present?
+    true
   end
 
   def brand_health

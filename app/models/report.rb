@@ -86,6 +86,10 @@ class Report < ApplicationRecord
         end
     end
 
+    def analyses_result(name)
+        analyses.find { |a| a.type == name }&.result
+    end
+
     private
 
     def validate_advanced_settings_keys

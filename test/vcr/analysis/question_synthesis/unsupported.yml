@@ -71,7 +71,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 26 Nov 2024 09:26:39 GMT
+      - Thu, 28 Nov 2024 12:36:10 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -83,7 +83,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '972'
+      - '844'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -99,39 +99,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 13ms
       X-Request-Id:
-      - req_203026b86af3aae19aa34c5e314562a3
+      - req_ddaec5daa9027550ecffca67b20cdfcb
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=gieGbY7qdoPkOwMff6rGSZJgYani42KLgoElrI1xrDU-1732613199-1.0.1.1-7OGXsEJBhpgGQ0.sppV0qIEEidZl72oYgAc1KRlawf9wJTwI4uuijT8rB4lVliAKzDJvoBZ0Vs5VdNv_p4AroQ;
-        path=/; expires=Tue, 26-Nov-24 09:56:39 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=y_kpWeR6rkuFudFLL5TB1LXIiTp6EZfLKWFe8zmAjd0-1732797370-1.0.1.1-t1GL8XGFmPlrl4AEWr1WtGnJfoM5Fr63QNftNwCQmL5xJFDmjdUngpgSr8MHgWzqhPV1CfTShkQaubYv9Zow9Q;
+        path=/; expires=Thu, 28-Nov-24 13:06:10 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=a6OF8y80Fo3vUBrnko9U7scZAg55ePIlm0O1l7_J02c-1732613199793-0.0.1.1-604800000;
+      - _cfuvid=0wiTXxbBJ8KBQEOQoOdrPpRUtKvUbFQhE0AOcO0I9Kg-1732797370828-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e88d68bcec6384b-MAD
+      - 8e9a66e9998ce059-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AXm86gQVXc7kxYWiKkzZkf8ZWFNvT",
+          "id": "chatcmpl-AYY2cTEIn3Vv5X7DtPfxhAsgKv4Bp",
           "object": "chat.completion",
-          "created": 1732613198,
+          "created": 1732797370,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older female drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s prioritize when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and older?\"},{\"question\":\"What are the top-rated family cars that emphasize safety for women in their mid-life?\"}]}",
+                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older female drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s prioritize when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated vehicles for safety that cater to the preferences of women over 45?\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -140,8 +140,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 787,
-            "completion_tokens": 104,
-            "total_tokens": 891,
+            "completion_tokens": 106,
+            "total_tokens": 893,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -155,5 +155,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Tue, 26 Nov 2024 09:26:39 GMT
+  recorded_at: Thu, 28 Nov 2024 12:36:10 GMT
 recorded_with: VCR 6.3.1

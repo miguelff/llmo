@@ -27,40 +27,40 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Expires:
-      - Tue, 26 Nov 2024 09:25:00 GMT
+      - Thu, 28 Nov 2024 12:37:26 GMT
       Vary:
       - Accept-Encoding
       P3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
       X-Eventid:
-      - 674594287c3c4662b5563662c56f79b5
+      - 674864425929441e9e7bcc88ecf15290
       Useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
       Content-Security-Policy:
       - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
-        ''nonce-zRh2498IOguNSkxTOdH6pw5dWOUdLBF9aa4H0+ge4qc=''; base-uri ''self'';'
+        ''nonce-bVO1pc3RyonqaHJMQCr7HKHbyAxjAyFboB/TjfIdSM8=''; base-uri ''self'';'
       Bingapis-Traceid:
-      - 674594287c3c4662b5563662c56f79b5
+      - 674864425929441e9e7bcc88ecf15290
       Bingapis-Sessionid:
-      - 9DFD28641FC946CAAA168DC7862B7821
+      - DBD22B1EFD8641878F075D7E07A2EE23
       X-Msedge-Clientid:
-      - 120884277C066B62354A91647DAA6AE1
+      - 27217A88D30E612C260F6FCDD2066067
       X-Msapi-Userstate:
-      - 94c1
+      - 8d38
       Bingapis-Market:
       - es-ES
       Bingapis-Rguid:
-      - 83e157b38437400993197923cedd07ae
+      - 2ff41810b32f42c0a5c524e602b26a8a
       X-Search-Responseinfo:
-      - InternalResponseTime=342,MSDatacenter=DUBE01
+      - InternalResponseTime=361,MSDatacenter=DUBE01
       X-Cache:
       - CONFIG_NOCACHE
       Accept-Ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
       X-Msedge-Ref:
-      - 'Ref A: 0DA24F531A2B40DD82C4B8B1356F6B65 Ref B: AMS04EDGE3510 Ref C: 2024-11-26T09:26:00Z'
+      - 'Ref A: 75740B6BB4E24E3F8C58C978EFACF860 Ref B: AMS04EDGE3008 Ref C: 2024-11-28T12:38:25Z'
       Apim-Request-Id:
-      - 29b98143-75bc-4c44-9b40-135d0d713238
+      - be90204b-bfb7-4f5d-b97f-3fd8fe903977
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -68,12 +68,12 @@ http_interactions:
       Csp-Billing-Usage:
       - CognitiveServices.BingSearchV7.Transaction=1
       Date:
-      - Tue, 26 Nov 2024 09:26:00 GMT
+      - Thu, 28 Nov 2024 12:38:25 GMT
     body:
       encoding: ASCII-8BIT
       string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "safe
         cars for women over 45"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=safe+cars+for+women+over+45",
-        "totalEstimatedMatches": 1350000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "totalEstimatedMatches": 1370000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
         "name": "Best Cars for Older Drivers in 2024 | U.S. News - U.S. News & World
         Report", "url": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
         "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8&w=80&h=80&c=1&pid=5.1",
@@ -81,10 +81,10 @@ http_interactions:
         "3 de jun. de 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
         "snippet": "Today''s cars are safer than ever, and some models earn safety
         scores that are well above average. These are the safest new cars you can
-        buy or lease today.", "dateLastCrawled": "2024-11-25T12:09:00.0000000Z", "primaryImageOfPage":
+        buy or lease today.", "dateLastCrawled": "2024-11-28T02:09:00.0000000Z", "primaryImageOfPage":
         {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8&w=80&h=80&c=1&pid=5.1",
         "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 316, "imageId":
-        "OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4680346605981083&mkt=es-ES&setlang=es-ES&w=rTdzaUide_5QYAcX_axRiTtur7R3C5yi",
+        "OIP.tzJ3fQrCyi_MGHbdVyC4_QHaE8"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4680346606767786&mkt=es-ES&setlang=es-ES&w=8WZPrzKGKyhQYAcX_axRiTtur7R3C5yi",
         "language": "en", "isNavigational": true, "noCache": false, "siteName": "U.S.
         News & World Report"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
         "name": "Best cars for older drivers - Age Co", "url": "https:\/\/www.ageco.co.uk\/useful-articles\/car\/best-cars-for-older-drivers\/",
@@ -94,9 +94,9 @@ http_interactions:
         Skoda ENYAQ iV; Skoda Fabia; Nissan Qashqai Assistance features. Assistance
         technology on modern vehicles can make your car much more user-friendly, helping
         with everything from parking to navigation to driving in the dark.", "dateLastCrawled":
-        "2024-11-24T14:09:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK&w=80&h=80&c=1&pid=5.1",
+        "2024-11-28T03:12:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK&w=80&h=80&c=1&pid=5.1",
         "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 266, "imageId":
-        "OIP.CZGECtr8p6ZTC35rhEspEQHaEK"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4952647528175696&mkt=es-ES&setlang=es-ES&w=6yEKwVuKrVnMNF8SjGAL6sHWSm-1fAox",
+        "OIP.CZGECtr8p6ZTC35rhEspEQHaEK"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4952647528549608&mkt=es-ES&setlang=es-ES&w=pOItWzcECdDMNF8SjGAL6sHWSm-1fAox",
         "language": "en", "isNavigational": false, "noCache": false, "siteName": "Age
         Co"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2", "name":
         "Best Cars for Seniors in 2022: Terrific Options for Older Drivers", "url":
@@ -108,7 +108,7 @@ http_interactions:
         about the differences between sedans and SUVs and why you might prefer one
         over the other. Explore senior-friendly features you may want your next vehicle
         to have. And check out more than two dozen of the best models for 2022!",
-        "dateLastCrawled": "2024-11-23T04:18:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
+        "dateLastCrawled": "2024-11-26T09:15:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
         "https:\/\/www.bing.com\/th?id=OIP.hAsef8cjBSRDDFaMH8XgSgAAAA&w=80&h=80&c=1&pid=5.1",
         "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 707, "imageId":
         "OIP.hAsef8cjBSRDDFaMH8XgSgAAAA"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4965047104723607&mkt=es-ES&setlang=es-ES&w=Sn-U2VdEeczR17hHjZtLFjm3lpl6Cx1l",
@@ -121,7 +121,7 @@ http_interactions:
         "snippet": "To give you extra peace of mind and security when driving about
         town, all the cars on this list scored an impressive five stars in rigorous
         Euro NCAP safety tests. Please read on to find out our top 10 cars for older
-        drivers. 1. AUDI A3.", "dateLastCrawled": "2024-11-23T20:10:00.0000000Z",
+        drivers. 1. AUDI A3.", "dateLastCrawled": "2024-11-28T00:05:00.0000000Z",
         "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.R9oF9WQZB6GURcrYpEGFaQHaDK&w=80&h=80&c=1&pid=5.1",
         "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 202, "imageId":
         "OIP.R9oF9WQZB6GURcrYpEGFaQHaDK"}, "cachedPageUrl": "http:\/\/cc.bingj.com\/cache.aspx?q=safe+cars+for+women+over+45&d=4717248968473441&mkt=es-ES&setlang=es-ES&w=3Q2oOUacw7dhKDkewhF580jEr0_L6B4h",
@@ -131,5 +131,5 @@ http_interactions:
         {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
         {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
         {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}}]}}}'
-  recorded_at: Tue, 26 Nov 2024 09:26:01 GMT
+  recorded_at: Thu, 28 Nov 2024 12:38:26 GMT
 recorded_with: VCR 6.3.1

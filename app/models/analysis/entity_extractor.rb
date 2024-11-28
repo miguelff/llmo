@@ -35,12 +35,14 @@ class Analysis::EntityExtractor < Analysis::Step
                 1.1 The type of the entity, it's a commercial name associated to either a brand, product or service
                 1.2 The name of the entity, like 'Apple' or 'Adidas Ultraboost 22' or 'Netflix'
                 1.3 The position of the entity in the answer, the first entity appearing in the text is 1, the second 2, and so on.
-                1.4 Any link related to the entity, that seems to be a source of information to include the entity in the particular answer to the given question
-            2. A list of other links that are present in the text, but not related to any particular entity, called "orphan links"
+                1.4 Any link related to the entity, that seems to be a source of information to include the entity in the particular answer to the given question.#{' '}
+            2. A list of other links that are present in the text, but not related to any particular entity, called "orphan links".
+
+            Entities should be present in the AI response, and not in the user query. Don't infer links or anything else, just extract the information from the AI response.
 
             Approach:
             * Find the most concrete entities first, if things are described grouped by brand, and an entity is a product or model, include the brand name in the entity. For intance, if the text is talking about "best laptop in the market",
-            and the text, talks about "Macbook Air", and you know that "Macbook Air" is a product from "Apple", then the entity should be "Apple Macbook Air".#{' '}
+            and the text, talks about "Macbook Air", and you know that "Macbook Air" is a product from "Apple", then the entity should be "Apple Macbook Air".
             * Then, find the less concrete entities, like brands, or company names.
             * Don't include brand or company names if they are not associated to a product or service described in the query.
 

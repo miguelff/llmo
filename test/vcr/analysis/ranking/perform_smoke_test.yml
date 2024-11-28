@@ -1,0 +1,122 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"[BrandsLeaders]\n[{\"name\":\"Rolex\",\"rank\":1},{\"name\":\"Omega\",\"rank\":2},{\"name\":\"Patek
+        Philippe\",\"rank\":3},{\"name\":\"Audemars Piguet\",\"rank\":4},{\"name\":\"Tag
+        Heuer\",\"rank\":5}]\n[/BrandLeaders]\n[ProductLeaders]\n[{\"name\":\"Rolex
+        Submariner\",\"rank\":1},{\"name\":\"Patek Philippe Nautilus\",\"rank\":2},{\"name\":\"Omega
+        Seamaster\",\"rank\":3},{\"name\":\"Audemars Piguet Royal Oak\",\"rank\":4},{\"name\":\"Tag
+        Heuer Carrera\",\"rank\":5}]\n[/ProductLeaders]\n[Input]\n{\"type\":\"product\",\"brand\":\"omega\",\"product\":\"seamaster
+        diver 300m\"}\n[/Input]\n"}],"temperature":0.2,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"product_rank":{"type":"number","description":"The
+        rank of the product"},"other_product_rank":{"type":"number","description":"The
+        rank of different product from the same brand"},"brand_rank":{"type":"number","description":"The
+        rank of the brand"},"reason":{"type":"string","description":"A brief explanation
+        for your ranking"}},"required":["reason"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Nov 2024 16:36:37 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '641'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999854'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 2ms
+      X-Request-Id:
+      - req_c9f1b80c4315be245c5d68846466a672
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=FDvL_halqDVlrsKsjWxZMw.Iz7vD9gSrJjLGV3UrN5A-1732811797-1.0.1.1-anY_z7e69yTjxBY2OiXin_iEAXPq9V5.v397MTC8CTFt4zQGJnqwiMDW5z41i_s85bhJcuXrJ2P5QPBJ2tpVYw;
+        path=/; expires=Thu, 28-Nov-24 17:06:37 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=zfU2q1i5fpudDPt2Ir7RV2HxvxGnjVXXSw_SPCHtOPk-1732811797168-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e9bc71f687dcc35-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AYbnIjj1VdrnWgmi7LeLYCmhdor5j",
+          "object": "chat.completion",
+          "created": 1732811796,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"product_rank\":3,\"other_product_rank\":1,\"brand_rank\":2,\"reason\":\"The Omega Seamaster Diver 300M is ranked 3rd among products, while the brand Omega is ranked 2nd overall. The Seamaster is a well-known model, but it does not surpass the top-ranked Rolex Submariner.\"}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 272,
+            "completion_tokens": 69,
+            "total_tokens": 341,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Thu, 28 Nov 2024 16:36:37 GMT
+recorded_with: VCR 6.3.1

@@ -3,7 +3,7 @@ require "open3"
 class ProcessReportJob < ApplicationJob
   queue_as :default
 
-  DEFAULT_QUESTIONS_COUNT = 30
+  DEFAULT_QUESTIONS_COUNT = Rails.env.development?  ? 2 : 30
   MIN_UPDATE_INTERVAL = 2.seconds
 
 
@@ -92,6 +92,15 @@ class ProcessReportJob < ApplicationJob
     end
     Rails.logger.info "[Report #{report.id}] Competitors: #{competitors_analysis.result.inspect}"
     competitors = competitors_analysis.result
+
+    report.update_progress(message: "Ranking results")
+    ranking = Analysis::Ranking.new(report: report, entities: entities, input: topic)
+    unless ranking.perform_and_save
+      Rails.logger.error "[Report #{report.id}] Error ranking results: #{ranking.error}"
+      report.failed!
+      return
+    end
+    Rails.logger.info "[Report #{report.id}] Ranking: #{ranking.result.inspect}"
 
     report.complete_analysis
   rescue => e

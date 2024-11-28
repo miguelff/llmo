@@ -71,7 +71,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 26 Nov 2024 09:26:46 GMT
+      - Thu, 28 Nov 2024 12:36:09 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -83,7 +83,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '996'
+      - '833'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -99,39 +99,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 13ms
       X-Request-Id:
-      - req_5d396af17373f481778afd14bf8108c8
+      - req_5da171cf76d3b7f42750b276e39494dc
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=eEajF0qTGnroJIIhNY5oO6TI4IlbXpDSHskN8MHYuhc-1732613206-1.0.1.1-vuqZaIV4jo7stAxt8XLIVZ7fZiWoCOVt6rgFSxsMRjN2xGcQlPpl4UBZ1aOUrP22mu7fgV.tQ8muEI7mGH800w;
-        path=/; expires=Tue, 26-Nov-24 09:56:46 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=XMW5PsGmleCDjLuor57UuaO2U32l3wOCnPurZaXtLdI-1732797369-1.0.1.1-E8eGIjabuOb4NaCdPWBqRrk0tWjrVN3fHkS9QQEmpIrznM2TRNjyvb4rt0X.KO9qajqSN6gYyPcVFtfWrBEgIg;
+        path=/; expires=Thu, 28-Nov-24 13:06:09 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=ISYc114x8I3T77yMvQWc0vwpY93LN_FRo885biR23NY-1732613206316-0.0.1.1-604800000;
+      - _cfuvid=yDcd1ukKE3AoY4oOArQwtvDh0sXa0ldNj5Fbe40kuFM-1732797369678-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e88d6b42ebfcc06-MAD
+      - 8e9a66e27e95cc58-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AXm8Dn7MLFgbq6zsNA3K5qlLIytyS",
+          "id": "chatcmpl-AYY2ahD2L0tInnbzr2uJhDCT1dwTO",
           "object": "chat.completion",
-          "created": 1732613205,
+          "created": 1732797368,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older female drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s look for when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated family cars with excellent safety records suitable for women over 45?\"}]}",
+                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older female drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s prioritize when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated vehicles for safety that cater to the preferences of women over 45?\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -155,5 +155,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Tue, 26 Nov 2024 09:26:46 GMT
+  recorded_at: Thu, 28 Nov 2024 12:36:09 GMT
 recorded_with: VCR 6.3.1

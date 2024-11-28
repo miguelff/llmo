@@ -48,7 +48,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 26 Nov 2024 09:25:52 GMT
+      - Thu, 28 Nov 2024 12:36:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -60,7 +60,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '313'
+      - '312'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -76,39 +76,39 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 4ms
       X-Request-Id:
-      - req_f40b5b384f194b4c3b02dc220a2fd241
+      - req_2625ba869db3ec2ca112c9c3a8244957
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=K8I3ffcnbfAQ73l1b1t5mXGj1hgkzGPVSWyzf2aFnQs-1732613152-1.0.1.1-Bv3SWSUWfe90V0Vv4.HJjMsdkQDlYdSjROlim5DnIBowh_PsWxNhrR7QLvqI9K.d5nGAn._NkJi89TkobYxCqg;
-        path=/; expires=Tue, 26-Nov-24 09:55:52 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=LOQipsHt3.BAw0tPsmxsRTQU_8S1ELW2e_Ah4kMQHJg-1732797366-1.0.1.1-i5s_mp6sDSaJxhdHpjl9K.1sEwv9NJXzCR9RSlviw4OeOa8GmiBH2AIM49_UwI2hKnKy9iuznCHU4UDr4CTGqw;
+        path=/; expires=Thu, 28-Nov-24 13:06:06 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=9lGtF4KjQuI7TC3TPw9epBGosYyVlEmDTyN5.ITiMic-1732613152412-0.0.1.1-604800000;
+      - _cfuvid=AZweBJqlUy8kNkDwsOXlZJF3YRMlDDRvEFBi5E_AnPw-1732797366235-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e88d5615d1e1a7c-MAD
+      - 8e9a66d02e5ecfcd-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AXm7ML39ssdlIg84A2kdZ89UvuC1B",
+          "id": "chatcmpl-AYY2XO5Rcftn2yGrBL9xe56EIA3I8",
           "object": "chat.completion",
-          "created": 1732613152,
+          "created": 1732797365,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"entity_type\":\"other\",\"brand\":\"\",\"product\":\"\",\"other\":\"Next-Gen AI Technology\"}",
+                "content": "{\"entity_type\":\"other\",\"other\":\"Next-Gen AI Technology\",\"brand\":\"\",\"product\":\"\"}",
                 "refusal": null
               },
               "logprobs": null,
@@ -117,8 +117,8 @@ http_interactions:
           ],
           "usage": {
             "prompt_tokens": 467,
-            "completion_tokens": 18,
-            "total_tokens": 485,
+            "completion_tokens": 20,
+            "total_tokens": 487,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -132,5 +132,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Tue, 26 Nov 2024 09:25:52 GMT
+  recorded_at: Thu, 28 Nov 2024 12:36:06 GMT
 recorded_with: VCR 6.3.1

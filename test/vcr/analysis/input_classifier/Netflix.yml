@@ -48,7 +48,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 26 Nov 2024 09:25:47 GMT
+      - Thu, 28 Nov 2024 12:36:01 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -60,7 +60,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '364'
+      - '454'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -76,32 +76,32 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 4ms
       X-Request-Id:
-      - req_cfe76e9b256d228da744c9bedf5b3feb
+      - req_2bde485a3fb395377c3f0213bdb8bcb3
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=UsRw3NBHNA51gwsgDCnSkubhh3uX_RomH8nm.uG8OeQ-1732613147-1.0.1.1-nhNJ5BDwkEjgnuR0pigPFwDpGpIRh0gzmQyFIoW1WiwFZqGswxac0Q4Bbp_kox3oKapX1u.86e3nus3aPeTU9g;
-        path=/; expires=Tue, 26-Nov-24 09:55:47 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=TXGxG5g5cn1aSMWt67ZF.sZymG3fH4chZuao0WrPT2A-1732797361-1.0.1.1-43fEBCGWR_UygdhTicBUZN5SA_iv0.7QmmeRNtRpyaPIgcI1VF_p6M3bkhRDEJ0HHkQpBWaOQifD5d0H0rPMgg;
+        path=/; expires=Thu, 28-Nov-24 13:06:01 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=x0rS5prkLPrZtLEWo1MOhs1qPlLkg7YYFJ_SwGMohtQ-1732613147369-0.0.1.1-604800000;
+      - _cfuvid=o3Htg2Gf5iQV2Gb8zsDPk2X9of2nyFNV.l.RUI0aLZ8-1732797361960-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e88d5480972eca7-MAD
+      - 8e9a66b48e2a37d9-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AXm7HJSMt4peDKhjpSbiqznwtbNOz",
+          "id": "chatcmpl-AYY2TeU0g5U5918795YQPHMDYFVz3",
           "object": "chat.completion",
-          "created": 1732613147,
+          "created": 1732797361,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -132,5 +132,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Tue, 26 Nov 2024 09:25:47 GMT
+  recorded_at: Thu, 28 Nov 2024 12:36:01 GMT
 recorded_with: VCR 6.3.1

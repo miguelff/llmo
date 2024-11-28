@@ -1,3 +1,2 @@
 web: bin/rails server
 css: bin/rails tailwindcss:watch
-llmo: cd vendor/llmo && npm i && npm run build:watch

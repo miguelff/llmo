@@ -81,7 +81,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 26 Nov 2024 09:26:41 GMT
+      - Thu, 28 Nov 2024 12:36:08 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -93,7 +93,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '1050'
+      - '1010'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -109,28 +109,28 @@ http_interactions:
       X-Ratelimit-Reset-Tokens:
       - 16ms
       X-Request-Id:
-      - req_879ca79ade9a2b0f2d474c5e438d7cbd
+      - req_e70ef0219cd2a4a5a44b66ed512e4150
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=69feszjuTwNMHguXYF4BeKx6Ar2QbM0R.W8ri9Zeulo-1732613201-1.0.1.1-yWXd2I8LrN79OEwJSmphEl_VnqRWDywkGccVEVy2Y_YnLUSz6H2r0k145gxk2ZE8NI3fgJ3lp5OXnF_RWmU66A;
-        path=/; expires=Tue, 26-Nov-24 09:56:41 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=Vza3HQVhLMsjllmbXeXD6Kia3bJnTZL60E6llWLVLHQ-1732797368-1.0.1.1-8ti6tyWsQForN_g4ZS32I1uoqwmnFbzTgVuYY8_T.xX9Q_zuwjnZSHAGO.ydHFMCXICq9BfdwpsR2n1Cb8Z8LQ;
+        path=/; expires=Thu, 28-Nov-24 13:06:08 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=gayLxBsC4OXRJxGLeVNCiRBLr1QjS9RINgdKA4Bo9PE-1732613201086-0.0.1.1-604800000;
+      - _cfuvid=Bcq7Qg_hWvuL2K3jNHUn7XF1pXGsq0HVAwMDH3z12Uw-1732797368605-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e88d69369291bab-MAD
+      - 8e9a66da9f90cbcb-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1BWG04OEdqV0FyV25VZzY3NENnUTZiSFFyMGpTaCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjYxMzIwMCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJRdWVsbGVzIHNvbnQgbGVzIHZvaXR1cmVzIGxlcyBwbHVzIHPDu3JlcyByZWNvbW1hbmTDqWVzIHBvdXIgbGVzIGZlbW1lcyBkZSBwbHVzIGRlIDQ1IGFucyA/XCJ9LHtcInF1ZXN0aW9uXCI6XCJRdWVscyBtb2TDqGxlcyBkZSB2b2l0dXJlcyBvZmZyZW50IGxlcyBtZWlsbGV1cmVzIGNhcmFjdMOpcmlzdGlxdWVzIGRlIHPDqWN1cml0w6kgcG91ciBsZXMgY29uZHVjdHJpY2VzIG1hdHVyZXMgP1wifSx7XCJxdWVzdGlvblwiOlwiUXVlbGxlcyBtYXJxdWVzIGRlIHZvaXR1cmVzIHNvbnQgcsOpcHV0w6llcyBwb3VyIGxldXIgc8OpY3VyaXTDqSBldCBsZXVyIGNvbmZvcnQgcG91ciBsZXMgZmVtbWVzIGRlIDQ1IGFucyBldCBwbHVzID9cIn0se1wicXVlc3Rpb25cIjpcIlF1ZWxzIGNyaXTDqHJlcyBkZSBzw6ljdXJpdMOpIGRldnJhaXMtamUgY29uc2lkw6lyZXIgbG9ycyBkZSBsJ2FjaGF0IGQndW5lIHZvaXR1cmUgZW4gdGFudCBxdWUgZmVtbWUgZGUgcGx1cyBkZSA0NSBhbnMgP1wifSx7XCJxdWVzdGlvblwiOlwiWSBhLXQtaWwgZGVzIHJhcHBvcnRzIG91IGRlcyBjbGFzc2VtZW50cyByw6ljZW50cyBzdXIgbGVzIHZvaXR1cmVzIGxlcyBwbHVzIHPDu3JlcyBxdWkgcG91cnJhaWVudCBpbnTDqXJlc3NlciBsZXMgZmVtbWVzIGRlIGNldHRlIHRyYW5jaGUgZCfDomdlID9cIn1dfSIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDEwMDcsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxMzksCiAgICAidG90YWxfdG9rZW5zIjogMTE0NiwKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF8wNzA1YmY4N2MwIgp9Cg==
-  recorded_at: Tue, 26 Nov 2024 09:26:41 GMT
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWVkyWkd3V2U0a3lIaGZYelRsQXhQbXVnRTlLcyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjc5NzM2NywKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJRdWVsbGVzIHNvbnQgbGVzIHZvaXR1cmVzIGxlcyBwbHVzIHPDu3JlcyByZWNvbW1hbmTDqWVzIHBvdXIgbGVzIGZlbW1lcyBkZSBwbHVzIGRlIDQ1IGFucyA/XCJ9LHtcInF1ZXN0aW9uXCI6XCJRdWVscyBtb2TDqGxlcyBkZSB2b2l0dXJlcyBvZmZyZW50IGxlcyBtZWlsbGV1cmVzIGNhcmFjdMOpcmlzdGlxdWVzIGRlIHPDqWN1cml0w6kgcG91ciBsZXMgY29uZHVjdHJpY2VzIG1hdHVyZXMgP1wifSx7XCJxdWVzdGlvblwiOlwiUXVlbGxlcyBtYXJxdWVzIGRlIHZvaXR1cmVzIHNvbnQgcsOpcHV0w6llcyBwb3VyIGxldXIgc8OpY3VyaXTDqSBldCBsZXVyIGNvbmZvcnQgcG91ciBsZXMgZmVtbWVzIGRlIDQ1IGFucyBldCBwbHVzID9cIn0se1wicXVlc3Rpb25cIjpcIlF1ZWxzIGNyaXTDqHJlcyBkZSBzw6ljdXJpdMOpIGRldnJhaXMtamUgY29uc2lkw6lyZXIgbG9ycyBkZSBsJ2FjaGF0IGQndW5lIHZvaXR1cmUgZW4gdGFudCBxdWUgZmVtbWUgZGUgcGx1cyBkZSA0NSBhbnMgP1wifSx7XCJxdWVzdGlvblwiOlwiWSBhLXQtaWwgZGVzIMOpdmFsdWF0aW9ucyBkZSBzw6ljdXJpdMOpIHNww6ljaWZpcXVlcyBwb3VyIGxlcyB2b2l0dXJlcyBxdWkgY29udmllbm5lbnQgYXV4IGZlbW1lcyBkZSBjZXR0ZSB0cmFuY2hlIGQnw6JnZSA/XCJ9XX0iLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiAxMDA3LAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogMTMyLAogICAgInRvdGFsX3Rva2VucyI6IDExMzksCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfMDcwNWJmODdjMCIKfQo=
+  recorded_at: Thu, 28 Nov 2024 12:36:08 GMT
 recorded_with: VCR 6.3.1
