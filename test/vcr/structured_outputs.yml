@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o","messages":[{"role":"user","content":"Give me a random
+        output that matches the schema"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"foo","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"friends":{"type":"array","items":{"$ref":"#/$defs/friend"},"description":"A
+        collection of friends"},"greeting":{"type":"string"},"age":{"type":"number"}},"required":["friends","greeting","age"],"additionalProperties":false,"strict":true,"$defs":{"friend":{"type":"object","properties":{"name":{"type":"string"}},"required":["name"],"additionalProperties":false,"strict":true}}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 28 Nov 2024 12:39:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '614'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '800000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '799970'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 2ms
+      X-Request-Id:
+      - req_dcf5fe44efe851a642af17f1dcce98c4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=D85eGjzryrxJjaO6XDtGB1p3fVurEiNUd9_XRSVNkI0-1732797550-1.0.1.1-KwsVIOjC_HF18iQ2QqgAiuxpNHfslnsoNpBhU4Nbag8pFow2GaKTU..lQv7hiD7Az8HoeXmXEtfETsYd2Wcj7g;
+        path=/; expires=Thu, 28-Nov-24 13:09:10 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=w0f96e08UOB1afAVauChL9spgSkg9eBc.M2_e_1Ygsw-1732797550324-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8e9a6b4cbd8a217e-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AYY5VWPY7AOYhIsnl5ZRapGJoNaU6",
+          "object": "chat.completion",
+          "created": 1732797549,
+          "model": "gpt-4o-2024-08-06",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"greeting\":\"Hello, world!\",\"age\":25,\"friends\":[{\"name\":\"Alice\"},{\"name\":\"Bob\"},{\"name\":\"Charlie\"}]}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 112,
+            "completion_tokens": 29,
+            "total_tokens": 141,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_7f6be3efb0"
+        }
+  recorded_at: Thu, 28 Nov 2024 12:39:10 GMT
+recorded_with: VCR 6.3.1

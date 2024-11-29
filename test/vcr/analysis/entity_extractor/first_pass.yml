@@ -1,0 +1,173 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an assistant specialized in entity extraction.\nYou are given a user query,
+        and a response from an AI assistant about the user query comparing several
+        brands or products related to the query.\nYour task is to extract:\n1. all
+        the entities mentioned in the query and response that are commercial names
+        associated to either a brand, product or service, including:\n1.1 The type
+        of the entity, it''s a commercial name associated to either a brand, product
+        or service\n1.2 The name of the entity, like ''Apple'' or ''Adidas Ultraboost
+        22'' or ''Netflix''\n1.3 The position of the entity in the answer, the first
+        entity appearing in the text is 1, the second 2, and so on.\n1.4 Any link
+        related to the entity, that seems to be a source of information to include
+        the entity in the particular answer to the given question. \n2. A list of
+        other links that are present in the text, but not related to any particular
+        entity, called \"orphan links\"\nEntities should be present in the AI response,
+        and not in the user query. Don''t infer links or anything else, just extract
+        the information from the AI response.\nApproach:\n* Make a first pass to find
+        the most concrete entities, the products or models or particular services.\n*
+        Now, take the products found in the first pass, and find the brands associated
+        to them.\n* Return all the entities found in the first and second passes.\nReturn
+        as many entities and links as you can find in the given text.\n"},{"role":"user","content":"query:
+        best cars for women over 45\nAI assistant response: Based on the information
+        from various sources, here are some of the safest car brands and models for
+        families with children in 2023: 1. **Kia Telluride** - **Why Chosen**: The
+        Kia Telluride is recognized for its spacious interior, seating for 7 or 8
+        passengers, and a smooth ride. It is equipped with essential safety features
+        such as forward automatic emergency braking and lane-keep assist. It also
+        includes family-friendly features like multiple USB ports and rear-seat comforts.
+        - **Source**: [U.S. News Best Cars for Families 2023](https://cars.usnews.com/cars-trucks/best-cars-for-families-2023)
+        2. **Toyota Camry Hybrid** - **Why Chosen**: The Toyota Camry Hybrid stands
+        out for its excellent fuel economy, reliability, and safety features. It offers
+        generous interior space and a smooth ride, making it ideal for family use.
+        It also includes advanced safety technologies and a high ease-of-use rating
+        for car-seat installation. - **Source**: [U.S. News Best Cars for Families
+        2023](https://cars.usnews.com/cars-trucks/best-cars-for-families-2023) 3.
+        **Honda Odyssey** - **Why Chosen**: The Honda Odyssey is highly rated as a
+        minivan, perfect for family transportation. It features a comfortable ride,
+        substantial storage capacity, and essential safety features like forward automatic
+        emergency braking and lane-keep assist. - **Source**: [Consumer Reports Safest
+        New Cars 2023](https://www.consumerreports.org/cars/car-safety/the-safest-new-cars-of-2023-according-to-iihs-a8504542560/)
+        4. **Toyota Highlander Hybrid** - **Why Chosen**: This model offers a three-row
+        seating configuration and a fuel-efficient hybrid powertrain. It is equipped
+        with modern tech features and driver assistance technologies, making it a
+        safe and reliable choice for families. - **Source**: [Consumer Reports Safest
+        New Cars 2023](https://www.consumerreports.org/cars/car-safety/the-safest-new-cars-of-2023-according-to-iihs-a8504542560/)
+        5. **Hyundai Tucson** - **Why Chosen**: The Hyundai Tucson is a compact family
+        SUV known for comfort, convenience, and a spacious cabin. It includes appealing
+        tech features and efficient performance, along with comprehensive safety equipment.
+        - **Source**: [Euro NCAP Safest Family Cars](https://www.euroncap.com/en/ratings-rewards/safest-family-cars/)
+        These models are chosen based on their high safety ratings, reliability, and
+        family-friendly features. They have been recognized by reputable sources for
+        their comprehensive safety technologies, making them suitable choices for
+        families with children.\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"entities":{"type":"array","items":{"$ref":"#/$defs/entity"},"description":"Entities
+        found in the report''s query"},"orphan_links":{"type":"array","items":{"$ref":"#/$defs/link"},"description":"Links
+        that were not related to any particular entity"}},"required":["entities","orphan_links"],"additionalProperties":false,"strict":true,"$defs":{"link":{"type":"object","properties":{"url":{"type":"string"}},"required":["url"],"additionalProperties":false,"strict":true},"entity":{"type":"object","properties":{"type":{"type":"string","enum":["brand","product","service","other"],"description":"The
+        type of the entity, it''s a commercial name associated to either a brand,
+        product or service described in the query"},"name":{"type":"string","description":"The
+        name of the entity, like ''Apple'' or ''Adidas Ultraboost 22'' or ''Rolex
+        Submariner Date''"},"position":{"type":"number","description":"The position
+        of the entity in the answer, the first entity appearing in the text is 1,
+        the second 2, and so on"},"links":{"type":"array","items":{"$ref":"#/$defs/link"},"description":"Links
+        related to the entity, used to include the entity in the particular answer
+        to the given question"}},"required":["type","name","position","links"],"additionalProperties":false,"strict":true}}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 29 Nov 2024 10:41:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2067'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3998977'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 15ms
+      X-Request-Id:
+      - req_c6992d7b4e3e6303abed534bd48ecacb
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=xeN3gQSEL19Gi4oKP73tlTqbRvEbV.AkInWiR4OWhs4-1732876868-1.0.1.1-WMb8EY_ZflneCL65LBngeuo.xXtqI6DHi4kmEiGqfgo7yw4qM6aou_BixBzeK8zVmrxcAOtDpysYb0FVNxDZkg;
+        path=/; expires=Fri, 29-Nov-24 11:11:08 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=kw7K5e5P4U4Ujup9wVQi40n5ZjgsIFBplBW2FUg3gBQ-1732876868083-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8ea1fbbbbe46f775-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AYsioRKW155fHf0STpFHaCFp7L89F",
+          "object": "chat.completion",
+          "created": 1732876866,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"entities\":[{\"type\":\"product\",\"name\":\"Kia Telluride\",\"position\":1,\"links\":[{\"url\":\"https://cars.usnews.com/cars-trucks/best-cars-for-families-2023\"}]},{\"type\":\"product\",\"name\":\"Toyota Camry Hybrid\",\"position\":2,\"links\":[{\"url\":\"https://cars.usnews.com/cars-trucks/best-cars-for-families-2023\"}]},{\"type\":\"product\",\"name\":\"Honda Odyssey\",\"position\":3,\"links\":[{\"url\":\"https://www.consumerreports.org/cars/car-safety/the-safest-new-cars-of-2023-according-to-iihs-a8504542560/\"}]},{\"type\":\"product\",\"name\":\"Toyota Highlander Hybrid\",\"position\":4,\"links\":[{\"url\":\"https://www.consumerreports.org/cars/car-safety/the-safest-new-cars-of-2023-according-to-iihs-a8504542560/\"}]},{\"type\":\"product\",\"name\":\"Hyundai Tucson\",\"position\":5,\"links\":[{\"url\":\"https://www.euroncap.com/en/ratings-rewards/safest-family-cars/\"}]}],\"orphan_links\":[{\"url\":\"https://cars.usnews.com/cars-trucks/best-cars-for-families-2023\"},{\"url\":\"https://www.consumerreports.org/cars/car-safety/the-safest-new-cars-of-2023-according-to-iihs-a8504542560/\"},{\"url\":\"https://www.euroncap.com/en/ratings-rewards/safest-family-cars/\"}]}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 1209,
+            "completion_tokens": 335,
+            "total_tokens": 1544,
+            "prompt_tokens_details": {
+              "cached_tokens": 1024,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Fri, 29 Nov 2024 10:41:08 GMT
+recorded_with: VCR 6.3.1

@@ -1,4 +1,15 @@
 module ReportsHelper
+    def logo_url(brand)
+        response = Faraday.get("https://api.logo.dev/search?q=#{brand}", nil, { "Authorization" => "Bearer: sk_ZcGYOz3AQBeYLzroGg3HUw" })
+        logos = JSON.parse(response.body)
+        logo = logos.find { |logo| logo["name"].casecmp?(brand) }
+        logo ? logo["logo_url"] : nil
+    end
+
+    def logo_image(brand, css_classes: nil)
+        logo_url(brand) ? image_tag(logo_url(brand), alt: "#{brand} logo", class: css_classes) : nil
+    end
+
   def region_options
     [
         [

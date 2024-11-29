@@ -1,91 +1,86 @@
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Core Rails and server gems
 gem "rails", "~> 8.0.0"
-# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft"
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
-# Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+gem "bootsnap", require: false
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
-
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+# Database and caching
+gem "sqlite3", ">= 2.1"
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
+gem "redis", "~> 5.3"
 
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+# Asset pipeline and frontend
+gem "propshaft"
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "tailwindcss-rails"
+gem "jbuilder"
 
-# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
+# Deployment and performance
 gem "kamal", require: false
-
-# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
-# A list of countries and their details
-gem "countries"
-
-# Unicode uri parsing
-gem "addressable"
-
-# Error tracking
+# Authentication and security
+gem "devise", "~> 4.9"
 gem "sentry-ruby"
 gem "sentry-rails"
 
-gem "redis", "~> 5.3"
-gem "devise", "~> 4.9"
+# Data handling and validation
+gem "countries"
+gem "addressable"
+gem "hashie", "~> 5.0"
+gem "dry-schema", "~> 1.13"
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+# AI/ML Integration
+gem "ruby-openai", "~> 7.3"
+gem "langchainrb", "~> 0.19.1"
+
+# Cross-platform compatibility
+gem "tzinfo-data", platforms: %i[ windows jruby ]
+
+# Concurrency
+gem "concurrent-ruby", require: "concurrent"
+gem "concurrent-ruby-edge", "~> 0.7.1", require: "concurrent/edge/promises"
+
+gem "faraday"
+
+# Optional features
+# gem "bcrypt", "~> 3.1.7"
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # Debugging and profiling
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
-
   gem "bullet"
   gem "rack-mini-profiler"
   gem "memory_profiler"
   gem "stackprof"
 
-  gem "letter_opener", "~> 1.10"
+  # Code quality and security
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
 
+  # Development tools
+  gem "letter_opener", "~> 1.10"
   gem "pry"
   gem "pry-rails"
   gem "pry-byebug"
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  # Development interface
   gem "web-console"
   gem "dockerfile-rails", ">= 1.6"
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # Testing frameworks and tools
   gem "capybara"
   gem "selenium-webdriver"
-  gem "rspec-rails", "~> 7.0.0"
+  gem "webmock", "~> 3.24"
+  gem "vcr", "~> 6.3"
 end

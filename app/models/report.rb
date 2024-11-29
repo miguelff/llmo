@@ -23,27 +23,44 @@ class Report < ApplicationRecord
     before_create :maybe_assign_id
     after_create_commit :process_report
     after_update_commit :refresh_report_status
-    has_one :result, dependent: :destroy
+
+    has_one :language_detector_analysis, dependent: :destroy, class_name: "Analysis::LanguageDetector"
+    has_one :question_synthesis_analysis, dependent: :destroy, class_name: "Analysis::QuestionSynthesis"
+    has_one :question_answering_analysis, dependent: :destroy, class_name: "Analysis::QuestionAnswering"
+    has_one :input_classifier_analysis, dependent: :destroy, class_name: "Analysis::InputClassifier"
+    has_one :entity_extractor_analysis, dependent: :destroy, class_name: "Analysis::EntityExtractor"
+    has_one :competitors_analysis, dependent: :destroy, class_name: "Analysis::Competitors"
+    has_one :ranking_analysis, dependent: :destroy, class_name: "Analysis::Ranking"
+
+    has_many :analyses, dependent: :destroy, class_name: "Analysis::Step"
+
     belongs_to :owner, polymorphic: true
 
     scope :recent, -> { order(created_at: :desc).limit(10) }
     scope :owned_by, ->(user) { where(owner: user) }
 
-    def update_progress(params)
-      attrs = { progress_percent: params[:percentage] }
+    def complete_analysis
+        update(status: :completed, progress_percent: 100)
+    end
 
-      if params[:message].present?
+    def update_progress(params)
+      percentage = params[:percentage]
+      message = params[:message]
+
+      attrs = {}
+      attrs[:progress_percent] =  percentage if percentage.present?
+
+      if message.present?
         details = self.progress_details || []
-        details << params[:message]
+        details << message
         attrs[:progress_details] = details
       end
 
-      unless params[:result].nil?
-        attrs[:status] = :completed
-        attrs[:result] = Result.new(json: params[:result])
-      end
-
       update(attrs)
+    end
+
+    def result
+        Result.new(self)
     end
 
     def retry!
@@ -58,6 +75,17 @@ class Report < ApplicationRecord
         else
             super
         end
+    end
+
+    def country_code
+        return nil if region.blank?
+        if country = ISO3166::Country.find_country_by_unofficial_names(region.strip)
+            "#{country.languages_official.first.downcase}-#{country.alpha2}"
+        end
+    end
+
+    def analyses_result(name)
+        analyses.find { |a| a.type == name }&.result
     end
 
     private

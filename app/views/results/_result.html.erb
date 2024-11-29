@@ -1,76 +1,221 @@
-<% presenter = @report.result.presenter %>
-<article class="gap-4">
-    <header class="flex flex-col lg:flex-row justify-between px-8 border-b border-zinc-200 dark:border-zinc-800 pb-4">
-        <h1 class="text-3xl font-bold" title="<%= @report.query %>"><%= @report.query.truncate_words(6) %></h1>
+<% presenter = @report.result %>
+<% health = presenter.brand_health %>
+<% ranks = presenter.ranks %>
+<article class="bg-zinc-50 dark:bg-zinc-950">
+    <header class="flex flex-col lg:flex-row justify-between px-8 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <h1 class="text-3xl font-bold" title="<%= @report.query %>"><%= @report.query.truncate_words(6).titleize %></h1>
         <div class="text-sm flex flex-col text-zinc-500 dark:text-zinc-400">
-        <% if @report.region.present? %>
+            <% if @report.region.present? %>
             <div>Region: <strong><%= @report.region.titleize %></strong></div>
-        <% end %>
-        <% if @report.cohort.present? %>
+            <% end %>
+            <% if @report.cohort.present? %>
             <div>Cohort: <strong><%= @report.cohort %></strong></div>
-        <% end %>
-        <% if @report.brand_info.present? %>
+            <% end %>
+            <% if @report.brand_info.present? %>
             <div>Brand: <strong><%= @report.brand_info %></strong></div>
-        <% end %>
-        </div>  
+            <% end %>
+        </div>
     </header>
 
+    <div class="py-8 pb-16">
+        <div class="flex flex-col lg:flex-row max-w-screen-xl mx-auto space-x-8 pt-8">
+            <%# Left Section (Text Content) %>
+            <div class="flex-1 place-self-center p-8 lg:p-0">
+                <%# Main Heading %>
+                <h1 class="max-w-2xl mb-4 text-4xl tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+                    Your health is <span class="font-extrabold drop-shadow-lg text-primary-600"><%= health.indicator %></span>
+                </h1>
 
-  <% if presenter.brand_health? %>        
-        <%= render partial: "results/health", locals: { presenter: presenter }   %>        
-    <% end %>
+                <% logo = logo_image(health.your_brand, css_classes: "object-contain") %>
+                <h2 class="max-w-2xl mb-4 text-2xl tracking-tight leading-none md:text-3xl xl:text-4xl dark:text-white flex items-center">
+                    <% if logo.present? %>
+                    <div class="p-2 flex bg-white border-zinc-200 border-1 justify-center items-center min-h-16 min-w-16 max-h-16 max-w-16 overflow-hidden mr-4 rounded-md"><%= logo %></div>
+                    <% end %>
+                    <div>
+                        <%= health.indicator_remarks %>
+                    </div>
+                </h2>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-8">    
-    <% if presenter.perception? %>
-        <%= render partial: "results/perception", locals: { presenter: presenter }   %>        
-    <% end %>
+                <%# Health Remarks %>
+                <div class="max-w-2xl mb-6 font-light text-zinc-500 lg:mb-8 md:text-lg lg:text-xl dark:text-zinc-400">
+                    <%= health.remarks %>
+                </div>
 
-    <%= render partial: "results/leaders", locals: { presenter: presenter }   %>
-  </div>
+                <%# Call to Action / Next Steps %>
+                <div class="text-sm text-left text-zinc-500 dark:text-zinc-300 mt-4">
+                    Follow along to understand <span class="font-bold">what you can do about it.</span>
+                </div>
+            </div>
 
 
-  <div class="p-8">
-    <% if presenter.domains? %>           
-        <h2 class="text-3xl font-semibold text-zinc-950 dark:text-white mb-4">Domain breakdown</h2>
-        <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg">
-            These are the domains that ChatGPT consults more often to give recommendations about your and your competitors brand. <span class="font-bold">Creating relevant content on these domains will help improve your brand health.</span>
-        </p>
-        <%= presenter.domain_breakdown_chart %>        
-    <% end %> 
-  </div>
-
-  <div class="p-8">
-    <% if presenter.domains? %>           
-        <h2 class="text-3xl font-semibold text-zinc-950 dark:text-white mb-4">Most influential sources</h2>
-        <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg">
-            ChatGPT used these articles to give recommendations about you and your competitors. Analyzinc its tone and content and mimicking their strategies will help you improve your brand health.
-        </p>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400">
-            <thead class="text-xs text-zinc-800 uppercase bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">Source</th>
-                    <th scope="col" class="px-6 py-3">Mentions</th>
-                    <th scope="col" class="px-6 py-3">Brands Mentioned</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% presenter.relevant_content.each do |url, data| %>                    
-                    <tr class="bg-white border-b dark:bg-zinc-900 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-600">
-                        <td class="px-6 py-4">
-                            <a href="<%= url %>" class="hover:underline" target="_blank"><%= url %></a>                            
-                        </td>
-                        <td class="px-6 py-4">
-                            <%= data[:count] %>
-                        </td>
-                        <td class="px-6 py-4">
-                            <%= data[:names].join(", ") %>
-                        </td>
-                    </tr>                    
+            <%# Right Section: ranks %>
+            <% ranks = presenter.ranks %>
+            <% if ranks.any_rank_present? %>
+            <div class="flex-1 flex flex-col lg:flex-row gap-4">
+                <% ranks.relevant_ranks.each_with_index do |rank_type, index| %>
+                <div class="flex-1 p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <h3 class="text-2xl font-bold text-zinc-900 dark:text-white mb-2">
+                            <%= ranks.rank_title(rank_type) %>
+                        </h3>
+                        <% if ranks.rank(rank_type).present? %>
+                        <p class="text-6xl font-extrabold text-primary-600 dark:text-primary-400 mb-4">
+                            #<%= ranks.rank(rank_type) %>
+                        </p>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-400 text-center h-16">
+                            <%= ranks.rank_remarks(rank_type) %>
+                        </p>
+                        <% else %>
+                        <p class="text-6xl font-extrabold text-primary-600 dark:text-primary-400 mb-4">
+                            N/A
+                        </p>
+                        <p class="text-sm text-zinc-500 dark:text-zinc-400 text-center h-16">
+                            Is not among the marketleaders
+                        </p>
+                        <% end %>
+                    </div>
+                </div>
                 <% end %>
-            </tbody>
-        </table>
+            </div>
+            <% else %>
+            <div class="flex-1 flex items-center justify-center">
+                <p class="hidden lg:block text-sm text-zinc-500 dark:text-zinc-400 text-center">
+                    <%= image_tag("brand-health/neutral.svg", alt: "Brand Health Bad", class: "object-contain") %>
+                </p>
+            </div>
+            <% end %>
+        </div>
     </div>
-    <% end %> 
-  </div>
+
+
+    <div class="flex flex-col">
+        <div class="flex justify-center">
+            <div class="max-w-xl bg-black shadow-lg rounded-lg p-8 mt-8">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Leaders</h2>
+                <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                    These are the top performers in the <strong class="text-primary-600"><%= presenter.product_strengths.overarching_term %></strong> category
+                </p>
+            </div>
+        </div>
+        <div class="flex flex-wrap gap-4 p-8">
+            <%# Brand Leaders %>
+            <% if presenter.leaders?("brands") %>
+            <div class="leaders flex-1 p-6">
+                <h2 class="text-3xl text-center font-semibold text-zinc-950 dark:text-white mb-4">Brands</h2>
+                <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg">
+                    <%= presenter.leaders("brands").leaders_chart %>
+                </p>
+            </div>
+            <% end %>
+
+            <% if presenter.leaders?("products") %>
+            <div class="leaders flex-1 p-6">
+                <h2 class="text-3xl text-center font-semibold text-zinc-950 dark:text-white mb-4">Products</h2>
+                <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg">
+                    <%= presenter.leaders("products").leaders_chart %>
+                </p>
+            </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div>
+        <% if presenter.product_strengths? %>
+        <%# Brand and product strengths %>
+        <div class="bg-black py-8 lg:py-16">
+            <div class="flex flex-col xl:flex-row px-8 justify-center items-center space-y-8 lg:space-y-0 lg:space-x-8 mt-8">
+                <div class="max-w-screen-sm text-left">
+                    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Perceived qualities</h2>
+                    <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
+                        These are the quality attributes taken into account to value the <strong class="text-primary-600"><%= presenter.product_strengths.overarching_term %></strong>
+                    </p>
+                </div>
+                <div class="max-w-screen-sm p-6 bg-white dark:bg-zinc-800 shadow-lg rounded-lg">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-8 h-8 text-primary dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M7.05 4.05A7 7 0 0 1 19 9c0 2.407-1.197 3.874-2.186 5.084l-.04.048C15.77 15.362 15 16.34 15 18a1 1 0 0 1-1 1h-4a1 1 0 1 1-1-1c0-1.612-.77-2.613-1.78-3.875l-.045-.056C6.193 12.842 5 11.352 5 9a7 7 0 0 1 2.05-4.95ZM9 21a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1Zm1.586-13.414A2 2 0 0 1 12 7a1 1 0 1 0 0-2 4 4 0 0 0-4 4 1 1 0 0 0 2 0 2 2 0 0 1 .586-1.414Z" clip-rule="evenodd" />
+                        </svg>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Focus on Weaknesses</h3>
+                    </div>
+                    <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                        Pay special attention to where your products or brand scored lower. Improving these areas can significantly enhance your competitive edge.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="py-[-40px] mb-8 rounded-lg">
+                <%= presenter.product_strengths.chart %>
+            </div>
+
+            <div class="hidden xl:block relative overflow-x-auto shadow-md sm:rounded-lg px-8 mx-auto max-w-screen-xl">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <table class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400">
+                        <thead class="text-xs text-zinc-800 uppercase bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Attribute</th>
+                                <th scope="col" class="px-6 py-3">Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% presenter.product_strengths.attributes.each do |attribute| %>
+                            <tr class="bg-white border-b dark:bg-zinc-900 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-600">
+                                <td class="px-6 py-4 font-semibold"><%= attribute[:name] %></td>
+                                <td class="px-6 py-4 mb-2"><%= attribute[:definition] %></td>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <% end %>
+        <%
+=begin%>
+        <div class="p-8">
+            <% if presenter.domains? %>
+            <h2 class="text-3xl font-semibold text-zinc-950 dark:text-white mb-4">Domain breakdown</h2>
+            <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg">
+                These are the domains that ChatGPT consults more often to give recommendations about your and your competitors brand. <span class="font-bold">Creating relevant content on these domains will help improve your brand health.</span>
+            </p>
+            <%= presenter.domain_breakdown_chart %>
+            <% end %>
+        </div>
+
+        <div class="p-8">
+            <% if presenter.domains? %>
+            <h2 class="text-3xl font-semibold text-zinc-950 dark:text-white mb-4">Most influential sources</h2>
+            <p class="mb-6 text-zinc-500 dark:text-zinc-400 text-lg">
+                ChatGPT used these articles to give recommendations about you and your competitors. Analyzinc its tone and content and mimicking their strategies will help you improve your brand health.
+            </p>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400">
+                    <thead class="text-xs text-zinc-800 uppercase bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Source</th>
+                            <th scope="col" class="px-6 py-3">Mentions</th>
+                            <th scope="col" class="px-6 py-3">Brands Mentioned</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% presenter.relevant_content.each do |url, data| %>
+                        <tr class="bg-white border-b dark:bg-zinc-900 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-600">
+                            <td class="px-6 py-4">
+                                <a href="<%= url %>" class="hover:underline" target="_blank"><%= url %></a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= data[:count] %>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= data[:names].join(", ") %>
+                            </td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <% end %>
+        </div>
+        <%
+=end%>
 </article>

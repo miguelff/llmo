@@ -1,21 +1,20 @@
 class ReportsController < ApplicationController
   include ApplicationHelper
 
-  before_action :set_report, only: %i[ show result update destroy retry clone]
+  before_action :set_report, only: %i[ show result destroy retry clone]
 
-  skip_before_action :verify_authenticity_token, only: :update
-  skip_before_action :authenticate_user!, only: [ :update, :result ]
+  skip_before_action :authenticate_user!, only: [ :result ]
 
   # GET /reports/1 or /reports/1.json
   def show
-    if @report.result.present?
+    if @report.completed?
       redirect_to result_report_path(@report)
     end
   end
 
   # GET /reports/1/result
   def result
-    if @report.result.nil?
+    if !@report.completed?
       redirect_to @report, status: :see_other, notice: "Report result is not ready yet"
     elsif current_user.nil?
       render layout: "application"
@@ -43,7 +42,6 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.owner = current_user
-
     respond_to do |format|
       if @report.save
         format.html { redirect_to @report, notice: "Report was successfully created." }
@@ -52,15 +50,6 @@ class ReportsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @report.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /reports/1 or /reports/1.json
-  def update
-    if @report.update_progress(progress_params)
-      render :show, status: :ok, location: @report
-    else
-      render json: @report.errors, status: :unprocessable_entity
     end
   end
 
@@ -78,7 +67,7 @@ class ReportsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_report
       begin
-        @report = Report.includes(:result).find(params.expect(:id))
+        @report = Report.find(params.expect(:id))
       rescue ActiveRecord::RecordNotFound
         redirect_to root_path, status: :see_other, notice: "Report not found"
       end
