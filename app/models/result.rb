@@ -36,6 +36,14 @@ class Result
   #   @relevant_content ||= (brands_and_links.relevant_content if relevant_content?)
   # end
 
+  def product_strengths?
+    product_strengths.present?
+  end
+
+  def product_strengths
+    @product_strengths ||= Result::ProductStrengths.new(competitors: competitors_analysis.result, entities: entities_analysis.result)
+  end
+
   def leaders?(group)
     ranking_analysis.present? &&
     leaders(group).present?
@@ -64,6 +72,10 @@ class Result
 
   def ranking_analysis
     @ranking_analysis ||= analyses.find { |analysis| analysis.type == "Analysis::Ranking" }
+  end
+
+  def competitors_analysis
+    @competitors_analysis ||= analyses.find { |analysis| analysis.type == "Analysis::Competitors" }
   end
 
   def input_classifier_analysis

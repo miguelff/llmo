@@ -49,10 +49,5 @@ module Result::YourDetails
     def best_product_rank
         [ product_rank, other_products_rank ].compact.min
     end
-
-    def any_product_rank
-        if product_rank || other_products_rank
-            [ product_rank, other_products_rank ].compact.max
-        end
-    end
+    alias_method :any_product_rank, :best_product_rank
 end

@@ -25,7 +25,7 @@ class Analysis::Competitors < Analysis::Step
                 result[:competition_scores] = competition_scores
             end
         rescue => e
-            Rails.logger.error("Error performing topic features: #{e.message}")
+            Rails.logger.error("Error performing competitors analysis: #{e.message}")
             self.error = e
         end
 
@@ -129,8 +129,8 @@ class Analysis::Competitors < Analysis::Step
         end
 
         def competitors(topic, entities)
-            # TODO: score competitors take the top 5
-            competitors = entities[(topic["type"] || "brand").pluralize].map { |entity| entity["name"] }.slice(0, 5)
+            entity_type = topic["type"] == "product" ? "products" : "brands"
+            competitors = entities[entity_type].map { |entity| entity["name"] }.slice(0, 5)
             competitors << (topic["type"] == "product" ? " #{topic["brand"]} #{topic["product"]}" : " #{topic["brand"]}")
             competitors.join(", ")
         end

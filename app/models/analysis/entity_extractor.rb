@@ -4,7 +4,7 @@
 # 2. Second pass: Guesses the brands of the products found in the first pass.
 class Analysis::EntityExtractor < Analysis::Step
     def self.cost(queries_count)
-        2* queries_count * Analysis::Step::COSTS[:inference]
+        2 * queries_count * Analysis::Step::COSTS[:inference]
     end
 
     include Analysis::Inference
