@@ -27,7 +27,7 @@ http_interactions:
         Heuer\",\"rank\":5}]\n[/BrandLeaders]\n[ProductLeaders]\n[{\"name\":\"Rolex
         Submariner\",\"rank\":1},{\"name\":\"Patek Philippe Nautilus\",\"rank\":2},{\"name\":\"Omega
         Seamaster\",\"rank\":3},{\"name\":\"Audemars Piguet Royal Oak\",\"rank\":4},{\"name\":\"Tag
-        Heuer Carrera\",\"rank\":5}]\n[/ProductLeaders]\n[Input]\ncasio g-shock\n[/Input]\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        Heuer Carrera\",\"rank\":5}]\n[/ProductLeaders]\n[Input]\npatek philippe calatrava\n[/Input]\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"product_rank":{"type":"number","description":"The
         rank of the product"},"other_products_rank":{"type":"number","description":"The
         best rank of a different product from the same brand"},"brand_rank":{"type":"number","description":"The
@@ -50,7 +50,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Nov 2024 14:34:59 GMT
+      - Fri, 29 Nov 2024 14:39:37 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -62,7 +62,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '438'
+      - '1038'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -72,45 +72,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999556'
+      - '3999554'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 6ms
       X-Request-Id:
-      - req_067104cbc71e5c9d29e48c24c4361a4b
+      - req_caee840ab11f1f9131da1b408546c4d8
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=mkci7OyP_ZTB.do3mtGifQzPk1TJy721tx.a3crDic8-1732890899-1.0.1.1-UWtqOOlCB2s6KH7VwujKBheumyxZfUkyV6.r90aMvWCw8YVVppNye_nspHmkqKDjqfd9pB0.rI_vllMw.QWVyw;
-        path=/; expires=Fri, 29-Nov-24 15:04:59 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=GPLkGF0FOyQlBmruZKs0MW7.3Lzqk9v.Ig5_GzMcsOU-1732891177-1.0.1.1-MbwLUzNaiQoVM9Z1yhAPnOoL3k7AZd3cWcipPgzezMptFo9kM9OpiscexnjbYu1JQf2Esp9aqCMrFfE5xuR5YA;
+        path=/; expires=Fri, 29-Nov-24 15:09:37 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=R76mwrpV_bBDj7vpNAUJ57pRFs5BlATkHVoWdupZGYY-1732890899429-0.0.1.1-604800000;
+      - _cfuvid=4DJt7FQ9IJGNX1q5Zkb.tbcCwIUbX25je.YkFRyDdxs-1732891177601-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8ea35255a8b1e0a2-MAD
+      - 8ea3591caee4e064-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AYwN90ft9hmqZAEH3WB8gqUwdvmYE",
+          "id": "chatcmpl-AYwRcUJ8nnGqQ2GEPktH3C2TNUbQh",
           "object": "chat.completion",
-          "created": 1732890899,
+          "created": 1732891176,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"product_rank\":\"\",\"brand_rank\":\"\",\"other_products_rank\":\"\",\"reason\":\"The input 'casio g-shock' does not match any brands or products in the provided rankings.\"}",
+                "content": "{\"product_rank\":null,\"brand_rank\":3,\"other_products_rank\":2,\"reason\":\"The input 'Patek Philippe Calatrava' is a product from the brand Patek Philippe. The brand rank is 3 based on the Brand Leaders list. The product rank is not available as it is not listed among the Product Leaders. The best rank of other products from the same brand (Patek Philippe) is 2, which is for the 'Patek Philippe Nautilus'.\"}",
                 "refusal": null
               },
               "logprobs": null,
@@ -118,9 +118,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 534,
-            "completion_tokens": 35,
-            "total_tokens": 569,
+            "prompt_tokens": 536,
+            "completion_tokens": 100,
+            "total_tokens": 636,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -134,5 +134,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Fri, 29 Nov 2024 14:34:59 GMT
+  recorded_at: Fri, 29 Nov 2024 14:39:37 GMT
 recorded_with: VCR 6.3.1

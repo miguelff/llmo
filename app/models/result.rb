@@ -47,15 +47,19 @@ class Result
   end
 
   def brand_health
-    @brand_health ||= Result::BrandHealth.new(ranking_analysis.result, input_classifier_analysis.result)
+    @brand_health ||= Result::BrandHealth.new(ranking: ranking_analysis.result, entities: entities_analysis.result, input: input_classifier_analysis.result)
   end
 
   def ranks
-    @ranks ||= Result::Ranks.new(ranking_analysis.result, input_classifier_analysis.result)
+    @ranks ||= Result::Ranks.new(ranking: ranking_analysis.result, entities: entities_analysis.result, input: input_classifier_analysis.result)
   end
 
   def analyses
     @analyses ||= report.analyses
+  end
+
+  def entities_analysis
+    @entities_analysis ||= analyses.find { |analysis| analysis.type == "Analysis::EntityExtractor" }
   end
 
   def ranking_analysis

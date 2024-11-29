@@ -5,16 +5,33 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"[BrandsLeaders]\n[{\"name\":\"Rolex\",\"rank\":1},{\"name\":\"Omega\",\"rank\":2},{\"name\":\"Patek
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an expert in ranking brands and products. You are given two lists:\n*
+        Brand Leaders: A list of top brands with their scores and ranks,\n* Product
+        Leaders: A list of top products with their scores and ranks.\nAnd an input,
+        which contains some brand / product information.\nIn both rankings 1 is highest
+        ranked, 2 second hightest, etc.\nYour task is to determine three ranks of
+        a given entity based on its performance.\nYou need to determine the following
+        ranks:\n* product_rank: If the rank is a product, it''s rank among the product
+        leaders\n* brand_rank: If the rank is a brand, it''s rank among the brand
+        leaders, if it''s a product, the rank of the brand that makes the product\n*
+        other_products_rank: the best rank among the ranks of other products from
+        the same brand, but those products MUST not be the same as the one in the
+        input, subject of the product rank.\nIf there are no other products from the
+        same brand, the rank should be 0. As a consequence, this rank cannot be the
+        same as the product rank.\nAll the results are optional, if there is no information
+        about the input, or there are no products or brands related to it in the ranking,
+        you can leave the rank blank.\nDon''t use any other information than the ones
+        provided in the input.\n"},{"role":"user","content":"[BrandsLeaders]\n[{\"name\":\"Rolex\",\"rank\":1},{\"name\":\"Omega\",\"rank\":2},{\"name\":\"Patek
         Philippe\",\"rank\":3},{\"name\":\"Audemars Piguet\",\"rank\":4},{\"name\":\"Tag
         Heuer\",\"rank\":5}]\n[/BrandLeaders]\n[ProductLeaders]\n[{\"name\":\"Rolex
         Submariner\",\"rank\":1},{\"name\":\"Patek Philippe Nautilus\",\"rank\":2},{\"name\":\"Omega
         Seamaster\",\"rank\":3},{\"name\":\"Audemars Piguet Royal Oak\",\"rank\":4},{\"name\":\"Tag
-        Heuer Carrera\",\"rank\":5}]\n[/ProductLeaders]\n[Input]\n{\"type\":\"product\",\"brand\":\"omega\",\"product\":\"seamaster
-        diver 300m\"}\n[/Input]\n"}],"temperature":0.2,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        Heuer Carrera\",\"rank\":5}]\n[/ProductLeaders]\n[Input]\nomega seamaster
+        diver 300m\n[/Input]\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"product_rank":{"type":"number","description":"The
-        rank of the product"},"other_product_rank":{"type":"number","description":"The
-        rank of different product from the same brand"},"brand_rank":{"type":"number","description":"The
+        rank of the product"},"other_products_rank":{"type":"number","description":"The
+        best rank of a different product from the same brand"},"brand_rank":{"type":"number","description":"The
         rank of the brand"},"reason":{"type":"string","description":"A brief explanation
         for your ranking"}},"required":["reason"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
     headers:
@@ -34,7 +51,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 28 Nov 2024 16:36:37 GMT
+      - Fri, 29 Nov 2024 14:35:22 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -46,7 +63,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '641'
+      - '809'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -56,45 +73,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999854'
+      - '3999552'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 2ms
+      - 6ms
       X-Request-Id:
-      - req_c9f1b80c4315be245c5d68846466a672
+      - req_4ac4693c3e4b39c8ab16aea097fb190b
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=FDvL_halqDVlrsKsjWxZMw.Iz7vD9gSrJjLGV3UrN5A-1732811797-1.0.1.1-anY_z7e69yTjxBY2OiXin_iEAXPq9V5.v397MTC8CTFt4zQGJnqwiMDW5z41i_s85bhJcuXrJ2P5QPBJ2tpVYw;
-        path=/; expires=Thu, 28-Nov-24 17:06:37 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=a2ARPvVVw7YJ8uWJUjlXblYTxIQTudYltuQQeVGl4aA-1732890922-1.0.1.1-_R9HP_dTUFPai.GE8ilYQVI5apcheTLYRXr__nUBNMCNntqfHHWqXPLl9f_7wy0GMEvYH3_ZHLR6qwT.3vDkGg;
+        path=/; expires=Fri, 29-Nov-24 15:05:22 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=zfU2q1i5fpudDPt2Ir7RV2HxvxGnjVXXSw_SPCHtOPk-1732811797168-0.0.1.1-604800000;
+      - _cfuvid=1QIFKhgHx_SqMnEvsRphv687tnDYbmiyzh95__qFOoM-1732890922386-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e9bc71f687dcc35-MAD
+      - 8ea352e30ded3153-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AYbnIjj1VdrnWgmi7LeLYCmhdor5j",
+          "id": "chatcmpl-AYwNVJcSwb7PCfYlu9uV4Tyy0IfRL",
           "object": "chat.completion",
-          "created": 1732811796,
+          "created": 1732890921,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"product_rank\":3,\"other_product_rank\":1,\"brand_rank\":2,\"reason\":\"The Omega Seamaster Diver 300M is ranked 3rd among products, while the brand Omega is ranked 2nd overall. The Seamaster is a well-known model, but it does not surpass the top-ranked Rolex Submariner.\"}",
+                "content": "{\"product_rank\":3,\"brand_rank\":2,\"other_products_rank\":0,\"reason\":\"The input refers to the Omega Seamaster Diver 300m, which is a product of the Omega brand. The product rank is 3 based on the Product Leaders list. The brand rank for Omega is 2 based on the Brand Leaders list. There are no other products listed under the Omega brand in the Product Leaders list, hence the other_products_rank is 0.\"}",
                 "refusal": null
               },
               "logprobs": null,
@@ -102,9 +119,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 272,
-            "completion_tokens": 69,
-            "total_tokens": 341,
+            "prompt_tokens": 536,
+            "completion_tokens": 95,
+            "total_tokens": 631,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -118,5 +135,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Thu, 28 Nov 2024 16:36:37 GMT
+  recorded_at: Fri, 29 Nov 2024 14:35:22 GMT
 recorded_with: VCR 6.3.1

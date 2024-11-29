@@ -92,7 +92,7 @@ class ProcessReportJob < ApplicationJob
     competitors = competitors_analysis.result
 
     report.update_progress(message: "Ranking results")
-    ranking = Analysis::Ranking.new(report: report, entities: entities, input: topic)
+    ranking = Analysis::Ranking.new(report: report, entities: entities)
     unless ranking.perform_and_save
       Rails.logger.error "[Report #{report.id}] Error ranking results: #{ranking.error}"
       report.failed!
