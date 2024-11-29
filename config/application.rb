@@ -21,6 +21,8 @@ module Web
 
     config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info").to_sym
 
+    config.x.questions_count = ENV.fetch("QUESTIONS_COUNT", 30).to_i
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

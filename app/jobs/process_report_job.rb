@@ -3,11 +3,9 @@ require "open3"
 class ProcessReportJob < ApplicationJob
   queue_as :default
 
-  DEFAULT_QUESTIONS_COUNT = Rails.env.development?  ? 2 : 30
   MIN_UPDATE_INTERVAL = 2.seconds
 
-
-  def perform(report, questions_count: DEFAULT_QUESTIONS_COUNT)
+  def perform(report, questions_count: Rails.configuration.x.questions_count)
     total_cost = Analysis::Step.descendants.map { |step| step.cost(questions_count) }.sum
     remaining_cost = total_cost
     last_updated_at = Time.now

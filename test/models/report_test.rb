@@ -14,6 +14,5 @@ class ReportTest < ActiveSupport::TestCase
         report.complete_analysis
         assert report.completed?, "Report should be completed"
         assert_equal 100, report.progress_percent
-        assert_equal "Analysis completed", report.progress_details.last
     end
 end

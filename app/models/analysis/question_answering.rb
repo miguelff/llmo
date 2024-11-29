@@ -5,6 +5,7 @@ class Analysis::QuestionAnswering < Analysis::Step
             Analysis::Step::COSTS[:search] + # bing for the search
             (5 * (Analysis::Step::COSTS[:download] + Analysis::Step::COSTS[:inference])) # download and summarize each of the 5 search results
             Analysis::Step::COSTS[:inference] + # for providing search results back to the model and getting the final answer
+            Analysis::Step::COSTS[:inference] # for the final answer
 
         queries_count * per_answer_cost
     end

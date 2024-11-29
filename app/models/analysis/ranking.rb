@@ -141,7 +141,10 @@ PROMPT
         items = entities.with_indifferent_access[_type]
         return [] if items.blank?
 
-        sorted = items.map { |item| { name: item[:name], score: item["positions"].map { |position| 1.0 / position rescue 0 }.sum } }.sort_by { |item| -item[:score] }
+        sorted = items.reject { |item| item[:name].blank? }
+                      .map { |item| { name: item[:name], score: item["positions"].map { |position| 1.0 / position rescue 0 }.sum } }
+                      .sort_by { |item| -item[:score] }
+
         max = sorted.first[:score]
         i = 0
         sorted.map { |item| item.merge(score: (50 + (item[:score] / max * 50)).round(2), rank: i += 1) }

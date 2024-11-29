@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an assistant specialized in identifying brands associated with products.
+        You are given a list of products,\nand a set of already idenfied brands.\nTask:\nGiven
+        the names of products, identify the brands that manufactures or owns the product.
+        If the brand is on the list of already identified brands,\nuse it''s exact
+        name. If the brand is not on the list infer it from the product name.\nInstructions:\n-
+        Return the brand as an entity with the following attributes:\n- type: ''brand''\n-
+        name: the name of the brand (e.g., ''Apple'', ''Adidas'', ''Rolex'')\n- products:
+        the names of the products associated with the brand, exactly as they appear
+        in the input\n- If the brand cannot be determined, do not return any entity.\nOutput
+        the entities using the specified schema.\n"},{"role":"user","content":"Extract
+        the brands:\nproducts: Kia Telluride\n* Toyota Camry Hybrid\n* Honda Odyssey\n*
+        Toyota Highlander Hybrid\n* Hyundai Tucson\n\u003cseparator\u003e\nalready
+        known brands: Kia\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"brands":{"type":"array","items":{"$ref":"#/$defs/entity"},"description":"Brands
+        found associated with the products"}},"required":["brands"],"additionalProperties":false,"strict":true,"$defs":{"product":{"type":"object","properties":{"name":{"type":"string","description":"The
+        name of the product, exactly as it appears in the input"}},"required":["name"],"additionalProperties":false,"strict":true},"brand":{"type":"object","properties":{"name":{"type":"string","description":"The
+        name of the brand associated with the product"},"products":{"type":"array","items":{"$ref":"#/$defs/product"},"description":"Products
+        associated with the brand"}},"required":["name","products"],"additionalProperties":false,"strict":true}}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 29 Nov 2024 10:41:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '590'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999750'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 3ms
+      X-Request-Id:
+      - req_cc494b5a510183d2a60b06f13007e0a3
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=64RARCB98IC2n5awFx8yj.ccK7MKn6_CnJxTqs7mLQo-1732876869-1.0.1.1-ein4lyZsjcQ6Z6ucJQOw8ICw7Uhu3lHKUomLNjCSNvmQE5mPAOTeDTLtqdQzJ7kPprhpRt497Ncrqzbp0XfKXg;
+        path=/; expires=Fri, 29-Nov-24 11:11:09 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=yIX8YmTo01ur6_b6ZVXO1QmNrPSYI5GGfL3jqPvKaD4-1732876869038-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8ea1fbcabfe6e0a2-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AYsiqPRb5kG1ayvd2X6vQYTbwgmtl",
+          "object": "chat.completion",
+          "created": 1732876868,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"brands\":[{\"type\":\"brand\",\"name\":\"Kia\",\"products\":[{\"name\":\"Kia Telluride\"}]},{\"type\":\"brand\",\"name\":\"Toyota\",\"products\":[{\"name\":\"Toyota Camry Hybrid\"},{\"name\":\"Toyota Highlander Hybrid\"}]},{\"type\":\"brand\",\"name\":\"Honda\",\"products\":[{\"name\":\"Honda Odyssey\"}]},{\"type\":\"brand\",\"name\":\"Hyundai\",\"products\":[{\"name\":\"Hyundai Tucson\"}]}]}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 369,
+            "completion_tokens": 91,
+            "total_tokens": 460,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Fri, 29 Nov 2024 10:41:09 GMT
+recorded_with: VCR 6.3.1

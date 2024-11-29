@@ -4,6 +4,7 @@ class Analysis::RankingTest < ActiveSupport::TestCase
     def analysis(entities:, input: {}, query: "items")
         Analysis::Ranking.new(entities: entities, input: input, report: Report.new(query: query, owner: users(:jane)))
     end
+
     WATCHES = {
         "products" => [
             { "name" => "Rolex Submariner", "positions" => [ 1, 2, 1 ] },
@@ -27,6 +28,17 @@ class Analysis::RankingTest < ActiveSupport::TestCase
             assert analysis.perform_and_save
             assert_equal(
             { "brands"=>[ { "name"=>"Rolex", "score"=>100.0, "rank"=>1 }, { "name"=>"Omega", "score"=>83.33, "rank"=>2 }, { "name"=>"Patek Philippe", "score"=>76.67, "rank"=>3 }, { "name"=>"Audemars Piguet", "score"=>65.0, "rank"=>4 }, { "name"=>"Tag Heuer", "score"=>62.0, "rank"=>5 } ], "products"=>[ { "name"=>"Rolex Submariner", "score"=>100.0, "rank"=>1 }, { "name"=>"Patek Philippe Nautilus", "score"=>83.33, "rank"=>2 }, { "name"=>"Omega Seamaster", "score"=>76.67, "rank"=>3 }, { "name"=>"Audemars Piguet Royal Oak", "score"=>65.0, "rank"=>4 }, { "name"=>"Tag Heuer Carrera", "score"=>62.0, "rank"=>5 } ], "you"=>{ "product_rank"=>3, "other_product_rank"=>1, "brand_rank"=>2, "reason"=>"The Omega Seamaster Diver 300M is ranked 3rd among products, while the brand Omega is ranked 2nd overall. The Seamaster is a well-known model, but it does not surpass the top-ranked Rolex Submariner." } },
+              analysis.reload.result
+            )
+        end
+    end
+
+    test "brand is not there" do
+        VCR.use_cassette("analysis/ranking/brand_not_there") do
+        analysis = analysis(entities: WATCHES, input: { "type" => "product", "brand" => "casio", "product" => "g-shock" })
+            assert analysis.perform_and_save
+            assert_equal(
+              { "brands"=>[ { "name"=>"Rolex", "score"=>100.0, "rank"=>1 }, { "name"=>"Omega", "score"=>83.33, "rank"=>2 }, { "name"=>"Patek Philippe", "score"=>76.67, "rank"=>3 }, { "name"=>"Audemars Piguet", "score"=>65.0, "rank"=>4 }, { "name"=>"Tag Heuer", "score"=>62.0, "rank"=>5 } ], "products"=>[ { "name"=>"Rolex Submariner", "score"=>100.0, "rank"=>1 }, { "name"=>"Patek Philippe Nautilus", "score"=>83.33, "rank"=>2 }, { "name"=>"Omega Seamaster", "score"=>76.67, "rank"=>3 }, { "name"=>"Audemars Piguet Royal Oak", "score"=>65.0, "rank"=>4 }, { "name"=>"Tag Heuer Carrera", "score"=>62.0, "rank"=>5 } ], "you"=>{ "product_rank"=>nil, "other_product_rank"=>nil, "brand_rank"=>nil, "reason"=>"Casio is not listed among the top brands or products in the provided rankings, indicating it is not a leader in the luxury watch market." } },
               analysis.reload.result
             )
         end

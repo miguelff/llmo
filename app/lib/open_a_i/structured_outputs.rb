@@ -171,18 +171,4 @@ module OpenAI
       end
     end
   end
-
-  # Example usage: Define a schema for math reasoning
-  class MathReasoning < StructuredOutputs::Schema
-    def initialize
-      super do
-        define :step do
-          string :explanation
-          string :output
-        end
-        array :steps, items: ref(:step)
-        string :final_answer
-      end
-    end
-  end
 end

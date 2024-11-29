@@ -30,6 +30,7 @@ class Report < ApplicationRecord
     has_one :input_classifier_analysis, dependent: :destroy, class_name: "Analysis::InputClassifier"
     has_one :entity_extractor_analysis, dependent: :destroy, class_name: "Analysis::EntityExtractor"
     has_one :competitors_analysis, dependent: :destroy, class_name: "Analysis::Competitors"
+    has_one :ranking_analysis, dependent: :destroy, class_name: "Analysis::Ranking"
 
     has_many :analyses, dependent: :destroy, class_name: "Analysis::Step"
 
@@ -39,23 +40,20 @@ class Report < ApplicationRecord
     scope :owned_by, ->(user) { where(owner: user) }
 
     def complete_analysis
-        update_progress(percentage: 100, message: "Analysis completed")
+        update(status: :completed, progress_percent: 100)
     end
 
     def update_progress(params)
       percentage = params[:percentage]
       message = params[:message]
 
-      attrs = { progress_percent:  percentage }
+      attrs = {}
+      attrs[:progress_percent] =  percentage if percentage.present?
 
-      if params[:message].present?
+      if message.present?
         details = self.progress_details || []
         details << message
         attrs[:progress_details] = details
-      end
-
-      if percentage == 100
-        attrs[:status] = :completed
       end
 
       update(attrs)
