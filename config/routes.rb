@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount MissionControl::Jobs::Engine, at: "/job_status"
+
   devise_for :users
   get "home/index"
   resources :reports, except: [ :index, :edit ] do

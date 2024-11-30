@@ -88,3 +88,5 @@ end
 group :production do
  gem "pg"
 end
+
+gem "mission_control-jobs", "~> 0.6.0"

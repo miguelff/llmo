@@ -22,6 +22,7 @@ module Web
     config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info").to_sym
 
     config.x.questions_count = ENV.fetch("QUESTIONS_COUNT", 30).to_i
+    config.mission_control.jobs.base_controller_class = "AdminController"
 
     # Configuration for the application, engines, and railties goes here.
     #
