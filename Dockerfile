@@ -25,13 +25,14 @@ FROM base AS build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential curl libpq-dev node-gyp pkg-config python-is-python3
 
 # Install Node.js
-ENV VOLTA_HOME=/volta
-ENV PATH=$VOLTA_HOME/bin:$PATH
-RUN curl https://get.volta.sh | bash &&\
-    volta install node@lts yarn@latest
+ARG NODE_VERSION=20.11.0
+ENV PATH=/usr/local/node/bin:$PATH
+RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
+    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
+    rm -rf /tmp/node-build-master
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -52,18 +53,14 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN npm install flowbite
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
+
 # Final stage for app image
 FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libsqlite3-0 && \
+    apt-get install --no-install-recommends -y curl libsqlite3-0 postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# Copy node and yarn
-ENV VOLTA_HOME=/volta
-COPY --from=build $VOLTA_HOME $VOLTA_HOME
-ENV PATH=$VOLTA_HOME/bin:$PATH
 
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
@@ -72,18 +69,11 @@ COPY --from=build /rails /rails
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    mkdir /data && \
-    chown -R 1000:1000 db log storage tmp /data
+    chown -R 1000:1000 db log storage tmp
 USER 1000:1000
-
-# Deployment options
-ENV DATABASE_URL="sqlite3:///data/production.sqlite3" \
-    SOLID_QUEUE_IN_PUMA="true"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 80
-VOLUME /data
-CMD ["bundle", "exec", "thrust", "./bin/rails", "server"]
