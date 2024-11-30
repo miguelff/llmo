@@ -261,6 +261,7 @@ GEM
     parser (3.3.5.1)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
     pragmatic_segmenter (0.3.24)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
@@ -479,6 +480,7 @@ DEPENDENCIES
   langchainrb (~> 0.19.1)
   letter_opener (~> 1.10)
   memory_profiler
+  pg
   propshaft
   pry
   pry-byebug

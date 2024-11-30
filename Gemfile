@@ -84,3 +84,7 @@ group :test do
   gem "webmock", "~> 3.24"
   gem "vcr", "~> 6.3"
 end
+
+group :production do
+ gem "pg"
+end
