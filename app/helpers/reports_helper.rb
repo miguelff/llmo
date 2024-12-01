@@ -39,7 +39,7 @@ module ReportsHelper
             scores.map.with_index do |(key, value), index|
                 key_id = key.parameterize
                 content_tag(:div, class: "flex flex-col #{'hidden' unless index == 0}", id: key_id, role: "tabpanel", aria: { labelledby: "#{key_id}-tab" }) do
-                    value.reverse.map.with_index do |score, brand_index|
+                    value.map.with_index do |score, brand_index|
                         competitor = brand_index == 0 ? "#{score[:competitor]} (You)" : score[:competitor]
                         content_tag(:div, class: "grid grid-cols-1 lg:grid-cols-4 py-2 min-h-24 border-b border-gray-200 dark:border-gray-700") do
                             content_tag(:div, score_bar(competitor, score[:score].to_i), class: "col-span-1 px-4") +

@@ -14,7 +14,9 @@ class Result::Strengths
 
   def per_attribute_scores
     @per_attribute_scores ||= {}.tap do |index|
-      @competitors["competition_scores"].each do |competitor|
+      my_scores, other_scores = @competitors["competition_scores"].partition { |scores| scores["name"] == topic_name(@input) }
+
+      (my_scores + other_scores).each do |competitor|
         competitor["scores"].each do |score|
           attribute = score["attribute"]
           index[attribute] ||= []
