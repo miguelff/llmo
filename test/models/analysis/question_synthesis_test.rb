@@ -16,7 +16,11 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
       report = reports(:safe_cars)
       analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 20, language: "spa")
       assert analysis.perform_and_save
-      assert_equal 10, analysis.reload.result.count
+
+      questions = analysis.reload.result
+      assert_equal 20, questions.count
+      assert_equal 10, questions.uniq.count
+      assert questions.group_by(&:to_s).values.all? { |qs| qs.length==2 }, "All questions should be repeated twice"
     end
   end
 

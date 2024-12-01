@@ -36,7 +36,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 01 Dec 2024 10:01:25 GMT
+      - Sun, 01 Dec 2024 11:21:41 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -48,7 +48,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '888'
+      - '827'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -58,34 +58,34 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999792'
+      - '3999791'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 3ms
       X-Request-Id:
-      - req_80608ca85b9e7ead2c9ecae69d04df76
+      - req_b8cd6480e4bcd0b121d713cc236ddb8f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=NUBPEc2yeEXCQH7SHj2HbaT049jKBJi7lMnwPzdBt04-1733047285-1.0.1.1-FNAyxFGUgNT.jKbjVVCV8Nzi1sHX8vMKceL37TAEQXhmLR9CPXKQQj.6vZ8zrT10BOOs.JcSG6mJIpC9b2SSsw;
-        path=/; expires=Sun, 01-Dec-24 10:31:25 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=8pMI_z63re3carAYnY1xdt9TGNbSKBG.yJYxEm4XPu0-1733052101-1.0.1.1-l1mH0hCmKXAtr8kv.XneZ.ePRKLqdSmvWxG7lNy8CdxqKNjNfhez_1HPXFkfIIs7puCIhnEFsFZ4zfaqWOCYaw;
+        path=/; expires=Sun, 01-Dec-24 11:51:41 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=q0wM0e58aqhyADBJOQzYZ3tWIRaiD6pfozDsywiPJyw-1733047285953-0.0.1.1-604800000;
+      - _cfuvid=vj2PMah55r0kTXJATQ8SAhtTWnj.EdvldWs2aH.m2J0-1733052101747-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8eb23c59cb8ccc4b-MAD
+      - 8eb2b1edbed81bae-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1BWmIzVmtjY0pxNHMxSHFVYmxDT0huN1BNOVVGWSIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMzA0NzI4NSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJXZWxjaGUgQXV0b3MgZ2VsdGVuIGFscyBkaWUgc2ljaGVyc3RlbiBmw7xyIEZyYXVlbiDDvGJlciA0NSBKYWhyZT9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBBdXRvbW9kZWxsZSBoYWJlbiBkaWUgYmVzdGVuIFNpY2hlcmhlaXRzYmV3ZXJ0dW5nZW4gZsO8ciBGYWhyZXJpbm5lbiBpbiBkaWVzZXIgQWx0ZXJzZ3J1cHBlP1wifSx7XCJxdWVzdGlvblwiOlwiV2VsY2hlIEZhaHJ6ZXVnZSB3ZXJkZW4gdm9uIGFuZGVyZW4gRnJhdWVuIGluIGRpZXNlciBBbHRlcnNncnVwcGUgYWxzIGJlc29uZGVycyBzaWNoZXIgZW1wZm9obGVuP1wifSx7XCJxdWVzdGlvblwiOlwiV2VsY2hlIEF1dG9zIGhhYmVuIHNpY2ggaW4gVGVzdHMgYWxzIGJlc29uZGVycyB1bmZhbGxyZXNpc3RlbnQgZXJ3aWVzZW4gdW5kIHNpbmQgYmVpIEZyYXVlbiDDvGJlciA0NSBiZWxpZWJ0P1wifSx7XCJxdWVzdGlvblwiOlwiV2VsY2hlIE1hcmtlbiBzaW5kIGJla2FubnQgZsO8ciBpaHJlIFNpY2hlcmhlaXRzc3RhbmRhcmRzIHVuZCB3ZXJkZW4gdm9uIEZyYXVlbiDDvGJlciA0NSBiZXZvcnp1Z3Q/XCJ9XX0iLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiAyNDQsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxMDgsCiAgICAidG90YWxfdG9rZW5zIjogMzUyLAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzA3MDViZjg3YzAiCn0K
-  recorded_at: Sun, 01 Dec 2024 10:01:25 GMT
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWmNKQm5SeGNiMGlFdXNTMWJ1dWVrUVhxa0NSayIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMzA1MjEwMSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJXZWxjaGUgQXV0b3MgZ2VsdGVuIGFscyBkaWUgc2ljaGVyc3RlbiBmw7xyIEZyYXVlbiDDvGJlciA0NSBKYWhyZT9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBBdXRvbW9kZWxsZSBoYWJlbiBkaWUgYmVzdGVuIFNpY2hlcmhlaXRzYmV3ZXJ0dW5nZW4gaW4gZGVyIFJlZ2lvbj9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBGYWhyemV1Z2Ugd2VyZGVuIHZvbiBhbmRlcmVuIEZyYXVlbiBpbiBkaWVzZXIgQWx0ZXJzZ3J1cHBlIGFscyBiZXNvbmRlcnMgc2ljaGVyIGVtcGZvaGxlbj9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBNYXJrZW4gc2luZCBiZWthbm50IGbDvHIgaWhyZSBTaWNoZXJoZWl0c3N0YW5kYXJkcyB1bmQgLXRlY2hub2xvZ2llbj9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBBdXRvcyBoYWJlbiBpbiBkZW4gbGV0enRlbiBKYWhyZW4gZGllIGjDtmNoc3RlbiBTaWNoZXJoZWl0c2F1c3plaWNobnVuZ2VuIGVyaGFsdGVuP1wifV19IiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogMjQ0LAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogOTAsCiAgICAidG90YWxfdG9rZW5zIjogMzM0LAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzA3MDViZjg3YzAiCn0K
+  recorded_at: Sun, 01 Dec 2024 11:21:41 GMT
 recorded_with: VCR 6.3.1

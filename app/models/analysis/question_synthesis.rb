@@ -34,13 +34,21 @@ class Analysis::QuestionSynthesis < Analysis::Step
     def perform
         res = chat(user_message)
         unless res.refusal.present?
-            self.result = res.parsed.questions.slice(0, self.questions_count).map { |question| question.with_indifferent_access[:question] }
+            self.result = extrapolate_questions(res.parsed.questions)
         else
             self.error = "Question synthesis refused: #{res.refusal}"
             Rails.logger.error(self.error)
         end
 
         true
+    end
+
+    def extrapolate_questions(questions)
+        [].tap do |res|
+            self.questions_count.times do |i|
+                res << questions[i % questions.count]["question"]
+            end
+        end
     end
 
     def user_message

@@ -4,7 +4,7 @@
 # 2. Second pass: Guesses the brands of the products found in the first pass.
 class Analysis::EntityExtractor < Analysis::Step
     def self.cost(queries_count)
-        2 * queries_count * Analysis::Step::COSTS[:inference]
+        queries_count * Analysis::Step::COSTS[:inference] + 1
     end
 
     include Analysis::Inference
@@ -12,10 +12,19 @@ class Analysis::EntityExtractor < Analysis::Step
     attribute :answers, :json, default: []
     validates :answers, length: { minimum: 1 }
 
+    attr_accessor :entities_extracted_callback
+
+    def with_entities_extracted_callback(callback)
+        self.entities_extracted_callback = callback
+        self
+    end
+
     def perform
         first_pass_entities = self.first_pass
         second_pass_entities = self.second_pass(first_pass_entities)
         result = self.class.merge_passes(first_pass_entities, second_pass_entities)
+
+        self.entities_extracted_callback&.call(result)
         self.result = result
         true
     end
@@ -109,7 +118,7 @@ class Analysis::EntityExtractor < Analysis::Step
     }
 
     def first_pass
-        entities = self.answers.to_a.map do |pair|
+        entities = Concurrent::Promises.zip_futures_over(self.answers.to_a) do |pair|
             question = pair["question"]
             answer = pair["answer"]
 
@@ -122,12 +131,14 @@ class Analysis::EntityExtractor < Analysis::Step
             parameters[:response_format] = FIRST_PASS_OUTPUT_SCHEMA
 
             res = client.parse(**parameters)
+            self.entities_extracted_callback&.call(res)
+
             if res.refusal.present?
                 { error: res.refusal, messages: messages }
             else
                 { ok: res.parsed }
             end
-        end
+        end.value!
         self.class.aggregate_first_pass(entities)
     end
 
@@ -260,6 +271,7 @@ class Analysis::EntityExtractor < Analysis::Step
         parameters[:response_format] = SECOND_PASS_OUTPUT_SCHEMA
 
         res = client.parse(**parameters)
+        self.entities_extracted_callback&.call(res.parsed)
 
         if res.refusal.present?
             Rails.logger.error("Entity extraction failed for second pass: #{res.refusal}")
@@ -278,29 +290,4 @@ class Analysis::EntityExtractor < Analysis::Step
             already known brands: #{already_known_brands.join("\n * ")}
         EOF
     end
-
-  # def perform
-  #     first_pass_entities = self.first_pass
-  #     first_pass_entitites = self.class.aggregate(entities)
-
-  #     messages = [
-  #         { role: :system, content: SECOND_PASS_SYSTEM_PROMPTS[self.language.to_sym] || SECOND_PASS_SYSTEM_PROMPTS[Analysis::DEFAULT_LANGUAGE] },
-  #         { role: :user, content: second_pass_user_prompt(first_pass_entitites) }
-  #     ]
-
-  #     parameters = self.parameters(messages)
-  #     parameters[:response_format] = self.output_schema
-
-
-  #     res = client.parse(**parameters)
-  #     brand_entities = if res.refusal.present?
-  #         { error: res.refusal, messages: messages }
-  #     else
-  #         { ok: res.parsed }
-  #     end
-
-
-  #     self.result = entities
-  #     true
-  # end
 end
