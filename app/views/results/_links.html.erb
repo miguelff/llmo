@@ -48,10 +48,10 @@
                         <%= attrs[:hits] %>
                     </td>
                     <td class="py-4 px-6">
-                        <%= attrs[:brands].join(", ") %>
+                        <%= attrs[:brands].any? ? attrs[:brands].join(", ") : "N/A" %>
                     </td>
                     <td class="py-4 px-6">
-                        <%= attrs[:products].join(", ") %>
+                        <%= attrs[:products].any? ? attrs[:products].join(", ") : "N/A" %>
                     </td>
                 </tr>
                 <% end %>
