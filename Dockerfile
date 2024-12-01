@@ -1,6 +1,5 @@
 # syntax = docker/dockerfile:1
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.2.5
 FROM ruby:$RUBY_VERSION-slim AS base
 
@@ -33,6 +32,8 @@ ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
     rm -rf /tmp/node-build-master
+
+RUN echo $(git rev-parse HEAD) > REVISION
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
