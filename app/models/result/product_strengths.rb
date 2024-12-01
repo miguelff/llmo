@@ -32,6 +32,7 @@ class Result::ProductStrengths
         my_series.each { |s| s[:name] = "You" }
         series = my_series + other_series
         series.reverse!
+        colors = [ "#39ff14", "#a855f7", "#d946ef", "#c026d3", "#9333ea", "#7e22ce", "#6b21a8", "#581c87", "#4c1d95", "#3b0764", "#2d0f4a" ][0...series.length]
 
         series = scale(series)
 
@@ -39,7 +40,7 @@ class Result::ProductStrengths
             chart: {
                 type: "radar"
             },
-            colors: [ "#39ff14", "#a855f7", "#d946ef", "#c026d3", "#9333ea", "#7e22ce", "#6b21a8", "#581c87", "#4c1d95", "#3b0764", "#2d0f4a" ],
+            colors: colors.reverse,
             series: series,
             labels: labels,
               xaxis: {
