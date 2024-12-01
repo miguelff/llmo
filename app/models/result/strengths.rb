@@ -1,4 +1,4 @@
-class Result::ProductStrengths
+class Result::Strengths
   include ChartsHelper
   include Analysis::Helpers
 
@@ -12,8 +12,32 @@ class Result::ProductStrengths
     @competitors["overarching_term"]
   end
 
-  def attributes
-    @competitors["term_attributes"].map { |attr| { name: attr["name"], definition: attr["definition"] } }
+  def per_attribute_scores
+    @per_attribute_scores ||= {}.tap do |index|
+      @competitors["competition_scores"].each do |competitor|
+        competitor["scores"].each do |score|
+          attribute = score["attribute"]
+          index[attribute] ||= []
+          index[attribute] << { score: score["score"], reason: score["reason"], competitor: competitor["name"] }
+        end
+      end
+    end
+  end
+
+  def attribute_comparision(attribute)
+    @attribute_comparision ||= begin
+      scores = @competitors["competition_scores"].find { |scores| scores["name"] == topic_name(@input) }
+      res = scores["scores"].find { |score| score["attribute"].downcase.strip == attribute.downcase.strip }
+      res
+    end
+  end
+
+  def your_attributes
+    @your_attributes ||= begin
+      scores = @competitors["competition_scores"].find { |scores| scores["name"] == topic_name(@input) }
+      res = scores["scores"]
+      res
+    end
   end
 
   def chart

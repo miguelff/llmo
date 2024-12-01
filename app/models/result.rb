@@ -41,7 +41,7 @@ class Result
   end
 
   def product_strengths
-    @product_strengths ||= Result::ProductStrengths.new(competitors: competitors_analysis.result, entities: entities_analysis.result, input: input_classifier_analysis.result)
+    @product_strengths ||= Result::Strengths.new(competitors: competitors_analysis.result, entities: entities_analysis.result, input: input_classifier_analysis.result)
   end
 
   def leaders?(group)
