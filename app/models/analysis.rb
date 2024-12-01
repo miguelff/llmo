@@ -8,7 +8,7 @@ module Analysis
     spa: "es",
     deu: "de",
     fra: "fr"
-  }
+  }.with_indifferent_access.freeze
 
   DEFAULT_LANGUAGE = :eng
 
@@ -19,12 +19,12 @@ module Analysis
     spa: "Spanish",
     deu: "German",
     fra: "French"
-  }
+  }.with_indifferent_access.freeze
 
   LANGUAGE_NAMES_IN_LANGUAGE = {
     eng: "English",
     spa: "Español",
     deu: "Deutsch",
     fra: "Français"
-  }
+  }.with_indifferent_access.freeze
 end
