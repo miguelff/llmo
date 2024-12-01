@@ -78,7 +78,7 @@ class Analysis::Competitors < Analysis::Step
 
     class CompetitionScores
         include Analysis::Inference
-
+        include Analysis::Helpers
         attr_accessor :overarching_term, :term_attributes, :entities, :topic, :answers, :language, :provider, :model, :temperature
 
         system <<-EOF.promptize
@@ -131,7 +131,7 @@ class Analysis::Competitors < Analysis::Step
         def competitors(topic, entities)
             entity_type = topic["type"] == "product" ? "products" : "brands"
             competitors = entities[entity_type].map { |entity| entity["name"] }.slice(0, 5)
-            competitors << (topic["type"] == "product" ? " #{topic["brand"]} #{topic["product"]}" : " #{topic["brand"]}")
+            competitors << topic_name(topic)
             competitors.join(", ")
         end
     end

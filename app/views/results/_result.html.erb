@@ -26,11 +26,8 @@
                     Your health is <span class="font-extrabold drop-shadow-lg text-primary-600"><%= health.indicator %></span>
                 </h1>
 
-                <% logo = logo_image(health.your_brand, css_classes: "object-contain") %>
+                <% logo = logo_image(@report.brand_info, css_classes: "object-contain") %>
                 <h2 class="max-w-2xl mb-4 text-2xl tracking-tight leading-none md:text-3xl xl:text-4xl dark:text-white flex items-center">
-                    <% if logo.present? %>
-                    <div class="p-2 flex bg-white border-zinc-200 border-1 justify-center items-center min-h-16 min-w-16 max-h-16 max-w-16 overflow-hidden mr-4 rounded-md"><%= logo %></div>
-                    <% end %>
                     <div>
                         <%= health.indicator_remarks %>
                     </div>

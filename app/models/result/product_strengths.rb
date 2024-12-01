@@ -1,9 +1,11 @@
 class Result::ProductStrengths
-include ChartsHelper
+  include ChartsHelper
+  include Analysis::Helpers
 
-  def initialize(competitors:, entities:)
+  def initialize(competitors:, entities:, input:)
     @competitors = competitors
     @entities = entities
+    @input = input
   end
 
   def overarching_term
@@ -24,6 +26,12 @@ include ChartsHelper
             end
             { name: scores["name"], data: data }
         end
+        my_name = topic_name(@input)
+
+        my_series, other_series = series.partition { |s| s[:name] == my_name }
+        my_series.each { |s| s[:name] = "You" }
+        series = my_series + other_series
+        series.reverse!
 
         series = scale(series)
 
@@ -31,6 +39,7 @@ include ChartsHelper
             chart: {
                 type: "radar"
             },
+            colors: [ "#39ff14", "#a855f7", "#d946ef", "#c026d3", "#9333ea", "#7e22ce", "#6b21a8", "#581c87", "#4c1d95", "#3b0764", "#2d0f4a" ],
             series: series,
             labels: labels,
               xaxis: {
