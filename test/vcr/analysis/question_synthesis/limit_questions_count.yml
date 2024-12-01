@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"If I
+        wanted to find out the top-rated products or services in a category without
+        mentioning any product, brand or service specifically, which questions should
+        I ask?\nThe question should be oriented towards seeking the best products
+        in this category in a first-shot, not the best features. do not ask about
+        features. If the question was answered,\nin a phase later, it should provide
+        me with products, brands or services.\nTo do this, I will provide you with:\n*
+        The category\n* A description of the ideal customer, so you can narrow the
+        questions to seek the best alternatives for them.\n* The language in which
+        you should formulate the questions\n"},{"role":"user","content":"response
+        language: Spanish\ncategory: Safe cars\nideal customer: Women 45+ from the
+        region of any\nGenerate 10 questions\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"$ref":"#/$defs/question"},"description":"A
+        collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{"question":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true}}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 01 Dec 2024 10:03:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '1563'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999791'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 3ms
+      X-Request-Id:
+      - req_eef18bcefc2a060c03e7fa731908ff31
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=MwNnGj_d39E5wbxO9SA5IXEZF00Vu76ZN6kvvCpigRw-1733047410-1.0.1.1-E5ouqtPAtxUeZPw2Vhs_VJJtIj_HFODZKwZMNxN6MhCospYVdgW3jdB1n0efqo1Q9CHXpGOmH4Xht4bKzR0fyw;
+        path=/; expires=Sun, 01-Dec-24 10:33:30 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=56AnTg5aWAZP7Rjt92ZqtgxR3a4b.IgFY4wv8cKd8BQ-1733047410493-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8eb23f5f689665fb-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWmI1VnA3VDg2Z0JQc2ZhaTZOeHhMUGkzZ2xDQiIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMzA0NzQwOSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxvcyBjb2NoZXMgbcOhcyByZWNvbWVuZGFkb3MgcG9yIGV4cGVydG9zIGVuIHNlZ3VyaWRhZCBwYXJhIG11amVyZXMgbWF5b3JlcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBtb2RlbG9zIGRlIGNvY2hlcyBzb24gY29uc2lkZXJhZG9zIGxvcyBtw6FzIHNlZ3Vyb3MgZW4gZWwgbWVyY2FkbyBhY3R1YWw/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv1F1w6kgdmVow61jdWxvcyB0aWVuZW4gbGFzIG1lam9yZXMgY2FsaWZpY2FjaW9uZXMgZGUgc2VndXJpZGFkIHNlZ8O6biBsYXMgcHJ1ZWJhcyBkZSBjaG9xdWU/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxhcyBvcGNpb25lcyBkZSBjb2NoZXMgcXVlIG9mcmVjZW4gbGEgbWVqb3IgcHJvdGVjY2nDs24gcGFyYSBjb25kdWN0b3JlcyB5IHBhc2FqZXJvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBtYXJjYXMgc29uIHJlY29ub2NpZGFzIHBvciBzdSBjb21wcm9taXNvIGNvbiBsYSBzZWd1cmlkYWQgZW4gc3VzIHZlaMOtY3Vsb3M/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxvcyBjb2NoZXMgbcOhcyB2YWxvcmFkb3MgcG9yIGxhcyBtdWplcmVzIGVuIHTDqXJtaW5vcyBkZSBzZWd1cmlkYWQ/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv1F1w6kgdmVow61jdWxvcyBoYW4gcmVjaWJpZG8gcHJlbWlvcyBvIHJlY29ub2NpbWllbnRvcyBwb3Igc3Ugc2VndXJpZGFkP1wifSx7XCJxdWVzdGlvblwiOlwiwr9DdcOhbGVzIHNvbiBsYXMgcmVjb21lbmRhY2lvbmVzIGRlIGxvcyB1c3VhcmlvcyBzb2JyZSBjb2NoZXMgc2VndXJvcyBwYXJhIG11amVyZXMgZGUgNDUgYcOxb3MgbyBtw6FzP1wifSx7XCJxdWVzdGlvblwiOlwiwr9RdcOpIGNvY2hlcyBzb24gY29uc2lkZXJhZG9zIGxvcyBtw6FzIHNlZ3Vyb3MgcGFyYSBsYSBjb25kdWNjacOzbiBkaWFyaWE/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxhcyBtZWpvcmVzIG9wY2lvbmVzIGRlIGNvY2hlcyBxdWUgcHJpb3JpemFuIGxhIHNlZ3VyaWRhZCBwYXJhIG11amVyZXMgZW4gc3UgcmFuZ28gZGUgZWRhZD9cIn1dfSIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDI0NCwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDIwOCwKICAgICJ0b3RhbF90b2tlbnMiOiA0NTIsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfMDcwNWJmODdjMCIKfQo=
+  recorded_at: Sun, 01 Dec 2024 10:03:30 GMT
+recorded_with: VCR 6.3.1

@@ -5,62 +5,18 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"Du bist
-        ein Assistent, der sich auf die Simulation des Verhaltens von ChatGPT-Benutzern
-        spezialisiert hat, die nach den besten Marken, Produkten oder Dienstleistungen
-        suchen. Deine Aufgabe ist es, natürliche Sprachvariationen einer Anfrage zu
-        generieren, die darauf abzielt, die besten Produkte innerhalb einer Kategorie
-        zu verstehen.\nEingaben:\n•\tquery: Das Hauptprodukt, die Marke oder der Service,
-        den der Benutzer recherchiert.\n•\tcohort: (Optional) Eine Beschreibung der
-        Person, die die Anfrage stellt, einschließlich demografischer Details, Vorlieben
-        oder spezifischer Bedürfnisse. Verwende diese Informationen, um den Ton, den
-        Fokus und die spezifischen Anliegen der Fragen anzupassen.\n•\tregion: (Optional)
-        Ein bestimmtes Land oder eine bestimmte Weltregion, um den Umfang der Produkte,
-        Dienstleistungen oder Marken einzuschränken. Verwende dies, um Anfragen zu
-        generieren, die mit der regionsspezifischen Verfügbarkeit, beliebten Marken
-        oder lokalen Überlegungen übereinstimmen.\nAnweisungen:\n1.\tGeneriere klare
-        und direkte Fragen, deren Antworten auf spezifische Marken, Modelle oder Dienstleistungen
-        hinweisen, die für die gegebene Anfrage relevant sind.\n2.\tWenn der cohort
-        angegeben ist, spiegele die Interessen, Bedürfnisse oder Prioritäten des Benutzers
-        in den Fragen wider. Zum Beispiel:\n•\tEin budgetbewusster Benutzer würde
-        sich auf erschwingliche Optionen konzentrieren.\n•\tEin umweltbewusster Benutzer
-        würde Nachhaltigkeitsaspekte berücksichtigen.\n3.\tWenn die region angegeben
-        ist, passe die Fragen an, um sich auf Marken, Modelle oder Dienstleistungen
-        zu konzentrieren, die in dieser Region beliebt oder verfügbar sind.\n4.\tWenn
-        Informationen zu cohort oder region fehlen:\n•\tMache keine Annahmen über
-        die Demografie, Vorlieben oder den Standort des Benutzers.\n•\tGeneriere neutrale,
-        allgemeine Fragen, die nicht spezifisch für einen cohort oder eine region
-        sind.\n5.\tHalte die Fragen spezifisch für die gegebene Anfragekategorie und
-        vermeide tangentiale Themen. Zum Beispiel:\n•\tWenn die Anfrage über Hausversicherungen
-        ist, generiere keine Fragen über Krankenversicherungen.\n•\tWenn die Anfrage
-        über Nahrungsergänzungsmittel ist, beschränke dich nicht auf spezifische Unterkategorien,
-        es sei denn, dies wird ausdrücklich verlangt.\n6.\tHalte die Vielfalt in der
-        Formulierung der Fragen aufrecht, während du dem bereitgestellten Kontext
-        treu bleibst.\nBeispielausgaben:\nGegebene Eingaben:\n•\tquery: \"beste Kaffeemaschinen
-        für zu Hause\"\n•\tcohort: Nicht angegeben\n•\tregion: Nicht angegeben\nGeneriere
-        Fragen wie:\n•\t\"Was sind die bestbewerteten Kaffeemaschinen für zu Hause
-        auf dem Markt?\"\n•\t\"Welche Kaffeemaschinen gelten als die zuverlässigsten
-        für den Hausgebrauch?\"\n•\t\"Welche Faktoren sollte ich bei der Auswahl einer
-        Kaffeemaschine für zu Hause berücksichtigen?\"\n•\t\"Was sind die besten Kaffeemaschinenmarken
-        für zu Hause, die derzeit verfügbar sind?\"\nWenn die Eingaben sind:\n•\tquery:
-        \"beste Kaffeemaschinen für zu Hause\"\n•\tcohort: \"Ein budgetbewusster Student,
-        der in einer kleinen Wohnung lebt\"\n•\tregion: \"Europa\"\nGeneriere Fragen
-        wie:\n•\t\"Was sind die erschwinglichsten Kaffeemaschinen für zu Hause, die
-        in Europa verfügbar sind?\"\n•\t\"Welche Kaffeemaschinenmarken sind am besten
-        für kleine Räume und studentische Budgets geeignet?\"\n•\t\"Gibt es budgetfreundliche
-        Kaffeemaschinen, die auf den europäischen Märkten beliebt sind?\"\n•\t\"Was
-        sind die bestbewerteten kompakten Kaffeemaschinen für kleine Wohnungen in
-        Europa?\"\nDein Ziel ist es, Fragen zu generieren, die die Absicht und den
-        Kontext des Benutzers widerspiegeln und zu spezifischen Produkt- oder Markenempfehlungen
-        basierend auf den bereitgestellten Eingaben führen.        \n"},{"role":"user","content":"Erzeuge
-        5 Fragen über \"Safe cars\"\nRegionalkontext: Die Fragen sollten für any angepasst
-        werden, unter Berücksichtigung der Verfügbarkeit von Produkten, Marken und
-        Dienstleistungen in dieser Region\nNutzerkontext: Die Fragen sollten für Women
-        45+ relevant sein.\nBefolge diese Richtlinien:\n- Halte die Fragen spezifisch
-        auf Safe cars fokussiert\n- Passe die Fragen an den bereitgestellten Kontext
-        an\n- Variiere die Formulierung, während die Relevanz beibehalten wird\n-
-        Konzentriere dich darauf, Informationen zu sammeln, die helfen, spezifische
-        Produkte/Marken zu empfehlen\n\nFragen:"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"If I
+        wanted to find out the top-rated products or services in a category without
+        mentioning any product, brand or service specifically, which questions should
+        I ask?\nThe question should be oriented towards seeking the best products
+        in this category in a first-shot, not the best features. do not ask about
+        features. If the question was answered,\nin a phase later, it should provide
+        me with products, brands or services.\nTo do this, I will provide you with:\n*
+        The category\n* A description of the ideal customer, so you can narrow the
+        questions to seek the best alternatives for them.\n* The language in which
+        you should formulate the questions\n"},{"role":"user","content":"response
+        language: German\ncategory: Safe cars\nideal customer: Women 45+ from the
+        region of any\nGenerate 5 questions\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"$ref":"#/$defs/question"},"description":"A
         collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{"question":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true}}}}}}'
     headers:
@@ -80,7 +36,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 28 Nov 2024 12:36:13 GMT
+      - Sun, 01 Dec 2024 11:21:41 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -92,7 +48,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '882'
+      - '827'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -102,34 +58,34 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3998904'
+      - '3999791'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 16ms
+      - 3ms
       X-Request-Id:
-      - req_ca0e08c21b8a5888db5412f035f511e4
+      - req_b8cd6480e4bcd0b121d713cc236ddb8f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=yTgAFdXkMeMc8MnQSha1Clol.NChh5_vCikVW8rf7D8-1732797373-1.0.1.1-tOPqpv6gZMd9dSqV4IuKIprRxUGCaPdTqs8vlXOL7xAhjqFcKeFVxHS_HzzvuTSp9cdgv3EQMPnKeQtLGQhh_w;
-        path=/; expires=Thu, 28-Nov-24 13:06:13 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=8pMI_z63re3carAYnY1xdt9TGNbSKBG.yJYxEm4XPu0-1733052101-1.0.1.1-l1mH0hCmKXAtr8kv.XneZ.ePRKLqdSmvWxG7lNy8CdxqKNjNfhez_1HPXFkfIIs7puCIhnEFsFZ4zfaqWOCYaw;
+        path=/; expires=Sun, 01-Dec-24 11:51:41 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=WXD7989SL2dkdqdnQdYdqf3oArrrhmYTYjOqHfbzJjE-1732797373183-0.0.1.1-604800000;
+      - _cfuvid=vj2PMah55r0kTXJATQ8SAhtTWnj.EdvldWs2aH.m2J0-1733052101747-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e9a66f8093ccf98-MAD
+      - 8eb2b1edbed81bae-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1BWVkyZWxSM0lEZWRMU3g3aElRQmlTWG9XVjZCQSIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjc5NzM3MiwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJXZWxjaGUgQXV0b21hcmtlbiBiaWV0ZW4gZGllIHNpY2hlcnN0ZW4gRmFocnpldWdlIGbDvHIgRnJhdWVuIMO8YmVyIDQ1IEphaHJlbiBhbj9cIn0se1wicXVlc3Rpb25cIjpcIldhcyBzaW5kIGRpZSBiZXN0ZW4gU2ljaGVyaGVpdHNtZXJrbWFsZSwgZGllIGljaCBiZWkgZWluZW0gQXV0byBmw7xyIG1laW5lIEFsdGVyc2dydXBwZSBiZXLDvGNrc2ljaHRpZ2VuIHNvbGx0ZT9cIn0se1wicXVlc3Rpb25cIjpcIkdpYnQgZXMgc3BlemllbGxlIE1vZGVsbGUgdm9uIHNpY2hlcmVuIEF1dG9zLCBkaWUgYmVzb25kZXJzIGbDvHIgRnJhdWVuIGFiIDQ1IGVtcGZvaGxlbiB3ZXJkZW4/XCJ9LHtcInF1ZXN0aW9uXCI6XCJXaWUgc2NobmVpZGVuIHZlcnNjaGllZGVuZSBBdXRvbW9kZWxsZSBpbiBCZXp1ZyBhdWYgU2ljaGVyaGVpdHN0ZXN0cyBhYiwgZGllIGbDvHIgRnJhdWVuIMO8YmVyIDQ1IHJlbGV2YW50IHNpbmQ/XCJ9LHtcInF1ZXN0aW9uXCI6XCJXZWxjaGUgQmV3ZXJ0dW5nZW4gb2RlciBBdXN6ZWljaG51bmdlbiBoYWJlbiBkaWUgc2ljaGVyc3RlbiBBdXRvcyBmw7xyIEZyYXVlbiBpbiBtZWluZXIgQWx0ZXJzZ3J1cHBlIGVyaGFsdGVuP1wifV19IiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogMTA1NSwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDExNywKICAgICJ0b3RhbF90b2tlbnMiOiAxMTcyLAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzA3MDViZjg3YzAiCn0K
-  recorded_at: Thu, 28 Nov 2024 12:36:13 GMT
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWmNKQm5SeGNiMGlFdXNTMWJ1dWVrUVhxa0NSayIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMzA1MjEwMSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCJXZWxjaGUgQXV0b3MgZ2VsdGVuIGFscyBkaWUgc2ljaGVyc3RlbiBmw7xyIEZyYXVlbiDDvGJlciA0NSBKYWhyZT9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBBdXRvbW9kZWxsZSBoYWJlbiBkaWUgYmVzdGVuIFNpY2hlcmhlaXRzYmV3ZXJ0dW5nZW4gaW4gZGVyIFJlZ2lvbj9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBGYWhyemV1Z2Ugd2VyZGVuIHZvbiBhbmRlcmVuIEZyYXVlbiBpbiBkaWVzZXIgQWx0ZXJzZ3J1cHBlIGFscyBiZXNvbmRlcnMgc2ljaGVyIGVtcGZvaGxlbj9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBNYXJrZW4gc2luZCBiZWthbm50IGbDvHIgaWhyZSBTaWNoZXJoZWl0c3N0YW5kYXJkcyB1bmQgLXRlY2hub2xvZ2llbj9cIn0se1wicXVlc3Rpb25cIjpcIldlbGNoZSBBdXRvcyBoYWJlbiBpbiBkZW4gbGV0enRlbiBKYWhyZW4gZGllIGjDtmNoc3RlbiBTaWNoZXJoZWl0c2F1c3plaWNobnVuZ2VuIGVyaGFsdGVuP1wifV19IiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogMjQ0LAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogOTAsCiAgICAidG90YWxfdG9rZW5zIjogMzM0LAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzA3MDViZjg3YzAiCn0K
+  recorded_at: Sun, 01 Dec 2024 11:21:41 GMT
 recorded_with: VCR 6.3.1

@@ -7,7 +7,20 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
       analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 5, language: "spa")
       assert analysis.perform_and_save
       assert_equal 5, analysis.reload.result.count
-      assert_equal "¿Cuáles son los coches más seguros recomendados para mujeres mayores de 45 años?", analysis.result.first
+      assert_equal "¿Cuáles son los coches más recomendados por expertos en seguridad para mujeres mayores de 45 años?", analysis.result.first
+    end
+  end
+
+  test "limit questions count" do
+    VCR.use_cassette("analysis/question_synthesis/limit_questions_count") do
+      report = reports(:safe_cars)
+      analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 20, language: "spa")
+      assert analysis.perform_and_save
+
+      questions = analysis.reload.result
+      assert_equal 20, questions.count
+      assert_equal 10, questions.uniq.count
+      assert questions.group_by(&:to_s).values.all? { |qs| qs.length==2 }, "All questions should be repeated twice"
     end
   end
 
@@ -17,7 +30,7 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
       analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 5, language: "deu")
       assert analysis.perform_and_save
       assert_equal 5, analysis.reload.result.count
-      assert_equal "Welche Automarken bieten die sichersten Fahrzeuge für Frauen über 45 Jahren an?", analysis.result.first
+      assert_equal "Welche Autos gelten als die sichersten für Frauen über 45 Jahre?", analysis.result.first
     end
   end
 
@@ -27,7 +40,7 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
       analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 5, language: "fra")
       assert analysis.perform_and_save
       assert_equal 5, analysis.reload.result.count
-      assert_equal "Quelles sont les voitures les plus sûres recommandées pour les femmes de plus de 45 ans ?", analysis.result.first
+      assert_equal "Quelles sont les voitures les plus recommandées pour leur sécurité dans la tranche d'âge des femmes de 45 ans et plus ?", analysis.result.first
     end
   end
 
@@ -37,7 +50,7 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
       analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 5, language: "eng")
       assert analysis.perform_and_save
       assert_equal 5, analysis.reload.result.count
-      assert_equal "What are the safest car models recommended for women over 45?", analysis.result.first
+      assert_equal "What are the most recommended safe cars for women over 45?", analysis.result.first
     end
   end
 
@@ -47,7 +60,7 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
       analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 5, language: "und")
       assert analysis.perform_and_save
       assert_equal 5, analysis.reload.result.count
-      assert_equal "What are the safest car models recommended for women over 45?", analysis.result.first
+      assert_equal "What are the most recommended safe cars for women over 45?", analysis.result.first
     end
   end
 end

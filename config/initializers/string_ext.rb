@@ -1,5 +1,5 @@
 class String
     def promptize
-        self.gsub(/^\s+/, "")
+        self.gsub(/^\s+/, "").freeze
     end
 end

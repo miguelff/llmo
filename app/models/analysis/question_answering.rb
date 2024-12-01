@@ -5,7 +5,6 @@ class Analysis::QuestionAnswering < Analysis::Step
             Analysis::Step::COSTS[:search] + # bing for the search
             (5 * (Analysis::Step::COSTS[:download] + Analysis::Step::COSTS[:inference])) # download and summarize each of the 5 search results
             Analysis::Step::COSTS[:inference] + # for providing search results back to the model and getting the final answer
-            Analysis::Step::COSTS[:inference] # for the final answer
 
         queries_count * per_answer_cost
     end
@@ -60,11 +59,19 @@ class Analysis::QuestionAnswering < Analysis::Step
     attribute :questions, :json, default: []
     validates :questions, length: { minimum: 1 }
 
+    attr_accessor :question_answered_callback
+    def with_question_answered_callback(callback)
+        self.question_answered_callback = callback
+        self
+    end
+
     def perform
         answers = Concurrent::Promises.zip_futures_over(self.questions) do |question|
             begin
                 res = assist(expand(question), tools: [ BingSearch.new(self) ], model: "gpt-4o", temperature: 0.5)
                 answer = res.last.content
+
+                self.question_answered_callback&.call(question, answer)
 
                 if answer.blank?
                     Rails.logger.warn({ message: "No answer for question", metadata: { question: question, response: res } })
@@ -73,18 +80,22 @@ class Analysis::QuestionAnswering < Analysis::Step
                     { question: question, answer: answer }
                 end
             rescue => e
+                Rails.logger.error({ message: "Error in result", metadata: { question: question, error: e.message } })
                 { question: question, answer: nil, error: e.message }
             end
         end.value!
 
-        self.result = answers.map do |result|
-            if result.is_a?(Hash) && result[:error]
-                Rails.logger.error({ message: "Error in result", metadata: { error: result[:error] } })
-            end
-            result
+        correct_answers, nil_answers = answers.partition { |a| a[:answer].present? }
+        if nil_answers.length > correct_answers.length
+            err = "Not enough answers: #{nil_answers.length} nil answers and #{correct_answers.length} correct answers."
+            sample_error = nil_answers.find { |a| a[:error].present? }
+            err += " Sample error: #{sample_error[:error]}" if sample_error
+            self.error =  err
+            false
+        else
+            self.result = correct_answers
+            true
         end
-
-        true
     end
 
     def expand(question)

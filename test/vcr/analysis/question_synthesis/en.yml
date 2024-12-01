@@ -5,53 +5,18 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
-        are an assistant specialized in simulating the behavior of ChatGPT users researching
-        the best brands, products, or services. Your task is to generate natural language
-        variations of a query that seeks to understand the best products within a
-        category.\nInputs:\n•\tquery: The main product, brand, or service the user
-        is researching.\n•\tcohort: (Optional) A description of the person making
-        the query, including demographic details, preferences, or specific needs.
-        Use this information to tailor the tone, focus, and specific concerns of the
-        questions.\n•\tregion: (Optional) A specific country or world region to restrict
-        the scope of products, services, or brands. Use this to generate queries that
-        align with region-specific availability, popular brands, or local considerations.\nInstructions:\n1.\tGenerate
-        clear and direct questions whose answers point to specific brands, models,
-        or services relevant to the given query.\n2.\tIf the cohort is provided, reflect
-        the interests, needs, or priorities of the user in the questions. For example:\n•\tA
-        budget-conscious user would focus on affordable options.\n•\tAn eco-conscious
-        user would consider sustainability aspects.\n3.\tIf the region is provided,
-        tailor the questions to focus on brands, models, or services popular or available
-        in that region.\n4.\tIf cohort or region information is missing:\n•\tDo not
-        make assumptions about the user’s demographic, preferences, or location.\n•\tGenerate
-        neutral, general questions that are not specific to any cohort or region.\n5.\tKeep
-        the questions specific to the given query category, avoiding tangential topics.
-        For example:\n•\tIf the query is about home insurance, do not generate questions
-        about health insurance.\n•\tIf the query is about dietary supplements, do
-        not narrow down to specific subcategories unless explicitly requested.\n6.\tMaintain
-        diversity in question phrasing while staying true to the context provided
-        by the inputs.\nExample Outputs:\nGiven the inputs:\n•\tquery: “best home
-        coffee machines”\n•\tcohort: Not provided\n•\tregion: Not provided\nGenerate
-        questions like:\n•\t“What are the best-rated home coffee machines on the market?”\n•\t“Which
-        coffee machines are considered the most reliable for home use?”\n•\t“What
-        factors should I consider when choosing a home coffee machine?”\n•\t“What
-        are the top home coffee machine brands available right now?”\nIf the inputs
-        are:\n•\tquery: “best home coffee machines”\n•\tcohort: “A budget-conscious
-        student living in a small apartment”\n•\tregion: “Europe”\nGenerate questions
-        like:\n•\t“What are the most affordable home coffee machines available in
-        Europe?”\n•\t“Which coffee machine brands are best for small spaces and student
-        budgets?”\n•\t“Are there any budget-friendly coffee machines popular in European
-        markets?”\n•\t“What are the top-rated compact coffee makers for small apartments
-        in Europe?”\nYour goal is to generate questions that reflect the user’s intent
-        and context, leading to specific product or brand recommendations based on
-        the inputs provided.\nGenerate the questions following the structured output
-        format.\n"},{"role":"user","content":"Generate 5 questions about \"Safe cars\"\nRegion
-        context: The questions should be tailored for any, considering local preferences,
-        pricing, and availability.\nUser context: The questions should be relevant
-        for Women 45+.\nFollow these guidelines:\n- Keep questions focused specifically
-        on Safe cars\n- Tailor questions to the provided context\n- Vary the phrasing
-        while maintaining relevance\n- Focus on gathering information that will help
-        recommend specific products/brands\n\nQuestions:"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"If I
+        wanted to find out the top-rated products or services in a category without
+        mentioning any product, brand or service specifically, which questions should
+        I ask?\nThe question should be oriented towards seeking the best products
+        in this category in a first-shot, not the best features. do not ask about
+        features. If the question was answered,\nin a phase later, it should provide
+        me with products, brands or services.\nTo do this, I will provide you with:\n*
+        The category\n* A description of the ideal customer, so you can narrow the
+        questions to seek the best alternatives for them.\n* The language in which
+        you should formulate the questions\n"},{"role":"user","content":"response
+        language: English\ncategory: Safe cars\nideal customer: Women 45+ from the
+        region of any\nGenerate 5 questions\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"$ref":"#/$defs/question"},"description":"A
         collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{"question":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true}}}}}}'
     headers:
@@ -71,7 +36,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 28 Nov 2024 12:36:09 GMT
+      - Sun, 01 Dec 2024 10:01:23 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -83,7 +48,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '833'
+      - '907'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -93,45 +58,45 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999077'
+      - '3999791'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 13ms
+      - 3ms
       X-Request-Id:
-      - req_5da171cf76d3b7f42750b276e39494dc
+      - req_559358073c6d48b9d61317b35a07621e
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=XMW5PsGmleCDjLuor57UuaO2U32l3wOCnPurZaXtLdI-1732797369-1.0.1.1-E8eGIjabuOb4NaCdPWBqRrk0tWjrVN3fHkS9QQEmpIrznM2TRNjyvb4rt0X.KO9qajqSN6gYyPcVFtfWrBEgIg;
-        path=/; expires=Thu, 28-Nov-24 13:06:09 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=8Rm4_O.vlDFxt7GnTPuhvW5y9nnjekwctsko9SBodmM-1733047283-1.0.1.1-_R1h.QkxY6Mv0D5NdkH6gZXfch5aaaYfRSAuoXnwcnYUGuU4a9T9xpyJpvl4z8YQ05kXE5Ub9.cmJsKsCt.D9w;
+        path=/; expires=Sun, 01-Dec-24 10:31:23 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=yDcd1ukKE3AoY4oOArQwtvDh0sXa0ldNj5Fbe40kuFM-1732797369678-0.0.1.1-604800000;
+      - _cfuvid=OElkdXTf8MPvH3z8LoUPxPkitMhCqusKXhQ4XsBRLCI-1733047283626-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e9a66e27e95cc58-MAD
+      - 8eb23c4c2af8218f-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AYY2ahD2L0tInnbzr2uJhDCT1dwTO",
+          "id": "chatcmpl-AZb3SpMGoM2wCmh9gXe6csKfJH4Sq",
           "object": "chat.completion",
-          "created": 1732797368,
+          "created": 1733047282,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"questions\":[{\"question\":\"What are the safest car models recommended for women over 45?\"},{\"question\":\"Which car brands are known for their high safety ratings and reliability for older female drivers?\"},{\"question\":\"What safety features should women in their 40s and 50s prioritize when choosing a car?\"},{\"question\":\"Are there any specific safe cars that are popular among women aged 45 and above?\"},{\"question\":\"What are the top-rated vehicles for safety that cater to the preferences of women over 45?\"}]}",
+                "content": "{\"questions\":[{\"question\":\"What are the most recommended safe cars for women over 45?\"},{\"question\":\"Which safe car models are highly rated by female drivers in their 40s and above?\"},{\"question\":\"What are the top choices for safe vehicles among women aged 45 and older?\"},{\"question\":\"Which safe cars do experts suggest for women in the 45+ age group?\"},{\"question\":\"What safe car options are frequently praised by women over 45?\"}]}",
                 "refusal": null
               },
               "logprobs": null,
@@ -139,9 +104,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 787,
-            "completion_tokens": 106,
-            "total_tokens": 893,
+            "prompt_tokens": 244,
+            "completion_tokens": 96,
+            "total_tokens": 340,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -155,5 +120,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Thu, 28 Nov 2024 12:36:09 GMT
+  recorded_at: Sun, 01 Dec 2024 10:01:23 GMT
 recorded_with: VCR 6.3.1

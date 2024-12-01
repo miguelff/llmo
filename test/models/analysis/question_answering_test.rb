@@ -12,9 +12,8 @@ class Analysis::QuestionAnsweringTest < ActiveSupport::TestCase
       end
       analysis = Analysis::QuestionAnswering.new(report: report, language: "deu", questions: questions)
 
-      assert analysis.perform_and_save
+      assert analysis.perform_and_save, "Error prevented saving: #{analysis.error}"
       assert_equal 2, analysis.reload.result.count
-
       assert_equal question, analysis.result.first["question"]
       assert analysis.result.first["answer"].include?("für"), "Answer should be present"
     end

@@ -5,57 +5,18 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"Eres
-        un asistente especializado en simular el comportamiento de usuarios de ChatGPT
-        que investigan las mejores marcas, productos o servicios. Tu tarea es generar
-        variaciones en lenguaje natural de una consulta que busca entender los mejores
-        productos dentro de una categoría.\nEntradas:\n•\tquery: El principal producto,
-        marca o servicio que el usuario está investigando.\n•\tcohort: (Opcional)
-        Una descripción de la persona que realiza la consulta, incluyendo detalles
-        demográficos, preferencias o necesidades específicas. Usa esta información
-        para adaptar el tono, enfoque y preocupaciones específicas de las preguntas.\n•\tregion:
-        (Opcional) Un país o región mundial específica para restringir el alcance
-        de productos, servicios o marcas. Úsalo para generar consultas que se alineen
-        con la disponibilidad específica de la región, marcas populares o consideraciones
-        locales.\nInstrucciones:\n1.\tGenera preguntas claras y directas cuyas respuestas
-        apunten a marcas, modelos o servicios específicos relevantes para la consulta
-        dada.\n2.\tSi se proporciona el cohort, refleja los intereses, necesidades
-        o prioridades del usuario en las preguntas. Por ejemplo:\n•\tUn usuario consciente
-        del presupuesto se centraría en opciones asequibles.\n•\tUn usuario consciente
-        del medio ambiente consideraría aspectos de sostenibilidad.\n3.\tSi se proporciona
-        la región, adapta las preguntas para centrarte en marcas, modelos o servicios
-        populares o disponibles en esa región, incluyendo preferencias locales o consideraciones
-        de precios.\n4.\tSi falta información de cohort o región:\n•\tNo hagas suposiciones
-        sobre la demografía, preferencias o ubicación del usuario.\n•\tGenera preguntas
-        neutrales y generales que no sean específicas de ningún cohort o región.\n5.\tMantén
-        las preguntas específicas a la categoría de consulta dada, evitando temas
-        tangenciales. Por ejemplo:\n•\tSi la consulta es sobre seguros de hogar, no
-        generes preguntas sobre seguros de salud.\n•\tSi la consulta es sobre suplementos
-        dietéticos, no te limites a subcategorías específicas a menos que se solicite
-        explícitamente.\n6.\tMantén la diversidad en la formulación de preguntas mientras
-        te mantienes fiel al contexto proporcionado por las entradas.\nEjemplos de
-        Salidas:\nDados los inputs:\n•\tquery: \"mejores cafeteras para casa\"\n•\tcohort:
-        No proporcionado\n•\tregion: No proporcionado\nGenera preguntas como:\n•\t\"¿Cuáles
-        son las cafeteras para casa mejor valoradas en el mercado?\"\n•\t\"¿Qué cafeteras
-        se consideran las más fiables para uso doméstico?\"\n•\t\"¿Qué factores debo
-        considerar al elegir una cafetera para casa?\"\n•\t\"¿Cuáles son las mejores
-        marcas de cafeteras para casa disponibles ahora mismo?\"\nSi los inputs son:\n•\tquery:
-        \"mejores cafeteras para casa\"\n•\tcohort: \"Un estudiante consciente del
-        presupuesto que vive en un apartamento pequeño\"\n•\tregion: \"Europa\"\nGenera
-        preguntas como:\n•\t\"¿Cuáles son las cafeteras para casa más asequibles disponibles
-        en Europa?\"\n•\t\"¿Qué marcas de cafeteras son mejores para espacios pequeños
-        y presupuestos de estudiantes?\"\n•\t\"¿Hay cafeteras económicas que sean
-        populares en los mercados europeos?\"\n•\t\"¿Cuáles son las cafeteras compactas
-        mejor valoradas para apartamentos pequeños en Europa?\"\nTu objetivo es generar
-        preguntas que reflejen la intención y el contexto del usuario, llevando a
-        recomendaciones específicas de productos o marcas basadas en los inputs proporcionados.`\n"},{"role":"user","content":"Genera
-        5 preguntas sobre \"Safe cars\"\nContexto regional: Las preguntas deben estar
-        adaptadas para any, considerando la existencia de productos, marcas y servicios
-        en esta región\nContexto del usuario: Las preguntas deben ser relevantes para
-        Women 45+.\nSigue estas pautas:\n- Mantén las preguntas enfocadas específicamente
-        en Safe cars\n- Adapta las preguntas al contexto regional proporcionado\n-
-        Varía la formulación manteniendo la relevancia\n- Enfócate en recopilar información
-        que ayude a recomendar productos/marcas específicos\n\nPreguntas:"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"If I
+        wanted to find out the top-rated products or services in a category without
+        mentioning any product, brand or service specifically, which questions should
+        I ask?\nThe question should be oriented towards seeking the best products
+        in this category in a first-shot, not the best features. do not ask about
+        features. If the question was answered,\nin a phase later, it should provide
+        me with products, brands or services.\nTo do this, I will provide you with:\n*
+        The category\n* A description of the ideal customer, so you can narrow the
+        questions to seek the best alternatives for them.\n* The language in which
+        you should formulate the questions\n"},{"role":"user","content":"response
+        language: Spanish\ncategory: Safe cars\nideal customer: Women 45+ from the
+        region of any\nGenerate 5 questions\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"questions":{"type":"array","items":{"$ref":"#/$defs/question"},"description":"A
         collection of questions"}},"required":["questions"],"additionalProperties":false,"strict":true,"$defs":{"question":{"type":"object","properties":{"question":{"type":"string"}},"required":["question"],"additionalProperties":false,"strict":true}}}}}}'
     headers:
@@ -75,7 +36,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 28 Nov 2024 12:36:12 GMT
+      - Sun, 01 Dec 2024 10:01:21 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -87,7 +48,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '946'
+      - '908'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -97,34 +58,34 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3998981'
+      - '3999791'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 15ms
+      - 3ms
       X-Request-Id:
-      - req_5143baaf1464aa9f2d8a3825ce3cada2
+      - req_5b74c75131ddcccbd83ae7dd9a3dd2aa
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=.3oFq1FEddFz8rHi7gyFHbt1bvegSqYzFI6ipY1Ku4g-1732797372-1.0.1.1-fR0mIyQbMrmavdn.u8oPd4k1.fbJ4bBfGO6EqrU7kAnTD64nqFU4xzQ23WhuIJG13iHE_3VjMZ3ywwvJEjHi0A;
-        path=/; expires=Thu, 28-Nov-24 13:06:12 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=dI8mTfTVR6esNlQaMzp4plqE0j.nDhazCwjin0cAdLo-1733047281-1.0.1.1-r6Bl_iKoYejr3pm3VlsxC37eNI_CYp5YvPSD_eHlmu2xtpdykyE4ztQuDi4ArndWsinNN4W3Q.Ff1oX4Nv4CTA;
+        path=/; expires=Sun, 01-Dec-24 10:31:21 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=VG9tAQWPkLlEechoswIR4hzSdfjrjA0YrMqMWsBRtZo-1732797372033-0.0.1.1-604800000;
+      - _cfuvid=9Cm11lynmvh8KGNOmbODkmTPE6hwf6bM2L7QHsKqgq8-1733047281097-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e9a66f05dac314b-MAD
+      - 8eb23c3c4b9d867a-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        ewogICJpZCI6ICJjaGF0Y21wbC1BWVkyZGUxQkhuOXBibEM0dEw0QTRuZjZ1RWdwZCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMjc5NzM3MSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxvcyBjb2NoZXMgbcOhcyBzZWd1cm9zIHJlY29tZW5kYWRvcyBwYXJhIG11amVyZXMgbWF5b3JlcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBtYXJjYXMgZGUgYXV0b23Ds3ZpbGVzIG9mcmVjZW4gbG9zIG1lam9yZXMgc2lzdGVtYXMgZGUgc2VndXJpZGFkIHBhcmEgY29uZHVjdG9yZXMgZGUgbcOhcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBjYXJhY3RlcsOtc3RpY2FzIGRlIHNlZ3VyaWRhZCBkZWJvIGJ1c2NhciBhbCBlbGVnaXIgdW4gY29jaGUgc2VndXJvIHBhcmEgbXVqZXJlcyBkZSBtaSBlZGFkP1wifSx7XCJxdWVzdGlvblwiOlwiwr9DdcOhbGVzIHNvbiBsb3MgbW9kZWxvcyBkZSBjb2NoZXMgY29uIGxhcyBtZWpvcmVzIGNhbGlmaWNhY2lvbmVzIGRlIHNlZ3VyaWRhZCBkaXNwb25pYmxlcyBhY3R1YWxtZW50ZT9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBvcGluYW4gbGFzIG11amVyZXMgZGUgNDUgYcOxb3MgbyBtw6FzIHNvYnJlIGxhIHNlZ3VyaWRhZCBkZSBsb3MgY29jaGVzIGRlIG1hcmNhcyBlc3BlY8OtZmljYXM/XCJ9XX0iLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiA5MTcsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxMTgsCiAgICAidG90YWxfdG9rZW5zIjogMTAzNSwKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF8wNzA1YmY4N2MwIgp9Cg==
-  recorded_at: Thu, 28 Nov 2024 12:36:11 GMT
+        ewogICJpZCI6ICJjaGF0Y21wbC1BWmIzUWRDWVEwWDNVdzk5MnIybW93aDk5T3h6NSIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczMzA0NzI4MCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAie1wicXVlc3Rpb25zXCI6W3tcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxvcyBjb2NoZXMgbcOhcyByZWNvbWVuZGFkb3MgcG9yIGV4cGVydG9zIGVuIHNlZ3VyaWRhZCBwYXJhIG11amVyZXMgbWF5b3JlcyBkZSA0NSBhw7Fvcz9cIn0se1wicXVlc3Rpb25cIjpcIsK/UXXDqSBtb2RlbG9zIGRlIGNvY2hlcyBzb24gY29uc2lkZXJhZG9zIGxvcyBtw6FzIHNlZ3Vyb3MgZW4gZWwgbWVyY2FkbyBhY3R1YWw/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv1F1w6kgdmVow61jdWxvcyB0aWVuZW4gbGFzIG1lam9yZXMgY2FsaWZpY2FjaW9uZXMgZGUgc2VndXJpZGFkIHNlZ8O6biBsYXMgcHJ1ZWJhcyBkZSBjaG9xdWU/XCJ9LHtcInF1ZXN0aW9uXCI6XCLCv0N1w6FsZXMgc29uIGxhcyBvcGNpb25lcyBkZSBjb2NoZXMgcXVlIG9mcmVjZW4gbGEgbWVqb3IgcHJvdGVjY2nDs24gcGFyYSBjb25kdWN0b3JlcyBtYXlvcmVzP1wifSx7XCJxdWVzdGlvblwiOlwiwr9RdcOpIG1hcmNhcyBzb24gcmVjb25vY2lkYXMgcG9yIHN1IGNvbXByb21pc28gY29uIGxhIHNlZ3VyaWRhZCBlbiBzdXMgdmVow61jdWxvcz9cIn1dfSIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDI0NCwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDEwNiwKICAgICJ0b3RhbF90b2tlbnMiOiAzNTAsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfMDcwNWJmODdjMCIKfQo=
+  recorded_at: Sun, 01 Dec 2024 10:01:21 GMT
 recorded_with: VCR 6.3.1

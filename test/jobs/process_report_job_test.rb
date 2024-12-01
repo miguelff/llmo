@@ -5,10 +5,10 @@ class ProcessReportJobTest < ActiveJob::TestCase
       assert report.completed?, "Report should be completed, but was #{report.status}"
       analyses = report.reload.analyses
       assert_equal [
+        "Analysis::InputClassifier",
         "Analysis::LanguageDetector",
         "Analysis::QuestionSynthesis",
         "Analysis::QuestionAnswering",
-        "Analysis::InputClassifier",
         "Analysis::EntityExtractor",
         "Analysis::Competitors",
         "Analysis::Ranking"

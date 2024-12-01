@@ -37,7 +37,6 @@ class Analysis::RankingTest < ActiveSupport::TestCase
         VCR.use_cassette("analysis/ranking/brand_not_there") do
             analysis = analysis(entities: WATCHES, brand_info: "casio g-shock")
             assert analysis.perform_and_save
-            puts analysis.reload.result
             you = analysis.reload.result["you"]
             assert_nil you["brand_rank"]
             assert_nil you["other_products_rank"]
