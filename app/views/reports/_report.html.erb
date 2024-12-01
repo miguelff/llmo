@@ -1,17 +1,16 @@
+<div id="<%= dom_id report %>" class="block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-800">
+    <h5 class="status flex flex-row space-x-2 mb-2 text-2xl font-bold tracking-tight text-gray-800 dark:text-white">
+        <%= report.query %>
+    </h5>
 
-<div id="<%= dom_id report %>" class="block p-6 bg-white border border-zinc-200 rounded-lg shadow dark:bg-zinc-900 dark:border-zinc-800">
-  <h5 class="status flex flex-row space-x-2 mb-2 text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">    
-      <%= report.query %>    
-  </h5>
-
-  <% if report.cohort.present? || report.brand_info.present? || report.region.present? %>
-    <ul class="font-normal text-zinc-800 dark:text-zinc-400 mb-4">
-      <li><%= report.cohort %></li>
-      <li><%= report.brand_info %></li>
-      <li><%= report.region %></li>
+    <% if report.cohort.present? || report.brand_info.present? || report.region.present? %>
+    <ul class="font-normal text-gray-800 dark:text-gray-400 mb-4">
+        <li><%= report.cohort %></li>
+        <li><%= report.brand_info %></li>
+        <li><%= report.region %></li>
     </ul>
-  <% end %>
+    <% end %>
 
-  <%= turbo_stream_from(report) %>
-  <%= render "reports/status", report: report %>
+    <%= turbo_stream_from(report) %>
+    <%= render "reports/status", report: report %>
 </div>

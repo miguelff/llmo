@@ -1,0 +1,25 @@
+<div>
+    <div class="flex flex-col xl:flex-row px-8 justify-center items-center space-y-8 lg:space-y-0 lg:space-x-8 mt-8">
+        <div class="max-w-screen-sm text-left self-start">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Power domains</h2>
+            <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
+                These are the domains that ChatGPT referenced to provide up-to-date answers to the questions, along with their relative significance.
+            </p>
+        </div>
+        <div class="max-w-screen-sm p-6 bg-gray-40 dark:bg-gray-800 shadow-lg rounded-lg self-start">
+            <div class="flex items-start mb-4">
+                <svg class="w-8 h-8 text-primary dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M7.05 4.05A7 7 0 0 1 19 9c0 2.407-1.197 3.874-2.186 5.084l-.04.048C15.77 15.362 15 16.34 15 18a1 1 0 0 1-1 1h-4a1 1 0 1 1-1-1c0-1.612-.77-2.613-1.78-3.875l-.045-.056C6.193 12.842 5 11.352 5 9a7 7 0 0 1 2.05-4.95ZM9 21a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2h-4a1 1 0 0 1-1-1Zm1.586-13.414A2 2 0 0 1 12 7a1 1 0 1 0 0-2 4 4 0 0 0-4 4 1 1 0 0 0 2 0 2 2 0 0 1 .586-1.414Z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Tip: partner with them</h3>
+            </div>
+            <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                Use this information to formulate content strategies with the businesses behind the domains.
+            </p>
+        </div>
+    </div>
+
+    <div class="p-6">
+        <%= presenter.links.domain_breakdown_chart %>
+    </div>
+</div>

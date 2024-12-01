@@ -12,7 +12,7 @@
 
 @layer base {
     label {
-        @apply block mb-2 text-sm font-medium text-zinc-900 dark:text-white;
+        @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
     }
 
     input[type='text'],
@@ -23,7 +23,7 @@
     input[type='tel'],
     input[type='url'],
     textarea {
-        @apply rounded-md text-sm text-zinc-900 bg-zinc-50 border border-zinc-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-zinc-950 dark:border-zinc-800 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
+        @apply rounded-md text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-950 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
     }
 
     textarea {
@@ -31,35 +31,35 @@
     }
 
     select {
-        @apply w-auto bg-zinc-50 border-x-0 border-zinc-300 rounded-lg text-center text-zinc-900 text-sm focus:ring-primary-500 focus:border-primary-500 block dark:bg-zinc-800 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
+        @apply w-auto bg-gray-50 border-x-0 border-gray-300 rounded-lg text-center text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
     }
 
     p {
-        @apply text-base text-zinc-900 dark:text-zinc-100;
+        @apply text-base text-gray-900 dark:text-gray-100;
     }
 
     h1 {
-        @apply text-4xl font-bold text-zinc-900 dark:text-white mb-4;
+        @apply text-4xl font-bold text-gray-900 dark:text-white mb-4;
     }
 
     h2 {
-        @apply text-3xl font-bold text-zinc-900 dark:text-white mb-3;
+        @apply text-3xl font-bold text-gray-900 dark:text-white mb-3;
     }
 
     h3 {
-        @apply text-2xl font-semibold text-zinc-900 dark:text-white mb-2;
+        @apply text-2xl font-semibold text-gray-900 dark:text-white mb-2;
     }
 
     h4 {
-        @apply text-xl font-semibold text-zinc-900 dark:text-white mb-2;
+        @apply text-xl font-semibold text-gray-900 dark:text-white mb-2;
     }
 
     h5 {
-        @apply text-lg font-medium text-zinc-900 dark:text-white mb-1;
+        @apply text-lg font-medium text-gray-900 dark:text-white mb-1;
     }
 
     h6 {
-        @apply text-base font-medium text-zinc-900 dark:text-white mb-1;
+        @apply text-base font-medium text-gray-900 dark:text-white mb-1;
     }
 
     a {
@@ -80,7 +80,7 @@
         @apply prose w-auto mx-auto pb-4;
 
         strong {
-            @apply text-zinc-900 dark:text-white;
+            @apply text-gray-900 dark:text-white;
         }
 
         .table,

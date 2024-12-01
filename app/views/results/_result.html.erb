@@ -1,7 +1,9 @@
 <% presenter = @report.result %>
-<article class="bg-zinc-50 dark:bg-zinc-950">
+<article class="bg-gray-50 dark:bg-gray-950">
     <%= render partial: "results/header", locals: { presenter: presenter } %>
     <%= render partial: "results/summary", locals: { presenter: presenter } %>
     <%= render partial: "results/leaders", locals: { presenter: presenter } %>
     <%= render partial: "results/strengths", locals: { presenter: presenter } %>
+    <%= render partial: "results/links", locals: { presenter: presenter } %>
+    <%= render partial: "results/domains" , locals: { presenter: presenter } %>
 </article>

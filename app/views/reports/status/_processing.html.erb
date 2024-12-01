@@ -1,9 +1,9 @@
-<div class="py-4 text-zinc-800 bg-zinc-100 rounded-lg dark:bg-zinc-900 dark:text-zinc-300">
-    <div class="flex justify-between mb-1">
-        <span class="text-base font-medium text-primary-700 dark:text-white"><%= report.progress_details.respond_to?(:last) ? report.progress_details.last : "Started" %></span>
-        <span class="text-sm font-medium text-primary-700 dark:text-white"><%= report.progress_percent %>%</span>
-    </div>
-    <div class="w-full bg-zinc-200 rounded-full h-2.5 dark:bg-zinc-800">
-        <div class="bg-primary-600 h-2.5 rounded-full" style="width:<%= report.progress_percent %>%"></div>
-    </div>    
-</div>
+<% presenter = @report.result %>
+<article class="bg-gray-50 dark:bg-gray-950">
+    <%= render partial: "results/header", locals: { presenter: presenter } %>
+    <%= render partial: "results/summary", locals: { presenter: presenter } %>
+    <%= render partial: "results/leaders", locals: { presenter: presenter } %>
+    <%= render partial: "results/strengths", locals: { presenter: presenter } %>
+    <%#= render partial: "results/domains", locals: { presenter: presenter } %>
+    <%= render partial: "results/links", locals: { presenter: presenter } %>
+    </arti

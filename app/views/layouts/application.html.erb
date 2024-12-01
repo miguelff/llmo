@@ -39,13 +39,13 @@
     <%= Sentry.get_trace_propagation_meta.html_safe %>
 </head>
 
-<body class="dark bg-zinc-50 dark:bg-zinc-950">
+<body class="dark bg-gray-50 dark:bg-gray-950">
     <%= render "shared/notices" %>
 
     <% if content_for?(:center) %>
     <%= content_for(:center) %>
     <% else %>
-    <main class="antialiased bg-zinc-50 pt-20 dark:bg-zinc-950">
+    <main class="antialiased bg-gray-50 pt-20 dark:bg-gray-950">
         <div class="flex-1 min-h-screen">
             <%= yield %>
         </div>
@@ -53,7 +53,7 @@
     <% end %>
 
     <% if content_for?(:footer) %>
-    <footer class="light:bg-zinc-300 dark:bg-zinc-900 py-4">
+    <footer class="light:bg-gray-300 dark:bg-gray-900 py-4">
         <%= yield :footer %>
     </footer>
     <% end %>

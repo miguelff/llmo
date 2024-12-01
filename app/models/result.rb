@@ -40,6 +40,10 @@ class Result
     product_strengths.present?
   end
 
+  def links
+    @links ||= Result::Links.new(entities: entities_analysis.result, input: input_classifier_analysis.result)
+  end
+
   def product_strengths
     @product_strengths ||= Result::Strengths.new(competitors: competitors_analysis.result, entities: entities_analysis.result, input: input_classifier_analysis.result)
   end
