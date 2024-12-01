@@ -40,6 +40,7 @@
             </thead>
             <tbody>
                 <% presenter.links.each do |link, attrs| %>
+                <% if attrs[:brands].any? || attrs[:products].any? %>
                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-800">
                     <td class="py-4 px-6">
                         <%= link_to link, link, target: :blank, class: "text-primary-600" %>
@@ -54,6 +55,7 @@
                         <%= attrs[:products].any? ? attrs[:products].join(", ") : "N/A" %>
                     </td>
                 </tr>
+                <% end %>
                 <% end %>
             </tbody>
         </table>
