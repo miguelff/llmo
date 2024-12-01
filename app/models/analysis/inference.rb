@@ -2,7 +2,7 @@ module Analysis::Inference
     extend ActiveSupport::Concern
 
     included do
-        class_attribute :output_schema, :system_prompt, :model, :temperature
+        class_attribute :output_schema, :system_prompt
         attr_writer :language
     end
 

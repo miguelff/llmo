@@ -5,28 +5,30 @@ http_interactions:
     uri: https://api.openai.com/v1/chat/completions
     body:
       encoding: UTF-8
-      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
-        are an expert in ranking brands and products. You are given two lists:\n*
-        Brand Leaders: A list of top brands with their scores and ranks,\n* Product
-        Leaders: A list of top products with their scores and ranks.\nAnd an input,
-        which contains some brand / product information.\nIn both rankings 1 is highest
-        ranked, 2 second hightest, etc.\nYour task is to determine three ranks of
-        a given entity based on its performance.\nYou need to determine the following
-        ranks:\n* product_rank: If the rank is a product, it''s rank among the product
-        leaders\n* brand_rank: If the rank is a brand, it''s rank among the brand
-        leaders, if it''s a product, the rank of the brand that makes the product\n*
-        other_products_rank: the best rank among the ranks of other products from
-        the same brand, but those products MUST not be the same as the one in the
-        input, subject of the product rank.\nIf there are no other products from the
-        same brand, the rank should be 0. As a consequence, this rank cannot be the
-        same as the product rank.\nAll the results are optional, if there is no information
-        about the input, or there are no products or brands related to it in the ranking,
-        you can leave the rank blank.\nDon''t use any other information than the ones
-        provided in the input.\n"},{"role":"user","content":"[BrandsLeaders]\n[{\"name\":\"Rolex\",\"rank\":1},{\"name\":\"Omega\",\"rank\":2},{\"name\":\"Patek
+      string: '{"model":"gpt-4o","messages":[{"role":"system","content":"You are an
+        expert in ranking brands and products. You are given two lists:\n* BrandLeaders:
+        A list of top brands with their ranks,\n* ProductLeaders: A list of top products
+        with their ranks.\nAnd an input, which contains some brand / product / service
+        information.\nIn both rankings 1 is highest ranked, 2 second hightest, etc.\nYour
+        task is to determine three ranks of a given entity based on its performance.\nYou
+        need to determine the following ranks:\n* product_rank: If the rank is a product,
+        it''s rank among the product leaders.\n* brand_rank: If the rank is a brand,
+        it''s rank among the brand leaders, if it''s a product, the rank of the brand
+        that makes the product\n* other_products_rank: the best rank among the ranks
+        of other products from the same brand, but those products MUST not be the
+        same as the one in the input, subject of the product rank.\nIf there are no
+        other products from the same brand, the rank should be 0. As a consequence,
+        this rank cannot be the same as the product rank.\nWhen you compare products,
+        two products with slight variations, like \"BMW Serie 2\" and \"BMW Serie
+        2 Active Tourer\" are considered the same product. However, \"BMW Serie 2\"
+        and \"BMW Serie 3\" are considered different products.\nAll the results are
+        optional, if there is no information about the input, or there are no products
+        or brands related to it in the ranking, you can leave the rank blank.\nDon''t
+        use any other information than the ones provided in the input.\n"},{"role":"user","content":"[BrandsLeaders]\n[{\"name\":\"Rolex\",\"rank\":1},{\"name\":\"Omega\",\"rank\":2},{\"name\":\"Patek
         Philippe\",\"rank\":3},{\"name\":\"Audemars Piguet\",\"rank\":4},{\"name\":\"Tag
         Heuer\",\"rank\":5}]\n[/BrandLeaders]\n[ProductLeaders]\n[{\"name\":\"Rolex
-        Submariner\",\"rank\":1},{\"name\":\"Patek Philippe Nautilus\",\"rank\":2},{\"name\":\"Omega
-        Seamaster\",\"rank\":3},{\"name\":\"Audemars Piguet Royal Oak\",\"rank\":4},{\"name\":\"Tag
+        Submariner\",\"rank\":1},{\"name\":\"Omega Seamaster\",\"rank\":2},{\"name\":\"Patek
+        Philippe Nautilus\",\"rank\":3},{\"name\":\"Audemars Piguet Royal Oak\",\"rank\":4},{\"name\":\"Tag
         Heuer Carrera\",\"rank\":5}]\n[/ProductLeaders]\n[Input]\npatek philippe calatrava\n[/Input]\n"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
         for the structured response","schema":{"type":"object","properties":{"product_rank":{"type":"number","description":"The
         rank of the product"},"other_products_rank":{"type":"number","description":"The
@@ -50,7 +52,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 29 Nov 2024 14:39:37 GMT
+      - Sun, 01 Dec 2024 16:05:36 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -62,55 +64,55 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '1038'
+      - '1476'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
       - '5000'
       X-Ratelimit-Limit-Tokens:
-      - '4000000'
+      - '800000'
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999554'
+      - '799500'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
-      - 6ms
+      - 37ms
       X-Request-Id:
-      - req_caee840ab11f1f9131da1b408546c4d8
+      - req_380e2702970b2d9e5c101977a4db267f
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=GPLkGF0FOyQlBmruZKs0MW7.3Lzqk9v.Ig5_GzMcsOU-1732891177-1.0.1.1-MbwLUzNaiQoVM9Z1yhAPnOoL3k7AZd3cWcipPgzezMptFo9kM9OpiscexnjbYu1JQf2Esp9aqCMrFfE5xuR5YA;
-        path=/; expires=Fri, 29-Nov-24 15:09:37 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=qiF5tUISm0QAMP3g9PyW6nU6AeYEFmXbfiovsQsbHow-1733069136-1.0.1.1-JVgeUlu.0OME6iW4zTgZBbtCFfycz_BkeqFhDp9cGqI5P2q27twR8RLAub1HUP1WEjtM7AZSskxV_SD.jKlxlg;
+        path=/; expires=Sun, 01-Dec-24 16:35:36 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=4DJt7FQ9IJGNX1q5Zkb.tbcCwIUbX25je.YkFRyDdxs-1732891177601-0.0.1.1-604800000;
+      - _cfuvid=M_lfLwpRyVAM6VCfJiAVNXpKxwnB4OLqnx14MZxu_JU-1733069136191-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8ea3591caee4e064-MAD
+      - 8eb451cb1896cbbe-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AYwRcUJ8nnGqQ2GEPktH3C2TNUbQh",
+          "id": "chatcmpl-AZgjuJYRbaxkldsS0Dbm6LdvF5FQO",
           "object": "chat.completion",
-          "created": 1732891176,
-          "model": "gpt-4o-mini-2024-07-18",
+          "created": 1733069134,
+          "model": "gpt-4o-2024-08-06",
           "choices": [
             {
               "index": 0,
               "message": {
                 "role": "assistant",
-                "content": "{\"product_rank\":null,\"brand_rank\":3,\"other_products_rank\":2,\"reason\":\"The input 'Patek Philippe Calatrava' is a product from the brand Patek Philippe. The brand rank is 3 based on the Brand Leaders list. The product rank is not available as it is not listed among the Product Leaders. The best rank of other products from the same brand (Patek Philippe) is 2, which is for the 'Patek Philippe Nautilus'.\"}",
+                "content": "{\"product_rank\":0,\"other_products_rank\":3,\"brand_rank\":3,\"reason\":\"The input 'Patek Philippe Calatrava' is not listed in the ProductLeaders, so it has no product rank. The brand 'Patek Philippe' is ranked 3rd in the BrandLeaders. The best-ranked product from Patek Philippe in the ProductLeaders is the 'Patek Philippe Nautilus', which is ranked 3rd. Since 'Patek Philippe Calatrava' is not the same as 'Patek Philippe Nautilus', the other_products_rank is 3.\"}",
                 "refusal": null
               },
               "logprobs": null,
@@ -118,9 +120,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 536,
-            "completion_tokens": 100,
-            "total_tokens": 636,
+            "prompt_tokens": 590,
+            "completion_tokens": 122,
+            "total_tokens": 712,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -132,7 +134,7 @@ http_interactions:
               "rejected_prediction_tokens": 0
             }
           },
-          "system_fingerprint": "fp_0705bf87c0"
+          "system_fingerprint": "fp_7f6be3efb0"
         }
-  recorded_at: Fri, 29 Nov 2024 14:39:37 GMT
+  recorded_at: Sun, 01 Dec 2024 16:05:36 GMT
 recorded_with: VCR 6.3.1

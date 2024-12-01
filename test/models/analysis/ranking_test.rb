@@ -9,14 +9,14 @@ class Analysis::RankingTest < ActiveSupport::TestCase
         "products" => [
             { "name" => "Rolex Submariner", "positions" => [ 1, 2, 1 ] },
             { "name" => "Omega Seamaster", "positions" => [ 2, 3, 2 ] },
-            { "name" => "Patek Philippe Nautilus", "positions" => [ 3, 1, 3 ] },
+            { "name" => "Patek Philippe Nautilus", "positions" => [ 3, 3, 3 ] },
             { "name" => "Audemars Piguet Royal Oak", "positions" => [ 4, 4, 4 ] },
-            { "name" => "Tag Heuer Carrera", "positions" => [ 5, 5, 5 ] }
+            { "name" => "Tag Heuer Carrera", "positions" => [ 5, 5, 4 ] }
         ],
         "brands" => [
             { "name" => "Rolex", "positions" => [ 1, 2, 1 ] },
             { "name" => "Omega", "positions" => [ 3, 1, 3 ] },
-            { "name" => "Patek Philippe", "positions" => [ 2, 3, 2 ] },
+            { "name" => "Patek Philippe", "positions" => [ 2, 3, 3 ] },
             { "name" => "Audemars Piguet", "positions" => [ 4, 4, 4 ] },
             { "name" => "Tag Heuer", "positions" => [ 5, 5, 5 ] }
         ]
@@ -27,7 +27,7 @@ class Analysis::RankingTest < ActiveSupport::TestCase
             analysis = analysis(entities: WATCHES, brand_info: "omega seamaster diver 300m")
             assert analysis.perform_and_save
             you = analysis.reload.result["you"]
-            assert_equal 3, you["product_rank"]
+            assert_equal 2, you["product_rank"]
             assert_nil you["other_products_rank"]
             assert_equal 2, you["brand_rank"]
         end
@@ -50,7 +50,7 @@ class Analysis::RankingTest < ActiveSupport::TestCase
             assert analysis.perform_and_save
             you = analysis.reload.result["you"]
             assert_equal 3, you["brand_rank"]
-            assert_equal 2, you["other_products_rank"]
+            assert_equal 3, you["other_products_rank"]
             assert_nil you["product_rank"]
         end
     end

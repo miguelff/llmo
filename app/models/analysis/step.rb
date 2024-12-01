@@ -7,6 +7,7 @@ class Analysis::Step < ApplicationRecord
 
     belongs_to :report
     after_initialize :set_default_values
+    class_attribute :model, :temperature
 
     def succeeded?
         self.error.nil? && self.result.present?
