@@ -37,7 +37,7 @@ gem "dry-schema", "~> 1.13"
 
 # AI/ML Integration
 gem "ruby-openai", "~> 7.3"
-gem "langchainrb", "~> 0.19.1"
+gem "langchainrb", "~> 0.19.2"
 
 # Cross-platform compatibility
 gem "tzinfo-data", platforms: %i[ windows jruby ]
