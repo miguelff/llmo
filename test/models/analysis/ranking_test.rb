@@ -60,23 +60,23 @@ class Analysis::RankingTest < ActiveSupport::TestCase
         expected_ranking = [
             { name: "Item2", score: 100.0, rank: 1 },
             { name: "Item1", score: 86.67, rank: 2 },
-            { name: "Item5", score: 80.0, rank: 3 },
-            { name: "Item4", score: 80.0, rank: 4 },
+            { name: "Item4", score: 85.0, rank: 3 },
+            { name: "Item5", score: 80.0, rank: 4 },
             { name: "Item3", score: 66.67, rank: 5 },
-            { name: "Item6", score: 60.0, rank: 6 },
-            { name: "Item7", score: 56.67, rank: 7 },
-            { name: "Item8", score: 56.67, rank: 8 }
+            { name: "Item8", score: 60.67, rank: 6 },
+            { name: "Item6", score: 60.0, rank: 7 },
+            { name: "Item7", score: 56.67, rank: 8 }
         ]
 
         items = [
             { "name": "Item1", "positions": [ 2, 3, 1 ] },
             { "name": "Item2", "positions": [ 1, 1, 2 ] },
             { "name": "Item3", "positions": [ 2, 3 ] },
-            { "name": "Item4", "positions": [ 2, 1 ] },
+            { "name": "Item4", "positions": [ 2, 1, 4 ] },
             { "name": "Item5", "positions": [ 1, 2 ] },
             { "name": "Item6", "positions": [ 2 ] },
             { "name": "Item7", "positions": [ 3 ] },
-            { "name": "Item8", "positions": [ 3 ] }
+            { "name": "Item8", "positions": [ 3, 5 ] }
         ]
 
         assert_equal expected_ranking, analysis(entities: { "products" => items }).products_ranking

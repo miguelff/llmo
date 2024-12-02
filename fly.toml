@@ -41,9 +41,9 @@ console_command = '/rails/bin/rails console'
       X-Forwarded-Proto = 'https'
 
 [[vm]]
-  memory = '1gb'
+  memory = '4gb'
   cpu_kind = 'shared'
-  cpus = 2
+  cpus = 4
 
 [processes]
   app = "bundle exec thrust ./bin/rails server"
