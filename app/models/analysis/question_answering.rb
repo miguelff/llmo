@@ -1,15 +1,4 @@
 class Analysis::QuestionAnswering < Analysis::Step
-    def self.cost(queries_count)
-        per_answer_cost =
-            Analysis::Step::COSTS[:inference] + # gpt-4o for the answer
-            Analysis::Step::COSTS[:search] + # bing for the search
-            (5 * (Analysis::Step::COSTS[:download] + Analysis::Step::COSTS[:inference])) # download and summarize each of the 5 search results
-            Analysis::Step::COSTS[:inference] + # for providing search results back to the model and getting the final answer
-
-        queries_count * per_answer_cost
-    end
-
-
     class BingSearch
         extend Langchain::ToolDefinition
 

@@ -1,10 +1,6 @@
 class Analysis::Ranking < Analysis::Step
     include Analysis::Inference
 
-    def self.cost(queries_count)
-        Analysis::Step::COSTS[:inference]
-    end
-
     self.model = "gpt-4o"
     self.temperature = 0.0
     attribute :entities, :json, default: {}

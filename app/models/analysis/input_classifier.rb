@@ -1,10 +1,6 @@
 class Analysis::InputClassifier < Analysis::Step
     include Analysis::Inference
 
-    def self.cost(queries_count)
-        Analysis::Step::COSTS[:inference]
-    end
-
     SYSTEM_PROMPT = <<-EOF.promptize
         You are an assistant specialized in entity recognition.
         Your task is to analyze text and determine the category of the entity in the text.

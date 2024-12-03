@@ -73,10 +73,6 @@ module Analysis::Inference
         assistant.run(auto_tool_execution: true)
     end
 
-    def perform_and_save
-        self.perform && self.save
-    end
-
     private
 
     def parameters(messages)

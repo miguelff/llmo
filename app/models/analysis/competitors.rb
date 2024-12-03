@@ -1,8 +1,4 @@
 class Analysis::Competitors < Analysis::Step
-    def self.cost(queries_count)
-        3 * Analysis::Step::COSTS[:inference]
-    end
-
     # The result of entity extraction
     attribute :entities, :json, default: {}
     validates :entities, presence: true

@@ -3,10 +3,6 @@
 # 1. First pass: Extracts entities from the AI assistant's response, including the type of the entity (brand, product, service, etc.), the name of the entity, the position of the entity in the answer, and any links related to the entity.
 # 2. Second pass: Guesses the brands of the products found in the first pass.
 class Analysis::EntityExtractor < Analysis::Step
-    def self.cost(queries_count)
-        queries_count * Analysis::Step::COSTS[:inference] + 1
-    end
-
     include Analysis::Inference
 
     attribute :answers, :json, default: []

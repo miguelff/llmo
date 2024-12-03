@@ -1,10 +1,6 @@
 class Analysis::LanguageDetector < Analysis::Step
     include Analysis::Inference
 
-    def self.cost(queries_count)
-      Analysis::Step::COSTS[:inference]
-    end
-
     schema do
         string :language, enum: Analysis::SUPPORTED_LANGUAGES, description: "The detected language of the input text"
     end

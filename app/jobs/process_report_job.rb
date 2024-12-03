@@ -6,12 +6,7 @@ class ProcessReportJob < ApplicationJob
   MIN_UPDATE_INTERVAL = 2.seconds
 
   def perform(report, questions_count: Rails.configuration.x.questions_count)
-    step_to_cost_dictionary = Analysis::Step.descendants.map { |step| [ step.name, step.cost(questions_count) ] }.to_h
-    total_cost = step_to_cost_dictionary.values.sum
-    steps_percentage_dictionary = step_to_cost_dictionary.transform_values { |cost| cost * 100 / total_cost }
     percentage = 0
-
-    remaining_cost = total_cost
     last_updated_at = Time.now
 
     report.processing!
