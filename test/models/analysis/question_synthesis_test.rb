@@ -11,16 +11,13 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
     end
   end
 
-  test "limit questions count" do
-    VCR.use_cassette("analysis/question_synthesis/limit_questions_count") do
+  test "perform for italian language" do
+    VCR.use_cassette("analysis/question_synthesis/ita") do
       report = reports(:safe_cars)
-      analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 20, language: "spa")
+      analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 5, language: "ita")
       assert analysis.perform_and_save
-
-      questions = analysis.reload.result
-      assert_equal 20, questions.count
-      assert_equal 10, questions.uniq.count
-      assert questions.group_by(&:to_s).values.all? { |qs| qs.length==2 }, "All questions should be repeated twice"
+      assert_equal 5, analysis.reload.result.count
+      assert_equal "Quali sono le auto più raccomandate per la sicurezza tra le donne di oltre 45 anni?", analysis.result.first
     end
   end
 
@@ -61,6 +58,19 @@ class Analysis::QuestionSynthesisTest < ActiveSupport::TestCase
       assert analysis.perform_and_save
       assert_equal 5, analysis.reload.result.count
       assert_equal "What are the most recommended safe cars for women over 45?", analysis.result.first
+    end
+  end
+
+  test "limit questions count" do
+    VCR.use_cassette("analysis/question_synthesis/limit_questions_count") do
+      report = reports(:safe_cars)
+      analysis = Analysis::QuestionSynthesis.new(report: report, questions_count: 20, language: "spa")
+      assert analysis.perform_and_save
+
+      questions = analysis.reload.result
+      assert_equal 20, questions.count
+      assert_equal 10, questions.uniq.count
+      assert questions.group_by(&:to_s).values.all? { |qs| qs.length==2 }, "All questions should be repeated twice"
     end
   end
 end

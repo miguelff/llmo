@@ -90,6 +90,8 @@ class Analysis::QuestionAnswering < Analysis::Step
             "Geben Sie Marken und Modelle von Produkten und/oder Dienstleistungen an und erklären Sie, warum Sie diese und nicht andere gewählt haben. Verwenden Sie das Suchwerkzeug, um Informationen zu erhalten und Ergebnisse zu untermauern. Fügen Sie URLs der konsultierten Websites oder spezialisierten Webseiten hinzu, schließen Sie keine Quellen ein, die offizielle Seiten der genannten Marke, des Produkts oder der Dienstleistung sind."
         when :fra
             "Retournez des marques et des modèles de produits et/ou de services et expliquez pourquoi vous avez choisi ceux-ci et pas d'autres. Utilisez l'outil de recherche pour obtenir des informations et étayer les résultats. Incluez les URLs des sites consultés ou des sites spécialisés, n'incluez pas les sources officielles de la marque, du produit ou du service mentionné."
+        when :ita
+            "Restituisci marche e modelli di prodotti e/o servizi e spiega perché hai scelto questi e non altri. Usa la funzione di ricerca per ottenere informazioni e supportare i risultati. Includi URL dei siti consultati o dei siti specializzati, non includere fonti che siano le pagine ufficiali della marca, del prodotto o del servizio menzionato."
         else
             "Return brands and models of products and/or services and explain why you chose those and not others. Use the search tool to obtain information and support results. Include URLs of the consulted sites or specialized websites, do not include sources that are the official sites of the mentioned brand, product, or service."
         end
