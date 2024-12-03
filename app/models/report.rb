@@ -22,7 +22,7 @@ class Report < ApplicationRecord
     enum :status, %i[pending processing completed failed]
 
     before_create :maybe_assign_id
-    after_create_commit :process_report
+    after_create_commit :process_later
     after_update_commit :refresh_report_status
 
     has_one :language_detector_analysis, dependent: :destroy, class_name: "Analysis::LanguageDetector"
@@ -69,8 +69,7 @@ class Report < ApplicationRecord
     def retry
         if self.reload.failed? || zombie?
             Rails.logger.info "[Report #{self.id}] Retrying report #{Report.inspect}"
-            self.pending!
-            ProcessReportJob.perform_later(self)
+            self.process_later
             true
         else
             false
@@ -100,6 +99,10 @@ class Report < ApplicationRecord
         analyses.find { |a| a.type == name }&.result
     end
 
+    def process_later
+        ProcessReportJob.perform_later(self)
+    end
+
     private
 
     def validate_advanced_settings_keys
@@ -117,10 +120,6 @@ class Report < ApplicationRecord
 
     def maybe_assign_id
         self.id = SecureRandom.uuid if self.id.blank?
-    end
-
-    def process_report
-        ProcessReportJob.perform_later(self)
     end
 
     def refresh_report_status

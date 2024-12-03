@@ -8,7 +8,7 @@ class ProcessZombieReportsJobTest < ActiveJob::TestCase
 
     travel (Report::ZOMBIE_REPORT_THRESHOLD + 1.second) do
       assert_equal 1, Report.zombies.count, "Report should be zombie"
-      assert_difference "Report.zombies.count", -1 do
+      assert_enqueued_with(job: ProcessReportJob) do
         ProcessZombieReportsJob.perform_now
       end
     end
