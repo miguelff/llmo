@@ -15,6 +15,7 @@ class Report < ApplicationRecord
     end
 
     EXHAUSTIVENESS_OPTIONS = [ :brief, :standard, :thorough ]
+    ZOMBIE_REPORT_THRESHOLD = 2.minutes
 
     validates :query, presence: true
     validate :validate_advanced_settings_keys
@@ -35,6 +36,8 @@ class Report < ApplicationRecord
     has_many :analyses, dependent: :destroy, class_name: "Analysis::Step"
 
     belongs_to :owner, polymorphic: true
+
+    scope :zombies, -> { where(status: :processing).where("updated_at < ?", ZOMBIE_REPORT_THRESHOLD.ago) }
 
     scope :recent, -> { order(created_at: :desc).limit(10) }
     scope :owned_by, ->(user) { where(owner: user) }
@@ -63,10 +66,19 @@ class Report < ApplicationRecord
         Result.new(self)
     end
 
-    def retry!
-        report = Report.new(owner: owner, query: query, advanced_settings: advanced_settings)
-        report.save!
-        report
+    def retry
+        if self.reload.failed? || zombie?
+            Rails.logger.info "[Report #{self.id}] Retrying report #{Report.inspect}"
+            self.pending!
+            ProcessReportJob.perform_later(self)
+            true
+        else
+            false
+        end
+    end
+
+    def zombie?
+       self.processing? && self.updated_at < ZOMBIE_REPORT_THRESHOLD.ago
     end
 
     def method_missing(method, *args, &block)

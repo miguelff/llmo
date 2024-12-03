@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_03_084540) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_03_182658) do
   create_table "analysis_language_detections", force: :cascade do |t|
     t.string "language"
     t.string "provider", default: "openai", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_03_084540) do
     t.index ["created_at"], name: "index_reports_on_created_at"
     t.index ["owner_type", "owner_id", "created_at"], name: "index_reports_on_owner_and_created_at"
     t.index ["status"], name: "index_reports_on_status"
+    t.index ["updated_at", "status"], name: "index_reports_on_updated_at_and_status"
   end
 
   create_table "users", force: :cascade do |t|

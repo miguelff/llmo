@@ -45,14 +45,9 @@ class Analysis::QuestionAnswering < Analysis::Step
 
     include Analysis::Inference
 
+    attr_accessor :callback
     attribute :questions, :json, default: []
     validates :questions, length: { minimum: 1 }
-
-    attr_accessor :question_answered_callback
-    def with_question_answered_callback(callback)
-        self.question_answered_callback = callback
-        self
-    end
 
     def perform
         answers = Concurrent::Promises.zip_futures_over(self.questions) do |question|
@@ -60,7 +55,7 @@ class Analysis::QuestionAnswering < Analysis::Step
                 res = assist(expand(question), tools: [ BingSearch.new(self) ], model: "gpt-4o", temperature: 0.5)
                 answer = res.last.content
 
-                self.question_answered_callback&.call(question, answer)
+                self.callback&.call(question, answer)
 
                 if answer.blank?
                     Rails.logger.warn({ message: "No answer for question", metadata: { question: question, response: res } })

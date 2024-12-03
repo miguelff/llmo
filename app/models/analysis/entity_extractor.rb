@@ -5,22 +5,14 @@
 class Analysis::EntityExtractor < Analysis::Step
     include Analysis::Inference
 
+    attr_accessor :callback
     attribute :answers, :json, default: []
     validates :answers, length: { minimum: 1 }
-
-    attr_accessor :entities_extracted_callback
-
-    def with_entities_extracted_callback(callback)
-        self.entities_extracted_callback = callback
-        self
-    end
 
     def perform
         first_pass_entities = self.first_pass
         second_pass_entities = self.second_pass(first_pass_entities)
         result = self.class.merge_passes(first_pass_entities, second_pass_entities)
-
-        self.entities_extracted_callback&.call(result)
         self.result = result
         true
     end
@@ -127,7 +119,7 @@ class Analysis::EntityExtractor < Analysis::Step
             parameters[:response_format] = FIRST_PASS_OUTPUT_SCHEMA
 
             res = client.parse(**parameters)
-            self.entities_extracted_callback&.call(res)
+            self.callback&.call(res)
 
             if res.refusal.present?
                 { error: res.refusal, messages: messages }
@@ -267,7 +259,7 @@ class Analysis::EntityExtractor < Analysis::Step
         parameters[:response_format] = SECOND_PASS_OUTPUT_SCHEMA
 
         res = client.parse(**parameters)
-        self.entities_extracted_callback&.call(res.parsed)
+        self.callback&.call(res.parsed)
 
         if res.refusal.present?
             Rails.logger.error("Entity extraction failed for second pass: #{res.refusal}")

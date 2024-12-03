@@ -24,7 +24,7 @@ class ReportsController < ApplicationController
   end
 
   def retry
-    @report = @report.retry!
+    @report.retry
     redirect_to @report, status: :see_other, notice: "Retrying report"
   end
 

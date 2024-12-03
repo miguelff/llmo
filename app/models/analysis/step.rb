@@ -1,9 +1,58 @@
 class Analysis::Step < ApplicationRecord
+    class Result
+        attr_accessor :step, :result, :error
+
+        def initialize(step)
+            self.step = step
+            self.result = step.result
+            self.error = step.error
+        end
+
+        def ok?
+            self.error.nil? && self.result.present?
+        end
+
+        def failed?
+            !self.ok?
+        end
+
+        def value!
+            if self.ok?
+                self.result
+            else
+                raise self.error
+            end
+        end
+    end
+
     MAX_ATTEMPT_COUNT = 3
 
     belongs_to :report
     after_initialize :set_default_values
     class_attribute :model, :temperature
+
+    def self.perform_if_needed(report, **args)
+        step = self.find_or_initialize_by(report: report)
+        args.each do |key, value|
+            step.send("#{key}=", value)
+        end
+
+        unless step.succeeded?
+            report.update_progress(message: "Resoning on input")
+            if step.perform_with_retry
+                if step.save
+                    Rails.logger.info "[Report #{report.id}] Step #{step.type} completed: #{step.result.inspect}"
+                else
+                    step.error = step.errors.full_messages.join(", ")
+                    Rails.logger.error "[Report #{report.id}] Step #{step.type} failed: #{step.error}"
+                end
+            end
+        else
+            Rails.logger.info "[Report #{report.id}] Step #{step.type} already completed: #{step.result.inspect}"
+        end
+
+        Result.new(step)
+    end
 
     def perform_and_save
         self.perform_with_retry && self.save
