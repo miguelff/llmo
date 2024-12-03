@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for llmo on 2024-11-08T17:53:30+01:00
+# fly.toml app configuration file generated for llmo on 2024-12-02T16:46:33+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,23 +7,25 @@ app = 'llmo'
 primary_region = 'mad'
 console_command = '/rails/bin/rails console'
 
-[build]
-
 [env]
   HTTP_PORT = '8080'
   SOLID_QUEUE_IN_PUMA = 'true'
+
+[processes]
+  app = 'bundle exec thrust ./bin/rails server'
+  solidq = 'bundle exec rake solid_queue:start'
 
 [[mounts]]
   source = 'data'
   destination = '/data'
 
 [http_service]
-  processes = ["app"]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = "off"
+  auto_stop_machines = 'off'
   auto_start_machines = true
   min_machines_running = 1
+  processes = ['app']
 
 [checks]
   [checks.status]
@@ -44,8 +46,3 @@ console_command = '/rails/bin/rails console'
   memory = '4gb'
   cpu_kind = 'shared'
   cpus = 4
-
-[processes]
-  app = "bundle exec thrust ./bin/rails server"
-  solidq = "bundle exec rake solid_queue:start"
-

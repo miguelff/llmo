@@ -15,13 +15,14 @@ class Report < ApplicationRecord
     end
 
     EXHAUSTIVENESS_OPTIONS = [ :brief, :standard, :thorough ]
+    ZOMBIE_REPORT_THRESHOLD = 2.minutes
 
     validates :query, presence: true
     validate :validate_advanced_settings_keys
     enum :status, %i[pending processing completed failed]
 
     before_create :maybe_assign_id
-    after_create_commit :process_report
+    after_create_commit :process_later
     after_update_commit :refresh_report_status
 
     has_one :language_detector_analysis, dependent: :destroy, class_name: "Analysis::LanguageDetector"
@@ -35,6 +36,8 @@ class Report < ApplicationRecord
     has_many :analyses, dependent: :destroy, class_name: "Analysis::Step"
 
     belongs_to :owner, polymorphic: true
+
+    scope :zombies, -> { where(status: :processing).where("updated_at < ?", ZOMBIE_REPORT_THRESHOLD.ago) }
 
     scope :recent, -> { order(created_at: :desc).limit(10) }
     scope :owned_by, ->(user) { where(owner: user) }
@@ -63,10 +66,18 @@ class Report < ApplicationRecord
         Result.new(self)
     end
 
-    def retry!
-        report = Report.new(owner: owner, query: query, advanced_settings: advanced_settings)
-        report.save!
-        report
+    def retry
+        if self.reload.failed? || zombie?
+            Rails.logger.info "[Report #{self.id}] Retrying report #{Report.inspect}"
+            self.process_later
+            true
+        else
+            false
+        end
+    end
+
+    def zombie?
+       self.processing? && self.updated_at < ZOMBIE_REPORT_THRESHOLD.ago
     end
 
     def method_missing(method, *args, &block)
@@ -88,6 +99,10 @@ class Report < ApplicationRecord
         analyses.find { |a| a.type == name }&.result
     end
 
+    def process_later
+        ProcessReportJob.perform_later(self)
+    end
+
     private
 
     def validate_advanced_settings_keys
@@ -105,10 +120,6 @@ class Report < ApplicationRecord
 
     def maybe_assign_id
         self.id = SecureRandom.uuid if self.id.blank?
-    end
-
-    def process_report
-        ProcessReportJob.perform_later(self)
     end
 
     def refresh_report_status

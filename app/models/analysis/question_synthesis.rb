@@ -1,10 +1,6 @@
 class Analysis::QuestionSynthesis < Analysis::Step
     include Analysis::Inference
 
-    def self.cost(queries_count)
-        1 * Analysis::Step::COSTS[:inference]
-    end
-
     attribute :questions_count, :integer, default: 10
     validates_presence_of :questions_count, message: "Questions count is required"
 

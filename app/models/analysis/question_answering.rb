@@ -1,15 +1,4 @@
 class Analysis::QuestionAnswering < Analysis::Step
-    def self.cost(queries_count)
-        per_answer_cost =
-            Analysis::Step::COSTS[:inference] + # gpt-4o for the answer
-            Analysis::Step::COSTS[:search] + # bing for the search
-            (5 * (Analysis::Step::COSTS[:download] + Analysis::Step::COSTS[:inference])) # download and summarize each of the 5 search results
-            Analysis::Step::COSTS[:inference] + # for providing search results back to the model and getting the final answer
-
-        queries_count * per_answer_cost
-    end
-
-
     class BingSearch
         extend Langchain::ToolDefinition
 
@@ -56,14 +45,9 @@ class Analysis::QuestionAnswering < Analysis::Step
 
     include Analysis::Inference
 
+    attr_accessor :callback
     attribute :questions, :json, default: []
     validates :questions, length: { minimum: 1 }
-
-    attr_accessor :question_answered_callback
-    def with_question_answered_callback(callback)
-        self.question_answered_callback = callback
-        self
-    end
 
     def perform
         answers = Concurrent::Promises.zip_futures_over(self.questions) do |question|
@@ -71,7 +55,7 @@ class Analysis::QuestionAnswering < Analysis::Step
                 res = assist(expand(question), tools: [ BingSearch.new(self) ], model: "gpt-4o", temperature: 0.5)
                 answer = res.last.content
 
-                self.question_answered_callback&.call(question, answer)
+                self.callback&.call(question, answer)
 
                 if answer.blank?
                     Rails.logger.warn({ message: "No answer for question", metadata: { question: question, response: res } })

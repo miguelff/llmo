@@ -2,9 +2,9 @@ require "test_helper"
 
 class ProcessReportJobTest < ActiveJob::TestCase
   def assert_report_processed_correctly(report, questions_count:)
-      assert report.completed?, "Report should be completed, but was #{report.status}"
-      analyses = report.reload.analyses
-      assert_equal [
+    assert report.completed?, "Report should be completed, but was #{report.status}: #{report.latest_error}"
+    analyses = report.reload.analyses
+    assert_equal [
         "Analysis::InputClassifier",
         "Analysis::LanguageDetector",
         "Analysis::QuestionSynthesis",
@@ -12,14 +12,14 @@ class ProcessReportJobTest < ActiveJob::TestCase
         "Analysis::EntityExtractor",
         "Analysis::Competitors",
         "Analysis::Ranking"
-        ], analyses.map(&:type)
+    ], analyses.map(&:type)
 
-        if ENV["OUTPUT_ANALYSES"]
-          puts JSON.pretty_generate(analyses.map { |a| [ a.type, a.result ] })
-        end
+    if ENV["OUTPUT_ANALYSES"]
+      puts JSON.pretty_generate(analyses.map { |a| [ a.type, a.result ] })
+    end
 
-        assert analyses.all?(&:succeeded?), "All analyses should have succeeded"
-        assert_equal questions_count, report.question_answering_analysis.result.count
+    assert analyses.all?(&:succeeded?), "All analyses should have succeeded"
+    assert_equal questions_count, report.question_answering_analysis.result.count
   end
 
 
