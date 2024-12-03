@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"gpt-4o-mini","messages":[{"role":"system","content":"You
+        are an assistant specialized in language detection.\nYour task is to analyze
+        text and determine its language. Return only the ISO-639-2\nthree-letter language
+        code (e.g. ''eng'' for English, ''spa'' for Spanish, etc.).\nIf the language
+        cannot be determined, return ''und'' for undefined.\nWe only support a set
+        of languages:\nspa, eng, deu, fra, ita\nif the code is for a different language,
+        return ''und'' for undefined.\n"},{"role":"user","content":"Input: Coches
+        seguros para todos Mujeres 45+"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"language":{"type":"string","enum":["spa","eng","deu","fra","ita"],"description":"The
+        detected language of the input text"}},"required":["language"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 03 Dec 2024 19:10:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '234'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999868'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 1ms
+      X-Request-Id:
+      - req_7279d8088d829c4ee1266e9f942984d4
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=k1MenOuSzkQDhDQ2zCiIEbhOxFm1m2ei0AV.jyzXmm8-1733253006-1.0.1.1-jFeoWpO2CEo5JLdrX2yJseX3b_caZF3OJQMGUGeNskW80oRgJUjMnwbMxcqjSCYTjYOypzRWG.6opc0E9v37lA;
+        path=/; expires=Tue, 03-Dec-24 19:40:06 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=QV3NSx7ErEPLH_56rfaEi9oMPEl9hLaByzbOI1HlNh0-1733253006754-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8ec5dad9dfec1bae-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AaSZacUjxBnIuvxfMV4r88VGSfxon",
+          "object": "chat.completion",
+          "created": 1733253006,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "{\"language\":\"spa\"}",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 185,
+            "completion_tokens": 5,
+            "total_tokens": 190,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_0705bf87c0"
+        }
+  recorded_at: Tue, 03 Dec 2024 19:10:06 GMT
+recorded_with: VCR 6.3.1

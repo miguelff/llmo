@@ -1,7 +1,7 @@
 require "test_helper"
 
 class Analysis::QuestionAnsweringTest < ActiveSupport::TestCase
-  test "answering questions" do
+  test "answering questions (deu)" do
     VCR.use_cassette("analysis/question_answering/deu") do
       report = reports(:safe_cars)
       question = "Welche Automarken bieten die sichersten Fahrzeuge für Frauen über 45 Jahren an?"

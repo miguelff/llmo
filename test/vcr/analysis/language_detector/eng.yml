@@ -10,10 +10,10 @@ http_interactions:
         text and determine its language. Return only the ISO-639-2\nthree-letter language
         code (e.g. ''eng'' for English, ''spa'' for Spanish, etc.).\nIf the language
         cannot be determined, return ''und'' for undefined.\nWe only support a set
-        of languages:\nspa, eng, deu, fra\nif the code is for a different language,
+        of languages:\nspa, eng, deu, fra, ita\nif the code is for a different language,
         return ''und'' for undefined.\n"},{"role":"user","content":"Input: Safe cars
-        Women 45+"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
-        for the structured response","schema":{"type":"object","properties":{"language":{"type":"string","enum":["spa","eng","deu","fra"],"description":"The
+        for every person Women 45+"}],"temperature":0.0,"response_format":{"type":"json_schema","json_schema":{"name":"schema","description":"Schema
+        for the structured response","schema":{"type":"object","properties":{"language":{"type":"string","enum":["spa","eng","deu","fra","ita"],"description":"The
         detected language of the input text"}},"required":["language"],"additionalProperties":false,"strict":true,"$defs":{}}}}}'
     headers:
       Content-Type:
@@ -32,7 +32,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 28 Nov 2024 12:38:22 GMT
+      - Tue, 03 Dec 2024 19:10:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,7 +44,7 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '484'
+      - '279'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
@@ -54,38 +54,38 @@ http_interactions:
       X-Ratelimit-Remaining-Requests:
       - '4999'
       X-Ratelimit-Remaining-Tokens:
-      - '3999872'
+      - '3999868'
       X-Ratelimit-Reset-Requests:
       - 12ms
       X-Ratelimit-Reset-Tokens:
       - 1ms
       X-Request-Id:
-      - req_328ee7532325f78d2be23cf39cae8d0d
+      - req_9d81f83b51e7ffaebf0baa44b1ab51ab
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=xn.qBipWjXP.TDXOkb1CTT0PJEdCfVBY4zYdkKvEhLU-1732797502-1.0.1.1-Gk90_GSemy5fjNIENW4y9Uu2A4HyjlOD2bOlJSoXEV7z_6WnwbJ.knMNRfeMhmXG1CbhRCdaElh40Cc3EKLNPQ;
-        path=/; expires=Thu, 28-Nov-24 13:08:22 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=iEsI.h71lTe22KjnrZ2VimWC6omUABN4HoSWCDtnwGY-1733253006-1.0.1.1-5nFQcipRlI8_lMQXWWtxXbY9VB3_JIewmq7iBQeM9DsJLASTrjYn6hRicgnwAz.mLdzPXcph.WkAQaGRNwfAqg;
+        path=/; expires=Tue, 03-Dec-24 19:40:06 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=xojGAvUi6duANO3uvCbo0Z.nam_U36X2m3xgSEYvXC0-1732797502911-0.0.1.1-604800000;
+      - _cfuvid=6eFthck8VZfREqEBY9r2JnzrHKedFkh_sppVFlyyMT0-1733253006193-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e9a6a24dac5d58f-MAD
+      - 8ec5dad5cfed2192-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AYY4kJKXy7MWSk7EdVMObTjBB2Nvc",
+          "id": "chatcmpl-AaSZZkwFGo6kHnUxkFCdb7l0OJOcy",
           "object": "chat.completion",
-          "created": 1732797502,
+          "created": 1733253005,
           "model": "gpt-4o-mini-2024-07-18",
           "choices": [
             {
@@ -100,9 +100,9 @@ http_interactions:
             }
           ],
           "usage": {
-            "prompt_tokens": 178,
+            "prompt_tokens": 185,
             "completion_tokens": 5,
-            "total_tokens": 183,
+            "total_tokens": 190,
             "prompt_tokens_details": {
               "cached_tokens": 0,
               "audio_tokens": 0
@@ -116,5 +116,5 @@ http_interactions:
           },
           "system_fingerprint": "fp_0705bf87c0"
         }
-  recorded_at: Thu, 28 Nov 2024 12:38:22 GMT
+  recorded_at: Tue, 03 Dec 2024 19:10:06 GMT
 recorded_with: VCR 6.3.1

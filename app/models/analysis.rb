@@ -7,24 +7,27 @@ module Analysis
     eng: "en",
     spa: "es",
     deu: "de",
-    fra: "fr"
+    fra: "fr",
+    ita: "it"
   }.with_indifferent_access.freeze
 
   DEFAULT_LANGUAGE = :eng
 
-  SUPPORTED_LANGUAGES = %i[spa eng deu fra]
+  SUPPORTED_LANGUAGES = %i[spa eng deu fra ita]
 
   LANGUAGE_NAMES_IN_ENGLISH = {
     eng: "English",
     spa: "Spanish",
     deu: "German",
-    fra: "French"
+    fra: "French",
+    ita: "Italian"
   }.with_indifferent_access.freeze
 
   LANGUAGE_NAMES_IN_LANGUAGE = {
     eng: "English",
     spa: "Español",
     deu: "Deutsch",
-    fra: "Français"
+    fra: "Français",
+    ita: "Italiano"
   }.with_indifferent_access.freeze
 end
