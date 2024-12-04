@@ -38,7 +38,7 @@ class Analysis::Step < ApplicationRecord
         end
 
         unless step.succeeded?
-            report.update_progress(message: "Resoning on input")
+            report.update_progress(message: "Reasoning on input")
             if step.perform_with_retry
                 if step.save
                     Rails.logger.info "[Report #{report.id}] Step #{step.type} completed: #{step.result.inspect}"
