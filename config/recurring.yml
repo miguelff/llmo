@@ -8,3 +8,7 @@
 #     command: "SoftDeletedRecord.due.delete_all"
 #     priority: 2
 #     schedule: at 5am every day
+production:
+  zombie_cleanup:
+    class: ProcessZombieReports
+    schedule: every 10 seconds
