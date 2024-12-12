@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-theme="lofi">
+
+<head>
+    <title><%= content_for(:title) || "Web" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%#= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <%= stylesheet_link_tag "tailwind.v2", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application.tailwind.v2.css", "data-turbo-track": "reload" %>
+    <!-- End Tailwind v2 -->
+    <%= javascript_importmap_tags %>
+    <%= Sentry.get_trace_propagation_meta.html_safe %>
+</head>
+
+<body>
+    <% if content_for?(:header) %>
+    <%= content_for(:header) %>
+    <% end %>
+
+    <% if content_for?(:center) %>
+    <%= content_for(:center) %>
+    <% else %>
+    <main class="antialiased">
+        <div class="flex-1 min-h-screen container mx-auto bg-base-100">
+            <%= yield %>
+        </div>
+    </main>
+    <% end %>
+
+    <% if content_for?(:footer) %>
+    <footer>
+        <%= yield :footer %>
+    </footer>
+    <% end %>
+</body>
+
+</html>

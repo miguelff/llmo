@@ -9,11 +9,6 @@ Rails.application.routes.draw do
     get "clone", to: "reports#clone", on: :member
   end
 
-  get "daniel", to: "auth#daniel", as: :daniel
-  get "miguel", to: "auth#miguel", as: :miguel
-  get "logout", to: "auth#logout", as: :logout
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -22,6 +17,10 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  namespace :v2 do
+    get "landing/index"
+  end
+
   # Defines the root path route ("/")
-  root "reports#new"
+  root "v2/landing#index"
 end
