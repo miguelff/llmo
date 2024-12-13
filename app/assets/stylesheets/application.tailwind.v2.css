@@ -19,6 +19,21 @@ TODO: at some point:
 */
 
 @layer base {
+    body {
+        @apply flex flex-col min-h-screen gap-4 text-base;
+    }
+
+    main {
+        @apply px-4;
+    }
+
+    section {
+        @apply py-4 flex flex-col gap-4;
+
+        h2 {
+            @apply text-4xl font-bold;
+        }
+    }
 }
 
 @layer components {
