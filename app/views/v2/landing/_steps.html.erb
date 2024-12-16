@@ -1,0 +1,20 @@
+<div id="steps" class="flex flex-col justify-center items-center mb-10">
+    <ul class="steps lg:steps-vertical mb-10">
+        <li class="step step-primary">Your website</li>
+        <li class="step">Your brand details</li>
+        <li class="step">Confirm your order</li>
+        <li class="step">Pay $8</li>
+        <li class="step">Receive your report</li>
+    </ul>
+
+    <div class="lg:w-[600px]">
+        <%= form_with url: "/submit_url", method: :post, local: true do |form| %>
+        <div class=" mb-4">
+            <%= form.text_field :website_url, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "https://www.yourwebsite.com" %>
+        </div>
+        <div class="flex justify-end">
+            <%= form.submit "Next", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+    </div>
+</div>

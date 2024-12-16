@@ -18,12 +18,16 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%#= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <%= stylesheet_link_tag "tailwind.v2", "data-turbo-track": "reload" %>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <%= stylesheet_link_tag "application.tailwind.v2.css", "data-turbo-track": "reload" %>
-    <!-- End Tailwind v2 -->
+    <%= stylesheet_link_tag "tailwind.v2", "data-turbo-track": "reload" %>
+    <%#= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
     <%= Sentry.get_trace_propagation_meta.html_safe %>
 </head>
@@ -123,5 +127,11 @@
     </footer>
     <% end %>
 </body>
+
+<script>
+    AOS.init({
+        once: true,
+    });
+</script>
 
 </html>
