@@ -27,28 +27,42 @@ class Analysis::Step < ApplicationRecord
 
     MAX_ATTEMPT_COUNT = 3
 
-    belongs_to :report
-    after_initialize :set_default_values
     class_attribute :model, :temperature
 
-    def self.perform_if_needed(report, **args)
-        step = self.find_or_initialize_by(report: report)
+    if Rails.env.test?
+        after_initialize :set_random_analysis_id
+
+        def set_random_analysis_id
+            if self.analysis_id.blank?
+                self.analysis_id = SecureRandom.uuid
+            end
+        end
+    end
+
+    validates :analysis_id, presence: true
+    validate :input_is_valid
+
+    def input_is_valid
+        raise "Must be redefined in subclasses"
+    end
+
+    def self.perform_if_needed(analysis_id, force: false, **args)
+        step = self.find_or_initialize_by(analysis_id: analysis_id)
         args.each do |key, value|
             step.send("#{key}=", value)
         end
 
-        unless step.succeeded?
-            report.update_progress(message: "Reasoning on input")
+        unless force || step.succeeded?
             if step.perform_with_retry
                 if step.save
-                    Rails.logger.info "[Report #{report.id}] Step #{step.type} completed: #{step.result.inspect}"
+                    Rails.logger.info "[Analysis #{analysis_id}] Step #{step.type} completed: #{step.result.inspect}"
                 else
                     step.error = step.errors.full_messages.join(", ")
-                    Rails.logger.error "[Report #{report.id}] Step #{step.type} failed: #{step.error}"
+                    Rails.logger.error "[Analysis #{analysis_id}] Step #{step.type} failed: #{step.error}"
                 end
             end
         else
-            Rails.logger.info "[Report #{report.id}] Step #{step.type} already completed: #{step.result.inspect}"
+            Rails.logger.info "[Analysis #{analysis_id}] Step #{step.type} already completed: #{step.result.inspect}"
         end
 
         Result.new(step)
@@ -87,12 +101,6 @@ class Analysis::Step < ApplicationRecord
     end
 
     private
-
-    def set_default_values
-        self.provider ||=  "openai"
-        self.model ||= (self.class.model || "gpt-4o-mini")
-        self.temperature ||= (self.class.temperature || 0.0)
-    end
 
     def backoff(attempt)
         sleep(attempt ** 2)

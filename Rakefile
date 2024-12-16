@@ -39,33 +39,3 @@ module TailwindOverrides
 end
 
 Rails.application.load_tasks
-
-
-
-namespace :v2 do
-  namespace :tailwindcss do
-    desc "Build your Tailwind CSS"
-    task build: :environment do |_, args|
-        puts "**v2**"
-        debug = args.extras.include?("debug")
-        command = TailwindOverrides::Commands.compile_command(debug: debug)
-        puts command.inspect if args.extras.include?("verbose")
-        system(*command, exception: true)
-    end
-
-    desc "Watch and build your Tailwind CSS on file changes"
-    task watch: :environment do |_, args|
-        puts "**v2**"
-        debug = args.extras.include?("debug")
-        poll = args.extras.include?("poll")
-        always = args.extras.include?("always")
-        command = TailwindOverrides::Commands.watch_command(always: always, debug: debug, poll: poll)
-        puts command.inspect if args.extras.include?("verbose")
-        system(*command)
-    rescue Interrupt
-      puts "Received interrupt, exiting tailwindcss:watch" if args.extras.include?("verbose")
-    end
-  end
-end
-
-Rake::Task["tailwindcss:build"].enhance([ "v2:tailwindcss:build" ])

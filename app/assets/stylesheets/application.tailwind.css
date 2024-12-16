@@ -1,3 +1,11 @@
+/*
+TODO: at some point:
+* This file will be moved to application.tailwind.css will be used instead.
+* This file will be removed.
+* tailwind.config.js will be replaced with v2
+* Rake tasks will remove everything that enhances tailwindcss tasks to use v2
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,137 +19,22 @@
 */
 
 @layer base {
-    label {
-        @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+    body {
+        @apply flex flex-col min-h-screen gap-4 text-base;
     }
 
-    input[type='text'],
-    input[type='email'],
-    input[type='password'],
-    input[type='number'],
-    input[type='search'],
-    input[type='tel'],
-    input[type='url'],
-    textarea {
-        @apply rounded-md text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-950 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
+    main {
+        @apply px-4;
     }
 
-    textarea {
-        @apply block p-2.5 w-full;
-    }
+    section {
+        @apply py-4 flex flex-col gap-4;
 
-    select {
-        @apply w-auto bg-gray-50 border-x-0 border-gray-300 rounded-lg text-center text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
-    }
-
-    p {
-        @apply text-base text-gray-900 dark:text-gray-100;
-    }
-
-    h1 {
-        @apply text-4xl font-bold text-gray-900 dark:text-white mb-4;
-    }
-
-    h2 {
-        @apply text-3xl font-bold text-gray-900 dark:text-white mb-3;
-    }
-
-    h3 {
-        @apply text-2xl font-semibold text-gray-900 dark:text-white mb-2;
-    }
-
-    h4 {
-        @apply text-xl font-semibold text-gray-900 dark:text-white mb-2;
-    }
-
-    h5 {
-        @apply text-lg font-medium text-gray-900 dark:text-white mb-1;
-    }
-
-    h6 {
-        @apply text-base font-medium text-gray-900 dark:text-white mb-1;
-    }
-
-    a {
-        @apply text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300;
+        h2 {
+            @apply text-4xl font-bold;
+        }
     }
 }
 
 @layer components {
-    .btn {
-        @apply font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none;
-
-        &.primary {
-            @apply text-white bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800;
-        }
-    }
-
-    .report {
-        @apply prose w-auto mx-auto pb-4;
-
-        strong {
-            @apply text-gray-900 dark:text-white;
-        }
-
-        .table,
-        tr,
-        th,
-        td {
-            @apply p-2 w-auto;
-        }
-    }
-
-    .card {
-        @apply bg-white shadow-lg rounded-lg p-6;
-    }
-
-    .centered-container {
-        @apply px-8 lg:px-0 max-w-xl mx-auto space-y-4;
-    }
-
-    #error_explanation {
-        @apply p-4 bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg;
-
-        ul {
-            @apply mt-2 space-y-1 list-disc list-inside;
-        }
-    }
-
-    form {
-        .field_with_errors {
-            @apply animate-[shake_0.5s_ease-in-out] text-[1.2rem];
-
-            input,
-            textarea {
-                @apply border-red-500 text-[1.2rem];
-            }
-        }
-
-        * {
-            @apply text-lg;
-        }
-
-        .btn {
-            @apply text-lg;
-        }
-    }
-
-    @keyframes shake {
-        0%,
-        100% {
-            transform: translateX(0);
-        }
-        20% {
-            transform: translateX(-5px);
-        }
-        40% {
-            transform: translateX(5px);
-        }
-        60% {
-            transform: translateX(-3px);
-        }
-        80% {
-            transform: translateX(3px);
-        }
-    }
 }

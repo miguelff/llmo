@@ -24,8 +24,6 @@ gem "jbuilder"
 gem "kamal", require: false
 gem "thruster", require: false
 
-# Authentication and security
-gem "devise", "~> 4.9"
 gem "sentry-ruby"
 gem "sentry-rails"
 
