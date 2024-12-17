@@ -11,6 +11,14 @@ class WebsiteInfoTest < ActiveSupport::TestCase
     assert_equal "http://mararodriguez.es/", info.input["url"]
   end
 
+  test "retrying with www" do
+    VCR.use_cassette("analysis/website_info/www.mararodriguez.es") do
+      info = Analysis::WebsiteInfo.for(url: "https://www.mararodriguez.es/")
+      assert info.valid?
+      assert info.perform_and_save
+    end
+  end
+
   test "validating the input" do
     info = Analysis::WebsiteInfo.for(url: "http:www.mararodriguez.es/")
     assert_not info.valid?

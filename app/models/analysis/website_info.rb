@@ -53,13 +53,6 @@ class Analysis::WebsiteInfo < Analysis::Step
 
   def presenter
     return nil unless succeeded?
-
-    r = result.with_indifferent_access
-    Analysis::Presenters::WebsiteInfo.new(
-      url: r.dig(:url),
-      title: r.dig(:title),
-      toc: r.dig(:toc),
-      meta_tags: r.dig(:meta_tags)
-    )
+    Analysis::Presenters::WebsiteInfo.from_json(result)
   end
 end

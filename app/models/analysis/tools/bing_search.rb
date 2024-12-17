@@ -6,22 +6,36 @@ class Analysis::Tools::BingSearch
         property :count, type: "integer", description: "The number of results to return", required: true
     end
 
-    def initialize(analysis)
+    def initialize(analysis, summarize: false)
         @analysis = analysis
+        @summarize = summarize
+    end
+
+    def summarize?
+        @summarize
     end
 
     def search(query:, count: 5)
         Rails.logger.info({ message: "Searching for #{query} with count #{count}" })
+        results = Bing::Search.web_results(query: query, count: count)
 
-        market = @analysis.report.country_code || Analysis::TWO_LETTER_CODE[@analysis.language.to_sym]
-        results = Bing::Search.web_results(query: query, count: count, mkt: market).download
-
-        Concurrent::Promises.zip_futures_over(results) do |result|
-            {
-                "URL": result["url"],
-                "Snippet": (result[:html].present? ? summarize(result[:html]) : result["snippet"])
-            }
-        end.value!.to_json
+        if summarize?
+            binding.pry
+            results = results.download
+            Concurrent::Promises.zip_futures_over(results) do |result|
+                {
+                    "URL": result["url"],
+                    "Snippet": (result[:html].present? ? summarize(result[:html]) : result["snippet"])
+                }
+            end.value!.to_json
+        else
+            results.list.map do |result|
+                {
+                    "URL": result[:url],
+                    "Snippet": result[:snippet]
+                }
+            end.to_json
+        end
     end
 
     def summarize(text)
@@ -30,7 +44,7 @@ class Analysis::Tools::BingSearch
             model: "gpt-4o-mini",
             messages: [
                 { role: "user", content: <<-CONTENT.promptize }
-                    summarize the following web page text written in #{Analysis::LANGUAGE_NAMES_IN_ENGLISH[@analysis.language.to_sym]} while focusing on capturing information relevant to make recommendations about "#{@analysis.report.query}":
+                    summarize the following web page text:
                     #{' '}
                     #{text}
                 CONTENT

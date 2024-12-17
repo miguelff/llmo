@@ -42,19 +42,19 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-# config.action_mailer.delivery_method = :letter_opener
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  address:         "smtp.gmail.com",
-  port:            587,
-  domain:          "llmo.fly.dev",
-  user_name:       "#{Rails.application.credentials.dig(:smtp, :user_name)}@gmail.com",
-  password:        Rails.application.credentials.dig(:smtp, :password),
-  authentication:  "plain",
-  enable_starttls: true,
-  open_timeout:    5,
-  read_timeout:    5
-}
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:         "smtp.gmail.com",
+    port:            587,
+    domain:          "llmo.fly.dev",
+    user_name:       "#{Rails.application.credentials.dig(:smtp, :user_name)}@gmail.com",
+    password:        Rails.application.credentials.dig(:smtp, :password),
+    authentication:  "plain",
+    enable_starttls: true,
+    open_timeout:    5,
+    read_timeout:    5
+  }
 
   config.action_mailer.perform_deliveries = true
 

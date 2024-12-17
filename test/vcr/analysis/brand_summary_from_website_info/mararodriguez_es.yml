@@ -1,0 +1,851 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Extract
+        structured information about a brand from a given website. Analyze the content
+        and fill out the following details in the specified format:\n- Brand Name:
+        The official name of the brand, company, or service that the website belongs
+        to.\n- Category: The product or service category the brand offers (e.g., fashion,
+        software, food \u0026 beverages, etc.).\n- Description: A short summary of
+        what the brand does and its key focus areas. If the website details do not
+        include information about a region where the brand operates most specifically,
+        omit it.\n- Region: The geographical region where the brand operates primarily
+        or where its main competitors are located.\n- Keywords: A list of SEO keywords,
+        to reach the website. Low volume and low difficulty keywords are preferred.
+        Include regional words in each keyword.\nUse the search tool to find more
+        information about the brand if you cannot extract information from the website
+        alone\n"}]},{"role":"user","content":[{"type":"text","text":"You must format
+        your output as a JSON value that adheres to a given \"JSON Schema\" instance.\n\n\"JSON
+        Schema\" is a declarative language that allows you to annotate and validate
+        JSON documents.\n\nFor example, the example \"JSON Schema\" instance {\"properties\":
+        {\"foo\": {\"description\": \"a list of test words\", \"type\": \"array\",
+        \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould match
+        an object with one required property, \"foo\". The \"type\" property specifies
+        \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the brand, company, or service that the website belongs to\"},\"category\":{\"type\":\"string\",\"description\":\"The
+        category of the product or service that the brand offers\"},\"description\":{\"type\":\"string\",\"description\":\"A
+        short description of what they do\"},\"region\":{\"type\":\"string\",\"description\":\"The
+        geopgrahical region where the brand operates and has most of its competitors\"},\"keywords\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/keyword\"},\"description\":\"A
+        list of SEO keywords to reach the website\"}},\"required\":[\"name\",\"category\",\"description\",\"region\",\"keywords\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"keyword\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\",\"description\":\"A
+        keyword\"}},\"required\":[\"value\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nThe
+        website info is: \n# Website info\n## URL: https://mararodriguez.es/\n## Title:
+        Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias\n##
+        Meta tags: \n* viewport: width=device-width, initial-scale=1, maximum-scale=1,
+        viewport-fit=cover\n* robots: index, follow, max-image-preview:large, max-snippet:-1,
+        max-video-preview:-1\n* description: Mara Rodriguez es un estudio de Diseño
+        gráfico en Asturias especializado en Packaging y Branding. Estamos en Gijón
+        y trabajamos con clientes nacionales e internacionales.\n* og:locale: es_ES\n*
+        og:locale:alternate: en_GB\n* og:type: website\n* og:title: Mara Rodriguez
+        Design - Branding, Packaging y Diseño Gráfico Asturias\n* og:description:
+        Mara Rodriguez es un estudio de Diseño gráfico en Asturias especializado en
+        Packaging y Branding. Estamos en Gijón y trabajamos con clientes nacionales
+        e internacionales.\n* og:url: https://mararodriguez.es/\n* og:site_name: Mara
+        Rodriguez - Design\n* article:publisher: https://www.facebook.com/Oloramara.Design\n*
+        article:modified_time: 2022-03-24T16:38:56+00:00\n* twitter:card: summary_large_image\n*
+        twitter:label1: Tiempo de lectura\n* twitter:data1: 2 minutos\n* generator:
+        Powered by WPBakery Page Builder - drag and drop page builder for WordPress.\n*
+        msapplication-TileImage: https://mararodriguez.es/wp-content/uploads/2019/05/cropped-mR_600x600-1-270x270.jpg\n##
+        HMTL header elements (as a table of contents of the site):\n- ¡Hola! Somos
+        un estudio de diseño creativo en Asturias, locas por - Cocada Snacks - Mix\u0026Twist
+        Zumos - Alskin Cosmetics - Oquendo – Grandes Orígenes - TOA Hemp - SillyBilly
+        Tortitas - Popitas - SillyBilly Snacks - SuperSaludables - TOA - El Diseño
+        Gráfico, nuestra pasión - Llevamos desde 2013 trabajando con clientes nacionales
+        e internacionales. Buscamos la mejor solución para las empresas, desde una
+        perspectiva creativa y divertida. El Packaging, el Branding, el Diseño y Asturias
+        son nuestras mayores pasiones - Cervezas FEM - Pantry Ice Cream - Teangle
+        - DOG - Smart Snacks - Miel Picu Moros - I´M A NUT - Dersia Cosmetics - Akaw
+        – Helado Artesanal - DipMates\nExtract brand information\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 12:52:42 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2133'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3998709'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 19ms
+      X-Request-Id:
+      - req_9bb1ddf5e35398b8baf07e83be811a7c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=W5dorOYRBwFoMzN144FHQrW9S5pTfwEdMJJIDdKwRVA-1734439962-1.0.1.1-9.oBhylsblYBPQrlj0ljOBIiF_HypZGXp7Riy60UibPicmVo3cnn6shckH7j.Nt4cvdoue3lsZryUSuF1lNfTA;
+        path=/; expires=Tue, 17-Dec-24 13:22:42 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=9FP4GFC4RV4K3.CIKGKibv.siVdQFbIO47YnR5Kvdmc-1734439962831-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f370d3989e5314d-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZlJNMEZQMFd5TlJ2N2hVZWQ2dmlPYWV4ek1ydyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDQzOTk2MCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiYGBganNvblxue1xuICBcIm5hbWVcIjogXCJNYXJhIFJvZHJpZ3VlelwiLFxuICBcImNhdGVnb3J5XCI6IFwiRGVzaWduXCIsXG4gIFwiZGVzY3JpcHRpb25cIjogXCJNYXJhIFJvZHJpZ3VleiBlcyB1biBlc3R1ZGlvIGRlIERpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgZXNwZWNpYWxpemFkbyBlbiBQYWNrYWdpbmcgeSBCcmFuZGluZy4gVHJhYmFqYW1vcyBjb24gY2xpZW50ZXMgbmFjaW9uYWxlcyBlIGludGVybmFjaW9uYWxlcy5cIixcbiAgXCJyZWdpb25cIjogXCJBc3R1cmlhc1wiLFxuICBcImtleXdvcmRzXCI6IFtcbiAgICB7XCJ2YWx1ZVwiOiBcImRpc2XDsW8gZ3LDoWZpY28gQXN0dXJpYXNcIn0sXG4gICAge1widmFsdWVcIjogXCJicmFuZGluZyBBc3R1cmlhc1wifSxcbiAgICB7XCJ2YWx1ZVwiOiBcInBhY2thZ2luZyBBc3R1cmlhc1wifSxcbiAgICB7XCJ2YWx1ZVwiOiBcImVzdHVkaW8gZGUgZGlzZcOxbyBBc3R1cmlhc1wifSxcbiAgICB7XCJ2YWx1ZVwiOiBcImRpc2XDsW8gY3JlYXRpdm8gQXN0dXJpYXNcIn1cbiAgXVxufVxuYGBgIiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogMTI0MSwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDExOSwKICAgICJ0b3RhbF90b2tlbnMiOiAxMzYwLAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzZmYzEwZTEwZWIiCn0K
+  recorded_at: Tue, 17 Dec 2024 12:52:42 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nYou
+        are given some keywords aimed at finding competitors of a brand.\nWhen performing
+        a brand analysis, we found that the brand is of the following category: Design.\nAnd
+        the keywords that are related to the brand are:\n* {\"value\"=\u003e\"diseño
+        gráfico Asturias\"}\n* {\"value\"=\u003e\"branding Asturias\"}\n* {\"value\"=\u003e\"packaging
+        Asturias\"}\n* {\"value\"=\u003e\"estudio de diseño Asturias\"}\n* {\"value\"=\u003e\"diseño
+        creativo Asturias\"}\nFind the main competitors of the brand. Use the given
+        search tool if needed.\nBe mindful to not hallucinate competitors.\nFor each
+        competitor, provide the name and the URL of a its website, don''t fill the
+        website URL if it''s not that of the brand, but rather a website that mentions
+        it without being the official source.\nBe sure to not include the own brand
+        being analyzed in the list of competitors (it''s already known. and its name
+        is Mara Rodriguez)\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 12:52:44 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '1744'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3999356'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 9ms
+      X-Request-Id:
+      - req_027631c5e87fa423c680359fe5ce3013
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=Ov2o20upgVEOmNGen8M_YtzqlllSM2zUDR8UzcqjjXk-1734439964-1.0.1.1-bUIsj9hSWN8BL58dsJbYYBn6uUOqzKZao4z5tB_Qt3qL.efhk1HYEiKziguWj3nOm6fDyctcaC61_la4QXWiZQ;
+        path=/; expires=Tue, 17-Dec-24 13:22:44 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=elUkywoJHSW_mc4Le.of.ejtTBncQ5Y2Aqax_.ZNjNg-1734439964883-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f370d48cead2148-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZlJNM0pPRzZ0elRxdXFURExSbXJNeVdFcThNTCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDQzOTk2MywKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiBudWxsLAogICAgICAgICJ0b29sX2NhbGxzIjogWwogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF9Cb1lKMlh6NW10WEllZjVoSVJHWkY3UWEiLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwiZGlzZcOxbyBncsOhZmljbyBBc3R1cmlhc1wiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF9KZzVpTUZLY0ZoM0hZWGNxaXZnaUx0bVkiLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwiYnJhbmRpbmcgQXN0dXJpYXNcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfSTFpM1RGT2lLbEFkU2Y0TGhkT3ppUkNLIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcInBhY2thZ2luZyBBc3R1cmlhc1wiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF96VVNEWHBxTkdkUUp3d0MxN2ZkUjhpd3UiLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwiZXN0dWRpbyBkZSBkaXNlw7FvIEFzdHVyaWFzXCIsIFwiY291bnRcIjogNX0iCiAgICAgICAgICAgIH0KICAgICAgICAgIH0sCiAgICAgICAgICB7CiAgICAgICAgICAgICJpZCI6ICJjYWxsX3FwcXMyTWRXRTBzNzAzQlM0YnJlcXNreCIsCiAgICAgICAgICAgICJ0eXBlIjogImZ1bmN0aW9uIiwKICAgICAgICAgICAgImZ1bmN0aW9uIjogewogICAgICAgICAgICAgICJuYW1lIjogImFuYWx5c2lzX3Rvb2xzX2Jpbmdfc2VhcmNoX19zZWFyY2giLAogICAgICAgICAgICAgICJhcmd1bWVudHMiOiAie1wicXVlcnlcIjogXCJkaXNlw7FvIGNyZWF0aXZvIEFzdHVyaWFzXCIsIFwiY291bnRcIjogNX0iCiAgICAgICAgICAgIH0KICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJ0b29sX2NhbGxzIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiA2MjksCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxNDYsCiAgICAidG90YWxfdG9rZW5zIjogNzc1LAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzZmYzEwZTEwZWIiCn0K
+  recorded_at: Tue, 17 Dec 2024 12:52:44 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=dise%C3%B1o%20gr%C3%A1fico%20Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.1
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 17 Dec 2024 12:51:45 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6761741d12d1475a8550c85493c4109d
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-351PwSRDk/qaDri9NphnQy/YN9i6wmQgQHE8np3YVQE=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 6761741d12d1475a8550c85493c4109d
+      Bingapis-Sessionid:
+      - CA8004E5F9864FB393556C6064C11CA2
+      X-Msedge-Clientid:
+      - 27C8461462BD630B1D12534C631E62F7
+      X-Msapi-Userstate:
+      - 3d53
+      Bingapis-Market:
+      - es-ES
+      Bingapis-Rguid:
+      - 6627f0e9f2a14fb8ab50c2d8f2bd8a60
+      X-Search-Responseinfo:
+      - InternalResponseTime=362,MSDatacenter=DUBE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 5377EB1267CA40ECBFE70EBAD8373767 Ref B: AMS04EDGE1614 Ref C: 2024-12-17T12:52:45Z'
+      Apim-Request-Id:
+      - 1814db7c-7e0a-4ce5-b796-e3c1ad6dc58f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 17 Dec 2024 12:52:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7Im9yaWdpbmFsUXVlcnkiOiAiZGlzZcOxbyBncsOhZmljbyBBc3R1cmlhcyJ9LCAid2ViUGFnZXMiOiB7IndlYlNlYXJjaFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC9zZWFyY2g/cT1kaXNlJUMzJUIxbytnciVDMyVBMWZpY28rQXN0dXJpYXMiLCAidG90YWxFc3RpbWF0ZWRNYXRjaGVzIjogMzE1MDAwLCAidmFsdWUiOiBbeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjAiLCAibmFtZSI6ICJQSVhFTEJPWCBFU1RVRElPIEdSw4FGSUNPLSBEaXNlw7FvIGdyw6FmaWNvIGUgSWx1c3RyYWNpw7NuIGVuIEFzdHVyaWFzIiwgInVybCI6ICJodHRwczpcL1wvd3d3LnBpeGVsYm94LmVzXC8iLCAidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC4zVGJQQUZBSVE4bV93RS0wX1M0TGN3SGFESCZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC93d3cucGl4ZWxib3guZXMiLCAic25pcHBldCI6ICJPZnJlY2Vtb3MgdW4gc2VydmljaW8gZGUgZGlzZcOxbyBncsOhZmljbyBpbnRlZ3JhbCBxdWUgdmEgZGVzZGUgbGEgY3JlYWNpw7NuIHkgZGVzYXJyb2xsbyBkZSBsYSBpZGVhIGhhc3RhIHN1IHByb2R1Y2Npw7NuIGdyw6FmaWNhIGZpbmFsLCBnYXJhbnRpemFuZG8gbGEgbcOheGltYSBjYWxpZGFkIGVuIG51ZXN0cm9zIHRyYWJham9zLiIsICJkZWVwTGlua3MiOiBbeyJuYW1lIjogIlNlcnZpY2lvcyIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5waXhlbGJveC5lc1wvc2VydmljaW9zIn0sIHsibmFtZSI6ICJQcm95ZWN0b3MiLCAidXJsIjogImh0dHBzOlwvXC93d3cucGl4ZWxib3guZXNcL3Byb3llY3RvIn0sIHsibmFtZSI6ICJDbGllbnRlcyBcLyBQcmVtaW9zIiwgInVybCI6ICJodHRwczpcL1wvd3d3LnBpeGVsYm94LmVzXC9jbGllbnRlcy1wcmVtaW9zIn0sIHsibmFtZSI6ICJDb250YWN0byIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5waXhlbGJveC5lc1wvI2NvbnRhY3RvIn0sIHsibmFtZSI6ICJNYXBhIFdlYiIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5waXhlbGJveC5lc1wvbWFwYS13ZWIifSwgeyJuYW1lIjogIkNvb2tpZXMiLCAidXJsIjogImh0dHBzOlwvXC93d3cucGl4ZWxib3guZXNcL2Nvb2tpZXMifV0sICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xNFQwMDoxNzowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuM1RiUEFGQUlROG1fd0UtMF9TNExjd0hhREgmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogMTk5LCAiaW1hZ2VJZCI6ICJPSVAuM1RiUEFGQUlROG1fd0UtMF9TNExjd0hhREgifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMSIsICJuYW1lIjogIktvcmUgQnJhbmRpbmcgLSBFc3R1ZGlvIEJyYW5kaW5nIHkgRGlzZcOxbyBHcsOhZmljbyBlbiBBc3R1cmlhcyIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5rb3JlYnJhbmRpbmcuZXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLkVMd2xKY2trb2tTNzc4SXJhSHRCV0FIYUhhJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5rb3JlYnJhbmRpbmcuZXMiLCAic25pcHBldCI6ICJEZXNkZSBuYW1pbmcgaGFzdGEgZGlzZcOxbyBkZSBsb2dvdGlwb3MgeSBtYXJjYXMgc2VjdW5kYXJpYXMsIG51ZXN0cm8gZXN0dWRpbyBkZSBkaXNlw7FvIGdyw6FmaWNvIGVuIEFzdHVyaWFzIHRlIGF5dWRhIGEgY3JlYXIgdW5hIGlkZW50aWRhZCB2aXN1YWwgc8OzbGlkYS4gRXhwbG9yYSBvcGNpb25lcyBjcsOzbWF0aWNhcyB5IHRpcG9ncsOhZmljYXMsIGd1w61hcyBkZSBlc3RpbG8geSBtw6FzIHBhcmEgZGVzdGFjYXIgZW4gZWwgbWVyY2FkbyBhc3R1cmlhbm8uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTEyLTEzVDE3OjQ5OjAwLjAwMDAwMDBaIiwgInByaW1hcnlJbWFnZU9mUGFnZSI6IHsidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC5FTHdsSmNra29rUzc3OElyYUh0QldBSGFIYSZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAid2lkdGgiOiA4MCwgImhlaWdodCI6IDgwLCAic291cmNlV2lkdGgiOiA0NzQsICJzb3VyY2VIZWlnaHQiOiA0NzQsICJpbWFnZUlkIjogIk9JUC5FTHdsSmNra29rUzc3OElyYUh0QldBSGFIYSJ9LCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgIm5vQ2FjaGUiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4yIiwgIm5hbWUiOiAiVmVpbnRpZG9zLCBlc3R1ZGlvIGRlIGRpc2XDsW8geSBjb211bmljYWNpw7NuLiBBc3R1cmlhcyIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy52ZWludGlkb3MuZXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLk03aHdBSm5tWXFValphMkdISVlPeVFIYUdoJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy52ZWludGlkb3MuZXMiLCAic25pcHBldCI6ICJFc3R1ZGlvIGRlIGRpc2XDsW8gZ3LDoWZpY28geSBjb211bmljYWNpw7NuIGNvbiBiYXNlIGVuIEdpasOzbiwgQXN0dXJpYXMuIEZvcm1hbW9zIHVuYSBmYW1pbGlhIGRvbmRlIGNyZWNlbW9zIGTDrWEgYSBkaWEganVudG8gYSBudWVzdHJvcyBjbGllbnRlcyB5IHRyYWJhamFtb3MgcGFyYSBxdWUgY2FkYSBwcm95ZWN0byBjdW1wbGEgc3VzIGV4cGVjdGF0aXZhcy4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTItMTVUMTQ6NTI6MDAuMDAwMDAwMFoiLCAicHJpbWFyeUltYWdlT2ZQYWdlIjogeyJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLk03aHdBSm5tWXFValphMkdISVlPeVFIYUdoJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJ3aWR0aCI6IDgwLCAiaGVpZ2h0IjogODAsICJzb3VyY2VXaWR0aCI6IDQ3NCwgInNvdXJjZUhlaWdodCI6IDQxNywgImltYWdlSWQiOiAiT0lQLk03aHdBSm5tWXFValphMkdISVlPeVFIYUdoIn0sICJsYW5ndWFnZSI6ICJlcyIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlLCAibm9DYWNoZSI6IGZhbHNlLCAic2l0ZU5hbWUiOiAiVmVpbnRpZG9zIn0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4zIiwgIm5hbWUiOiAiRVNEQUMgLSBFc2N1ZWxhIFN1cGVyaW9yIGRlIERpc2XDsW8sIEFydGUgeSBDb211bmljYWNpw7NuLiBPdmllZG8sIEFzdHVyaWFzIiwgInVybCI6ICJodHRwczpcL1wvZXNkYWMuZXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLi1WOGtrdm41ZjEzaHBmU0VmRWdqZVFIYUVKJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL2VzZGFjLmVzIiwgInNuaXBwZXQiOiAiUGlvbmVyb3MgZW4gZWxldmFyIGFsIMOhbWJpdG8gdW5pdmVyc2l0YXJpbyBsYXMgY2FycmVyYXMgZGUgZGlzZcOxbzogRGlzZcOxbyBHcsOhZmljbywgRGlzZcOxbyBkZSBNb2RhLCBEaXNlw7FvIGRlIEludGVyaW9yZXMsIERpc2XDsW8geSBEZXNhcnJvbGxvIGRlIFZpZGVvanVlZ29zIHkgQ29tdW5pY2FjacOzbiBkZSBNYXJjYXMuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTEyLTEzVDAyOjIxOjAwLjAwMDAwMDBaIiwgInByaW1hcnlJbWFnZU9mUGFnZSI6IHsidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC4tVjhra3ZuNWYxM2hwZlNFZkVnamVRSGFFSiZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAid2lkdGgiOiA4MCwgImhlaWdodCI6IDgwLCAic291cmNlV2lkdGgiOiA0NzQsICJzb3VyY2VIZWlnaHQiOiAyNjUsICJpbWFnZUlkIjogIk9JUC4tVjhra3ZuNWYxM2hwZlNFZkVnamVRSGFFSiJ9LCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgIm5vQ2FjaGUiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy40IiwgIm5hbWUiOiAi4omrIERpc2XDsW8gR3LDoWZpY28gQXN0dXJpYXMgfCBQcmlzbWEgSW1hZ2VuIHkgRGlzZcOxbzogOTg1IDU2NSA4NjciLCAidXJsIjogImh0dHBzOlwvXC93d3cucHJpc21haWQuY29tXC9kaXNlbm8tZ3JhZmljb1wvIiwgInRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuZHRDc3hhQjhYRDFpcFdKbjdjakxwQUFBQUEmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgImFib3V0IjogW3siX3R5cGUiOiAiQ3JlYXRpdmVXb3JrIiwgImFnZ3JlZ2F0ZVJhdGluZyI6IHsicmF0aW5nVmFsdWUiOiA1LCAiYmVzdFJhdGluZyI6IDUsICJyZXZpZXdDb3VudCI6IDI1fX1dLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC93d3cucHJpc21haWQuY29tXC9kaXNlbm8tZ3JhZmljbyIsICJzbmlwcGV0IjogIkFwdWVzdGEgcG9yIG51ZXN0cm8gZXF1aXBvIGRlIGRpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgZSBpbmNvcnBvcmEgY3JlYXRpdmlkYWQsIGNvbXByb21pc28geSBjYWxpZGFkIGEgdHUgcHJveWVjdG8uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTEyLTEzVDIwOjQ4OjAwLjAwMDAwMDBaIiwgInByaW1hcnlJbWFnZU9mUGFnZSI6IHsidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC5kdENzeGFCOFhEMWlwV0puN2NqTHBBQUFBQSZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAid2lkdGgiOiA4MCwgImhlaWdodCI6IDgwLCAic291cmNlV2lkdGgiOiAyMDgsICJzb3VyY2VIZWlnaHQiOiAzNjksICJpbWFnZUlkIjogIk9JUC5kdENzeGFCOFhEMWlwV0puN2NqTHBBQUFBQSJ9LCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgInJpY2hGYWN0cyI6IFt7ImxhYmVsIjogeyJ0ZXh0IjogIlViaWNhY2nDs24ifSwgIml0ZW1zIjogW3sidGV4dCI6ICJDXC9MYSBDw6FtYXJhLCAzNi0ywrogRSwgQXZpbMOpcywgMzM0MDAifV0sICJoaW50IjogeyJ0ZXh0IjogIkFERFJFU1M6TE9DQVRJT05HRU5FUkFMIn19LCB7ImxhYmVsIjogeyJ0ZXh0IjogIlRlbMOpZm9ubyJ9LCAiaXRlbXMiOiBbeyJ0ZXh0IjogIjk4NSA1NiA1OCA2NyJ9XSwgImhpbnQiOiB7InRleHQiOiAiQkFTRTpQSE9ORU5VTUJFUiJ9fSwgeyJsYWJlbCI6IHsidGV4dCI6ICJNYXJjYSJ9LCAiaXRlbXMiOiBbeyJ0ZXh0IjogIlByaXNtYSJ9XSwgImhpbnQiOiB7InRleHQiOiAiQkFTRTpHRU5FUklDRkFDVCJ9fV0sICJub0NhY2hlIjogZmFsc2V9XX0sICJyYW5raW5nUmVzcG9uc2UiOiB7Im1haW5saW5lIjogeyJpdGVtcyI6IFt7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAwLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMSwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDIsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4yIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAzLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMyJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogNCwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjQifX1dfX19
+  recorded_at: Tue, 17 Dec 2024 12:52:45 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=branding%20Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.1
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 17 Dec 2024 12:51:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6761741e75a04f9689090558bba8e5a3
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-z2T7enGJS8SZBv6G5rOcaZJIi+Hv+OdZ5lzmLGKfocg=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 6761741e75a04f9689090558bba8e5a3
+      Bingapis-Sessionid:
+      - AF1B48F7C6D344B285E7454A263852F6
+      X-Msedge-Clientid:
+      - 13C0B37826436CD026C8A620274B6D87
+      X-Msapi-Userstate:
+      - 67a1
+      Bingapis-Market:
+      - es-ES
+      Bingapis-Rguid:
+      - c75ecdd720964179b79a15233a9217e8
+      X-Search-Responseinfo:
+      - InternalResponseTime=355,MSDatacenter=DUBE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 4BAFD3A4E63C4BBABBE9089A88B9D007 Ref B: AMS04EDGE3012 Ref C: 2024-12-17T12:52:46Z'
+      Apim-Request-Id:
+      - 4a4e1ad0-688e-4a45-bab7-b92fb76cf779
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 17 Dec 2024 12:52:45 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7Im9yaWdpbmFsUXVlcnkiOiAiYnJhbmRpbmcgQXN0dXJpYXMifSwgIndlYlBhZ2VzIjogeyJ3ZWJTZWFyY2hVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvc2VhcmNoP3E9YnJhbmRpbmcrQXN0dXJpYXMiLCAidG90YWxFc3RpbWF0ZWRNYXRjaGVzIjogMjQ3MDAwMCwgInZhbHVlIjogW3siaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4wIiwgIm5hbWUiOiAiS29yZSBCcmFuZGluZyAtIEVzdHVkaW8gQnJhbmRpbmcgeSBEaXNlw7FvIEdyw6FmaWNvIGVuIEFzdHVyaWFzIiwgInVybCI6ICJodHRwczpcL1wvd3d3LmtvcmVicmFuZGluZy5lc1wvIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvd3d3LmtvcmVicmFuZGluZy5lcyIsICJzbmlwcGV0IjogIkRlc2RlIG5hbWluZyBoYXN0YSBkaXNlw7FvIGRlIGxvZ290aXBvcyB5IG1hcmNhcyBzZWN1bmRhcmlhcywgbnVlc3RybyBlc3R1ZGlvIGRlIGRpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgdGUgYXl1ZGEgYSBjcmVhciB1bmEgaWRlbnRpZGFkIHZpc3VhbCBzw7NsaWRhLiBFeHBsb3JhIG9wY2lvbmVzIGNyw7NtYXRpY2FzIHkgdGlwb2dyw6FmaWNhcywgZ3XDrWFzIGRlIGVzdGlsbyB5IG3DoXMgcGFyYSBkZXN0YWNhciBlbiBlbCBtZXJjYWRvIGFzdHVyaWFuby4iLCAiZGVlcExpbmtzIjogW3sibmFtZSI6ICJCcmFuZGluZyBlbiBBc3R1cmlhcyAtIEtvcmUgQnJhbmRpbmciLCAidXJsIjogImh0dHBzOlwvXC93d3cua29yZWJyYW5kaW5nLmVzXC9icmFuZGluZy1lbi1hc3R1cmlhc1wvIiwgInNuaXBwZXQiOiAiRW4gS29yZSBCcmFuZGluZywgdHUgYWdlbmNpYSBkZSBicmFuZGluZyBlbiBBc3R1cmlhcywgbm9zIGVuZm9jYW1vcyBlbiBkYXIgdmlkYSBhIHR1IHZpc2nDs24gY3JlYXRpdmEgeSBsbGV2YXJsYSBhbCBzaWd1aWVudGUgbml2ZWwuIENvbiB1biBlbmZvcXVlIGVzdHJhdMOpZ2ljbyB5IHVuYSBwYXNpw7NuIHBvciBsYSBlc3TDqXRpY2EgdmlzdWFsLCBjcmVhbW9zIHNvbHVjaW9uZXMgZ3LDoWZpY2FzIGltcGFjdGFudGVzIHkgw7puaWNhcyBxdWUgdGUgYXl1ZGFyw6FuIGEgZGVzdGFjYXIgZW4gZWwgbWVyY2Fkby4ifSwgeyJuYW1lIjogIlNlcnZpY2lvcyBkZSBicmFuZGluZyB5IGRpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgLSBLb3JlIEJyYW5kaW5nIiwgInVybCI6ICJodHRwczpcL1wvd3d3LmtvcmVicmFuZGluZy5lc1wvc2VydmljaW9zLWRlLWJyYW5kaW5nLXktZGlzZW5vLWdyYWZpY28tZW4tYXN0dXJpYXNcLyIsICJzbmlwcGV0IjogIkVuIEtvcmUgQnJhbmRpbmcsIG9mcmVjZW1vcyBzZXJ2aWNpb3MgZGUgZXN0cmF0ZWdpYSBkZSBtYXJjYSBwZXJzb25hbGl6YWRvcyB5IGRpc2XDsWFkb3MgYSBtZWRpZGEgcGFyYSBjb25lY3RhciB0dSBlbXByZXNhIGNvbiBzdSBww7pibGljbyBvYmpldGl2bywgZXN0w6kgZW4gQXN0dXJpYXMgbyBlbiBjdWFscXVpZXIgcGFydGUuIn1dLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTItMTNUMTc6NDk6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiB0cnVlLCAibm9DYWNoZSI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEiLCAibmFtZSI6ICJNYXJhIFJvZHJpZ3VleiBEZXNpZ24gLSBCcmFuZGluZywgUGFja2FnaW5nIHkgRGlzZcOxbyBHcsOhZmljbyBBc3R1cmlhcyIsICJ1cmwiOiAiaHR0cHM6XC9cL21hcmFyb2RyaWd1ZXouZXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLldRLVVVU0RmWDJNQXMzYmpZekVJZGdIYUZQJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL21hcmFyb2RyaWd1ZXouZXMiLCAic25pcHBldCI6ICJNYXJhIFJvZHJpZ3VleiBlcyB1biBlc3R1ZGlvIGRlIERpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgZXNwZWNpYWxpemFkbyBlbiBQYWNrYWdpbmcgeSBCcmFuZGluZy4gRXN0YW1vcyBlbiBHaWrDs24geSB0cmFiYWphbW9zIGNvbiBjbGllbnRlcyBuYWNpb25hbGVzIGUgaW50ZXJuYWNpb25hbGVzLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xNVQxNToxMzowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuV1EtVVVTRGZYMk1BczNiall6RUlkZ0hhRlAmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogMzM1LCAiaW1hZ2VJZCI6ICJPSVAuV1EtVVVTRGZYMk1BczNiall6RUlkZ0hhRlAifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMiIsICJuYW1lIjogIkJyYW5kaW5nIGVuIEFzdHVyaWFzIC0gS29yZSBCcmFuZGluZyIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5rb3JlYnJhbmRpbmcuZXNcL2JyYW5kaW5nLWVuLWFzdHVyaWFzXC8iLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC93d3cua29yZWJyYW5kaW5nLmVzXC9icmFuZGluZy1lbi1hc3R1cmlhcyIsICJzbmlwcGV0IjogIkVuIEtvcmUgQnJhbmRpbmcsIHR1IGFnZW5jaWEgZGUgYnJhbmRpbmcgZW4gQXN0dXJpYXMsIG5vcyBlbmZvY2Ftb3MgZW4gZGFyIHZpZGEgYSB0dSB2aXNpw7NuIGNyZWF0aXZhIHkgbGxldmFybGEgYWwgc2lndWllbnRlIG5pdmVsLiBDb24gdW4gZW5mb3F1ZSBlc3RyYXTDqWdpY28geSB1bmEgcGFzacOzbiBwb3IgbGEgZXN0w6l0aWNhIHZpc3VhbCwgY3JlYW1vcyBzb2x1Y2lvbmVzIGdyw6FmaWNhcyBpbXBhY3RhbnRlcyB5IMO6bmljYXMgcXVlIHRlIGF5dWRhcsOhbiBhIGRlc3RhY2FyIGVuIGVsIG1lcmNhZG8uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTExLTIzVDA4OjI0OjAwLjAwMDAwMDBaIiwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMyIsICJuYW1lIjogIlNlcnZpY2lvcyBkZSBicmFuZGluZyB5IGRpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgLSBLb3JlIEJyYW5kaW5nIiwgInVybCI6ICJodHRwczpcL1wvd3d3LmtvcmVicmFuZGluZy5lc1wvc2VydmljaW9zLWRlLWJyYW5kaW5nLXktZGlzZW5vLWdyYWZpY28tZW4tYXN0dXJpYXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLmZWZGJ3VjUwWmVmZmxvV0NQQjI1THdIYUtWJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5rb3JlYnJhbmRpbmcuZXNcL3NlcnZpY2lvcy1kZS1icmFuZGluZy15LWRpc2Vuby1ncmFmaWNvLWVuLWFzdHVyaWFzIiwgInNuaXBwZXQiOiAiRW4gS29yZSBCcmFuZGluZywgb2ZyZWNlbW9zIHNlcnZpY2lvcyBkZSBlc3RyYXRlZ2lhIGRlIG1hcmNhIHBlcnNvbmFsaXphZG9zIHkgZGlzZcOxYWRvcyBhIG1lZGlkYSBwYXJhIGNvbmVjdGFyIHR1IGVtcHJlc2EgY29uIHN1IHDDumJsaWNvIG9iamV0aXZvLCBlc3TDqSBlbiBBc3R1cmlhcyBvIGVuIGN1YWxxdWllciBwYXJ0ZS4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMDgtMjdUMTk6MjU6MDAuMDAwMDAwMFoiLCAicHJpbWFyeUltYWdlT2ZQYWdlIjogeyJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLmZWZGJ3VjUwWmVmZmxvV0NQQjI1THdIYUtWJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJ3aWR0aCI6IDgwLCAiaGVpZ2h0IjogODAsICJzb3VyY2VXaWR0aCI6IDQ3NCwgInNvdXJjZUhlaWdodCI6IDY2MSwgImltYWdlSWQiOiAiT0lQLmZWZGJ3VjUwWmVmZmxvV0NQQjI1THdIYUtWIn0sICJsYW5ndWFnZSI6ICJlcyIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlLCAibm9DYWNoZSI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjQiLCAibmFtZSI6ICJCZW5kaXRvIERpbGVtYSB8IEFnZW5jaWEgZGUgQ29tdW5pY2FjacOzbiB5IFB1YmxpY2lkYWQgZW4gQXN0dXJpYXMiLCAidXJsIjogImh0dHBzOlwvXC93d3cuYmVuZGl0b2RpbGVtYS5jb21cLyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5iZW5kaXRvZGlsZW1hLmNvbSIsICJzbmlwcGV0IjogIkJlbmRpdG8gRGlsZW1hLCBBZ2VuY2lhIGRlIENvbXVuaWNhY2nDs24gSW50ZWdyYWwgZW4gT3ZpZWRvLiBCcmFuZGluZywgY29tdW5pY2FjacOzbiBvbmxpbmVcL29mZmxpbmUsIGRpc2XDsW8gd2ViLCBhdWRpb3Zpc3VhbCB5IHB1YmxpY2lkYWQgZW4gQXN0dXJpYXMuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTEyLTE1VDEyOjAzOjAwLjAwMDAwMDBaIiwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2V9XX0sICJyYW5raW5nUmVzcG9uc2UiOiB7Im1haW5saW5lIjogeyJpdGVtcyI6IFt7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAwLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMCJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMSwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDIsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4yIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAzLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMyJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogNCwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjQifX1dfX19
+  recorded_at: Tue, 17 Dec 2024 12:52:46 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=packaging%20Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.1
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 17 Dec 2024 12:51:46 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6761741e8d554ceab4d70968561f379f
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-9aDvi57T0uOWODfoXIqbaa8CxC7IH6rFqda33aaFyRE=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 6761741e8d554ceab4d70968561f379f
+      Bingapis-Sessionid:
+      - 5CE0119C06F342FAADA0B6CC9C6F495B
+      X-Msedge-Clientid:
+      - 06D482056A6565BE0C77975D6B326478
+      X-Msapi-Userstate:
+      - 61c1
+      Bingapis-Market:
+      - es-ES
+      Bingapis-Rguid:
+      - 07a9a174d03a4801b801df2caebf92d2
+      X-Search-Responseinfo:
+      - InternalResponseTime=278,MSDatacenter=DUBE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: 5E28B031D39F4C318C7011073F47C287 Ref B: AMS04EDGE1119 Ref C: 2024-12-17T12:52:46Z'
+      Apim-Request-Id:
+      - 6cf6723a-6801-490d-b37a-9af3c4810d1d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 17 Dec 2024 12:52:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7Im9yaWdpbmFsUXVlcnkiOiAicGFja2FnaW5nIEFzdHVyaWFzIn0sICJ3ZWJQYWdlcyI6IHsid2ViU2VhcmNoVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3NlYXJjaD9xPXBhY2thZ2luZytBc3R1cmlhcyIsICJ0b3RhbEVzdGltYXRlZE1hdGNoZXMiOiA1NDMwMDAwLCAidmFsdWUiOiBbeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjAiLCAibmFtZSI6ICJJbmljaW8gLSBBU1BBQ0sgcGFja2FnaW5nIiwgInVybCI6ICJodHRwczpcL1wvcGFja2FzdHVyLmNvbVwvIiwgInRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuLVMzcTJMSmsyVG4tYjhXd0d6ZXhBd0hhSGEmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvcGFja2FzdHVyLmNvbSIsICJzbmlwcGV0IjogIkVudmFzZXMgeSBlbWJhbGFqZXMgcGFyYSB1c28gYWxpbWVudGFyaW8uIFByb2R1Y3RvcyBwYXJhIGxpbXBpZXphIHkgZGVzaW5mZWNjacOzbi4gVGUgb2ZyZWNlbW9zIGVsIHByb2R1Y3RvIHF1ZSBtZWpvciBzZSBhZGFwdGUgYSB0dXMgbmVjZXNpZGFkZXMuIFNlcnZpY2lvIHBlcnNvbmFsaXphZG8sIHLDoXBpZG8geSBjb24gdW5hIGNhbGlkYWQtcHJlY2lvIGV4Y2VwY2lvbmFsLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xNVQwMjowMzowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuLVMzcTJMSmsyVG4tYjhXd0d6ZXhBd0hhSGEmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogNDc0LCAiaW1hZ2VJZCI6ICJPSVAuLVMzcTJMSmsyVG4tYjhXd0d6ZXhBd0hhSGEifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogdHJ1ZSwgIm5vQ2FjaGUiOiB0cnVlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEiLCAibmFtZSI6ICJFbXByZXNhIGRlIEVtYmFsYWplIGVuIEFzdHVyaWFzIC0gSG9uZXNhIiwgInVybCI6ICJodHRwczpcL1wvaG9uZXNhLmNvbVwvIiwgInRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuTDAySmxtUlVyY1h6WkwyanpTUGlLQUhhR3Qmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvaG9uZXNhLmNvbSIsICJzbmlwcGV0IjogIkVuIEhvbmVzYSBzb21vcyBlc3BlY2lhbGlzdGFzIGVuIGVsIHBhY2thZ2luZyBwYXJhIGVsIFNlY3RvciBGYXJtYWNpYS4gUGFyYSBlbCBlbnZhc2FkbyB5IGVudHJlZ2EgZGUgcHJvZHVjdG9zIGRpc3BvbmVtb3MgZGUgY3VhdHJvIGzDrW5lYXMgcHJpbmNpcGFsZXM6IEJvbHNhcyBkZSBwbMOhc3RpY28gY29uIGFzYSwgdGlwbyBjYW1pc2V0YSBvIHRpcG8gdHJvcXVlbCB5IGJvbHNhcyBwZXJzb25hbGl6YWRhcyBhZGFwdGFkYXMgYWwgcmVhbCBkZWNyZXRvIDI5M1wvMjAxOCBzb2JyZSByZWR1Y2Npw7NuIGRlbCBjb25zdW1vIGRlIGJvbHNhcyBkZSBwbMOhc3RpY28uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTEyLTEzVDIyOjE4OjAwLjAwMDAwMDBaIiwgInByaW1hcnlJbWFnZU9mUGFnZSI6IHsidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC5MMDJKbG1SVXJjWHpaTDJqelNQaUtBSGFHdCZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAid2lkdGgiOiA4MCwgImhlaWdodCI6IDgwLCAic291cmNlV2lkdGgiOiA0NzQsICJzb3VyY2VIZWlnaHQiOiA0MjksICJpbWFnZUlkIjogIk9JUC5MMDJKbG1SVXJjWHpaTDJqelNQaUtBSGFHdCJ9LCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgIm5vQ2FjaGUiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4yIiwgIm5hbWUiOiAiUGFja2FnaW5nIGVuIEFzdHVyaWFzIFBlcnNvbmFsaXphZG8gfCDCocKhTExBTUEgQUhPUkEhISIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy50dXBhY2thZ2luZ3BlcnNvbmFsaXphZG8uZXNcL2FzdHVyaWFzXC8iLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC93d3cudHVwYWNrYWdpbmdwZXJzb25hbGl6YWRvLmVzXC9hc3R1cmlhcyIsICJzbmlwcGV0IjogIkxhcyBlbXByZXNhcyBkZSBwYWNrYWdpbmcgcGVyc29uYWxpemFkbyBlbiBBc3R1cmlhcyBubyBzw7NsbyB0ZSBheXVkYXLDoW4gYSBjcmVhciB1biBlbnZhc2UgcmVzaXN0ZW50ZSBxdWUgcHVlZGEgYWd1YW50YXIgdG9kbyBlbCBwcm9jZXNvIGRlIGVtcGFxdWV0YWRvLCBhcGlsYWRvIHkgdHJhbnNwb3J0ZSBoYXN0YSBlbCBsdWdhciBkZSBvcmlnZW4sIHNpbm8gcXVlIHRhbWJpw6luIHRlIGFzZXNvcmFyw6FuIHBhcmEgcGxhc21hciBlbCBtZW5zYWplIHF1ZSBzZSBxdWllcmEgaGFjZXIgbGxlZ2FyIGFsIGNsaWVudGUuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTA4LTA4VDA2OjA5OjAwLjAwMDAwMDBaIiwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogdHJ1ZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4zIiwgIm5hbWUiOiAiRGlzZcOxbyBkZSBwcm9kdWN0byB5IHBhY2thZ2luZyBlbiBBc3R1cmlhcyAtIFBPVUxBUlJPU0EiLCAidXJsIjogImh0dHBzOlwvXC9wb3VsYXJyb3NhLmVzXC9wYWNrYWdpbmctYXN0dXJpYXNcLyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3BvdWxhcnJvc2EuZXNcL3BhY2thZ2luZy1hc3R1cmlhcyIsICJzbmlwcGV0IjogIkRlc2N1YnJlIG51ZXN0cm8gc2VydmljaW8gZGUgcGFja2FnaW5nIGVuIEFzdHVyaWFzLCBkb25kZSBjb21iaW5hbW9zIGRpc2XDsW8gaW5ub3ZhZG9yLCBmdW5jaW9uYWxpZGFkIHkgY2FsaWRhZCBwYXJhIGNyZWFyIHNvbHVjaW9uZXMgZGUgZW52YXNhZG8gcXVlIHJlc2FsdGVuIHR1IG1hcmNhIHkgY2F1dGl2ZW4gYSB0dXMgY2xpZW50ZXMuIEVuIG51ZXN0cmEgYWdlbmNpYSBkZSBwYWNrYWdpbmcsIGVudGVuZGVtb3MgbGEgaW1wb3J0YW5jaWEgZGUgbGEgcHJlc2VudGFjacOzbiBkZSB0dSBwcm9kdWN0by4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTAtMTRUMDI6MDA6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgIm5vQ2FjaGUiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy40IiwgIm5hbWUiOiAiRW1wcmVzYSBkZSB2ZW50YSBkZSBlbnZhc2VzIGVuIEFzdHVyaWFzIiwgInVybCI6ICJodHRwczpcL1wvcnViaW9oaWRhbGdvLmNvbVwvIiwgInRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuSlFpT3dBUjdwcHBISWF6a3hXdngwQUhhS2Umdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvcnViaW9oaWRhbGdvLmNvbSIsICJzbmlwcGV0IjogIkVudmFzZXMgZGUgdW4gc29sbyB1c28geSBtYW50ZWxlcsOtYSBwYXJhIGhvc3RlbGVyw61hIGVuIEFzdHVyaWFzLiBFc3BlY2lhbGlzdGFzIGVuIGVudmFzZXMgZGVzZWNoYWJsZXMsIG1hbnRlbGVyw61hIHkgc2VydmlsbGV0YXMsIGJvbHNhcywgdmFzb3MsIHZhamlsbGEsIG1lbmFqZSB5IGhvdGVsLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xMlQwMToxODowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuSlFpT3dBUjdwcHBISWF6a3hXdngwQUhhS2Umdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogNjcwLCAiaW1hZ2VJZCI6ICJPSVAuSlFpT3dBUjdwcHBISWF6a3hXdngwQUhhS2UifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2UsICJzaXRlTmFtZSI6ICJSdWJpbyBIaWRhbGdvIn1dfSwgInJhbmtpbmdSZXNwb25zZSI6IHsibWFpbmxpbmUiOiB7Iml0ZW1zIjogW3siYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDAsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4wIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAxLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMiwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjIifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDMsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4zIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiA0LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuNCJ9fV19fX0=
+  recorded_at: Tue, 17 Dec 2024 12:52:47 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=estudio%20de%20dise%C3%B1o%20Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.1
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 17 Dec 2024 12:51:47 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 6761741f880640fd89c8429cffe9bd48
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-En5O2ZVWeDAQucJ5BOwHFtN7BvXjS2y3cdmwKHAoT18=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 6761741f880640fd89c8429cffe9bd48
+      Bingapis-Sessionid:
+      - 074D4AC4749447938C85EFB896F7F537
+      X-Msedge-Clientid:
+      - '018A37C4647466013BCD229C659967A3'
+      X-Msapi-Userstate:
+      - 04f3
+      Bingapis-Market:
+      - es-ES
+      Bingapis-Rguid:
+      - 9f2b04d97a914529a0ec03c7db77bdcf
+      X-Search-Responseinfo:
+      - InternalResponseTime=421,MSDatacenter=DUBE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: A116C670F7F440F0B7E2C8297DE0CCFC Ref B: AMS04EDGE3612 Ref C: 2024-12-17T12:52:47Z'
+      Apim-Request-Id:
+      - e1023844-1c90-491c-a6ea-a09a8b2033e6
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 17 Dec 2024 12:52:46 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7Im9yaWdpbmFsUXVlcnkiOiAiZXN0dWRpbyBkZSBkaXNlw7FvIEFzdHVyaWFzIn0sICJ3ZWJQYWdlcyI6IHsid2ViU2VhcmNoVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3NlYXJjaD9xPWVzdHVkaW8rZGUrZGlzZSVDMyVCMW8rQXN0dXJpYXMiLCAidG90YWxFc3RpbWF0ZWRNYXRjaGVzIjogMTg3MDAwMCwgInZhbHVlIjogW3siaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4wIiwgIm5hbWUiOiAiVmVpbnRpZG9zLCBlc3R1ZGlvIGRlIGRpc2XDsW8geSBjb211bmljYWNpw7NuLiBBc3R1cmlhcyIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy52ZWludGlkb3MuZXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLk03aHdBSm5tWXFValphMkdISVlPeVFIYUdoJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy52ZWludGlkb3MuZXMiLCAic25pcHBldCI6ICJFc3R1ZGlvIGRlIGRpc2XDsW8gZ3LDoWZpY28geSBjb211bmljYWNpw7NuIGNvbiBiYXNlIGVuIEdpasOzbiwgQXN0dXJpYXMuIEZvcm1hbW9zIHVuYSBmYW1pbGlhIGRvbmRlIGNyZWNlbW9zIGTDrWEgYSBkw61hIGp1bnRvIGEgbnVlc3Ryb3MgY2xpZW50ZXMuIFRyYWJhamFtb3MgcGFyYSBxdWUgY2FkYSBwcm95ZWN0byBjdW1wbGEgc3VzIGV4cGVjdGF0aXZhcy4iLCAiZGVlcExpbmtzIjogW3sibmFtZSI6ICJTZXJ2aWNpb3MiLCAidXJsIjogImh0dHBzOlwvXC93d3cudmVpbnRpZG9zLmVzXC8jc2VydmljaW9zLWNvbXVuaWNhY2lvbiJ9LCB7Im5hbWUiOiAiTWFxdWV0YWNpw7NuIiwgInVybCI6ICJodHRwczpcL1wvd3d3LnZlaW50aWRvcy5lc1wvcG9ydGZvbGlvX2NhdGVnb3J5XC9tYXF1ZXRhY2lvblwvIn0sIHsibmFtZSI6ICJDYW1wYcOxYSBDb21wb3N0YWplIERvbcOpc3RpY28iLCAidXJsIjogImh0dHBzOlwvXC93d3cudmVpbnRpZG9zLmVzXC9wb3J0Zm9saW8taXRlbXNcL2NhbXBhbmEtY29tcG9zdGFqZS1kb21lc3RpY29cLyJ9LCB7Im5hbWUiOiAiQXZpc28gTGVnYWwiLCAidXJsIjogImh0dHBzOlwvXC93d3cudmVpbnRpZG9zLmVzXC9hdmlzby1sZWdhbFwvIn0sIHsibmFtZSI6ICJOb3RpY2lhcyIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy52ZWludGlkb3MuZXNcL2Jsb2ctYWdlbmNpYS1jb211bmljYWNpb25cLyJ9LCB7Im5hbWUiOiAiUG9sw610aWNhIGRlIFByaXZhY2lkYWQiLCAidXJsIjogImh0dHBzOlwvXC93d3cudmVpbnRpZG9zLmVzXC9wb2xpdGljYS1wcml2YWNpZGFkXC8ifV0sICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xNVQxNDo1MjowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuTTdod0FKbm1ZcVVqWmEyR0hJWU95UUhhR2gmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogNDE3LCAiaW1hZ2VJZCI6ICJPSVAuTTdod0FKbm1ZcVVqWmEyR0hJWU95UUhhR2gifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2UsICJzaXRlTmFtZSI6ICJWZWludGlkb3MifSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEiLCAibmFtZSI6ICJEaXNlw7FvIEdyw6FmaWNvIGVuIEFzdHVyaWFzIHwgUGxhbkIgRXN0dWRpbyBDcmVhdGl2byIsICJ1cmwiOiAiaHR0cHM6XC9cL3BsYW5iZXN0dWRpb2NyZWF0aXZvLmNvbVwvZGlzZW5vLWdyYWZpY28tYXN0dXJpYXNcLyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3BsYW5iZXN0dWRpb2NyZWF0aXZvLmNvbVwvZGlzZW5vLWdyYWZpY28tYXN0dXJpYXMiLCAic25pcHBldCI6ICJQbGFuQiBlcyB1biBFc3R1ZGlvIGluZGVwZW5kaWVudGUgZGUgZGlzZcOxbyBncsOhZmljbyBlbiBBc3R1cmlhcy4gT2ZyZWNlbW9zIHNvbHVjaW9uZXMgY3JlYXRpdmFzIHkgZXN0cmF0w6lnaWNhcyBwYXJhIHF1ZSB0dSBtYXJjYSBkZXN0YXF1ZSBlbiB0b2RvcyBsb3Mgw6FtYml0b3MuIENyZWFtb3MgbGEgaW1hZ2VuIHBlcmZlY3RhIHBhcmEgdHUgcHJveWVjdG8sIGRlc2RlIGVsIGRpc2XDsW8gZGUgdHUgbG9nb3RpcG8geSBkZSB0dSBpbWFnZW4gY29ycG9yYXRpdmEsIGhhc3RhIGxhIGNyZWFjacOzbiBkZSB0dSBww6FnaW5hIHdlYi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTItMTVUMTg6NTU6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgInJpY2hGYWN0cyI6IFt7ImxhYmVsIjogeyJ0ZXh0IjogIlViaWNhY2nDs24ifSwgIml0ZW1zIjogW3sidGV4dCI6ICJDXC9MYSBDYW1hcmEgTsK6MzggMsK6RCwgQXZpbMOpcywgMzM0MDEsIEFzdHVyaWFzIn1dLCAiaGludCI6IHsidGV4dCI6ICJBRERSRVNTOkxPQ0FUSU9OR0VORVJBTCJ9fSwgeyJsYWJlbCI6IHsidGV4dCI6ICJUZWzDqWZvbm8ifSwgIml0ZW1zIjogW3sidGV4dCI6ICI2MjMgNTYgNDUgNDMifV0sICJoaW50IjogeyJ0ZXh0IjogIkJBU0U6UEhPTkVOVU1CRVIifX1dLCAibm9DYWNoZSI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjIiLCAibmFtZSI6ICJFc3R1ZGlvIGRlIGRpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgLSBESUxTRSBFc3R1ZGlvIENyZWF0aXZvIiwgInVybCI6ICJodHRwczpcL1wvZGlsc2VjcmVhdGl2by5jb21cL2VzdHVkaW8tZGUtZGlzZW5vLWdyYWZpY28iLCAidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC5BcVpmLTFCVnJZTk9KeGJtcWhKVUxBSGFGaiZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAiaXNGYW1pbHlGcmllbmRseSI6IHRydWUsICJkaXNwbGF5VXJsIjogImh0dHBzOlwvXC9kaWxzZWNyZWF0aXZvLmNvbVwvZXN0dWRpby1kZS1kaXNlbm8tZ3JhZmljbyIsICJzbmlwcGV0IjogIkRJTCBTRSBFc3R1ZGlvIENyZWF0aXZvIGVzIHVuIGVzdHVkaW8gZGUgZGlzZcOxbyBncsOhZmljbyB5IGJyYW5kaW5nIHViaWNhZG8gZW4gR2lqw7NuLCBBc3R1cmlhcy4gTnVlc3RybyBlcXVpcG8gdHJhYmFqYSBwYXJhIGRhcmxlIGZvcm1hIHZpc3VhbCBhIHR1IG1lbnNhamUgZGUgbWFuZXJhIGNvaGVyZW50ZSwgYXRyYWN0aXZhIHkgcHJvZmVzaW9uYWwuIFNvbW9zIGNyZWF0aXZvcyB5IHNvbW9zIGVzdHJhdGVnYXMuIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTEyLTEyVDA1OjExOjAwLjAwMDAwMDBaIiwgInByaW1hcnlJbWFnZU9mUGFnZSI6IHsidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC5BcVpmLTFCVnJZTk9KeGJtcWhKVUxBSGFGaiZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAid2lkdGgiOiA4MCwgImhlaWdodCI6IDgwLCAic291cmNlV2lkdGgiOiA0NzQsICJzb3VyY2VIZWlnaHQiOiAzNTUsICJpbWFnZUlkIjogIk9JUC5BcVpmLTFCVnJZTk9KeGJtcWhKVUxBSGFGaiJ9LCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgIm5vQ2FjaGUiOiBmYWxzZX0sIHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4zIiwgIm5hbWUiOiAiRElMU0UgRXN0dWRpbyBDcmVhdGl2byB8IERpc2XDsW8sIGNvbXVuaWNhY2nDs24geSBtYXJrZXRpbmcgZW4gQXN0dXJpYXMiLCAidXJsIjogImh0dHBzOlwvXC9kaWxzZWNyZWF0aXZvLmNvbVwvIiwgInRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuMUhveVRjSzd6dEdfOHNoUl9UdUgwZ0hhRTQmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvZGlsc2VjcmVhdGl2by5jb20iLCAic25pcHBldCI6ICJFc3R1ZGlvIGNyZWF0aXZvIGNvbiBiYXNlIGVuIEdpasOzbiAoQXN0dXJpYXMpLiBTb2x1Y2lvbmVzIGRlIGRpc2XDsW8gZ3LDoWZpY28sIGRpc2XDsW8gd2ViLCBtYXJrZXRpbmcgZGlnaXRhbCwgU0VPLCBwcm9kdWNjacOzbiBhdWRpb3Zpc3VhbCwgZHJvbmVzLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xNFQwMTowMDowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuMUhveVRjSzd6dEdfOHNoUl9UdUgwZ0hhRTQmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogMzEyLCAiaW1hZ2VJZCI6ICJPSVAuMUhveVRjSzd6dEdfOHNoUl9UdUgwZ0hhRTQifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuNCIsICJuYW1lIjogIktvcmUgQnJhbmRpbmcgLSBFc3R1ZGlvIEJyYW5kaW5nIHkgRGlzZcOxbyBHcsOhZmljbyBlbiBBc3R1cmlhcyIsICJ1cmwiOiAiaHR0cHM6XC9cL3d3dy5rb3JlYnJhbmRpbmcuZXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLkVMd2xKY2trb2tTNzc4SXJhSHRCV0FIYUhhJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5rb3JlYnJhbmRpbmcuZXMiLCAic25pcHBldCI6ICJEZXNkZSBuYW1pbmcgaGFzdGEgZGlzZcOxbyBkZSBsb2dvdGlwb3MgeSBtYXJjYXMgc2VjdW5kYXJpYXMsIG51ZXN0cm8gZXN0dWRpbyBkZSBkaXNlw7FvIGdyw6FmaWNvIGVuIEFzdHVyaWFzIHRlIGF5dWRhIGEgY3JlYXIgdW5hIGlkZW50aWRhZCB2aXN1YWwgc8OzbGlkYS4gRXhwbG9yYSBvcGNpb25lcyBjcsOzbWF0aWNhcyB5IHRpcG9ncsOhZmljYXMsIGd1w61hcyBkZSBlc3RpbG8geSBtw6FzIHBhcmEgZGVzdGFjYXIgZW4gZWwgbWVyY2FkbyBhc3R1cmlhbm8uIiwgImRhdGVMYXN0Q3Jhd2xlZCI6ICIyMDI0LTEyLTEzVDE3OjQ5OjAwLjAwMDAwMDBaIiwgInByaW1hcnlJbWFnZU9mUGFnZSI6IHsidGh1bWJuYWlsVXJsIjogImh0dHBzOlwvXC93d3cuYmluZy5jb21cL3RoP2lkPU9JUC5FTHdsSmNra29rUzc3OElyYUh0QldBSGFIYSZ3PTgwJmg9ODAmYz0xJnBpZD01LjEiLCAid2lkdGgiOiA4MCwgImhlaWdodCI6IDgwLCAic291cmNlV2lkdGgiOiA0NzQsICJzb3VyY2VIZWlnaHQiOiA0NzQsICJpbWFnZUlkIjogIk9JUC5FTHdsSmNra29rUzc3OElyYUh0QldBSGFIYSJ9LCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgIm5vQ2FjaGUiOiBmYWxzZX1dfSwgInJhbmtpbmdSZXNwb25zZSI6IHsibWFpbmxpbmUiOiB7Iml0ZW1zIjogW3siYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDAsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4wIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAxLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMSJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMiwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjIifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDMsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4zIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiA0LCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuNCJ9fV19fX0=
+  recorded_at: Tue, 17 Dec 2024 12:52:47 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=dise%C3%B1o%20creativo%20Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.1
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - Tue, 17 Dec 2024 12:51:48 GMT
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      X-Eventid:
+      - 67617420e7e449f6a53697d912624dc9
+      Useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      Content-Security-Policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-3yqfnxweDkoaXk4Hqdw0Aomp0Iyy8zLzQwFARRkS44I=''; base-uri ''self'';'
+      Bingapis-Traceid:
+      - 67617420e7e449f6a53697d912624dc9
+      Bingapis-Sessionid:
+      - 23A0F1B2C3354FAAB8225F336A550864
+      X-Msedge-Clientid:
+      - 38F3A9796CD4641C2108BC216D77652F
+      X-Msapi-Userstate:
+      - '1459'
+      Bingapis-Market:
+      - es-ES
+      Bingapis-Rguid:
+      - 946794d1f4ec47e7b334ffca37f55357
+      X-Search-Responseinfo:
+      - InternalResponseTime=328,MSDatacenter=DUBE01
+      X-Cache:
+      - CONFIG_NOCACHE
+      Accept-Ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      X-Msedge-Ref:
+      - 'Ref A: BC0CEBD8388E401791F4D72C6FA51669 Ref B: AMS04EDGE2011 Ref C: 2024-12-17T12:52:48Z'
+      Apim-Request-Id:
+      - 9c2285d3-f620-4df0-b99d-4f4f4aac1a3f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Csp-Billing-Usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      Date:
+      - Tue, 17 Dec 2024 12:52:47 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfdHlwZSI6ICJTZWFyY2hSZXNwb25zZSIsICJxdWVyeUNvbnRleHQiOiB7Im9yaWdpbmFsUXVlcnkiOiAiZGlzZcOxbyBjcmVhdGl2byBBc3R1cmlhcyJ9LCAid2ViUGFnZXMiOiB7IndlYlNlYXJjaFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC9zZWFyY2g/cT1kaXNlJUMzJUIxbytjcmVhdGl2bytBc3R1cmlhcyIsICJ0b3RhbEVzdGltYXRlZE1hdGNoZXMiOiAxNDIwMDAsICJ2YWx1ZSI6IFt7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMCIsICJuYW1lIjogIkRJTFNFIEVzdHVkaW8gQ3JlYXRpdm8gfCBEaXNlw7FvLCBjb211bmljYWNpw7NuIHkgbWFya2V0aW5nIGVuIEFzdHVyaWFzIiwgInVybCI6ICJodHRwczpcL1wvZGlsc2VjcmVhdGl2by5jb21cLyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL2RpbHNlY3JlYXRpdm8uY29tIiwgInNuaXBwZXQiOiAiRXN0dWRpbyBjcmVhdGl2byBjb24gYmFzZSBlbiBHaWrDs24gKEFzdHVyaWFzKS4gU29sdWNpb25lcyBkZSBkaXNlw7FvIGdyw6FmaWNvLCBkaXNlw7FvIHdlYiwgbWFya2V0aW5nIGRpZ2l0YWwsIFNFTywgcHJvZHVjY2nDs24gYXVkaW92aXN1YWwsIGRyb25lcy4gSGVtb3MgcmVhbGl6YWRvIGVsIGRpc2XDsW8sIGxhIGNvbXVuaWNhY2nDs24sIHkgZWwgdsOtZGVvIHByb21vY2lvbmFsIGRlIGxhIGNhbXBhw7FhIGRlIHZhY3VuYWNpw7NuIGFudGlncmlwYWwgZGUgbGEgdGVtcG9yYWRhIDIwMTggZW4gZWwgUHJpbmNpcGFkbyBkZSBBc3R1cmlhcy4iLCAiZGVlcExpbmtzIjogW3sibmFtZSI6ICJQT1JURk9MSU8iLCAidXJsIjogImh0dHBzOlwvXC9kaWxzZWNyZWF0aXZvLmNvbVwvcG9ydGZvbGlvIiwgInNuaXBwZXQiOiAiRElMU0UgRXN0dWRpbyBDcmVhdGl2by4gRXN0dWRpbyBjcmVhdGl2byBjb24gYmFzZSBlbiBHaWrDs24gKEFzdHVyaWFzKS4gU29sdWNpb25lcyBkZSBkaXNlw7FvIGdyw6FmaWNvLCBkaXNlw7FvIHdlYiwgbWFya2V0aW5nIGRpZ2l0YWwsIFNFTywgcHJvZHVjY2nDs24gYXVkaW92aXN1YWwsIGRyb25lcy4ifSwgeyJuYW1lIjogIkxBIEFHRU5DSUEiLCAidXJsIjogImh0dHBzOlwvXC9kaWxzZWNyZWF0aXZvLmNvbVwvYWdlbmNpYS1kZS1wdWJsaWNpZGFkIiwgInNuaXBwZXQiOiAiRElMU0UgRXN0dWRpbyBDcmVhdGl2byBubyBzb2xvIGVzIHVuYSBhZ2VuY2lhIGRlIHB1YmxpY2lkYWQuIEhlbW9zIGZvcm1hZG8gdW4gZXF1aXBvIG11bHRpZGlzY2lwbGluYXIgcXVlIGNvbWJpbmEgdGVjbm9sb2fDrWEsIGVzdHJhdGVnaWEsIGVzdMOpdGljYSB5IGtub3ctaG93IHBhcmEgZGlzZcOxYXIgZXhwZXJpZW5jaWFzIGRlIHZlbnRhIGVuIGVudG9ybm8gb21uaWNhbmFsLiBTb21vcyBleHBlcnRvcyBjb250YWRvcmVzIGRlIGhpc3RvcmlhcyB5IHNhYmVtb3MgY29uZWN0YXIgbWFyY2FzIGNvbiBwZXJzb25hcy4gU29tb3MgdW5hIGFnZW5jaWEgZGUgZGlzZcOxby4ifSwgeyJuYW1lIjogIlNFUlZJQ0lPUyIsICJ1cmwiOiAiaHR0cHM6XC9cL2RpbHNlY3JlYXRpdm8uY29tXC9lc3R1ZGlvLWRlLWRpc2Vuby1ncmFmaWNvIiwgInNuaXBwZXQiOiAiRElMIFNFIEVzdHVkaW8gQ3JlYXRpdm8gZXMgdW4gZXN0dWRpbyBkZSBkaXNlw7FvIGdyw6FmaWNvIHkgYnJhbmRpbmcgdWJpY2FkbyBlbiBHaWrDs24sIEFzdHVyaWFzLiBOdWVzdHJvIGVxdWlwbyB0cmFiYWphIHBhcmEgZGFybGUgZm9ybWEgdmlzdWFsIGEgdHUgbWVuc2FqZSBkZSBtYW5lcmEgY29oZXJlbnRlLCBhdHJhY3RpdmEgeSBwcm9mZXNpb25hbC4gU29tb3MgY3JlYXRpdm9zIHkgc29tb3MgZXN0cmF0ZWdhcy5EZXNkZSBudWVzdHJvIGVzdHVkaW8gZGUgZGlzZcOxbyB0ZSBheXVkYXJlbW9zIGEgY2F1c2FyIHVuYSBidWVuYSBpbXByZXNpw7NuIGFudGUgdHVzIGNsaWVudGVzLCBjb25zdHJ1eWVuZG8gdW5hIGltYWdlbiBwcm9mZXNpb25hbCB5IGNyZcOtYmxlLiJ9LCB7Im5hbWUiOiAiQkxPRyIsICJ1cmwiOiAiaHR0cHM6XC9cL2RpbHNlY3JlYXRpdm8uY29tXC9ibG9nIiwgInNuaXBwZXQiOiAiRElMU0UgRXN0dWRpbyBDcmVhdGl2byBFc3R1ZGlvIGNyZWF0aXZvIGNvbiBiYXNlIGVuIEdpasOzbiAoQXN0dXJpYXMpLiBTb2x1Y2lvbmVzIGRlIGRpc2XDsW8gZ3LDoWZpY28sIGRpc2XDsW8gd2ViLCBtYXJrZXRpbmcgZGlnaXRhbCwgU0VPLCBwcm9kdWNjacOzbiBhdWRpb3Zpc3VhbCwgZHJvbmVzLiJ9LCB7Im5hbWUiOiAiQ09OVEFDVE8iLCAidXJsIjogImh0dHBzOlwvXC9kaWxzZWNyZWF0aXZvLmNvbVwvY29udGFjdG8iLCAic25pcHBldCI6ICJESUxTRSBFc3R1ZGlvIENyZWF0aXZvIEVzdHVkaW8gY3JlYXRpdm8gY29uIGJhc2UgZW4gR2lqw7NuIChBc3R1cmlhcykuIFNvbHVjaW9uZXMgZGUgZGlzZcOxbyBncsOhZmljbywgZGlzZcOxbyB3ZWIsIG1hcmtldGluZyBkaWdpdGFsLCBTRU8sIHByb2R1Y2Npw7NuIGF1ZGlvdmlzdWFsLCBkcm9uZXMuIn0sIHsibmFtZSI6ICJEaXNlw7FvIHdlYiIsICJ1cmwiOiAiaHR0cHM6XC9cL2RpbHNlY3JlYXRpdm8uY29tXC9kaXNlbm8td2ViIiwgInNuaXBwZXQiOiAiRW4gRElMU0UgRXN0dWRpbyBDcmVhdGl2byBjb250YW1vcyBjb24gdW4gZGVwYXJ0YW1lbnRvIGRlIGRpc2XDsW8gd2ViIHByb2Zlc2lvbmFsIHByZXBhcmFkbyBwYXJhIG9mcmVjZXJ0ZSB1bmEgaGVycmFtaWVudGEgd2ViIGNvbXBldGl0aXZhLiBEZXNkZSBudWVzdHJhIGVtcHJlc2EgZGUgZGlzZcOxbyB3ZWIgZW4gQXN0dXJpYXMsIGRpc2XDsWFtb3MgcMOhZ2luYXMgd2ViIGEgbWVkaWRhLCB0aWVuZGFzIG9ubGluZSwgYmxvZ3MgeSBwbGF0YWZvcm1hcyBlLWxlYXJuaW5nIHBhcmEgZW1wcmVzYXMgcXVlIHF1aWVyYW4gcG90ZW5jaWFyIHN1IHByZXNlbmNpYSBvbmxpbmUuIn0sIHsibmFtZSI6ICJNYXJrZXRpbmcgZGlnaXRhbCIsICJ1cmwiOiAiaHR0cHM6XC9cL2RpbHNlY3JlYXRpdm8uY29tXC9tYXJrZXRpbmctZGlnaXRhbCIsICJzbmlwcGV0IjogIkRJTFNFIEVzdHVkaW8gQ3JlYXRpdm8gZXMgdW5hIGNvbnN1bHRvcsOtYSBkZSBtYXJrZXRpbmcgZGlnaXRhbC4gRW4gdW4gbWVyY2FkbyBsbGVubyBkZSBwcm9kdWN0b3MgeSBzZXJ2aWNpb3MsIHR1IG1hcmNhIGRlYmUgZGVzdGFjYXIuIFBvbmVtb3MgYSB0dSBkaXNwb3NpY2nDs24gbGFzIGhlcnJhbWllbnRhcyBuZWNlc2FyaWFzIHBhcmEgcXVlIHR1IGVtcHJlc2EgYWRxdWllcmEgbGEgdmlzaWJpbGlkYWQgcXVlIHNlIG1lcmVjZSBlbiBpbnRlcm5ldCB5IHJlZGVzIHNvY2lhbGVzLiBEZXNhcnJvbGxhbW9zIHByb3llY3RvcyB5IGVzdHJhdGVnaWFzIGRlIG1hcmtldGluZyBkaWdpdGFsIHkgcG9zaWNpb25hbWllbnRvIG9yaWVudGFkYXMgYSByZXN1bHRhZG9zLiJ9LCB7Im5hbWUiOiAiUHJvZHVjdG9yYSBhdWRpb3Zpc3VhbCIsICJ1cmwiOiAiaHR0cHM6XC9cL2RpbHNlY3JlYXRpdm8uY29tXC9wcm9kdWN0b3JhLWRlLXZpZGVvIiwgInNuaXBwZXQiOiAiRElMU0UgRXN0dWRpbyBDcmVhdGl2byBlcyB1bmEgcHJvZHVjdG9yYSBhdWRpb3Zpc3VhbCBkZSBBc3R1cmlhcywgcXVlIG9mcmVjZSBzdXMgc2VydmljaW9zIGVuIHRvZGEgRXVyb3BhLlNvbW9zIGVzcGVjaWFsaXN0YXMgZW4gdsOtZGVvcyBwdWJsaWNpdGFyaW9zLCB2w61kZW8gY29ycG9yYXRpdm9zLCByZXBvcnRhamVzLCB2aWRlb2NsaXBzIHkgdsOtZGVvcyBkZSBldmVudG8geSB2w61kZW9zIGHDqXJlb3MsIGVudHJlIG90cm9zLi4gTm9zIGVuY2FyZ2Ftb3MgZGUgdG9kbyBlbCBwcm9jZXNvIGRlIGNyZWFjacOzbiwgZGVzZGUgbGEgaWRlYSBpbmljaWFsIGhhc3RhIGxhIGZpbG1hY2nDs24geSBwb3N0LXByb2R1Y2Npw7NuIGZpbmFsIGRlIGxhIG9icmEgYXVkaW92aXN1YWwuIn1dLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTItMTRUMDE6MDA6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiB0cnVlLCAibm9DYWNoZSI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjEiLCAibmFtZSI6ICJWZWludGlkb3MsIGVzdHVkaW8gZGUgZGlzZcOxbyB5IGNvbXVuaWNhY2nDs24uIEFzdHVyaWFzIiwgInVybCI6ICJodHRwczpcL1wvd3d3LnZlaW50aWRvcy5lc1wvIiwgInRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuTTdod0FKbm1ZcVVqWmEyR0hJWU95UUhhR2gmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgImlzRmFtaWx5RnJpZW5kbHkiOiB0cnVlLCAiZGlzcGxheVVybCI6ICJodHRwczpcL1wvd3d3LnZlaW50aWRvcy5lcyIsICJzbmlwcGV0IjogIkVzdHVkaW8gZGUgZGlzZcOxbyBncsOhZmljbyB5IGNvbXVuaWNhY2nDs24gY29uIGJhc2UgZW4gR2lqw7NuLCBBc3R1cmlhcy4gRm9ybWFtb3MgdW5hIGZhbWlsaWEgZG9uZGUgY3JlY2Vtb3MgZMOtYSBhIGRpYSBqdW50byBhIG51ZXN0cm9zIGNsaWVudGVzIHkgdHJhYmFqYW1vcyBwYXJhIHF1ZSBjYWRhIHByb3llY3RvIGN1bXBsYSBzdXMgZXhwZWN0YXRpdmFzLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xNVQxNDo1MjowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuTTdod0FKbm1ZcVVqWmEyR0hJWU95UUhhR2gmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogNDE3LCAiaW1hZ2VJZCI6ICJPSVAuTTdod0FKbm1ZcVVqWmEyR0hJWU95UUhhR2gifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2UsICJzaXRlTmFtZSI6ICJWZWludGlkb3MifSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjIiLCAibmFtZSI6ICJNYXJhIFJvZHJpZ3VleiBEZXNpZ24gLSBCcmFuZGluZywgUGFja2FnaW5nIHkgRGlzZcOxbyBHcsOhZmljbyBBc3R1cmlhcyIsICJ1cmwiOiAiaHR0cHM6XC9cL21hcmFyb2RyaWd1ZXouZXNcLyIsICJ0aHVtYm5haWxVcmwiOiAiaHR0cHM6XC9cL3d3dy5iaW5nLmNvbVwvdGg/aWQ9T0lQLldRLVVVU0RmWDJNQXMzYmpZekVJZGdIYUZQJnc9ODAmaD04MCZjPTEmcGlkPTUuMSIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL21hcmFyb2RyaWd1ZXouZXMiLCAic25pcHBldCI6ICJNYXJhIFJvZHJpZ3VleiBlcyB1biBlc3R1ZGlvIGRlIERpc2XDsW8gZ3LDoWZpY28gZW4gQXN0dXJpYXMgZXNwZWNpYWxpemFkbyBlbiBQYWNrYWdpbmcgeSBCcmFuZGluZy4gRXN0YW1vcyBlbiBHaWrDs24geSB0cmFiYWphbW9zIGNvbiBjbGllbnRlcyBuYWNpb25hbGVzIGUgaW50ZXJuYWNpb25hbGVzLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xNVQxNToxMzowMC4wMDAwMDAwWiIsICJwcmltYXJ5SW1hZ2VPZlBhZ2UiOiB7InRodW1ibmFpbFVybCI6ICJodHRwczpcL1wvd3d3LmJpbmcuY29tXC90aD9pZD1PSVAuV1EtVVVTRGZYMk1BczNiall6RUlkZ0hhRlAmdz04MCZoPTgwJmM9MSZwaWQ9NS4xIiwgIndpZHRoIjogODAsICJoZWlnaHQiOiA4MCwgInNvdXJjZVdpZHRoIjogNDc0LCAic291cmNlSGVpZ2h0IjogMzM1LCAiaW1hZ2VJZCI6ICJPSVAuV1EtVVVTRGZYMk1BczNiall6RUlkZ0hhRlAifSwgImxhbmd1YWdlIjogImVzIiwgImlzTmF2aWdhdGlvbmFsIjogZmFsc2UsICJub0NhY2hlIjogZmFsc2V9LCB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMyIsICJuYW1lIjogIk1BVFRFUklBIENSRUFUSVZBIHwgRXN0dWRpbyBkZSBEaXNlw7FvIHkgUHJvZHVjY2nDs24gR3LDoWZpY2EgfCBBc3R1cmlhcyAuLi4iLCAidXJsIjogImh0dHBzOlwvXC93d3cubWF0dGVyaWFjcmVhdGl2YS5jb21cLyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3d3dy5tYXR0ZXJpYWNyZWF0aXZhLmNvbSIsICJzbmlwcGV0IjogIk1BVFRFUklBIENSRUFUSVZBIGVzIHVuIEVzdHVkaW8gZGUgRGlzZcOxbyB5IFByb2R1Y2Npw7NuIEdyw6FmaWNhIHViaWNhZG8gZW4gTGEgRmVsZ3VlcmEsIEFzdHVyaWFzLiBEaXNlw7FhbW9zIHkgcHJvZHVjaW1vcyBjdWFscXVpZXIgYXBsaWNhY2nDs24gZ3LDoWZpY2EgcXVlIG5lY2VzaXRlcyEgVGFtYmnDqW4gZGlzZcOxYW1vcyB5IHByb2R1Y2ltb3MgbGEgbWFyY2EgZGUgbW9kYSBlY29sw7NnaWNhIGFzdHVyaWFuYSBcIkxhIENoaXRhIENhbGxhbmRvXCIgeSBsYSBtYXJjYSBkZSByZWdhbG9zIG9yaWdpbmFsZXMgeSBkaXZlcnRpZG9zIFwiTW9sb01pbFwiLiIsICJkYXRlTGFzdENyYXdsZWQiOiAiMjAyNC0xMi0xMVQyMjoyNjowMC4wMDAwMDAwWiIsICJsYW5ndWFnZSI6ICJlcyIsICJpc05hdmlnYXRpb25hbCI6IGZhbHNlLCAibm9DYWNoZSI6IGZhbHNlfSwgeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjQiLCAibmFtZSI6ICJEaXNlw7FvIEdyw6FmaWNvIGVuIEFzdHVyaWFzIHwgUGxhbkIgRXN0dWRpbyBDcmVhdGl2byIsICJ1cmwiOiAiaHR0cHM6XC9cL3BsYW5iZXN0dWRpb2NyZWF0aXZvLmNvbVwvZGlzZW5vLWdyYWZpY28tYXN0dXJpYXNcLyIsICJpc0ZhbWlseUZyaWVuZGx5IjogdHJ1ZSwgImRpc3BsYXlVcmwiOiAiaHR0cHM6XC9cL3BsYW5iZXN0dWRpb2NyZWF0aXZvLmNvbVwvZGlzZW5vLWdyYWZpY28tYXN0dXJpYXMiLCAic25pcHBldCI6ICJQbGFuQiBlcyB1biBFc3R1ZGlvIGluZGVwZW5kaWVudGUgZGUgZGlzZcOxbyBncsOhZmljbyBlbiBBc3R1cmlhcy4gT2ZyZWNlbW9zIHNvbHVjaW9uZXMgY3JlYXRpdmFzIHkgZXN0cmF0w6lnaWNhcyBwYXJhIHF1ZSB0dSBtYXJjYSBkZXN0YXF1ZSBlbiB0b2RvcyBsb3Mgw6FtYml0b3MuIENyZWFtb3MgbGEgaW1hZ2VuIHBlcmZlY3RhIHBhcmEgdHUgcHJveWVjdG8sIGRlc2RlIGVsIGRpc2XDsW8gZGUgdHUgbG9nb3RpcG8geSBkZSB0dSBpbWFnZW4gY29ycG9yYXRpdmEsIGhhc3RhIGxhIGNyZWFjacOzbiBkZSB0dSBww6FnaW5hIHdlYi4iLCAiZGF0ZUxhc3RDcmF3bGVkIjogIjIwMjQtMTItMTVUMTg6NTU6MDAuMDAwMDAwMFoiLCAibGFuZ3VhZ2UiOiAiZXMiLCAiaXNOYXZpZ2F0aW9uYWwiOiBmYWxzZSwgInJpY2hGYWN0cyI6IFt7ImxhYmVsIjogeyJ0ZXh0IjogIlViaWNhY2nDs24ifSwgIml0ZW1zIjogW3sidGV4dCI6ICJDXC9MYSBDYW1hcmEgTsK6MzggMsK6RCwgQXZpbMOpcywgMzM0MDEsIEFzdHVyaWFzIn1dLCAiaGludCI6IHsidGV4dCI6ICJBRERSRVNTOkxPQ0FUSU9OR0VORVJBTCJ9fSwgeyJsYWJlbCI6IHsidGV4dCI6ICJUZWzDqWZvbm8ifSwgIml0ZW1zIjogW3sidGV4dCI6ICI2MjMgNTYgNDUgNDMifV0sICJoaW50IjogeyJ0ZXh0IjogIkJBU0U6UEhPTkVOVU1CRVIifX1dLCAibm9DYWNoZSI6IGZhbHNlfV19LCAicmFua2luZ1Jlc3BvbnNlIjogeyJtYWlubGluZSI6IHsiaXRlbXMiOiBbeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMCwgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjAifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDEsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy4xIn19LCB7ImFuc3dlclR5cGUiOiAiV2ViUGFnZXMiLCAicmVzdWx0SW5kZXgiOiAyLCAidmFsdWUiOiB7ImlkIjogImh0dHBzOlwvXC9hcGkuYmluZy5taWNyb3NvZnQuY29tXC9hcGlcL3Y3XC8jV2ViUGFnZXMuMiJ9fSwgeyJhbnN3ZXJUeXBlIjogIldlYlBhZ2VzIiwgInJlc3VsdEluZGV4IjogMywgInZhbHVlIjogeyJpZCI6ICJodHRwczpcL1wvYXBpLmJpbmcubWljcm9zb2Z0LmNvbVwvYXBpXC92N1wvI1dlYlBhZ2VzLjMifX0sIHsiYW5zd2VyVHlwZSI6ICJXZWJQYWdlcyIsICJyZXN1bHRJbmRleCI6IDQsICJ2YWx1ZSI6IHsiaWQiOiAiaHR0cHM6XC9cL2FwaS5iaW5nLm1pY3Jvc29mdC5jb21cL2FwaVwvdjdcLyNXZWJQYWdlcy40In19XX19fQ==
+  recorded_at: Tue, 17 Dec 2024 12:52:48 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nYou
+        are given some keywords aimed at finding competitors of a brand.\nWhen performing
+        a brand analysis, we found that the brand is of the following category: Design.\nAnd
+        the keywords that are related to the brand are:\n* {\"value\"=\u003e\"diseño
+        gráfico Asturias\"}\n* {\"value\"=\u003e\"branding Asturias\"}\n* {\"value\"=\u003e\"packaging
+        Asturias\"}\n* {\"value\"=\u003e\"estudio de diseño Asturias\"}\n* {\"value\"=\u003e\"diseño
+        creativo Asturias\"}\nFind the main competitors of the brand. Use the given
+        search tool if needed.\nBe mindful to not hallucinate competitors.\nFor each
+        competitor, provide the name and the URL of a its website, don''t fill the
+        website URL if it''s not that of the brand, but rather a website that mentions
+        it without being the official source.\nBe sure to not include the own brand
+        being analyzed in the list of competitors (it''s already known. and its name
+        is Mara Rodriguez)\n"}]},{"role":"assistant","tool_calls":[{"id":"call_BoYJ2Xz5mtXIef5hIRGZF7Qa","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"diseño gráfico Asturias\", \"count\": 5}"}},{"id":"call_Jg5iMFKcFh3HYXcqivgiLtmY","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"branding Asturias\", \"count\": 5}"}},{"id":"call_I1i3TFOiKlAdSf4LhdOziRCK","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"packaging Asturias\", \"count\": 5}"}},{"id":"call_zUSDXpqNGdQJwwC17fdR8iwu","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"estudio de diseño Asturias\", \"count\": 5}"}},{"id":"call_qpqs2MdWE0s703BS4breqskx","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"diseño creativo Asturias\", \"count\": 5}"}}]},{"role":"tool","tool_call_id":"call_BoYJ2Xz5mtXIef5hIRGZF7Qa","content":[{"type":"text","text":"[{\"URL\":\"https://www.pixelbox.es/\",\"Snippet\":\"Ofrecemos
+        un servicio de diseño gráfico integral que va desde la creación y desarrollo
+        de la idea hasta su producción gráfica final, garantizando la máxima calidad
+        en nuestros trabajos.\"},{\"URL\":\"https://www.korebranding.es/\",\"Snippet\":\"Desde
+        naming hasta diseño de logotipos y marcas secundarias, nuestro estudio de
+        diseño gráfico en Asturias te ayuda a crear una identidad visual sólida. Explora
+        opciones crómaticas y tipográficas, guías de estilo y más para destacar en
+        el mercado asturiano.\"},{\"URL\":\"https://www.veintidos.es/\",\"Snippet\":\"Estudio
+        de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos una
+        familia donde crecemos día a dia junto a nuestros clientes y trabajamos para
+        que cada proyecto cumpla sus expectativas.\"},{\"URL\":\"https://esdac.es/\",\"Snippet\":\"Pioneros
+        en elevar al ámbito universitario las carreras de diseño: Diseño Gráfico,
+        Diseño de Moda, Diseño de Interiores, Diseño y Desarrollo de Videojuegos y
+        Comunicación de Marcas.\"},{\"URL\":\"https://www.prismaid.com/diseno-grafico/\",\"Snippet\":\"Apuesta
+        por nuestro equipo de diseño gráfico en Asturias e incorpora creatividad,
+        compromiso y calidad a tu proyecto.\"}]"}]},{"role":"tool","tool_call_id":"call_Jg5iMFKcFh3HYXcqivgiLtmY","content":[{"type":"text","text":"[{\"URL\":\"https://www.korebranding.es/\",\"Snippet\":\"Desde
+        naming hasta diseño de logotipos y marcas secundarias, nuestro estudio de
+        diseño gráfico en Asturias te ayuda a crear una identidad visual sólida. Explora
+        opciones crómaticas y tipográficas, guías de estilo y más para destacar en
+        el mercado asturiano.\"},{\"URL\":\"https://mararodriguez.es/\",\"Snippet\":\"Mara
+        Rodriguez es un estudio de Diseño gráfico en Asturias especializado en Packaging
+        y Branding. Estamos en Gijón y trabajamos con clientes nacionales e internacionales.\"},{\"URL\":\"https://www.korebranding.es/branding-en-asturias/\",\"Snippet\":\"En
+        Kore Branding, tu agencia de branding en Asturias, nos enfocamos en dar vida
+        a tu visión creativa y llevarla al siguiente nivel. Con un enfoque estratégico
+        y una pasión por la estética visual, creamos soluciones gráficas impactantes
+        y únicas que te ayudarán a destacar en el mercado.\"},{\"URL\":\"https://www.korebranding.es/servicios-de-branding-y-diseno-grafico-en-asturias/\",\"Snippet\":\"En
+        Kore Branding, ofrecemos servicios de estrategia de marca personalizados y
+        diseñados a medida para conectar tu empresa con su público objetivo, esté
+        en Asturias o en cualquier parte.\"},{\"URL\":\"https://www.benditodilema.com/\",\"Snippet\":\"Bendito
+        Dilema, Agencia de Comunicación Integral en Oviedo. Branding, comunicación
+        online/offline, diseño web, audiovisual y publicidad en Asturias.\"}]"}]},{"role":"tool","tool_call_id":"call_I1i3TFOiKlAdSf4LhdOziRCK","content":[{"type":"text","text":"[{\"URL\":\"https://packastur.com/\",\"Snippet\":\"Envases
+        y embalajes para uso alimentario. Productos para limpieza y desinfección.
+        Te ofrecemos el producto que mejor se adapte a tus necesidades. Servicio personalizado,
+        rápido y con una calidad-precio excepcional.\"},{\"URL\":\"https://honesa.com/\",\"Snippet\":\"En
+        Honesa somos especialistas en el packaging para el Sector Farmacia. Para el
+        envasado y entrega de productos disponemos de cuatro líneas principales: Bolsas
+        de plástico con asa, tipo camiseta o tipo troquel y bolsas personalizadas
+        adaptadas al real decreto 293/2018 sobre reducción del consumo de bolsas de
+        plástico.\"},{\"URL\":\"https://www.tupackagingpersonalizado.es/asturias/\",\"Snippet\":\"Las
+        empresas de packaging personalizado en Asturias no sólo te ayudarán a crear
+        un envase resistente que pueda aguantar todo el proceso de empaquetado, apilado
+        y transporte hasta el lugar de origen, sino que también te asesorarán para
+        plasmar el mensaje que se quiera hacer llegar al cliente.\"},{\"URL\":\"https://poularrosa.es/packaging-asturias/\",\"Snippet\":\"Descubre
+        nuestro servicio de packaging en Asturias, donde combinamos diseño innovador,
+        funcionalidad y calidad para crear soluciones de envasado que resalten tu
+        marca y cautiven a tus clientes. En nuestra agencia de packaging, entendemos
+        la importancia de la presentación de tu producto.\"},{\"URL\":\"https://rubiohidalgo.com/\",\"Snippet\":\"Envases
+        de un solo uso y mantelería para hostelería en Asturias. Especialistas en
+        envases desechables, mantelería y servilletas, bolsas, vasos, vajilla, menaje
+        y hotel.\"}]"}]},{"role":"tool","tool_call_id":"call_zUSDXpqNGdQJwwC17fdR8iwu","content":[{"type":"text","text":"[{\"URL\":\"https://www.veintidos.es/\",\"Snippet\":\"Estudio
+        de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos una
+        familia donde crecemos día a día junto a nuestros clientes. Trabajamos para
+        que cada proyecto cumpla sus expectativas.\"},{\"URL\":\"https://planbestudiocreativo.com/diseno-grafico-asturias/\",\"Snippet\":\"PlanB
+        es un Estudio independiente de diseño gráfico en Asturias. Ofrecemos soluciones
+        creativas y estratégicas para que tu marca destaque en todos los ámbitos.
+        Creamos la imagen perfecta para tu proyecto, desde el diseño de tu logotipo
+        y de tu imagen corporativa, hasta la creación de tu página web.\"},{\"URL\":\"https://dilsecreativo.com/estudio-de-diseno-grafico\",\"Snippet\":\"DIL
+        SE Estudio Creativo es un estudio de diseño gráfico y branding ubicado en
+        Gijón, Asturias. Nuestro equipo trabaja para darle forma visual a tu mensaje
+        de manera coherente, atractiva y profesional. Somos creativos y somos estrategas.\"},{\"URL\":\"https://dilsecreativo.com/\",\"Snippet\":\"Estudio
+        creativo con base en Gijón (Asturias). Soluciones de diseño gráfico, diseño
+        web, marketing digital, SEO, producción audiovisual, drones.\"},{\"URL\":\"https://www.korebranding.es/\",\"Snippet\":\"Desde
+        naming hasta diseño de logotipos y marcas secundarias, nuestro estudio de
+        diseño gráfico en Asturias te ayuda a crear una identidad visual sólida. Explora
+        opciones crómaticas y tipográficas, guías de estilo y más para destacar en
+        el mercado asturiano.\"}]"}]},{"role":"tool","tool_call_id":"call_qpqs2MdWE0s703BS4breqskx","content":[{"type":"text","text":"[{\"URL\":\"https://dilsecreativo.com/\",\"Snippet\":\"Estudio
+        creativo con base en Gijón (Asturias). Soluciones de diseño gráfico, diseño
+        web, marketing digital, SEO, producción audiovisual, drones. Hemos realizado
+        el diseño, la comunicación, y el vídeo promocional de la campaña de vacunación
+        antigripal de la temporada 2018 en el Principado de Asturias.\"},{\"URL\":\"https://www.veintidos.es/\",\"Snippet\":\"Estudio
+        de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos una
+        familia donde crecemos día a dia junto a nuestros clientes y trabajamos para
+        que cada proyecto cumpla sus expectativas.\"},{\"URL\":\"https://mararodriguez.es/\",\"Snippet\":\"Mara
+        Rodriguez es un estudio de Diseño gráfico en Asturias especializado en Packaging
+        y Branding. Estamos en Gijón y trabajamos con clientes nacionales e internacionales.\"},{\"URL\":\"https://www.matteriacreativa.com/\",\"Snippet\":\"MATTERIA
+        CREATIVA es un Estudio de Diseño y Producción Gráfica ubicado en La Felguera,
+        Asturias. Diseñamos y producimos cualquier aplicación gráfica que necesites!
+        También diseñamos y producimos la marca de moda ecológica asturiana \\\"La
+        Chita Callando\\\" y la marca de regalos originales y divertidos \\\"MoloMil\\\".\"},{\"URL\":\"https://planbestudiocreativo.com/diseno-grafico-asturias/\",\"Snippet\":\"PlanB
+        es un Estudio independiente de diseño gráfico en Asturias. Ofrecemos soluciones
+        creativas y estratégicas para que tu marca destaque en todos los ámbitos.
+        Creamos la imagen perfecta para tu proyecto, desde el diseño de tu logotipo
+        y de tu imagen corporativa, hasta la creación de tu página web.\"}]"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 12:52:51 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2210'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3997531'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 37ms
+      X-Request-Id:
+      - req_fea9840d90581d7be97ab9f8d5a8ea7a
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=nFYgmNQ17tQGEPGGeP5sGUbLMArwDItj75E2aLcF3rU-1734439971-1.0.1.1-H3aU6Nrm1.3LMV6nFSvl7IYdZBOMFgi1GgkB6xgRCIidSRtAeCGxDBK5cVtS4kUO5J.medyUNH4uKom6XFfxiw;
+        path=/; expires=Tue, 17-Dec-24 13:22:51 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=io1QvQhoYMF4VzLcKEDcG_Ij.SlB8xJx45NhliG71tQ-1734439971410-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f370d6c4f29cbd4-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AfRM9waN0jQGctnlTc4r24jnSwxMS",
+          "object": "chat.completion",
+          "created": 1734439969,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "```json\n{\n  \"competitors\": [\n    {\n      \"name\": \"Pixelbox\",\n      \"url\": \"https://www.pixelbox.es/\"\n    },\n    {\n      \"name\": \"Kore Branding\",\n      \"url\": \"https://www.korebranding.es/\"\n    },\n    {\n      \"name\": \"Veintidos\",\n      \"url\": \"https://www.veintidos.es/\"\n    },\n    {\n      \"name\": \"Packastur\",\n      \"url\": \"https://packastur.com/\"\n    },\n    {\n      \"name\": \"DIL SE Estudio Creativo\",\n      \"url\": \"https://dilsecreativo.com/\"\n    },\n    {\n      \"name\": \"Matteria Creativa\",\n      \"url\": \"https://www.matteriacreativa.com/\"\n    }\n  ]\n}\n```",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 3107,
+            "completion_tokens": 176,
+            "total_tokens": 3283,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_6fc10e10eb"
+        }
+  recorded_at: Tue, 17 Dec 2024 12:52:51 GMT
+recorded_with: VCR 6.3.1

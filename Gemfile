@@ -45,6 +45,7 @@ gem "concurrent-ruby", require: "concurrent"
 gem "concurrent-ruby-edge", "~> 0.7.1", require: "concurrent/edge/promises"
 
 gem "faraday"
+gem "faraday-follow_redirects"
 
 # Optional features
 # gem "bcrypt", "~> 3.1.7"
