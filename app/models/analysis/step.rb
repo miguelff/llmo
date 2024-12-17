@@ -1,4 +1,6 @@
 class Analysis::Step < ApplicationRecord
+    private_class_method :new
+
     class Result
         attr_accessor :step, :result, :error
 
@@ -27,8 +29,35 @@ class Analysis::Step < ApplicationRecord
 
     MAX_ATTEMPT_COUNT = 3
 
-    class_attribute :model, :temperature
+    # Syntactic sugar to define analysis inputs
+    def self.input(symbol, type, transform: nil, valid_format: nil)
+        attr_accessor symbol
 
+        define_singleton_method(:for) do |**args|
+            new.tap do |step|
+                step.send("#{symbol}=", transform ? transform.call(args[symbol]) : args[symbol])
+                step.input = { symbol => step.send(symbol) }
+            end
+        end
+
+        define_method(:valid_input) do
+            value = send(symbol)
+            errors.add(:input, "#{symbol.to_s.humanize} is required") if value.blank?
+            errors.add(:input, "#{symbol.to_s.humanize} doesn't have the appropriate type") unless value.is_a?(type)
+            if valid_format.present? && !valid_format.call(value)
+                errors.add(:input, "#{symbol.to_s.humanize} doesn't have a valid format")
+            end
+        end
+    end
+
+    class_attribute :model, :temperature
+    validate :valid_input, if: -> { self.new_record? }
+
+    def valid_input
+        raise "Must be redefined in subclasses"
+    end
+
+    validates :analysis_id, presence: true
     if Rails.env.test?
         after_initialize :set_random_analysis_id
 
@@ -39,12 +68,6 @@ class Analysis::Step < ApplicationRecord
         end
     end
 
-    validates :analysis_id, presence: true
-    validate :input_is_valid
-
-    def input_is_valid
-        raise "Must be redefined in subclasses"
-    end
 
     def self.perform_if_needed(analysis_id, force: false, **args)
         step = self.find_or_initialize_by(analysis_id: analysis_id)

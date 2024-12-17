@@ -57,17 +57,25 @@ module Analysis::Inference
         instructions = system_prompt && (system_prompt[self.language.to_sym] || system_prompt[Analysis::DEFAULT_LANGUAGE]) || "You are a helpful assistant"
 
         Rails.logger.debug("Creating assistant with model #{model}, and instructions #{instructions.truncate_words(10)}")
+
+        default_options = {
+            chat_model: model || self.class.model,
+            temperature: temperature || self.class.temperature
+        }
+
+        if self.output_schema.present?
+            default_options[:response_format] = { type: :json_schema,  json_schema: self.output_schema.to_h }
+        end
+
         llm = Langchain::LLM::OpenAI.new(
             api_key: Rails.application.credentials.processor[:OPENAI_API_KEY],
-            default_options: {
-                chat_model: model || self.model,
-                temperature: temperature || self.temperature
-            }
+            default_options: default_options
         )
+
         assistant = Langchain::Assistant.new(
             llm: llm,
             instructions: instructions,
-            tools: tools
+            tools: tools,
         )
         assistant.add_message(content: user_message)
         assistant.run(auto_tool_execution: true)
