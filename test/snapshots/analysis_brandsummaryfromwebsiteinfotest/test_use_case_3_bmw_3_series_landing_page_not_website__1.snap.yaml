@@ -1,0 +1,33 @@
+--- !ruby/object:Hash
+:category: Automotive
+:competitors:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Mercedes-Benz
+  url: https://www.mercedes-benz.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Audi
+  url: https://www.audi.es
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Lexus
+  url: https://www.lexusauto.es
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Jaguar
+  url: https://www.jaguar.es
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Volvo
+  url: https://www.volvocars.com/es
+:description: BMW is a leading manufacturer of premium vehicles and motorcycles, focusing
+  on luxury, performance, and innovative technology.
+:keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: BMW Serie 3 Berlina características
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: coches de lujo en Europa
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: BMW vehículos premium España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: BMW Serie 3 precios
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: BMW configurador de coches
+:name: BMW
+:region: Europe

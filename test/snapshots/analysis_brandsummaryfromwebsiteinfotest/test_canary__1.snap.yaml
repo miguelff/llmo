@@ -1,0 +1,42 @@
+--- !ruby/object:Hash
+:category: Design
+:competitors:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Pixelbox
+  url: https://www.pixelbox.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Kore Branding
+  url: https://www.korebranding.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Veintidós
+  url: https://www.veintidos.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Dilse Creativo
+  url: https://dilsecreativo.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Agencia Egos
+  url: https://agenciaegos.com/branding-en-asturias/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Poularrosa
+  url: https://poularrosa.es/packaging-asturias/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Alacuerno
+  url: https://alacuerno.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Selibre
+  url: http://www.selibre.com/
+:description: Mara Rodriguez is a graphic design studio in Asturias specializing in
+  packaging and branding, working with both national and international clients.
+:keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: diseño gráfico Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: branding Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: packaging diseño Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: estudio de diseño Gijón
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: Mara Rodriguez diseño
+:name: Mara Rodriguez
+:region: Asturias

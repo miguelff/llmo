@@ -1,0 +1,708 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Extract
+        structured information about a brand from a given website. Analyze the content
+        and fill out the following details in the specified format:\n- Brand Name:
+        The official name of the brand, company, or service that the website belongs
+        to.\n- Category: The product or service category the brand offers (e.g., fashion,
+        software, food \u0026 beverages, etc.).\n- Description: A short summary of
+        what the brand does and its key focus areas. If the website details do not
+        include information about a region where the brand operates most specifically,
+        omit it.\n- Region: The geographical region where the brand operates primarily
+        or where its main competitors are located.\n- Keywords: A list of SEO keywords,
+        to reach the website. Low volume and high difficulty keywords are preferred.
+        Include regional words in each keyword\nUse the search tool to find more information
+        about the brand if you cannot extract information from the website alone\n"}]},{"role":"user","content":[{"type":"text","text":"You
+        must format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the brand, company, or service that the website belongs to\"},\"category\":{\"type\":\"string\",\"description\":\"The
+        category of the product or service that the brand offers\"},\"description\":{\"type\":\"string\",\"description\":\"A
+        short description of what they do. It should be a single sentence and might,
+        might not be the actual description coming from the website, but something
+        that is accurate with what the brand does\"},\"region\":{\"type\":\"string\",\"description\":\"The
+        geopgrahical region where the brand operates and has most of its competitors\"},\"keywords\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/keyword\"},\"description\":\"A
+        list of SEO keywords to reach the website\"}},\"required\":[\"name\",\"category\",\"description\",\"region\",\"keywords\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"keyword\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\",\"description\":\"A
+        keyword\"}},\"required\":[\"value\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nThe
+        website info is: \n# Website info\n## URL: https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html\n##
+        Title: BMW Serie 3 Berlina (G20): vista general de modelos, precios y configurador\n##
+        Meta tags: \n* description: Descubre todos los detalles de la gama BMW Serie 3
+        Berlina: relación de precios, equipamientos y datos técnicos. Descubre y configura
+        vehículos BMW nuevos y de segunda mano.\n* template: content-page\n* viewport:
+        width=device-width, initial-scale=1\n* og:image: https://www.bmw.es\n* og:type:
+        website\n* robots: index,follow\n## HMTL header elements (as a table of contents
+        of the site):\n- Eléctricos\n- Carga coche eléctrico\n- Compra\n- Servicios
+        Digitales\n- Servicios Financieros\n- Taller BMW Service\n- Recambios \u0026
+        Accesorios\n- Escuela de Conducción\n- Empresas\n- Ventas Especiales\n- Acerca
+        de BMW\n- Información adicional\n- Website currently not fully available\n-
+        BMW 330i xDrive Berlina\n-  NUEVO BMW SERIE 3 BERLINA.DESDE 495 € AL MESENTRADA:
+        10.398,65 €. CUOTA FINAL: 24.598,81 €.1MANTENIMIENTO INCLUIDOFINANCIANDO CON
+        BMW BANK\n-  PLACER DE CONDUCIR. \n- DESDE 495 € AL MES ¹ FINANCIANDO CON
+        BMW BANK\n- DESDE 525 € AL MES² CONTRATANDO CON BMW BANK\n-  DATOS TÉCNICOS
+        \n-  VARIANTES. \n-  EMPIEZA A DISEÑAR TU BMW SERIE 3 BERLINA. \n-  DISEÑO
+        EXTERIOR. \n-  Deportiva, con estilo y deslumbrante. \n-  Mucho equipamiento.
+        Mucha M. \n-  Preciosa llanta con estética bicolor. \n-  DISEÑO INTERIOR.
+        \n-  Diseño innovador. Ambiente con frescura. \n-  Interior adaptado a la
+        máxima elegancia. \n-  Se ve bien. Se siente bien. \n-  CONECTADO PARA UN
+        PLACER DE CONDUCIR MAYOR. \n-  Accede a todas las funciones de una forma aún
+        más directa. \n-  Mantente al día en todo momento. \n-  No solo escucha, sino
+        que también piensa. \n-  INTELIGENCIA A TU LADO. \n-  AÚNA CONFORT Y DIVERSIÓN
+        AL VOLANTE. \n-  Precisa, ágil y cómoda de serie. \n-  Conduce como quieras.
+        \n-  Un rasgo que lo define: su máximo rendimiento. \n-  FINANCIACIÓN Y RENTING
+        \n-  TU NUEVO BMW SERIE 3 BERLINA. \n-  PROACTIVE CARE EN EL NUEVO BMW SERIE 3 BERLINA.
+        \n-  PREGUNTAS FRECUENTES SOBRE EL BMW SERIE 3 BERLINA. \n- ¿Dónde se fabrica
+        el BMW Serie 3 Berlina?\n- ¿Qué combustible usa el BMW Serie 3 Berlina?\n-
+        ¿Qué motor tiene el BMW Serie 3 Berlina?\n- ¿A qué velocidad acelera el BMW Serie
+        3 Berlina de 0 a 100 km/h?\n- ¿Qué tamaño tiene el BMW Serie 3 Berlina?\n-
+        ¿Está disponible el BMW Serie 3 Berlina como vehículo eléctrico?\n-  Consumo
+        de combustible y emisiones de CO2. \nExtract brand information\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 17:02:15 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '1070'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3998563'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 21ms
+      X-Request-Id:
+      - req_9d028950c8075360217ee628c2133cb0
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=r95yXqaqeELXVkMLWc05CsYODvEyMOCDx_iCjgyrMhA-1734454935-1.0.1.1-BHWuwTUq1f1kvU.vHM4egEAJRARfCld3qlsLTt83x0edoRrweN4AsCPihA4gxme9JYTxqpnvoF4jY7i90agJaw;
+        path=/; expires=Tue, 17-Dec-24 17:32:15 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=hqq9upkAdLP1wiyATgYdzkzf5xlm91FtKoC5BbYJpl4-1734454935810-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f387acd4d81ec8b-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AfVFWuN3NBWp9MAjfdO8tWqYSntnF",
+          "object": "chat.completion",
+          "created": 1734454934,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": null,
+                "tool_calls": [
+                  {
+                    "id": "call_dg2S8Uhhk0RB95o5lHbGAcWA",
+                    "type": "function",
+                    "function": {
+                      "name": "analysis_tools_bing_search__search",
+                      "arguments": "{\"query\": \"BMW brand information\", \"count\": 5}"
+                    }
+                  },
+                  {
+                    "id": "call_FHmPsVaGlo5NfQRO5Q7SaUJz",
+                    "type": "function",
+                    "function": {
+                      "name": "analysis_tools_bing_search__search",
+                      "arguments": "{\"query\": \"BMW Serie 3 Berlina features\", \"count\": 5}"
+                    }
+                  }
+                ],
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "tool_calls"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 1540,
+            "completion_tokens": 70,
+            "total_tokens": 1610,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_6fc10e10eb"
+        }
+  recorded_at: Tue, 17 Dec 2024 17:02:15 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Extract
+        structured information about a brand from a given website. Analyze the content
+        and fill out the following details in the specified format:\n- Brand Name:
+        The official name of the brand, company, or service that the website belongs
+        to.\n- Category: The product or service category the brand offers (e.g., fashion,
+        software, food \u0026 beverages, etc.).\n- Description: A short summary of
+        what the brand does and its key focus areas. If the website details do not
+        include information about a region where the brand operates most specifically,
+        omit it.\n- Region: The geographical region where the brand operates primarily
+        or where its main competitors are located.\n- Keywords: A list of SEO keywords,
+        to reach the website. Low volume and high difficulty keywords are preferred.
+        Include regional words in each keyword\nUse the search tool to find more information
+        about the brand if you cannot extract information from the website alone\n"}]},{"role":"user","content":[{"type":"text","text":"You
+        must format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the brand, company, or service that the website belongs to\"},\"category\":{\"type\":\"string\",\"description\":\"The
+        category of the product or service that the brand offers\"},\"description\":{\"type\":\"string\",\"description\":\"A
+        short description of what they do. It should be a single sentence and might,
+        might not be the actual description coming from the website, but something
+        that is accurate with what the brand does\"},\"region\":{\"type\":\"string\",\"description\":\"The
+        geopgrahical region where the brand operates and has most of its competitors\"},\"keywords\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/keyword\"},\"description\":\"A
+        list of SEO keywords to reach the website\"}},\"required\":[\"name\",\"category\",\"description\",\"region\",\"keywords\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"keyword\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\",\"description\":\"A
+        keyword\"}},\"required\":[\"value\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nThe
+        website info is: \n# Website info\n## URL: https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html\n##
+        Title: BMW Serie 3 Berlina (G20): vista general de modelos, precios y configurador\n##
+        Meta tags: \n* description: Descubre todos los detalles de la gama BMW Serie 3
+        Berlina: relación de precios, equipamientos y datos técnicos. Descubre y configura
+        vehículos BMW nuevos y de segunda mano.\n* template: content-page\n* viewport:
+        width=device-width, initial-scale=1\n* og:image: https://www.bmw.es\n* og:type:
+        website\n* robots: index,follow\n## HMTL header elements (as a table of contents
+        of the site):\n- Eléctricos\n- Carga coche eléctrico\n- Compra\n- Servicios
+        Digitales\n- Servicios Financieros\n- Taller BMW Service\n- Recambios \u0026
+        Accesorios\n- Escuela de Conducción\n- Empresas\n- Ventas Especiales\n- Acerca
+        de BMW\n- Información adicional\n- Website currently not fully available\n-
+        BMW 330i xDrive Berlina\n-  NUEVO BMW SERIE 3 BERLINA.DESDE 495 € AL MESENTRADA:
+        10.398,65 €. CUOTA FINAL: 24.598,81 €.1MANTENIMIENTO INCLUIDOFINANCIANDO CON
+        BMW BANK\n-  PLACER DE CONDUCIR. \n- DESDE 495 € AL MES ¹ FINANCIANDO CON
+        BMW BANK\n- DESDE 525 € AL MES² CONTRATANDO CON BMW BANK\n-  DATOS TÉCNICOS
+        \n-  VARIANTES. \n-  EMPIEZA A DISEÑAR TU BMW SERIE 3 BERLINA. \n-  DISEÑO
+        EXTERIOR. \n-  Deportiva, con estilo y deslumbrante. \n-  Mucho equipamiento.
+        Mucha M. \n-  Preciosa llanta con estética bicolor. \n-  DISEÑO INTERIOR.
+        \n-  Diseño innovador. Ambiente con frescura. \n-  Interior adaptado a la
+        máxima elegancia. \n-  Se ve bien. Se siente bien. \n-  CONECTADO PARA UN
+        PLACER DE CONDUCIR MAYOR. \n-  Accede a todas las funciones de una forma aún
+        más directa. \n-  Mantente al día en todo momento. \n-  No solo escucha, sino
+        que también piensa. \n-  INTELIGENCIA A TU LADO. \n-  AÚNA CONFORT Y DIVERSIÓN
+        AL VOLANTE. \n-  Precisa, ágil y cómoda de serie. \n-  Conduce como quieras.
+        \n-  Un rasgo que lo define: su máximo rendimiento. \n-  FINANCIACIÓN Y RENTING
+        \n-  TU NUEVO BMW SERIE 3 BERLINA. \n-  PROACTIVE CARE EN EL NUEVO BMW SERIE 3 BERLINA.
+        \n-  PREGUNTAS FRECUENTES SOBRE EL BMW SERIE 3 BERLINA. \n- ¿Dónde se fabrica
+        el BMW Serie 3 Berlina?\n- ¿Qué combustible usa el BMW Serie 3 Berlina?\n-
+        ¿Qué motor tiene el BMW Serie 3 Berlina?\n- ¿A qué velocidad acelera el BMW Serie
+        3 Berlina de 0 a 100 km/h?\n- ¿Qué tamaño tiene el BMW Serie 3 Berlina?\n-
+        ¿Está disponible el BMW Serie 3 Berlina como vehículo eléctrico?\n-  Consumo
+        de combustible y emisiones de CO2. \nExtract brand information\n"}]},{"role":"assistant","tool_calls":[{"id":"call_dg2S8Uhhk0RB95o5lHbGAcWA","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"BMW brand information\", \"count\": 5}"}},{"id":"call_FHmPsVaGlo5NfQRO5Q7SaUJz","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"BMW Serie 3 Berlina features\", \"count\": 5}"}}]},{"role":"tool","tool_call_id":"call_dg2S8Uhhk0RB95o5lHbGAcWA","content":[{"type":"text","text":"[{\"URL\":\"https://en.wikipedia.org/wiki/BMW\",\"Snippet\":\"Bayerische
+        Motoren Werke AG, trading as BMW Group (commonly abbreviated to BMW (German
+        pronunciation: [ˌbeːʔɛmˈveː] ⓘ), sometimes anglicised as Bavarian Motor Works),
+        is a German multinational manufacturer of luxury vehicles and motorcycles
+        headquartered in Munich, Bavaria, Germany.\"},{\"URL\":\"https://es.wikipedia.org/wiki/BMW\",\"Snippet\":\"BMW
+        es el líder mundial en ventas entre los fabricantes de gama alta; compite
+        principalmente con Audi, Volvo, Lexus y Mercedes-Benz, entre otros vehículos
+        de gama alta. 2 . El predecesor de BMW fue la empresa Rapp Motorenwerke GmbH,
+        fundada en 1913 por Karl Rapp.\"},{\"URL\":\"https://www.bmwgroup.com/en/company/brands-products.html\",\"Snippet\":\"EXCITING
+        BRANDS IN EVERY SEGMENT. The BMW Group is the world’s leading provider of
+        premium cars and motorcycles and the home of the BMW, MINI, Rolls-Royce and
+        BMW Motorrad brands.\"},{\"URL\":\"https://www.bmwgroup.com/en/company.html\",\"Snippet\":\"The
+        BMW Group is the world’s leading provider of premium cars and motorcycles
+        and the home of the BMW, MINI, Rolls-Royce and BMW Motorrad brands. Our vehicles
+        and products are tailored to the needs of our customers and constantly enhanced
+        – with a clear focus on sustainability and the conservation of resources.\"},{\"URL\":\"https://brandcars.es/que-caracteriza-a-la-marca-bmw/\",\"Snippet\":\"¿Qué
+        quiere decir la marca BMW? ¿Qué ofrece BMW? Con sus cuatro marcas, BMW, MINI,
+        Rolls Royce y BMW Motorrad, BMW Group es el principal fabricante del mundo
+        de automóviles y motocicletas premium, y también ofrece servicios financieros
+        y de movilidad premium. Tiene una plantilla de aproximadamente 125.000 empleados
+        en todo el mundo.\"}]"}]},{"role":"tool","tool_call_id":"call_FHmPsVaGlo5NfQRO5Q7SaUJz","content":[{"type":"text","text":"[{\"URL\":\"https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html\",\"Snippet\":\"Descubre
+        todos los detalles de la gama BMW Serie 3 Berlina: relación de precios, equipamientos
+        y datos técnicos. Descubre y configura vehículos BMW nuevos y de segunda mano.\"},{\"URL\":\"https://www.bmw.es/es/coches-bmw/m/gama-bmw-serie3-m/caracteristicas-bmw-m3-berlina.html\",\"Snippet\":\"Descubre
+        todos los detalles de la gama BMW Serie 3 Berlina M: relación de precios,
+        equipamientos y datos técnicos. Descubre y configura vehículos BMW nuevos
+        y de segunda mano.\"},{\"URL\":\"https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/bmw-serie3-berlina-hibrido-enchufable.html\",\"Snippet\":\"Todos
+        los aspectos destacados del BMW Serie 3 Berlina híbrido enchufable: relación
+        de precios, equipamiento y datos técnicos. Descubrir y configurar ahora.\"},{\"URL\":\"https://www.km77.com/coches/bmw/serie-3/2019/berlina/estandar/datos\",\"Snippet\":\"Consulte
+        aquí los datos técnicos de BMW Serie 3 Berlina (2019) | Precio, ficha técnica
+        y equipamiento (14 versiones descatalogadas)\"},{\"URL\":\"https://www.motor.es/bmw/serie-3/berlina\",\"Snippet\":\"Todos
+        los precios y versiones del BMW Serie 3 Berlina con ofertas de concesionarios
+        españoles. Además de toda la información, noticias, comparativas, fotos, vídeos,
+        pruebas y fichas...\"}]"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 17:02:18 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '1734'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3997795'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 33ms
+      X-Request-Id:
+      - req_08d85197d3c20be25b7d155cec5470dc
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=HC.2QrGgC_x3NwF5swiqaBgbP77Hi5YwDXbLtFkzXQo-1734454938-1.0.1.1-0lYmGGBZUX1.MzHqiM4dVJXuNzTGG24qtPZR4MiLLqSdyu0sBsO6MHItDpXtnTUePw2i0HDyjgZQYOlnj6tJXQ;
+        path=/; expires=Tue, 17-Dec-24 17:32:18 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=.PgGE20KcEZeHvPFllqiY6Tu3uLYQl4hncFeb5SY.6g-1734454938557-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f387ada5d1a2f8b-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZlZGWVpVbGR6bE5JbU1TNlZad3NUeTRreXJGSyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDQ1NDkzNiwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiYGBganNvblxue1xuICBcIm5hbWVcIjogXCJCTVdcIixcbiAgXCJjYXRlZ29yeVwiOiBcIkF1dG9tb3RpdmVcIixcbiAgXCJkZXNjcmlwdGlvblwiOiBcIkJNVyBpcyBhIGxlYWRpbmcgbWFudWZhY3R1cmVyIG9mIHByZW1pdW0gdmVoaWNsZXMgYW5kIG1vdG9yY3ljbGVzLCBmb2N1c2luZyBvbiBsdXh1cnksIHBlcmZvcm1hbmNlLCBhbmQgaW5ub3ZhdGl2ZSB0ZWNobm9sb2d5LlwiLFxuICBcInJlZ2lvblwiOiBcIkV1cm9wZVwiLFxuICBcImtleXdvcmRzXCI6IFtcbiAgICB7XCJ2YWx1ZVwiOiBcIkJNVyBTZXJpZSAzIEJlcmxpbmEgY2FyYWN0ZXLDrXN0aWNhc1wifSxcbiAgICB7XCJ2YWx1ZVwiOiBcImNvY2hlcyBkZSBsdWpvIGVuIEV1cm9wYVwifSxcbiAgICB7XCJ2YWx1ZVwiOiBcIkJNVyB2ZWjDrWN1bG9zIHByZW1pdW0gRXNwYcOxYVwifSxcbiAgICB7XCJ2YWx1ZVwiOiBcIkJNVyBTZXJpZSAzIHByZWNpb3NcIn0sXG4gICAge1widmFsdWVcIjogXCJCTVcgY29uZmlndXJhZG9yIGRlIGNvY2hlc1wifVxuICBdXG59XG5gYGAiLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiAyNTQzLAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogMTE5LAogICAgInRvdGFsX3Rva2VucyI6IDI2NjIsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDE1MzYsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfNmZjMTBlMTBlYiIKfQo=
+  recorded_at: Tue, 17 Dec 2024 17:02:18 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nWhat
+        are the main competitors of the brand BMW?\nThe brand belongs to the following
+        product or service category: Automotive.\nThe brand''s website appears when
+        using the following search queries in Bing:\n* {\"value\"=\u003e\"BMW Serie
+        3 Berlina características\"}\n* {\"value\"=\u003e\"coches de lujo en Europa\"}\n*
+        {\"value\"=\u003e\"BMW vehículos premium España\"}\n* {\"value\"=\u003e\"BMW
+        Serie 3 precios\"}\n* {\"value\"=\u003e\"BMW configurador de coches\"}\nAnd
+        maybe competitors are found when using similar search queries.\nBe mindful
+        to not hallucinate competitors.\nFor each competitor, provide the name of
+        the competitor and the URL of a its website, only official websites are accepted.
+        Comparators, blogs, news sites, that mention the brand are not accepted\nBe
+        sure to not include the own brand being analyzed in the list of competitors\nUse
+        the given search tool if needed.\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 17:02:21 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2720'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '800000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '799361'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 47ms
+      X-Request-Id:
+      - req_d1c00415e3dc89cfb16d062e50ee2741
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=j5F1uUzRm5l5QJSNS8HFy9MjLhLdJNXs_HVHa3PKcwY-1734454941-1.0.1.1-YSjEY.v.LBGZQ76.Qmsh2WGVDLbxSB4Gc6k2gR9bYG5b8uEFAbVis.3hpBhwGzUdesvLa8P6uzksx6EjXvHi2Q;
+        path=/; expires=Tue, 17-Dec-24 17:32:21 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=v5PUEZo_FZ8mtp3IlabneNWVOcd0dWg5N_68nty8NMo-1734454941510-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f387ae6aa971ba9-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZlZGYXZjbGxlTThaYmdVTksyZ2Z6eXE3V2k1dyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDQ1NDkzOCwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogbnVsbCwKICAgICAgICAidG9vbF9jYWxscyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfRGxJQXpHNElNOVlHUVJYak5maml0NGUxIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcIk1lcmNlZGVzLUJlbnogU2VyaWUgMyBCZXJsaW5hIGNhcmFjdGVyw61zdGljYXNcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfSFQ3NlR0MUlSQzdibkpiYmlRT1h2YXhjIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcIkF1ZGkgY29jaGVzIGRlIGx1am8gZW4gRXVyb3BhXCIsIFwiY291bnRcIjogNX0iCiAgICAgICAgICAgIH0KICAgICAgICAgIH0sCiAgICAgICAgICB7CiAgICAgICAgICAgICJpZCI6ICJjYWxsX1laekpzaEV2QWVVVWwxVVg1WUx2R01wTiIsCiAgICAgICAgICAgICJ0eXBlIjogImZ1bmN0aW9uIiwKICAgICAgICAgICAgImZ1bmN0aW9uIjogewogICAgICAgICAgICAgICJuYW1lIjogImFuYWx5c2lzX3Rvb2xzX2Jpbmdfc2VhcmNoX19zZWFyY2giLAogICAgICAgICAgICAgICJhcmd1bWVudHMiOiAie1wicXVlcnlcIjogXCJMZXh1cyB2ZWjDrWN1bG9zIHByZW1pdW0gRXNwYcOxYVwiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF92NkVoNzlzc2pmUkl2VzVHY3o1QkxQOHEiLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwiSmFndWFyIFNlcmllIDMgcHJlY2lvc1wiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF92S0NJdmY0WU5ROWpnRFVnRU9pSnd6Mk4iLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwiVm9sdm8gY29uZmlndXJhZG9yIGRlIGNvY2hlc1wiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9CiAgICAgICAgXSwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAidG9vbF9jYWxscyIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogNjIxLAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogMTU3LAogICAgInRvdGFsX3Rva2VucyI6IDc3OCwKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF9mNzg1ZWI1ZjQ3Igp9Cg==
+  recorded_at: Tue, 17 Dec 2024 17:02:21 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nWhat
+        are the main competitors of the brand BMW?\nThe brand belongs to the following
+        product or service category: Automotive.\nThe brand''s website appears when
+        using the following search queries in Bing:\n* {\"value\"=\u003e\"BMW Serie
+        3 Berlina características\"}\n* {\"value\"=\u003e\"coches de lujo en Europa\"}\n*
+        {\"value\"=\u003e\"BMW vehículos premium España\"}\n* {\"value\"=\u003e\"BMW
+        Serie 3 precios\"}\n* {\"value\"=\u003e\"BMW configurador de coches\"}\nAnd
+        maybe competitors are found when using similar search queries.\nBe mindful
+        to not hallucinate competitors.\nFor each competitor, provide the name of
+        the competitor and the URL of a its website, only official websites are accepted.
+        Comparators, blogs, news sites, that mention the brand are not accepted\nBe
+        sure to not include the own brand being analyzed in the list of competitors\nUse
+        the given search tool if needed.\n"}]},{"role":"assistant","tool_calls":[{"id":"call_DlIAzG4IM9YGQRXjNfjit4e1","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"Mercedes-Benz Serie 3 Berlina características\", \"count\": 5}"}},{"id":"call_HT76Tt1IRC7bnJbbiQOXvaxc","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"Audi coches de lujo en Europa\", \"count\": 5}"}},{"id":"call_YZzJshEvAeUUl1UX5YLvGMpN","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"Lexus vehículos premium España\", \"count\": 5}"}},{"id":"call_v6Eh79ssjfRIvW5Gcz5BLP8q","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"Jaguar Serie 3 precios\", \"count\": 5}"}},{"id":"call_vKCIvf4YNQ9jgDUgEOiJwz2N","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"Volvo configurador de coches\", \"count\": 5}"}}]},{"role":"tool","tool_call_id":"call_DlIAzG4IM9YGQRXjNfjit4e1","content":[{"type":"text","text":"[{\"URL\":\"https://www.motorendetalle.es/coches/bmw/serie-3\",\"Snippet\":\"BMW
+        Serie 3 (G20) Berlina/Sedán (2019 - 2022) Modelos - 119 Notchback (Tres volúmenes)
+        | Diesel / Diesel (híbrido suave) / Hibrido enchufable / Motor de combustión
+        interna\"},{\"URL\":\"https://www.km77.com/coches/bmw/serie-3/2019/berlina/informacion/bmw-serie-3-2019-informacion-tecnica\",\"Snippet\":\"El
+        BMW Serie 3 2019 es hasta 55 kilogramos más ligero que el Serie 3 2015, pero
+        tiene una carrocería y un chasis más rígidos (la rigidez torsional es un 25%
+        mayor). El centro de gravedad está 10 milímetros más bajo y la distribución
+        de masas entre ambos ejes de ruedas es 50:50.\"},{\"URL\":\"https://www.km77.com/coches/bmw/serie-3/2022/berlina/datos\",\"Snippet\":\"Consulte
+        aquí los datos técnicos de BMW Serie 3 Berlina (2022) | Precio, ficha técnica
+        y equipamiento (10 versiones descatalogadas)\"},{\"URL\":\"https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html\",\"Snippet\":\"Descubre
+        todos los detalles de la gama BMW Serie 3 Berlina: relación de precios, equipamientos
+        y datos técnicos. Descubre y configura vehículos BMW nuevos y de segunda mano.\"},{\"URL\":\"https://vamos.es/ficha-tecnica/bmw-serie-3-2016/\",\"Snippet\":\"El
+        BMW Serie 3 2016 se enfrenta a una dura competencia en su segmento, donde
+        varios modelos ofrecen características destacadas y un rendimiento notable.
+        Entre sus rivales más prominentes se encuentran el Audi A4, que destaca por
+        su tecnología avanzada y calidad de interiores, y el Mercedes-Benz Clase C,
+        conocido\"}]"}]},{"role":"tool","tool_call_id":"call_HT76Tt1IRC7bnJbbiQOXvaxc","content":[{"type":"text","text":"[{\"URL\":\"https://www.motor.es/noticias/audi-nuevos-modelos-2025-2024105689.html\",\"Snippet\":\"Las
+        novedades de Audi para 2025, ofensiva de modelos RS, una lujosa berlina y
+        un renovado SUV. El 2025 será un año repleto de novedades con el sello de
+        Audi.\"},{\"URL\":\"https://www.audi.es/es/web/es/configurador/modelos.html\",\"Snippet\":\"En
+        Audi te ofrecemos una amplia variedad de modelos entre los que elegir. Vehículos
+        con las más avanzadas tecnologías creados para satisfacer todo tipo de necesidades.
+        Desde SUV perfectos tanto para ciudad como para caminos off road, hasta deportivos
+        increíbles con prestaciones de competición.\"},{\"URL\":\"https://www.expansion.com/fueradeserie/motor/2022/06/02/628f8853468aeb46118b4660.html\",\"Snippet\":\"Hoy,
+        estas son las 16 marcas de coches de lujo que reinan en el mundo. Los clásicos.
+        Cuando hablamos de coches de lujo son los primeros que nos vienen a la cabeza.\"},{\"URL\":\"https://www.revistagq.com/la-buena-vida/articulo/mejores-coches-de-lujo-audi-ferrari-mercedes-lamborghini-bentley\",\"Snippet\":\"A
+        punto de cerrar el año, te contamos cuáles son los mejores coches de lujo
+        lanzados este 2019 (y por qué, claro).\"},{\"URL\":\"https://www.europcar.es/es-es/p/alquiler-coche/flota/tipo/premium/modelos\",\"Snippet\":\"El
+        servicio Premium de Europcar te ofrece un amplísimo catálogo de automóviles
+        de lujo, cuyo fundamento es la pasión por las marcas más míticas del planeta.
+        Es muy sencillo: elige el modelo concreto que desees conducir y lánzate a
+        la carretera con estilo.\"}]"}]},{"role":"tool","tool_call_id":"call_YZzJshEvAeUUl1UX5YLvGMpN","content":[{"type":"text","text":"[{\"URL\":\"https://www.lexusauto.es/\",\"Snippet\":\"Conoce
+        todo sobre los vehículos premium híbridos, híbridos enchufables y eléctricos
+        más innovadores del mercado.\"},{\"URL\":\"https://www.lexusauto.es/modelos\",\"Snippet\":\"Descubra
+        la gama completa de vehículos premium híbridos, híbridos enchufables y eléctricos
+        de Lexus. Diseño, innovación y eficiencia. Navegue y compare entre todos nuestros
+        modelos, vea sus especificaciones, consulte su precio, configure su Lexus
+        o solicite una prueba de conducción.\"},{\"URL\":\"https://www.lexusauto.es/descubra-lexus/tecnologia/especificacion-premium\",\"Snippet\":\"Cada
+        Lexus viene equipado con tecnología de vanguardia que toma forma aplicándole
+        la máxima calidad. Conozca nuestras especificaciones premium.\"},{\"URL\":\"https://www.autoscout24.es/lst/lexus/nx-350h/ve_premium-+\",\"Snippet\":\"Aquí
+        puedes encontrar las ofertas actuales de coches Lexus NX 350h premium-+ de
+        segunda mano en ... como el contacto con los vendedores, el inicio de sesión
+        o la gestión de los vehículos para la venta. Buscar . Coches Caravanas / Autocaravanas
+        Motos Furgonetas ... Deutschland België/Belgique España France Italia Luxembourg
+        Nederland ...\"},{\"URL\":\"https://www.coches.net/lexus/ux/premium/segunda-mano/\",\"Snippet\":\"108
+        LEXUS UX PREMIUM de particulares y concesionarios de segunda mano y ocasión.
+        ¡Encuentra LEXUS UX PREMIUM al mejor precio!\"}]"}]},{"role":"tool","tool_call_id":"call_v6Eh79ssjfRIvW5Gcz5BLP8q","content":[{"type":"text","text":"[{\"URL\":\"https://www.jaguar.es/jaguar-range/index.html\",\"Snippet\":\"JAGUAR
+        E‑PACE Desde 58.350 € El primer SUV compacto de jaguar. Una combinación única
+        de diseño, agilidad y dinamismo. E‑PACE. TRACCIÓN: Trasera/Total; MOTOR: Diésel/Gasolina/Híbrido
+        enchufable; PASAJEROS: 5; EMISIONES DE CO 2 COMBINADAS (g/km): Desde 33 ††
+        CONSUMO DE COMBUSTIBLE COMBINADO (l/100 km): Desde 1,4 ††\"},{\"URL\":\"https://www.milanuncios.com/jaguar-de-segunda-mano/jaguar-xj-serie-iii.htm\",\"Snippet\":\"Comprar
+        o vender Jaguar xj serie iii de segunda mano. Encuentra el mejor precio de
+        particular y profesional en Milanuncios.com!\"},{\"URL\":\"https://www.milanuncios.com/jaguar-de-segunda-mano/sovereign.htm\",\"Snippet\":\"*****
+        modelo y version correcto: jaguar xj 3.2 sovereign (210 cv) ***** equipamiento
+        destacado: tapicería de piel, aire acondicionado (climatizador), llantas de
+        aleación (16\\\"). - garantía total 1 año, con cobertura nacional, ampliable
+        a 24 meses.\"},{\"URL\":\"https://www.autoscout24.es/lst/jaguar/e-type\",\"Snippet\":\"¿Buscas
+        Jaguar E-Type de ocasión? Aquí encontrarás las ofertas actuales de Jaguar
+        E-Type en AutoScout24, el mercado de automóviles online más grande de Europa.\"},{\"URL\":\"https://www.cochesyconcesionarios.com/fichas/jaguar/xj.html\",\"Snippet\":\"El
+        Jaguar XJ es la berlina de mayor tamaño de la firma británica. Tiene carrocería
+        de cuatro puertas y un habitáculo homologado para cinco ocupantes.\"}]"}]},{"role":"tool","tool_call_id":"call_vKCIvf4YNQ9jgDUgEOiJwz2N","content":[{"type":"text","text":"[{\"URL\":\"https://www.volvocars.com/es/build\",\"Snippet\":\"Configurador
+        de coches Volvo: elige el equipamiento, estilo y seguridad de tu próximo SUV,
+        sedán o crossover. Entra y diseña tu nuevo Volvo aquí.\"},{\"URL\":\"https://www.volvocars.com/es/\",\"Snippet\":\"Bienvenido
+        a Volvo Car España. Explora y configura tu Volvo SUV, familiar o sedán favorito
+        hoy mismo.\"},{\"URL\":\"https://www.autoelia.es/configurador/volvo\",\"Snippet\":\"Su
+        concesionario Volvo Auto Elia le ofrece un configurador Volvo de coches nuevos
+        online para que usted pueda realizar una simulación de búsqueda y compra del
+        vehículo de su interés. Utilizará una interface amigable donde podrá controlar
+        rápida y fácilmente la personalización de su Volvo.\"},{\"URL\":\"https://www.caraffinity.es/volvo/\",\"Snippet\":\"Compara
+        en carAffinity.es los coches y modelos de la marca VOLVO. Listado de precios
+        2024 y presupuestos para VOLVO.\"},{\"URL\":\"https://idoneo.es/configurador/volvo\",\"Snippet\":\"Necesitas
+        configurar tu Volvo? Utiliza GRATIS nuestro configurador online, escoge tu
+        próximo Volvo y compara diferentes ofertas de concesionarios oficiales.\"}]"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 17:02:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2597'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '800000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '797605'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 179ms
+      X-Request-Id:
+      - req_fcbd00bb2f409ac4f881960b3f550f0f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=EIKmD8nzKM_HHNrxxMGgEjGdq0.XLbPIjCI2PpUd3_8-1734454946-1.0.1.1-CG6gc94MvR7SrmSyTt0kFsrXAtotkHjBf5XD9AlwrOhghSiwplPscUlF8x6upmArDlHzttELFnskPqO_Wv6Cqw;
+        path=/; expires=Tue, 17-Dec-24 17:32:26 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=eKaCEA7tRNSdI1xi891jnbYsHV2.MkR0A6ESKI5zv6k-1734454946782-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f387b084a1cec92-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AfVFgjaON2Xi6mD4PP7Uu85TkUp1T",
+          "object": "chat.completion",
+          "created": 1734454944,
+          "model": "gpt-4o-2024-08-06",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "```json\n{\n  \"competitors\": [\n    {\n      \"name\": \"Mercedes-Benz\",\n      \"url\": \"https://www.mercedes-benz.com\"\n    },\n    {\n      \"name\": \"Audi\",\n      \"url\": \"https://www.audi.es\"\n    },\n    {\n      \"name\": \"Lexus\",\n      \"url\": \"https://www.lexusauto.es\"\n    },\n    {\n      \"name\": \"Jaguar\",\n      \"url\": \"https://www.jaguar.es\"\n    },\n    {\n      \"name\": \"Volvo\",\n      \"url\": \"https://www.volvocars.com/es\"\n    }\n  ]\n}\n```",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 3107,
+            "completion_tokens": 141,
+            "total_tokens": 3248,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_f785eb5f47"
+        }
+  recorded_at: Tue, 17 Dec 2024 17:02:26 GMT
+recorded_with: VCR 6.3.1

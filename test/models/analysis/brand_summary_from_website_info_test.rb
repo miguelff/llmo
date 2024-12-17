@@ -56,29 +56,8 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
-        assert_equal brand_info.presenter.complete?, true
-        expected_brand_info = {
-          name: "Mara Rodriguez",
-          category: "Design",
-          description: "Mara Rodriguez es un estudio de Diseño gráfico en Asturias especializado en Packaging y Branding. Trabajamos con clientes nacionales e internacionales.",
-          region: "Asturias",
-          keywords: [
-            { "value" => "diseño gráfico Asturias" },
-            { "value" => "branding Asturias" },
-            { "value" => "packaging Asturias" },
-            { "value" => "estudio de diseño Asturias" },
-            { "value" => "diseño creativo Asturias" }
-          ],
-          competitors: [
-            { "name" => "Pixelbox", "url" => "https://www.pixelbox.es/" },
-            { "name" => "Kore Branding", "url" => "https://www.korebranding.es/" },
-            { "name" => "Veintidos", "url" => "https://www.veintidos.es/" },
-            { "name" => "Packastur", "url" => "https://packastur.com/" },
-            { "name" => "DIL SE Estudio Creativo", "url" => "https://dilsecreativo.com/" },
-            { "name" => "Matteria Creativa", "url" => "https://www.matteriacreativa.com/" }
-          ]
-        }
-        assert_equal(expected_brand_info, brand_info.presenter.to_h)
+        assert brand_info.presenter.complete?
+        assert_matches_snapshot brand_info.presenter.to_h
       end
    end
 
@@ -92,39 +71,13 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
-        assert_equal brand_info.presenter.complete?, true
-        assert_equal(
-          {
-            name: "deurbe arquitectura",
-            category: "Architecture and Urbanism",
-            description: "DEURBE ARQUITECTURA is a company founded in 1990 that integrates various disciplines related to architecture, urbanism, and land management, providing personalized advice and legal representation for administrative processes.",
-            region: "Bizkaia, Spain",
-            keywords: [
-              { "value" => "arquitectura Bizkaia" },
-              { "value" => "urbanismo Santurti" },
-              { "value" => "interiorismo Bilbao" },
-              { "value" => "gestión del suelo Bizkaia" },
-              { "value" => "licencias arquitectónicas Santurti" }
-            ],
-            competitors: [
-              { "name" => "Orbis Arquitectura", "url" => "https://orbisarquitectura.com/" },
-              { "name" => "Aiertar Arquitectura", "url" => "https://aiertarkitektura.eus/estudio-arquitectura-bizkaia/" },
-              { "name" => "Tandem Arquitectura", "url" => "https://tandemarquitectura.com/" },
-              { "name" => "Arquiplan", "url" => "https://arquiplan.com/" },
-              { "name" => "Hinojal Arquitectos", "url" => "https://hinojalarquitectos.com/" },
-              { "name" => "Bilbao Interiorismo", "url" => "https://bilbaointeriorismo.com/" },
-              { "name" => "SUBE Susaeta Interiorismo", "url" => "https://subeinteriorismo.com/" },
-              { "name" => "Natalia Zubizarreta", "url" => "https://www.nataliazubizarreta.com/" },
-              { "name" => "Urbana Interiorismo", "url" => "https://urbanainteriorismo.com/" }
-            ]
-          },
-          brand_info.presenter.to_h
-        )
+        assert brand_info.presenter.complete?
+        assert_matches_snapshot brand_info.presenter.to_h
       end
     end
 
     test "Use case 1: tablas surf" do
-      VCR.use_cassette("analysis/brand_summary_from_website_info/tablasurf.com") do
+      VCR.use_cassette("analysis/brand_summary_from_website_info/tablassurfshop.com") do
         website_info = Analysis::WebsiteInfo.for(url: "https://www.tablassurfshop.com")
         assert website_info.valid?
         assert website_info.perform_and_save
@@ -133,35 +86,53 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
+        assert brand_info.presenter.complete?
+        assert_matches_snapshot brand_info.presenter.to_h
+      end
+    end
+
+    test "Use case 2: capchase" do
+      VCR.use_cassette("analysis/brand_summary_from_website_info/capchase.com") do
+        website_info = Analysis::WebsiteInfo.for(url: "https://www.capchase.com/")
+        assert website_info.valid?
+        assert website_info.perform_and_save
+
+        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        assert brand_info.valid?
+        assert brand_info.perform_and_save
+
         assert_equal brand_info.presenter.complete?, true
-        assert_equal(
-          {
-            name: "Tablas Surf Shop",
-            category: "Sporting Goods",
-            description: "En nuestra tienda online encontrarás todo el material necesario para practicar el Surf, el SUP o el Skate. Especialistas en Surf desde 1979.",
-            region: "Spain",
-            keywords: [
-              { "value" => "tienda surf" },
-              { "value" => "tienda surf online" },
-              { "value" => "tienda skate online" },
-              { "value" => "material surf España" },
-              { "value" => "comprar surf online" }
-            ],
-            competitors: [
-              { "name" => "Mundo Surf", "url" => "https://www.mundo-surf.com/" },
-              { "name" => "Teiron Surf", "url" => "https://www.teironsurf.com/tienda/" },
-              { "name" => "Surf Market", "url" => "https://www.surfmarket.org/es/" },
-              { "name" => "Styling Surf", "url" => "https://stylingsurf.com/" },
-              { "name" => "Surf Shop Online", "url" => "https://surfshoponline.com/" },
-              { "name" => "Almarima", "url" => "https://almarima.com/es/" },
-              { "name" => "Nomadas Surf", "url" => "https://www.nomadassurf.com/" },
-              { "name" => "Skate Spain", "url" => "https://skatespain.com/" },
-              { "name" => "Titus Shop", "url" => "https://www.titus-shop.com/es/" },
-              { "name" => "Skatedeluxe", "url" => "https://www.skatedeluxe.com/es" }
-            ]
-          },
-          brand_info.presenter.to_h
-        )
+        assert_matches_snapshot brand_info.presenter.to_h
+      end
+    end
+
+    test "Use case 3: Reveni" do
+      VCR.use_cassette("analysis/brand_summary_from_website_info/reveni.com") do
+        website_info = Analysis::WebsiteInfo.for(url: "https://www.reveni.com/")
+        assert website_info.valid?
+        assert website_info.perform_and_save
+
+        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        assert brand_info.valid?
+        assert brand_info.perform_and_save
+
+        assert_equal brand_info.presenter.complete?, true
+        assert_matches_snapshot brand_info.presenter.to_h
+      end
+    end
+
+    test "Use case 3: BMW 3 Series (landing page, not website)" do
+      VCR.use_cassette("analysis/brand_summary_from_website_info/bmw_3_series") do
+        website_info = Analysis::WebsiteInfo.for(url: "https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html")
+        assert website_info.valid?
+        assert website_info.perform_and_save
+
+        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        assert brand_info.valid?
+        assert brand_info.perform_and_save
+
+        assert_equal brand_info.presenter.complete?, true
+        assert_matches_snapshot brand_info.presenter.to_h
       end
     end
 end

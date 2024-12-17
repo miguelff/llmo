@@ -1,0 +1,54 @@
+--- !ruby/object:Hash
+:category: Sporting Goods
+:competitors:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Mundo Surf
+  url: https://www.mundo-surf.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Surf Shop Online
+  url: https://surfshoponline.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Delocos Surf Shop
+  url: https://www.delocossurfshop.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Fitenia Surf Shop
+  url: https://www.fiteniasurfshop.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Teiron Surf
+  url: https://www.teironsurf.com/tienda/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Skate Spain
+  url: https://skatespain.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Skatedeluxe
+  url: https://www.skatedeluxe.com/es
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Titus Shop
+  url: https://www.titus-shop.com/es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: HoeNalu
+  url: https://hoenalu.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: iSUPCENTER
+  url: https://www.isupcenter.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Outlet SUP
+  url: https://outletsup.com/es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Paddle Gang
+  url: https://www.paddlegang.com/
+:description: Tablas Surf Shop specializes in providing all the necessary equipment
+  for surfing, SUP, and skateboarding since 1979.
+:keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: tienda surf España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: material surf online
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: comprar skate España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: productos surf destacados
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: tienda SUP online
+:name: Tablas Surf Shop
+:region: Spain

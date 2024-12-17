@@ -34,6 +34,7 @@ class WebsiteInfoTest < ActiveSupport::TestCase
       result = info.presenter
       assert_equal "https://mararodriguez.es/", result.url
       assert_equal "Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias", result.title
+      assert_equal [], result.keywords
       assert_equal <<-TOC.squish, result.toc.squish
       - ¡Hola! Somos un estudio de diseño creativo en Asturias, locas por
         - Cocada Snacks

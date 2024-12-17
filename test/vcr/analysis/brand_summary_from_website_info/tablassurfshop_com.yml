@@ -1,0 +1,457 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Extract
+        structured information about a brand from a given website. Analyze the content
+        and fill out the following details in the specified format:\n- Brand Name:
+        The official name of the brand, company, or service that the website belongs
+        to.\n- Category: The product or service category the brand offers (e.g., fashion,
+        software, food \u0026 beverages, etc.).\n- Description: A short summary of
+        what the brand does and its key focus areas. If the website details do not
+        include information about a region where the brand operates most specifically,
+        omit it.\n- Region: The geographical region where the brand operates primarily
+        or where its main competitors are located.\n- Keywords: A list of SEO keywords,
+        to reach the website. Low volume and high difficulty keywords are preferred.
+        Include regional words in each keyword\nUse the search tool to find more information
+        about the brand if you cannot extract information from the website alone\n"}]},{"role":"user","content":[{"type":"text","text":"You
+        must format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the brand, company, or service that the website belongs to\"},\"category\":{\"type\":\"string\",\"description\":\"The
+        category of the product or service that the brand offers\"},\"description\":{\"type\":\"string\",\"description\":\"A
+        short description of what they do. It should be a single sentence and might,
+        might not be the actual description coming from the website, but something
+        that is accurate with what the brand does\"},\"region\":{\"type\":\"string\",\"description\":\"The
+        geopgrahical region where the brand operates and has most of its competitors\"},\"keywords\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/keyword\"},\"description\":\"A
+        list of SEO keywords to reach the website\"}},\"required\":[\"name\",\"category\",\"description\",\"region\",\"keywords\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"keyword\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\",\"description\":\"A
+        keyword\"}},\"required\":[\"value\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nThe
+        website info is: \n# Website info\n## URL: https://www.tablassurfshop.com\n##
+        Title: Tienda oficial Tablas Surf Shop - Tablassurfshop\n## Meta tags: \n*
+        title: Tienda oficial Tablas Surf Shop - Tablassurfshop\n* description: En
+        nuestra tienda online encontrarás todo el material necesario para practicar
+        el Surf, el SUP o el Skate. Especialistas en Surf desde 1979.\n* keywords:
+        surf, skate, tienda surf, tienda surf online, tienda skate online, sup\n*
+        robots: INDEX,FOLLOW\n* viewport: width=device-width, initial-scale=1\n* format-detection:
+        telephone=no\n## HMTL header elements (as a table of contents of the site):\n-
+        Neopreno\n- Surf\n- Skate\n- Longboard\n- Bodyboard\n- Ropa\n- Calzado\n-
+        Tienda online de surf\n- Productos destacados\n- ¿Por qué comprar en Tablas
+        Surf?\n- Los mejores artículos de surf\n- Productos de las mejores marcas
+        de surf\n- TABLAS SURF SHOP\nExtract brand information\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 17:01:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '1698'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '4000000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '3998981'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 15ms
+      X-Request-Id:
+      - req_32b542508d997b3221c988426906571c
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=AZ45Wt6LYWn3zgkXEf4iouUGAFDNUeGB.FyTUkZPOmw-1734454899-1.0.1.1-Dz9hhIeCJ3YwTcXdFPVwUVj8NK98VJAb0e_4xdmGFinxhDFzgYLF8trGvKJCFE3LMeLvm4BUxyaTMVR4jelTEA;
+        path=/; expires=Tue, 17-Dec-24 17:31:39 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=lsrBWdTC6JGEYKC9meTdoIr2prAkCpca79KJ4nl2jC0-1734454899287-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3879e50a45cf8d-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZlZFdkxDZFBDUXdYWW9Ic2lDNFRLTldXd25qUiIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDQ1NDg5NywKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiYGBganNvblxue1xuICBcIm5hbWVcIjogXCJUYWJsYXMgU3VyZiBTaG9wXCIsXG4gIFwiY2F0ZWdvcnlcIjogXCJTcG9ydGluZyBHb29kc1wiLFxuICBcImRlc2NyaXB0aW9uXCI6IFwiVGFibGFzIFN1cmYgU2hvcCBzcGVjaWFsaXplcyBpbiBwcm92aWRpbmcgYWxsIHRoZSBuZWNlc3NhcnkgZXF1aXBtZW50IGZvciBzdXJmaW5nLCBTVVAsIGFuZCBza2F0ZWJvYXJkaW5nIHNpbmNlIDE5NzkuXCIsXG4gIFwicmVnaW9uXCI6IFwiU3BhaW5cIixcbiAgXCJrZXl3b3Jkc1wiOiBbXG4gICAge1widmFsdWVcIjogXCJ0aWVuZGEgc3VyZiBFc3Bhw7FhXCJ9LFxuICAgIHtcInZhbHVlXCI6IFwibWF0ZXJpYWwgc3VyZiBvbmxpbmVcIn0sXG4gICAge1widmFsdWVcIjogXCJjb21wcmFyIHNrYXRlIEVzcGHDsWFcIn0sXG4gICAge1widmFsdWVcIjogXCJwcm9kdWN0b3Mgc3VyZiBkZXN0YWNhZG9zXCJ9LFxuICAgIHtcInZhbHVlXCI6IFwidGllbmRhIFNVUCBvbmxpbmVcIn1cbiAgXVxufVxuYGBgIiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogOTY3LAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogMTE3LAogICAgInRvdGFsX3Rva2VucyI6IDEwODQsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfNmZjMTBlMTBlYiIKfQo=
+  recorded_at: Tue, 17 Dec 2024 17:01:39 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nWhat
+        are the main competitors of the brand Tablas Surf Shop?\nThe brand belongs
+        to the following product or service category: Sporting Goods.\nThe brand''s
+        website appears when using the following search queries in Bing:\n* {\"value\"=\u003e\"tienda
+        surf España\"}\n* {\"value\"=\u003e\"material surf online\"}\n* {\"value\"=\u003e\"comprar
+        skate España\"}\n* {\"value\"=\u003e\"productos surf destacados\"}\n* {\"value\"=\u003e\"tienda
+        SUP online\"}\nAnd maybe competitors are found when using similar search queries.\nBe
+        mindful to not hallucinate competitors.\nFor each competitor, provide the
+        name of the competitor and the URL of a its website, only official websites
+        are accepted. Comparators, blogs, news sites, that mention the brand are not
+        accepted\nBe sure to not include the own brand being analyzed in the list
+        of competitors\nUse the given search tool if needed.\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 17:01:42 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2809'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '800000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '799365'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 47ms
+      X-Request-Id:
+      - req_f7b491b7668420d10a9010cc7cf4928d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=tu5llitfe5pAhJ9QXmjYkECucbYcyhqDJlqaurTXuPw-1734454902-1.0.1.1-TmZvlYkTLF1RmZDErHoAKpsdARPESHThkCUnOhy5gQYEgcqnK8JvXB_cuwLks85qrigtkyJw960MfJR3ZRU9uA;
+        path=/; expires=Tue, 17-Dec-24 17:31:42 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=tBjoZNPEMHeur8jbVaYM21XgPY07yz5blULMHhARxpA-1734454902342-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3879f12971216c-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZlZFeFJ3TlJUaktsa01OdWxuSXJNdzJoWlF4ayIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDQ1NDg5OSwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogbnVsbCwKICAgICAgICAidG9vbF9jYWxscyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfSUI0TFFSUllsanhVbUN0MUNoVHpoVTQ3IiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcInRpZW5kYSBzdXJmIEVzcGHDsWFcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfWU1yUzh1YUM2ME9pZE56ZTBRSUNma0JNIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcIm1hdGVyaWFsIHN1cmYgb25saW5lXCIsIFwiY291bnRcIjogNX0iCiAgICAgICAgICAgIH0KICAgICAgICAgIH0sCiAgICAgICAgICB7CiAgICAgICAgICAgICJpZCI6ICJjYWxsX1NoWlZTNVNOcml3dnNPMjFLYmlzS2J1QiIsCiAgICAgICAgICAgICJ0eXBlIjogImZ1bmN0aW9uIiwKICAgICAgICAgICAgImZ1bmN0aW9uIjogewogICAgICAgICAgICAgICJuYW1lIjogImFuYWx5c2lzX3Rvb2xzX2Jpbmdfc2VhcmNoX19zZWFyY2giLAogICAgICAgICAgICAgICJhcmd1bWVudHMiOiAie1wicXVlcnlcIjogXCJjb21wcmFyIHNrYXRlIEVzcGHDsWFcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfY2FUVGozUHdLSktwZXVrU3lIa3NMckxVIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcInByb2R1Y3RvcyBzdXJmIGRlc3RhY2Fkb3NcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfN3VZRmNQZ3pCWW95VVJ2R0kyTzJXMzI3IiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcInRpZW5kYSBTVVAgb25saW5lXCIsIFwiY291bnRcIjogNX0iCiAgICAgICAgICAgIH0KICAgICAgICAgIH0KICAgICAgICBdLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJ0b29sX2NhbGxzIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiA2MTYsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxNDQsCiAgICAidG90YWxfdG9rZW5zIjogNzYwLAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwX2Y3ODVlYjVmNDciCn0K
+  recorded_at: Tue, 17 Dec 2024 17:01:42 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: "{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"You
+        must format your output as a JSON value that adheres to a given \\\"JSON Schema\\\"
+        instance.\\n\\n\\\"JSON Schema\\\" is a declarative language that allows you
+        to annotate and validate JSON documents.\\n\\nFor example, the example \\\"JSON
+        Schema\\\" instance {\\\"properties\\\": {\\\"foo\\\": {\\\"description\\\":
+        \\\"a list of test words\\\", \\\"type\\\": \\\"array\\\", \\\"items\\\":
+        {\\\"type\\\": \\\"string\\\"}}}, \\\"required\\\": [\\\"foo\\\"]}}\\nwould
+        match an object with one required property, \\\"foo\\\". The \\\"type\\\"
+        property specifies \\\"foo\\\" must be an \\\"array\\\", and the \\\"description\\\"
+        property semantically describes it as \\\"a list of test words\\\". The items
+        within \\\"foo\\\" must be strings.\\nThus, the object {\\\"foo\\\": [\\\"bar\\\",
+        \\\"baz\\\"]} is a well-formatted instance of this example \\\"JSON Schema\\\".
+        The object {\\\"properties\\\": {\\\"foo\\\": [\\\"bar\\\", \\\"baz\\\"]}}}
+        is not well-formatted.\\n\\nYour output will be parsed and type-checked according
+        to the provided schema instance, so make sure all fields in your output match
+        the schema exactly and there are no trailing commas!\\n\\nHere is the JSON
+        Schema instance your output must adhere to. Include the enclosing markdown
+        codeblock:\\n```json\\n{\\\"name\\\":\\\"schema\\\",\\\"description\\\":\\\"Schema
+        for the structured response\\\",\\\"schema\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"competitors\\\":{\\\"type\\\":\\\"array\\\",\\\"items\\\":{\\\"$ref\\\":\\\"#/$defs/competitor\\\"},\\\"description\\\":\\\"A
+        list of competitors\\\"}},\\\"required\\\":[\\\"competitors\\\"],\\\"additionalProperties\\\":false,\\\"strict\\\":true,\\\"$defs\\\":{\\\"competitor\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"name\\\":{\\\"type\\\":\\\"string\\\",\\\"description\\\":\\\"The
+        name of the competitor\\\"},\\\"url\\\":{\\\"type\\\":\\\"string\\\",\\\"description\\\":\\\"The
+        URL of the competitor's website\\\"}},\\\"required\\\":[\\\"name\\\",\\\"url\\\"],\\\"additionalProperties\\\":false,\\\"strict\\\":true}}}}\\n```\\n\\nWhat
+        are the main competitors of the brand Tablas Surf Shop?\\nThe brand belongs
+        to the following product or service category: Sporting Goods.\\nThe brand's
+        website appears when using the following search queries in Bing:\\n* {\\\"value\\\"=\\u003e\\\"tienda
+        surf España\\\"}\\n* {\\\"value\\\"=\\u003e\\\"material surf online\\\"}\\n*
+        {\\\"value\\\"=\\u003e\\\"comprar skate España\\\"}\\n* {\\\"value\\\"=\\u003e\\\"productos
+        surf destacados\\\"}\\n* {\\\"value\\\"=\\u003e\\\"tienda SUP online\\\"}\\nAnd
+        maybe competitors are found when using similar search queries.\\nBe mindful
+        to not hallucinate competitors.\\nFor each competitor, provide the name of
+        the competitor and the URL of a its website, only official websites are accepted.
+        Comparators, blogs, news sites, that mention the brand are not accepted\\nBe
+        sure to not include the own brand being analyzed in the list of competitors\\nUse
+        the given search tool if needed.\\n\"}]},{\"role\":\"assistant\",\"tool_calls\":[{\"id\":\"call_IB4LQRRYljxUmCt1ChTzhU47\",\"type\":\"function\",\"function\":{\"name\":\"analysis_tools_bing_search__search\",\"arguments\":\"{\\\"query\\\":
+        \\\"tienda surf España\\\", \\\"count\\\": 5}\"}},{\"id\":\"call_YMrS8uaC60OidNze0QICfkBM\",\"type\":\"function\",\"function\":{\"name\":\"analysis_tools_bing_search__search\",\"arguments\":\"{\\\"query\\\":
+        \\\"material surf online\\\", \\\"count\\\": 5}\"}},{\"id\":\"call_ShZVS5SNriwvsO21KbisKbuB\",\"type\":\"function\",\"function\":{\"name\":\"analysis_tools_bing_search__search\",\"arguments\":\"{\\\"query\\\":
+        \\\"comprar skate España\\\", \\\"count\\\": 5}\"}},{\"id\":\"call_caTTj3PwKJKpeukSyHksLrLU\",\"type\":\"function\",\"function\":{\"name\":\"analysis_tools_bing_search__search\",\"arguments\":\"{\\\"query\\\":
+        \\\"productos surf destacados\\\", \\\"count\\\": 5}\"}},{\"id\":\"call_7uYFcPgzBYoyURvGI2O2W327\",\"type\":\"function\",\"function\":{\"name\":\"analysis_tools_bing_search__search\",\"arguments\":\"{\\\"query\\\":
+        \\\"tienda SUP online\\\", \\\"count\\\": 5}\"}}]},{\"role\":\"tool\",\"tool_call_id\":\"call_IB4LQRRYljxUmCt1ChTzhU47\",\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"URL\\\":\\\"https://www.mundo-surf.com/\\\",\\\"Snippet\\\":\\\"Tablas
+        de surf y bodyboard, gran variedad de quillas, leash, grip, fundas, trajes
+        de neopreno y accesorios surferos. Compra online o en nuestra tienda de sevilla.\\\"},{\\\"URL\\\":\\\"https://surfshoponline.com/\\\",\\\"Snippet\\\":\\\"La
+        tienda de surf al público online de productos de surf, tablas de escuela,
+        neoprenos, accesorios, material para shapers, bodyboards y skates. Servimos
+        tambien en Canarias.\\\"},{\\\"URL\\\":\\\"https://www.tablassurfshop.com/\\\",\\\"Snippet\\\":\\\"Tienda
+        online de surf. En Tablas Surf Shop somos especialistas en la venta de artículos
+        de surf y contamos con una gran experiencia, ya que llevamos trabajando desde
+        1979. Disponemos de los mejores precios en productos de surf y garantizamos
+        la mejor calidad.\\\"},{\\\"URL\\\":\\\"https://www.delocossurfshop.com/\\\",\\\"Snippet\\\":\\\"Contamos
+        con un amplio catálogo donde podrás elegir la tabla que estás buscando. Solo
+        tienes que entrar y elegir entre shortboards, funboards, evolutive \\\\u0026
+        malibu, retro, híbrida, longboards... e incluso tablas de ocación o de segunda
+        mano.\\\"},{\\\"URL\\\":\\\"https://www.fiteniasurfshop.es/\\\",\\\"Snippet\\\":\\\"Tienda
+        de surf en Tenerife. Tablas, ropa y complementos. Asesoramiento técnico especializado.
+        Fitenia Surf Shop la tienda de referencia del mundo del surf desde 1983.\\\"}]\"}]},{\"role\":\"tool\",\"tool_call_id\":\"call_YMrS8uaC60OidNze0QICfkBM\",\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"URL\\\":\\\"https://www.mundo-surf.com/\\\",\\\"Snippet\\\":\\\"Tablas
+        de surf y bodyboard, gran variedad de quillas, leash, grip, fundas, trajes
+        de neopreno y accesorios surferos. Compra online o en nuestra tienda de sevilla.\\\"},{\\\"URL\\\":\\\"https://www.tablassurfshop.com/\\\",\\\"Snippet\\\":\\\"En
+        nuestra tienda online encontrarás todo el material necesario para practicar
+        el Surf, el SUP o el Skate. Especialistas en Surf desde 1979.\\\"},{\\\"URL\\\":\\\"https://surfshoponline.com/\\\",\\\"Snippet\\\":\\\"La
+        tienda de surf al público online de productos de surf, tablas de escuela,
+        neoprenos, accesorios, material para shapers, bodyboards y skates. Servimos
+        tambien en Canarias.\\\"},{\\\"URL\\\":\\\"https://www.teironsurf.com/tienda/\\\",\\\"Snippet\\\":\\\"Encuentra
+        todo lo que necesitas para surfear, somos una tienda online de surf. Especialistas
+        en material técnico de surf. Atención al cliente: 981 700 810 + 34 608 796
+        130\\\"},{\\\"URL\\\":\\\"https://surfonline.es/surf/\\\",\\\"Snippet\\\":\\\"Todo
+        en surf, accesorios surf de las mejores marcas en la tienda Surf Online. Descubre
+        los accesorios y complementos para la practica de tu deporte.\\\"}]\"}]},{\"role\":\"tool\",\"tool_call_id\":\"call_ShZVS5SNriwvsO21KbisKbuB\",\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"URL\\\":\\\"https://skatespain.com/\\\",\\\"Snippet\\\":\\\"Bienvenido
+        a SKATESPAIN, la mayor tienda de skate online de España. Estamos especializados
+        en la venta de todo tipo de productos relacionados con el mundo del patín
+        y moda de estilo skater, surfer y urbana.\\\"},{\\\"URL\\\":\\\"https://www.skatedeluxe.com/es\\\",\\\"Snippet\\\":\\\"Comprar
+        zapatillas de skate, ropa, skateboards y más en la tienda online skatedeluxe
+        Más de 200 marcas Gran oferta Todo listo para ser enviado\\\"},{\\\"URL\\\":\\\"https://www.titus-shop.com/es/\\\",\\\"Snippet\\\":\\\"¡25%
+        de descuento en todo para pedidos de min. 99€! Monopatines, ropa de calle
+        y zapatillas de skate: desde principiantes hasta profesionales, ofrecemos
+        a los entusiastas una amplia gama de marcas y productos, todos ellos centrados
+        en el skate y el estilo de vida callejero.\\\"},{\\\"URL\\\":\\\"https://www.skatedeluxe.com/es/c/skateboards\\\",\\\"Snippet\\\":\\\"Compra
+        una gran selección de skateboards, tablas, completos, ejes, ruedas y más de
+        las mejores marcas de skate. todos los productos en stock\\\"},{\\\"URL\\\":\\\"https://skatespain.com/tienda-de-skate\\\",\\\"Snippet\\\":\\\"En
+        Skate Spain te ofrecemos diferentes marcas y modelos de skate completo a precios
+        muy competentes. Hay opciones para niño en colores neón, como el modelo Blind
+        Matte OG, o el modelo Globe G1 Argo Horizon, en tonos muy chulos que reflejan
+        el horizonte.\\\"}]\"}]},{\"role\":\"tool\",\"tool_call_id\":\"call_caTTj3PwKJKpeukSyHksLrLU\",\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"URL\\\":\\\"https://xsurf.es/mejores-marcas-de-surf/\\\",\\\"Snippet\\\":\\\"Te
+        contamos cuáles son las mejores marcas de surf de hoy de siempre. Historia
+        y curiosidades que quizá desconoces. La mejor ropa de surf imprescindible.\\\"},{\\\"URL\\\":\\\"https://surfepico.es/material-de-surf/las-15-mejores-marcas-de-surf/\\\",\\\"Snippet\\\":\\\"Diferentes
+        marcas de surf ofrecen productos diseñados para diferentes estilos de surf,
+        desde el surf de olas grandes hasta el surf de longboard. Considera tus necesidades
+        y preferencias personales al seleccionar una marca, asegurándote de que los
+        productos que ofrecen se adapten a tu estilo de surf.\\\"},{\\\"URL\\\":\\\"https://thesurfstyle.com/productos-surf/\\\",\\\"Snippet\\\":\\\"¿Buscas
+        productos de surf? \U0001F919\U0001F3FC Aquí tienes la colección de productos
+        mas completa\U0001F525Ponchos, Cubetas, Accesorios GoPro... ¡Regala surf a
+        tus amigos!\\\"},{\\\"URL\\\":\\\"https://surfshoponline.com/\\\",\\\"Snippet\\\":\\\"La
+        tienda de surf al público online de productos de surf, tablas de escuela,
+        neoprenos, accesorios, material para shapers, bodyboards y skates. Servimos
+        tambien en Canarias.\\\"},{\\\"URL\\\":\\\"https://lamejormarca.com/las-10-mejores-marcas-de-surf/\\\",\\\"Snippet\\\":\\\"En
+        esta lista vas a encontrar las mejores marcas de surf de todos los tiempos.
+        Si quieres seguir un estilo moderno, no dejes de ver estas marcas de surf.\\\"}]\"}]},{\"role\":\"tool\",\"tool_call_id\":\"call_7uYFcPgzBYoyURvGI2O2W327\",\"content\":[{\"type\":\"text\",\"text\":\"[{\\\"URL\\\":\\\"https://hoenalu.com/\\\",\\\"Snippet\\\":\\\"En
+        HoeNalu encontrarás todo lo que necesitas para practicar Stand Up Paddle o
+        SUP. Adquiere tu nuevo material en unos pocos pasos sencillos y con todas
+        las facilidades. Encuentra las mejores marcas de Paddle Surf como Starboard,
+        Fanatic, Red Paddle Co, Quickblade o Black Project a precios muy competitivos.\\\"},{\\\"URL\\\":\\\"https://www.isupcenter.es/\\\",\\\"Snippet\\\":\\\"¡Bienvenido
+        a iSUPCENTER, la tienda virtual de SUP para todo lo relacionado con el Stand
+        up paddle! En iSUPCENTER ofrecemos una amplia gama de tablas de paddle surf.
+        Estamos a tu disposición para ofrecerte el asesoramiento adecuado si tienes
+        alguna pregunta sobre un producto específico de nuestra tienda online de SUP.\\\"},{\\\"URL\\\":\\\"https://www.tablassurfshop.com/\\\",\\\"Snippet\\\":\\\"En
+        nuestra tienda online encontrarás todo el material necesario para practicar
+        el Surf, el SUP o el Skate. Especialistas en Surf desde 1979.\\\"},{\\\"URL\\\":\\\"https://outletsup.com/es/\\\",\\\"Snippet\\\":\\\"Bienvenidos
+        a la mejor tienda de paddle SUP, donde encontrarás tablas de Paddle surf hinchables,
+        rígidas, kayaks hinchables, accesorios, grandes ofertas y la mejor atención
+        personalizada. Compra tu tabla de padel sin dudarlo.\\\"},{\\\"URL\\\":\\\"https://www.paddlegang.com/\\\",\\\"Snippet\\\":\\\"Todo
+        lo que necesitas para hacer Paddle surf. Especialistas en tablas SUP, remos,
+        accesorios y ropa SUP a precios bajos. Estamos en Valencia y online.\\\"}]\"}]}],\"tools\":[{\"type\":\"function\",\"function\":{\"name\":\"analysis_tools_bing_search__search\",\"description\":\"Search
+        in Bing for relevant results to provide reliable information for the question\",\"parameters\":{\"type\":\"object\",\"properties\":{\"query\":{\"type\":\"string\",\"description\":\"The
+        search query\"},\"count\":{\"type\":\"integer\",\"description\":\"The number
+        of results to return\"}},\"required\":[\"query\",\"count\"]}}}],\"tool_choice\":\"auto\",\"parallel_tool_calls\":true,\"model\":\"gpt-4o\",\"temperature\":0,\"n\":1}"
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Dec 2024 17:01:51 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '6242'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '5000'
+      X-Ratelimit-Limit-Tokens:
+      - '800000'
+      X-Ratelimit-Remaining-Requests:
+      - '4999'
+      X-Ratelimit-Remaining-Tokens:
+      - '797772'
+      X-Ratelimit-Reset-Requests:
+      - 12ms
+      X-Ratelimit-Reset-Tokens:
+      - 167ms
+      X-Request-Id:
+      - req_8df2b64cbc1ed6ae476d0ee431f8616d
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=L28Q2XYfC8m6WFn.kkGh56ppJZcSNFZJqfjGsiPpfAI-1734454911-1.0.1.1-9MZo0RraoInlq4CEjA.q_k3poj96ZegsXAeDM0bTdwVsM8zQwEsZROLCmaKlVUA1TilRkXcTK__A3Gg3X3IFMQ;
+        path=/; expires=Tue, 17-Dec-24 17:31:51 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=9190nrX2n6X_npxltDht8YH_cp8jdsbAyCqYleDeems-1734454911627-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f387a159d6dcf99-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AfVF3cAbgkbdNllP5jzU9GZGMe0Wu",
+          "object": "chat.completion",
+          "created": 1734454905,
+          "model": "gpt-4o-2024-08-06",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": "```json\n{\n  \"competitors\": [\n    {\n      \"name\": \"Mundo Surf\",\n      \"url\": \"https://www.mundo-surf.com/\"\n    },\n    {\n      \"name\": \"Surf Shop Online\",\n      \"url\": \"https://surfshoponline.com/\"\n    },\n    {\n      \"name\": \"Delocos Surf Shop\",\n      \"url\": \"https://www.delocossurfshop.com/\"\n    },\n    {\n      \"name\": \"Fitenia Surf Shop\",\n      \"url\": \"https://www.fiteniasurfshop.es/\"\n    },\n    {\n      \"name\": \"Teiron Surf\",\n      \"url\": \"https://www.teironsurf.com/tienda/\"\n    },\n    {\n      \"name\": \"Skate Spain\",\n      \"url\": \"https://skatespain.com/\"\n    },\n    {\n      \"name\": \"Skatedeluxe\",\n      \"url\": \"https://www.skatedeluxe.com/es\"\n    },\n    {\n      \"name\": \"Titus Shop\",\n      \"url\": \"https://www.titus-shop.com/es/\"\n    },\n    {\n      \"name\": \"HoeNalu\",\n      \"url\": \"https://hoenalu.com/\"\n    },\n    {\n      \"name\": \"iSUPCENTER\",\n      \"url\": \"https://www.isupcenter.es/\"\n    },\n    {\n      \"name\": \"Outlet SUP\",\n      \"url\": \"https://outletsup.com/es/\"\n    },\n    {\n      \"name\": \"Paddle Gang\",\n      \"url\": \"https://www.paddlegang.com/\"\n    }\n  ]\n}\n```",
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 2529,
+            "completion_tokens": 340,
+            "total_tokens": 2869,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_f785eb5f47"
+        }
+  recorded_at: Tue, 17 Dec 2024 17:01:51 GMT
+recorded_with: VCR 6.3.1

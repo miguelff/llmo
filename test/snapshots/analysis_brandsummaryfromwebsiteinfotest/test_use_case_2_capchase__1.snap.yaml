@@ -1,0 +1,40 @@
+--- !ruby/object:Hash
+:category: Finance
+:competitors:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Flow Capital
+  url: https://www.flowcap.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Pipe
+  url: https://www.pipe.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: River SaaS Capital
+  url: https://www.riversaascapital.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: SaaS Capital
+  url: https://www.saascapital.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Wayflyer
+  url: https://www.wayflyer.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Clearco
+  url: https://www.clear.co
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Lighter Capital
+  url: https://www.lightercapital.com
+:description: Capchase provides fast, non-dilutive financing solutions for SaaS and
+  B2B companies, enabling flexible payment options to enhance customer purchasing
+  experiences.
+:keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: SaaS financing solutions
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: non-dilutive funding for SaaS
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: B2B flexible payments
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: installment payment options
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: financing for SaaS companies
+:name: Capchase
+:region: Global

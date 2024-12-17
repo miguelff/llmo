@@ -46,6 +46,7 @@ gem "concurrent-ruby-edge", "~> 0.7.1", require: "concurrent/edge/promises"
 
 gem "faraday"
 gem "faraday-follow_redirects"
+gem "httpx", "~> 1.3"
 
 # Optional features
 # gem "bcrypt", "~> 3.1.7"
@@ -78,6 +79,7 @@ end
 
 group :test do
   # Testing frameworks and tools
+  gem "minitest-snapshots"
   gem "capybara"
   gem "selenium-webdriver"
   gem "webmock", "~> 3.24"
