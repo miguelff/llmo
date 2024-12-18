@@ -1,0 +1,64 @@
+--- !ruby/object:Hash
+:category: Architecture and Urbanism
+:competitors:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Aiert Arkitektura
+  url: https://aiertarkitektura.eus/estudio-arquitectura-bizkaia/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Arquiplan
+  url: https://arquiplan.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Tandem Arquitectura
+  url: https://tandemarquitectura.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Orbis Arquitectura
+  url: https://orbisarquitectura.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Hinojal Arquitectos
+  url: https://hinojalarquitectos.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: IN56 Interiorismo
+  url: https://www.in56.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: G48 Interiorismo
+  url: https://www.g48interiorismo.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Irun & Torrontegi
+  url: https://irunetorrontegi.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Ático Interiorismo
+  url: https://aticointeriorismo.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Ana Urrutia Interiorismo
+  url: https://anaurrutiainteriorismo.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Arquinea
+  url: https://arquinea.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: YG Arquitectos
+  url: https://www.ygarquitectos.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Renders Arquitectura
+  url: https://renders.es/estudio-arquitectura-bizkaia/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Nistal Arquitectos
+  url: https://nistalarquitectos.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: KB Arquitectas
+  url: https://kbarquitectas.com/
+:description: Deurbe arquitectura is a multidisciplinary firm specializing in architecture,
+  interior design, and urban planning, providing comprehensive services from project
+  conception to execution.
+:keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: arquitectura Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: urbanismo Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: interiorismo Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: estudio arquitectura Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: servicios arquitectónicos Bizkaia
+:name: deurbe arquitectura
+:region: Bizkaia, Spain

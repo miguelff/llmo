@@ -2,117 +2,133 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.bing.microsoft.com/v7.0/search?count=4&mkt=de&q=safe%20cars%20for%20women%20over%2045
+    uri: https://api.bing.microsoft.com/v7.0/search?count=4&mkt=de&q=safe+cars+for+women+over+45
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v2.12.1
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
       Ocp-Apim-Subscription-Key:
       - 0db53b769f7a4e6c96c36548ab63f39c
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
-      Cache-Control:
+      cache-control:
       - private, max-age=0
-      Transfer-Encoding:
+      transfer-encoding:
       - chunked
-      Content-Type:
+      content-type:
       - application/json; charset=utf-8
-      Expires:
-      - Mon, 16 Dec 2024 17:56:00 GMT
-      Vary:
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:34:21 GMT
+      vary:
       - Accept-Encoding
-      P3p:
+      p3p:
       - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
-      X-Eventid:
-      - 676069ecd611429eb201143b6ae768d9
-      Useragentreductionoptout:
+      x-eventid:
+      - 6762dda953084e5d8ec73b459ce9c057
+      useragentreductionoptout:
       - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
-      Content-Security-Policy:
+      content-security-policy-report-only:
       - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
-        ''nonce-8W05kGJDOrpPNeJYOBQzACBPy4dTJC9ScVrJUU7jzog=''; base-uri ''self'';'
-      Bingapis-Traceid:
-      - 676069ecd611429eb201143b6ae768d9
-      Bingapis-Sessionid:
-      - 5F737328D0484F07A6DB33A35BB979EF
-      X-Msedge-Clientid:
-      - 07413A5A54BB6D5A3E912F0D55566C4C
-      X-Msapi-Userstate:
-      - 8bd6
-      Bingapis-Market:
+        ''nonce-bfupkMWe/Agapab1W8wVY5IhJMgsLDXrjrEagtQFoNA=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dda953084e5d8ec73b459ce9c057
+      bingapis-sessionid:
+      - 63189309049A475F842941CF8A568E19
+      x-msedge-clientid:
+      - 024F8C1E86E269D120339947870F6849
+      x-msapi-userstate:
+      - b013
+      bingapis-market:
       - es-ES
-      Bingapis-Rguid:
-      - c56bdb063bcb4eb794782d8f389185eb
-      X-Search-Responseinfo:
-      - InternalResponseTime=349,MSDatacenter=DUBE01
-      X-Cache:
+      bingapis-rguid:
+      - 9bf4d14e00a047bfb66e26ea272b172b
+      x-search-responseinfo:
+      - InternalResponseTime=336,MSDatacenter=DUBE01
+      x-cache:
       - CONFIG_NOCACHE
-      Accept-Ch:
+      accept-ch:
       - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
-      X-Msedge-Ref:
-      - 'Ref A: 0D80C4645DB942DCB6DCC93BE03E7519 Ref B: AMS04EDGE3310 Ref C: 2024-12-16T17:57:00Z'
-      Apim-Request-Id:
-      - 599517e3-f957-4c94-bfef-ba019c7eb7e5
-      Strict-Transport-Security:
+      x-msedge-ref:
+      - 'Ref A: DEA42293CAD4472B8CC86BE4C687902E Ref B: AMS04EDGE3310 Ref C: 2024-12-18T14:35:21Z'
+      apim-request-id:
+      - 446e39c1-c86c-4192-a3ac-068c84e00a97
+      strict-transport-security:
       - max-age=31536000; includeSubDomains; preload
-      X-Content-Type-Options:
+      x-content-type-options:
       - nosniff
-      Csp-Billing-Usage:
+      csp-billing-usage:
       - CognitiveServices.BingSearchV7.Transaction=1
-      Date:
-      - Mon, 16 Dec 2024 17:57:00 GMT
+      date:
+      - Wed, 18 Dec 2024 14:35:21 GMT
     body:
-      encoding: ASCII-8BIT
-      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "safe
-        cars for women over 45"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=safe+cars+for+women+over+45",
-        "totalEstimatedMatches": 1640000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
-        "name": "Best Cars for Older Drivers in 2024 | U.S. News - U.S. News & World
-        Report", "url": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
-        "datePublished": "2024-06-03T00:00:00.0000000", "datePublishedDisplayText":
-        "3 de jun. de 2024", "isFamilyFriendly": true, "displayUrl": "https:\/\/cars.usnews.com\/cars-trucks\/advice\/best-cars-for-older-drivers",
-        "snippet": "Today''s cars are safer than ever, and some models earn safety
-        scores that are well above average. These are the safest new cars you can
-        buy or lease today.", "dateLastCrawled": "2024-12-15T19:04:00.0000000Z", "language":
-        "en", "isNavigational": true, "noCache": false, "siteName": "U.S. News & World
-        Report"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
-        "name": "Best cars for older drivers - Age Co", "url": "https:\/\/www.ageco.co.uk\/useful-articles\/car\/best-cars-for-older-drivers\/",
-        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ageco.co.uk\/useful-articles\/car\/best-cars-for-older-drivers",
-        "snippet": "Some of the safest cars tested in 2021 include: Mercedes-EQEQS;
+      encoding: UTF-8
+      string: "{\"_type\": \"SearchResponse\", \"queryContext\": {\"originalQuery\":
+        \"safe cars for women over 45\"}, \"webPages\": {\"webSearchUrl\": \"https:\\/\\/www.bing.com\\/search?q=safe+cars+for+women+over+45\",
+        \"totalEstimatedMatches\": 1680000, \"value\": [{\"id\": \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.0\",
+        \"name\": \"Best cars for older drivers - Age Co\", \"url\": \"https:\\/\\/www.ageco.co.uk\\/useful-articles\\/car\\/best-cars-for-older-drivers\\/\",
+        \"thumbnailUrl\": \"https:\\/\\/www.bing.com\\/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK&w=80&h=80&c=1&pid=5.1\",
+        \"isFamilyFriendly\": true, \"displayUrl\": \"https:\\/\\/www.ageco.co.uk\\/useful-articles\\/car\\/best-cars-for-older-drivers\",
+        \"snippet\": \"Some of the safest cars tested in 2021 include: Mercedes-EQEQS;
         Skoda ENYAQ iV; Skoda Fabia; Nissan Qashqai Assistance features. Assistance
         technology on modern vehicles can make your car much more user-friendly, helping
-        with everything from parking to navigation to driving in the dark.", "dateLastCrawled":
-        "2024-12-15T05:10:00.0000000Z", "language": "en", "isNavigational": false,
-        "noCache": false, "siteName": "Age Co"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
-        "name": "The Best Cars for Older Drivers - MOTORS", "url": "https:\/\/news.motors.co.uk\/the-best-cars-for-older-drivers\/",
-        "datePublished": "2021-05-24T00:00:00.0000000", "datePublishedDisplayText":
-        "24 de may. de 2021", "isFamilyFriendly": true, "displayUrl": "https:\/\/news.motors.co.uk\/the-best-cars-for-older-drivers",
-        "snippet": "To give you extra peace of mind and security when driving about
-        town, all the cars on this list scored an impressive five stars in rigorous
-        Euro NCAP safety tests. Please read on to find out our top 10 cars for older
-        drivers. 1. AUDI A3.", "dateLastCrawled": "2024-12-15T03:11:00.0000000Z",
-        "language": "en", "isNavigational": false, "noCache": false, "siteName": "Motors.co.uk"},
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Best
-        Cars for Seniors in 2022: Terrific Options for Older Drivers", "url": "https:\/\/www.greatseniorliving.com\/articles\/best-cars-for-seniors",
-        "datePublished": "2022-10-25T00:00:00.0000000", "datePublishedDisplayText":
-        "25 de oct. de 2022", "isFamilyFriendly": true, "displayUrl": "https:\/\/www.greatseniorliving.com\/articles\/best-cars-for-seniors",
-        "snippet": "Discover the best cars for seniors that are available today. Learn
-        about the differences between sedans and SUVs and why you might prefer one
-        over the other. Explore senior-friendly features you may want your next vehicle
-        to have. And check out more than two dozen of the best models for 2022!",
-        "dateLastCrawled": "2024-12-15T00:19:00.0000000Z", "language": "en", "isNavigational":
-        false, "noCache": false, "siteName": "Great Senior Living"}]}, "rankingResponse":
-        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
-        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
-        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
-        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
-        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}}]}}}'
-  recorded_at: Mon, 16 Dec 2024 17:57:01 GMT
+        with everything from parking to navigation to driving in the dark.\", \"dateLastCrawled\":
+        \"2024-12-16T19:18:00.0000000Z\", \"primaryImageOfPage\": {\"thumbnailUrl\":
+        \"https:\\/\\/www.bing.com\\/th?id=OIP.CZGECtr8p6ZTC35rhEspEQHaEK&w=80&h=80&c=1&pid=5.1\",
+        \"width\": 80, \"height\": 80, \"sourceWidth\": 474, \"sourceHeight\": 266,
+        \"imageId\": \"OIP.CZGECtr8p6ZTC35rhEspEQHaEK\"}, \"language\": \"en\", \"isNavigational\":
+        false, \"noCache\": false, \"siteName\": \"Age Co\"}, {\"id\": \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.1\",
+        \"name\": \"Choosing the Best Cars for Senior Women: A Complete Guide\", \"url\":
+        \"https:\\/\\/yourmoneymetrics.com\\/articles\\/best-cars-for-senior-women\\/\",
+        \"isFamilyFriendly\": true, \"displayUrl\": \"https:\\/\\/yourmoneymetrics.com\\/articles\\/best-cars-for-senior-women\",
+        \"snippet\": \"Explore essential car selection tips for senior women. Prioritize
+        safety \U0001F697, comfort, and affordability while discovering top models
+        that fit your needs.\", \"dateLastCrawled\": \"2024-12-12T06:11:00.0000000Z\",
+        \"language\": \"en\", \"isNavigational\": false, \"noCache\": false}, {\"id\":
+        \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.2\", \"name\":
+        \"Best Cars for Seniors in 2022: Terrific Options for Older Drivers\", \"url\":
+        \"https:\\/\\/www.greatseniorliving.com\\/articles\\/best-cars-for-seniors\",
+        \"thumbnailUrl\": \"https:\\/\\/www.bing.com\\/th?id=OIP.hAsef8cjBSRDDFaMH8XgSgAAAA&w=80&h=80&c=1&pid=5.1\",
+        \"datePublished\": \"2022-10-25T00:00:00.0000000\", \"datePublishedDisplayText\":
+        \"25 de oct. de 2022\", \"isFamilyFriendly\": true, \"displayUrl\": \"https:\\/\\/www.greatseniorliving.com\\/articles\\/best-cars-for-seniors\",
+        \"snippet\": \"Discover the best cars for seniors that are available today.
+        Learn about the differences between sedans and SUVs and why you might prefer
+        one over the other. Explore senior-friendly features you may want your next
+        vehicle to have. And check out more than two dozen of the best models for
+        2022!\", \"dateLastCrawled\": \"2024-12-16T09:16:00.0000000Z\", \"primaryImageOfPage\":
+        {\"thumbnailUrl\": \"https:\\/\\/www.bing.com\\/th?id=OIP.hAsef8cjBSRDDFaMH8XgSgAAAA&w=80&h=80&c=1&pid=5.1\",
+        \"width\": 80, \"height\": 80, \"sourceWidth\": 474, \"sourceHeight\": 707,
+        \"imageId\": \"OIP.hAsef8cjBSRDDFaMH8XgSgAAAA\"}, \"language\": \"en\", \"isNavigational\":
+        false, \"noCache\": false, \"siteName\": \"Great Senior Living\"}, {\"id\":
+        \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.3\", \"name\":
+        \"Four “Safety Superstar” Cars for Women Over 50 - LivingBetter50\", \"url\":
+        \"https:\\/\\/www.livingbetter50.com\\/four-safety-superstar-cars-women-50\\/\",
+        \"thumbnailUrl\": \"https:\\/\\/www.bing.com\\/th?id=OIP.FBMoHxXzl_t675vy6v5hSwAAAA&w=80&h=80&c=1&pid=5.1\",
+        \"datePublished\": \"2021-02-15T00:00:00.0000000\", \"datePublishedDisplayText\":
+        \"15 de feb. de 2021\", \"isFamilyFriendly\": true, \"displayUrl\": \"https:\\/\\/www.livingbetter50.com\\/four-safety-superstar-cars-women-50\",
+        \"snippet\": \"Not only are today’s cars safer in the event of a crash, but
+        many also have motion sensors and automatic braking systems to prevent accidents
+        from happening. However, just because more cars have hi-tech features doesn’t
+        mean they’re all equally safe. Below, we’ll reveal a few of the highest-ranking
+        car models in terms of ...\", \"dateLastCrawled\": \"2024-11-30T09:25:00.0000000Z\",
+        \"primaryImageOfPage\": {\"thumbnailUrl\": \"https:\\/\\/www.bing.com\\/th?id=OIP.FBMoHxXzl_t675vy6v5hSwAAAA&w=80&h=80&c=1&pid=5.1\",
+        \"width\": 80, \"height\": 80, \"sourceWidth\": 300, \"sourceHeight\": 336,
+        \"imageId\": \"OIP.FBMoHxXzl_t675vy6v5hSwAAAA\"}, \"language\": \"en\", \"isNavigational\":
+        false, \"noCache\": false, \"siteName\": \"LivingBetter50\"}]}, \"rankingResponse\":
+        {\"mainline\": {\"items\": [{\"answerType\": \"WebPages\", \"resultIndex\":
+        0, \"value\": {\"id\": \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.0\"}},
+        {\"answerType\": \"WebPages\", \"resultIndex\": 1, \"value\": {\"id\": \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.1\"}},
+        {\"answerType\": \"WebPages\", \"resultIndex\": 2, \"value\": {\"id\": \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.2\"}},
+        {\"answerType\": \"WebPages\", \"resultIndex\": 3, \"value\": {\"id\": \"https:\\/\\/api.bing.microsoft.com\\/api\\/v7\\/#WebPages.3\"}}]}}}"
+  recorded_at: Wed, 18 Dec 2024 14:35:22 GMT
 recorded_with: VCR 6.3.1

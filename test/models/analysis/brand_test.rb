@@ -1,8 +1,8 @@
 require "test_helper"
 
-class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
+class Analysis::BrandTest < ActiveSupport::TestCase
     test "canary" do
-      VCR.use_cassette("analysis/brand_summary_from_website_info/mararodriguez.es") do
+      VCR.use_cassette("analysis/brand/mararodriguez.es") do
         website_info = {
           url: "https://mararodriguez.es/",
           title: "Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias",
@@ -52,7 +52,7 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
           }
         }
 
-        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: Analysis::Presenters::WebsiteInfo.from_json(website_info))
+        brand_info = Analysis::Brand.for_new_analysis(website_info: Analysis::Presenters::Website.from_json(website_info))
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
@@ -61,13 +61,13 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
       end
    end
 
-    test "integrated with website info step" do
-      VCR.use_cassette("analysis/brand_summary_from_website_info/deurbe.com") do
-        website_info = Analysis::WebsiteInfo.for(url: "https://deurbe.com/")
+    test "Use case 1: deurbe" do
+      VCR.use_cassette("analysis/brand/deurbe.com") do
+        website_info = Analysis::Website.for_new_analysis(url: "https://deurbe.com/")
         assert website_info.valid?
         assert website_info.perform_and_save
 
-        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        brand_info = Analysis::Brand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
@@ -76,13 +76,13 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
       end
     end
 
-    test "Use case 1: tablas surf" do
-      VCR.use_cassette("analysis/brand_summary_from_website_info/tablassurfshop.com") do
-        website_info = Analysis::WebsiteInfo.for(url: "https://www.tablassurfshop.com")
+    test "Use case 2: tablas surf" do
+      VCR.use_cassette("analysis/brand/tablassurfshop.com") do
+        website_info = Analysis::Website.for_new_analysis(url: "https://www.tablassurfshop.com")
         assert website_info.valid?
         assert website_info.perform_and_save
 
-        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        brand_info = Analysis::Brand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
@@ -91,13 +91,13 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
       end
     end
 
-    test "Use case 2: capchase" do
-      VCR.use_cassette("analysis/brand_summary_from_website_info/capchase.com") do
-        website_info = Analysis::WebsiteInfo.for(url: "https://www.capchase.com/")
+    test "Use case 3: capchase" do
+      VCR.use_cassette("analysis/brand/capchase.com") do
+        website_info = Analysis::Website.for_new_analysis(url: "https://www.capchase.com/")
         assert website_info.valid?
         assert website_info.perform_and_save
 
-        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        brand_info = Analysis::Brand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
@@ -106,13 +106,13 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
       end
     end
 
-    test "Use case 3: Reveni" do
-      VCR.use_cassette("analysis/brand_summary_from_website_info/reveni.com") do
-        website_info = Analysis::WebsiteInfo.for(url: "https://www.reveni.com/")
+    test "Use case 4: Reveni" do
+      VCR.use_cassette("analysis/brand/reveni.com") do
+        website_info = Analysis::Website.for_new_analysis(url: "https://www.reveni.com/")
         assert website_info.valid?
         assert website_info.perform_and_save
 
-        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        brand_info = Analysis::Brand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
         assert brand_info.perform_and_save
 
@@ -121,13 +121,13 @@ class Analysis::BrandSummaryFromWebsiteInfoTest < ActiveSupport::TestCase
       end
     end
 
-    test "Use case 3: BMW 3 Series (landing page, not website)" do
-      VCR.use_cassette("analysis/brand_summary_from_website_info/bmw_3_series") do
-        website_info = Analysis::WebsiteInfo.for(url: "https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html")
+    test "Use case 5: BMW 3 Series (landing page, not website)" do
+      VCR.use_cassette("analysis/brand/bmw_3_series") do
+        website_info = Analysis::Website.for_new_analysis(url: "https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html")
         assert website_info.valid?
         assert website_info.perform_and_save
 
-        brand_info = Analysis::BrandSummaryFromWebsiteInfo.for(website_info: website_info.presenter)
+        brand_info = Analysis::Brand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
         assert brand_info.perform_and_save
 

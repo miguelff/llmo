@@ -1,6 +1,6 @@
 # This requires some chrome browser in the box, and we need to check
 # concurrency. Maybe we can use a scraping service instead.
-class Analysis::WebsiteInfo < Analysis::Step
+class Analysis::Website < Analysis::Step
   input :url, String,
         transform: ->(url) { url.starts_with?("http") ? url : "http://#{url}" },
         valid_format: ->(url) { Addressable::URI.parse(url).host.present? }
@@ -53,6 +53,6 @@ class Analysis::WebsiteInfo < Analysis::Step
 
   def presenter
     return nil unless succeeded?
-    Analysis::Presenters::WebsiteInfo.from_json(result)
+    Analysis::Presenters::Website.from_json(result)
   end
 end

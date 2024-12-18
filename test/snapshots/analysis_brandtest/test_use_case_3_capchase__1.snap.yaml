@@ -1,27 +1,21 @@
 --- !ruby/object:Hash
-:category: Finance
+:category: Fintech
 :competitors:
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: Flow Capital
-  url: https://www.flowcap.com
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Pipe
   url: https://www.pipe.com
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: River SaaS Capital
-  url: https://www.riversaascapital.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: SaaS Capital
-  url: https://www.saascapital.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: Wayflyer
-  url: https://www.wayflyer.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Clearco
   url: https://www.clear.co
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: Lighter Capital
-  url: https://www.lightercapital.com
+  name: Founderpath
+  url: https://www.founderpath.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Brex
+  url: https://www.brex.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: GoCardless
+  url: https://gocardless.com
 :description: Capchase provides fast, non-dilutive financing solutions for SaaS and
   B2B companies, enabling flexible payment options to enhance customer purchasing
   experiences.
@@ -29,12 +23,12 @@
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   value: SaaS financing solutions
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: non-dilutive funding for SaaS
+  value: non-dilutive funding for B2B
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: B2B flexible payments
+  value: flexible payment options for SaaS
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: installment payment options
+  value: global SaaS funding
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: financing for SaaS companies
+  value: B2B installment payments
 :name: Capchase
 :region: Global

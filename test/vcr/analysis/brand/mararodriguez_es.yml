@@ -1,0 +1,1152 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Extract
+        structured information about a brand from a given website. Analyze the content
+        and fill out the following details in the specified format:\n- Brand Name:
+        The official name of the brand, company, or service that the website belongs
+        to.\n- Category: The product or service category the brand offers (e.g., fashion,
+        software, food \u0026 beverages, etc.).\n- Description: A short summary of
+        what the brand does and its key focus areas. If the website details do not
+        include information about a region where the brand operates most specifically,
+        omit it.\n- Region: The geographical region where the brand operates primarily
+        or where its main competitors are located.\n- Keywords: A list of SEO keywords,
+        to reach the website. Low volume and high difficulty keywords are preferred.
+        Include regional words in each keyword\nUse the search tool to find more information
+        about the brand if you cannot extract information from the website alone\n"}]},{"role":"user","content":[{"type":"text","text":"You
+        must format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the brand, company, or service that the website belongs to\"},\"category\":{\"type\":\"string\",\"description\":\"The
+        category of the product or service that the brand offers\"},\"description\":{\"type\":\"string\",\"description\":\"A
+        short description of what they do. It should be a single sentence and might,
+        might not be the actual description coming from the website, but something
+        that is accurate with what the brand does\"},\"region\":{\"type\":\"string\",\"description\":\"The
+        geopgrahical region where the brand operates and has most of its competitors\"},\"keywords\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/keyword\"},\"description\":\"A
+        list of SEO keywords to reach the website\"}},\"required\":[\"name\",\"category\",\"description\",\"region\",\"keywords\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"keyword\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\",\"description\":\"A
+        keyword\"}},\"required\":[\"value\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nThe
+        website info is: \n# Website info\n## URL: https://mararodriguez.es/\n## Title:
+        Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias\n##
+        Meta tags: \n* viewport: width=device-width, initial-scale=1, maximum-scale=1,
+        viewport-fit=cover\n* robots: index, follow, max-image-preview:large, max-snippet:-1,
+        max-video-preview:-1\n* description: Mara Rodriguez es un estudio de Diseño
+        gráfico en Asturias especializado en Packaging y Branding. Estamos en Gijón
+        y trabajamos con clientes nacionales e internacionales.\n* og:locale: es_ES\n*
+        og:locale:alternate: en_GB\n* og:type: website\n* og:title: Mara Rodriguez
+        Design - Branding, Packaging y Diseño Gráfico Asturias\n* og:description:
+        Mara Rodriguez es un estudio de Diseño gráfico en Asturias especializado en
+        Packaging y Branding. Estamos en Gijón y trabajamos con clientes nacionales
+        e internacionales.\n* og:url: https://mararodriguez.es/\n* og:site_name: Mara
+        Rodriguez - Design\n* article:publisher: https://www.facebook.com/Oloramara.Design\n*
+        article:modified_time: 2022-03-24T16:38:56+00:00\n* twitter:card: summary_large_image\n*
+        twitter:label1: Tiempo de lectura\n* twitter:data1: 2 minutos\n* generator:
+        Powered by WPBakery Page Builder - drag and drop page builder for WordPress.\n*
+        msapplication-TileImage: https://mararodriguez.es/wp-content/uploads/2019/05/cropped-mR_600x600-1-270x270.jpg\n##
+        HMTL header elements (as a table of contents of the site):\n- ¡Hola! Somos
+        un estudio de diseño creativo en Asturias, locas por - Cocada Snacks - Mix\u0026Twist
+        Zumos - Alskin Cosmetics - Oquendo – Grandes Orígenes - TOA Hemp - SillyBilly
+        Tortitas - Popitas - SillyBilly Snacks - SuperSaludables - TOA - El Diseño
+        Gráfico, nuestra pasión - Llevamos desde 2013 trabajando con clientes nacionales
+        e internacionales. Buscamos la mejor solución para las empresas, desde una
+        perspectiva creativa y divertida. El Packaging, el Branding, el Diseño y Asturias
+        son nuestras mayores pasiones - Cervezas FEM - Pantry Ice Cream - Teangle
+        - DOG - Smart Snacks - Miel Picu Moros - I´M A NUT - Dersia Cosmetics - Akaw
+        – Helado Artesanal - DipMates\nExtract brand information\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 14:34:21 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2029'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '10000000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '9998668'
+      X-Ratelimit-Reset-Requests:
+      - 6ms
+      X-Ratelimit-Reset-Tokens:
+      - 7ms
+      X-Request-Id:
+      - req_4f4c871136a2b79e2a93252266492589
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=7Bb2K9an6Q0a7TRVkCtUP3rtEmg0RA7I6I5VMMxeU9Y-1734532461-1.0.1.1-Gj4mc_z3oRULr.Sni7AWcZEZ0xWJWXbZqKpNvumPGQx4yjl3T.t1zHQ6dIwnt8UuhNDhaK_6jBVrRdsvNVXEMg;
+        path=/; expires=Wed, 18-Dec-24 15:04:21 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=Ewl48QGuwaaDtDPr6QQJpxhCD5RFpRzJVaCHyik2wxs-1734532461943-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3fdf819c6e1a81-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZnBQdlNRS2tENnZwcWFEY09JN2V5dGxiTVRscyIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDUzMjQ1OSwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiYGBganNvblxue1xuICBcIm5hbWVcIjogXCJNYXJhIFJvZHJpZ3VlelwiLFxuICBcImNhdGVnb3J5XCI6IFwiRGVzaWduXCIsXG4gIFwiZGVzY3JpcHRpb25cIjogXCJNYXJhIFJvZHJpZ3VleiBpcyBhIGdyYXBoaWMgZGVzaWduIHN0dWRpbyBpbiBBc3R1cmlhcyBzcGVjaWFsaXppbmcgaW4gUGFja2FnaW5nIGFuZCBCcmFuZGluZywgd29ya2luZyB3aXRoIGJvdGggbmF0aW9uYWwgYW5kIGludGVybmF0aW9uYWwgY2xpZW50cy5cIixcbiAgXCJyZWdpb25cIjogXCJBc3R1cmlhc1wiLFxuICBcImtleXdvcmRzXCI6IFtcbiAgICB7XCJ2YWx1ZVwiOiBcImRpc2XDsW8gZ3LDoWZpY28gQXN0dXJpYXNcIn0sXG4gICAge1widmFsdWVcIjogXCJicmFuZGluZyBBc3R1cmlhc1wifSxcbiAgICB7XCJ2YWx1ZVwiOiBcInBhY2thZ2luZyBkaXNlw7FvIEFzdHVyaWFzXCJ9LFxuICAgIHtcInZhbHVlXCI6IFwiZXN0dWRpbyBkZSBkaXNlw7FvIEdpasOzblwifSxcbiAgICB7XCJ2YWx1ZVwiOiBcInNlcnZpY2lvcyBkZSBkaXNlw7FvIEFzdHVyaWFzXCJ9XG4gIF1cbn1cbmBgYCIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDEyNzIsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAxMjAsCiAgICAidG90YWxfdG9rZW5zIjogMTM5MiwKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF82ZmMxMGUxMGViIgp9Cg==
+  recorded_at: Wed, 18 Dec 2024 14:34:21 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nWhat
+        are the main competitors of the brand Mara Rodriguez?\nThe brand belongs to
+        the following product or service category: Design.\nThe brand''s website appears
+        when using the following search queries in Bing:\n* {\"value\"=\u003e\"diseño
+        gráfico Asturias\"}\n* {\"value\"=\u003e\"branding Asturias\"}\n* {\"value\"=\u003e\"packaging
+        diseño Asturias\"}\n* {\"value\"=\u003e\"estudio de diseño Gijón\"}\n* {\"value\"=\u003e\"servicios
+        de diseño Asturias\"}\nAnd maybe competitors are found when using similar
+        search queries.\nBe mindful to not hallucinate competitors.\nFor each competitor,
+        provide the name of the competitor and the URL of a its website, only official
+        websites are accepted. Comparators, blogs, news sites, that mention the brand
+        are not accepted\nBe sure to not include the own brand being analyzed in the
+        list of competitors\nUse the given search tool if needed.\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 14:34:23 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '1787'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '2000000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '1999363'
+      X-Ratelimit-Reset-Requests:
+      - 6ms
+      X-Ratelimit-Reset-Tokens:
+      - 19ms
+      X-Request-Id:
+      - req_180a7153ffcd7dee82ceb5b9cb7b5a50
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=70tKUEHwWPsrAz.K0_9WFUC.C4dCjqMI4VQs3FqXUKM-1734532463-1.0.1.1-KSZ0wCUuYSwhkeSmJVB5Qd1BJAmguSnHdOwYh4bDCpcyhwzn6iOr.rl1BdOhZ.0zJ7Yq7KmHYj_A2pIP3fqz1Q;
+        path=/; expires=Wed, 18-Dec-24 15:04:23 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=GvKX1g_wZk0ZWLooICVw7.Rt.rduBqSI2WqxRRxncGQ-1734532463946-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3fdf8faa2af771-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZnBQeWZsbGZ2eWVwVUpHQm9LZ3ZzaGNvZm1WMCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDUzMjQ2MiwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogbnVsbCwKICAgICAgICAidG9vbF9jYWxscyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfcThyY2Z6VlU2bkZHSnRxeXJHZ3FIS21PIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcImRpc2XDsW8gZ3LDoWZpY28gQXN0dXJpYXNcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfaHhxdjd0MmVFUzN0OWoydEtWUnM5bE9hIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcImJyYW5kaW5nIEFzdHVyaWFzXCIsIFwiY291bnRcIjogNX0iCiAgICAgICAgICAgIH0KICAgICAgICAgIH0sCiAgICAgICAgICB7CiAgICAgICAgICAgICJpZCI6ICJjYWxsX2lUdmpHQ2haOUpuU2JMMU52ellTNlQzNCIsCiAgICAgICAgICAgICJ0eXBlIjogImZ1bmN0aW9uIiwKICAgICAgICAgICAgImZ1bmN0aW9uIjogewogICAgICAgICAgICAgICJuYW1lIjogImFuYWx5c2lzX3Rvb2xzX2Jpbmdfc2VhcmNoX19zZWFyY2giLAogICAgICAgICAgICAgICJhcmd1bWVudHMiOiAie1wicXVlcnlcIjogXCJwYWNrYWdpbmcgZGlzZcOxbyBBc3R1cmlhc1wiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF9kNXBYN1A0ellydnVkMWFkV0RuejVEc2EiLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwiZXN0dWRpbyBkZSBkaXNlw7FvIEdpasOzblwiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF8yY1laN09SUVN0dVd3T1VId3hMakZHRnUiLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwic2VydmljaW9zIGRlIGRpc2XDsW8gQXN0dXJpYXNcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfQogICAgICAgIF0sCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInRvb2xfY2FsbHMiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDYxOCwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDE0OSwKICAgICJ0b3RhbF90b2tlbnMiOiA3NjcsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfOWZhYmE5ZjAzOCIKfQo=
+  recorded_at: Wed, 18 Dec 2024 14:34:23 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=dise%C3%B1o+gr%C3%A1fico+Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:33:24 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd70230d4393b642bce95b65c72f
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-E7R23C9glH78Z6FXMjdds6r90jnYZHMi8M1zEcG+lP8=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd70230d4393b642bce95b65c72f
+      bingapis-sessionid:
+      - A3739A268FBE4A288FFD6944F0135BCC
+      x-msedge-clientid:
+      - 318020C402B662F22C4F359D035B6318
+      x-msapi-userstate:
+      - fe89
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - e52f9c47f9f9489d85c6dd15969e3d9d
+      x-search-responseinfo:
+      - InternalResponseTime=287,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: 899573E3261747EBBA4F4C28054C427E Ref B: AMS04EDGE3310 Ref C: 2024-12-18T14:34:24Z'
+      apim-request-id:
+      - 0cfb2b30-ae3e-4493-96d1-657c573d8314
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:34:24 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "diseño
+        gráfico Asturias"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=dise%C3%B1o+gr%C3%A1fico+Asturias",
+        "totalEstimatedMatches": 315000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "PIXELBOX ESTUDIO GRÁFICO- Diseño gráfico e Ilustración en Asturias",
+        "url": "https:\/\/www.pixelbox.es\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.3TbPAFAIQ8m_wE-0_S4LcwHaDH&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.pixelbox.es", "snippet":
+        "Diseño gráfico. Diseño de logotipos e imágenes corporativas, papelería de
+        empresa, diseño de flyers, folletos, carteles, envases (packaging) y diseño
+        editorial (libros, revistas...)", "deepLinks": [{"name": "Servicios", "url":
+        "https:\/\/www.pixelbox.es\/servicios"}, {"name": "Proyectos", "url": "https:\/\/www.pixelbox.es\/proyecto"},
+        {"name": "Clientes \/ Premios", "url": "https:\/\/www.pixelbox.es\/clientes-premios"},
+        {"name": "Contacto", "url": "https:\/\/www.pixelbox.es\/#contacto"}, {"name":
+        "Mapa Web", "url": "https:\/\/www.pixelbox.es\/mapa-web"}, {"name": "Cookies",
+        "url": "https:\/\/www.pixelbox.es\/cookies"}], "dateLastCrawled": "2024-12-14T00:17:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.3TbPAFAIQ8m_wE-0_S4LcwHaDH&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 199, "imageId":
+        "OIP.3TbPAFAIQ8m_wE-0_S4LcwHaDH"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Kore Branding - Estudio Branding y Diseño Gráfico en Asturias", "url":
+        "https:\/\/www.korebranding.es\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ELwlJckkokS778IraHtBWAHaHa&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.korebranding.es", "snippet":
+        "Desde naming hasta diseño de logotipos y marcas secundarias, nuestro estudio
+        de diseño gráfico en Asturias te ayuda a crear una identidad visual sólida.
+        Explora opciones crómaticas y tipográficas, guías de estilo y más para destacar
+        en el mercado asturiano.", "dateLastCrawled": "2024-12-13T17:49:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ELwlJckkokS778IraHtBWAHaHa&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 474, "imageId":
+        "OIP.ELwlJckkokS778IraHtBWAHaHa"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Veintidos, estudio de diseño y comunicación. Asturias", "url": "https:\/\/www.veintidos.es\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.veintidos.es", "snippet":
+        "Estudio de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos
+        una familia donde crecemos día a dia junto a nuestros clientes y trabajamos
+        para que cada proyecto cumpla sus expectativas.", "dateLastCrawled": "2024-12-15T14:52:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 417, "imageId":
+        "OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh"}, "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "Veintidos"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "≫ Diseño Gráfico Asturias | Prisma Imagen y Diseño: 985 565 867",
+        "url": "https:\/\/www.prismaid.com\/diseno-grafico\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.dtCsxaB8XD1ipWJn7cjLpAAAAA&w=80&h=80&c=1&pid=5.1",
+        "about": [{"_type": "CreativeWork", "aggregateRating": {"ratingValue": 5,
+        "bestRating": 5, "reviewCount": 25}}], "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.prismaid.com\/diseno-grafico", "snippet": "Imagen Corporativa,
+        Logotipos, Catálogos... Agencia de Diseño Gráfico en Asturias. PRISMA ☎️ 985
+        565 867 ☎️ 984 836 842 - Empresa de Diseño Gráfico Asturias", "dateLastCrawled":
+        "2024-12-13T20:48:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.dtCsxaB8XD1ipWJn7cjLpAAAAA&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 208, "sourceHeight": 369, "imageId":
+        "OIP.dtCsxaB8XD1ipWJn7cjLpAAAAA"}, "language": "es", "isNavigational": false,
+        "richFacts": [{"label": {"text": "Ubicación"}, "items": [{"text": "C\/La Cámara,
+        36-2º E, Avilés, 33400"}], "hint": {"text": "ADDRESS:LOCATIONGENERAL"}}, {"label":
+        {"text": "Teléfono"}, "items": [{"text": "985 56 58 67"}], "hint": {"text":
+        "BASE:PHONENUMBER"}}, {"label": {"text": "Marca"}, "items": [{"text": "Prisma"}],
+        "hint": {"text": "BASE:GENERICFACT"}}], "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "ESDAC - Escuela Superior de Diseño, Arte y Comunicación. Oviedo,
+        Asturias", "url": "https:\/\/esdac.es\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.-V8kkvn5f13hpfSEfEgjeQHaEJ&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/esdac.es", "snippet": "Pioneros
+        en elevar al ámbito universitario las carreras de diseño: Diseño Gráfico,
+        Diseño de Moda, Diseño de Interiores, Diseño y Desarrollo de Videojuegos y
+        Comunicación de Marcas.", "dateLastCrawled": "2024-12-13T02:21:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.-V8kkvn5f13hpfSEfEgjeQHaEJ&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 265, "imageId":
+        "OIP.-V8kkvn5f13hpfSEfEgjeQHaEJ"}, "language": "es", "isNavigational": false,
+        "noCache": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:34:24 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=branding+Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:33:24 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd70c9d644e697d08731c905cbcb
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-xk7xfVBVTtNk97Sod6seIjAdk4C9nFuMvNIgaizD0dk=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd70c9d644e697d08731c905cbcb
+      bingapis-sessionid:
+      - A78185ABEB234D4685CDF97F36BACB85
+      x-msedge-clientid:
+      - 103150C5BCE06E401F9E459CBD436F31
+      x-msapi-userstate:
+      - b510
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - 7beb1039d46440418e6da04fca93044c
+      x-search-responseinfo:
+      - InternalResponseTime=282,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: C5C219E21DD9465ABF764159851F7A04 Ref B: AMS04EDGE1608 Ref C: 2024-12-18T14:34:24Z'
+      apim-request-id:
+      - 7b282e89-7e18-4f31-9b77-c5aa5db14ab7
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:34:24 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "branding
+        Asturias"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=branding+Asturias",
+        "totalEstimatedMatches": 2470000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Kore Branding - Estudio Branding y Diseño Gráfico en Asturias", "url":
+        "https:\/\/www.korebranding.es\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/www.korebranding.es", "snippet": "Desde naming hasta diseño de
+        logotipos y marcas secundarias, nuestro estudio de diseño gráfico en Asturias
+        te ayuda a crear una identidad visual sólida. Explora opciones crómaticas
+        y tipográficas, guías de estilo y más para destacar en el mercado asturiano.",
+        "deepLinks": [{"name": "Branding en Asturias - Kore Branding", "url": "https:\/\/www.korebranding.es\/branding-en-asturias\/",
+        "snippet": "En Kore Branding, tu agencia de branding en Asturias, nos enfocamos
+        en dar vida a tu visión creativa y llevarla al siguiente nivel. Con un enfoque
+        estratégico y una pasión por la estética visual, creamos soluciones gráficas
+        impactantes y únicas que te ayudarán a destacar en el mercado."}, {"name":
+        "Servicios de branding y diseño gráfico en Asturias - Kore Branding", "url":
+        "https:\/\/www.korebranding.es\/servicios-de-branding-y-diseno-grafico-en-asturias\/",
+        "snippet": "En Kore Branding, ofrecemos servicios de estrategia de marca personalizados
+        y diseñados a medida para conectar tu empresa con su público objetivo, esté
+        en Asturias o en cualquier parte."}], "dateLastCrawled": "2024-12-13T17:49:00.0000000Z",
+        "language": "es", "isNavigational": true, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias",
+        "url": "https:\/\/mararodriguez.es\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.WQ-UUSDfX2MAs3bjYzEIdgHaFP&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mararodriguez.es", "snippet":
+        "Mara Rodriguez es un estudio de Diseño gráfico en Asturias especializado
+        en Packaging y Branding. Estamos en Gijón y trabajamos con clientes nacionales
+        e internacionales.", "dateLastCrawled": "2024-12-15T15:13:00.0000000Z", "primaryImageOfPage":
+        {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.WQ-UUSDfX2MAs3bjYzEIdgHaFP&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 335, "imageId":
+        "OIP.WQ-UUSDfX2MAs3bjYzEIdgHaFP"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Branding en Asturias - Kore Branding", "url": "https:\/\/www.korebranding.es\/branding-en-asturias\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.korebranding.es\/branding-en-asturias",
+        "snippet": "En Kore Branding, tu agencia de branding en Asturias, nos enfocamos
+        en dar vida a tu visión creativa y llevarla al siguiente nivel. Con un enfoque
+        estratégico y una pasión por la estética visual, creamos soluciones gráficas
+        impactantes y únicas que te ayudarán a destacar en el mercado.", "dateLastCrawled":
+        "2024-11-23T08:24:00.0000000Z", "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Servicios de branding y diseño gráfico en Asturias - Kore Branding",
+        "url": "https:\/\/www.korebranding.es\/servicios-de-branding-y-diseno-grafico-en-asturias\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.fVdbwV50ZeffloWCPB25LwHaKV&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.korebranding.es\/servicios-de-branding-y-diseno-grafico-en-asturias",
+        "snippet": "En Kore Branding, ofrecemos servicios de estrategia de marca personalizados
+        y diseñados a medida para conectar tu empresa con su público objetivo, esté
+        en Asturias o en cualquier parte.", "dateLastCrawled": "2024-08-27T19:25:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.fVdbwV50ZeffloWCPB25LwHaKV&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 661, "imageId":
+        "OIP.fVdbwV50ZeffloWCPB25LwHaKV"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Agencia de Branding en Asturias | Agencia de marketing - robleragency.com",
+        "url": "https:\/\/robleragency.com\/agencia-branding\/asturias", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/robleragency.com\/agencia-branding\/asturias",
+        "snippet": "Somos Robler Agency, la agencia de marketing digital en Asturias
+        especialistas en marketing B2B, que impulsará tu sitio web en internet. Ofrecemos
+        servicios de branding, mediante la aplicación de estrategias innovadoras para
+        crear y desarrollar una marca.", "dateLastCrawled": "2024-11-30T08:35:00.0000000Z",
+        "language": "es", "isNavigational": false, "noCache": false}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:34:24 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=packaging+dise%C3%B1o+Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:33:25 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd70581a49f7b170aed63c0ecb7e
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-j+/I/8n43LWm31/VUMD6tI/oLYFEObSp8rat6W+gxzw=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd70581a49f7b170aed63c0ecb7e
+      bingapis-sessionid:
+      - 626EE7FFB19448A0B15602EF2D96A5C3
+      x-msedge-clientid:
+      - 267E0B741E5A6729086E1E2D1FB766EF
+      x-msapi-userstate:
+      - '5849'
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - 6f7e4ab935e74d9d9d8acf27e944b14c
+      x-search-responseinfo:
+      - InternalResponseTime=338,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: FB423CCC6CC14B85BEB9A3AA5FBB1AED Ref B: AMS04EDGE3310 Ref C: 2024-12-18T14:34:24Z'
+      apim-request-id:
+      - 288b0c69-4d1c-4450-9950-c07b397f86f6
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:34:24 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "packaging
+        diseño Asturias"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=packaging+dise%C3%B1o+Asturias",
+        "totalEstimatedMatches": 129000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias",
+        "url": "https:\/\/mararodriguez.es\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.WQ-UUSDfX2MAs3bjYzEIdgHaFP&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/mararodriguez.es", "snippet":
+        "Mara Rodriguez es un estudio de Diseño gráfico en Asturias especializado
+        en Packaging y Branding. Estamos en Gijón y trabajamos con clientes nacionales
+        e internacionales.", "deepLinks": [{"name": "Trabajos", "url": "https:\/\/mararodriguez.es\/trabajos-packaging-creativos\/"},
+        {"name": "Quiénes somos", "url": "https:\/\/mararodriguez.es\/quienes-somos\/"},
+        {"name": "Design", "url": "https:\/\/mararodriguez.es\/en\/home-works-en\/"},
+        {"name": "Aviso Legal", "url": "https:\/\/mararodriguez.es\/aviso-legal"},
+        {"name": "TOA Packaging", "url": "https:\/\/mararodriguez.es\/portfolio\/toa\/"},
+        {"name": "Oquendo – Grandes Orígenes Packaging", "url": "https:\/\/mararodriguez.es\/portfolio\/oquendo-grandes-origenes\/"}],
+        "dateLastCrawled": "2024-12-15T15:13:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.WQ-UUSDfX2MAs3bjYzEIdgHaFP&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 335, "imageId":
+        "OIP.WQ-UUSDfX2MAs3bjYzEIdgHaFP"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Diseño de producto y packaging en Asturias - POULARROSA", "url":
+        "https:\/\/poularrosa.es\/packaging-asturias\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/poularrosa.es\/packaging-asturias", "snippet": "Descubre
+        nuestro servicio de packaging en Asturias, donde combinamos diseño innovador,
+        funcionalidad y calidad para crear soluciones de envasado que resalten tu
+        marca y cautiven a tus clientes. En nuestra agencia de packaging, entendemos
+        la importancia de la presentación de tu producto.", "dateLastCrawled": "2024-10-14T02:00:00.0000000Z",
+        "language": "es", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Packaging en Asturias Personalizado | ¡¡LLAMA AHORA!!", "url": "https:\/\/www.tupackagingpersonalizado.es\/asturias\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tupackagingpersonalizado.es\/asturias",
+        "snippet": "Las empresas de packaging personalizado en Asturias no sólo te
+        ayudarán a crear un envase resistente que pueda aguantar todo el proceso de
+        empaquetado, apilado y transporte hasta el lugar de origen, sino que también
+        te asesorarán para plasmar el mensaje que se quiera hacer llegar al cliente.",
+        "dateLastCrawled": "2024-08-08T06:09:00.0000000Z", "language": "es", "isNavigational":
+        false, "noCache": true}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Packaging en lata Asturias - almargen.com", "url": "https:\/\/almargen.com\/packaging-en-lata-asturias\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/almargen.com\/packaging-en-lata-asturias",
+        "snippet": "La lata es un envase que permite aportar mucha creatividad y un
+        diseño exclusivo para tu marca y producto sobre un material metálico con muchos
+        valores intrínsecos: Aceptación por el consumidor, el envase en lata está
+        admitido de pleno por el consumidor en todos los segmentos y productos.",
+        "dateLastCrawled": "2023-11-04T20:23:00.0000000Z", "language": "es", "isNavigational":
+        false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Descubre las mejores empresas de packaging en Asturias y sorpréndete
+        de ...", "url": "https:\/\/packagingtop.com.es\/empaques-en-asturias\/descubre-las-mejores-empresas-de-packaging-en-asturias-y-sorprendete-de-sus-innovadoras-soluciones\/",
+        "datePublished": "2023-04-11T00:00:00.0000000", "datePublishedDisplayText":
+        "11 de abr. de 2023", "isFamilyFriendly": true, "displayUrl": "https:\/\/packagingtop.com.es\/empaques-en-asturias\/descubre-las-mejores-empresas-de...",
+        "snippet": "¿Estás buscando una empresa de packaging en Asturias que ofrezca
+        soluciones envasado de productos de alta calidad y eficiencia? ¡Has llegado
+        al lugar correcto! Hoy te hablaremos de distintas compañías que brindan estos
+        servicios en la región asturiana.", "dateLastCrawled": "2024-08-30T11:19:00.0000000Z",
+        "language": "es", "isNavigational": false, "noCache": false}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:34:25 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=estudio+de+dise%C3%B1o+Gij%C3%B3n
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:33:25 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd71ac9b419f9c454ced47e5c359
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-9NdhUUJhfoRt7JGYCcCyZuXrhi20iVrh5e3LcbWOjYI=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd71ac9b419f9c454ced47e5c359
+      bingapis-sessionid:
+      - 14F556CA864A41F2BD9AC9C563F2F5FD
+      x-msedge-clientid:
+      - 3B740F64205361EE3B761A3D21F06017
+      x-msapi-userstate:
+      - a377
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - 5c041dc4ddba40e0a7c2c1fb5df72faf
+      x-search-responseinfo:
+      - InternalResponseTime=302,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: 21D84BD7C6CB4EA48DFEC7763F16AA49 Ref B: AMS04EDGE1611 Ref C: 2024-12-18T14:34:25Z'
+      apim-request-id:
+      - 323f1fc7-88eb-4bd3-b630-995b72c13510
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:34:25 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "estudio
+        de diseño Gijón"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=estudio+de+dise%C3%B1o+Gij%C3%B3n",
+        "totalEstimatedMatches": 1970000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Grafica.mente · Agencia de Diseño Gráfico – Diseño Gráfico Gijón
+        ...", "url": "https:\/\/estudiograficamente.com\/", "isFamilyFriendly": true,
+        "displayUrl": "https:\/\/estudiograficamente.com", "snippet": "Descubre cómo
+        Grafica.mente, una Agencia de Diseño Gráfico ubicada en Gijón – Asturias,
+        aborda el branding y el desarrollo de marca. Tu identidad va más allá de logotipos
+        y nombres. Nuestra estrategia integral construye marcas sólidas y significativas.",
+        "deepLinks": [{"name": "Hablamos", "url": "https:\/\/estudiograficamente.com\/hablamos\/",
+        "snippet": "No dudes en contactarnos para llevar tu proyecto al siguiente
+        nivel y alcanzar tus metas de diseño. Contacto Teléfonos:+ 34 984 392 181
+        · 649 541 ... Dirección Álvarez Garaya, 7 · 1ºC. 33206 Gijón · Asturias ·
+        España. Síguenos Facebook Instagram Linkedin. Dirección. Álvarez Garaya, 7
+        · 1ºC 33206 Gijón · Asturias. Hablamos ..."}, {"name": "Prestosu", "url":
+        "https:\/\/estudiograficamente.com\/prestosu\/", "snippet": "Prestosu EL BLOG
+        DE GRAFICA.MENTE. Significado: Agradable [Or (S). Sr. Pr.] · Que produce gusto
+        (algo) [Llg. Ay.] · Agradable en el trato (alguien) [Llg.]"}, {"name": "Imagen
+        corporativa", "url": "https:\/\/estudiograficamente.com\/portfolio-item\/imagen-corporativa\/",
+        "snippet": "Diseño de logotipos y su inclusión en Brand Books; Diseño de materiales
+        gráficos offline y digital; Diseño de papelería corporativa: tarjetas de visita,
+        flyers, ... 33206 Gijón · Asturias. Hablamos? Email: hola@estudiograficamente.com
+        Teléfono: +34 984 392 181 Móvil 649 541 259 · 637 843 500."}, {"name": "Identidad
+        visual", "url": "https:\/\/estudiograficamente.com\/portfolio-item\/identidad-visual-2\/",
+        "snippet": "Desde el diseño de logotipos impactantes hasta la elección de
+        paletas de colores y tipografías que transmitan tu mensaje, ... 33206 Gijón
+        · Asturias. Hablamos? Email: hola@estudiograficamente.com Teléfono: +34 984
+        392 181 Móvil 649 541 259 · 637 843 500. Síguenos."}, {"name": "Ilustración
+        publicitaria", "url": "https:\/\/estudiograficamente.com\/portfolio-item\/ilustracion-publicitaria\/",
+        "snippet": "La ilustración publicitaria es un recurso perfecto, dentro del
+        diseño gráfico que nos permite diferenciar nuestros trabajos frente a los
+        de la competencia, hacerlos reconocibles y conectar con nuestro público objetivo."},
+        {"name": "Diseño editorial", "url": "https:\/\/estudiograficamente.com\/portfolio-item\/diseno-editorial\/",
+        "snippet": "En Grafica.mente, comprendemos la importancia de lograr un equilibrio
+        entre diseño y contenido para transmitir mensajes de manera efectiva. ...
+        33206 Gijón · Asturias. Hablamos? Email: hola@estudiograficamente.com Teléfono:
+        +34 984 392 181 Móvil 649 541 259 · 637 843 500."}], "dateLastCrawled": "2024-12-08T21:25:00.0000000Z",
+        "language": "es", "isNavigational": true, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Veintidos, estudio de diseño y comunicación. Asturias", "url": "https:\/\/www.veintidos.es\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.veintidos.es", "snippet":
+        "Estudio de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos
+        una familia donde crecemos día a dia junto a nuestros clientes y trabajamos
+        para que cada proyecto cumpla sus expectativas.", "dateLastCrawled": "2024-12-15T14:52:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 417, "imageId":
+        "OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh"}, "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "Veintidos"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Alacuerno | Estudio de diseño creativo en Gijón", "url": "https:\/\/alacuerno.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/alacuerno.com", "snippet":
+        "Alacuerno es un estudio de diseño creativo ubicado en Gijón. Creemos en el
+        presente de las marcas sostenibles y en el diseño de un futuro mejor. Combinamos
+        la visión del branding estratégico con ideas y procesos creativos que dan
+        forma a marcas únicas.", "dateLastCrawled": "2024-12-14T11:08:00.0000000Z",
+        "language": "es", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Paula Noval, diseño y comunicación en Gijón. ¡Exprime tu marca!",
+        "url": "https:\/\/paulanoval.es\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/paulanoval.es", "snippet": "Paula Noval diseño y comunicación es
+        un estudio de diseño gráfico especializado en branding y ubicado en Gijón.
+        Ofrece servicios de naming, diseño de marca, packaging, diseño editorial,
+        diseño web, tiendas on-line, cartelería, gráfica creativa, espacios expositivos,
+        stands, diseño de trofeos sostenibles y dirección de arte en general.", "dateLastCrawled":
+        "2024-12-11T07:38:00.0000000Z", "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Selibre Design Studio | Estudio de Diseño y Comunicación Visual en
+        ...", "url": "http:\/\/www.selibre.com\/", "isFamilyFriendly": true, "displayUrl":
+        "www.selibre.com", "snippet": "Estudio de diseño selibre.com | Somos un estudio
+        de diseño gráfico y diseño web en Gijón, Asturias. Estamos especializados
+        en branding y comunicación corporativa, creamos una imagen única y memorable
+        para tu empresa.", "dateLastCrawled": "2024-12-14T15:02:00.0000000Z", "language":
+        "es", "isNavigational": false, "noCache": false}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:34:25 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=servicios+de+dise%C3%B1o+Asturias
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:33:26 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd72adc545b49fbb352edd9be2f7
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-rzb+sHTnqL1sj/z1mlXRFwaYl9OHpXJ2vZF5SReR3Xc=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd72adc545b49fbb352edd9be2f7
+      bingapis-sessionid:
+      - 2065FB6672A2492F8ECBC604A1C765ED
+      x-msedge-clientid:
+      - 188930D38600628B071A258A87A36357
+      x-msapi-userstate:
+      - cb67
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - 66e26bf197d34b34b558ac558f620445
+      x-search-responseinfo:
+      - InternalResponseTime=346,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: 8310CE8AE3714DA3B0C400BE5B70CFCA Ref B: AMS04EDGE1611 Ref C: 2024-12-18T14:34:26Z'
+      apim-request-id:
+      - ae8384a8-de8a-4af2-828e-a7bdb17b0265
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:34:26 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "servicios
+        de diseño Asturias"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=servicios+de+dise%C3%B1o+Asturias",
+        "totalEstimatedMatches": 903000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Veintidos, estudio de diseño y comunicación. Asturias", "url": "https:\/\/www.veintidos.es\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.veintidos.es", "snippet":
+        "Estudio de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos
+        una familia donde crecemos día a día junto a nuestros clientes. Trabajamos
+        para que cada proyecto cumpla sus expectativas.", "deepLinks": [{"name": "Servicios",
+        "url": "https:\/\/www.veintidos.es\/#servicios-comunicacion"}, {"name": "Maquetación",
+        "url": "https:\/\/www.veintidos.es\/portfolio_category\/maquetacion\/"}, {"name":
+        "Campaña Compostaje Doméstico", "url": "https:\/\/www.veintidos.es\/portfolio-items\/campana-compostaje-domestico\/"},
+        {"name": "Aviso Legal", "url": "https:\/\/www.veintidos.es\/aviso-legal\/"},
+        {"name": "Noticias", "url": "https:\/\/www.veintidos.es\/blog-agencia-comunicacion\/"},
+        {"name": "Política de Privacidad", "url": "https:\/\/www.veintidos.es\/politica-privacidad\/"}],
+        "dateLastCrawled": "2024-12-15T14:52:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 417, "imageId":
+        "OIP.M7hwAJnmYqUjZa2GHIYOyQHaGh"}, "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "Veintidos"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "Grafica.mente · Agencia de Diseño Gráfico – Diseño Gráfico Gijón
+        ...", "url": "https:\/\/estudiograficamente.com\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.cvp2dWoPH4CGt_kZDvHyiAHaHa&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/estudiograficamente.com",
+        "snippet": "Descubre cómo Grafica.mente, una Agencia de Diseño Gráfico ubicada
+        en Gijón – Asturias, aborda el branding y el desarrollo de marca. Tu identidad
+        va más allá de logotipos y nombres. Nuestra estrategia integral construye
+        marcas sólidas y significativas.", "deepLinks": [{"name": "Portafolio", "url":
+        "https:\/\/estudiograficamente.com\/"}, {"name": "Hablamos", "url": "https:\/\/estudiograficamente.com\/hablamos\/"},
+        {"name": "Prestosu", "url": "https:\/\/estudiograficamente.com\/prestosu\/"},
+        {"name": "Imagen corporativa", "url": "https:\/\/estudiograficamente.com\/portfolio-item\/imagen-corporativa\/"},
+        {"name": "Identidad visual", "url": "https:\/\/estudiograficamente.com\/portfolio-item\/identidad-visual-2\/"},
+        {"name": "Ilustración publicitaria", "url": "https:\/\/estudiograficamente.com\/portfolio-item\/ilustracion-publicitaria\/"}],
+        "dateLastCrawled": "2024-12-08T21:25:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.cvp2dWoPH4CGt_kZDvHyiAHaHa&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 474, "imageId":
+        "OIP.cvp2dWoPH4CGt_kZDvHyiAHaHa"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Top agencias de diseño gráfico en Principado de Asturias - Sortlist",
+        "url": "https:\/\/www.sortlist.es\/diseno-grafico\/principado-de-asturias-principado-de-asturias-es",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.sortlist.es\/diseno-grafico\/principado-de-asturias-principado-de-asturias-es",
+        "snippet": "Descubre las mejores agencias de diseño gráfico en el Principado
+        de Asturias, listas para dar vida a tus ideas creativas. Nuestra selección
+        cuidadosamente curada presenta expertos en identidad visual, branding y comunicación
+        gráfica.", "dateLastCrawled": "2024-12-09T18:59:00.0000000Z", "language":
+        "es", "isNavigational": false, "noCache": false, "siteName": "Sortlist"},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Servicios
+        Tributarios del Principado de Asturias", "url": "https:\/\/www.tributasenasturias.es\/stpa\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.tributasenasturias.es\/stpa",
+        "snippet": "informaciÓn importante sobre presentaciÓn de declaraciones y autoliquidaciones
+        de itpyajd, isyd e iivtnu (plusvalías)", "dateLastCrawled": "2024-12-16T05:05:00.0000000Z",
+        "language": "es", "isNavigational": false, "noCache": false, "siteName": "Servicios
+        Tributarios del Principado de Asturias"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Estudio de diseño gráfico en Asturias - DILSE Estudio Creativo",
+        "url": "https:\/\/dilsecreativo.com\/estudio-de-diseno-grafico", "thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.AqZf-1BVrYNOJxbmqhJULAHaFj&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/dilsecreativo.com\/estudio-de-diseno-grafico",
+        "snippet": "DIL SE Estudio Creativo es un estudio de diseño gráfico y branding
+        ubicado en Gijón, Asturias. Nuestro equipo trabaja para darle forma visual
+        a tu mensaje de manera coherente, atractiva y profesional. Somos creativos
+        y somos estrategas.", "dateLastCrawled": "2024-12-12T05:11:00.0000000Z", "primaryImageOfPage":
+        {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.AqZf-1BVrYNOJxbmqhJULAHaFj&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 355, "imageId":
+        "OIP.AqZf-1BVrYNOJxbmqhJULAHaFj"}, "language": "es", "isNavigational": false,
+        "noCache": false}]}, "rankingResponse": {"mainline": {"items": [{"answerType":
+        "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:34:26 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nWhat
+        are the main competitors of the brand Mara Rodriguez?\nThe brand belongs to
+        the following product or service category: Design.\nThe brand''s website appears
+        when using the following search queries in Bing:\n* {\"value\"=\u003e\"diseño
+        gráfico Asturias\"}\n* {\"value\"=\u003e\"branding Asturias\"}\n* {\"value\"=\u003e\"packaging
+        diseño Asturias\"}\n* {\"value\"=\u003e\"estudio de diseño Gijón\"}\n* {\"value\"=\u003e\"servicios
+        de diseño Asturias\"}\nAnd maybe competitors are found when using similar
+        search queries.\nBe mindful to not hallucinate competitors.\nFor each competitor,
+        provide the name of the competitor and the URL of a its website, only official
+        websites are accepted. Comparators, blogs, news sites, that mention the brand
+        are not accepted\nBe sure to not include the own brand being analyzed in the
+        list of competitors\nUse the given search tool if needed.\n"}]},{"role":"assistant","tool_calls":[{"id":"call_q8rcfzVU6nFGJtqyrGgqHKmO","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"diseño gráfico Asturias\", \"count\": 5}"}},{"id":"call_hxqv7t2eES3t9j2tKVRs9lOa","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"branding Asturias\", \"count\": 5}"}},{"id":"call_iTvjGChZ9JnSbL1NvzYS6T34","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"packaging diseño Asturias\", \"count\": 5}"}},{"id":"call_d5pX7P4zYrvud1adWDnz5Dsa","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"estudio de diseño Gijón\", \"count\": 5}"}},{"id":"call_2cYZ7ORQStuWwOUHwxLjFGFu","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"servicios de diseño Asturias\", \"count\": 5}"}}]},{"role":"tool","tool_call_id":"call_q8rcfzVU6nFGJtqyrGgqHKmO","content":[{"type":"text","text":"[{\"URL\":\"https://www.pixelbox.es/\",\"Snippet\":\"Diseño
+        gráfico. Diseño de logotipos e imágenes corporativas, papelería de empresa,
+        diseño de flyers, folletos, carteles, envases (packaging) y diseño editorial
+        (libros, revistas...)\"},{\"URL\":\"https://www.korebranding.es/\",\"Snippet\":\"Desde
+        naming hasta diseño de logotipos y marcas secundarias, nuestro estudio de
+        diseño gráfico en Asturias te ayuda a crear una identidad visual sólida. Explora
+        opciones crómaticas y tipográficas, guías de estilo y más para destacar en
+        el mercado asturiano.\"},{\"URL\":\"https://www.veintidos.es/\",\"Snippet\":\"Estudio
+        de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos una
+        familia donde crecemos día a dia junto a nuestros clientes y trabajamos para
+        que cada proyecto cumpla sus expectativas.\"},{\"URL\":\"https://www.prismaid.com/diseno-grafico/\",\"Snippet\":\"Imagen
+        Corporativa, Logotipos, Catálogos... Agencia de Diseño Gráfico en Asturias.
+        PRISMA ☎️ 985 565 867 ☎️ 984 836 842 - Empresa de Diseño Gráfico Asturias\"},{\"URL\":\"https://esdac.es/\",\"Snippet\":\"Pioneros
+        en elevar al ámbito universitario las carreras de diseño: Diseño Gráfico,
+        Diseño de Moda, Diseño de Interiores, Diseño y Desarrollo de Videojuegos y
+        Comunicación de Marcas.\"}]"}]},{"role":"tool","tool_call_id":"call_hxqv7t2eES3t9j2tKVRs9lOa","content":[{"type":"text","text":"[{\"URL\":\"https://www.korebranding.es/\",\"Snippet\":\"Desde
+        naming hasta diseño de logotipos y marcas secundarias, nuestro estudio de
+        diseño gráfico en Asturias te ayuda a crear una identidad visual sólida. Explora
+        opciones crómaticas y tipográficas, guías de estilo y más para destacar en
+        el mercado asturiano.\"},{\"URL\":\"https://mararodriguez.es/\",\"Snippet\":\"Mara
+        Rodriguez es un estudio de Diseño gráfico en Asturias especializado en Packaging
+        y Branding. Estamos en Gijón y trabajamos con clientes nacionales e internacionales.\"},{\"URL\":\"https://www.korebranding.es/branding-en-asturias/\",\"Snippet\":\"En
+        Kore Branding, tu agencia de branding en Asturias, nos enfocamos en dar vida
+        a tu visión creativa y llevarla al siguiente nivel. Con un enfoque estratégico
+        y una pasión por la estética visual, creamos soluciones gráficas impactantes
+        y únicas que te ayudarán a destacar en el mercado.\"},{\"URL\":\"https://www.korebranding.es/servicios-de-branding-y-diseno-grafico-en-asturias/\",\"Snippet\":\"En
+        Kore Branding, ofrecemos servicios de estrategia de marca personalizados y
+        diseñados a medida para conectar tu empresa con su público objetivo, esté
+        en Asturias o en cualquier parte.\"},{\"URL\":\"https://robleragency.com/agencia-branding/asturias\",\"Snippet\":\"Somos
+        Robler Agency, la agencia de marketing digital en Asturias especialistas en
+        marketing B2B, que impulsará tu sitio web en internet. Ofrecemos servicios
+        de branding, mediante la aplicación de estrategias innovadoras para crear
+        y desarrollar una marca.\"}]"}]},{"role":"tool","tool_call_id":"call_iTvjGChZ9JnSbL1NvzYS6T34","content":[{"type":"text","text":"[{\"URL\":\"https://mararodriguez.es/\",\"Snippet\":\"Mara
+        Rodriguez es un estudio de Diseño gráfico en Asturias especializado en Packaging
+        y Branding. Estamos en Gijón y trabajamos con clientes nacionales e internacionales.\"},{\"URL\":\"https://poularrosa.es/packaging-asturias/\",\"Snippet\":\"Descubre
+        nuestro servicio de packaging en Asturias, donde combinamos diseño innovador,
+        funcionalidad y calidad para crear soluciones de envasado que resalten tu
+        marca y cautiven a tus clientes. En nuestra agencia de packaging, entendemos
+        la importancia de la presentación de tu producto.\"},{\"URL\":\"https://www.tupackagingpersonalizado.es/asturias/\",\"Snippet\":\"Las
+        empresas de packaging personalizado en Asturias no sólo te ayudarán a crear
+        un envase resistente que pueda aguantar todo el proceso de empaquetado, apilado
+        y transporte hasta el lugar de origen, sino que también te asesorarán para
+        plasmar el mensaje que se quiera hacer llegar al cliente.\"},{\"URL\":\"https://almargen.com/packaging-en-lata-asturias/\",\"Snippet\":\"La
+        lata es un envase que permite aportar mucha creatividad y un diseño exclusivo
+        para tu marca y producto sobre un material metálico con muchos valores intrínsecos:
+        Aceptación por el consumidor, el envase en lata está admitido de pleno por
+        el consumidor en todos los segmentos y productos.\"},{\"URL\":\"https://packagingtop.com.es/empaques-en-asturias/descubre-las-mejores-empresas-de-packaging-en-asturias-y-sorprendete-de-sus-innovadoras-soluciones/\",\"Snippet\":\"¿Estás
+        buscando una empresa de packaging en Asturias que ofrezca soluciones envasado
+        de productos de alta calidad y eficiencia? ¡Has llegado al lugar correcto!
+        Hoy te hablaremos de distintas compañías que brindan estos servicios en la
+        región asturiana.\"}]"}]},{"role":"tool","tool_call_id":"call_d5pX7P4zYrvud1adWDnz5Dsa","content":[{"type":"text","text":"[{\"URL\":\"https://estudiograficamente.com/\",\"Snippet\":\"Descubre
+        cómo Grafica.mente, una Agencia de Diseño Gráfico ubicada en Gijón – Asturias,
+        aborda el branding y el desarrollo de marca. Tu identidad va más allá de logotipos
+        y nombres. Nuestra estrategia integral construye marcas sólidas y significativas.\"},{\"URL\":\"https://www.veintidos.es/\",\"Snippet\":\"Estudio
+        de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos una
+        familia donde crecemos día a dia junto a nuestros clientes y trabajamos para
+        que cada proyecto cumpla sus expectativas.\"},{\"URL\":\"https://alacuerno.com/\",\"Snippet\":\"Alacuerno
+        es un estudio de diseño creativo ubicado en Gijón. Creemos en el presente
+        de las marcas sostenibles y en el diseño de un futuro mejor. Combinamos la
+        visión del branding estratégico con ideas y procesos creativos que dan forma
+        a marcas únicas.\"},{\"URL\":\"https://paulanoval.es/\",\"Snippet\":\"Paula
+        Noval diseño y comunicación es un estudio de diseño gráfico especializado
+        en branding y ubicado en Gijón. Ofrece servicios de naming, diseño de marca,
+        packaging, diseño editorial, diseño web, tiendas on-line, cartelería, gráfica
+        creativa, espacios expositivos, stands, diseño de trofeos sostenibles y dirección
+        de arte en general.\"},{\"URL\":\"http://www.selibre.com/\",\"Snippet\":\"Estudio
+        de diseño selibre.com | Somos un estudio de diseño gráfico y diseño web en
+        Gijón, Asturias. Estamos especializados en branding y comunicación corporativa,
+        creamos una imagen única y memorable para tu empresa.\"}]"}]},{"role":"tool","tool_call_id":"call_2cYZ7ORQStuWwOUHwxLjFGFu","content":[{"type":"text","text":"[{\"URL\":\"https://www.veintidos.es/\",\"Snippet\":\"Estudio
+        de diseño gráfico y comunicación con base en Gijón, Asturias. Formamos una
+        familia donde crecemos día a día junto a nuestros clientes. Trabajamos para
+        que cada proyecto cumpla sus expectativas.\"},{\"URL\":\"https://estudiograficamente.com/\",\"Snippet\":\"Descubre
+        cómo Grafica.mente, una Agencia de Diseño Gráfico ubicada en Gijón – Asturias,
+        aborda el branding y el desarrollo de marca. Tu identidad va más allá de logotipos
+        y nombres. Nuestra estrategia integral construye marcas sólidas y significativas.\"},{\"URL\":\"https://www.sortlist.es/diseno-grafico/principado-de-asturias-principado-de-asturias-es\",\"Snippet\":\"Descubre
+        las mejores agencias de diseño gráfico en el Principado de Asturias, listas
+        para dar vida a tus ideas creativas. Nuestra selección cuidadosamente curada
+        presenta expertos en identidad visual, branding y comunicación gráfica.\"},{\"URL\":\"https://www.tributasenasturias.es/stpa/\",\"Snippet\":\"informaciÓn
+        importante sobre presentaciÓn de declaraciones y autoliquidaciones de itpyajd,
+        isyd e iivtnu (plusvalías)\"},{\"URL\":\"https://dilsecreativo.com/estudio-de-diseno-grafico\",\"Snippet\":\"DIL
+        SE Estudio Creativo es un estudio de diseño gráfico y branding ubicado en
+        Gijón, Asturias. Nuestro equipo trabaja para darle forma visual a tu mensaje
+        de manera coherente, atractiva y profesional. Somos creativos y somos estrategas.\"}]"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 14:34:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '3864'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '2000000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '1997480'
+      X-Ratelimit-Reset-Requests:
+      - 6ms
+      X-Ratelimit-Reset-Tokens:
+      - 75ms
+      X-Request-Id:
+      - req_6820d72e45ac0aae2b255e56de8d4469
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=TQg2A5nmHuYqn6D4JGmV4JuXhT9p0mub53H.gsJUbpc-1734532470-1.0.1.1-Kr5DFvcJqZIRjDvACg7AlTE6rRsrF3Inuyc6zzw59G0QlrKJLvrJvLQnyCL4zQ_QFZbO7kFxSr.GcU0Xu2jCXw;
+        path=/; expires=Wed, 18-Dec-24 15:04:30 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=SDqfE6_QqsLd9XjEcdrNMCQ76b4_TNitVCdOstT7eYI-1734532470563-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3fdfabee0df775-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZnBRMlZJQmJxcDJ4MW5raFFGUGV1VElBZzh0eSIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDUzMjQ2NiwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogImBgYGpzb25cbntcbiAgXCJjb21wZXRpdG9yc1wiOiBbXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiUGl4ZWxib3hcIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cHM6Ly93d3cucGl4ZWxib3guZXMvXCJcbiAgICB9LFxuICAgIHtcbiAgICAgIFwibmFtZVwiOiBcIktvcmUgQnJhbmRpbmdcIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cHM6Ly93d3cua29yZWJyYW5kaW5nLmVzL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJWZWludGlkw7NzXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vd3d3LnZlaW50aWRvcy5lcy9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiUHJpc21hXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vd3d3LnByaXNtYWlkLmNvbS9kaXNlbm8tZ3JhZmljby9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiR3JhZmljYS5tZW50ZVwiLFxuICAgICAgXCJ1cmxcIjogXCJodHRwczovL2VzdHVkaW9ncmFmaWNhbWVudGUuY29tL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJBbGFjdWVybm9cIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cHM6Ly9hbGFjdWVybm8uY29tL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJQYXVsYSBOb3ZhbFwiLFxuICAgICAgXCJ1cmxcIjogXCJodHRwczovL3BhdWxhbm92YWwuZXMvXCJcbiAgICB9LFxuICAgIHtcbiAgICAgIFwibmFtZVwiOiBcIlNlbGlicmVcIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cDovL3d3dy5zZWxpYnJlLmNvbS9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiRElMIFNFIEVzdHVkaW8gQ3JlYXRpdm9cIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cHM6Ly9kaWxzZWNyZWF0aXZvLmNvbS9lc3R1ZGlvLWRlLWRpc2Vuby1ncmFmaWNvXCJcbiAgICB9XG4gIF1cbn1cbmBgYCIsCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDMxODAsCiAgICAiY29tcGxldGlvbl90b2tlbnMiOiAyNjQsCiAgICAidG90YWxfdG9rZW5zIjogMzQ0NCwKICAgICJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJjYWNoZWRfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAKICAgIH0sCiAgICAiY29tcGxldGlvbl90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgInJlYXNvbmluZ190b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMCwKICAgICAgImFjY2VwdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMCwKICAgICAgInJlamVjdGVkX3ByZWRpY3Rpb25fdG9rZW5zIjogMAogICAgfQogIH0sCiAgInN5c3RlbV9maW5nZXJwcmludCI6ICJmcF85ZmFiYTlmMDM4Igp9Cg==
+  recorded_at: Wed, 18 Dec 2024 14:34:30 GMT
+recorded_with: VCR 6.3.1

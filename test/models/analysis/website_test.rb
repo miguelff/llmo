@@ -1,40 +1,39 @@
 require "test_helper"
 
-class WebsiteInfoTest < ActiveSupport::TestCase
+class WebsiteTest < ActiveSupport::TestCase
   test "constructor is private" do
-    assert_raises(NoMethodError) { Analysis::WebsiteInfo.new }
+    assert_raises(NoMethodError) { Analysis::Website.new }
   end
 
   test "validating the input when protocol is missing" do
-    info = Analysis::WebsiteInfo.for(url: "mararodriguez.es/")
+    info = Analysis::Website.for_new_analysis(url: "mararodriguez.es/")
     assert info.valid?
     assert_equal "http://mararodriguez.es/", info.input["url"]
   end
 
   test "retrying with www" do
-    VCR.use_cassette("analysis/website_info/www.mararodriguez.es") do
-      info = Analysis::WebsiteInfo.for(url: "https://www.mararodriguez.es/")
+    VCR.use_cassette("analysis/website/www.mararodriguez.es") do
+      info = Analysis::Website.for_new_analysis(url: "https://www.mararodriguez.es/")
       assert info.valid?
       assert info.perform_and_save
     end
   end
 
   test "validating the input" do
-    info = Analysis::WebsiteInfo.for(url: "http:www.mararodriguez.es/")
+    info = Analysis::Website.for_new_analysis(url: "http:www.mararodriguez.es/")
     assert_not info.valid?
     assert_equal [ "Input Url doesn't have a valid format" ], info.errors.full_messages
   end
 
   test "finding information about a website" do
-    VCR.use_cassette("analysis/website_info/mararodriguez.es") do
-      info = Analysis::WebsiteInfo.for(url: "https://mararodriguez.es/")
+    VCR.use_cassette("analysis/website/mararodriguez.es") do
+      info = Analysis::Website.for_new_analysis(url: "https://mararodriguez.es/")
       assert info.valid?
       assert info.perform_and_save
 
       result = info.presenter
       assert_equal "https://mararodriguez.es/", result.url
       assert_equal "Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias", result.title
-      assert_equal [], result.keywords
       assert_equal <<-TOC.squish, result.toc.squish
       - ¡Hola! Somos un estudio de diseño creativo en Asturias, locas por
         - Cocada Snacks
@@ -84,8 +83,8 @@ class WebsiteInfoTest < ActiveSupport::TestCase
   end
 
   test "a website does not exist" do
-    VCR.use_cassette("analysis/website_info/does_not_exist") do
-      info = Analysis::WebsiteInfo.for(url: "https://not_existing_website_12345.gg/")
+    VCR.use_cassette("analysis/website/does_not_exist") do
+      info = Analysis::Website.for_new_analysis(url: "https://not_existing_website_12345.gg/")
       assert info.perform_and_save
 
       assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", info.error

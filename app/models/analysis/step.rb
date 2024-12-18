@@ -1,4 +1,6 @@
 class Analysis::Step < ApplicationRecord
+    belongs_to :analysis, class_name: "Analysis::Record"
+
     private_class_method :new
 
     class Result
@@ -33,11 +35,19 @@ class Analysis::Step < ApplicationRecord
     def self.input(symbol, type, transform: nil, valid_format: nil)
         attr_accessor symbol
 
-        define_singleton_method(:for) do |**args|
-            new.tap do |step|
+        init = ->(args) do
+            lambda do |step|
                 step.send("#{symbol}=", transform ? transform.call(args[symbol]) : args[symbol])
                 step.input = { symbol => step.send(symbol) }
             end
+        end
+
+        define_singleton_method(:for) do |**args|
+            new(analysis: args[:analysis]).tap(&(init.call(args)))
+        end
+
+        define_singleton_method(:for_new_analysis) do |**args|
+            new(analysis: Analysis::Record.create!).tap(&(init.call(args)))
         end
 
         define_method(:valid_input) do
@@ -56,18 +66,6 @@ class Analysis::Step < ApplicationRecord
     def valid_input
         raise "Must be redefined in subclasses"
     end
-
-    validates :analysis_id, presence: true
-    if Rails.env.test?
-        after_initialize :set_random_analysis_id
-
-        def set_random_analysis_id
-            if self.analysis_id.blank?
-                self.analysis_id = SecureRandom.uuid
-            end
-        end
-    end
-
 
     def self.perform_if_needed(analysis_id, force: false, **args)
         step = self.find_or_initialize_by(analysis_id: analysis_id)

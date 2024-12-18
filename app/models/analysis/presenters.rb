@@ -1,5 +1,5 @@
 module Analysis::Presenters
-    class WebsiteInfo < Struct.new(:url, :title, :toc, :meta_tags)
+    class Website < Struct.new(:url, :title, :toc, :meta_tags)
         def to_h
         { url: url, title: title, toc: toc, meta_tags: meta_tags }
         end
@@ -49,7 +49,7 @@ module Analysis::Presenters
         end
 
         def with_competitors(competitors)
-            BrandInfo.new(self, competitors)
+            Brand.new(self, competitors)
         end
 
         def complete?
@@ -57,7 +57,7 @@ module Analysis::Presenters
         end
     end
 
-    class BrandInfo
+    class Brand
         attr_reader :basic_info, :competitors
 
         def initialize(basic_info, competitors)

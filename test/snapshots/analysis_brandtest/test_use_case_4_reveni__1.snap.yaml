@@ -2,6 +2,9 @@
 :category: eCommerce Solutions
 :competitors:
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Happy Returns
+  url: https://www.happyreturns.com
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: AfterShip
   url: https://www.aftership.com
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
@@ -11,26 +14,8 @@
   name: ReturnLogic
   url: https://www.returnlogic.com
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: Happy Returns
-  url: https://www.happyreturns.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: FarEye
-  url: https://www.getfareye.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: parcelLab
   url: https://www.parcellab.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: ReturnGO
-  url: https://returngo.ai
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: NuvoEx
-  url: https://www.nuvoex.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: Reconext
-  url: https://www.reconext.com
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  name: Reverse Logistics Group
-  url: https://www.rev-log.com
 :description: Reveni helps eCommerce retailers optimise their returns process and
   enhance customer loyalty through instant refunds and exchanges solutions.
 :keywords:

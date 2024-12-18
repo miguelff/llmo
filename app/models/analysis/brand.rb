@@ -1,7 +1,7 @@
-class Analysis::BrandSummaryFromWebsiteInfo < Analysis::Step
+class Analysis::Brand < Analysis::Step
     include Analysis::Inference
 
-    input :website_info, Analysis::Presenters::WebsiteInfo
+    input :website_info, Analysis::Presenters::Website
 
     def perform
         basic_info = basic_brand_info
@@ -16,7 +16,7 @@ class Analysis::BrandSummaryFromWebsiteInfo < Analysis::Step
 
     def presenter
         return nil unless self.succeeded?
-        Analysis::Presenters::BrandInfo.from_json(self.result)
+        Analysis::Presenters::Brand.from_json(self.result)
     end
 
     def basic_brand_info
