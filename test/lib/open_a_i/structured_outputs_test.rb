@@ -26,15 +26,15 @@ class OpenAI::StructuredOutputsTest < ActiveSupport::TestCase
           response_format: Response.new
       )
 
-      assert_nil response.refusal
-      assert response.parsed.is_a?(Hash)
-      assert response.parsed["greeting"].is_a?(String)
-      assert response.parsed["age"].is_a?(Numeric)
-      assert response.parsed["friends"].is_a?(Array)
-      response.parsed["friends"].each do |friend|
-        assert friend.is_a?(Hash)
-        assert friend["name"].is_a?(String)
-      end
+        assert_nil response.refusal
+        assert response.parsed.is_a?(Hash)
+        assert response.parsed["greeting"].is_a?(String)
+        assert response.parsed["age"].is_a?(Numeric)
+        assert response.parsed["friends"].is_a?(Array)
+        response.parsed["friends"].each do |friend|
+          assert friend.is_a?(Hash)
+          assert friend["name"].is_a?(String)
+        end
     end
   end
 end

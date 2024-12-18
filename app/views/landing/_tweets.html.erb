@@ -1,0 +1,52 @@
+ <div class="flex flex-col">
+     <!-- First Tweet -->
+     <div class="flex gap-4 items-start bg-white p-4 rounded-lg shadow">
+         <!-- Profile Picture -->
+         <%= image_tag "tweets/byujxuux_normal.jpg", class: "w-12 h-12 rounded-full", alt: "Rand Fishkin" %>
+         <!-- Tweet Content -->
+         <div>
+             <!-- User Info -->
+             <div class="flex items-center gap-2">
+                 <span class="font-semibold">Rand Fishkin</span> ·
+                 <a href="https://twitter.com/randfish/status/1858953453139382729" target="_blank" class="text-accent text-sm hover:underline"> Nov 19, 2024</a>
+             </div>
+             <!-- Tweet Text -->
+             <p class="mt-2">
+                 "What's ChatGPT's share of search?"
+                 <br />
+                 Very tough to answer. But, if we assume:
+             <ul class="list-disc ml-4">
+                 <li>Every LLM prompt is a "search"</li>
+                 <li>Desktop + mobile web traffic, excluding apps, is close enough</li>
+                 <li>Mixing data from multiple panels is kosher</li>
+             </ul>
+             Here's what it looks like 👇
+             </p>
+             <!-- Image -->
+             <%= image_tag "tweets/GcxUQZUbcAASjnT.jpg", class: "mt-4 rounded-lg", alt: "ChatGPT Search Share" %>
+         </div>
+     </div>
+
+     <!-- Connecting Line -->
+     <div class="flex justify-center">
+         <div class="w-1 bg-accent h-8"></div>
+     </div>
+
+     <!-- Second Tweet -->
+     <div class="flex gap-4 items-start bg-white p-4 rounded-lg shadow">
+         <!-- Profile Picture -->
+         <%= image_tag "tweets/1rUFJTpG_normal.jpg", class: "w-12 h-12 rounded-full", alt: "Josh Rothstein" %>
+         <!-- Tweet Content -->
+         <div>
+             <!-- User Info -->
+             <div class="flex items-center gap-2">
+                 <span class="font-semibold">Josh Rothstein</span> ·
+                 <a href="https://twitter.com/LArothstein/status/1860919602978664673" target="_blank" class="text-accent text-sm hover:underline"> Nov 25, 2024</a>
+             </div>
+             <!-- Tweet Text -->
+             <p class="mt-2">
+                 I’ve been using @perplexity_ai instead of Google more and more.
+             </p>
+         </div>
+     </div>
+ </div>

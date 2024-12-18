@@ -1,0 +1,1779 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://deurbe.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      age:
+      - '183'
+      cache-control:
+      - public, max-age=0, must-revalidate
+      content-encoding:
+      - gzip
+      content-type:
+      - text/html; charset=utf-8
+      date:
+      - Wed, 18 Dec 2024 14:31:53 GMT
+      etag:
+      - W/"jybku4gztoysg"
+      server:
+      - Vercel
+      strict-transport-security:
+      - max-age=63072000
+      vary:
+      - RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+      x-matched-path:
+      - "/"
+      x-powered-by:
+      - Next.js
+      x-vercel-cache:
+      - STALE
+      x-vercel-id:
+      - cdg1::iad1::hcw4c-1734532497065-1dce852a712e
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html><html lang=\"es\"><head><meta charSet=\"utf-8\"/><meta
+        name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\"
+        href=\"/_next/static/media/08404bcfb1dae67a-s.p.woff2\" as=\"font\" crossorigin=\"\"
+        type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/337e174c39fdff16-s.p.woff2\"
+        as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/7729f7b3bc7fa987-s.p.woff2\"
+        as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/791334aa8b2b679f-s.p.woff2\"
+        as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/8679c800f1e60000-s.p.woff2\"
+        as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/8888a3826f4a3af4-s.p.woff2\"
+        as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/97c8a55b2cb1421c-s.p.woff2\"
+        as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"preload\" href=\"/_next/static/media/eafabf029ad39a43-s.p.woff2\"
+        as=\"font\" crossorigin=\"\" type=\"font/woff2\"/><link rel=\"stylesheet\"
+        href=\"/_next/static/css/657b39cabfd9305d.css\" data-precedence=\"next\"/><link
+        rel=\"preload\" href=\"/_next/static/chunks/webpack-24af6bea88a2847e.js\"
+        as=\"script\" fetchPriority=\"low\"/><script src=\"/_next/static/chunks/bf6a786c-b5c698f52c9c1812.js\"
+        async=\"\"></script><script src=\"/_next/static/chunks/26-956232945d50326b.js\"
+        async=\"\"></script><script src=\"/_next/static/chunks/main-app-06450d6c871ed265.js\"
+        async=\"\"></script><link rel=\"preload\" href=\"https://evo.mcdave.dev/script.js\"
+        as=\"script\"/><title>deurbe arquitectura</title><link rel=\"icon\" href=\"/favicon.ico\"
+        type=\"image/x-icon\" sizes=\"16x16\"/><meta name=\"next-size-adjust\"/><script
+        src=\"/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js\" noModule=\"\"></script></head><body
+        class=\"__variable_55e350 __variable_3d63e3 __variable_9e6217 __variable_8683ac
+        \"><header class=\"header\"><div class=\"col-main center row-flx flx-j-b flx-a-c\"><h1><a
+        id=\"logo\" class=\"logo\" href=\"/\"><img alt=\"Deurbe Arquitectura\" loading=\"lazy\"
+        width=\"842\" height=\"595\" decoding=\"async\" data-nimg=\"1\" class=\"logo-image\"
+        style=\"color:transparent\" src=\"/images/deurbe-2023.svg\"/></a></h1><nav
+        class=\"menu\"><ul class=\"row-flx flx-a-c\"><li><a href=\"/estudio\">Estudio</a></li><li><a
+        href=\"/arquitectura\">Arquitectura</a></li><li><a href=\"/interiorismo\">Interiorismo</a></li><li><a
+        href=\"/urbanismo\">Urbanismo</a></li><li><a href=\"/servicios\">Servicios</a></li></ul><ul
+        class=\"row-movil\"><li><a href=\"https://www.instagram.com/deurbe_arquitectura/\">Instagram</a></li><li><a
+        href=\"https://www.linkedin.com/company/deurbe/about/\">Linkedin</a></li><li><a
+        href=\"/politica-privacidad\">Política de privacidad</a></li><li>©<!-- -->2024<!--
+        --> deurbe arquitectura</li></ul></nav><button class=\"btn-menu\"><div class=\"btn-menu-in\"><div
+        class=\"btn-menu-in-line\"></div></div></button></div></header><main class=\"content\"><div
+        class=\"col-main center\"><div class=\"col10-12 col12-12-s padd-h center\"><section
+        class=\"content-big-text content-big-text-home\"><div class=\"txt-big\"><h1>Las
+        ideas, la realización, la calidad y el resultado. Somos deurbe.</h1><div class=\"content-arrow-down
+        center\"><img alt=\"flecha abajo\" loading=\"lazy\" width=\"49\" height=\"72\"
+        decoding=\"async\" data-nimg=\"1\" style=\"color:transparent\" src=\"/_next/static/media/icon-arrow-down.41173ade.svg\"/></div></div></section></div><div
+        class=\"col10-12 col12-12-s padd-h no-padd-s center\"><section class=\"content-hero-img
+        content-hero-img-home\"><figure class=\"content-hero-img-in\"><img alt=\"\"
+        loading=\"lazy\" width=\"1000\" height=\"667\" decoding=\"async\" data-nimg=\"1\"
+        style=\"color:transparent;width:100%\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1687355785%2Flarge_SARAIBA_01_764c13a7aa.jpg&amp;w=1080&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1687355785%2Flarge_SARAIBA_01_764c13a7aa.jpg&amp;w=2048&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1687355785%2Flarge_SARAIBA_01_764c13a7aa.jpg&amp;w=2048&amp;q=75\"/></figure></section></div><div
+        class=\"col10-12 col12-12-s padd-h center\"><section class=\"content-servicios-featured\"><article
+        class=\"content-servicio content-servicio-left\"><div class=\"content-servicio-in\"><a
+        class=\"row-flx flx-w flx-a-c\" href=\"/estudio\"><figure class=\"content-servicio-img
+        col6-12 col12-12-s\"></figure><div class=\"content-servicio-info col6-12 col12-12-s\"><div
+        class=\"txt-subtitulos\"><h3>Estudio</h3></div><div class=\"txt-entradilla\"><div
+        class=\"txt-body\"><p>Somos un equipo con amplia experiencia en todos los
+        campos relacionados con la arquitectura. Desde 1990 trabajamos para conseguir
+        satisfacer a nuestros clientes.</p></div></div><div class=\"content-servicio-info-icon\"><img
+        alt=\"flecha derecha\" loading=\"lazy\" width=\"72\" height=\"47\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" src=\"/_next/static/media/icon-arrow-right.22764c74.svg\"/></div></div></a></div></article><article
+        class=\"content-servicio \"><div class=\"content-servicio-in\"><a class=\"row-flx
+        flx-w flx-a-c\" href=\"/arquitectura\"><figure class=\"content-servicio-img
+        col6-12 col12-12-s\"></figure><div class=\"content-servicio-info col6-12 col12-12-s\"><div
+        class=\"txt-subtitulos\"><h3>Arquitectura</h3></div><div class=\"txt-entradilla\"><div
+        class=\"txt-body\"><p>Desde una vivienda unifamiliar hasta edificios de gran
+        volumen. Nuestro equipo se encargará de la elaboración del proyecto y de la
+        dirección de obra. </p></div></div><div class=\"content-servicio-info-icon\"><img
+        alt=\"flecha derecha\" loading=\"lazy\" width=\"72\" height=\"47\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" src=\"/_next/static/media/icon-arrow-right.22764c74.svg\"/></div></div></a></div></article><article
+        class=\"content-servicio content-servicio-left\"><div class=\"content-servicio-in\"><a
+        class=\"row-flx flx-w flx-a-c\" href=\"/interiorismo\"><figure class=\"content-servicio-img
+        col6-12 col12-12-s\"></figure><div class=\"content-servicio-info col6-12 col12-12-s\"><div
+        class=\"txt-subtitulos\"><h3>Interiorismo</h3></div><div class=\"txt-entradilla\"><div
+        class=\"txt-body\"><p>Nuestro objetivo es diseñar el espacio perfecto para
+        cada cliente. Ofrecemos las propuestas que mejor se ajusten a sus gustos y
+        necesidades.</p></div></div><div class=\"content-servicio-info-icon\"><img
+        alt=\"flecha derecha\" loading=\"lazy\" width=\"72\" height=\"47\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" src=\"/_next/static/media/icon-arrow-right.22764c74.svg\"/></div></div></a></div></article><article
+        class=\"content-servicio \"><div class=\"content-servicio-in\"><a class=\"row-flx
+        flx-w flx-a-c\" href=\"/urbanismo\"><figure class=\"content-servicio-img col6-12
+        col12-12-s\"></figure><div class=\"content-servicio-info col6-12 col12-12-s\"><div
+        class=\"txt-subtitulos\"><h3>Urbanismo</h3></div><div class=\"txt-entradilla\"><div
+        class=\"txt-body\"></div><div class=\"txt-body\"><p>Como complemento a los
+        servicios de Arquitectura, como desarrollo del Urbanismo, o como producto
+        final, DEURBE redacta también proyectos de urbanización y de obra civil.</p></div></div><div
+        class=\"content-servicio-info-icon\"><img alt=\"flecha derecha\" loading=\"lazy\"
+        width=\"72\" height=\"47\" decoding=\"async\" data-nimg=\"1\" style=\"color:transparent\"
+        src=\"/_next/static/media/icon-arrow-right.22764c74.svg\"/></div></div></a></div></article></section></div><div
+        class=\"col10-12 col12-12-s padd-h center\"><section class=\"content-big-quotes
+        content-arquitectura\"><div class=\"content-big-quotes-in\"><blockquote class=\"txt-big-quotes
+        padd-h no-padd-s\">“Un edificio tiene dos vidas. La que imagina su creador
+        y la vida que tiene. Y no siempre son iguales.”</blockquote><p class=\"txt-body\"><span
+        class=\"txt-upper\">REM KOOLHAAS</span><br/><em>Arquitecto</em></p></div></section></div><div
+        class=\"col10-12 col12-12-s padd-h center\"><section class=\"content-equipo
+        row-flx flx-j-b flx-a-c flx-w\"><div class=\"col5-12 col12-12-s\"><div class=\"txt-subtitulos\"><h3>deurbe
+        somos</h3></div><div class=\"txt-entradilla\"><p>Un equipo pluridisciplinar
+        compuesto principalmente por arquitectos, complementado por abogados, ingenieros,
+        aparejadores, interioristas y delineantes.</p></div></div><div class=\"col5-12
+        col12-12-s\"><div class=\"content-equipo-profile row-flx flx-w flx-a-c\"><div
+        class=\"content-equipo-profile-img col6-12 col12-12-m\"><img alt=\"2268✕3408\"
+        loading=\"lazy\" width=\"332\" height=\"500\" decoding=\"async\" data-nimg=\"1\"
+        style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1691140296%2Fsmall_OLALLA_1_c0ff7e0034.jpg&amp;w=384&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1691140296%2Fsmall_OLALLA_1_c0ff7e0034.jpg&amp;w=750&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1691140296%2Fsmall_OLALLA_1_c0ff7e0034.jpg&amp;w=750&amp;q=75\"/></div><div
+        class=\"col6-12 col12-12-m\"><p class=\"txt-body\"><span class=\"txt-upper\">Olalla
+        Gonzalo Marcos</span><br/><em>Arquitectura<br/>CEO y directora de proyectos</em></p></div></div><div
+        class=\"content-equipo-profile row-flx flx-w flx-a-c\"><div class=\"content-equipo-profile-img
+        col6-12 col12-12-m\"><img alt=\"\" loading=\"lazy\" width=\"333\" height=\"500\"
+        decoding=\"async\" data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607787%2Fsmall_VICTOR_1_3785f0741c.jpg&amp;w=384&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607787%2Fsmall_VICTOR_1_3785f0741c.jpg&amp;w=750&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607787%2Fsmall_VICTOR_1_3785f0741c.jpg&amp;w=750&amp;q=75\"/></div><div
+        class=\"col6-12 col12-12-m\"><p class=\"txt-body\"><span class=\"txt-upper\">Víctor
+        Fernández Amezua</span><br/><em>Aquitectura<br/>Director de proyectos</em></p></div></div><div
+        class=\"content-equipo-profile row-flx flx-w flx-a-c\"><div class=\"content-equipo-profile-img
+        col6-12 col12-12-m\"><img alt=\"\" loading=\"lazy\" width=\"333\" height=\"500\"
+        decoding=\"async\" data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607712%2Fsmall_PEDRO_90b4cbab82.jpg&amp;w=384&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607712%2Fsmall_PEDRO_90b4cbab82.jpg&amp;w=750&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607712%2Fsmall_PEDRO_90b4cbab82.jpg&amp;w=750&amp;q=75\"/></div><div
+        class=\"col6-12 col12-12-m\"><p class=\"txt-body\"><span class=\"txt-upper\">Pedro
+        Sasía Iriondo</span><br/><em>Interiorismo y arquitectura<br/>Interiorista</em></p></div></div><div
+        class=\"content-equipo-profile row-flx flx-w flx-a-c\"><div class=\"content-equipo-profile-img
+        col6-12 col12-12-m\"><img alt=\"\" loading=\"lazy\" width=\"347\" height=\"500\"
+        decoding=\"async\" data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607755%2Fsmall_TXEJO_3476a1bd9d.jpg&amp;w=384&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607755%2Fsmall_TXEJO_3476a1bd9d.jpg&amp;w=750&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1689607755%2Fsmall_TXEJO_3476a1bd9d.jpg&amp;w=750&amp;q=75\"/></div><div
+        class=\"col6-12 col12-12-m\"><p class=\"txt-body\"><span class=\"txt-upper\">Sergio
+        Pallé Fernández</span><br/><em>Arquitectura<br/>Arquitecto técnico</em></p></div></div></div></section></div><div
+        class=\"col10-12 col12-12-s padd-h center\"><section class=\"content-servicios
+        row-flx flx-j-b flx-a-c flx-w\"><div class=\"col5-12 col12-12-s\"><div class=\"txt-subtitulos\"><h3>Servicios</h3></div><div
+        class=\"txt-entradilla\"><p>Además de los servicios de arquitectura, interiorismo
+        y urbanismo, desde Deurbe realizamos todo tipo de informes técnicos. \nLa
+        elaboración de documentos de carácter técnico ha pasado a ser una necesidad
+        en el desarrollo de proyectos y obras. En este Estudio se elaboran todo tipo
+        de documentos, desde un sencillo Certificado Energético hasta un complejo
+        Informe Estructural, pasando por la elaboración de una ITE (Inspección Técnica
+        de Edificio).\n\nDEURBE ayuda a sus clientes con la tramitación administrativa
+        de todo tipo de licencias o permisos; desde el asesoramiento personalizado
+        hasta dar con el trámite más adecuado y/o rápido hasta la representación legal.
+        Siempre bajo el objetivo de la funcionalidad y garantía legal.</p></div></div><div
+        class=\"col5-12 col12-12-s\"><div class=\"txt-menus-pagina\"><ul><li><a href=\"/servicios#arquitectura\">Arquitectura</a></li><li><a
+        href=\"/servicios#interiorismo\">Interiorismo</a></li><li><a href=\"/servicios#urbanismo\">Urbanismo</a></li><li><a
+        href=\"/servicios#informes\">Informes</a></li><li><a href=\"/servicios#certificación
+        energética\">Certificación energética</a></li><li><a href=\"/servicios#tasaciones\">Tasaciones</a></li></ul></div></div></section></div><div
+        class=\"position-marker\"></div></div></main><footer class=\"footer\"><div
+        class=\"row row-logos\"><div class=\"col-main center row-flx flx-w flx-j-c
+        flx-a-c\"><div class=\"row-logos-img col7-12 col12-12-s padd-h\"><img alt=\"\"
+        loading=\"lazy\" width=\"500\" height=\"300\" decoding=\"async\" data-nimg=\"1\"
+        style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1701100972%2Fsmall_image001_22f4aaf966.png&amp;w=640&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1701100972%2Fsmall_image001_22f4aaf966.png&amp;w=1080&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1701100972%2Fsmall_image001_22f4aaf966.png&amp;w=1080&amp;q=75\"/><img
+        alt=\"\" loading=\"lazy\" width=\"500\" height=\"490\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1706196419%2Fsmall_NERA_COLOR_VERTICAL_2edfac5975.png&amp;w=640&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1706196419%2Fsmall_NERA_COLOR_VERTICAL_2edfac5975.png&amp;w=1080&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1706196419%2Fsmall_NERA_COLOR_VERTICAL_2edfac5975.png&amp;w=1080&amp;q=75\"/><img
+        alt=\"\" loading=\"lazy\" width=\"500\" height=\"240\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731324746%2Fsmall_Logo_Visesa_2d6a44b891.jpg&amp;w=640&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731324746%2Fsmall_Logo_Visesa_2d6a44b891.jpg&amp;w=1080&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731324746%2Fsmall_Logo_Visesa_2d6a44b891.jpg&amp;w=1080&amp;q=75\"/><img
+        alt=\"\" loading=\"lazy\" width=\"500\" height=\"184\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325654%2Fsmall_BARAKALDO_e971edc5d6.jpg&amp;w=640&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325654%2Fsmall_BARAKALDO_e971edc5d6.jpg&amp;w=1080&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325654%2Fsmall_BARAKALDO_e971edc5d6.jpg&amp;w=1080&amp;q=75\"/><img
+        alt=\"\" loading=\"lazy\" width=\"500\" height=\"260\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325007%2Fsmall_GOBIERNO_VASCO_LOGO_cbabc9d799.jpg&amp;w=640&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325007%2Fsmall_GOBIERNO_VASCO_LOGO_cbabc9d799.jpg&amp;w=1080&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325007%2Fsmall_GOBIERNO_VASCO_LOGO_cbabc9d799.jpg&amp;w=1080&amp;q=75\"/><img
+        alt=\"\" loading=\"lazy\" width=\"500\" height=\"127\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325821%2Fsmall_Sibelco_Group_Logo_Colour_PNG_272211c398.png&amp;w=640&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325821%2Fsmall_Sibelco_Group_Logo_Colour_PNG_272211c398.png&amp;w=1080&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325821%2Fsmall_Sibelco_Group_Logo_Colour_PNG_272211c398.png&amp;w=1080&amp;q=75\"/><img
+        alt=\"\" loading=\"lazy\" width=\"500\" height=\"153\" decoding=\"async\"
+        data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325906%2Fsmall_logo_viuda_cc2e273fc0.png&amp;w=640&amp;q=75
+        1x, /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325906%2Fsmall_logo_viuda_cc2e273fc0.png&amp;w=1080&amp;q=75
+        2x\" src=\"/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdhwgrzrjs%2Fimage%2Fupload%2Fv1731325906%2Fsmall_logo_viuda_cc2e273fc0.png&amp;w=1080&amp;q=75\"/></div><div
+        class=\"row-logos-info col3-12 col12-12-s padd-h\"><h3 class=\"txt-subtitulos\">Clientes</h3><p
+        class=\"txt-entradilla\">Estos son algunos de los clientes con los que hemos
+        colaborado.</p></div></div></div><div class=\"row row-contacto\"><div class=\"col-main
+        center row-flx flx-w flx-j-c flx-a-c\"><div class=\"col10-12 col12-12-s padd-h\"><h3
+        class=\"txt-subtitulos\">¡Te llamamos!</h3><p class=\"txt-entradilla\">Uno
+        de nuestros técnicos se pondrá en contacto contigo lo antes posible para atender
+        a tus dudas y necesidades</p><form class=\"row-flx flx-w flx-a-s\" action=\"javascript:throw
+        new Error(&#x27;A React form was unexpectedly submitted.&#x27;)\"><div class=\"col8-10
+        col12-12-m\"><div class=\"row-form row-flx flx-w flx-j-b\"><input type=\"text\"
+        placeholder=\"Nombre y Apellidos\" name=\"nombre\"/><input type=\"tel\" placeholder=\"Teléfono\"
+        name=\"telefono\"/><input type=\"email\" placeholder=\"Correo electrónico\"
+        name=\"email\"/></div><div class=\"col6-10 col10-12-m col12-12-s row-form
+        row-flx flx-a-c\"><input type=\"checkbox\" required=\"\" name=\"confirmar\"/><span>Declaro
+        haber leído la política de privacidad</span></div></div><div class=\"col2-10
+        col12-12-m\"><input type=\"submit\" name=\"llamadme\" value=\"Llamadme\"/></div></form></div></div></div><div
+        class=\"row row-menu\"><div class=\"col-main center row-flx flx-j-b flx-a-c\"><a
+        class=\"logo\" href=\"/\"><img alt=\"Deurbe Arquitectura\" loading=\"lazy\"
+        width=\"842\" height=\"595\" decoding=\"async\" data-nimg=\"1\" class=\"logo-image\"
+        style=\"color:transparent\" src=\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1690210503/NUEVO_DEURBE_2023_dc41bf06cb.svg\"/></a><nav><ul
+        class=\"row-flx flx-a-c\"><li><a href=\"https://www.instagram.com/deurbe_arquitectura/\">Instagram</a></li><li><a
+        href=\"https://www.linkedin.com/company/deurbe/about/\">Linkedin</a></li><li><a
+        href=\"/politica-privacidad\">Política de privacidad</a></li></ul></nav></div></div></footer><script>addEventListener(\"submit\",function(a){if(!a.defaultPrevented){var
+        c=a.target,d=a.submitter,e=c.action,b=d;if(d){var f=d.getAttribute(\"formAction\");null!=f&&(e=f,b=null)}\"javascript:throw
+        new Error('A React form was unexpectedly submitted.')\"===e&&(a.preventDefault(),b?(a=document.createElement(\"input\"),a.name=b.name,a.value=b.value,b.parentNode.insertBefore(a,b),b=new
+        FormData(c),a.parentNode.removeChild(a)):b=new FormData(c),a=c.getRootNode(),(a.$$reactFormReplay=a.$$reactFormReplay||[]).push(c,\nd,b))}});</script><script
+        src=\"/_next/static/chunks/webpack-24af6bea88a2847e.js\" async=\"\"></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,\"1:HL[\\\"/_next/static/media/08404bcfb1dae67a-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n2:HL[\\\"/_next/static/media/337e174c39fdff16-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n3:HL[\\\"/_next/static/media/7729f7b3bc7fa987-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n4:HL[\\\"/_next/static/media/791334aa8b2b679f-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n5:HL[\\\"/_next/static/media/8679c800f1e60000-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n6:HL[\\\"/\"])</script><script>self.__next_f.push([1,\"_next/static/media/8888a3826f4a3af4-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n7:HL[\\\"/_next/static/media/97c8a55b2cb1421c-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n8:HL[\\\"/_next/static/media/eafabf029ad39a43-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n9:HL[\\\"/_next/static/css/657b39cabfd9305d.css\\\",\\\"style\\\"]\\n0:\\\"$La\\\"\\n\"])</script><script>self.__next_f.push([1,\"b:I{\\\"id\\\":6054,\\\"chunks\\\":[\\\"272:static/chunks/webpack-24af6bea88a2847e.js\\\",\\\"121:static/chunks/bf6a786c-b5c698f52c9c1812.js\\\",\\\"26:static/chunks/26-956232945d50326b.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\nd:I{\\\"id\\\":1729,\\\"chunks\\\":[\\\"272:static/chunks/webpack-24af6bea88a2847e.js\\\",\\\"121:static/chunks/bf6a786c-b5c698f52c9c1812.js\\\",\\\"26:static/chunks/26-956232945d50326b.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\ne:I{\\\"id\\\":4244,\\\"chunks\\\":[\\\"180:static/chunks/180-4710f4f080e8452f.js\\\",\\\"724:static/chunks/724-8892bd129936e76e.js\\\",\\\"185:static/chunks/app\"])</script><script>self.__next_f.push([1,\"/layout-aee4a225bac9b920.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\nf:I{\\\"id\\\":4724,\\\"chunks\\\":[\\\"180:static/chunks/180-4710f4f080e8452f.js\\\",\\\"724:static/chunks/724-8892bd129936e76e.js\\\",\\\"931:static/chunks/app/page-ff86432e2906ca50.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\n10:I{\\\"id\\\":6964,\\\"chunks\\\":[\\\"180:static/chunks/180-4710f4f080e8452f.js\\\",\\\"724:static/chunks/724-8892bd129936e76e.js\\\",\\\"931:static/chunks/app/page-ff86432e2906ca50.js\\\"],\\\"name\\\":\\\"Image\\\",\\\"async\\\":false}\\n11:I{\\\"id\\\":8046,\\\"chunks\\\":[\\\"180:static/chunks/180-4710f4f080e8452f.js\\\",\\\"724:sta\"])</script><script>self.__next_f.push([1,\"tic/chunks/724-8892bd129936e76e.js\\\",\\\"185:static/chunks/app/layout-aee4a225bac9b920.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\n12:I{\\\"id\\\":1443,\\\"chunks\\\":[\\\"272:static/chunks/webpack-24af6bea88a2847e.js\\\",\\\"121:static/chunks/bf6a786c-b5c698f52c9c1812.js\\\",\\\"26:static/chunks/26-956232945d50326b.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\n13:I{\\\"id\\\":8639,\\\"chunks\\\":[\\\"272:static/chunks/webpack-24af6bea88a2847e.js\\\",\\\"121:static/chunks/bf6a786c-b5c698f52c9c1812.js\\\",\\\"26:static/chunks/26-956232945d50326b.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\n\"])</script><script>self.__next_f.push([1,\"a:[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/657b39cabfd9305d.css\\\",\\\"precedence\\\":\\\"next\\\"}]],[\\\"$\\\",\\\"$Lb\\\",null,{\\\"buildId\\\":\\\"5u5230RBUN4QMK1aEYJv2\\\",\\\"assetPrefix\\\":\\\"\\\",\\\"initialCanonicalUrl\\\":\\\"/\\\",\\\"initialTree\\\":[\\\"\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]},\\\"$undefined\\\",\\\"$undefined\\\",true],\\\"initialHead\\\":[false,\\\"$Lc\\\"],\\\"globalErrorComponent\\\":\\\"$d\\\",\\\"children\\\":[null,[\\\"$\\\",\\\"html\\\",null,{\\\"lang\\\":\\\"es\\\",\\\"children\\\":[[\\\"$\\\",\\\"head\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Le\\\",null,{\\\"defer\\\":true,\\\"async\\\":true,\\\"src\\\":\\\"https://evo.mcdave.dev/script.js\\\",\\\"data-website-id\\\":\\\"f8c1fd29-4845-440a-b847-1b0feb1ae95a\\\"}]}],[\\\"$\\\",\\\"body\\\",null,{\\\"className\\\":\\\"__variable_55e350
+        __variable_3d63e3 __variable_9e6217 __variable_8683ac \\\",\\\"children\\\":[[\\\"$\\\",\\\"header\\\",null,{\\\"className\\\":\\\"header\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col-main
+        center row-flx flx-j-b flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"h1\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/\\\",\\\"id\\\":\\\"logo\\\",\\\"className\\\":\\\"logo\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"className\\\":\\\"logo-image\\\",\\\"src\\\":\\\"/images/deurbe-2023.svg\\\",\\\"alt\\\":\\\"Deurbe
+        Arquitectura\\\",\\\"width\\\":\\\"842\\\",\\\"height\\\":\\\"595\\\"}]}]}],[\\\"$\\\",\\\"nav\\\",null,{\\\"className\\\":\\\"menu\\\",\\\"children\\\":[[\\\"$\\\",\\\"ul\\\",null,{\\\"className\\\":\\\"row-flx
+        flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/estudio\\\",\\\"children\\\":\\\"Estudio\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/arquitectura\\\",\\\"children\\\":\\\"Arquitectura\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/interiorismo\\\",\\\"children\\\":\\\"Interiorismo\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/urbanismo\\\",\\\"children\\\":\\\"Urbanismo\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/servicios\\\",\\\"children\\\":\\\"Servicios\\\"}]}]]}],[\\\"$\\\",\\\"ul\\\",null,{\\\"className\\\":\\\"row-movil\\\",\\\"children\\\":[[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"https://www.instagram.com/deurbe_arquitectura/\\\",\\\"children\\\":\\\"Instagram\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"https://www.linkedin.com/company/deurbe/about/\\\",\\\"children\\\":\\\"Linkedin\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/politica-privacidad\\\",\\\"children\\\":\\\"Política
+        de privacidad\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"©\\\",2024,\\\"
+        deurbe arquitectura\\\"]}]]}]]}],[\\\"$\\\",\\\"$L11\\\",null,{}]]}]}],[\\\"$\\\",\\\"main\\\",null,{\\\"className\\\":\\\"content\\\",\\\"children\\\":[\\\"$\\\",\\\"$L12\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"segmentPath\\\":[\\\"children\\\"],\\\"loading\\\":\\\"$undefined\\\",\\\"loadingStyles\\\":\\\"$undefined\\\",\\\"hasLoading\\\":false,\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$L13\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"notFound\\\":[[\\\"$\\\",\\\"title\\\",null,{\\\"children\\\":\\\"404:
+        This page could not be found.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"fontFamily\\\":\\\"system-ui,\\\\\\\"Segoe
+        UI\\\\\\\",Roboto,Helvetica,Arial,sans-serif,\\\\\\\"Apple Color Emoji\\\\\\\",\\\\\\\"Segoe
+        UI Emoji\\\\\\\"\\\",\\\"height\\\":\\\"100vh\\\",\\\"textAlign\\\":\\\"center\\\",\\\"display\\\":\\\"flex\\\",\\\"flexDirection\\\":\\\"column\\\",\\\"alignItems\\\":\\\"center\\\",\\\"justifyContent\\\":\\\"center\\\"},\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"style\\\",null,{\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px
+        solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px
+        solid rgba(255,255,255,.3)}}\\\"}}],[\\\"$\\\",\\\"h1\\\",null,{\\\"className\\\":\\\"next-error-h1\\\",\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\",\\\"margin\\\":\\\"0
+        20px 0 0\\\",\\\"padding\\\":\\\"0 23px 0 0\\\",\\\"fontSize\\\":24,\\\"fontWeight\\\":500,\\\"verticalAlign\\\":\\\"top\\\",\\\"lineHeight\\\":\\\"49px\\\"},\\\"children\\\":\\\"404\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\"},\\\"children\\\":[\\\"$\\\",\\\"h2\\\",null,{\\\"style\\\":{\\\"fontSize\\\":14,\\\"fontWeight\\\":400,\\\"lineHeight\\\":\\\"49px\\\",\\\"margin\\\":0},\\\"children\\\":\\\"This
+        page could not be found.\\\"}]}]]}]}]],\\\"notFoundStyles\\\":[],\\\"childProp\\\":{\\\"current\\\":[\\\"$L14\\\",\\\"$L15\\\",null],\\\"segment\\\":\\\"__PAGE__\\\"},\\\"styles\\\":[]}]}],[\\\"$\\\",\\\"footer\\\",null,{\\\"className\\\":\\\"footer\\\",\\\"children\\\":[\\\"$L16\\\",\\\"$L17\\\",[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"row
+        row-menu\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col-main
+        center row-flx flx-j-b flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/\\\",\\\"className\\\":\\\"logo\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"className\\\":\\\"logo-image\\\",\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1690210503/NUEVO_DEURBE_2023_dc41bf06cb.svg\\\",\\\"alt\\\":\\\"Deurbe
+        Arquitectura\\\",\\\"width\\\":\\\"842\\\",\\\"height\\\":\\\"595\\\"}]}],[\\\"$\\\",\\\"nav\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"ul\\\",null,{\\\"className\\\":\\\"row-flx
+        flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"https://www.instagram.com/deurbe_arquitectura/\\\",\\\"children\\\":\\\"Instagram\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"https://www.linkedin.com/company/deurbe/about/\\\",\\\"children\\\":\\\"Linkedin\\\"}]}],[\\\"$\\\",\\\"li\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/politica-privacidad/\\\",\\\"children\\\":\\\"Política
+        de privacidad\\\"}]}]]}]}]]}]}]]}]]}]]}],null]}]]\\n\"])</script><script>self.__next_f.push([1,\"c:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"title\\\",\\\"1\\\",{\\\"children\\\":\\\"deurbe
+        arquitectura\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"2\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width,
+        initial-scale=1\\\"}],[\\\"$\\\",\\\"link\\\",\\\"3\\\",{\\\"rel\\\":\\\"icon\\\",\\\"href\\\":\\\"/favicon.ico\\\",\\\"type\\\":\\\"image/x-icon\\\",\\\"sizes\\\":\\\"16x16\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"4\\\",{\\\"name\\\":\\\"next-size-adjust\\\"}]]\\n14:null\\n\"])</script><script>self.__next_f.push([1,\"18:I{\\\"id\\\":5265,\\\"chunks\\\":[\\\"180:static/chunks/180-4710f4f080e8452f.js\\\",\\\"724:static/chunks/724-8892bd129936e76e.js\\\",\\\"185:static/chunks/app/layout-aee4a225bac9b920.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\n19:{\\\"id\\\":\\\"a749feb4421bba7bd517702bb45c54de163512e8\\\",\\\"bound\\\":null}\\n\"])</script><script>self.__next_f.push([1,\"17:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"row
+        row-contacto\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col-main
+        center row-flx flx-w flx-j-c flx-a-c\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col10-12
+        col12-12-s padd-h\\\",\\\"children\\\":[[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":\\\"¡Te
+        llamamos!\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":\\\"Uno
+        de nuestros técnicos se pondrá en contacto contigo lo antes posible para atender
+        a tus dudas y necesidades\\\"}],[\\\"$\\\",\\\"$L18\\\",null,{\\\"action\\\":\\\"$F19\\\",\\\"data\\\":{\\\"data\\\":{\\\"id\\\":1,\\\"attributes\\\":{\\\"Titulo\\\":\\\"¡Te
+        llamamos!\\\",\\\"Subtitulo\\\":\\\"Uno de nuestros técnicos se pondrá en
+        contacto contigo lo antes posible para atender a tus dudas y necesidades\\\",\\\"Consentimiento\\\":\\\"Declaro
+        haber leído la política de privacidad\\\",\\\"Accion\\\":\\\"Llamadme\\\",\\\"createdAt\\\":\\\"2023-07-19T17:32:41.570Z\\\",\\\"updatedAt\\\":\\\"2023-07-21T08:58:37.989Z\\\"}},\\\"meta\\\":{}}}]]}]}]}]\\n\"])</script><script>self.__next_f.push([1,\"16:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"row
+        row-logos\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col-main
+        center row-flx flx-w flx-j-c flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"row-logos-img
+        col7-12 col12-12-s padd-h\\\",\\\"children\\\":[[\\\"$\\\",\\\"$L10\\\",\\\"1\\\",{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1701100972/small_image001_22f4aaf966.png\\\",\\\"width\\\":500,\\\"height\\\":300,\\\"alt\\\":\\\"\\\"}],[\\\"$\\\",\\\"$L10\\\",\\\"6\\\",{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1706196419/small_NERA_COLOR_VERTICAL_2edfac5975.png\\\",\\\"width\\\":500,\\\"height\\\":490,\\\"alt\\\":\\\"\\\"}],[\\\"$\\\",\\\"$L10\\\",\\\"7\\\",{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1731324746/small_Logo_Visesa_2d6a44b891.jpg\\\",\\\"width\\\":500,\\\"height\\\":240,\\\"alt\\\":\\\"\\\"}],[\\\"$\\\",\\\"$L10\\\",\\\"4\\\",{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1731325654/small_BARAKALDO_e971edc5d6.jpg\\\",\\\"width\\\":500,\\\"height\\\":184,\\\"alt\\\":\\\"\\\"}],[\\\"$\\\",\\\"$L10\\\",\\\"8\\\",{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1731325007/small_GOBIERNO_VASCO_LOGO_cbabc9d799.jpg\\\",\\\"width\\\":500,\\\"height\\\":260,\\\"alt\\\":\\\"\\\"}],[\\\"$\\\",\\\"$L10\\\",\\\"9\\\",{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1731325821/small_Sibelco_Group_Logo_Colour_PNG_272211c398.png\\\",\\\"width\\\":500,\\\"height\\\":127,\\\"alt\\\":\\\"\\\"}],[\\\"$\\\",\\\"$L10\\\",\\\"5\\\",{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1731325906/small_logo_viuda_cc2e273fc0.png\\\",\\\"width\\\":500,\\\"height\\\":153,\\\"alt\\\":\\\"\\\"}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"row-logos-info
+        col3-12 col12-12-s padd-h\\\",\\\"children\\\":[[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":\\\"Clientes\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":\\\"Estos
+        son algunos de los clientes con los que hemos colaborado.\\\"}]]}]]}]}]\\n\"])</script><script>self.__next_f.push([1,\"1d:I{\\\"id\\\":5956,\\\"chunks\\\":[\\\"180:static/chunks/180-4710f4f080e8452f.js\\\",\\\"724:static/chunks/724-8892bd129936e76e.js\\\",\\\"931:static/chunks/app/page-ff86432e2906ca50.js\\\"],\\\"name\\\":\\\"\\\",\\\"async\\\":false}\\n\"])</script><script>self.__next_f.push([1,\"15:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col-main
+        center\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col10-12
+        col12-12-s padd-h center\\\",\\\"children\\\":[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"content-big-text
+        content-big-text-home\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-big\\\",\\\"children\\\":[[\\\"$\\\",\\\"h1\\\",null,{\\\"children\\\":\\\"Las
+        ideas, la realización, la calidad y el resultado. Somos deurbe.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-arrow-down
+        center\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":{\\\"src\\\":\\\"/_next/static/media/icon-arrow-down.41173ade.svg\\\",\\\"height\\\":72,\\\"width\\\":49,\\\"blurWidth\\\":0,\\\"blurHeight\\\":0},\\\"alt\\\":\\\"flecha
+        abajo\\\"}]}]]}]}]}],[\\\"$\\\",\\\"div\\\",\\\"37\\\",{\\\"className\\\":\\\"col10-12
+        col12-12-s padd-h no-padd-s center\\\",\\\"children\\\":[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"content-hero-img
+        content-hero-img-home\\\",\\\"children\\\":[\\\"$\\\",\\\"figure\\\",null,{\\\"className\\\":\\\"content-hero-img-in\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1687355785/large_SARAIBA_01_764c13a7aa.jpg\\\",\\\"width\\\":1000,\\\"height\\\":667,\\\"alt\\\":\\\"\\\",\\\"style\\\":{\\\"width\\\":\\\"100%\\\"}}]}]}]}],\\\"$L1a\\\",[[\\\"$\\\",\\\"div\\\",\\\"3\\\",{\\\"className\\\":\\\"col10-12
+        col12-12-s padd-h center\\\",\\\"children\\\":[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"content-big-quotes
+        content-arquitectura\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-big-quotes-in\\\",\\\"children\\\":[[\\\"$\\\",\\\"blockquote\\\",null,{\\\"className\\\":\\\"txt-big-quotes
+        padd-h no-padd-s\\\",\\\"children\\\":\\\"“Un edificio tiene dos vidas. La
+        que imagina su creador y la vida que tiene. Y no siempre son iguales.”\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"txt-body\\\",\\\"children\\\":[[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"txt-upper\\\",\\\"children\\\":\\\"REM
+        KOOLHAAS\\\"}],[\\\"$\\\",\\\"br\\\",null,{}],[\\\"$\\\",\\\"em\\\",null,{\\\"children\\\":\\\"Arquitecto\\\"}]]}]]}]}]}]],\\\"$L1b\\\",\\\"$L1c\\\",[\\\"$\\\",\\\"$L1d\\\",null,{}]]}]\\n\"])</script><script>self.__next_f.push([1,\"1c:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col10-12
+        col12-12-s padd-h center\\\",\\\"children\\\":[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"content-servicios
+        row-flx flx-j-b flx-a-c flx-w\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col5-12
+        col12-12-s\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":[\\\"$\\\",\\\"h3\\\",null,{\\\"children\\\":\\\"Servicios\\\"}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":[\\\"$\\\",\\\"p\\\",null,{\\\"children\\\":\\\"Además
+        de los servicios de arquitectura, interiorismo y urbanismo, desde Deurbe realizamos
+        todo tipo de informes técnicos. \\\\nLa elaboración de documentos de carácter
+        técnico ha pasado a ser una necesidad en el desarrollo de proyectos y obras.
+        En este Estudio se elaboran todo tipo de documentos, desde un sencillo Certificado
+        Energético hasta un complejo Informe Estructural, pasando por la elaboración
+        de una ITE (Inspección Técnica de Edificio).\\\\n\\\\nDEURBE ayuda a sus clientes
+        con la tramitación administrativa de todo tipo de licencias o permisos; desde
+        el asesoramiento personalizado hasta dar con el trámite más adecuado y/o rápido
+        hasta la representación legal. Siempre bajo el objetivo de la funcionalidad
+        y garantía legal.\\\"}]}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col5-12
+        col12-12-s\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-menus-pagina\\\",\\\"children\\\":[\\\"$\\\",\\\"ul\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"li\\\",\\\"1\\\",{\\\"children\\\":[\\\"$\\\",\\\"a\\\",null,{\\\"href\\\":\\\"/servicios#arquitectura\\\",\\\"children\\\":\\\"Arquitectura\\\"}]}],[\\\"$\\\",\\\"li\\\",\\\"2\\\",{\\\"children\\\":[\\\"$\\\",\\\"a\\\",null,{\\\"href\\\":\\\"/servicios#interiorismo\\\",\\\"children\\\":\\\"Interiorismo\\\"}]}],[\\\"$\\\",\\\"li\\\",\\\"3\\\",{\\\"children\\\":[\\\"$\\\",\\\"a\\\",null,{\\\"href\\\":\\\"/servicios#urbanismo\\\",\\\"children\\\":\\\"Urbanismo\\\"}]}],[\\\"$\\\",\\\"li\\\",\\\"5\\\",{\\\"children\\\":[\\\"$\\\",\\\"a\\\",null,{\\\"href\\\":\\\"/servicios#informes\\\",\\\"children\\\":\\\"Informes\\\"}]}],[\\\"$\\\",\\\"li\\\",\\\"6\\\",{\\\"children\\\":[\\\"$\\\",\\\"a\\\",null,{\\\"href\\\":\\\"/servicios#certificación
+        energética\\\",\\\"children\\\":\\\"Certificación energética\\\"}]}],[\\\"$\\\",\\\"li\\\",\\\"4\\\",{\\\"children\\\":[\\\"$\\\",\\\"a\\\",null,{\\\"href\\\":\\\"/servicios#tasaciones\\\",\\\"children\\\":\\\"Tasaciones\\\"}]}]]}]}]}]]}]}]\\n\"])</script><script>self.__next_f.push([1,\"1a:[\\\"$\\\",\\\"div\\\",\\\"categorias\\\",{\\\"className\\\":\\\"col10-12
+        col12-12-s padd-h center\\\",\\\"children\\\":[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"content-servicios-featured\\\",\\\"children\\\":[[\\\"$\\\",\\\"article\\\",null,{\\\"className\\\":\\\"content-servicio
+        content-servicio-left\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-in\\\",\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/estudio\\\",\\\"className\\\":\\\"row-flx
+        flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"figure\\\",null,{\\\"className\\\":\\\"content-servicio-img
+        col6-12 col12-12-s\\\",\\\"children\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info
+        col6-12 col12-12-s\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":[\\\"$\\\",\\\"h3\\\",null,{\\\"children\\\":\\\"Estudio\\\"}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",\\\"0\\\",{\\\"className\\\":\\\"txt-body\\\",\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"\\u003cp\\u003eSomos
+        un equipo con amplia experiencia en todos los campos relacionados con la arquitectura.
+        Desde 1990 trabajamos para conseguir satisfacer a nuestros clientes.\\u003c/p\\u003e\\\"}}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info-icon\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":{\\\"src\\\":\\\"/_next/static/media/icon-arrow-right.22764c74.svg\\\",\\\"height\\\":47,\\\"width\\\":72,\\\"blurWidth\\\":0,\\\"blurHeight\\\":0},\\\"alt\\\":\\\"flecha
+        derecha\\\"}]}]]}]]}]}]}],[\\\"$\\\",\\\"article\\\",null,{\\\"className\\\":\\\"content-servicio
+        \\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-in\\\",\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/arquitectura\\\",\\\"className\\\":\\\"row-flx
+        flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"figure\\\",null,{\\\"className\\\":\\\"content-servicio-img
+        col6-12 col12-12-s\\\",\\\"children\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info
+        col6-12 col12-12-s\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":[\\\"$\\\",\\\"h3\\\",null,{\\\"children\\\":\\\"Arquitectura\\\"}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",\\\"0\\\",{\\\"className\\\":\\\"txt-body\\\",\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"\\u003cp\\u003eDesde
+        una vivienda unifamiliar hasta edificios de gran volumen. Nuestro equipo se
+        encargará de la elaboración del proyecto y de la dirección de obra. \\u003c/p\\u003e\\\"}}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info-icon\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":{\\\"src\\\":\\\"/_next/static/media/icon-arrow-right.22764c74.svg\\\",\\\"height\\\":47,\\\"width\\\":72,\\\"blurWidth\\\":0,\\\"blurHeight\\\":0},\\\"alt\\\":\\\"flecha
+        derecha\\\"}]}]]}]]}]}]}],[\\\"$\\\",\\\"article\\\",null,{\\\"className\\\":\\\"content-servicio
+        content-servicio-left\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-in\\\",\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/interiorismo\\\",\\\"className\\\":\\\"row-flx
+        flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"figure\\\",null,{\\\"className\\\":\\\"content-servicio-img
+        col6-12 col12-12-s\\\",\\\"children\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info
+        col6-12 col12-12-s\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":[\\\"$\\\",\\\"h3\\\",null,{\\\"children\\\":\\\"Interiorismo\\\"}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",\\\"0\\\",{\\\"className\\\":\\\"txt-body\\\",\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"\\u003cp\\u003eNuestro
+        objetivo es diseñar el espacio perfecto para cada cliente. Ofrecemos las propuestas
+        que mejor se ajusten a sus gustos y necesidades.\\u003c/p\\u003e\\\"}}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info-icon\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":{\\\"src\\\":\\\"/_next/static/media/icon-arrow-right.22764c74.svg\\\",\\\"height\\\":47,\\\"width\\\":72,\\\"blurWidth\\\":0,\\\"blurHeight\\\":0},\\\"alt\\\":\\\"flecha
+        derecha\\\"}]}]]}]]}]}]}],[\\\"$\\\",\\\"article\\\",null,{\\\"className\\\":\\\"content-servicio
+        \\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-in\\\",\\\"children\\\":[\\\"$\\\",\\\"$Lf\\\",null,{\\\"href\\\":\\\"/urbanismo\\\",\\\"className\\\":\\\"row-flx
+        flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"figure\\\",null,{\\\"className\\\":\\\"content-servicio-img
+        col6-12 col12-12-s\\\",\\\"children\\\":\\\"$undefined\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info
+        col6-12 col12-12-s\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":[\\\"$\\\",\\\"h3\\\",null,{\\\"children\\\":\\\"Urbanismo\\\"}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",\\\"0\\\",{\\\"className\\\":\\\"txt-body\\\",\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"\\\"}}],[\\\"$\\\",\\\"div\\\",\\\"1\\\",{\\\"className\\\":\\\"txt-body\\\",\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"\\u003cp\\u003eComo
+        complemento a los servicios de Arquitectura, como desarrollo del Urbanismo,
+        o como producto final, DEURBE redacta también proyectos de urbanización y
+        de obra civil.\\u003c/p\\u003e\\\"}}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-servicio-info-icon\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":{\\\"src\\\":\\\"/_next/static/media/icon-arrow-right.22764c74.svg\\\",\\\"height\\\":47,\\\"width\\\":72,\\\"blurWidth\\\":0,\\\"blurHeight\\\":0},\\\"alt\\\":\\\"flecha
+        derecha\\\"}]}]]}]]}]}]}]]}]}]\\n\"])</script><script>self.__next_f.push([1,\"1b:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col10-12
+        col12-12-s padd-h center\\\",\\\"children\\\":[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"content-equipo
+        row-flx flx-j-b flx-a-c flx-w\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col5-12
+        col12-12-s\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-subtitulos\\\",\\\"children\\\":[\\\"$\\\",\\\"h3\\\",null,{\\\"children\\\":\\\"deurbe
+        somos\\\"}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"txt-entradilla\\\",\\\"children\\\":[\\\"$\\\",\\\"p\\\",null,{\\\"children\\\":\\\"Un
+        equipo pluridisciplinar compuesto principalmente por arquitectos, complementado
+        por abogados, ingenieros, aparejadores, interioristas y delineantes.\\\"}]}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col5-12
+        col12-12-s\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile
+        row-flx flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile-img
+        col6-12 col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1691140296/small_OLALLA_1_c0ff7e0034.jpg\\\",\\\"alt\\\":\\\"2268✕3408\\\",\\\"width\\\":332,\\\"height\\\":500}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col6-12
+        col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"txt-body\\\",\\\"children\\\":[[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"txt-upper\\\",\\\"children\\\":\\\"Olalla
+        Gonzalo Marcos\\\"}],[\\\"$\\\",\\\"br\\\",null,{}],[\\\"$\\\",\\\"em\\\",null,{\\\"children\\\":[\\\"Arquitectura\\\",[\\\"$\\\",\\\"br\\\",null,{}],\\\"CEO
+        y directora de proyectos\\\"]}]]}]}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile
+        row-flx flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile-img
+        col6-12 col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1689607787/small_VICTOR_1_3785f0741c.jpg\\\",\\\"alt\\\":\\\"\\\",\\\"width\\\":333,\\\"height\\\":500}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col6-12
+        col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"txt-body\\\",\\\"children\\\":[[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"txt-upper\\\",\\\"children\\\":\\\"Víctor
+        Fernández Amezua\\\"}],[\\\"$\\\",\\\"br\\\",null,{}],[\\\"$\\\",\\\"em\\\",null,{\\\"children\\\":[\\\"Aquitectura\\\",[\\\"$\\\",\\\"br\\\",null,{}],\\\"Director
+        de proyectos\\\"]}]]}]}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile
+        row-flx flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile-img
+        col6-12 col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1689607712/small_PEDRO_90b4cbab82.jpg\\\",\\\"alt\\\":\\\"\\\",\\\"width\\\":333,\\\"height\\\":500}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col6-12
+        col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"txt-body\\\",\\\"children\\\":[[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"txt-upper\\\",\\\"children\\\":\\\"Pedro
+        Sasía Iriondo\\\"}],[\\\"$\\\",\\\"br\\\",null,{}],[\\\"$\\\",\\\"em\\\",null,{\\\"children\\\":[\\\"Interiorismo
+        y arquitectura\\\",[\\\"$\\\",\\\"br\\\",null,{}],\\\"Interiorista\\\"]}]]}]}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile
+        row-flx flx-w flx-a-c\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"content-equipo-profile-img
+        col6-12 col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"$L10\\\",null,{\\\"src\\\":\\\"https://res.cloudinary.com/dhwgrzrjs/image/upload/v1689607755/small_TXEJO_3476a1bd9d.jpg\\\",\\\"alt\\\":\\\"\\\",\\\"width\\\":347,\\\"height\\\":500}]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"col6-12
+        col12-12-m\\\",\\\"children\\\":[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"txt-body\\\",\\\"children\\\":[[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"txt-upper\\\",\\\"children\\\":\\\"Sergio
+        Pallé Fernández\\\"}],[\\\"$\\\",\\\"br\\\",null,{}],[\\\"$\\\",\\\"em\\\",null,{\\\"children\\\":[\\\"Arquitectura\\\",[\\\"$\\\",\\\"br\\\",null,{}],\\\"Arquitecto
+        técnico\\\"]}]]}]}]]}]]}]]}]}]\\n\"])</script></body></html>"
+  recorded_at: Wed, 18 Dec 2024 14:34:57 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Extract
+        structured information about a brand from a given website. Analyze the content
+        and fill out the following details in the specified format:\n- Brand Name:
+        The official name of the brand, company, or service that the website belongs
+        to.\n- Category: The product or service category the brand offers (e.g., fashion,
+        software, food \u0026 beverages, etc.).\n- Description: A short summary of
+        what the brand does and its key focus areas. If the website details do not
+        include information about a region where the brand operates most specifically,
+        omit it.\n- Region: The geographical region where the brand operates primarily
+        or where its main competitors are located.\n- Keywords: A list of SEO keywords,
+        to reach the website. Low volume and high difficulty keywords are preferred.
+        Include regional words in each keyword\nUse the search tool to find more information
+        about the brand if you cannot extract information from the website alone\n"}]},{"role":"user","content":[{"type":"text","text":"You
+        must format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the brand, company, or service that the website belongs to\"},\"category\":{\"type\":\"string\",\"description\":\"The
+        category of the product or service that the brand offers\"},\"description\":{\"type\":\"string\",\"description\":\"A
+        short description of what they do. It should be a single sentence and might,
+        might not be the actual description coming from the website, but something
+        that is accurate with what the brand does\"},\"region\":{\"type\":\"string\",\"description\":\"The
+        geopgrahical region where the brand operates and has most of its competitors\"},\"keywords\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/keyword\"},\"description\":\"A
+        list of SEO keywords to reach the website\"}},\"required\":[\"name\",\"category\",\"description\",\"region\",\"keywords\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"keyword\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\",\"description\":\"A
+        keyword\"}},\"required\":[\"value\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nThe
+        website info is: \n# Website info\n## URL: https://deurbe.com/\n## Title:
+        deurbe arquitectura\n## Meta tags: \n* viewport: width=device-width, initial-scale=1\n##
+        HMTL header elements (as a table of contents of the site):\n- \n- Las ideas,
+        la realización, la calidad y el resultado. Somos deurbe.\n- Estudio\n- Arquitectura\n-
+        Interiorismo\n- Urbanismo\n- deurbe somos\n- Servicios\n- Clientes\n- ¡Te
+        llamamos!\nExtract brand information\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 14:34:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '763'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '10000000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '9999095'
+      X-Ratelimit-Reset-Requests:
+      - 6ms
+      X-Ratelimit-Reset-Tokens:
+      - 5ms
+      X-Request-Id:
+      - req_8e91dd12246f99a25e3745b8479654f8
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=.ksBnpYTFAX05wiJvii4jsR8Yg_Tp64rTCEvxgAhAdE-1734532498-1.0.1.1-hoqxT_5z.ugIwmyqFLHrkytFWJJr.J7HXL3eKBnUDILN11_auHIOuQBED0ecVe3xWadFaeF6dUURy6sq7xXsRQ;
+        path=/; expires=Wed, 18-Dec-24 15:04:58 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=qbnnb7.ee0P6KvttBWygErSIBz41JGkIlYs4oM2u8go-1734532498177-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3fe06c0e592162-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "chatcmpl-AfpQXnHUXXy2CRM8bWVY8Ka26JKTJ",
+          "object": "chat.completion",
+          "created": 1734532497,
+          "model": "gpt-4o-mini-2024-07-18",
+          "choices": [
+            {
+              "index": 0,
+              "message": {
+                "role": "assistant",
+                "content": null,
+                "tool_calls": [
+                  {
+                    "id": "call_IDR68T5GjztXKSq6SGrDghq9",
+                    "type": "function",
+                    "function": {
+                      "name": "analysis_tools_bing_search__search",
+                      "arguments": "{\"query\":\"deurbe arquitectura\",\"count\":5}"
+                    }
+                  }
+                ],
+                "refusal": null
+              },
+              "logprobs": null,
+              "finish_reason": "tool_calls"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 850,
+            "completion_tokens": 25,
+            "total_tokens": 875,
+            "prompt_tokens_details": {
+              "cached_tokens": 0,
+              "audio_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 0,
+              "audio_tokens": 0,
+              "accepted_prediction_tokens": 0,
+              "rejected_prediction_tokens": 0
+            }
+          },
+          "system_fingerprint": "fp_6fc10e10eb"
+        }
+  recorded_at: Wed, 18 Dec 2024 14:34:58 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=deurbe+arquitectura
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:33:58 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd9265d6410fb7e54781a2a657fb
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-DgKDPuWWrbH/B0UznOKXYw4J0bKomK3mx/gxdS9ypUs=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd9265d6410fb7e54781a2a657fb
+      bingapis-sessionid:
+      - 60C4DBC69BD94EA2AB7FE51546280B2B
+      x-msedge-clientid:
+      - 06BEAB4B14AC68BF2F5CBE12150F6900
+      x-msapi-userstate:
+      - 0c74
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - 403d559299b74dc0aa4bd741390427fb
+      x-search-responseinfo:
+      - InternalResponseTime=359,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: DF11D758D5974890B5A874514EB033FD Ref B: AMS04EDGE1608 Ref C: 2024-12-18T14:34:58Z'
+      apim-request-id:
+      - c19c048c-c0a8-4878-9071-f85e36f8fb08
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:34:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "deurbe
+        arquitectura", "askUserForLocation": true}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=deurbe+arquitectura",
+        "totalEstimatedMatches": 45200, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "deurbe arquitectura", "url": "https:\/\/www.deurbe.com\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/www.deurbe.com", "snippet": "DEURBE ayuda a
+        sus clientes con la tramitación administrativa de todo tipo de licencias o
+        permisos; desde el asesoramiento personalizado hasta dar con el trámite más
+        adecuado y\/o rápido hasta la representación legal.", "dateLastCrawled": "2024-12-14T23:11:00.0000000Z",
+        "language": "es", "isNavigational": true, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "deurbe arquitectura", "url": "https:\/\/www.deurbe.com\/estudio",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.deurbe.com\/estudio",
+        "snippet": "DEURBE ARQUITECTURA es una empresa creada en el año 1990 por el
+        Arquitecto Jesús Gonzalo Aristondo con el fin de reconvertir su Estudio profesional
+        de Arquitectura en una empresa que aglutinara todas las disciplinas vinculadas
+        al urbanismo, la arquitectura y la gestión del suelo.", "dateLastCrawled":
+        "2024-12-15T04:41:00.0000000Z", "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "deurbe arquitectura", "url": "https:\/\/www.deurbe.com\/arquitectura",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.deurbe.com\/arquitectura",
+        "snippet": "Artista, diseñadora, arquitecta y realizadora de cine. Localización:
+        Avda. Murrieta s\/n, SANTURTZI (BIZKAIA) ¡Te llamamos! Uno de nuestros técnicos
+        se pondrá en contacto contigo lo antes posible para atender a tus dudas y
+        necesidades.", "dateLastCrawled": "2024-10-24T21:18:00.0000000Z", "language":
+        "es", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Olalla Gonzalo Marcos - CEO y directora de arquitectura - Deurbe
+        ...", "url": "https:\/\/es.linkedin.com\/in\/olalla-gonzalo-marcos-a624b92a",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/es.linkedin.com\/in\/olalla-gonzalo-marcos-a624b92a",
+        "snippet": "DEURBE ARQUITECTURA · Experiencia: Deurbe Arquitectura · Ubicación:
+        Bilbao y alrededores · 465 contactos en LinkedIn. Mira el perfil de Olalla
+        Gonzalo Marcos en LinkedIn, una red...", "dateLastCrawled": "2024-12-12T11:08:00.0000000Z",
+        "language": "es", "isNavigational": false, "richFacts": [{"label": {"text":
+        "Conexiones"}, "items": [{"text": "337"}], "hint": {"text": "BASE:GENERICFACT"}},
+        {"label": {"text": "Trabaja para"}, "items": [{"text": "Deurbe Arquitectura"}],
+        "hint": {"text": "BASE:GENERICFACT"}}, {"label": {"text": "Seguidores"}, "items":
+        [{"text": "465"}], "hint": {"text": "BASE:GENERICFACT"}}, {"label": {"text":
+        "Ubicación"}, "items": [{"text": "Bilbao y alrededores"}], "hint": {"text":
+        "ADDRESS:LOCATIONGENERAL"}}], "noCache": true, "siteName": "LinkedIn"}, {"id":
+        "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4", "name": "DeURBE
+        - Tumblr", "url": "https:\/\/www.deurbe.net\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.3UFrNzyJ-MsCr65bYifz-gHaFj&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.deurbe.net", "snippet":
+        "arquitectura. Mar 11, 2015. MAD Architects - Urban Forest: Chongqing, China
+        (commercial, office, hotel). “Urban forest is a high rise tower for the youngest
+        urban center of China, Chongqing. Through the design MAD proposes a shift
+        in the understanding of sustainability.", "dateLastCrawled": "2024-11-17T00:07:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.3UFrNzyJ-MsCr65bYifz-gHaFj&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 355, "imageId":
+        "OIP.3UFrNzyJ-MsCr65bYifz-gHaFj"}, "language": "en", "isNavigational": false,
+        "noCache": true}], "someResultsRemoved": true}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:34:58 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"system","content":[{"type":"text","text":"Extract
+        structured information about a brand from a given website. Analyze the content
+        and fill out the following details in the specified format:\n- Brand Name:
+        The official name of the brand, company, or service that the website belongs
+        to.\n- Category: The product or service category the brand offers (e.g., fashion,
+        software, food \u0026 beverages, etc.).\n- Description: A short summary of
+        what the brand does and its key focus areas. If the website details do not
+        include information about a region where the brand operates most specifically,
+        omit it.\n- Region: The geographical region where the brand operates primarily
+        or where its main competitors are located.\n- Keywords: A list of SEO keywords,
+        to reach the website. Low volume and high difficulty keywords are preferred.
+        Include regional words in each keyword\nUse the search tool to find more information
+        about the brand if you cannot extract information from the website alone\n"}]},{"role":"user","content":[{"type":"text","text":"You
+        must format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the brand, company, or service that the website belongs to\"},\"category\":{\"type\":\"string\",\"description\":\"The
+        category of the product or service that the brand offers\"},\"description\":{\"type\":\"string\",\"description\":\"A
+        short description of what they do. It should be a single sentence and might,
+        might not be the actual description coming from the website, but something
+        that is accurate with what the brand does\"},\"region\":{\"type\":\"string\",\"description\":\"The
+        geopgrahical region where the brand operates and has most of its competitors\"},\"keywords\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/keyword\"},\"description\":\"A
+        list of SEO keywords to reach the website\"}},\"required\":[\"name\",\"category\",\"description\",\"region\",\"keywords\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"keyword\":{\"type\":\"object\",\"properties\":{\"value\":{\"type\":\"string\",\"description\":\"A
+        keyword\"}},\"required\":[\"value\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nThe
+        website info is: \n# Website info\n## URL: https://deurbe.com/\n## Title:
+        deurbe arquitectura\n## Meta tags: \n* viewport: width=device-width, initial-scale=1\n##
+        HMTL header elements (as a table of contents of the site):\n- \n- Las ideas,
+        la realización, la calidad y el resultado. Somos deurbe.\n- Estudio\n- Arquitectura\n-
+        Interiorismo\n- Urbanismo\n- deurbe somos\n- Servicios\n- Clientes\n- ¡Te
+        llamamos!\nExtract brand information\n"}]},{"role":"assistant","tool_calls":[{"id":"call_IDR68T5GjztXKSq6SGrDghq9","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":\"deurbe
+        arquitectura\",\"count\":5}"}}]},{"role":"tool","tool_call_id":"call_IDR68T5GjztXKSq6SGrDghq9","content":[{"type":"text","text":"[{\"URL\":\"https://www.deurbe.com/\",\"Snippet\":\"DEURBE
+        ayuda a sus clientes con la tramitación administrativa de todo tipo de licencias
+        o permisos; desde el asesoramiento personalizado hasta dar con el trámite
+        más adecuado y/o rápido hasta la representación legal.\"},{\"URL\":\"https://www.deurbe.com/estudio\",\"Snippet\":\"DEURBE
+        ARQUITECTURA es una empresa creada en el año 1990 por el Arquitecto Jesús
+        Gonzalo Aristondo con el fin de reconvertir su Estudio profesional de Arquitectura
+        en una empresa que aglutinara todas las disciplinas vinculadas al urbanismo,
+        la arquitectura y la gestión del suelo.\"},{\"URL\":\"https://www.deurbe.com/arquitectura\",\"Snippet\":\"Artista,
+        diseñadora, arquitecta y realizadora de cine. Localización: Avda. Murrieta
+        s/n, SANTURTZI (BIZKAIA) ¡Te llamamos! Uno de nuestros técnicos se pondrá
+        en contacto contigo lo antes posible para atender a tus dudas y necesidades.\"},{\"URL\":\"https://es.linkedin.com/in/olalla-gonzalo-marcos-a624b92a\",\"Snippet\":\"DEURBE
+        ARQUITECTURA · Experiencia: Deurbe Arquitectura · Ubicación: Bilbao y alrededores
+        · 465 contactos en LinkedIn. Mira el perfil de Olalla Gonzalo Marcos en LinkedIn,
+        una red...\"},{\"URL\":\"https://www.deurbe.net/\",\"Snippet\":\"arquitectura.
+        Mar 11, 2015. MAD Architects - Urban Forest: Chongqing, China (commercial,
+        office, hotel). “Urban forest is a high rise tower for the youngest urban
+        center of China, Chongqing. Through the design MAD proposes a shift in the
+        understanding of sustainability.\"}]"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o-mini","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 14:35:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '2642'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '10000000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '9998720'
+      X-Ratelimit-Reset-Requests:
+      - 6ms
+      X-Ratelimit-Reset-Tokens:
+      - 7ms
+      X-Request-Id:
+      - req_ad6f8dfdab369afff1c25049e2b198da
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=8pYA60zDplIYaxLCoEYPy0V0YqYtFeisdNlC6rPFHQM-1734532501-1.0.1.1-PCwj0z2Neeq_YH0KUltORGWubAwHHwn82EvpCV95puHTLPCXggfagpy_qJt_4039KInl6dlGzCEXfssaENKgvw;
+        path=/; expires=Wed, 18-Dec-24 15:05:01 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=OLWembedClEngobSFxifkMTVc78TdYbGBnnHxxBbLIk-1734532501595-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3fe0757cb16665-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZnBRWThjd3VhQ1BCMVlzU25LOEJFeElYMzAzdCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDUzMjQ5OCwKICAibW9kZWwiOiAiZ3B0LTRvLW1pbmktMjAyNC0wNy0xOCIsCiAgImNob2ljZXMiOiBbCiAgICB7CiAgICAgICJpbmRleCI6IDAsCiAgICAgICJtZXNzYWdlIjogewogICAgICAgICJyb2xlIjogImFzc2lzdGFudCIsCiAgICAgICAgImNvbnRlbnQiOiAiYGBganNvblxue1xuICBcIm5hbWVcIjogXCJkZXVyYmUgYXJxdWl0ZWN0dXJhXCIsXG4gIFwiY2F0ZWdvcnlcIjogXCJBcmNoaXRlY3R1cmUgYW5kIFVyYmFuaXNtXCIsXG4gIFwiZGVzY3JpcHRpb25cIjogXCJEZXVyYmUgYXJxdWl0ZWN0dXJhIGlzIGEgbXVsdGlkaXNjaXBsaW5hcnkgZmlybSBzcGVjaWFsaXppbmcgaW4gYXJjaGl0ZWN0dXJlLCBpbnRlcmlvciBkZXNpZ24sIGFuZCB1cmJhbiBwbGFubmluZywgcHJvdmlkaW5nIGNvbXByZWhlbnNpdmUgc2VydmljZXMgZnJvbSBwcm9qZWN0IGNvbmNlcHRpb24gdG8gZXhlY3V0aW9uLlwiLFxuICBcInJlZ2lvblwiOiBcIkJpemthaWEsIFNwYWluXCIsXG4gIFwia2V5d29yZHNcIjogW1xuICAgIHtcInZhbHVlXCI6IFwiYXJxdWl0ZWN0dXJhIEJpemthaWFcIn0sXG4gICAge1widmFsdWVcIjogXCJ1cmJhbmlzbW8gQml6a2FpYVwifSxcbiAgICB7XCJ2YWx1ZVwiOiBcImludGVyaW9yaXNtbyBCaXprYWlhXCJ9LFxuICAgIHtcInZhbHVlXCI6IFwiZXN0dWRpbyBhcnF1aXRlY3R1cmEgQml6a2FpYVwifSxcbiAgICB7XCJ2YWx1ZVwiOiBcInNlcnZpY2lvcyBhcnF1aXRlY3TDs25pY29zIEJpemthaWFcIn1cbiAgXVxufVxuYGBgIiwKICAgICAgICAicmVmdXNhbCI6IG51bGwKICAgICAgfSwKICAgICAgImxvZ3Byb2JzIjogbnVsbCwKICAgICAgImZpbmlzaF9yZWFzb24iOiAic3RvcCIKICAgIH0KICBdLAogICJ1c2FnZSI6IHsKICAgICJwcm9tcHRfdG9rZW5zIjogMTI1NywKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDEzNywKICAgICJ0b3RhbF90b2tlbnMiOiAxMzk0LAogICAgInByb21wdF90b2tlbnNfZGV0YWlscyI6IHsKICAgICAgImNhY2hlZF90b2tlbnMiOiAwLAogICAgICAiYXVkaW9fdG9rZW5zIjogMAogICAgfSwKICAgICJjb21wbGV0aW9uX3Rva2Vuc19kZXRhaWxzIjogewogICAgICAicmVhc29uaW5nX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwLAogICAgICAiYWNjZXB0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwLAogICAgICAicmVqZWN0ZWRfcHJlZGljdGlvbl90b2tlbnMiOiAwCiAgICB9CiAgfSwKICAic3lzdGVtX2ZpbmdlcnByaW50IjogImZwXzZmYzEwZTEwZWIiCn0K
+  recorded_at: Wed, 18 Dec 2024 14:35:01 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nWhat
+        are the main competitors of the brand deurbe arquitectura?\nThe brand belongs
+        to the following product or service category: Architecture and Urbanism.\nThe
+        brand''s website appears when using the following search queries in Bing:\n*
+        {\"value\"=\u003e\"arquitectura Bizkaia\"}\n* {\"value\"=\u003e\"urbanismo
+        Bizkaia\"}\n* {\"value\"=\u003e\"interiorismo Bizkaia\"}\n* {\"value\"=\u003e\"estudio
+        arquitectura Bizkaia\"}\n* {\"value\"=\u003e\"servicios arquitectónicos Bizkaia\"}\nAnd
+        maybe competitors are found when using similar search queries.\nBe mindful
+        to not hallucinate competitors.\nFor each competitor, provide the name of
+        the competitor and the URL of a its website, only official websites are accepted.
+        Comparators, blogs, news sites, that mention the brand are not accepted\nBe
+        sure to not include the own brand being analyzed in the list of competitors\nUse
+        the given search tool if needed.\n"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 14:35:05 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '3481'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '2000000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '1999357'
+      X-Ratelimit-Reset-Requests:
+      - 6ms
+      X-Ratelimit-Reset-Tokens:
+      - 19ms
+      X-Request-Id:
+      - req_0d1d16e644ad7a8475fc62fea743226f
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=IkVx4TIF1NpmUL56YXjmxZnWNxqGsZMiyUmR3fYjkDc-1734532505-1.0.1.1-RUq3tRFFpTsmJx5I5veqg4as7nzVGntnSoAKjVZ5hZE7wetwIygfH79fJoYQ2BXfmeTDOLUUsftyuKwAaNaxmQ;
+        path=/; expires=Wed, 18-Dec-24 15:05:05 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=lLHDrrxFndZkL4kKpdGk.Gsf4QBV8URd6HBK.nF03Og-1734532505397-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3fe0882ebecff0-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZnBRYkEyWDR4cHpudFY5eWtHdkdYVFAwUFRlQiIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDUzMjUwMSwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogbnVsbCwKICAgICAgICAidG9vbF9jYWxscyI6IFsKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfb3BKTVdMY052M0ZzVUFLdVZIOVJxc2VWIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcImFycXVpdGVjdHVyYSBCaXprYWlhXCIsIFwiY291bnRcIjogNX0iCiAgICAgICAgICAgIH0KICAgICAgICAgIH0sCiAgICAgICAgICB7CiAgICAgICAgICAgICJpZCI6ICJjYWxsX0NxUXNwaVcyTHZZd09vampDcFFua1hmOCIsCiAgICAgICAgICAgICJ0eXBlIjogImZ1bmN0aW9uIiwKICAgICAgICAgICAgImZ1bmN0aW9uIjogewogICAgICAgICAgICAgICJuYW1lIjogImFuYWx5c2lzX3Rvb2xzX2Jpbmdfc2VhcmNoX19zZWFyY2giLAogICAgICAgICAgICAgICJhcmd1bWVudHMiOiAie1wicXVlcnlcIjogXCJ1cmJhbmlzbW8gQml6a2FpYVwiLCBcImNvdW50XCI6IDV9IgogICAgICAgICAgICB9CiAgICAgICAgICB9LAogICAgICAgICAgewogICAgICAgICAgICAiaWQiOiAiY2FsbF9VajFRdTI2ODQxZDRvSlVBYTNFYXNIRjgiLAogICAgICAgICAgICAidHlwZSI6ICJmdW5jdGlvbiIsCiAgICAgICAgICAgICJmdW5jdGlvbiI6IHsKICAgICAgICAgICAgICAibmFtZSI6ICJhbmFseXNpc190b29sc19iaW5nX3NlYXJjaF9fc2VhcmNoIiwKICAgICAgICAgICAgICAiYXJndW1lbnRzIjogIntcInF1ZXJ5XCI6IFwiaW50ZXJpb3Jpc21vIEJpemthaWFcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfeEhhc2wxNnNiOW0ybE1tcjRRbXA5V3FjIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcImVzdHVkaW8gYXJxdWl0ZWN0dXJhIEJpemthaWFcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfSwKICAgICAgICAgIHsKICAgICAgICAgICAgImlkIjogImNhbGxfNDM2VzRWWGtmNllvSXVEOGlOcGFtMkFSIiwKICAgICAgICAgICAgInR5cGUiOiAiZnVuY3Rpb24iLAogICAgICAgICAgICAiZnVuY3Rpb24iOiB7CiAgICAgICAgICAgICAgIm5hbWUiOiAiYW5hbHlzaXNfdG9vbHNfYmluZ19zZWFyY2hfX3NlYXJjaCIsCiAgICAgICAgICAgICAgImFyZ3VtZW50cyI6ICJ7XCJxdWVyeVwiOiBcInNlcnZpY2lvcyBhcnF1aXRlY3TDs25pY29zIEJpemthaWFcIiwgXCJjb3VudFwiOiA1fSIKICAgICAgICAgICAgfQogICAgICAgICAgfQogICAgICAgIF0sCiAgICAgICAgInJlZnVzYWwiOiBudWxsCiAgICAgIH0sCiAgICAgICJsb2dwcm9icyI6IG51bGwsCiAgICAgICJmaW5pc2hfcmVhc29uIjogInRvb2xfY2FsbHMiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAgICAicHJvbXB0X3Rva2VucyI6IDYyOSwKICAgICJjb21wbGV0aW9uX3Rva2VucyI6IDE1NiwKICAgICJ0b3RhbF90b2tlbnMiOiA3ODUsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfOWZhYmE5ZjAzOCIKfQo=
+  recorded_at: Wed, 18 Dec 2024 14:35:05 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=arquitectura+Bizkaia
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:34:05 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd99cd46408c933a5736382b2a7c
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-1EslQhvhzLdIFZYc9MPhJjXW1Qx4Wyhyb2MysWmQI9w=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd99cd46408c933a5736382b2a7c
+      bingapis-sessionid:
+      - 852152F9E63D4A89BB17F1066F8E7F9E
+      x-msedge-clientid:
+      - 3FDEBE5C8FAC663B2987AB058E4167E4
+      x-msapi-userstate:
+      - b3c4
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - 7c1a6fef4a26459eb7a6a9d9c4702f07
+      x-search-responseinfo:
+      - InternalResponseTime=288,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: E9203B1935B14176B8FB753033731BF4 Ref B: AMS04EDGE3310 Ref C: 2024-12-18T14:35:05Z'
+      apim-request-id:
+      - b62cd4c5-3fb6-4751-94c3-be97cad6c343
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:35:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "arquitectura
+        Bizkaia"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=arquitectura+Bizkaia",
+        "totalEstimatedMatches": 77200, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Estudio de arquitectura en Bizkaia - aiertarkitektura.eus", "url":
+        "https:\/\/aiertarkitektura.eus\/estudio-arquitectura-bizkaia\/", "thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.wNJBjJbwf2v2lYoRZpB4dwHaDx&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/aiertarkitektura.eus\/estudio-arquitectura-bizkaia",
+        "snippet": "Realizamos proyectos de arquitectura en Bizkaia. Proyectos de
+        reformas de caseríos, de viviendas de planta nueva, reformas de espacios públicos
+        etc... y tenemos pasión por ello", "dateLastCrawled": "2024-12-16T09:49:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.wNJBjJbwf2v2lYoRZpB4dwHaDx&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 241, "imageId":
+        "OIP.wNJBjJbwf2v2lYoRZpB4dwHaDx"}, "language": "es", "isNavigational": true,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "ARQUIPLAN | Estudio de Arquitectura en Bilbao Bizkaia", "url": "https:\/\/arquiplan.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ddyGGkCRomwluhjDKlz65QHaEW&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/arquiplan.com", "snippet":
+        "Arquiplan es el estudio de arquitectura líder en Bizkaia. Fundado por Juan
+        C. Cardenal Abaitua en 1990, tiene sus inicios con una secuencia de trabajos
+        en Bilbao y desde entonces ha desarrollado una gran cantidad de proyectos
+        de diversos tipos como, gestión urbanística, rehabilitación e interiorismo,
+        masterplan, equipamiento docente ...", "dateLastCrawled": "2024-12-13T13:26:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ddyGGkCRomwluhjDKlz65QHaEW&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 278, "imageId":
+        "OIP.ddyGGkCRomwluhjDKlz65QHaEW"}, "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "ARQUIPLAN"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Tandem Arquitectura – Estudio de arquitectura en Bizkaia", "url":
+        "https:\/\/tandemarquitectura.com\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.1AN1hEJs9I13tzWBzkbhCwHaDl&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/tandemarquitectura.com",
+        "snippet": "Tandem es un Estudio de Arquitectura y Diseño que nace en 2002
+        de la mano de Ixone Legarreta Iturregi y Daniel Salvador Otaduy. “Queremos
+        romper los moldes del diseño sin olvidarnos de la tradición y formas que nos
+        han traído hasta aquí”", "dateLastCrawled": "2024-12-13T19:29:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.1AN1hEJs9I13tzWBzkbhCwHaDl&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 229, "imageId":
+        "OIP.1AN1hEJs9I13tzWBzkbhCwHaDl"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Estudio de Arquitectura y Diseño de Interiores |orbisarquitectura.com",
+        "url": "https:\/\/orbisarquitectura.com\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gkiyNM1ItlyyGwcnSDg3XAHaLH&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/orbisarquitectura.com",
+        "snippet": "Orbis Arquitectura es una estudio de arquitectura y diseño de
+        interiores ubicado en Bizkaia y Castilla León, con 15 años de experiencia
+        en el desarrollo de proyectos y direcciones de obra, que hasta el momento
+        se traduce en más de un centenar de obras realizadas y dirigidas.", "dateLastCrawled":
+        "2024-12-12T02:06:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gkiyNM1ItlyyGwcnSDg3XAHaLH&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 711, "imageId":
+        "OIP.gkiyNM1ItlyyGwcnSDg3XAHaLH"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "ESTUDIO DE ARQUITECTURA BIZKAIA - HINOJAL ARQUITECTO", "url": "https:\/\/hinojalarquitectos.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.5o67umScoyP3KosowPU6EgHaD6&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/hinojalarquitectos.com",
+        "snippet": "Hinojal Arquitectos, estudio de arquitectura con 15 años de experiencia
+        en el desarrollo de proyectos y direcciones de obra. ¿Tienes algún proyecto
+        en mente? Puedes elegir la opción que te resulte más cómoda: teléfono, correo
+        electrónico e incluso Whatsapp. ¡Estamos listos para ayudarte!", "dateLastCrawled":
+        "2024-12-10T19:19:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.5o67umScoyP3KosowPU6EgHaD6&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 250, "imageId":
+        "OIP.5o67umScoyP3KosowPU6EgHaD6"}, "language": "es", "isNavigational": false,
+        "noCache": false}], "someResultsRemoved": true}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:35:05 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=urbanismo+Bizkaia
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:34:05 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd99cb5d4cb5b7518d8fa62db664
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-RUYoyQlyfw7OdIQdsywoXH8ZNxm/WQHui7ucHsSHe2I=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd99cb5d4cb5b7518d8fa62db664
+      bingapis-sessionid:
+      - 47CBBCF397B54352977E1DF0F8F888B3
+      x-msedge-clientid:
+      - 0C45211FE5726B99397A3446E49F6A24
+      x-msapi-userstate:
+      - 2aa9
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - a3cff9a703e54354994e9e33416de3b7
+      x-search-responseinfo:
+      - InternalResponseTime=286,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: 9491F39E01A54AD09258DA47DD8801E1 Ref B: AMS04EDGE3310 Ref C: 2024-12-18T14:35:05Z'
+      apim-request-id:
+      - 3d14258b-2ac0-4bc2-914e-fbf82e25b0be
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:35:06 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "urbanismo
+        Bizkaia"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=urbanismo+Bizkaia",
+        "totalEstimatedMatches": 73200, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Urbanismo - Bizkaia.eus", "url": "https:\/\/www.bizkaia.eus\/es\/urbanismo",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bizkaia.eus\/es\/urbanismo",
+        "snippet": "Planes urbanísticos vigentes de los municipios de Bizkaia y su
+        documentación.", "deepLinks": [{"name": "Registro de Planeamiento Urbanístico",
+        "url": "https:\/\/www.bizkaia.eus\/es\/planeamiento-urbanistico-buscador",
+        "snippet": "Podrá hallar información de todos los planes urbanísticos vigentes
+        de todos los municipios de Bizkaia y sus modificaciones, las resoluciones
+        tomadas, las publicaciones en el BOB, y podrá acceder a los documentos que
+        los conforman"}], "dateLastCrawled": "2024-12-16T00:08:00.0000000Z", "language":
+        "es", "isNavigational": true, "noCache": false, "siteName": "Bizkaia.eus"},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1", "name": "Registro
+        de Planeamiento Urbanístico - Bizkaia.eus", "url": "https:\/\/www.bizkaia.eus\/es\/planeamiento-urbanistico-buscador",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.0FCUq-ABT0YBwG5onLEE2QAAAA&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.bizkaia.eus\/es\/planeamiento-urbanistico-buscador",
+        "snippet": "Podrá hallar información de todos los planes urbanísticos vigentes
+        de todos los municipios de Bizkaia y sus modificaciones, las resoluciones
+        tomadas, las publicaciones en el BOB, y podrá acceder a los documentos que
+        los conforman", "dateLastCrawled": "2024-12-17T16:18:00.0000000Z", "primaryImageOfPage":
+        {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.0FCUq-ABT0YBwG5onLEE2QAAAA&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 435, "sourceHeight": 316, "imageId":
+        "OIP.0FCUq-ABT0YBwG5onLEE2QAAAA"}, "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "Bizkaia.eus"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Hiri-plangintza \/ Planeamiento Urbano - BIZKAIA", "url": "http:\/\/apps.bizkaia.net\/PBIT\/PB_Marcos.jsp?Idioma=CA",
+        "isFamilyFriendly": true, "displayUrl": "apps.bizkaia.net\/PBIT\/PB_Marcos.jsp?Idioma=CA",
+        "snippet": "La administración foral de Bizkaia. Foru Aldundia - Diputación
+        Foral . Contacto Idiomas. Euskera . INFORMACION. URBANISTICA. BIZKAIA Ayuda.
+        Deseleccionar municipios. Seleccionar municipios. Ventana gráfica. Areas Funcionales.
+        Municipios Planeamiento general vigente y datos generales. Determinaciones
+        del ...", "dateLastCrawled": "2024-12-09T23:28:00.0000000Z", "language": "es",
+        "isNavigational": false, "noCache": true, "siteName": "Bizkaiko Foru Aldundia"},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Inicio
+        - Cámara Urbana de Bizkaia : Cámara Urbana de Bizkaia", "url": "https:\/\/www.asociacioncamaraurbana.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.HwPQsa7UjfvWV03zVK0vZQHaFC&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.asociacioncamaraurbana.com",
+        "snippet": "Consulta nuestros servicios de información, asesoramiento, mediación,
+        conciliación y consultas personalizadas gratuitos para los socios. Informes
+        jurídicos redactados por abogados especialistas, en todas las materias relacionadas
+        con la propiedad y uso de viviendas y locales. socio?", "dateLastCrawled":
+        "2024-12-13T20:51:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.HwPQsa7UjfvWV03zVK0vZQHaFC&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 322, "imageId":
+        "OIP.HwPQsa7UjfvWV03zVK0vZQHaFC"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Planeamiento urbanístico - Planeamiento urbanístico de Bizkaia (WMS
+        ...", "url": "https:\/\/www.opendatabizkaia.eus\/es\/catalogo\/planeamiento-urbanistico\/recurso\/planeamiento-urbanistico-bizkaia-wms",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.opendatabizkaia.eus\/...\/recurso\/planeamiento-urbanistico-bizkaia-wms",
+        "snippet": "Planeamiento urbanístico de Bizkaia (WMS) Servicio de mapas WMS
+        que incluye información relativa a la clasificación, la calificación y los
+        ámbitos de desarrollo delimitados en el planeamiento urbanístico.", "dateLastCrawled":
+        "2024-11-18T18:50:00.0000000Z", "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "Open Data Bizkaia"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:35:06 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=interiorismo+Bizkaia
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:34:06 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd9ae725475980f6d175931bffa2
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-bCkjWTXwW8TcTfeYO/DzsYlysAmWXH5jAgRQxyvbUGQ=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd9ae725475980f6d175931bffa2
+      bingapis-sessionid:
+      - 7A396BDA81344C3281C32E380D1444AB
+      x-msedge-clientid:
+      - 2C1618B23CA1671C15540DEB3DF666B2
+      x-msapi-userstate:
+      - '7715'
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - e78d1ea72880482a9f21e90b8f49a417
+      x-search-responseinfo:
+      - InternalResponseTime=293,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: 6784B90B230044DBB6E9E09691324A78 Ref B: AMS04EDGE1220 Ref C: 2024-12-18T14:35:06Z'
+      apim-request-id:
+      - fb4e3658-f748-4678-9afb-3903ed1b1233
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:35:06 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "interiorismo
+        Bizkaia"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=interiorismo+Bizkaia",
+        "totalEstimatedMatches": 299000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "IN56 Interiorismo: Decoración y diseño de interiores en Bizkaia",
+        "url": "https:\/\/www.in56.es\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.sWiDmYJefii7dR5XaHOzKQHaD4&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.in56.es", "snippet":
+        "En IN56 Interiorismo ofrecemos servicios de decoración y diseño de interiores.
+        Realizamos reformas integrales de viviendas y espacios comerciales. Consúltanos
+        sin compromiso.", "deepLinks": [{"name": "Proyectos", "url": "https:\/\/www.in56.es\/proyectos\/"},
+        {"name": "Estudio", "url": "https:\/\/www.in56.es\/estudio\/"}, {"name": "Sala
+        de prensa", "url": "https:\/\/www.in56.es\/sala-de-prensa\/"}, {"name": "Contacto",
+        "url": "https:\/\/www.in56.es\/contacto\/"}, {"name": "Empresas", "url": "https:\/\/www.in56.es\/interiorismo-comercial\/"},
+        {"name": "Viviendas", "url": "https:\/\/www.in56.es\/reforma-integral-viviendas\/"}],
+        "dateLastCrawled": "2024-12-15T01:13:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.sWiDmYJefii7dR5XaHOzKQHaD4&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 248, "imageId":
+        "OIP.sWiDmYJefii7dR5XaHOzKQHaD4"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "G48 Interiorismo - estudio de interiorismo en Bilbao (Bizkaia)",
+        "url": "https:\/\/www.g48interiorismo.es\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.VK71y_nGvJI8bZTWb_8cdgHaJ7&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.g48interiorismo.es",
+        "snippet": "Empresa de interiorismo y decoración en Bilbao (Bizkaia). Obras
+        y reformas. Gran experiencia. Presupuestos sin compromiso.", "deepLinks":
+        [{"name": "Inicio", "url": "https:\/\/www.g48interiorismo.es\/"}, {"name":
+        "Puertas Recicladas, Potencia De Estilo", "url": "https:\/\/www.g48interiorismo.es\/puertas-recicladas-potencia-de-estilo\/"},
+        {"name": "Becara, Marcando La Diferencia", "url": "https:\/\/www.g48interiorismo.es\/becara-marcando-la-diferencia\/"},
+        {"name": "Qué Hizo Darío Urzay En 1990", "url": "https:\/\/www.g48interiorismo.es\/dario-urzay-1990\/"},
+        {"name": "Cajones Insospechados", "url": "https:\/\/www.g48interiorismo.es\/aprovechar-espacios-cajones-insospechados\/"},
+        {"name": "Aviso Legal", "url": "https:\/\/www.g48interiorismo.es\/aviso-legal\/"}],
+        "dateLastCrawled": "2024-12-10T23:34:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl":
+        "https:\/\/www.bing.com\/th?id=OIP.VK71y_nGvJI8bZTWb_8cdgHaJ7&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 635, "imageId":
+        "OIP.VK71y_nGvJI8bZTWb_8cdgHaJ7"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "IRUNE TORRONTEGI - Interiorismo y Decoración en Bilbao", "url": "https:\/\/irunetorrontegi.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.AURkUDpjoMdIRd85SKuO_QHaEK&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/irunetorrontegi.com", "snippet":
+        "Somos un estudio de interiorismo y decoración de interiores en Bilbao que
+        hace realidad tus ideas creando espacios únicos.", "dateLastCrawled": "2024-12-15T23:12:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.AURkUDpjoMdIRd85SKuO_QHaEK&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 266, "imageId":
+        "OIP.AURkUDpjoMdIRd85SKuO_QHaEK"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Interiorismo y Decoración | ATICO Bilbao Bizkaia", "url": "https:\/\/aticointeriorismo.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/aticointeriorismo.com",
+        "snippet": "ÁTICO ESTUDIO DE INTERIORISMO en Leioa. Creemos en la transparencia
+        y la honestidad. Hacemos presupuestos detallados y hechos a la medida del
+        cliente.", "dateLastCrawled": "2024-12-13T19:23:00.0000000Z", "language":
+        "es", "isNavigational": false, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "Ana Urrutia Interiorismo", "url": "https:\/\/anaurrutiainteriorismo.com\/",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/anaurrutiainteriorismo.com",
+        "snippet": "Ana Urrutia Interiorismo es un estudio especializado en diseño
+        de interiores y decoración, ubicado en una de las calles emblemáticas. Licenciado
+        Poza, casi esquina con José Mª Escuza, en Bilbao (Bizkaia). Presta servicios
+        en todo el País Vasco.", "dateLastCrawled": "2024-12-16T19:26:00.0000000Z",
+        "language": "es", "isNavigational": false, "noCache": false}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:35:06 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=estudio+arquitectura+Bizkaia
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:34:06 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd9a24f7441abc411f0514adc2be
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-Nzk/1DKpMfKq/kNulBbeQlDLq3BOw6cndwEaIoT2djM=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd9a24f7441abc411f0514adc2be
+      bingapis-sessionid:
+      - 1C559A0BFB5146F6A849DB17654079DE
+      x-msedge-clientid:
+      - 24DFF12DB0436FD91990E474B1E06E22
+      x-msapi-userstate:
+      - fa23
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - ad40738722584fec9d640c6b1ba7a578
+      x-search-responseinfo:
+      - InternalResponseTime=384,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: C501E203045843D1830EB5421257F580 Ref B: AMS04EDGE1608 Ref C: 2024-12-18T14:35:06Z'
+      apim-request-id:
+      - 4133a087-bdc1-4823-8759-e8425dc8e12a
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:35:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "estudio
+        arquitectura Bizkaia"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=estudio+arquitectura+Bizkaia",
+        "totalEstimatedMatches": 197000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "Tandem Arquitectura – Estudio de arquitectura en Bizkaia", "url":
+        "https:\/\/tandemarquitectura.com\/", "isFamilyFriendly": true, "displayUrl":
+        "https:\/\/tandemarquitectura.com", "snippet": "Tandem es un Estudio de Arquitectura
+        y Diseño que nace en 2002 de la mano de Ixone Legarreta Iturregi y Daniel
+        Salvador Otaduy. “Queremos romper los moldes del diseño sin olvidarnos de
+        la tradición y formas que nos han traído hasta aquí” Para nosotros cada proyecto
+        es único, apostamos por diseño sumando funcionalidad, calidad y sostenibilidad.",
+        "deepLinks": [{"name": "Arquitectura", "url": "https:\/\/tandemarquitectura.com\/arquitectura\/",
+        "snippet": "arquitectura Dentro de las Bellas Artes, la Arquitectura es la
+        primera de ellas. El primer impacto visual debe ser cautivador y crear un
+        sentimiento; por ello perseguimos la Verdadera Arquitectura con diseños vanguardistas,
+        pero con un guiño a lo tradicional."}, {"name": "ECO DISEÑO", "url": "https:\/\/tandemarquitectura.com\/eco-diseno\/",
+        "snippet": "eco diseÑo · arquitectura sostenible Porque el diseño no tiene
+        que estar reñido con la sostenibilidad. Para ello respetamos en cada diseño
+        y en cada plano las condiciones climáticas e hidrográficas además de maximizar
+        la eficiencia energética y en materiales de construcción."}, {"name": "MANAGEMENT",
+        "url": "https:\/\/tandemarquitectura.com\/management\/", "snippet": "Una nueva
+        obra requiere una gestión a la altura. Es por eso, que en Group Tandem, ofrecemos
+        una gestión íntegra de cada proyecto con un trato personalizado de principio
+        a fin."}, {"name": "URBANISMO", "url": "https:\/\/tandemarquitectura.com\/urbanismo\/",
+        "snippet": "Definición de “Urbanismo”, Conjunto de conocimientos relacionados
+        con la planificación y desarrollo de las ciudades.Respetando la estética y
+        singularidades de cada ciudad, cada proyecto de urbanismo que desarrollamos
+        busca modernizar y crear un espacio visualmente acogedor e impactante."}],
+        "dateLastCrawled": "2024-12-13T19:29:00.0000000Z", "language": "es", "isNavigational":
+        true, "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "ESTUDIO DE ARQUITECTURA BIZKAIA - HINOJAL ARQUITECTO", "url": "https:\/\/hinojalarquitectos.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.5o67umScoyP3KosowPU6EgHaD6&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/hinojalarquitectos.com",
+        "snippet": "Hinojal Arquitectos, estudio de arquitectura con 15 años de experiencia
+        en el desarrollo de proyectos y direcciones de obra. ¿Tienes algún proyecto
+        en mente? Puedes elegir la opción que te resulte más cómoda: teléfono, correo
+        electrónico e incluso Whatsapp. ¡Estamos listos para ayudarte!", "dateLastCrawled":
+        "2024-12-10T19:19:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.5o67umScoyP3KosowPU6EgHaD6&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 250, "imageId":
+        "OIP.5o67umScoyP3KosowPU6EgHaD6"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Estudio de Arquitectura en Bilbao y Bizkaia → Arquinea", "url": "https:\/\/arquinea.es\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.6POlHT2xxd7GokbgX8LFjgHaGO&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/arquinea.es", "snippet":
+        "Estudio de arquitectura en Bilbao y Bizkaia (Portugalete) Rehabilitación
+        de fachadas, certificación energética de edificios, interiorismo, etc.", "dateLastCrawled":
+        "2024-12-09T11:05:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.6POlHT2xxd7GokbgX8LFjgHaGO&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 398, "imageId":
+        "OIP.6POlHT2xxd7GokbgX8LFjgHaGO"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3",
+        "name": "Estudio de Arquitectura y Diseño de Interiores |orbisarquitectura.com",
+        "url": "https:\/\/orbisarquitectura.com\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gkiyNM1ItlyyGwcnSDg3XAHaLH&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/orbisarquitectura.com",
+        "snippet": "Orbis Arquitectura es una estudio de arquitectura y diseño de
+        interiores ubicado en Bizkaia y Castilla León, con 15 años de experiencia
+        en el desarrollo de proyectos y direcciones de obra, que hasta el momento
+        se traduce en más de un centenar de obras realizadas y dirigidas.", "dateLastCrawled":
+        "2024-12-12T02:06:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.gkiyNM1ItlyyGwcnSDg3XAHaLH&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 711, "imageId":
+        "OIP.gkiyNM1ItlyyGwcnSDg3XAHaLH"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "ARQUIPLAN | Estudio de Arquitectura en Bilbao Bizkaia", "url": "https:\/\/arquiplan.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ddyGGkCRomwluhjDKlz65QHaEW&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/arquiplan.com", "snippet":
+        "Arquiplan es el estudio de arquitectura líder en Bizkaia. Fundado por Juan
+        C. Cardenal Abaitua en 1990, tiene sus inicios con una secuencia de trabajos
+        en Bilbao y desde entonces ha desarrollado una gran cantidad de proyectos
+        de diversos tipos como, gestión urbanística, rehabilitación e interiorismo,
+        masterplan, equipamiento docente ...", "dateLastCrawled": "2024-12-13T13:26:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ddyGGkCRomwluhjDKlz65QHaEW&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 278, "imageId":
+        "OIP.ddyGGkCRomwluhjDKlz65QHaEW"}, "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "ARQUIPLAN"}]}, "rankingResponse": {"mainline":
+        {"items": [{"answerType": "WebPages", "resultIndex": 0, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}},
+        {"answerType": "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:35:07 GMT
+- request:
+    method: get
+    uri: https://api.bing.microsoft.com/v7.0/search?count=5&q=servicios+arquitect%C3%B3nicos+Bizkaia
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/120.0.0.0 Safari/537.36
+      Ocp-Apim-Subscription-Key:
+      - 0db53b769f7a4e6c96c36548ab63f39c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      cache-control:
+      - private, max-age=0
+      transfer-encoding:
+      - chunked
+      content-type:
+      - application/json; charset=utf-8
+      content-encoding:
+      - gzip
+      expires:
+      - Wed, 18 Dec 2024 14:34:07 GMT
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+      x-eventid:
+      - 6762dd9b22d24e31836e243444ffb743
+      useragentreductionoptout:
+      - A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+      content-security-policy-report-only:
+      - 'script-src https: ''strict-dynamic'' ''report-sample'' ''wasm-unsafe-eval''
+        ''nonce-ZgnZbZC8FFPXHwtnPtE4IRlaxbLpotgs3DwLt3k1eeA=''; base-uri ''self'';report-to
+        csp-endpoint'
+      report-to:
+      - '{"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}'
+      bingapis-traceid:
+      - 6762dd9b22d24e31836e243444ffb743
+      bingapis-sessionid:
+      - 12031568F00749249DCED2444F9AAEC7
+      x-msedge-clientid:
+      - 2C88964C575668AC0900831556F569BB
+      x-msapi-userstate:
+      - d35d
+      bingapis-market:
+      - es-ES
+      bingapis-rguid:
+      - 8a6451adc76043ccb3790ee84cc248f2
+      x-search-responseinfo:
+      - InternalResponseTime=270,MSDatacenter=DUBE01
+      x-cache:
+      - CONFIG_NOCACHE
+      accept-ch:
+      - Sec-CH-UA-Arch,Sec-CH-UA-Bitness,Sec-CH-UA-Full-Version,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Mobile,Sec-CH-UA-Model,Sec-CH-UA-Platform,Sec-CH-UA-Platform-Version
+      x-msedge-ref:
+      - 'Ref A: 09ADC2CE11D44CBB9664F3DC50ABDE91 Ref B: AMS04EDGE1608 Ref C: 2024-12-18T14:35:07Z'
+      apim-request-id:
+      - 875b4082-d05f-4958-886f-8ccc3223a960
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      x-content-type-options:
+      - nosniff
+      csp-billing-usage:
+      - CognitiveServices.BingSearchV7.Transaction=1
+      date:
+      - Wed, 18 Dec 2024 14:35:07 GMT
+    body:
+      encoding: UTF-8
+      string: '{"_type": "SearchResponse", "queryContext": {"originalQuery": "servicios
+        arquitectónicos Bizkaia"}, "webPages": {"webSearchUrl": "https:\/\/www.bing.com\/search?q=servicios+arquitect%C3%B3nicos+Bizkaia",
+        "totalEstimatedMatches": 125000, "value": [{"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0",
+        "name": "YG Arquitectos - Innovación y excelencia en arquitectura, Bizkaia",
+        "url": "https:\/\/www.ygarquitectos.com\/", "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.RSQ6Byv1saudJTyMLJaH4AAAAA&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/www.ygarquitectos.com",
+        "snippet": "Ofrecemos servicios arquitectónicos personalizados en Bizkaia.
+        Desde obras nuevas a rehabilitaciones, nuestra experiencia y dedicación hacen
+        la diferencia.", "dateLastCrawled": "2024-12-11T18:41:00.0000000Z", "primaryImageOfPage":
+        {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.RSQ6Byv1saudJTyMLJaH4AAAAA&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 451, "sourceHeight": 530, "imageId":
+        "OIP.RSQ6Byv1saudJTyMLJaH4AAAAA"}, "language": "es", "isNavigational": true,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1",
+        "name": "ARQUIPLAN | Estudio de Arquitectura en Bilbao Bizkaia", "url": "https:\/\/arquiplan.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ddyGGkCRomwluhjDKlz65QHaEW&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/arquiplan.com", "snippet":
+        "Estudio de Arquitectura en Bizkaia, con proyectos de rehabilitación e interiorismo,
+        gestión urbanística y más.", "dateLastCrawled": "2024-12-13T13:26:00.0000000Z",
+        "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.ddyGGkCRomwluhjDKlz65QHaEW&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 278, "imageId":
+        "OIP.ddyGGkCRomwluhjDKlz65QHaEW"}, "language": "es", "isNavigational": false,
+        "noCache": false, "siteName": "ARQUIPLAN"}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2",
+        "name": "Estudio arquitectura Bizkaia - Arquitectura Bizcaia - Arquitectos",
+        "url": "https:\/\/renders.es\/estudio-arquitectura-bizkaia\/", "isFamilyFriendly":
+        true, "displayUrl": "https:\/\/renders.es\/estudio-arquitectura-bizkaia",
+        "snippet": "Ofrecemos servicios de arquitectura Bizkaia completos y personalizados
+        para una amplia gama de proyectos, desde residenciales hasta comerciales y
+        gubernamentales. Trabajamos estrechamente con nuestros clientes para crear
+        soluciones innovadoras y eficientes que cumplan con sus necesidades y objetivos
+        específicos.", "dateLastCrawled": "2024-12-12T19:01:00.0000000Z", "language":
+        "es", "isNavigational": false, "noCache": false, "siteName": "Renders 3D"},
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3", "name": "Nistal
+        Arquitectos | Estudio de Arquitectura en Bilbao", "url": "https:\/\/nistalarquitectos.com\/",
+        "thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.axbvxe61Q10p71MKys2KQgHaDW&w=80&h=80&c=1&pid=5.1",
+        "isFamilyFriendly": true, "displayUrl": "https:\/\/nistalarquitectos.com",
+        "snippet": "En Nistal Arquitectos, ofrecemos una amplia gama de servicios
+        en Bilbao y Bizkaia. Nos especializamos en diseño arquitectónico, rehabilitación
+        de edificios, reformas integrales y proyectos sostenibles.", "dateLastCrawled":
+        "2024-12-15T08:07:00.0000000Z", "primaryImageOfPage": {"thumbnailUrl": "https:\/\/www.bing.com\/th?id=OIP.axbvxe61Q10p71MKys2KQgHaDW&w=80&h=80&c=1&pid=5.1",
+        "width": 80, "height": 80, "sourceWidth": 474, "sourceHeight": 214, "imageId":
+        "OIP.axbvxe61Q10p71MKys2KQgHaDW"}, "language": "es", "isNavigational": false,
+        "noCache": false}, {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4",
+        "name": "KB arquitectas | Estudio de arquitectura y diseño en Bilbao", "url":
+        "https:\/\/kbarquitectas.com\/", "isFamilyFriendly": true, "displayUrl": "https:\/\/kbarquitectas.com",
+        "snippet": "Estudio de arquitectura y diseño con más de 25 años de experiencia
+        profesional. KB arquitectas está especializada en espacios saludables, sostenibles
+        y eficientes. Diseñamos y construimos ambientes que aportan bienestar, confort
+        y salud a las personas.", "dateLastCrawled": "2024-12-16T00:07:00.0000000Z",
+        "language": "es", "isNavigational": false, "noCache": false}]}, "rankingResponse":
+        {"mainline": {"items": [{"answerType": "WebPages", "resultIndex": 0, "value":
+        {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.0"}}, {"answerType":
+        "WebPages", "resultIndex": 1, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.1"}},
+        {"answerType": "WebPages", "resultIndex": 2, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.2"}},
+        {"answerType": "WebPages", "resultIndex": 3, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.3"}},
+        {"answerType": "WebPages", "resultIndex": 4, "value": {"id": "https:\/\/api.bing.microsoft.com\/api\/v7\/#WebPages.4"}}]}}}'
+  recorded_at: Wed, 18 Dec 2024 14:35:07 GMT
+- request:
+    method: post
+    uri: https://api.openai.com/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"messages":[{"role":"user","content":[{"type":"text","text":"You must
+        format your output as a JSON value that adheres to a given \"JSON Schema\"
+        instance.\n\n\"JSON Schema\" is a declarative language that allows you to
+        annotate and validate JSON documents.\n\nFor example, the example \"JSON Schema\"
+        instance {\"properties\": {\"foo\": {\"description\": \"a list of test words\",
+        \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}}\nwould
+        match an object with one required property, \"foo\". The \"type\" property
+        specifies \"foo\" must be an \"array\", and the \"description\" property semantically
+        describes it as \"a list of test words\". The items within \"foo\" must be
+        strings.\nThus, the object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted
+        instance of this example \"JSON Schema\". The object {\"properties\": {\"foo\":
+        [\"bar\", \"baz\"]}}} is not well-formatted.\n\nYour output will be parsed
+        and type-checked according to the provided schema instance, so make sure all
+        fields in your output match the schema exactly and there are no trailing commas!\n\nHere
+        is the JSON Schema instance your output must adhere to. Include the enclosing
+        markdown codeblock:\n```json\n{\"name\":\"schema\",\"description\":\"Schema
+        for the structured response\",\"schema\":{\"type\":\"object\",\"properties\":{\"competitors\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/competitor\"},\"description\":\"A
+        list of competitors\"}},\"required\":[\"competitors\"],\"additionalProperties\":false,\"strict\":true,\"$defs\":{\"competitor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The
+        name of the competitor\"},\"url\":{\"type\":\"string\",\"description\":\"The
+        URL of the competitor''s website\"}},\"required\":[\"name\",\"url\"],\"additionalProperties\":false,\"strict\":true}}}}\n```\n\nWhat
+        are the main competitors of the brand deurbe arquitectura?\nThe brand belongs
+        to the following product or service category: Architecture and Urbanism.\nThe
+        brand''s website appears when using the following search queries in Bing:\n*
+        {\"value\"=\u003e\"arquitectura Bizkaia\"}\n* {\"value\"=\u003e\"urbanismo
+        Bizkaia\"}\n* {\"value\"=\u003e\"interiorismo Bizkaia\"}\n* {\"value\"=\u003e\"estudio
+        arquitectura Bizkaia\"}\n* {\"value\"=\u003e\"servicios arquitectónicos Bizkaia\"}\nAnd
+        maybe competitors are found when using similar search queries.\nBe mindful
+        to not hallucinate competitors.\nFor each competitor, provide the name of
+        the competitor and the URL of a its website, only official websites are accepted.
+        Comparators, blogs, news sites, that mention the brand are not accepted\nBe
+        sure to not include the own brand being analyzed in the list of competitors\nUse
+        the given search tool if needed.\n"}]},{"role":"assistant","tool_calls":[{"id":"call_opJMWLcNv3FsUAKuVH9RqseV","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"arquitectura Bizkaia\", \"count\": 5}"}},{"id":"call_CqQspiW2LvYwOojjCpQnkXf8","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"urbanismo Bizkaia\", \"count\": 5}"}},{"id":"call_Uj1Qu26841d4oJUAa3EasHF8","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"interiorismo Bizkaia\", \"count\": 5}"}},{"id":"call_xHasl16sb9m2lMmr4Qmp9Wqc","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"estudio arquitectura Bizkaia\", \"count\": 5}"}},{"id":"call_436W4VXkf6YoIuD8iNpam2AR","type":"function","function":{"name":"analysis_tools_bing_search__search","arguments":"{\"query\":
+        \"servicios arquitectónicos Bizkaia\", \"count\": 5}"}}]},{"role":"tool","tool_call_id":"call_opJMWLcNv3FsUAKuVH9RqseV","content":[{"type":"text","text":"[{\"URL\":\"https://aiertarkitektura.eus/estudio-arquitectura-bizkaia/\",\"Snippet\":\"Realizamos
+        proyectos de arquitectura en Bizkaia. Proyectos de reformas de caseríos, de
+        viviendas de planta nueva, reformas de espacios públicos etc... y tenemos
+        pasión por ello\"},{\"URL\":\"https://arquiplan.com/\",\"Snippet\":\"Arquiplan
+        es el estudio de arquitectura líder en Bizkaia. Fundado por Juan C. Cardenal
+        Abaitua en 1990, tiene sus inicios con una secuencia de trabajos en Bilbao
+        y desde entonces ha desarrollado una gran cantidad de proyectos de diversos
+        tipos como, gestión urbanística, rehabilitación e interiorismo, masterplan,
+        equipamiento docente ...\"},{\"URL\":\"https://tandemarquitectura.com/\",\"Snippet\":\"Tandem
+        es un Estudio de Arquitectura y Diseño que nace en 2002 de la mano de Ixone
+        Legarreta Iturregi y Daniel Salvador Otaduy. “Queremos romper los moldes del
+        diseño sin olvidarnos de la tradición y formas que nos han traído hasta aquí”\"},{\"URL\":\"https://orbisarquitectura.com/\",\"Snippet\":\"Orbis
+        Arquitectura es una estudio de arquitectura y diseño de interiores ubicado
+        en Bizkaia y Castilla León, con 15 años de experiencia en el desarrollo de
+        proyectos y direcciones de obra, que hasta el momento se traduce en más de
+        un centenar de obras realizadas y dirigidas.\"},{\"URL\":\"https://hinojalarquitectos.com/\",\"Snippet\":\"Hinojal
+        Arquitectos, estudio de arquitectura con 15 años de experiencia en el desarrollo
+        de proyectos y direcciones de obra. ¿Tienes algún proyecto en mente? Puedes
+        elegir la opción que te resulte más cómoda: teléfono, correo electrónico e
+        incluso Whatsapp. ¡Estamos listos para ayudarte!\"}]"}]},{"role":"tool","tool_call_id":"call_CqQspiW2LvYwOojjCpQnkXf8","content":[{"type":"text","text":"[{\"URL\":\"https://www.bizkaia.eus/es/urbanismo\",\"Snippet\":\"Planes
+        urbanísticos vigentes de los municipios de Bizkaia y su documentación.\"},{\"URL\":\"https://www.bizkaia.eus/es/planeamiento-urbanistico-buscador\",\"Snippet\":\"Podrá
+        hallar información de todos los planes urbanísticos vigentes de todos los
+        municipios de Bizkaia y sus modificaciones, las resoluciones tomadas, las
+        publicaciones en el BOB, y podrá acceder a los documentos que los conforman\"},{\"URL\":\"http://apps.bizkaia.net/PBIT/PB_Marcos.jsp?Idioma=CA\",\"Snippet\":\"La
+        administración foral de Bizkaia. Foru Aldundia - Diputación Foral . Contacto
+        Idiomas. Euskera . INFORMACION. URBANISTICA. BIZKAIA Ayuda. Deseleccionar
+        municipios. Seleccionar municipios. Ventana gráfica. Areas Funcionales. Municipios
+        Planeamiento general vigente y datos generales. Determinaciones del ...\"},{\"URL\":\"https://www.asociacioncamaraurbana.com/\",\"Snippet\":\"Consulta
+        nuestros servicios de información, asesoramiento, mediación, conciliación
+        y consultas personalizadas gratuitos para los socios. Informes jurídicos redactados
+        por abogados especialistas, en todas las materias relacionadas con la propiedad
+        y uso de viviendas y locales. socio?\"},{\"URL\":\"https://www.opendatabizkaia.eus/es/catalogo/planeamiento-urbanistico/recurso/planeamiento-urbanistico-bizkaia-wms\",\"Snippet\":\"Planeamiento
+        urbanístico de Bizkaia (WMS) Servicio de mapas WMS que incluye información
+        relativa a la clasificación, la calificación y los ámbitos de desarrollo delimitados
+        en el planeamiento urbanístico.\"}]"}]},{"role":"tool","tool_call_id":"call_Uj1Qu26841d4oJUAa3EasHF8","content":[{"type":"text","text":"[{\"URL\":\"https://www.in56.es/\",\"Snippet\":\"En
+        IN56 Interiorismo ofrecemos servicios de decoración y diseño de interiores.
+        Realizamos reformas integrales de viviendas y espacios comerciales. Consúltanos
+        sin compromiso.\"},{\"URL\":\"https://www.g48interiorismo.es/\",\"Snippet\":\"Empresa
+        de interiorismo y decoración en Bilbao (Bizkaia). Obras y reformas. Gran experiencia.
+        Presupuestos sin compromiso.\"},{\"URL\":\"https://irunetorrontegi.com/\",\"Snippet\":\"Somos
+        un estudio de interiorismo y decoración de interiores en Bilbao que hace realidad
+        tus ideas creando espacios únicos.\"},{\"URL\":\"https://aticointeriorismo.com/\",\"Snippet\":\"ÁTICO
+        ESTUDIO DE INTERIORISMO en Leioa. Creemos en la transparencia y la honestidad.
+        Hacemos presupuestos detallados y hechos a la medida del cliente.\"},{\"URL\":\"https://anaurrutiainteriorismo.com/\",\"Snippet\":\"Ana
+        Urrutia Interiorismo es un estudio especializado en diseño de interiores y
+        decoración, ubicado en una de las calles emblemáticas. Licenciado Poza, casi
+        esquina con José Mª Escuza, en Bilbao (Bizkaia). Presta servicios en todo
+        el País Vasco.\"}]"}]},{"role":"tool","tool_call_id":"call_xHasl16sb9m2lMmr4Qmp9Wqc","content":[{"type":"text","text":"[{\"URL\":\"https://tandemarquitectura.com/\",\"Snippet\":\"Tandem
+        es un Estudio de Arquitectura y Diseño que nace en 2002 de la mano de Ixone
+        Legarreta Iturregi y Daniel Salvador Otaduy. “Queremos romper los moldes del
+        diseño sin olvidarnos de la tradición y formas que nos han traído hasta aquí”
+        Para nosotros cada proyecto es único, apostamos por diseño sumando funcionalidad,
+        calidad y sostenibilidad.\"},{\"URL\":\"https://hinojalarquitectos.com/\",\"Snippet\":\"Hinojal
+        Arquitectos, estudio de arquitectura con 15 años de experiencia en el desarrollo
+        de proyectos y direcciones de obra. ¿Tienes algún proyecto en mente? Puedes
+        elegir la opción que te resulte más cómoda: teléfono, correo electrónico e
+        incluso Whatsapp. ¡Estamos listos para ayudarte!\"},{\"URL\":\"https://arquinea.es/\",\"Snippet\":\"Estudio
+        de arquitectura en Bilbao y Bizkaia (Portugalete) Rehabilitación de fachadas,
+        certificación energética de edificios, interiorismo, etc.\"},{\"URL\":\"https://orbisarquitectura.com/\",\"Snippet\":\"Orbis
+        Arquitectura es una estudio de arquitectura y diseño de interiores ubicado
+        en Bizkaia y Castilla León, con 15 años de experiencia en el desarrollo de
+        proyectos y direcciones de obra, que hasta el momento se traduce en más de
+        un centenar de obras realizadas y dirigidas.\"},{\"URL\":\"https://arquiplan.com/\",\"Snippet\":\"Arquiplan
+        es el estudio de arquitectura líder en Bizkaia. Fundado por Juan C. Cardenal
+        Abaitua en 1990, tiene sus inicios con una secuencia de trabajos en Bilbao
+        y desde entonces ha desarrollado una gran cantidad de proyectos de diversos
+        tipos como, gestión urbanística, rehabilitación e interiorismo, masterplan,
+        equipamiento docente ...\"}]"}]},{"role":"tool","tool_call_id":"call_436W4VXkf6YoIuD8iNpam2AR","content":[{"type":"text","text":"[{\"URL\":\"https://www.ygarquitectos.com/\",\"Snippet\":\"Ofrecemos
+        servicios arquitectónicos personalizados en Bizkaia. Desde obras nuevas a
+        rehabilitaciones, nuestra experiencia y dedicación hacen la diferencia.\"},{\"URL\":\"https://arquiplan.com/\",\"Snippet\":\"Estudio
+        de Arquitectura en Bizkaia, con proyectos de rehabilitación e interiorismo,
+        gestión urbanística y más.\"},{\"URL\":\"https://renders.es/estudio-arquitectura-bizkaia/\",\"Snippet\":\"Ofrecemos
+        servicios de arquitectura Bizkaia completos y personalizados para una amplia
+        gama de proyectos, desde residenciales hasta comerciales y gubernamentales.
+        Trabajamos estrechamente con nuestros clientes para crear soluciones innovadoras
+        y eficientes que cumplan con sus necesidades y objetivos específicos.\"},{\"URL\":\"https://nistalarquitectos.com/\",\"Snippet\":\"En
+        Nistal Arquitectos, ofrecemos una amplia gama de servicios en Bilbao y Bizkaia.
+        Nos especializamos en diseño arquitectónico, rehabilitación de edificios,
+        reformas integrales y proyectos sostenibles.\"},{\"URL\":\"https://kbarquitectas.com/\",\"Snippet\":\"Estudio
+        de arquitectura y diseño con más de 25 años de experiencia profesional. KB
+        arquitectas está especializada en espacios saludables, sostenibles y eficientes.
+        Diseñamos y construimos ambientes que aportan bienestar, confort y salud a
+        las personas.\"}]"}]}],"tools":[{"type":"function","function":{"name":"analysis_tools_bing_search__search","description":"Search
+        in Bing for relevant results to provide reliable information for the question","parameters":{"type":"object","properties":{"query":{"type":"string","description":"The
+        search query"},"count":{"type":"integer","description":"The number of results
+        to return"}},"required":["query","count"]}}}],"tool_choice":"auto","parallel_tool_calls":true,"model":"gpt-4o","temperature":0,"n":1}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 18 Dec 2024 14:35:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Expose-Headers:
+      - X-Request-ID
+      Openai-Organization:
+      - user-qnoh4d6vex03uarljj9vor3n
+      Openai-Processing-Ms:
+      - '5248'
+      Openai-Version:
+      - '2020-10-01'
+      X-Ratelimit-Limit-Requests:
+      - '10000'
+      X-Ratelimit-Limit-Tokens:
+      - '2000000'
+      X-Ratelimit-Remaining-Requests:
+      - '9999'
+      X-Ratelimit-Remaining-Tokens:
+      - '1997536'
+      X-Ratelimit-Reset-Requests:
+      - 6ms
+      X-Ratelimit-Reset-Tokens:
+      - 73ms
+      X-Request-Id:
+      - req_02af071b5a1a136bdeff4b7e497077ad
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=zNx0IhWmzGjz63Z18Z.82RjSeXBJiIU0xP.N0wYcWOQ-1734532513-1.0.1.1-A7UBRdWFsNrZBh9dqToNAF0EbUjJaVj6507WXfVp7Fj7YPwFtJwGH8sLc33.kFkRDwwDFl69ng515cJepq9ojA;
+        path=/; expires=Wed, 18-Dec-24 15:05:13 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=ZVMs9pSHTlqi_plTF.oFjVrULXj8XXoxJszv0AJAqaw-1734532513329-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 8f3fe0aebddfec87-MAD
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICJjaGF0Y21wbC1BZnBRaWFhR0RsZHJZeExOTndoWTNJWjBXUkNmMCIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVhdGVkIjogMTczNDUzMjUwOCwKICAibW9kZWwiOiAiZ3B0LTRvLTIwMjQtMDgtMDYiLAogICJjaG9pY2VzIjogWwogICAgewogICAgICAiaW5kZXgiOiAwLAogICAgICAibWVzc2FnZSI6IHsKICAgICAgICAicm9sZSI6ICJhc3Npc3RhbnQiLAogICAgICAgICJjb250ZW50IjogImBgYGpzb25cbntcbiAgXCJjb21wZXRpdG9yc1wiOiBbXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiQWllcnQgQXJraXRla3R1cmFcIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cHM6Ly9haWVydGFya2l0ZWt0dXJhLmV1cy9lc3R1ZGlvLWFycXVpdGVjdHVyYS1iaXprYWlhL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJBcnF1aXBsYW5cIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cHM6Ly9hcnF1aXBsYW4uY29tL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJUYW5kZW0gQXJxdWl0ZWN0dXJhXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vdGFuZGVtYXJxdWl0ZWN0dXJhLmNvbS9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiT3JiaXMgQXJxdWl0ZWN0dXJhXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vb3JiaXNhcnF1aXRlY3R1cmEuY29tL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJIaW5vamFsIEFycXVpdGVjdG9zXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vaGlub2phbGFycXVpdGVjdG9zLmNvbS9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiSU41NiBJbnRlcmlvcmlzbW9cIixcbiAgICAgIFwidXJsXCI6IFwiaHR0cHM6Ly93d3cuaW41Ni5lcy9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiRzQ4IEludGVyaW9yaXNtb1wiLFxuICAgICAgXCJ1cmxcIjogXCJodHRwczovL3d3dy5nNDhpbnRlcmlvcmlzbW8uZXMvXCJcbiAgICB9LFxuICAgIHtcbiAgICAgIFwibmFtZVwiOiBcIklydW4gJiBUb3Jyb250ZWdpXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vaXJ1bmV0b3Jyb250ZWdpLmNvbS9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiw4F0aWNvIEludGVyaW9yaXNtb1wiLFxuICAgICAgXCJ1cmxcIjogXCJodHRwczovL2F0aWNvaW50ZXJpb3Jpc21vLmNvbS9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiQW5hIFVycnV0aWEgSW50ZXJpb3Jpc21vXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vYW5hdXJydXRpYWludGVyaW9yaXNtby5jb20vXCJcbiAgICB9LFxuICAgIHtcbiAgICAgIFwibmFtZVwiOiBcIkFycXVpbmVhXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vYXJxdWluZWEuZXMvXCJcbiAgICB9LFxuICAgIHtcbiAgICAgIFwibmFtZVwiOiBcIllHIEFycXVpdGVjdG9zXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vd3d3LnlnYXJxdWl0ZWN0b3MuY29tL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJSZW5kZXJzIEFycXVpdGVjdHVyYVwiLFxuICAgICAgXCJ1cmxcIjogXCJodHRwczovL3JlbmRlcnMuZXMvZXN0dWRpby1hcnF1aXRlY3R1cmEtYml6a2FpYS9cIlxuICAgIH0sXG4gICAge1xuICAgICAgXCJuYW1lXCI6IFwiTmlzdGFsIEFycXVpdGVjdG9zXCIsXG4gICAgICBcInVybFwiOiBcImh0dHBzOi8vbmlzdGFsYXJxdWl0ZWN0b3MuY29tL1wiXG4gICAgfSxcbiAgICB7XG4gICAgICBcIm5hbWVcIjogXCJLQiBBcnF1aXRlY3Rhc1wiLFxuICAgICAgXCJ1cmxcIjogXCJodHRwczovL2tiYXJxdWl0ZWN0YXMuY29tL1wiXG4gICAgfVxuICBdXG59XG5gYGAiLAogICAgICAgICJyZWZ1c2FsIjogbnVsbAogICAgICB9LAogICAgICAibG9ncHJvYnMiOiBudWxsLAogICAgICAiZmluaXNoX3JlYXNvbiI6ICJzdG9wIgogICAgfQogIF0sCiAgInVzYWdlIjogewogICAgInByb21wdF90b2tlbnMiOiAyOTk2LAogICAgImNvbXBsZXRpb25fdG9rZW5zIjogNDU3LAogICAgInRvdGFsX3Rva2VucyI6IDM0NTMsCiAgICAicHJvbXB0X3Rva2Vuc19kZXRhaWxzIjogewogICAgICAiY2FjaGVkX3Rva2VucyI6IDAsCiAgICAgICJhdWRpb190b2tlbnMiOiAwCiAgICB9LAogICAgImNvbXBsZXRpb25fdG9rZW5zX2RldGFpbHMiOiB7CiAgICAgICJyZWFzb25pbmdfdG9rZW5zIjogMCwKICAgICAgImF1ZGlvX3Rva2VucyI6IDAsCiAgICAgICJhY2NlcHRlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAsCiAgICAgICJyZWplY3RlZF9wcmVkaWN0aW9uX3Rva2VucyI6IDAKICAgIH0KICB9LAogICJzeXN0ZW1fZmluZ2VycHJpbnQiOiAiZnBfOWZhYmE5ZjAzOCIKfQo=
+  recorded_at: Wed, 18 Dec 2024 14:35:13 GMT
+recorded_with: VCR 6.3.1

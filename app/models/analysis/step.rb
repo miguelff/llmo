@@ -1,4 +1,8 @@
 class Analysis::Step < ApplicationRecord
+    belongs_to :analysis, class_name: "Analysis::Record"
+
+    private_class_method :new
+
     class Result
         attr_accessor :step, :result, :error
 
@@ -27,28 +31,59 @@ class Analysis::Step < ApplicationRecord
 
     MAX_ATTEMPT_COUNT = 3
 
-    belongs_to :report
-    after_initialize :set_default_values
-    class_attribute :model, :temperature
+    # Syntactic sugar to define analysis inputs
+    def self.input(symbol, type, transform: nil, valid_format: nil)
+        attr_accessor symbol
 
-    def self.perform_if_needed(report, **args)
-        step = self.find_or_initialize_by(report: report)
+        init = ->(args) do
+            lambda do |step|
+                step.send("#{symbol}=", transform ? transform.call(args[symbol]) : args[symbol])
+                step.input = { symbol => step.send(symbol) }
+            end
+        end
+
+        define_singleton_method(:for) do |**args|
+            new(analysis: args[:analysis]).tap(&(init.call(args)))
+        end
+
+        define_singleton_method(:for_new_analysis) do |**args|
+            new(analysis: Analysis::Record.create!).tap(&(init.call(args)))
+        end
+
+        define_method(:valid_input) do
+            value = send(symbol)
+            errors.add(:input, "#{symbol.to_s.humanize} is required") if value.blank?
+            errors.add(:input, "#{symbol.to_s.humanize} doesn't have the appropriate type") unless value.is_a?(type)
+            if valid_format.present? && !valid_format.call(value)
+                errors.add(:input, "#{symbol.to_s.humanize} doesn't have a valid format")
+            end
+        end
+    end
+
+    class_attribute :model, :temperature
+    validate :valid_input, if: -> { self.new_record? }
+
+    def valid_input
+        raise "Must be redefined in subclasses"
+    end
+
+    def self.perform_if_needed(analysis_id, force: false, **args)
+        step = self.find_or_initialize_by(analysis_id: analysis_id)
         args.each do |key, value|
             step.send("#{key}=", value)
         end
 
-        unless step.succeeded?
-            report.update_progress(message: "Reasoning on input")
+        unless force || step.succeeded?
             if step.perform_with_retry
                 if step.save
-                    Rails.logger.info "[Report #{report.id}] Step #{step.type} completed: #{step.result.inspect}"
+                    Rails.logger.info "[Analysis #{analysis_id}] Step #{step.type} completed: #{step.result.inspect}"
                 else
                     step.error = step.errors.full_messages.join(", ")
-                    Rails.logger.error "[Report #{report.id}] Step #{step.type} failed: #{step.error}"
+                    Rails.logger.error "[Analysis #{analysis_id}] Step #{step.type} failed: #{step.error}"
                 end
             end
         else
-            Rails.logger.info "[Report #{report.id}] Step #{step.type} already completed: #{step.result.inspect}"
+            Rails.logger.info "[Analysis #{analysis_id}] Step #{step.type} already completed: #{step.result.inspect}"
         end
 
         Result.new(step)
@@ -87,12 +122,6 @@ class Analysis::Step < ApplicationRecord
     end
 
     private
-
-    def set_default_values
-        self.provider ||=  "openai"
-        self.model ||= (self.class.model || "gpt-4o-mini")
-        self.temperature ||= (self.class.temperature || 0.0)
-    end
 
     def backoff(attempt)
         sleep(attempt ** 2)

@@ -1,6 +1,6 @@
 module Bing
     class Search
-        def self.web_results(query:, mkt:, count:)
+        def self.web_results(query:, count:, mkt: nil)
             @apiKey ||= Rails.application.credentials.processor[:BingApiKey]
             if @apiKey.blank?
                 raise "Bing API key is not set"
@@ -10,7 +10,7 @@ module Bing
                 req.headers["Ocp-Apim-Subscription-Key"] = @apiKey
                 req.params["q"] = query
                 req.params["count"] = count
-                req.params["mkt"] = mkt || "en-US"
+                req.params["mkt"] = mkt if mkt.present?
             end
 
             WebResults.new(query, count, JSON.parse(response.body))

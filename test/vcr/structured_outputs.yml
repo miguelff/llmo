@@ -26,7 +26,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 28 Nov 2024 12:39:10 GMT
+      - Wed, 18 Dec 2024 14:35:24 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -38,48 +38,48 @@ http_interactions:
       Openai-Organization:
       - user-qnoh4d6vex03uarljj9vor3n
       Openai-Processing-Ms:
-      - '614'
+      - '726'
       Openai-Version:
       - '2020-10-01'
       X-Ratelimit-Limit-Requests:
-      - '5000'
+      - '10000'
       X-Ratelimit-Limit-Tokens:
-      - '800000'
+      - '2000000'
       X-Ratelimit-Remaining-Requests:
-      - '4999'
+      - '9999'
       X-Ratelimit-Remaining-Tokens:
-      - '799970'
+      - '1999970'
       X-Ratelimit-Reset-Requests:
-      - 12ms
+      - 6ms
       X-Ratelimit-Reset-Tokens:
-      - 2ms
+      - 0s
       X-Request-Id:
-      - req_dcf5fe44efe851a642af17f1dcce98c4
+      - req_7aec26c193e2417c3b6559c104a1e194
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       Cf-Cache-Status:
       - DYNAMIC
       Set-Cookie:
-      - __cf_bm=D85eGjzryrxJjaO6XDtGB1p3fVurEiNUd9_XRSVNkI0-1732797550-1.0.1.1-KwsVIOjC_HF18iQ2QqgAiuxpNHfslnsoNpBhU4Nbag8pFow2GaKTU..lQv7hiD7Az8HoeXmXEtfETsYd2Wcj7g;
-        path=/; expires=Thu, 28-Nov-24 13:09:10 GMT; domain=.api.openai.com; HttpOnly;
+      - __cf_bm=FfmTK3cKZOuEXC.HJKJAuBR4WbHsaudtqOUaLRdrJ3s-1734532524-1.0.1.1-R3llvJwQNN9T5TlPlmM_3mjCAexKr5BgYQz44PlXHkEWU8wBhS7RtlgPdOTcrbxpPAQ8jOMYACvfUSS18FnvVw;
+        path=/; expires=Wed, 18-Dec-24 15:05:24 GMT; domain=.api.openai.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=w0f96e08UOB1afAVauChL9spgSkg9eBc.M2_e_1Ygsw-1732797550324-0.0.1.1-604800000;
+      - _cfuvid=VqLh8RT5TEuSYEqU1HVWXf8A5A7c.V04NP5_0CPkylE-1734532524058-0.0.1.1-604800000;
         path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
       X-Content-Type-Options:
       - nosniff
       Server:
       - cloudflare
       Cf-Ray:
-      - 8e9a6b4cbd8a217e-MAD
+      - 8f3fe10e0863f771-MAD
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: |
         {
-          "id": "chatcmpl-AYY5VWPY7AOYhIsnl5ZRapGJoNaU6",
+          "id": "chatcmpl-AfpQxQotpS5hGkXl4cysqFBRV2zNj",
           "object": "chat.completion",
-          "created": 1732797549,
+          "created": 1734532523,
           "model": "gpt-4o-2024-08-06",
           "choices": [
             {
@@ -108,7 +108,7 @@ http_interactions:
               "rejected_prediction_tokens": 0
             }
           },
-          "system_fingerprint": "fp_7f6be3efb0"
+          "system_fingerprint": "fp_9faba9f038"
         }
-  recorded_at: Thu, 28 Nov 2024 12:39:10 GMT
+  recorded_at: Wed, 18 Dec 2024 14:35:24 GMT
 recorded_with: VCR 6.3.1
