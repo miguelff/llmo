@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Core Rails and server gems
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8"
 gem "puma", ">= 5.0"
 gem "bootsnap", require: false
 
@@ -90,4 +90,6 @@ group :production do
  gem "pg"
 end
 
-gem "mission_control-jobs", "~> 0.6.0"
+gem "mission_control-jobs", "~> 1"
+
+gem "activerecord-ksuid", require: "active_record/ksuid/railtie"
