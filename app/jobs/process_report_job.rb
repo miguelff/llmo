@@ -15,8 +15,8 @@ class ProcessReportJob < ApplicationJob
 
   limits_concurrency to: 1, key: ->(report, **_) { report }
 
-  retry_on StepFailedError, wait: :exponentially_longer, attempts: 3
-  retry_on StandardError, wait: :exponentially_longer, attempts: 5
+  retry_on StepFailedError, wait: :polynomially_longer, attempts: 3
+  retry_on StandardError, wait: :polynomially_longer, attempts: 5
   discard_on ActiveJob::DeserializationError, NameError, ArgumentError
 
   queue_as :default
