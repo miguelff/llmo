@@ -10,7 +10,7 @@ class AnalysisController < ApplicationController
 
   def process_your_website
     @your_website = Analysis::YourWebsite.for(your_website_params)
-    if @your_website.valid?
+    if @your_website.perform_later
       render "analysis/your_website/result"
     else
       render "analysis/your_website/new"

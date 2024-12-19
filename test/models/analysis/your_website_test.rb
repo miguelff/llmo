@@ -1,37 +1,37 @@
 require "test_helper"
 
 class Analysis::YourWebsiteTest < ActiveSupport::TestCase
+  def form_for(url)
+    Analysis::YourWebsite::Form.new(url: url)
+  end
+
   test "constructor is private" do
     assert_raises(NoMethodError) { Analysis::YourWebsite.new }
   end
 
   test "validating the input when protocol is missing" do
-    info = Analysis::YourWebsite.for_new_analysis(url: "mararodriguez.es/")
-    assert info.valid?
-    assert_equal "http://mararodriguez.es/", info.input["url"]
-  end
+    form = form_for("mararodriguez.es/")
+    assert form.valid?
 
-  test "retrying with www" do
-    VCR.use_cassette("analysis/your_website/www.mararodriguez.es") do
-      info = Analysis::YourWebsite.for_new_analysis(url: "https://www.mararodriguez.es/")
-      assert info.valid?
-      assert info.perform_if_valid
-    end
+    model = form.model(analysis: nil)
+    assert_equal "https://mararodriguez.es/", model.url
   end
 
   test "validating the input" do
-    info = Analysis::YourWebsite.for_new_analysis(url: "http:www.mararodriguez.es/")
-    assert_not info.valid?
-    assert_equal [ "Url doesn't have a valid format" ], info.errors.full_messages
+    form = form_for("http:www.mararodriguez.es/")
+    assert_not form.valid?
+    assert_equal [ "Url doesn't have a valid format" ], form.errors.full_messages
   end
 
   test "finding information about a website" do
     VCR.use_cassette("analysis/your_website/mararodriguez.es") do
-      info = Analysis::YourWebsite.for_new_analysis(url: "https://mararodriguez.es/")
-      assert info.valid?
-      assert info.perform_if_valid
+      form = form_for("https://mararodriguez.es/")
+      assert form.valid?
 
-      result = info.presenter
+      model = form.model(analysis: Analysis::Record.create!)
+      assert model.perform_if_valid
+
+      result = model.result
       assert_equal "https://mararodriguez.es/", result.url
       assert_equal "Mara Rodriguez Design - Branding, Packaging y Diseño Gráfico Asturias", result.title
       assert_equal(
@@ -85,10 +85,14 @@ class Analysis::YourWebsiteTest < ActiveSupport::TestCase
 
   test "a website does not exist" do
     VCR.use_cassette("analysis/your_website/does_not_exist") do
-      info = Analysis::YourWebsite.for_new_analysis(url: "https://not_existing_website_12345.gg/")
-      assert info.perform_if_valid
+      form = form_for("https://not_existing_website_12345.gg/")
+      assert form.valid?
 
-      assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", info.error
+      model = form.model(analysis: Analysis::Record.create!)
+      assert model.perform_if_valid
+
+      result = model.result
+      assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", result.error
     end
   end
 end

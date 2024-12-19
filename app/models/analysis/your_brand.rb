@@ -1,8 +1,6 @@
 class Analysis::YourBrand < Analysis::Step
     include Analysis::Inference
 
-    input :website_info, Analysis::Presenters::Website
-
     def perform
         basic_info = basic_brand_info
         Rails.logger.info("Basic info: #{basic_info.inspect}")

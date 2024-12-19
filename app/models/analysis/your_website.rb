@@ -1,24 +1,75 @@
 # This requires some chrome browser in the box, and we need to check
 # concurrency. Maybe we can use a scraping service instead.
 class Analysis::YourWebsite < Analysis::Step
-  input :url, String, valid_format: ->(url) {
-                        Addressable::URI.parse(url)&.domain&.present?
-                      },
-                      transform: ->(url) {
-                        return nil if url.blank?
-                        return "http://#{url}" unless url.starts_with?("http")
-                        url
-                      }
+  class Form
+    include ActiveModel::Model
+    include ActiveModel::Attributes
+    include ActiveModel::Validations
 
-  def self.empty
-    self.for(url: nil)
+    attribute :url, :string
+
+    validates :url, presence: true
+    validate :valid_domain
+
+    def valid_domain
+      unless Addressable::URI.parse(transform(url))&.domain&.present?
+        errors.add(:url, "doesn't have a valid format")
+      end
+    end
+
+    def model(analysis:)
+      if valid?
+        Analysis::YourWebsite.new(analysis: analysis, input: transform(url))
+      else
+        nil
+      end
+    end
+
+    private
+
+    def transform(url)
+      return nil if url.blank?
+      return "https://#{url}" unless url.starts_with?("http")
+      url
+    end
+  end
+
+  class Result < ActiveRecord::Type::Value
+    STRUCT = Struct.new(:url, :title, :toc, :meta_tags)
+
+    def type
+      :jsonb
+    end
+
+    def cast(value)
+      if value.is_a?(Hash)
+        value = value.with_indifferent_access
+        STRUCT.new(*value.values_at(:url, :title, :toc, :meta_tags))
+      else
+        super
+      end
+    end
+
+    def deserialize(value)
+      return nil unless value.present?
+      cast(ActiveSupport::JSON.decode(value))
+    end
+
+    def serialize(value)
+      return value unless value.is_a?(STRUCT)
+      ActiveSupport::JSON.encode(value.to_h)
+    end
+  end
+
+  attribute :result, Result.new
+
+  def url
+    self.input
   end
 
   def perform
-    self.input = { url: self.url }
-
     begin
-      response = self.class.fetch_with_retry(self.url)
+      response = fetch_with_retry
     rescue => e
       self.error = e.message
       return true # save it anyway
@@ -43,7 +94,7 @@ class Analysis::YourWebsite < Analysis::Step
     true
   end
 
-  def self.fetch_with_retry(url)
+  def fetch_with_retry
     attempt = 1
     begin
       response = Faraday.get(url)
@@ -65,6 +116,6 @@ class Analysis::YourWebsite < Analysis::Step
 
   def presenter
     return nil unless succeeded?
-    Analysis::Presenters::Website.from_json(result)
+    Result.from_json(result)
   end
 end

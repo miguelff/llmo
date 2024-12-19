@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   get "landing/index"
   # Defines the root path route ("/")
-  root "landing#index"
+  root "analysis#your_website"
 end

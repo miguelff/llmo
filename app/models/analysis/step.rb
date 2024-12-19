@@ -1,74 +1,14 @@
 class Analysis::Step < ApplicationRecord
     enum :status, pending: "pending", performing: "performing", finished: "finished", failed: "failed"
-
     belongs_to :analysis, class_name: "Analysis::Record"
 
-    private_class_method :new
-
-    class Result
-        attr_accessor :step, :result, :error
-
-        def initialize(step)
-            self.step = step
-            self.result = step.result
-            self.error = step.error
-        end
-
-        def ok?
-            self.error.nil? && self.result.present?
-        end
-
-        def failed?
-            !self.ok?
-        end
-
-        def value!
-            if self.ok?
-                self.result
-            else
-                raise self.error
-            end
-        end
-    end
-
     MAX_ATTEMPT_COUNT = 3
-
-    # Syntactic sugar to define analysis inputs
-    def self.input(symbol, type, transform: nil, valid_format: nil)
-        attribute symbol
-
-        init = ->(args) do
-            lambda do |step|
-                step.send("#{symbol}=", transform ? transform.call(args[symbol]) : args[symbol])
-                step.input = { symbol => step.send(symbol) }
-            end
-        end
-
-        define_singleton_method(:for) do |args|
-            new(analysis: args[:analysis]).tap(&(init.call(args)))
-        end
-
-        define_singleton_method(:for_new_analysis) do |args|
-            new(analysis: Analysis::Record.create!).tap(&(init.call(args)))
-        end
-
-        define_method(:valid_input) do
-            value = send(symbol)
-            if value.blank?
-                errors.add(symbol, "is required")
-            elsif !value.is_a?(type)
-                errors.add(symbol, "doesn't have the appropriate type")
-            elsif valid_format.present? && !valid_format.call(value)
-                errors.add(symbol, "doesn't have a valid format")
-            end
-        end
-    end
 
     class_attribute :model, :temperature
     validate :valid_input, if: -> { self.new_record? }
 
     def valid_input
-        raise "Must be redefined in subclasses"
+        true
     end
 
     def self.perform_if_needed(analysis_id, force: false, **args)
@@ -90,12 +30,12 @@ class Analysis::Step < ApplicationRecord
             Rails.logger.info "[Analysis #{analysis_id}] Step #{step.type} already completed: #{step.result.inspect}"
         end
 
-        Result.new(step)
+        step
     end
 
     def perform_later
-        if self.valid?
-            Analysis::StepJob.perform_later(self)
+        if pending!
+            AnalysisStepJob.perform_later(self)
         else
             false
         end
