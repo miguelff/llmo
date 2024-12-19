@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_18_132626) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_19_173116) do
   create_table "analyses", id: { type: :binary, limit: 20 }, force: :cascade do |t|
     t.string "status", default: "pending", null: false
     t.datetime "created_at", null: false
@@ -26,6 +26,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_18_132626) do
     t.binary "analysis_id", limit: 20, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending", null: false
     t.index ["analysis_id", "type"], name: "index_analysis_steps_on_analysis_id_and_type", unique: true
+    t.index ["status", "type"], name: "index_analysis_steps_on_status_and_type"
   end
 end

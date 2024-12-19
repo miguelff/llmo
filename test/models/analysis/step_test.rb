@@ -4,6 +4,10 @@ class StepTest < ActiveSupport::TestCase
     class TestStep < Analysis::Step
         attr_accessor :error, :pass_at_attempt, :callback, :backoff_count, :secs_slept
 
+        def valid_input
+            true
+        end
+
         def self.build(e, pass_at_attempt: 2, callback: nil)
             new.tap do |step|
                 step.callback = callback

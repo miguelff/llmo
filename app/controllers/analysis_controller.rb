@@ -4,12 +4,13 @@ class AnalysisController < ApplicationController
   helper_method :current_analysis
 
   def your_website
-    head :not_found
+    @your_website = Analysis::YourWebsite.empty
+    render "analysis/your_website/new"
   end
 
   def process_your_website
     @your_website = Analysis::YourWebsite.for(your_website_params)
-    if @your_website.perform_and_save
+    if @your_website.valid?
       render "analysis/your_website/result"
     else
       render "analysis/your_website/new"

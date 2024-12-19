@@ -1,14 +1,9 @@
-<%= turbo_frame_tag "steps" do %>
-<div id="steps" class="flex flex-col justify-center items-center mb-10">
-    <%= render partial: "analysis/steps", locals: { current_step: :your_website } %>
-    
-    <div class="lg:w-[600px]">
-        <%= form_with model: @your_website, url: process_your_website_path, method: :post, local: false, data: { turbo_frame: "steps" } do |form| %>
-
+<div class="lg:w-[600px]">
+    <%= form_with model: your_website, url: process_your_website_path, method: :post, data: { turbo: false } do |form| %>
         <% if @your_website.errors.any? %>
             <div class="mb-4 text-red-600">                
                 <ul>
-                    <% @your_website.errors.full_messages.each do |message| %>
+                    <% your_website.errors.full_messages.each do |message| %>
                         <li><%= message %></li>
                     <% end %>
                 </ul>
@@ -21,7 +16,5 @@
         <div class="flex justify-end">
             <%= form.submit "Next", class: "btn btn-primary" %>
         </div>
-        <% end %>        
-    </div>
+    <% end %>        
 </div>
-<% end %>

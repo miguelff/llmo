@@ -1,4 +1,6 @@
 class Analysis::Step < ApplicationRecord
+    enum :status, pending: "pending", performing: "performing", finished: "finished", failed: "failed"
+
     belongs_to :analysis, class_name: "Analysis::Record"
 
     private_class_method :new
@@ -91,9 +93,17 @@ class Analysis::Step < ApplicationRecord
         Result.new(step)
     end
 
-    def perform_and_save
+    def perform_later
         if self.valid?
-            self.perform_with_retry && self.save
+            Analysis::StepJob.perform_later(self)
+        else
+            false
+        end
+    end
+
+    def perform_if_valid
+        if self.valid?
+            self.perform_with_retry
         else
             false
         end
@@ -104,21 +114,23 @@ class Analysis::Step < ApplicationRecord
     end
 
     def perform_with_retry(attempt = 1)
-        self.attempt = attempt
+        self.update(status: :performing, attempt: attempt)
         self.perform
+        self.status = :finished
+        self.save
     rescue NameError, ArgumentError => e
         Rails.logger.error("Error performing #{self.class.name}: #{e.message}, unrecoverable. Not retrying.")
-        self.error = e.message
+        self.update(error: e.message, status: :failed)
         raise
     rescue => e
         if attempt < MAX_ATTEMPT_COUNT
             Rails.logger.error("Error performing #{self.class.name}: #{e.message}. Retrying (#{attempt + 1}/#{MAX_ATTEMPT_COUNT})...")
-            self.error = e.message
+            self.update(error: e.message)
             backoff(attempt)
             perform_with_retry(attempt + 1)
         else
             Rails.logger.error("Error performing #{self.class.name}: #{e.message}. No more retries left.")
-            self.error = e.message
+            self.update(error: e.message, status: "failed")
             raise
         end
     end

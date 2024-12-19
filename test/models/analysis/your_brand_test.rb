@@ -54,7 +54,7 @@ class Analysis::YourBrandTest < ActiveSupport::TestCase
 
         brand_info = Analysis::YourBrand.for_new_analysis(website_info: Analysis::Presenters::Website.from_json(website_info))
         assert brand_info.valid?
-        assert brand_info.perform_and_save
+        assert brand_info.perform_if_valid
 
         assert brand_info.presenter.complete?
         assert_matches_snapshot brand_info.presenter.to_h
@@ -65,11 +65,11 @@ class Analysis::YourBrandTest < ActiveSupport::TestCase
       VCR.use_cassette("analysis/brand/deurbe.com") do
         website_info = Analysis::YourWebsite.for_new_analysis(url: "https://deurbe.com/")
         assert website_info.valid?
-        assert website_info.perform_and_save
+        assert website_info.perform_if_valid
 
         brand_info = Analysis::YourBrand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
-        assert brand_info.perform_and_save
+        assert brand_info.perform_if_valid
 
         assert brand_info.presenter.complete?
         assert_matches_snapshot brand_info.presenter.to_h
@@ -80,11 +80,11 @@ class Analysis::YourBrandTest < ActiveSupport::TestCase
       VCR.use_cassette("analysis/brand/tablassurfshop.com") do
         website_info = Analysis::YourWebsite.for_new_analysis(url: "https://www.tablassurfshop.com")
         assert website_info.valid?
-        assert website_info.perform_and_save
+        assert website_info.perform_if_valid
 
         brand_info = Analysis::YourBrand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
-        assert brand_info.perform_and_save
+        assert brand_info.perform_if_valid
 
         assert brand_info.presenter.complete?
         assert_matches_snapshot brand_info.presenter.to_h
@@ -95,11 +95,11 @@ class Analysis::YourBrandTest < ActiveSupport::TestCase
       VCR.use_cassette("analysis/brand/capchase.com") do
         website_info = Analysis::YourWebsite.for_new_analysis(url: "https://www.capchase.com/")
         assert website_info.valid?
-        assert website_info.perform_and_save
+        assert website_info.perform_if_valid
 
         brand_info = Analysis::YourBrand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
-        assert brand_info.perform_and_save
+        assert brand_info.perform_if_valid
 
         assert_equal brand_info.presenter.complete?, true
         assert_matches_snapshot brand_info.presenter.to_h
@@ -110,11 +110,11 @@ class Analysis::YourBrandTest < ActiveSupport::TestCase
       VCR.use_cassette("analysis/brand/reveni.com") do
         website_info = Analysis::YourWebsite.for_new_analysis(url: "https://www.reveni.com/")
         assert website_info.valid?
-        assert website_info.perform_and_save
+        assert website_info.perform_if_valid
 
         brand_info = Analysis::YourBrand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
-        assert brand_info.perform_and_save
+        assert brand_info.perform_if_valid
 
         assert_equal brand_info.presenter.complete?, true
         assert_matches_snapshot brand_info.presenter.to_h
@@ -125,11 +125,11 @@ class Analysis::YourBrandTest < ActiveSupport::TestCase
       VCR.use_cassette("analysis/brand/bmw_3_series") do
         website_info = Analysis::YourWebsite.for_new_analysis(url: "https://www.bmw.es/es/coches-bmw/serie-3/bmw-serie-3-berlina/caracteristicas.html")
         assert website_info.valid?
-        assert website_info.perform_and_save
+        assert website_info.perform_if_valid
 
         brand_info = Analysis::YourBrand.for_new_analysis(website_info: website_info.presenter)
         assert brand_info.valid?
-        assert brand_info.perform_and_save
+        assert brand_info.perform_if_valid
 
         assert_equal brand_info.presenter.complete?, true
         assert_matches_snapshot brand_info.presenter.to_h

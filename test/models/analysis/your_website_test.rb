@@ -15,7 +15,7 @@ class Analysis::YourWebsiteTest < ActiveSupport::TestCase
     VCR.use_cassette("analysis/your_website/www.mararodriguez.es") do
       info = Analysis::YourWebsite.for_new_analysis(url: "https://www.mararodriguez.es/")
       assert info.valid?
-      assert info.perform_and_save
+      assert info.perform_if_valid
     end
   end
 
@@ -29,7 +29,7 @@ class Analysis::YourWebsiteTest < ActiveSupport::TestCase
     VCR.use_cassette("analysis/your_website/mararodriguez.es") do
       info = Analysis::YourWebsite.for_new_analysis(url: "https://mararodriguez.es/")
       assert info.valid?
-      assert info.perform_and_save
+      assert info.perform_if_valid
 
       result = info.presenter
       assert_equal "https://mararodriguez.es/", result.url
@@ -86,7 +86,7 @@ class Analysis::YourWebsiteTest < ActiveSupport::TestCase
   test "a website does not exist" do
     VCR.use_cassette("analysis/your_website/does_not_exist") do
       info = Analysis::YourWebsite.for_new_analysis(url: "https://not_existing_website_12345.gg/")
-      assert info.perform_and_save
+      assert info.perform_if_valid
 
       assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", info.error
     end
