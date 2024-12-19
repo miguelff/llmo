@@ -1,4 +1,4 @@
-class Analysis::Brand < Analysis::Step
+class Analysis::YourBrand < Analysis::Step
     include Analysis::Inference
 
     input :website_info, Analysis::Presenters::Website

@@ -1,6 +1,6 @@
 # This requires some chrome browser in the box, and we need to check
 # concurrency. Maybe we can use a scraping service instead.
-class Analysis::Website < Analysis::Step
+class Analysis::YourWebsite < Analysis::Step
   input :url, String, valid_format: ->(url) {
                         Addressable::URI.parse(url)&.domain&.present?
                       },

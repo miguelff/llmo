@@ -8,7 +8,7 @@ class AnalysisController < ApplicationController
   end
 
   def process_your_website
-    @your_website = Analysis::Website.for(your_website_params)
+    @your_website = Analysis::YourWebsite.for(your_website_params)
     if @your_website.perform_and_save
       render "analysis/your_website/result"
     else

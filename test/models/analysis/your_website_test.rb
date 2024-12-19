@@ -1,33 +1,33 @@
 require "test_helper"
 
-class WebsiteTest < ActiveSupport::TestCase
+class Analysis::YourWebsiteTest < ActiveSupport::TestCase
   test "constructor is private" do
-    assert_raises(NoMethodError) { Analysis::Website.new }
+    assert_raises(NoMethodError) { Analysis::YourWebsite.new }
   end
 
   test "validating the input when protocol is missing" do
-    info = Analysis::Website.for_new_analysis(url: "mararodriguez.es/")
+    info = Analysis::YourWebsite.for_new_analysis(url: "mararodriguez.es/")
     assert info.valid?
     assert_equal "http://mararodriguez.es/", info.input["url"]
   end
 
   test "retrying with www" do
-    VCR.use_cassette("analysis/website/www.mararodriguez.es") do
-      info = Analysis::Website.for_new_analysis(url: "https://www.mararodriguez.es/")
+    VCR.use_cassette("analysis/your_website/www.mararodriguez.es") do
+      info = Analysis::YourWebsite.for_new_analysis(url: "https://www.mararodriguez.es/")
       assert info.valid?
       assert info.perform_and_save
     end
   end
 
   test "validating the input" do
-    info = Analysis::Website.for_new_analysis(url: "http:www.mararodriguez.es/")
+    info = Analysis::YourWebsite.for_new_analysis(url: "http:www.mararodriguez.es/")
     assert_not info.valid?
     assert_equal [ "Url doesn't have a valid format" ], info.errors.full_messages
   end
 
   test "finding information about a website" do
-    VCR.use_cassette("analysis/website/mararodriguez.es") do
-      info = Analysis::Website.for_new_analysis(url: "https://mararodriguez.es/")
+    VCR.use_cassette("analysis/your_website/mararodriguez.es") do
+      info = Analysis::YourWebsite.for_new_analysis(url: "https://mararodriguez.es/")
       assert info.valid?
       assert info.perform_and_save
 
@@ -84,8 +84,8 @@ class WebsiteTest < ActiveSupport::TestCase
   end
 
   test "a website does not exist" do
-    VCR.use_cassette("analysis/website/does_not_exist") do
-      info = Analysis::Website.for_new_analysis(url: "https://not_existing_website_12345.gg/")
+    VCR.use_cassette("analysis/your_website/does_not_exist") do
+      info = Analysis::YourWebsite.for_new_analysis(url: "https://not_existing_website_12345.gg/")
       assert info.perform_and_save
 
       assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", info.error
