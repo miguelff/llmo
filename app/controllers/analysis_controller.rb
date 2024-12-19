@@ -75,7 +75,7 @@ class AnalysisController < ApplicationController
   end
 
   def your_website_params
-    with_analyis(params.require(:analysis_website).permit(:url))
+    with_analyis(params.require(:analysis_your_website).permit(:url))
   end
 
   def with_analyis(params)
