@@ -1,9 +1,18 @@
 # This requires some chrome browser in the box, and we need to check
 # concurrency. Maybe we can use a scraping service instead.
 class Analysis::Website < Analysis::Step
-  input :url, String,
-        transform: ->(url) { url.starts_with?("http") ? url : "http://#{url}" },
-        valid_format: ->(url) { Addressable::URI.parse(url).host.present? }
+  input :url, String, valid_format: ->(url) {
+                        Addressable::URI.parse(url)&.domain&.present?
+                      },
+                      transform: ->(url) {
+                        return nil if url.blank?
+                        return "http://#{url}" unless url.starts_with?("http")
+                        url
+                      }
+
+  def self.empty
+    self.for(url: nil)
+  end
 
   def perform
     self.input = { url: self.url }
@@ -24,8 +33,11 @@ class Analysis::Website < Analysis::Step
     end
 
     toc = document.css("h1, h2, h3").map do |heading|
-      "\t" * ((heading.name[1].to_i rescue 1) - 1) + "- " + heading.text
-    end.join("\n")
+      {
+        level: heading.name[1].to_i,
+        text: heading.text
+      }
+    end
 
     self.result = { url: self.url, title: document.title, meta_tags: meta_tags, toc: toc }
     true

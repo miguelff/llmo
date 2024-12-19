@@ -24,8 +24,19 @@ module Analysis::Presenters
                 #{meta_tags.map { |k, v| "* #{k}: #{v}" }.join("\n\t\t\t")}
 
                 ## HMTL header elements (as a table of contents of the site):
-                #{toc}
+                #{toc_prompt}
             PROMPT
+        end
+
+        def good_health?
+          # true or false
+        end
+
+        def toc_prompt
+            toc.map do |item|
+                item = item.with_indifferent_access
+                "#{'\t' * ((item[:level] || 1) - 1)}* #{item[:text]}"
+            end.join("\n")
         end
     end
 

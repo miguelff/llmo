@@ -33,7 +33,7 @@ class Analysis::Step < ApplicationRecord
 
     # Syntactic sugar to define analysis inputs
     def self.input(symbol, type, transform: nil, valid_format: nil)
-        attr_accessor symbol
+        attribute symbol
 
         init = ->(args) do
             lambda do |step|
@@ -42,20 +42,22 @@ class Analysis::Step < ApplicationRecord
             end
         end
 
-        define_singleton_method(:for) do |**args|
+        define_singleton_method(:for) do |args|
             new(analysis: args[:analysis]).tap(&(init.call(args)))
         end
 
-        define_singleton_method(:for_new_analysis) do |**args|
+        define_singleton_method(:for_new_analysis) do |args|
             new(analysis: Analysis::Record.create!).tap(&(init.call(args)))
         end
 
         define_method(:valid_input) do
             value = send(symbol)
-            errors.add(:input, "#{symbol.to_s.humanize} is required") if value.blank?
-            errors.add(:input, "#{symbol.to_s.humanize} doesn't have the appropriate type") unless value.is_a?(type)
-            if valid_format.present? && !valid_format.call(value)
-                errors.add(:input, "#{symbol.to_s.humanize} doesn't have a valid format")
+            if value.blank?
+                errors.add(symbol, "is required")
+            elsif !value.is_a?(type)
+                errors.add(symbol, "doesn't have the appropriate type")
+            elsif valid_format.present? && !valid_format.call(value)
+                errors.add(symbol, "doesn't have a valid format")
             end
         end
     end
@@ -90,7 +92,11 @@ class Analysis::Step < ApplicationRecord
     end
 
     def perform_and_save
-        self.perform_with_retry && self.save
+        if self.valid?
+            self.perform_with_retry && self.save
+        else
+            false
+        end
     end
 
     def perform

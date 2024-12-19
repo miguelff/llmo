@@ -1,0 +1,12 @@
+<% if @your_website.presenter.good_health? %>
+  <h1>Website Health: Good</h1>
+  <p>The website has sufficient information to understand its business.</p>
+<% else %>
+  <h1>Website Health: Poor</h1>
+  <p>The website lacks sufficient information to understand its business. Please ensure the following meta tags are present:</p>
+  <ul>
+    <li>description</li>
+    <li>keywords</li>
+    <li>author</li>
+  </ul>
+<% end %>

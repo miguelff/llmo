@@ -20,7 +20,6 @@ class Analysis::Tools::BingSearch
         results = Bing::Search.web_results(query: query, count: count)
 
         if summarize?
-            binding.pry
             results = results.download
             Concurrent::Promises.zip_futures_over(results) do |result|
                 {
