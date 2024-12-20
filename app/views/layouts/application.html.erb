@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="cyberpunk">
 
 <head>
     <title><%= content_for(:title) || "Web" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="turbo-refresh-method" content="morph">
+    <meta name="turbo-refresh-scroll" content="preserve">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -17,46 +19,103 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <%= stylesheet_link_tag "application.tailwind.css", "data-turbo-track": "reload" %>    
+    <%#= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
-    <script>
-        window.Apex = {
-            chart: {
-                foreColor: "#fff",
-                toolbar: {
-                    show: false
-                }
-            },
-            colors: ["#a855f7", "#d946ef", "#c026d3", "#9333ea", "#7e22ce", "#6b21a8", "#581c87", "#4c1d95", "#3b0764", "#2d0f4a"],
-            grid: {
-                borderColor: "#40475D"
-            }
-        };
-    </script>
+    
     <%= Sentry.get_trace_propagation_meta.html_safe %>
 </head>
 
-<body class="dark bg-gray-50 dark:bg-gray-950">
-    <%= render "shared/notices" %>
+<body>
+    <div class="fixed top-0 left-0 flex flex-row gap-2 pl-2 pt-2">
+        <span class="w-8">
+            <%= render partial: 'logos/logo', locals: { fill: 'var(--bc)' } %>
+        </span>
+        <span class="font-bold text-xl">don't SEO</span>
+    </div>
+    <% if content_for?(:header) %>
+    <%= content_for(:header) %>
+    <% elsif params["themes"] == 'show' %>
+    <header data-turbo-permanent class="bg-base-100" style="position: absolute; top: 0; right: 100px;">
+        <details class="dropdown">
+            <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+            <summary class="indicator-item badge badge-secondary"></summary>
+            <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                <li><button data-set-theme="light" data-act-class="ACTIVECLASS">Light</button></li>
+                <li><button data-set-theme="dark" data-act-class="ACTIVECLASS">Dark</button></li>
+                <li><button data-set-theme="cupcake" data-act-class="ACTIVECLASS">Cupcake</button></li>
+                <li><button data-set-theme="bumblebee" data-act-class="ACTIVECLASS">Bumblebee</button></li>
+                <li><button data-set-theme="emerald" data-act-class="ACTIVECLASS">Emerald</button></li>
+                <li><button data-set-theme="corporate" data-act-class="ACTIVECLASS">Corporate</button></li>
+                <li><button data-set-theme="synthwave" data-act-class="ACTIVECLASS">Synthwave</button></li>
+                <li><button data-set-theme="retro" data-act-class="ACTIVECLASS">Retro</button></li>
+                <li><button data-set-theme="cyberpunk" data-act-class="ACTIVECLASS">Cyberpunk</button></li>
+                <li><button data-set-theme="valentine" data-act-class="ACTIVECLASS">Valentine</button></li>
+                <li><button data-set-theme="halloween" data-act-class="ACTIVECLASS">Halloween</button></li>
+                <li><button data-set-theme="garden" data-act-class="ACTIVECLASS">Garden</button></li>
+                <li><button data-set-theme="forest" data-act-class="ACTIVECLASS">Forest</button></li>
+                <li><button data-set-theme="aqua" data-act-class="ACTIVECLASS">Aqua</button></li>
+                <li><button data-set-theme="lofi" data-act-class="ACTIVECLASS">Lofi</button></li>
+                <li><button data-set-theme="pastel" data-act-class="ACTIVECLASS">Pastel</button></li>
+                <li><button data-set-theme="fantasy" data-act-class="ACTIVECLASS">Fantasy</button></li>
+                <li><button data-set-theme="wireframe" data-act-class="ACTIVECLASS">Wireframe</button></li>
+                <li><button data-set-theme="black" data-act-class="ACTIVECLASS">Black</button></li>
+                <li><button data-set-theme="luxury" data-act-class="ACTIVECLASS">Luxury</button></li>
+                <li><button data-set-theme="dracula" data-act-class="ACTIVECLASS">Dracula</button></li>
+                <li><button data-set-theme="cmyk" data-act-class="ACTIVECLASS">CMYK</button></li>
+                <li><button data-set-theme="autumn" data-act-class="ACTIVECLASS">Autumn</button></li>
+                <li><button data-set-theme="business" data-act-class="ACTIVECLASS">Business</button></li>
+                <li><button data-set-theme="acid" data-act-class="ACTIVECLASS">Acid</button></li>
+                <li><button data-set-theme="lemonade" data-act-class="ACTIVECLASS">Lemonade</button></li>
+                <li><button data-set-theme="night" data-act-class="ACTIVECLASS">Night</button></li>
+                <li><button data-set-theme="coffee" data-act-class="ACTIVECLASS">Coffee</button></li>
+                <li><button data-set-theme="winter" data-act-class="ACTIVECLASS">Winter</button></li>
+                <li><button data-set-theme="dim" data-act-class="ACTIVECLASS">Dim</button></li>
+                <li><button data-set-theme="nord" data-act-class="ACTIVECLASS">Nord</button></li>
+                <li><button data-set-theme="sunset" data-act-class="ACTIVECLASS">Sunset</button></li>
+            </ul>
+        </details>
+    </header>
+    <% end %>
 
     <% if content_for?(:center) %>
     <%= content_for(:center) %>
     <% else %>
-    <main class="antialiased bg-gray-50 pt-20 dark:bg-gray-950">
-        <div class="flex-1 min-h-screen">
+    <main class="antialiased">
+        <div class="flex-1 min-h-screen container max-w-screen-md mx-auto bg-base-100">
             <%= yield %>
         </div>
     </main>
     <% end %>
 
     <% if content_for?(:footer) %>
-    <footer class="light:bg-gray-300 dark:bg-gray-900 py-4">
+    <footer>
         <%= yield :footer %>
+    </footer>
+    <% else %>
+    <footer class="footer bg-base-content text-base-100 items-center p-4">
+        <aside data-turbo-permanent class="grid-flow-col items-center">
+            <div class="h-8 w-8">
+                <%= render partial: 'logos/logo', locals: { fill: 'var(oklch(var(--b1)))' } %>
+            </div>
+            <p>Copyright don't SEO © <%= Date.today.year %> - All right reserved</p>
+        </aside>        
     </footer>
     <% end %>
 </body>
+
+<script>
+    AOS.init({
+        once: true,
+    });
+</script>
 
 </html>

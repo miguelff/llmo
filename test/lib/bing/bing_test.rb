@@ -18,10 +18,10 @@ class Bing::SearchTest < ActiveSupport::TestCase
 
     test "downloading search results" do
         VCR.use_cassette("bing/download") do
-            results = Bing::Search.web_results(query: "safe cars for women over 45", count: 2, mkt: "en")
+            results = Bing::Search.web_results(query: "mejores coches de segunda mano en españa", count: 2, mkt: "en")
             downloaded = results.download
             assert_equal 2, downloaded.count
-            assert downloaded.first[:html].include?("car"), "html should contain the query"
+            assert downloaded.first[:html].include?("coche"), "html should contain the query"
         end
     end
 end

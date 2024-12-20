@@ -1,0 +1,8 @@
+<% done_class = "step step-primary" %>
+<ul class="steps lg:steps-vertical mb-10">
+    <li class="step step-primary">Your website</li>
+    <li class="<%= step_classes_for(:your_brand, current_step) %>">Your brand details</li>
+    <li class="<%= step_classes_for(:order_confirmation, current_step) %>">Confirm your order</li>
+    <li class="<%= step_classes_for(:pay, current_step) %>">Pay $8</li>
+    <li class="<%= step_classes_for(:receive_report, current_step) %>">Receive your report</li>
+</ul>

@@ -1,8 +1,0 @@
-<% content_for :title, "#{@report.query.titleize.truncate_words(4)}" %>
-<%= render partial: "results/result", locals: { result: @report.result } %>
-
-<% content_for :footer do %>
-<p class="text-center text-sm md:ml-64">
-    <button class="text-primary-400 hover:text-primary-300 font-medium" data-controller="clipboard" data-clipboard-text-value="<%= result_report_url(@report) %>" data-clipboard-success-message-value="Report URL copied to clipboard!" data-action="click->clipboard#copy">Share this report</button>
-</p>
-<% end if current_user.present? %>

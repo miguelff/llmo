@@ -1,0 +1,66 @@
+<div>
+
+    <section id="hero" data-aos="fade-left">        
+        <div class="hero">                    
+            <div class="hero-content text-center flex-col">
+                <h1 class="text-3xl font-bold leading-tight">Position your website in Google, ChatGPT, Perplexity, and everywhere else</h1>                            
+                
+                <p class="py-6 text-xl">
+                    No need to spend <a class="link link-primary" href="https://semrush.com/pricing/">hundreds</a> on <a class="link link-primary" href="https://ahrefs.com/pricing">tools that lock you</a> with subscriptions, with endless features you don’t use. <br/><strong class="font-bold">Get 95% of the value at a tiny fraction of the price.</strong>
+                </p>
+                <a id="promo-link" href="#do-it" class="font-extrabold text-neutral bg-primary hover:scale-125 py-4 px-12 text-2xl transform transition-all duration-200" style="clip-path: polygon(5% 10%,46% 1%,46% 10%,100% 0,95% 90%,31% 100%,31% 90%,0 100%)">for Just $8!</a>               
+            </div>                
+        </div>
+    </section>
+
+    <section id="how" class="flex flex-col lg:flex-row" data-aos="fade-right">
+        <div class="flex flex-col gap-8">
+            <h2>
+            Get ready for the <span class="line-through decoration-4 decoration-primary">future</span> present</span>
+            </h2>
+            
+            <p><a class="link link-primary" href="http://archive.today/zbDbo">Google is rapidly losing market share to ChatGPT</a>. This shift highlights how users prefer AI’s ability to provide direct responses, making information retrieval more efficient and user-friendly.</p>
+            
+            <h3>🧙‍♂️ But AI-based search is not magical, yet.</h3>
+            
+            <p>LLMs (Large Language Models) are trained on vast amounts of data, but this data is not always up-to-date. To provide the most current and accurate answers, these models need to perform Retrieval Augmented Generation (RAG) under the hood.</p>
+            
+            <p>RAG is a technique where the AI performs searches to gather relevant information from various sources and then generates comprehensive responses based on that data. This ensures that the answers you receive are up-to-date.</p>            
+
+            <h3>🤔 What the hell does this mean for me?</h3>
+            
+            <p>To understand who you are and your qualities, <strong class="font-bold">LLMs need to see you</strong>, meaning you need to be on the first page of results for the search engines they use for RAG.</p>
+
+            <p>And <strong class="font-bold">they also need to take you seriously</strong>. This means that, in addition to being on the first page of results, you need to be trustworthy, relevant and authoritative.</p>
+
+            <p>
+                <a class="btn btn-primary text-xl" href="#do-it">Get Started Now!</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="divider divider-neutral"></div>
+
+    <section id="get-ready" class="flex flex-col gap-8">
+ 
+        <h2>
+        Perform our analysis and get actionable insights
+        </h2>
+
+        <p>You will get a detailed report that includes:</p>
+
+        <ul class="list-disc list-inside space-y-4 mb-4">
+            <li>📈 How do your website vitals look like, and what to do about it.</li>
+            <li>🤖 What LLMs are saying about your brand and who do you compete against for attention.</li>
+            <li>🎨 What are the key brand features and your competitive scores. So you can improve them.</li>
+            <li>📚 What sources LLMs use to build your brand's reputation, to place backlinks there.</li>
+            <li>🎯 What kind of content makes your brand stand out in search results, so you can create it.</li>
+        </ul>
+    </section>
+
+    <div class="divider"></div>
+    
+    <section id="do-it" class="flex flex-col min-h-screen">
+        <%= render template: "analysis/your_website/new", locals: { your_website: @your_website } %>
+    </section>
+</div>

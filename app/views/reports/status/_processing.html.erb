@@ -1,9 +1,0 @@
-<div class="py-4 text-gray800 bg-gray100 rounded-lg dark:bg-gray900 dark:text-gray300">
-    <div class="flex justify-between mb-1">
-        <span class="text-base font-medium text-primary-700 dark:text-white"><%= report.progress_details.respond_to?(:last) ? report.progress_details.last : "Started" %></span>
-        <span class="text-sm font-medium text-primary-700 dark:text-white"><%= report.progress_percent %>%</span>
-    </div>
-    <div class="w-full bg-gray200 rounded-full h-2.5 dark:bg-gray800">
-        <div class="bg-primary-600 h-2.5 rounded-full" style="width:<%= report.progress_percent %>%"></div>
-    </div>
-</div>

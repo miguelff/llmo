@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Core Rails and server gems
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8"
 gem "puma", ">= 5.0"
 gem "bootsnap", require: false
 
@@ -24,8 +24,6 @@ gem "jbuilder"
 gem "kamal", require: false
 gem "thruster", require: false
 
-# Authentication and security
-gem "devise", "~> 4.9"
 gem "sentry-ruby"
 gem "sentry-rails"
 
@@ -47,6 +45,8 @@ gem "concurrent-ruby", require: "concurrent"
 gem "concurrent-ruby-edge", "~> 0.7.1", require: "concurrent/edge/promises"
 
 gem "faraday"
+gem "faraday-follow_redirects"
+gem "httpx", "~> 1.3"
 
 # Optional features
 # gem "bcrypt", "~> 3.1.7"
@@ -79,6 +79,7 @@ end
 
 group :test do
   # Testing frameworks and tools
+  gem "minitest-snapshots"
   gem "capybara"
   gem "selenium-webdriver"
   gem "webmock", "~> 3.24"
@@ -89,4 +90,4 @@ group :production do
  gem "pg"
 end
 
-gem "mission_control-jobs", "~> 0.6.0"
+gem "mission_control-jobs", "~> 1"

@@ -1,0 +1,14 @@
+
+<% presenter = Analysis::YourWebsitePresenter.new(your_website) %>
+
+<p>We have checked your website to understand your brand before performing any in-depth analysis.</p>
+
+<% if presenter.failed_checks.any? %>
+    <p>Still, we found some very trivial issues, that could be affecting your visibility, and our automatic understanding of your brand.</p>
+    <%= render "analysis/your_website/checks/list", presenter: presenter %>
+    <p>
+        Don't worry too much about them now. We will dig deeper in these issues during the analysis.
+    </p>
+<% else %>
+    <p>Your website has no outstanding structural issues, let's see what we understood about your brand and competitors from it.</p>
+<% end %>

@@ -1,0 +1,45 @@
+--- !ruby/struct:Analysis::YourBrand::Result
+name: Mara Rodriguez
+category: Design
+description: Mara Rodriguez is a graphic design studio in Asturias specializing in
+  Packaging and Branding, working with both national and international clients.
+region: Asturias
+keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: diseño gráfico Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: branding Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: packaging diseño Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: estudio de diseño Gijón
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: servicios de diseño Asturias
+competitors:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Pixelbox
+  url: https://www.pixelbox.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Kore Branding
+  url: https://www.korebranding.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Veintidós
+  url: https://www.veintidos.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Prisma
+  url: https://www.prismaid.com/diseno-grafico/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Grafica.mente
+  url: https://estudiograficamente.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Alacuerno
+  url: https://alacuerno.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Paula Noval
+  url: https://paulanoval.es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Selibre
+  url: http://www.selibre.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: DIL SE Estudio Creativo
+  url: https://dilsecreativo.com/estudio-de-diseno-grafico

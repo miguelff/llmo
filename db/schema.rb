@@ -10,67 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_03_182658) do
-  create_table "analysis_language_detections", force: :cascade do |t|
-    t.string "language"
-    t.string "provider", default: "openai", null: false
-    t.string "model", default: "gpt-4o-mini", null: false
-    t.float "temperature", default: 0.0, null: false
-    t.string "error"
+ActiveRecord::Schema[8.0].define(version: 2024_12_20_111448) do
+  create_table "analyses", force: :cascade do |t|
+    t.string "status", default: "pending", null: false
+    t.string "uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.binary "report_id", limit: 16, null: false
-    t.index ["report_id"], name: "index_analysis_language_detections_on_report_id"
+    t.string "next_action", default: "your_website", null: false
   end
 
   create_table "analysis_steps", force: :cascade do |t|
-    t.string "type"
+    t.string "type", null: false
+    t.json "input"
     t.json "result"
-    t.string "provider", default: "openai", null: false
-    t.string "model", default: "gpt-4o-mini", null: false
-    t.float "temperature", default: 0.0, null: false
     t.string "error"
+    t.integer "attempt", default: 1, null: false
+    t.integer "analysis_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.binary "report_id", limit: 16, null: false
-    t.integer "attempt", default: 1
-    t.index ["report_id"], name: "index_analysis_steps_on_report_id"
-    t.index ["type", "report_id"], name: "index_analysis_steps_on_type_and_report_id"
+    t.string "status", default: "pending", null: false
+    t.index ["analysis_id", "type"], name: "index_analysis_steps_on_analysis_id_and_type", unique: true
+    t.index ["status", "type"], name: "index_analysis_steps_on_status_and_type"
   end
-
-  create_table "reports", id: { type: :binary, limit: 16 }, force: :cascade do |t|
-    t.string "query", null: false
-    t.json "advanced_settings"
-    t.integer "status", default: 0
-    t.integer "progress_percent", default: 0
-    t.json "progress_details", default: []
-    t.json "result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "owner_type", null: false
-    t.integer "owner_id", null: false
-    t.datetime "deleted_at"
-    t.text "latest_error"
-    t.index ["created_at"], name: "index_reports_on_created_at"
-    t.index ["owner_type", "owner_id", "created_at"], name: "index_reports_on_owner_and_created_at"
-    t.index ["status"], name: "index_reports_on_status"
-    t.index ["updated_at", "status"], name: "index_reports_on_updated_at_and_status"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "avatar"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  add_foreign_key "analysis_language_detections", "reports"
-  add_foreign_key "analysis_steps", "reports"
 end

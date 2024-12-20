@@ -1,0 +1,121 @@
+# This requires some chrome browser in the box, and we need to check
+# concurrency. Maybe we can use a scraping service instead.
+class Analysis::YourWebsite < Analysis::Step
+  class Form
+    include ActiveModel::Model
+    include ActiveModel::Attributes
+    include ActiveModel::Validations
+
+    attribute :url, :string
+    attribute :analysis
+
+    validates :url, presence: true
+    validate :valid_domain
+    validate :another_analysis_not_processing
+
+    delegate :perform_later, to: :model, allow_nil: true
+
+    def valid_domain
+      unless Addressable::URI.parse(transform(url))&.domain&.present?
+        errors.add(:url, "doesn't have a valid format")
+      end
+    end
+
+    def another_analysis_not_processing
+      if Analysis::YourWebsite.find_by(analysis: analysis)&.performing?
+        errors.add(:base, "Another analysis is already being processed")
+      end
+    end
+
+    def model
+      if valid?
+        Analysis::YourWebsite.new(analysis: analysis, input: transform(url))
+      else
+        nil
+      end
+    end
+
+    private
+
+    def transform(url)
+      return nil if url.blank?
+      return "https://#{url}" unless url.starts_with?("http")
+      url
+    end
+  end
+
+  class Result < Struct.new(:url, :title, :toc, :meta_tags)
+    def self.from_h(hash)
+      hash = hash.with_indifferent_access
+      new(*hash.values_at(:url, :title, :toc, :meta_tags))
+    end
+
+    def to_html
+      <<~HTML
+      <html>
+        <head>
+          <title>#{title}</title>
+          #{meta_tags&.map { |key, v| "<meta name=\"#{key}\" content=\"#{v}\">" }.join("\n")}
+          <link rel="canonical" href="#{url}" />
+        </head>
+        <body>
+          #{toc&.map { |item| "<h#{item[:level]}>#{item[:text]}</h#{item[:level]}>" }.join("\n")}
+        </body>
+      </html>
+      HTML
+    end
+  end
+  result Result
+
+  def url
+    self.input
+  end
+
+  def perform
+    begin
+      response = fetch_with_retry
+    rescue => e
+      Rails.logger.error("Could not fetch the page #{url}: #{e.message}")
+      self.error = "Could not fetch the page #{url}"
+      raise self.error
+    end
+
+    document = Nokogiri::HTML(response.body)
+
+    meta_tags = document.css("meta").each_with_object({}) do |meta, hash|
+      name = meta.attr("name") || meta.attr("property")
+      content = meta.attr("content")
+      hash[name] = content if name && content
+    end
+
+    toc = document.css("h1, h2, h3").map do |heading|
+      {
+        level: heading.name[1].to_i,
+        text: heading.text
+      } if heading.text.present?
+    end.compact
+
+    self.result = { url: self.url, title: document.title, meta_tags: meta_tags, toc: toc }
+    true
+  end
+
+  def fetch_with_retry
+    attempt = 1
+    begin
+      response = Faraday.get(url)
+      raise "Failed to fetch the page #{url}" unless response.success?
+
+      response
+    rescue => e
+      if attempt < MAX_ATTEMPT_COUNT
+        Rails.logger.error("Error fetching #{url}: #{e.message}. Retrying (#{attempt + 1}/#{MAX_ATTEMPT_COUNT})...")
+        sleep(attempt)
+        attempt += 1
+        retry
+      else
+        Rails.logger.error("Error fetching #{url}: #{e.message}. No more retries left.")
+        raise "Failed to fetch the page #{url} after #{MAX_ATTEMPT_COUNT} attempts"
+      end
+    end
+  end
+end

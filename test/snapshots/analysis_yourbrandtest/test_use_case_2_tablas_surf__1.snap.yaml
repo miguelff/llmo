@@ -1,0 +1,51 @@
+--- !ruby/struct:Analysis::YourBrand::Result
+name: Tablas Surf Shop
+category: Sporting Goods
+description: Tablas Surf Shop specializes in providing all the necessary equipment
+  for surfing, SUP, and skateboarding since 1979.
+region: Spain
+keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: tienda surf online
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: material surf España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: comprar skate online España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: productos surf destacados
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: mejores marcas surf
+competitors:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Mundo Surf
+  url: https://www.mundo-surf.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Styling Surf
+  url: https://stylingsurf.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Surf Shop Online
+  url: https://surfshoponline.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Teiron Surf
+  url: https://www.teironsurf.com/tienda/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Almarima
+  url: https://almarima.com/es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Nomadas Surf
+  url: https://www.nomadassurf.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Skate Spain
+  url: https://skatespain.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Skatedeluxe
+  url: https://www.skatedeluxe.com/es
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Titus Shop
+  url: https://www.titus-shop.com/es/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Paradise Skate Shop
+  url: https://www.paradisskateshop.com/
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  name: Amigos Skate Shop
+  url: https://www.amigosskateshop.com/es/
