@@ -91,5 +91,3 @@ group :production do
 end
 
 gem "mission_control-jobs", "~> 1"
-
-gem "activerecord-ksuid", require: "active_record/ksuid/railtie"

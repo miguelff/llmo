@@ -11,11 +11,18 @@ class Analysis::YourWebsite < Analysis::Step
 
     validates :url, presence: true
     validate :valid_domain
+    validate :another_analysis_not_processing
     delegate :perform_later, to: :model, allow_nil: true
 
     def valid_domain
       unless Addressable::URI.parse(transform(url))&.domain&.present?
         errors.add(:url, "doesn't have a valid format")
+      end
+    end
+
+    def another_analysis_not_processing
+      if Analysis::YourWebsite.find_by(analysis: analysis)&.performing?
+        errors.add(:base, "Another analysis is already being processed")
       end
     end
 

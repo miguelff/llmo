@@ -50,8 +50,14 @@ module Analysis
   class Record < ApplicationRecord
     self.table_name = "analyses"
 
-    include ActiveRecord::KSUID[:id, binary: true]
-
+    enum :status, pending: "pending", performing: "performing", finished: "finished", failed: "failed", canceled: "canceled"
+    enum :next_action, your_website: "your_website", your_website_results: "your_website_results", your_brand: "your_brand"
     has_many :steps, class_name: "Analysis::Step", foreign_key: :analysis_id, dependent: :destroy
+
+    before_save :set_uuid, if: :new_record?
+
+    def set_uuid
+      self.uuid = SecureRandom.uuid
+    end
   end
 end

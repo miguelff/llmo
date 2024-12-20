@@ -1,8 +1,8 @@
 class CreateAnalysis < ActiveRecord::Migration[8.0]
   def change
-    create_table :analyses, id: false do |t|
-      t.ksuid_binary :id, primary_key: true
+    create_table :analyses do |t|
       t.string :status, null: false, default: "pending"
+      t.string :uuid, null: false
       t.timestamps
     end
 
@@ -13,7 +13,7 @@ class CreateAnalysis < ActiveRecord::Migration[8.0]
       t.string :error
       t.integer :attempt, null: false, default: 1
 
-      t.ksuid_binary :analysis_id, null: false
+      t.integer :analysis_id, null: false
       t.timestamps
     end
 

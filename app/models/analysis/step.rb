@@ -49,6 +49,14 @@ class Analysis::Step < ApplicationRecord
         end
     end
 
+    def save_or_replace
+        if self.persisted?
+            self.update!(status: :pending)
+        else
+            self.save!
+        end
+    end
+
     def perform_if_valid
         if self.valid?
             self.perform_with_retry

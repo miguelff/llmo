@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_19_173116) do
-  create_table "analyses", id: { type: :binary, limit: 20 }, force: :cascade do |t|
+ActiveRecord::Schema[8.0].define(version: 2024_12_20_111448) do
+  create_table "analyses", force: :cascade do |t|
     t.string "status", default: "pending", null: false
+    t.string "uuid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "next_action", default: "your_website", null: false
   end
 
   create_table "analysis_steps", force: :cascade do |t|
@@ -23,7 +25,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_173116) do
     t.json "result"
     t.string "error"
     t.integer "attempt", default: 1, null: false
-    t.binary "analysis_id", limit: 20, null: false
+    t.integer "analysis_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "pending", null: false
