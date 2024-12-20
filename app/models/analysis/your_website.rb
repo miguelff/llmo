@@ -14,8 +14,6 @@ class Analysis::YourWebsite < Analysis::Step
     validate :another_analysis_not_processing
 
     delegate :perform_later, to: :model, allow_nil: true
-    delegate :perform, to: :model, allow_nil: true
-    delegate :result, to: :model, allow_nil: true
 
     def valid_domain
       unless Addressable::URI.parse(transform(url))&.domain&.present?
@@ -51,6 +49,21 @@ class Analysis::YourWebsite < Analysis::Step
       hash = hash.with_indifferent_access
       new(*hash.values_at(:url, :title, :toc, :meta_tags))
     end
+
+    def to_html
+      <<~HTML
+      <html>
+        <head>
+          <title>#{title}</title>
+          #{meta_tags&.map { |key, v| "<meta name=\"#{key}\" content=\"#{v}\">" }.join("\n")}
+          <link rel="canonical" href="#{url}" />
+        </head>
+        <body>
+          #{toc&.map { |item| "<h#{item[:level]}>#{item[:text]}</h#{item[:level]}>" }.join("\n")}
+        </body>
+      </html>
+      HTML
+    end
   end
   result Result
 
@@ -79,8 +92,8 @@ class Analysis::YourWebsite < Analysis::Step
       {
         level: heading.name[1].to_i,
         text: heading.text
-      }
-    end
+      } if heading.text.present?
+    end.compact
 
     self.result = { url: self.url, title: document.title, meta_tags: meta_tags, toc: toc }
     true

@@ -1,6 +1,22 @@
---- !ruby/object:Hash
-:category: Fintech
-:competitors:
+--- !ruby/struct:Analysis::YourBrand::Result
+name: Capchase
+category: Fintech
+description: Capchase provides fast, non-dilutive financing solutions for SaaS and
+  B2B companies, enabling flexible payment options to enhance customer purchasing
+  experiences.
+region: Global
+keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: SaaS financing solutions
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: non-dilutive funding for B2B
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: flexible payment options for SaaS
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: global SaaS funding
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: B2B installment payments
+competitors:
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Pipe
   url: https://www.pipe.com
@@ -16,19 +32,3 @@
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: GoCardless
   url: https://gocardless.com
-:description: Capchase provides fast, non-dilutive financing solutions for SaaS and
-  B2B companies, enabling flexible payment options to enhance customer purchasing
-  experiences.
-:keywords:
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: SaaS financing solutions
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: non-dilutive funding for B2B
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: flexible payment options for SaaS
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: global SaaS funding
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: B2B installment payments
-:name: Capchase
-:region: Global

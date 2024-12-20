@@ -1,8 +1,6 @@
 class Analysis::YourBrand < Analysis::Step
     include Analysis::Inference
 
-    # input Analysis::YourWebsite::Result
-
     class Result < Struct.new(:name, :category, :description, :region, :keywords, :competitors)
         def self.from_h(hash)
             hash = hash.with_indifferent_access
@@ -12,7 +10,7 @@ class Analysis::YourBrand < Analysis::Step
     result Result
 
     def website_info
-        input
+        Analysis::YourWebsite::Result.from_h(input)
     end
 
     def perform
@@ -27,7 +25,7 @@ class Analysis::YourBrand < Analysis::Step
 
     def basic_brand_info
         instructions = <<~INSTRUCTIONS.promptize
-            Extract structured information about a brand from a given website. Analyze the content and fill out the following details in the specified format:
+            Extract structured information about a brand from a given website. Analyze the HTML content and fill out the following details in the specified format:
             - Brand Name: The official name of the brand, company, or service that the website belongs to.
             - Category: The product or service category the brand offers (e.g., fashion, software, food & beverages, etc.).
             - Description: A short summary of what the brand does and its key focus areas. If the website details do not include information about a region where the brand operates most specifically, omit it.
@@ -52,13 +50,7 @@ class Analysis::YourBrand < Analysis::Step
 
         tools = [ Analysis::Tools::BingSearch.new(self) ]
 
-        user_message = <<-USRMSG.promptize
-            The website info is:#{' '}
-
-            #{self.website_info.to_prompt}
-
-            Extract brand information
-        USRMSG
+        user_message = website_info.to_html
 
         answer = assist(user_message, instructions: instructions, model: "gpt-4o-mini", temperature: 0, tools: tools, schema: output_schema)
 
@@ -72,17 +64,17 @@ class Analysis::YourBrand < Analysis::Step
             keywords: []
            }
         else
-           answer
+           Hashie::Mash.new(answer)
         end
     end
 
 
     def competitors_from_basic_info(basic_info)
-     unless basic_info.present? && basic_info[:keywords].any?
-         return { competitors: [] }
-     end
+        unless basic_info.present? && basic_info[:keywords]&.any?
+            return { competitors: [] }
+        end
 
-     user_message = <<-USRMSG.promptize
+        user_message = <<-USRMSG.promptize
             What are the main competitors of the brand #{basic_info[:name]}?
             The brand belongs to the following product or service category: #{basic_info[:category]}.
             The brand's website appears when using the following search queries in Bing:
@@ -98,25 +90,25 @@ class Analysis::YourBrand < Analysis::Step
             Use the given search tool if needed.
         USRMSG
 
-     output_schema = schema do
-         define :competitor do
-             string :name, description: "The name of the competitor"
-             string :url, description: "The URL of the competitor's website"
-         end
-         array :competitors, items: ref(:competitor), description: "A list of competitors"
-     end
+        output_schema = schema do
+            define :competitor do
+                string :name, description: "The name of the competitor"
+                string :url, description: "The URL of the competitor's website"
+            end
+            array :competitors, items: ref(:competitor), description: "A list of competitors"
+        end
 
-     answer = assist(user_message, model: "gpt-4o", temperature: 0, tools: [ Analysis::Tools::BingSearch.new(self) ], schema: output_schema)
+        answer = assist(user_message, model: "gpt-4o", temperature: 0, tools: [ Analysis::Tools::BingSearch.new(self) ], schema: output_schema)
 
-     res = if answer.blank?
-        Rails.logger.warn({ message: "No answer", metadata: { user_message: user_message, response: res } })
-        {
-         competitors: []
-        }
-     else
-        answer
-     end
+        res = if answer.blank?
+           Rails.logger.warn({ message: "No answer", metadata: { user_message: user_message, response: res } })
+           {
+            competitors: []
+           }
+        else
+           answer
+        end
 
-     res.with_indifferent_access
+        res.with_indifferent_access
     end
 end

@@ -1,6 +1,21 @@
---- !ruby/object:Hash
-:category: Automotive
-:competitors:
+--- !ruby/struct:Analysis::YourBrand::Result
+name: BMW
+category: Automotive
+description: BMW is a leading manufacturer of premium vehicles and motorcycles, focusing
+  on luxury, performance, and innovative technology.
+region: Europe
+keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: BMW Serie 3 Berlina características
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: coches de lujo en Europa
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: BMW vehículos eléctricos España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: financiación BMW Serie 3 Berlina
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: BMW coches premium en Europa
+competitors:
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Mercedes-Benz
   url: https://www.mercedes-benz.es/
@@ -16,18 +31,3 @@
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Volvo
   url: https://www.volvocars.com/es/
-:description: BMW is a leading manufacturer of premium vehicles and motorcycles, focusing
-  on luxury, performance, and innovative technology.
-:keywords:
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: BMW Serie 3 Berlina características
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: coches de lujo en Europa
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: BMW vehículos eléctricos España
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: financiación BMW Serie 3 Berlina
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: BMW coches premium en Europa
-:name: BMW
-:region: Europe

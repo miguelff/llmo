@@ -1,6 +1,21 @@
---- !ruby/object:Hash
-:category: Design
-:competitors:
+--- !ruby/struct:Analysis::YourBrand::Result
+name: Mara Rodriguez
+category: Design
+description: Mara Rodriguez is a graphic design studio in Asturias specializing in
+  Packaging and Branding, working with both national and international clients.
+region: Asturias
+keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: diseño gráfico Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: branding Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: packaging diseño Asturias
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: estudio de diseño Gijón
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: servicios de diseño Asturias
+competitors:
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Pixelbox
   url: https://www.pixelbox.es/
@@ -28,18 +43,3 @@
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: DIL SE Estudio Creativo
   url: https://dilsecreativo.com/estudio-de-diseno-grafico
-:description: Mara Rodriguez is a graphic design studio in Asturias specializing in
-  Packaging and Branding, working with both national and international clients.
-:keywords:
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: diseño gráfico Asturias
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: branding Asturias
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: packaging diseño Asturias
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: estudio de diseño Gijón
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: servicios de diseño Asturias
-:name: Mara Rodriguez
-:region: Asturias

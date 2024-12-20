@@ -1,6 +1,22 @@
---- !ruby/object:Hash
-:category: Architecture and Urbanism
-:competitors:
+--- !ruby/struct:Analysis::YourBrand::Result
+name: deurbe arquitectura
+category: Architecture and Urbanism
+description: Deurbe arquitectura is a multidisciplinary firm specializing in architecture,
+  interior design, and urban planning, providing comprehensive services from project
+  conception to execution.
+region: Bizkaia, Spain
+keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: arquitectura Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: urbanismo Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: interiorismo Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: estudio arquitectura Bizkaia
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: servicios arquitectónicos Bizkaia
+competitors:
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Aiert Arkitektura
   url: https://aiertarkitektura.eus/estudio-arquitectura-bizkaia/
@@ -46,19 +62,3 @@
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: KB Arquitectas
   url: https://kbarquitectas.com/
-:description: Deurbe arquitectura is a multidisciplinary firm specializing in architecture,
-  interior design, and urban planning, providing comprehensive services from project
-  conception to execution.
-:keywords:
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: arquitectura Bizkaia
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: urbanismo Bizkaia
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: interiorismo Bizkaia
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: estudio arquitectura Bizkaia
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: servicios arquitectónicos Bizkaia
-:name: deurbe arquitectura
-:region: Bizkaia, Spain

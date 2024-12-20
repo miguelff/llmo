@@ -1,6 +1,21 @@
---- !ruby/object:Hash
-:category: Sporting Goods
-:competitors:
+--- !ruby/struct:Analysis::YourBrand::Result
+name: Tablas Surf Shop
+category: Sporting Goods
+description: Tablas Surf Shop specializes in providing all the necessary equipment
+  for surfing, SUP, and skateboarding since 1979.
+region: Spain
+keywords:
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: tienda surf online
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: material surf España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: comprar skate online España
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: productos surf destacados
+- !ruby/object:ActiveSupport::HashWithIndifferentAccess
+  value: mejores marcas surf
+competitors:
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Mundo Surf
   url: https://www.mundo-surf.com/
@@ -34,18 +49,3 @@
 - !ruby/object:ActiveSupport::HashWithIndifferentAccess
   name: Amigos Skate Shop
   url: https://www.amigosskateshop.com/es/
-:description: Tablas Surf Shop specializes in providing all the necessary equipment
-  for surfing, SUP, and skateboarding since 1979.
-:keywords:
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: tienda surf online
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: material surf España
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: comprar skate online España
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: productos surf destacados
-- !ruby/object:ActiveSupport::HashWithIndifferentAccess
-  value: mejores marcas surf
-:name: Tablas Surf Shop
-:region: Spain
