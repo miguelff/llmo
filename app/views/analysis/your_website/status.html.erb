@@ -1,0 +1,4 @@
+<div id="steps" class="flex flex-col justify-center items-center mb-10">
+    <%= render partial: "analysis/steps", locals: { current_step: :your_website } %>
+    <%= render partial: "analysis/your_website/status", locals: { your_website: @your_website } %>
+</div>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get "analysis/#{action}/results", to: "analysis##{action}_results", as: :"#{action}_results"
     post "analysis/#{action}", to: "analysis#process_#{action}", as: :"process_#{action}"
   end
-  get "analysis/cancel", to: "analysis#destroy", as: :cancel_analysis
+  delete "analysis/cancel", to: "analysis#destroy", as: :cancel_analysis
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

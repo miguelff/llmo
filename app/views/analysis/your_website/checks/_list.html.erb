@@ -1,0 +1,7 @@
+<ul>
+    <% presenter.checks.each do |name, check| %>
+        <li>
+            <%= render "analysis/your_website/checks/check", check: check %>
+        </li>
+    <% end %>
+</ul>

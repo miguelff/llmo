@@ -1,0 +1,17 @@
+<div class="p-4">
+  <div class="mb-4 flex flex-col gap-4">
+    <% case your_website.status %>    
+    <% when "pending", "performing" %>
+      <p class="text-yellow-600">Your website analysis is in progress.</p>
+    <% when "failed" %>
+      <p class="text-red-600">Your website analysis failed.</p>
+      <p class="text-red-600"><%= your_website.error %></p>
+    <% when "finished" %>
+      <%= render "analysis/your_website/result", your_website: your_website %>
+    <% end %>
+  </div>
+
+  <div class="flex flex-row gap-4 items-center justify-end">    
+    <%= link_to "Continue", your_brand_path, class: "btn btn-primary" %> or <%= button_to "Start over", cancel_analysis_path, method: :delete, class: "link link-primary" %>
+  </div>
+</div>

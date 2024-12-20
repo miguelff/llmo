@@ -1,5 +1,6 @@
 class AnalysisController < ApplicationController
   include CurrentAnalysis
+  before_action :redirect_to_step, except: [ :destroy, :process_your_website ]
 
   def destroy
     cancel_current_analysis
@@ -23,7 +24,7 @@ class AnalysisController < ApplicationController
 
   def your_website_results
     @your_website = Analysis::YourWebsite.find_by(analysis: current_analysis)
-    render "analysis/your_website/results"
+    render "analysis/your_website/status"
   end
 
   # def your_brand
@@ -67,6 +68,16 @@ class AnalysisController < ApplicationController
   # end
 
   private
+
+  def redirect_to_step
+    if request.get?
+      next_action = current_analysis.next_action
+      if next_action.present? && next_action != params[:action]
+        Rails.logger.info "[Analysis #{current_analysis.id}] Redirecting to #{next_action}, after trying to access #{params[:action]}"
+        redirect_to action: next_action
+      end
+    end
+  end
 
   def your_website_params
     with_analyis(params.require(:analysis_your_website_form).permit(:url))

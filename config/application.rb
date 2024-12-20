@@ -16,6 +16,7 @@ module Web
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    config.autoload_paths << Rails.root.join("app/presenters")
     # Application name
     config.application_name = "brand.ai"
 

@@ -2,13 +2,13 @@ require "test_helper"
 
 class AnalysisControllerTest < ActionDispatch::IntegrationTest
   setup do
-    get cancel_analysis_path
+    delete cancel_analysis_path
   end
 
   test "should destroy analysis" do
     get root_path
     assert Analysis::Record.last.pending?
-    get cancel_analysis_path
+    delete cancel_analysis_path
     assert_redirected_to root_path
     assert Analysis::Record.last.canceled?
   end
@@ -19,7 +19,7 @@ class AnalysisControllerTest < ActionDispatch::IntegrationTest
     analysis_id = Analysis::Record.last.id
     assert_equal session[:analysis_id], analysis_id
 
-    get cancel_analysis_path
+    delete cancel_analysis_path
     get root_path
     assert_equal session[:analysis_id], Analysis::Record.last.id
     assert_not_equal session[:analysis_id], analysis_id
@@ -50,5 +50,14 @@ class AnalysisControllerTest < ActionDispatch::IntegrationTest
     get your_website_results_path
     assert_response :success
     assert_includes response.body, "Your website analysis is in progress"
+  end
+
+  test "redirects to last progress step" do
+    get your_website_path
+    post process_your_website_path, params: { analysis_your_website_form: { url: "https://www.google.com" } }
+    assert_redirected_to your_website_results_path
+
+    get your_website_path
+    assert_redirected_to your_website_results_path
   end
 end
