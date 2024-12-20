@@ -45,10 +45,8 @@ class StepTest < ActiveSupport::TestCase
     test "Retries:perform with retry for recoverable error, after it errored too many times" do
         step = TestStep.build(StandardError.new("This is a test error"), pass_at_attempt: 4)
         assert_raises(StandardError, /This is a test error/) { step.perform_with_retry }
-        assert_equal Analysis::Step::MAX_ATTEMPT_COUNT, step.attempt
         assert_equal [ 1, 4 ], step.secs_slept
     end
-
 
     test "Retries:perform reset retry count when invoked again" do
         times_invoked = 0

@@ -1,5 +1,6 @@
 # Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
 
 # Indentation configuration
 Layout/IndentationConsistency:

@@ -31,16 +31,24 @@ class AnalysisControllerTest < ActionDispatch::IntegrationTest
     assert_equal session[:analysis_id], Analysis::Record.last.id
   end
 
+  # See view tests at test/views/analysis/your_website_test.rb for non-happy paths
   test "process your website: Happy path" do
     get your_website_path
 
     current_analysis = Analysis::Record.last
     assert_equal session[:analysis_id], current_analysis.id
     post process_your_website_path, params: { analysis_your_website_form: { url: "https://www.google.com" } }
+
     assert_redirected_to your_website_results_path
     assert_equal session[:analysis_id], current_analysis.id
     assert current_analysis.reload.performing?
     assert_equal current_analysis.next_action, "your_website_results"
     assert_equal current_analysis.steps.count, 1
+
+    assert_enqueued_with(job: AnalysisStepJob, args: [ current_analysis.steps.first ])
+
+    get your_website_results_path
+    assert_response :success
+    assert_includes response.body, "Your website analysis is in progress"
   end
 end

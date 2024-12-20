@@ -1,10 +1,1 @@
-<% case @your_website.status %>
-<% when "finished" %>
-    Your website analysis is complete.
-<% when "pending" %>
-    Your website analysis is being processed.
-<% when "performing" %>
-    Your website analysis is being processed.
-<% when "failed" %>
-    Your website analysis failed.
-<% end %>
+<%= render partial: "analysis/your_website/results", locals: { your_website: @your_website } %>

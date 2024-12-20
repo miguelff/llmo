@@ -49,14 +49,6 @@ class Analysis::Step < ApplicationRecord
         end
     end
 
-    def save_or_replace
-        if self.persisted?
-            self.update!(status: :pending)
-        else
-            self.save!
-        end
-    end
-
     def perform_if_valid
         if self.valid?
             self.perform_with_retry
@@ -69,7 +61,7 @@ class Analysis::Step < ApplicationRecord
         raise "Not implemented"
     end
 
-    def perform_with_retry(attempt = 1)
+    def perform_with_retry(attempt: 1, max_attempts: MAX_ATTEMPT_COUNT)
         self.update(status: :performing, attempt: attempt)
         self.perform
         self.status = :finished
@@ -79,15 +71,15 @@ class Analysis::Step < ApplicationRecord
         self.update(error: e.message, status: :failed)
         raise
     rescue => e
-        if attempt < MAX_ATTEMPT_COUNT
-            Rails.logger.error("Error performing #{self.class.name}: #{e.message}. Retrying (#{attempt + 1}/#{MAX_ATTEMPT_COUNT})...")
+        if attempt < max_attempts
+            Rails.logger.error("Error performing #{self.class.name}: #{e.message}. Retrying (#{attempt + 1}/#{max_attempts})...")
             self.update(error: e.message)
             backoff(attempt)
-            perform_with_retry(attempt + 1)
+            perform_with_retry(attempt: attempt + 1, max_attempts: max_attempts)
         else
             Rails.logger.error("Error performing #{self.class.name}: #{e.message}. No more retries left.")
-            self.update(error: e.message, status: "failed")
-            raise
+            self.update(error: e.message, status: :failed)
+            raise e
         end
     end
 

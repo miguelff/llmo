@@ -12,7 +12,10 @@ class Analysis::YourWebsite < Analysis::Step
     validates :url, presence: true
     validate :valid_domain
     validate :another_analysis_not_processing
+
     delegate :perform_later, to: :model, allow_nil: true
+    delegate :perform, to: :model, allow_nil: true
+    delegate :result, to: :model, allow_nil: true
 
     def valid_domain
       unless Addressable::URI.parse(transform(url))&.domain&.present?
@@ -59,8 +62,9 @@ class Analysis::YourWebsite < Analysis::Step
     begin
       response = fetch_with_retry
     rescue => e
-      self.error = e.message
-      return true # save it anyway
+      Rails.logger.error("Could not fetch the page #{url}: #{e.message}")
+      self.error = "Could not fetch the page #{url}"
+      raise self.error
     end
 
     document = Nokogiri::HTML(response.body)

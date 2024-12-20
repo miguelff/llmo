@@ -85,10 +85,12 @@ class Analysis::YourWebsiteTest < ActiveSupport::TestCase
       assert form.valid?
 
       model = form.model
-      assert model.perform_if_valid
+      assert_raises(StandardError, /Could not fetch the page https:\/\/not_existing_website_12345.gg\//) do
+        model.perform_if_valid
+      end
 
       result = model.result
-      assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", model.error
+      assert_equal "Could not fetch the page https://not_existing_website_12345.gg/", model.error
     end
   end
 end
