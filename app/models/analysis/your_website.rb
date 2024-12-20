@@ -7,9 +7,11 @@ class Analysis::YourWebsite < Analysis::Step
     include ActiveModel::Validations
 
     attribute :url, :string
+    attribute :analysis
 
     validates :url, presence: true
     validate :valid_domain
+    delegate :perform_later, to: :model, allow_nil: true
 
     def valid_domain
       unless Addressable::URI.parse(transform(url))&.domain&.present?
@@ -17,7 +19,7 @@ class Analysis::YourWebsite < Analysis::Step
       end
     end
 
-    def model(analysis:)
+    def model
       if valid?
         Analysis::YourWebsite.new(analysis: analysis, input: transform(url))
       else
@@ -34,34 +36,13 @@ class Analysis::YourWebsite < Analysis::Step
     end
   end
 
-  class Result < ActiveRecord::Type::Value
-    STRUCT = Struct.new(:url, :title, :toc, :meta_tags)
-
-    def type
-      :jsonb
-    end
-
-    def cast(value)
-      if value.is_a?(Hash)
-        value = value.with_indifferent_access
-        STRUCT.new(*value.values_at(:url, :title, :toc, :meta_tags))
-      else
-        super
-      end
-    end
-
-    def deserialize(value)
-      return nil unless value.present?
-      cast(ActiveSupport::JSON.decode(value))
-    end
-
-    def serialize(value)
-      return value unless value.is_a?(STRUCT)
-      ActiveSupport::JSON.encode(value.to_h)
+  class Result < Struct.new(:url, :title, :toc, :meta_tags)
+    def self.from_h(hash)
+      hash = hash.with_indifferent_access
+      new(*hash.values_at(:url, :title, :toc, :meta_tags))
     end
   end
-
-  attribute :result, Result.new
+  result Result
 
   def url
     self.input
@@ -112,10 +93,5 @@ class Analysis::YourWebsite < Analysis::Step
         raise "Failed to fetch the page #{url} after #{MAX_ATTEMPT_COUNT} attempts"
       end
     end
-  end
-
-  def presenter
-    return nil unless succeeded?
-    Result.from_json(result)
   end
 end

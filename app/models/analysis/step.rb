@@ -7,6 +7,14 @@ class Analysis::Step < ApplicationRecord
     class_attribute :model, :temperature
     validate :valid_input, if: -> { self.new_record? }
 
+    def self.result(typ)
+        attribute :result, Analysis::StructuredValueType.new(typ)
+    end
+
+    def self.input(typ)
+        attribute :input, Analysis::StructuredValueType.new(typ)
+    end
+
     def valid_input
         true
     end

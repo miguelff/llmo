@@ -4,12 +4,12 @@ class AnalysisController < ApplicationController
   helper_method :current_analysis
 
   def your_website
-    @your_website = Analysis::YourWebsite.empty
+    @your_website = Analysis::YourWebsite.new
     render "analysis/your_website/new"
   end
 
   def process_your_website
-    @your_website = Analysis::YourWebsite.for(your_website_params)
+    @your_website = Analysis::YourWebsite::Form.new(your_website_params)
     if @your_website.perform_later
       render "analysis/your_website/result"
     else
@@ -76,7 +76,7 @@ class AnalysisController < ApplicationController
   end
 
   def your_website_params
-    with_analyis(params.require(:analysis_your_website).permit(:url))
+    params.require(:analysis_your_website).permit(:url)
   end
 
   def with_analyis(params)

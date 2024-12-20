@@ -1,20 +1,28 @@
 class Analysis::YourBrand < Analysis::Step
     include Analysis::Inference
 
+    # input Analysis::YourWebsite::Result
+
+    class Result < Struct.new(:name, :category, :description, :region, :keywords, :competitors)
+        def self.from_h(hash)
+            hash = hash.with_indifferent_access
+            new(*hash.values_at(:name, :category, :description, :region, :keywords, :competitors))
+        end
+    end
+    result Result
+
+    def website_info
+        input
+    end
+
     def perform
         basic_info = basic_brand_info
         Rails.logger.info("Basic info: #{basic_info.inspect}")
         competitors = competitors_from_basic_info(basic_info)
         Rails.logger.info("Competitors: #{competitors.inspect}")
-        brand_info = basic_info.with_competitors(competitors[:competitors])
 
-        self.result = brand_info.to_h
+        self.result = basic_info.merge(competitors)
         true
-    end
-
-    def presenter
-        return nil unless self.succeeded?
-        Analysis::Presenters::Brand.from_json(self.result)
     end
 
     def basic_brand_info
@@ -66,22 +74,20 @@ class Analysis::YourBrand < Analysis::Step
         else
            answer
         end
-
-        Analysis::Presenters::BrandBasicInfo.new(**res)
     end
 
 
     def competitors_from_basic_info(basic_info)
-     unless basic_info.present? && basic_info.keywords.any?
+     unless basic_info.present? && basic_info[:keywords].any?
          return { competitors: [] }
      end
 
      user_message = <<-USRMSG.promptize
-            What are the main competitors of the brand #{basic_info.name}?
-            The brand belongs to the following product or service category: #{basic_info.category}.
+            What are the main competitors of the brand #{basic_info[:name]}?
+            The brand belongs to the following product or service category: #{basic_info[:category]}.
             The brand's website appears when using the following search queries in Bing:
 
-            * #{basic_info.keywords.join("\n * ")}
+            * #{basic_info[:keywords]&.join("\n * ")}
 
             And maybe competitors are found when using similar search queries.
 

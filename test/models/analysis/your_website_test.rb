@@ -2,18 +2,14 @@ require "test_helper"
 
 class Analysis::YourWebsiteTest < ActiveSupport::TestCase
   def form_for(url)
-    Analysis::YourWebsite::Form.new(url: url)
-  end
-
-  test "constructor is private" do
-    assert_raises(NoMethodError) { Analysis::YourWebsite.new }
+    Analysis::YourWebsite::Form.new(url: url, analysis: Analysis::Record.create!)
   end
 
   test "validating the input when protocol is missing" do
     form = form_for("mararodriguez.es/")
     assert form.valid?
 
-    model = form.model(analysis: nil)
+    model = form.model
     assert_equal "https://mararodriguez.es/", model.url
   end
 
@@ -28,7 +24,7 @@ class Analysis::YourWebsiteTest < ActiveSupport::TestCase
       form = form_for("https://mararodriguez.es/")
       assert form.valid?
 
-      model = form.model(analysis: Analysis::Record.create!)
+      model = form.model
       assert model.perform_if_valid
 
       result = model.result
@@ -88,11 +84,11 @@ class Analysis::YourWebsiteTest < ActiveSupport::TestCase
       form = form_for("https://not_existing_website_12345.gg/")
       assert form.valid?
 
-      model = form.model(analysis: Analysis::Record.create!)
+      model = form.model
       assert model.perform_if_valid
 
       result = model.result
-      assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", result.error
+      assert_equal "Failed to fetch the page https://not_existing_website_12345.gg/ after 3 attempts", model.error
     end
   end
 end

@@ -1,4 +1,32 @@
 module Analysis
+  class StructuredValueType < ActiveModel::Type::Value
+    def initialize(struct_type)
+        @struct_type = struct_type
+    end
+
+    def type
+        :jsonb
+    end
+
+    def cast(value)
+      if value.is_a?(Hash)
+        @struct_type.from_h(value)
+      else
+        super
+      end
+    end
+
+    def deserialize(value)
+      return nil unless value.present?
+      cast(ActiveSupport::JSON.decode(value))
+    end
+
+    def serialize(value)
+      return value unless value.respond_to?(:to_h)
+      ActiveSupport::JSON.encode(value.to_h)
+    end
+  end
+
   def self.table_name_prefix
     "analysis_"
   end
