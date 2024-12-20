@@ -1,20 +1,29 @@
 class AnalysisController < ApplicationController
-  before_action :set_session, only: :process_your_website
-  before_action :redirect_if_no_analysis_id, except: :process_your_website
-  helper_method :current_analysis
+  include CurrentAnalysis
+
+  def destroy
+    cancel_current_analysis
+    redirect_to root_path
+  end
 
   def your_website
-    @your_website = Analysis::YourWebsite.new
+    @your_website = Analysis::YourWebsite::Form.new(analysis: current_analysis)
     render "analysis/your_website/new"
   end
 
   def process_your_website
     @your_website = Analysis::YourWebsite::Form.new(your_website_params)
     if @your_website.perform_later
-      render "analysis/your_website/result"
+      current_analysis.update!(status: :performing, next_action: :your_website_results)
+      redirect_to action: :your_website_results
     else
       render "analysis/your_website/new"
     end
+  end
+
+  def your_website_results
+    @your_website = Analysis::YourWebsite.find_by(analysis: current_analysis)
+    render "analysis/your_website/results"
   end
 
   # def your_brand
@@ -59,24 +68,8 @@ class AnalysisController < ApplicationController
 
   private
 
-  def current_analysis
-    @current_analysis ||= Analysis::Record.find(session[:analysis_id]) if analysis_started?
-  end
-
-  def analysis_started?
-    session[:analysis_id].present?
-  end
-
-  def redirect_if_no_analysis_id
-    redirect_to action: :one unless session[:analysis_id]
-  end
-
-  def set_session
-    session[:analysis_id] = Analysis::Record.create!.id.to_s
-  end
-
   def your_website_params
-    params.require(:analysis_your_website).permit(:url)
+    with_analyis(params.require(:analysis_your_website_form).permit(:url))
   end
 
   def with_analyis(params)
